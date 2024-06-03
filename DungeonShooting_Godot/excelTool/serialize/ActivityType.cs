@@ -1,5 +1,4 @@
-﻿
-/// <summary>
+﻿/// <summary>
 /// 物体类型
 /// </summary>
 public enum ActivityType
@@ -52,6 +51,10 @@ public enum ActivityType
     /// Npc
     /// </summary>
     Npc,
+    /// <summary>
+    /// Boss
+    /// </summary>
+    Boss,
     /// <summary>
     /// 其它类型
     /// </summary>

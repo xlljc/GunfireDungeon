@@ -87,28 +87,31 @@ public static class ExcelGenerator
             if (directoryInfo.Exists)
             {
                 var fileInfos = directoryInfo.GetFiles();
-                //记录文件
+                var tempFileInfos = new List<FileInfo>();
+                
                 foreach (var fileInfo in fileInfos)
                 {
+                    //记录文件
                     if (fileInfo.Extension == ".xlsx")
                     {
                         var fileName = Path.GetFileNameWithoutExtension(fileInfo.Name).FirstToUpper();
+                        //判断是否是以字母开头
+                        if (!Regex.IsMatch(fileName, "^[a-zA-Z]"))
+                        {
+                            Console.WriteLine($"未被导出的表: {fileName}, excel表文件名称必须以字母开头!");
+                            continue;
+                        }
+                        
+                        tempFileInfos.Add(fileInfo);
                         _excelNames.Add(fileName);
                     }
                 }
-
+                
                 //读取配置文件
-                foreach (var fileInfo in fileInfos)
+                foreach (var tempFileInfo in tempFileInfos)
                 {
-                    if (fileInfo.Extension == ".xlsx")
-                    {
-                        if (fileInfo.Name == "ExcelConfig.xlsx")
-                        {
-                            throw new Exception("excel表文件名称不允许叫'ExcelConfig.xlsx'!");
-                        }
-                        Console.WriteLine("excel表: " + fileInfo.FullName);
-                        excelDataList.Add(ReadExcel(fileInfo.FullName));
-                    }
+                    Console.WriteLine("excel表: " + tempFileInfo.FullName);
+                    excelDataList.Add(ReadExcel(tempFileInfo.FullName));
                 }
             }
 
@@ -320,7 +323,7 @@ public static class ExcelGenerator
         outStr += $"using System.Collections.Generic;\n\n";
         outStr += $"namespace Config;\n\n";
         outStr += $"public static partial class ExcelConfig\n{{\n";
-        outStr += $"    public class {fileName}\n";
+        outStr += $"    public partial class {fileName}\n";
         outStr += $"    {{\n";
         //继承的带有引用其他表的类代码
         var outRefStr = "";
