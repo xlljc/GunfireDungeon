@@ -4,7 +4,7 @@ using UI.MapEditor;
 
 namespace UI.MapEditorMapMark;
 
-public partial class MapEditorMapMarkPanel : MapEditorMapMark
+public partial class MapEditorMapMarkPanel : MapEditorMapMark, IEditorTab
 {
     public enum SelectToolType
     {
@@ -494,5 +494,18 @@ public partial class MapEditorMapMarkPanel : MapEditorMapMark
             return;
         }
         S_AutoFillTip.Instance.Visible = false;
+    }
+
+    public void OnSelectTab()
+    {
+        var panel = EditorTileMap.MapEditorPanel;
+        panel.S_LayerPanel.Instance.Visible = false;
+            
+        panel.S_MapEditorTools.Instance.SetToolButton(EditorToolEnum.Move, EditorToolEnum.MarkTool, EditorToolEnum.Focus);
+    }
+
+    public void OnUnSelectTab()
+    {
+        
     }
 }

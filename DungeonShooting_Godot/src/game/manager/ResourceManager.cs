@@ -240,4 +240,28 @@ public static class ResourceManager
 
         return name;
     }
+    
+    /// <summary>
+    /// 加载地牢编辑器中自定义对象, 返回的节点已经被禁用了所有逻辑
+    /// </summary>
+    public static Node2D LoadEditorObject(ExcelConfig.EditorObject config)
+    {
+        Node2D node;
+        if (config.IsActivity())
+        {
+            var activityBase = ExcelConfig.ActivityBase_Map[config.Prefab];
+            node = LoadAndInstantiate<Node2D>(activityBase.Prefab);
+        }
+        else
+        {
+            node = LoadAndInstantiate<Node2D>(config.Prefab);
+        }
+        node.SetProcess(false);
+        node.SetPhysicsProcess(false);
+        node.SetProcessInput(false);
+        node.SetPhysicsProcessInternal(false);
+        node.SetProcessInput(false);
+        node.ProcessMode = Node.ProcessModeEnum.WhenPaused;
+        return node;
+    }
 }

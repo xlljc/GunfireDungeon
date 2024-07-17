@@ -257,11 +257,11 @@ public partial class DoorDragArea : Control
                     bool checkResult;
                     if (DoorAreaInfo == null)
                     {
-                        checkResult = MapEditorToolsPanel.EditorMap.Instance.CheckDoorArea(Direction, doorAreaRange.X, doorAreaRange.Y);
+                        checkResult = MapEditorToolsPanel.EditorMap.CheckDoorArea(Direction, doorAreaRange.X, doorAreaRange.Y);
                     }
                     else
                     {
-                        checkResult = MapEditorToolsPanel.EditorMap.Instance.CheckDoorArea(DoorAreaInfo, doorAreaRange.X, doorAreaRange.Y);
+                        checkResult = MapEditorToolsPanel.EditorMap.CheckDoorArea(DoorAreaInfo, doorAreaRange.X, doorAreaRange.Y);
                     }
                     if (checkResult)
                     {
@@ -350,11 +350,11 @@ public partial class DoorDragArea : Control
                     bool checkResult;
                     if (DoorAreaInfo == null)
                     {
-                        checkResult = MapEditorToolsPanel.EditorMap.Instance.CheckDoorArea(Direction, doorAreaRange.X, doorAreaRange.Y);
+                        checkResult = MapEditorToolsPanel.EditorMap.CheckDoorArea(Direction, doorAreaRange.X, doorAreaRange.Y);
                     }
                     else
                     {
-                        checkResult = MapEditorToolsPanel.EditorMap.Instance.CheckDoorArea(DoorAreaInfo, doorAreaRange.X, doorAreaRange.Y);
+                        checkResult = MapEditorToolsPanel.EditorMap.CheckDoorArea(DoorAreaInfo, doorAreaRange.X, doorAreaRange.Y);
                     }
                     if (checkResult)
                     {
@@ -426,7 +426,7 @@ public partial class DoorDragArea : Control
 
     private void OnMouseEntered()
     {
-        if (MapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (MapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }
@@ -435,7 +435,7 @@ public partial class DoorDragArea : Control
     
     private void OnMouseExited()
     {
-        if (MapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (MapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }

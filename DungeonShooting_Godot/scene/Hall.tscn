@@ -90,14 +90,13 @@ position = Vector2(502, 214)
 
 [node name="DungeonEntrance" type="Area2D" parent="." index="4"]
 z_index = 15
-position = Vector2(346, 179)
+position = Vector2(483, 182)
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 script = ExtResource("3_t3my6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonEntrance" index="0"]
-position = Vector2(137.5, 2)
 shape = SubResource("RectangleShape2D_ru8u4")
 
 [node name="ItemRoot" type="Node2D" parent="." index="5"]

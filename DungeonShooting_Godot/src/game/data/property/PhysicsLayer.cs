@@ -51,4 +51,9 @@ public class PhysicsLayer
     /// 可被子弹击中的区域
     /// </summary>
     public const uint HurtArea = 0b10000000000;
+
+    /// <summary>
+    /// 鼠标检测的Ui
+    /// </summary>
+    public const uint UiMouse = 0b10000000000000;
 }

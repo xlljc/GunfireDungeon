@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://1kdlshgpe3q2"]
+
+[ext_resource type="Script" path="res://src/game/ui/mapEditorConfigObject/MapEditorConfigObjectPanel.cs" id="1_qm00b"]
+[ext_resource type="Texture2D" uid="uid://blfvsup876agh" path="res://resource/sprite/ui/commonIcon/Search.png" id="2_rkdcy"]
+[ext_resource type="Texture2D" uid="uid://bn47bmilcw4x0" path="res://resource/sprite/ui/commonIcon/Select2.png" id="3_65sjj"]
+
+[node name="MapEditorConfigObject" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qm00b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="SearchInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索"
+
+[node name="SearchButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_rkdcy")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CellButton" type="Button" parent="VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(112, 162)
+layout_mode = 2
+
+[node name="PreviewImage" type="TextureRect" parent="VBoxContainer/ScrollContainer/CellButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CellName" type="Label" parent="VBoxContainer/ScrollContainer/CellButton"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "名称"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 2
+
+[node name="SelectTexture" type="NinePatchRect" parent="VBoxContainer/ScrollContainer/CellButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_65sjj")
+region_rect = Rect2(0, 0, 36, 36)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4

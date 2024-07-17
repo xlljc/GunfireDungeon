@@ -487,8 +487,8 @@ public partial class DungeonManager : Node2D
         //初始化所有房间
         yield return _dungeonGenerator.EachRoomCoroutine(InitRoom);
         
-        Debug.Log("[临时处理]: 关闭房间迷雾");
-        CurrWorld.FogMaskRoot.Visible = false;
+        //Debug.Log("[临时处理]: 关闭房间迷雾");
+        //CurrWorld.FogMaskRoot.Visible = false;
 
         //房间背景颜色
         RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor);

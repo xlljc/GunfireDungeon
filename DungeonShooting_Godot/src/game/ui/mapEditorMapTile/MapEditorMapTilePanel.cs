@@ -3,7 +3,7 @@ using UI.MapEditor;
 
 namespace UI.MapEditorMapTile;
 
-public partial class MapEditorMapTilePanel : MapEditorMapTile
+public partial class MapEditorMapTilePanel : MapEditorMapTile, IEditorTab
 {
     /// <summary>
     /// 使用的TileSet数据
@@ -128,5 +128,20 @@ public partial class MapEditorMapTilePanel : MapEditorMapTile
         S_Tab1.Instance.Visible = v1;
         S_Tab2.Instance.Visible = v2;
         S_Tab3.Instance.Visible = v3;
+    }
+
+    public void OnSelectTab()
+    {
+        var panel = EditorTileMap.MapEditorPanel;
+        panel.S_LayerPanel.Instance.Visible = true;
+        panel.S_LayerPanel.L_MapEditorMapLayer.Instance.ShowUi();
+        panel.S_LayerPanel.L_MapEditorConfigObject.Instance.HideUi();
+            
+        panel.S_MapEditorTools.Instance.SetToolButton(EditorToolEnum.Move, EditorToolEnum.TilePen, EditorToolEnum.TileAreaPen, EditorToolEnum.Focus);
+    }
+
+    public void OnUnSelectTab()
+    {
+        
     }
 }

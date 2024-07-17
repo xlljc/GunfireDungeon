@@ -22,9 +22,11 @@ public static partial class UiManager
         public const string BottomTips = "BottomTips";
         public const string EditorTileImage = "EditorTileImage";
         public const string EditorDungeonGroup = "EditorDungeonGroup";
+        public const string MapEditorConfigObject = "MapEditorConfigObject";
         public const string EditorForm = "EditorForm";
         public const string Setting = "Setting";
         public const string Loading = "Loading";
+        public const string MapEditorObject = "MapEditorObject";
         public const string WeaponRoulette = "WeaponRoulette";
         public const string MapEditorTools = "MapEditorTools";
         public const string TileSetEditor = "TileSetEditor";
@@ -862,6 +864,54 @@ public static partial class UiManager
     }
 
     /// <summary>
+    /// 创建 MapEditorConfigObject, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static UI.MapEditorConfigObject.MapEditorConfigObjectPanel Create_MapEditorConfigObject()
+    {
+        return CreateUi<UI.MapEditorConfigObject.MapEditorConfigObjectPanel>(UiNames.MapEditorConfigObject);
+    }
+
+    /// <summary>
+    /// 打开 MapEditorConfigObject, 并返回UI实例
+    /// </summary>
+    public static UI.MapEditorConfigObject.MapEditorConfigObjectPanel Open_MapEditorConfigObject()
+    {
+        return OpenUi<UI.MapEditorConfigObject.MapEditorConfigObjectPanel>(UiNames.MapEditorConfigObject);
+    }
+
+    /// <summary>
+    /// 隐藏 MapEditorConfigObject 的所有实例
+    /// </summary>
+    public static void Hide_MapEditorConfigObject()
+    {
+        var uiInstance = Get_MapEditorConfigObject_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 MapEditorConfigObject 的所有实例
+    /// </summary>
+    public static void Destroy_MapEditorConfigObject()
+    {
+        var uiInstance = Get_MapEditorConfigObject_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 MapEditorConfigObject 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static UI.MapEditorConfigObject.MapEditorConfigObjectPanel[] Get_MapEditorConfigObject_Instance()
+    {
+        return GetUiInstance<UI.MapEditorConfigObject.MapEditorConfigObjectPanel>(nameof(UI.MapEditorConfigObject.MapEditorConfigObject));
+    }
+
+    /// <summary>
     /// 创建 EditorForm, 并返回UI实例, 该函数不会打开 Ui
     /// </summary>
     public static UI.EditorForm.EditorFormPanel Create_EditorForm()
@@ -1003,6 +1053,54 @@ public static partial class UiManager
     public static UI.Loading.LoadingPanel[] Get_Loading_Instance()
     {
         return GetUiInstance<UI.Loading.LoadingPanel>(nameof(UI.Loading.Loading));
+    }
+
+    /// <summary>
+    /// 创建 MapEditorObject, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static UI.MapEditorObject.MapEditorObjectPanel Create_MapEditorObject()
+    {
+        return CreateUi<UI.MapEditorObject.MapEditorObjectPanel>(UiNames.MapEditorObject);
+    }
+
+    /// <summary>
+    /// 打开 MapEditorObject, 并返回UI实例
+    /// </summary>
+    public static UI.MapEditorObject.MapEditorObjectPanel Open_MapEditorObject()
+    {
+        return OpenUi<UI.MapEditorObject.MapEditorObjectPanel>(UiNames.MapEditorObject);
+    }
+
+    /// <summary>
+    /// 隐藏 MapEditorObject 的所有实例
+    /// </summary>
+    public static void Hide_MapEditorObject()
+    {
+        var uiInstance = Get_MapEditorObject_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 MapEditorObject 的所有实例
+    /// </summary>
+    public static void Destroy_MapEditorObject()
+    {
+        var uiInstance = Get_MapEditorObject_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 MapEditorObject 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static UI.MapEditorObject.MapEditorObjectPanel[] Get_MapEditorObject_Instance()
+    {
+        return GetUiInstance<UI.MapEditorObject.MapEditorObjectPanel>(nameof(UI.MapEditorObject.MapEditorObject));
     }
 
     /// <summary>

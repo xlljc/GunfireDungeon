@@ -65,7 +65,7 @@ public partial class DoorDragButton : TextureButton
 
     private void OnButtonDown()
     {
-        if (_mapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (_mapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }
@@ -85,7 +85,7 @@ public partial class DoorDragButton : TextureButton
 
     private void OnButtonUp()
     {
-        if (_mapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (_mapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }

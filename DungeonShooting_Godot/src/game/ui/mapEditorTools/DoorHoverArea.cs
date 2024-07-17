@@ -48,7 +48,7 @@ public partial class DoorHoverArea : ColorRect
                 var previewRoot = MapEditorToolsPanel.S_HoverPreviewRoot.Instance;
 
                 //检测是否会与其他门发生碰撞
-                var canCreateDragArea = MapEditorToolsPanel.EditorMap.Instance.CheckDoorArea(Direction, start, start);
+                var canCreateDragArea = MapEditorToolsPanel.EditorMap.CheckDoorArea(Direction, start, start);
                 if (canCreateDragArea)
                 {
                     previewRoot.Visible = true;
@@ -74,7 +74,7 @@ public partial class DoorHoverArea : ColorRect
     {
         IsDrag = false;
         Debug.Log("提交创建: " + direction + ", " + start + ", " + end);
-        _currToolTemplate.Instance.DoorAreaInfo = MapEditorToolsPanel.EditorMap.Instance.CreateDoorArea(direction, start, end);
+        _currToolTemplate.Instance.DoorAreaInfo = MapEditorToolsPanel.EditorMap.CreateDoorArea(direction, start, end);
         //派发修改数据修改事件
         EventManager.EmitEvent(EventEnum.OnTileMapDirty);
     }
@@ -88,13 +88,13 @@ public partial class DoorHoverArea : ColorRect
 
     private void OnMouseEnter()
     {
-        if (MapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (MapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }
         if (MapEditorToolsPanel.ActiveHoverArea == null || !IsDrag)
         {
-            var roomSize = MapEditorToolsPanel.EditorMap.Instance.CurrRoomSize;
+            var roomSize = MapEditorToolsPanel.EditorMap.CurrRoomSize;
             //房间大小为0, 不能放置门区域
             if (roomSize.X == 0 && roomSize.Y == 0)
             {
@@ -113,7 +113,7 @@ public partial class DoorHoverArea : ColorRect
     
     private void OnMouseExit()
     {
-        if (MapEditorToolsPanel.EditorMap.Instance.MouseType != EditorTileMap.MouseButtonType.Edit)
+        if (MapEditorToolsPanel.EditorMap.ActiveToolType != EditorToolEnum.MarkTool)
         {
             return;
         }

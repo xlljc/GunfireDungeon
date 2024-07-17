@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4u66mxndxbrg"]
+[gd_scene load_steps=14 format=3 uid="uid://b4u66mxndxbrg"]
 
 [ext_resource type="Script" path="res://src/game/ui/mapEditorTools/MapEditorToolsPanel.cs" id="1_mqp1c"]
 [ext_resource type="Script" path="res://src/game/ui/mapEditorTools/DoorHoverArea.cs" id="2_6qfy3"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dnty1a2tcawos" path="res://resource/sprite/ui/commonIcon/Mark.png" id="6_n7h3g"]
 [ext_resource type="Script" path="res://src/game/ui/mapEditorTools/MarkTool.cs" id="7_ekxcj"]
 [ext_resource type="Texture2D" uid="uid://cuntr7hec044f" path="res://resource/sprite/ui/commonIcon/Select.png" id="7_mqmd6"]
-
+[ext_resource type="Script" path="res://src/game/ui/mapEditorTools/CustomObject.cs" id="9_mdsqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxp5t"]
 resource_local_to_scene = true
@@ -23,6 +23,9 @@ shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_rainbow = false
 shader_parameter/outline_use_blend = false
 shader_parameter/grey = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a2r0"]
+size = Vector2(16, 16)
 
 [node name="MapEditorTools" type="Control"]
 layout_mode = 3
@@ -174,6 +177,21 @@ texture = ExtResource("6_n7h3g")
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("7_ekxcj")
+
+[node name="ObjectTemplate" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("9_mdsqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectTemplate"]
+shape = SubResource("RectangleShape2D_0a2r0")
+
+[node name="Bar" type="Node2D" parent="ObjectTemplate"]
+
+[node name="RectBrush" type="Node2D" parent="ObjectTemplate"]
+z_index = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

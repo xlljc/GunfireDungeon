@@ -71,7 +71,7 @@ public partial class MarkTool : TextureRect, IUiNodeScript
                 var activeMark = _toolNode.UiPanel.ActiveMark;
                 if ((activeMark == null || (!activeMark.IsDrag && !activeMark.MarkAreaTool.IsDrag)) &&
                     !MarkAreaTool.IsDrag && Input.IsMouseButtonPressed(MouseButton.Left) &&
-                    _toolNode.UiPanel.EditorMap.Instance.MouseType == EditorTileMap.MouseButtonType.Edit)
+                    _toolNode.UiPanel.EditorMap.ActiveToolType == EditorToolEnum.MarkTool)
                 {
                     _isDown = true;
                     if (_toolNode.UiPanel.ActiveMark != this)

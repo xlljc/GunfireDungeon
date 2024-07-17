@@ -18,8 +18,8 @@ public partial class Dungeon : World
     public override void _Ready()
     {
         base._Ready();
-        //Color = Colors.Black;
-        Debug.Log("[临时处理]: 这里设置房间迷雾");
+        Color = Colors.Black;
+        //Debug.Log("[临时处理]: 这里设置房间迷雾");
     }
 
     /// <summary>

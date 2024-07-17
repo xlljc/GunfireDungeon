@@ -217,4 +217,32 @@ public enum EventEnum
     /// 修改组合名称, 参数为<see cref="ImportCombinationData"/>
     /// </summary>
     OnUpdateCombination,
+    /// <summary>
+    /// 当地牢编辑器选中对象配置时调用, 参数为<see cref="ExcelConfig.EditorObject"/>
+    /// </summary>
+    OnSelectObjectConfig,
+    /// <summary>
+    /// 放置对象, 参数为<see cref="RoomObjectInfo"/>
+    /// </summary>
+    OnPutObject,
+    /// <summary>
+    /// 移除对象, 参数为<see cref="RoomObjectInfo"/>
+    /// </summary>
+    OnRemoveObject,
+    /// <summary>
+    /// 更新对象位置, 参数为<see cref="RoomObjectInfo"/>
+    /// </summary>
+    OnUpdateObject,
+    /// <summary>
+    /// 选中对象, 参数为<see cref="RoomObjectInfo"/>
+    /// </summary>
+    OnSelectObject,
+    /// <summary>
+    /// 地图编辑器保存预览图片开始, 无参数
+    /// </summary>
+    OnSavePreviewImageBegin,
+    /// <summary>
+    /// 地图编辑器保存预览图片完成, 无参数
+    /// </summary>
+    OnSavePreviewImageFinish,
 }

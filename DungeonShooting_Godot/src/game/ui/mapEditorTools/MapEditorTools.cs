@@ -19,6 +19,19 @@ public abstract partial class MapEditorTools : UiBase
     private ToolRoot _L_ToolRoot;
 
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorTools.CustomObject"/>, 节点路径: MapEditorTools.ObjectTemplate
+    /// </summary>
+    public ObjectTemplate L_ObjectTemplate
+    {
+        get
+        {
+            if (_L_ObjectTemplate == null) _L_ObjectTemplate = new ObjectTemplate((MapEditorToolsPanel)this, GetNode<UI.MapEditorTools.CustomObject>("ObjectTemplate"));
+            return _L_ObjectTemplate;
+        }
+    }
+    private ObjectTemplate _L_ObjectTemplate;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorTools.HBoxContainer
     /// </summary>
     public HBoxContainer L_HBoxContainer
@@ -39,6 +52,7 @@ public abstract partial class MapEditorTools : UiBase
     public sealed override void OnInitNestedUi()
     {
         _ = L_ToolRoot.L_MarkTemplate;
+        _ = L_ObjectTemplate;
 
     }
 
@@ -382,6 +396,81 @@ public abstract partial class MapEditorTools : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.CollisionShape2D"/>, 路径: MapEditorTools.ObjectTemplate.CollisionShape2D
+    /// </summary>
+    public class CollisionShape2D : UiNode<MapEditorToolsPanel, Godot.CollisionShape2D, CollisionShape2D>
+    {
+        public CollisionShape2D(MapEditorToolsPanel uiPanel, Godot.CollisionShape2D node) : base(uiPanel, node) {  }
+        public override CollisionShape2D Clone() => new (UiPanel, (Godot.CollisionShape2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Node2D"/>, 路径: MapEditorTools.ObjectTemplate.Bar
+    /// </summary>
+    public class Bar : UiNode<MapEditorToolsPanel, Godot.Node2D, Bar>
+    {
+        public Bar(MapEditorToolsPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override Bar Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Node2D"/>, 路径: MapEditorTools.ObjectTemplate.RectBrush
+    /// </summary>
+    public class RectBrush : UiNode<MapEditorToolsPanel, Godot.Node2D, RectBrush>
+    {
+        public RectBrush(MapEditorToolsPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override RectBrush Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="UI.MapEditorTools.CustomObject"/>, 路径: MapEditorTools.ObjectTemplate
+    /// </summary>
+    public class ObjectTemplate : UiNode<MapEditorToolsPanel, UI.MapEditorTools.CustomObject, ObjectTemplate>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CollisionShape2D"/>, 节点路径: MapEditorTools.CollisionShape2D
+        /// </summary>
+        public CollisionShape2D L_CollisionShape2D
+        {
+            get
+            {
+                if (_L_CollisionShape2D == null) _L_CollisionShape2D = new CollisionShape2D(UiPanel, Instance.GetNode<Godot.CollisionShape2D>("CollisionShape2D"));
+                return _L_CollisionShape2D;
+            }
+        }
+        private CollisionShape2D _L_CollisionShape2D;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditorTools.Bar
+        /// </summary>
+        public Bar L_Bar
+        {
+            get
+            {
+                if (_L_Bar == null) _L_Bar = new Bar(UiPanel, Instance.GetNode<Godot.Node2D>("Bar"));
+                return _L_Bar;
+            }
+        }
+        private Bar _L_Bar;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditorTools.RectBrush
+        /// </summary>
+        public RectBrush L_RectBrush
+        {
+            get
+            {
+                if (_L_RectBrush == null) _L_RectBrush = new RectBrush(UiPanel, Instance.GetNode<Godot.Node2D>("RectBrush"));
+                return _L_RectBrush;
+            }
+        }
+        private RectBrush _L_RectBrush;
+
+        public ObjectTemplate(MapEditorToolsPanel uiPanel, UI.MapEditorTools.CustomObject node) : base(uiPanel, node) {  }
+        public override ObjectTemplate Clone() => new (UiPanel, (UI.MapEditorTools.CustomObject)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorTools.HBoxContainer.ToolButton.Select
     /// </summary>
     public class Select : UiNode<MapEditorToolsPanel, Godot.NinePatchRect, Select>
@@ -514,6 +603,26 @@ public abstract partial class MapEditorTools : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorTools.ToolRoot
     /// </summary>
     public ToolRoot S_ToolRoot => L_ToolRoot;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CollisionShape2D"/>, 节点路径: MapEditorTools.ObjectTemplate.CollisionShape2D
+    /// </summary>
+    public CollisionShape2D S_CollisionShape2D => L_ObjectTemplate.L_CollisionShape2D;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditorTools.ObjectTemplate.Bar
+    /// </summary>
+    public Bar S_Bar => L_ObjectTemplate.L_Bar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditorTools.ObjectTemplate.RectBrush
+    /// </summary>
+    public RectBrush S_RectBrush => L_ObjectTemplate.L_RectBrush;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorTools.CustomObject"/>, 节点路径: MapEditorTools.ObjectTemplate
+    /// </summary>
+    public ObjectTemplate S_ObjectTemplate => L_ObjectTemplate;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorTools.HBoxContainer.ToolButton.Select

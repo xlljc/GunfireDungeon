@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
@@ -22,27 +23,92 @@ public partial class MapEditorPanel : MapEditor
             ErrorType = errorType;
         }
     }
+
+    /// <summary>
+    /// 当前选中的页签
+    /// </summary>
+    public MapEditorTab TabType
+    {
+        get
+        {
+            switch (S_TabContainer.Instance.CurrentTab)
+            {
+                case 0: return MapEditorTab.MapTile;
+                case 1: return MapEditorTab.MapObject;
+                case 2: return MapEditorTab.MapMark;
+            }
+
+            return MapEditorTab.Unknown;
+        }
+    }
     
     private string _title;
-    
+
+    private long _currTab = -1;
+    private Dictionary<long, EditorToolEnum> _cacheToolType = new Dictionary<long, EditorToolEnum>();
+    //暂未用到, 后面补逻辑
+    private List<IEditorTab> _tabs = new List<IEditorTab>();
+    private int _prevTabIndex = -1;
+
     public override void OnCreateUi()
     {
-        S_TabContainer.Instance.SetTabTitle(0, "图块");
-        S_TabContainer.Instance.SetTabTitle(1, "对象");
-        S_TabContainer.Instance.TabChanged += OnTabChanged;
+        var tabContainer = S_TabContainer.Instance;
+        tabContainer.SetTabTitle(0, "图块");
+        tabContainer.SetTabTitle(1, "对象");
+        tabContainer.SetTabTitle(2, "预设");
+        tabContainer.TabChanged += OnTabChanged;
         //S_MapLayer.Instance.Init(S_MapLayer);
         S_Left.Instance.Resized += OnMapViewResized;
         S_Back.Instance.Pressed += OnBackClick;
         S_Save.Instance.Pressed += OnSave;
         S_Play.Instance.Pressed += OnPlay;
 
-        OnTabChanged(0);
+        //初始化页签
+        var childCount = tabContainer.GetChildCount();
+        for (var i = 0; i < childCount; i++)
+        {
+            var tabChild = tabContainer.GetChild(i);
+            if (tabChild.GetChildCount() > 0)
+            {
+                var temp = tabChild.GetChild(0);
+                _tabs.Add((IEditorTab)temp);
+            }
+        }
+
+        //默认选中第一个
+        this.CallDelay(0, () => { OnTabChanged(0); });
     }
 
     //切换页签
     private void OnTabChanged(long tab)
     {
-        S_LayerPanel.Instance.Visible = tab == 0;
+        var toolsPanel = S_MapEditorTools.Instance;
+        _cacheToolType[_currTab] = toolsPanel.ActiveToolType;
+
+        if (_prevTabIndex >= 0)
+        {
+            _tabs[_prevTabIndex].OnUnSelectTab();
+        }
+        _tabs[(int)tab].OnSelectTab();
+        _prevTabIndex = (int)tab;
+        
+        //还原所选工具
+        if (_cacheToolType.TryGetValue(tab, out var toolType))
+        {
+            if (toolType == EditorToolEnum.None)
+            {
+                toolsPanel.SetActiviteTool(EditorToolEnum.Move);
+            }
+            else
+            {
+                toolsPanel.SetActiviteTool(toolType);
+            }
+        }
+        else if (toolType == EditorToolEnum.None)
+        {
+            toolsPanel.SetActiviteTool(EditorToolEnum.Move);
+        }
+        _currTab = tab;
     }
 
     public override void OnShowUi()
@@ -105,6 +171,9 @@ public partial class MapEditorPanel : MapEditor
         
         //加载Tile
         var loadMap = S_TileMap.Instance.Load(roomSplit, tileSetSplit);
+        //刷新物体页签
+        S_MapEditorObject.Instance.InitData();
+        //刷新预设页签
         S_MapEditorMapMark.Instance.RefreshPreinstallSelect();
         return loadMap;
     }

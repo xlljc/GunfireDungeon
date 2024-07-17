@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ds87128cvpy"]
+
+[ext_resource type="Texture2D" uid="uid://bkc3fxmnxe7nh" path="res://resource/sprite/item/Items.png" id="1_dgsm7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ikro"]
+atlas = ExtResource("1_dgsm7")
+region = Rect2(336, 209, 42, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bq02g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ikro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wvh6"]
+size = Vector2(20, 14)
+
+[node name="Dungenitem0002" type="CharacterBody2D"]
+collision_layer = 512
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -24)
+sprite_frames = SubResource("SpriteFrames_bq02g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_8wvh6")

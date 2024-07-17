@@ -47,6 +47,10 @@
       {
         "ErrorType": 0,
         "Path": "resource/map/tileMaps/Test1/inlet/Start2"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/inlet/StartTest"
       }
     ],
     "OutletList": [

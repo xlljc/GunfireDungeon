@@ -10,30 +10,6 @@ namespace UI.MapEditor;
 public partial class EditorTileMap : TileMap, IUiNodeScript
 {
     
-    public enum MouseButtonType
-    {
-        /// <summary>
-        /// 无状态
-        /// </summary>
-        None,
-        /// <summary>
-        /// 拖拽模式
-        /// </summary>
-        Drag,
-        /// <summary>
-        /// 笔
-        /// </summary>
-        Pen,
-        /// <summary>
-        /// 绘制区域模式
-        /// </summary>
-        Area,
-        /// <summary>
-        /// 编辑工具模式
-        /// </summary>
-        Edit,
-    }
-    
     public enum TileMapDrawMode
     {
         /// <summary>
@@ -53,6 +29,16 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         /// </summary>
         Combination
     }
+    
+    /// <summary>
+    /// 输入事件
+    /// </summary>
+    public event Action<InputEvent> MapInputEvent;
+
+    /// <summary>
+    /// 绘制工具事件
+    /// </summary>
+    public event Action<CanvasItem> MapDrawToolEvent;
 
     /// <summary>
     /// 所属地图编辑器UI
@@ -63,31 +49,16 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     /// 编辑器工具UI
     /// </summary>
     public MapEditorToolsPanel MapEditorToolsPanel { get; set; }
-    
+
     /// <summary>
-    /// 左键功能
+    /// 当前选中的工具
     /// </summary>
-    public MouseButtonType MouseType { get; private set; } = MouseButtonType.Pen;
+    public EditorToolEnum ActiveToolType => MapEditorToolsPanel.ActiveToolType;
     
-    //鼠标坐标
-    private Vector2 _mousePosition;
-    //鼠标所在的cell坐标
-    private Vector2I _mouseCellPosition;
-    //上一帧鼠标所在的cell坐标
-    private Vector2I _prevMouseCellPosition = new Vector2I(-99999, -99999);
-    //单次绘制是否改变过tile数据
-    private bool _changeFlag = false;
-    //左键开始按下时鼠标所在的坐标
-    private Vector2I _mouseStartCellPosition;
     //鼠标中建是否按下
     private bool _isMiddlePressed = false;
     private Vector2 _moveOffset;
-    //左键是否按下
-    private bool _isLeftPressed = false;
-    //右键是否按下
-    private bool _isRightPressed = false;
-    //绘制填充区域
-    private bool _drawFullRect = false;
+    
     //负责存储自动图块数据
     private InfiniteGrid<bool> _autoCellLayerGrid = new InfiniteGrid<bool>();
     //停止绘制多久后开始执行生成操作
@@ -165,14 +136,26 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     /// </summary>
     public Texture2D CurrBrushTexture { get; private set; }
 
-    private int _brushStartX = 0;
-    private int _brushStartY = 0;
-    //笔刷宽度, 单位: 格
-    private int _brushWidth = 0;
-    //笔刷高度, 单位: 格
-    private int _brushHeight = 0;
-    //笔刷偏移, 单位: 格
-    private Vector2I _brushOffset = Vector2I.Zero;
+    /// <summary>
+    /// 笔刷起始x坐标, 单位: 格
+    /// </summary>
+    public int BrushStartX { get; private set; } = 0;
+    /// <summary>
+    /// 笔刷起始y坐标, 单位: 格
+    /// </summary>
+    public int BrushStartY { get; private set; } = 0;
+    /// <summary>
+    /// 笔刷宽度, 单位: 格
+    /// </summary>
+    public int BrushWidth { get; private set; } = 0;
+    /// <summary>
+    /// 笔刷高度, 单位: 格
+    /// </summary>
+    public int BrushHeight { get; private set; } = 0;
+    /// <summary>
+    /// 笔刷偏移, 单位: 格
+    /// </summary>
+    public Vector2I BrushOffset { get; private set; } = Vector2I.Zero;
     //淡化其它层级
     private bool _desaltOtherLayer = false;
     
@@ -209,11 +192,6 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
 
         _editorTileMap.L_Brush.Instance.Draw += DrawGuides;
         _eventFactory = EventManager.CreateEventFactory();
-        _eventFactory.AddEventListener(EventEnum.OnSelectDragTool, OnSelectHandTool);
-        _eventFactory.AddEventListener(EventEnum.OnSelectPenTool, OnSelectPenTool);
-        _eventFactory.AddEventListener(EventEnum.OnSelectRectTool, OnSelectRectTool);
-        _eventFactory.AddEventListener(EventEnum.OnSelectEditTool, OnSelectEditTool);
-        _eventFactory.AddEventListener(EventEnum.OnClickCenterTool, OnClickCenterTool);
         _eventFactory.AddEventListener(EventEnum.OnTileMapDirty, OnEditorDirty);
 
         RenderingServer.FramePostDraw += OnFramePostDraw;
@@ -239,64 +217,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         _editorTileMap.L_Brush.Instance.QueueRedraw();
         
         var newDelta = (float)delta;
-        _drawFullRect = false;
-        var position = GetLocalMousePosition();
-        //绘制2x2地形
-        if (CurrBrushType == TileMapDrawMode.Terrain && CurrTerrain != null && CurrTerrain.TerrainInfo.TerrainType == 1 && !_isRightPressed)
-        {
-            position -= new Vector2(GameConfig.TileCellSize / 2f, GameConfig.TileCellSize / 2f);
-        }
-        _mouseCellPosition = LocalToMap(position);
-        _mousePosition = new Vector2(
-            _mouseCellPosition.X * GameConfig.TileCellSize,
-            _mouseCellPosition.Y * GameConfig.TileCellSize
-        );
-        
+
         if (!MapEditorToolsPanel.S_HBoxContainer.Instance.IsMouseInRect()) //不在Ui节点上
         {
-            //左键绘制
-            if (_isLeftPressed)
-            {
-                if (MouseType == MouseButtonType.Pen) //绘制单格
-                {
-                    if (_prevMouseCellPosition != _mouseCellPosition || !_changeFlag) //鼠标位置变过
-                    {
-                        _changeFlag = true;
-                        _prevMouseCellPosition = _mouseCellPosition;
-                        //绘制图块
-                        SetSingleCell(_mouseCellPosition);
-                    }
-                }
-                else if (MouseType == MouseButtonType.Area) //绘制区域
-                {
-                    _drawFullRect = true;
-                }
-                else if (MouseType == MouseButtonType.Drag) //拖拽
-                {
-                    SetMapPosition(GetGlobalMousePosition() + _moveOffset);
-                }
-            }
-            else if (_isRightPressed) //右键擦除
-            {
-                if (MouseType == MouseButtonType.Pen) //绘制单格
-                {
-                    if (_prevMouseCellPosition != _mouseCellPosition || !_changeFlag) //鼠标位置变过
-                    {
-                        _changeFlag = true;
-                        _prevMouseCellPosition = _mouseCellPosition;
-                        EraseSingleCell(_mouseCellPosition);
-                    }
-                }
-                else if (MouseType == MouseButtonType.Area) //绘制区域
-                {
-                    _drawFullRect = true;
-                }
-                else if (MouseType == MouseButtonType.Drag) //拖拽
-                {
-                    SetMapPosition(GetGlobalMousePosition() + _moveOffset);
-                }
-            }
-            else if (_isMiddlePressed) //中键移动
+            if (_isMiddlePressed) //中键移动
             {
                 SetMapPosition(GetGlobalMousePosition() + _moveOffset);
             }
@@ -352,169 +276,17 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             }
         }
 
-        //绘制笔刷
-        if (MouseType == MouseButtonType.Pen || MouseType == MouseButtonType.Area)
+        if (MapDrawToolEvent != null)
         {
-            if (_drawFullRect) //绘制填充矩形
-            {
-                var size = TileSet.TileSize;
-                var cellPos = _mouseStartCellPosition;
-                var temp = size;
-                if (_mouseStartCellPosition.X > _mouseCellPosition.X)
-                {
-                    cellPos.X += 1;
-                    temp.X -= size.X;
-                }
-                if (_mouseStartCellPosition.Y > _mouseCellPosition.Y)
-                {
-                    cellPos.Y += 1;
-                    temp.Y -= size.Y;
-                }
-
-                var p = cellPos * size;
-                var s = _mousePosition.AsVector2I() - p + temp;
-                
-                if (s.X < 0)
-                {
-                    p.X += s.X;
-                    s.X *= -1;
-                }
-
-                if (s.Y < 0)
-                {
-                    p.Y += s.Y;
-                    s.Y *= -1;
-                }
-                
-                //绘制边框
-                canvasItem.DrawRect(new Rect2(p, s), Colors.White, false, 2f / Scale.X);
-
-                if (CurrLayer.Layer != MapLayer.AutoFloorLayer && (CurrBrushType == TileMapDrawMode.Free || CurrBrushType == TileMapDrawMode.Combination)) //自由绘制 或者 绘制组合
-                {
-                    if (_isLeftPressed && _brushWidth > 0 && _brushHeight > 0) //左键绘制
-                    {
-                        var w = s.X / GameConfig.TileCellSize;
-                        var h = s.Y / GameConfig.TileCellSize;
-                        for (var i = 0; i < w; i++)
-                        {
-                            for (var j = 0; j < h; j++)
-                            {
-                                var x = i % _brushWidth + _brushStartX;
-                                var y = j % _brushHeight + _brushStartY;
-                                if (CurrBrush.TryGetValue(new Vector2I(x, y), out var v))
-                                {
-                                    var rect = new Rect2(p + (new Vector2I(i, j)) * GameConfig.TileCellSize, GameConfig.TileCellSize, GameConfig.TileCellSize);
-                                    var srcRect = new Rect2(v * GameConfig.TileCellSize, GameConfig.TileCellSize, GameConfig.TileCellSize);
-                                    canvasItem.DrawTextureRectRegion(CurrBrushTexture, rect, srcRect, new Color(1, 1, 1, 0.3f));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else //绘制单格
-            {
-                if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层
-                {
-                    DrawCellOutline(canvasItem);
-                }
-                else //自定义层
-                {
-                    if (CurrBrushType == TileMapDrawMode.Free || CurrBrushType == TileMapDrawMode.Combination) //自由绘制 或者 绘制组合
-                    {
-                        if (_isRightPressed) //按下了左键擦除
-                        {
-                            DrawCellOutline(canvasItem);
-                        }
-                        else //正常绘制
-                        {
-                            foreach (var item in CurrBrush)
-                            {
-                                var rect = new Rect2(_mousePosition + (item.Key + _brushOffset) * GameConfig.TileCellSize, GameConfig.TileCellSize, GameConfig.TileCellSize);
-                                var srcRect = new Rect2(item.Value * GameConfig.TileCellSize, GameConfig.TileCellSize, GameConfig.TileCellSize);
-                                canvasItem.DrawTextureRectRegion(CurrBrushTexture, rect, srcRect, new Color(1, 1, 1, 0.3f));
-                            }
-                        }
-                    }
-                    else if (CurrBrushType == TileMapDrawMode.Terrain) //绘制地形
-                    {
-                        if (CurrTerrain == null) //未选择地形
-                        {
-                            DrawCellOutline(canvasItem);
-                        }
-                        else if (CurrTerrain.TerrainInfo.TerrainType == 0) //3x3
-                        {
-                            DrawCellOutline(canvasItem);
-                        }
-                        else //2x2
-                        {
-                            DrawCellOutline(canvasItem);
-                            if (!_isRightPressed) //没按下左键擦除
-                            {
-                                DrawCellOutline(canvasItem, new Vector2I(GameConfig.TileCellSize, 0));
-                                DrawCellOutline(canvasItem, new Vector2I(0, GameConfig.TileCellSize));
-                                DrawCellOutline(canvasItem, new Vector2I(GameConfig.TileCellSize, GameConfig.TileCellSize));
-                            }
-                        }
-                    }
-                }
-            }
+            MapDrawToolEvent(canvasItem);
         }
-    }
-
-    private void DrawCellOutline(CanvasItem canvasItem)
-    {
-        canvasItem.DrawRect(new Rect2(_mousePosition, TileSet.TileSize), Colors.White, false, 2f / Scale.X);
-    }
-    
-    private void DrawCellOutline(CanvasItem canvasItem, Vector2I offset)
-    {
-        canvasItem.DrawRect(new Rect2(_mousePosition + offset, TileSet.TileSize), Colors.White, false, 2f / Scale.X);
     }
 
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventMouseButton mouseButton)
         {
-            if (mouseButton.ButtonIndex == MouseButton.Left) //左键
-            {
-                if (mouseButton.Pressed) //按下
-                {
-                    _moveOffset = Position - GetGlobalMousePosition();
-                    _mouseStartCellPosition = LocalToMap(GetLocalMousePosition());
-                }
-                else
-                {
-                    _changeFlag = false;
-                    if (_drawFullRect) //松开, 提交绘制的矩形区域
-                    {
-                        SetRectCell(_mouseStartCellPosition, _mouseCellPosition);
-                        _drawFullRect = false;
-                    }
-                }
-
-                _isLeftPressed = mouseButton.Pressed;
-            }
-            else if (mouseButton.ButtonIndex == MouseButton.Right) //右键
-            {
-                if (mouseButton.Pressed) //按下
-                {
-                    _moveOffset = Position - GetGlobalMousePosition();
-                    _mouseStartCellPosition = LocalToMap(GetLocalMousePosition());
-                }
-                else
-                {
-                    _changeFlag = false;
-                    if (_drawFullRect) //松开, 提交擦除的矩形区域
-                    {
-                        EraseRectCell(_mouseStartCellPosition, _mouseCellPosition);
-                        _drawFullRect = false;
-                    }
-                }
-                
-                _isRightPressed = mouseButton.Pressed;
-            }
-            else if (mouseButton.ButtonIndex == MouseButton.WheelDown)
+            if (mouseButton.ButtonIndex == MouseButton.WheelDown)
             {
                 //缩小
                 Shrink();
@@ -532,6 +304,11 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                     _moveOffset = Position - GetGlobalMousePosition();
                 }
             }
+        }
+
+        if (MapInputEvent != null && !MapEditorToolsPanel.S_HBoxContainer.Instance.IsMouseInRect())
+        {
+            MapInputEvent(@event);
         }
     }
 
@@ -592,11 +369,11 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 yEnd = Mathf.Max(cell.Y, yEnd);
             }
 
-            _brushStartX = xStart;
-            _brushStartY = yStart;
-            _brushWidth = xEnd - xStart + 1;
-            _brushHeight = yEnd - yStart + 1;
-            _brushOffset = new Vector2I(-(xStart + (xEnd - xStart) / 2), -(yStart + (yEnd - yStart) / 2));
+            BrushStartX = xStart;
+            BrushStartY = yStart;
+            BrushWidth = xEnd - xStart + 1;
+            BrushHeight = yEnd - yStart + 1;
+            BrushOffset = new Vector2I(-(xStart + (xEnd - xStart) / 2), -(yStart + (yEnd - yStart) / 2));
         }
     }
     
@@ -812,7 +589,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         RunCheckHandler();
         
         //聚焦 (需要延时一帧调用)
-        this.CallDelayInNode(0, () => OnClickCenterTool(null));
+        this.CallDelayInNode(0, OnFocusClick);
         return true;
     }
     
@@ -869,8 +646,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         }
     }
 
-    //绘制单个贴图
-    private void SetSingleCell(Vector2I position)
+    /// <summary>
+    /// 绘制单个贴图
+    /// </summary>
+    public void SetSingleCell(Vector2I position)
     {
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层, 那么不管笔刷类型, 通通使用 Main Source 中的 Main Terrain
         {
@@ -889,7 +668,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             {
                 foreach (var item in CurrBrush)
                 {
-                    SetCell(CurrLayer.Layer, position + item.Key + _brushOffset, CurrSourceIndex, item.Value);
+                    SetCell(CurrLayer.Layer, position + item.Key + BrushOffset, CurrSourceIndex, item.Value);
                     dirty = true;
                 }
             }
@@ -928,8 +707,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         }
     }
     
-    //绘制区域贴图
-    private void SetRectCell(Vector2I start, Vector2I end)
+    /// <summary>
+    /// 绘制区域贴图
+    /// </summary>
+    public void SetRectCell(Vector2I start, Vector2I end)
     {
         if (start.X > end.X)
         {
@@ -966,13 +747,18 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             var dirty = false;
             if (CurrBrushType == TileMapDrawMode.Free || CurrBrushType == TileMapDrawMode.Combination) //自由绘制 或者 组合
             {
+                if (BrushWidth == 0 || BrushHeight == 0)
+                {
+                    return;
+                }
+
                 dirty = CurrBrush.Count > 0;
                 for (var i = 0; i < width; i++)
                 {
                     for (var j = 0; j < height; j++)
                     {
-                        var x = i % _brushWidth + _brushStartX;
-                        var y = j % _brushHeight + _brushStartY;
+                        var x = i % BrushWidth + BrushStartX;
+                        var y = j % BrushHeight + BrushStartY;
                         if (CurrBrush.TryGetValue(new Vector2I(x, y), out var v))
                         {
                             SetCell(CurrLayer.Layer, new Vector2I(start.X + i, start.Y + j), CurrSourceIndex, v);
@@ -1015,8 +801,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         }
     }
 
-    //擦除单个图块
-    private void EraseSingleCell(Vector2I position)
+    /// <summary>
+    /// 擦除单个图块
+    /// </summary>
+    public void EraseSingleCell(Vector2I position)
     {
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层, 那么不管笔刷类型, 通通使用 Main Source 中的 Main Terrain
         {
@@ -1100,8 +888,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         }
     }
     
-    //擦除一个区域内的贴图
-    private void EraseRectCell(Vector2I start, Vector2I end)
+    /// <summary>
+    /// 擦除一个区域内的贴图
+    /// </summary>
+    public void EraseRectCell(Vector2I start, Vector2I end)
     {
         if (start.X > end.X)
         {
@@ -1231,41 +1021,9 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     }
     
     /// <summary>
-    /// 选中拖拽功能
-    /// </summary>
-    private void OnSelectHandTool(object arg)
-    {
-        MouseType = MouseButtonType.Drag;
-    }
-    
-    /// <summary>
-    /// 选中画笔攻击
-    /// </summary>
-    private void OnSelectPenTool(object arg)
-    {
-        MouseType = MouseButtonType.Pen;
-    }
-
-    /// <summary>
-    /// 选中绘制区域功能
-    /// </summary>
-    private void OnSelectRectTool(object arg)
-    {
-        MouseType = MouseButtonType.Area;
-    }
-
-    /// <summary>
-    /// 选择编辑门区域
-    /// </summary>
-    private void OnSelectEditTool(object arg)
-    {
-        MouseType = MouseButtonType.Edit;
-    }
-
-    /// <summary>
     /// 聚焦
     /// </summary>
-    private void OnClickCenterTool(object arg)
+    public void OnFocusClick()
     {
         var pos = MapEditorPanel.S_SubViewport.Instance.Size / 2;
         if (CurrRoomSize.X == 0 && CurrRoomSize.Y == 0) //聚焦原点
@@ -1427,6 +1185,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         PushLayerDataToList(MapLayer.CustomMiddleLayer2, tileInfo.CustomMiddle2);
         PushLayerDataToList(MapLayer.CustomTopLayer, tileInfo.CustomTop);
         
+        //---------------------------------------
+
+        MapEditorPanel.S_MapEditorObject.Instance.OnSaveData(tileInfo);
+        
         MapProjectManager.SaveRoomTileInfo(CurrRoomSplit);
     }
 
@@ -1568,6 +1330,8 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         SetLayerModulate(MapLayer.CustomMiddleLayer2, Colors.White);
         SetLayerModulate(MapLayer.AutoTopLayer, Colors.White);
         SetLayerModulate(MapLayer.CustomTopLayer, Colors.White);
+        
+        EventManager.EmitEvent(EventEnum.OnSavePreviewImageBegin);
     }
 
     private void OnFramePostDraw()
@@ -1614,6 +1378,8 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 
                 _previewFinish();
                 _hasPreviewImage = false;
+                
+                EventManager.EmitEvent(EventEnum.OnSavePreviewImageFinish);
             }
         }
     }

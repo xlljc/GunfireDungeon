@@ -158,7 +158,7 @@ public partial class MarkAreaTool : Node2D
 
             var flag = false;
             //必须要选中
-            if (_toolRoot.UiPanel.EditorMap.Instance.MouseType == EditorTileMap.MouseButtonType.Edit)
+            if (_toolRoot.UiPanel.EditorMap.ActiveToolType == EditorToolEnum.MarkTool)
             {
                 var mousePosition = GetLocalMousePosition();
                 //判断鼠标是否在点上

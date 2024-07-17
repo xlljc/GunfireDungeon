@@ -4,7 +4,6 @@
 [ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="2_0claj"]
 [ext_resource type="Texture2D" uid="uid://bt3rvgedbniwq" path="res://resource/sprite/item/hall_a/Slice_22.png" id="3_os210"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wh4b7"]
 resource_local_to_scene = true
 shader = ExtResource("2_0claj")

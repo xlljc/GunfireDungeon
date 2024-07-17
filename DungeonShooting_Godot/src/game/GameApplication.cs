@@ -121,7 +121,7 @@ public partial class GameApplication : Node2D, ICoroutine
         FirstDungeonConfig = GetDungeonConfig(DungeonGroupList[0], 1);
         
         //临时处理
-        RoomConfig[DungeonGroupList[0]].BgColor = new Color("0a0a19");
+        //RoomConfig[DungeonGroupList[0]].BgColor = new Color("0a0a19");
         RoomConfig[DungeonGroupList[0]].SoundId = null; //"level1_bgm";
     }
 

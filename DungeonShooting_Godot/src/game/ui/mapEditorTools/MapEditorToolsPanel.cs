@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Config;
 using Godot;
 using UI.MapEditor;
 
@@ -7,20 +8,17 @@ namespace UI.MapEditorTools;
 
 public partial class MapEditorToolsPanel : MapEditorTools
 {
-    public class ToolBtnData
+    public class CustonObjectData
     {
-        //是否可以选中
-        public bool CanSelect = false;
-        //工具图标
-        public string Icon;
-        //点击时回调
-        public Action OnClick;
+        public RoomObjectInfo RoomObjectInfo;
+        public ObjectTemplate Node;
+        public RoomLayerEnum Layer;
 
-        public ToolBtnData(bool canSelect, string icon, Action onClick)
+        public CustonObjectData(RoomObjectInfo roomObjectInfo, ObjectTemplate node, RoomLayerEnum layer)
         {
-            CanSelect = canSelect;
-            Icon = icon;
-            OnClick = onClick;
+            RoomObjectInfo = roomObjectInfo;
+            Node = node;
+            Layer = layer;
         }
     }
     
@@ -37,24 +35,52 @@ public partial class MapEditorToolsPanel : MapEditorTools
     /// <summary>
     /// 所属编辑器Tile对象
     /// </summary>
-    public MapEditor.MapEditor.TileMap EditorMap { get; private set; }
+    public EditorTileMap EditorMap { get; private set; }
+    
+    /// <summary>
+    /// 所属编辑器面板对象
+    /// </summary>
+    public MapEditorPanel MapEditorPanel { get; private set; }
     
     /// <summary>
     /// 是否打开弹窗
     /// </summary>
     public bool IsOpenPopUps { get; private set; }
+
+    /// <summary>
+    /// 当前选中的工具
+    /// </summary>
+    public EditorToolEnum ActiveToolType => _toolGrid != null && _toolGrid.SelectData != null ? _toolGrid.SelectData.EditorToolType : EditorToolEnum.None;
+    
+    /// <summary>
+    /// 自定义对象普通层根节点
+    /// </summary>
+    public Node2D CustomNormalRoot { get; private set; }
+    /// <summary>
+    /// 自定义对象YSort层根节点
+    /// </summary>
+    public Node2D CustomYSortRoot { get; private set; }
+    
+    /// <summary>
+    /// 自定义物体映射字典, 负责存储所有自定义物体
+    /// </summary>
+    public Dictionary<RoomObjectInfo, CustonObjectData> CustomObjecMapping { get; } = new Dictionary<RoomObjectInfo, CustonObjectData>();
     
     private List<DoorToolTemplate> _doorTools = new List<DoorToolTemplate>();
-    private UiGrid<ToolButton, ToolBtnData> _toolGrid;
+    private Dictionary<EditorToolEnum, EditorToolBase> _toolMapping = new Dictionary<EditorToolEnum, EditorToolBase>();
+    private UiGrid<ToolButton, EditorToolBase> _toolGrid;
     //当前预设的所有标记
     private Dictionary<MarkInfo, MarkTemplate> _currMarkToolsMap = new Dictionary<MarkInfo, MarkTemplate>();
-    private EventFactory _eventFactory;
-    private int _editToolIndex;
+    
+    //丢失的物体id
+    private HashSet<string> _missingSet = new HashSet<string>();
+    
+    private Color _tempColor1, _tempColor2;
 
     public override void OnCreateUi()
     {
-        var mapEditorPanel = (MapEditorPanel)ParentUi;
-        EditorMap = mapEditorPanel.S_TileMap;
+        MapEditorPanel = (MapEditorPanel)ParentUi;
+        EditorMap = MapEditorPanel.S_TileMap.Instance;
         
         S_N_HoverArea.Instance.Init(this, DoorDirection.N);
         S_S_HoverArea.Instance.Init(this, DoorDirection.S);
@@ -63,59 +89,87 @@ public partial class MapEditorToolsPanel : MapEditorTools
         S_ToolRoot.Instance.RemoveChild(S_DoorToolTemplate.Instance);
         S_MarkTemplate.Instance.Visible = false;
 
-        _toolGrid = new UiGrid<ToolButton, ToolBtnData>(S_ToolButton, typeof(ToolButtonCell));
-        _toolGrid.SetColumns(10);
-        //拖拽按钮
-        _toolGrid.Add(new ToolBtnData(true, ResourcePath.resource_sprite_ui_commonIcon_DragTool_png, () =>
-        {
-            EventManager.EmitEvent(EventEnum.OnSelectDragTool);
-        }));
-        //画笔按钮
-        _toolGrid.Add(new ToolBtnData(true, ResourcePath.resource_sprite_ui_commonIcon_PenTool_png, () =>
-        {
-            EventManager.EmitEvent(EventEnum.OnSelectPenTool);
-        }));
-        //绘制区域按钮
-        _toolGrid.Add(new ToolBtnData(true, ResourcePath.resource_sprite_ui_commonIcon_AreaTool_png, () =>
-        {
-            EventManager.EmitEvent(EventEnum.OnSelectRectTool);
-        }));
-        //编辑工具按钮
-        _toolGrid.Add(new ToolBtnData(true, ResourcePath.resource_sprite_ui_commonIcon_DoorTool_png, () =>
-        {
-            EventManager.EmitEvent(EventEnum.OnSelectEditTool);
-            mapEditorPanel.S_MapEditorMapLayer.Instance.SetLayerVisible(MapLayer.MarkLayer, true);
-        }));
-        _editToolIndex = _toolGrid.Count - 1;
-        //聚焦按钮
-        _toolGrid.Add(new ToolBtnData(false, ResourcePath.resource_sprite_ui_commonIcon_CenterTool_png, () =>
-        {
-            EventManager.EmitEvent(EventEnum.OnClickCenterTool);
-        }));
-        _toolGrid.SelectIndex = 1;
+        S_ObjectTemplate.Instance.Visible = false;
+
+        //工具栏
+        AddToolMapping(new EditorMove(EditorMap));
+        AddToolMapping(new EditorTilePen(EditorMap));
+        AddToolMapping(new EditorTileAreaPen(EditorMap));
+        AddToolMapping(new EditorMarkTool(EditorMap));
+        AddToolMapping(new EditorFocus(EditorMap));
+        AddToolMapping(new EditorObjectPen(EditorMap));
+        AddToolMapping(new EditorObjectTool(EditorMap));
         
-        _eventFactory = EventManager.CreateEventFactory();
-        _eventFactory.AddEventListener(EventEnum.OnSelectWave, OnSelectWaveTool);
-        _eventFactory.AddEventListener(EventEnum.OnCreateMark, OnCreateMarkTool);
-        _eventFactory.AddEventListener(EventEnum.OnSelectMark, OnSelectMarkTool);
-        _eventFactory.AddEventListener(EventEnum.OnDeleteMark, OnDeleteMarkTool);
-        _eventFactory.AddEventListener(EventEnum.OnSetMarkVisible, OnSetMarkVisible);
-        _eventFactory.AddEventListener(EventEnum.OnEditMark, OnEditMarkTool);
-        _eventFactory.AddEventListener(EventEnum.OnSelectPreinstall, RefreshMark);
+        //工具栏网格
+        _toolGrid = new UiGrid<ToolButton, EditorToolBase>(S_ToolButton, typeof(ToolButtonCell));
+        _toolGrid.SetColumns(15);
+
+        CustomNormalRoot = new Node2D();
+        CustomNormalRoot.ZIndex = -1;
+        EditorMap.AddChild(CustomNormalRoot);
+        CustomYSortRoot = new Node2D();
+        EditorMap.AddChild(CustomYSortRoot);
+
+        //标记相关
+        AddEventListener(EventEnum.OnSelectWave, OnSelectWaveTool);
+        AddEventListener(EventEnum.OnCreateMark, OnCreateMarkTool);
+        AddEventListener(EventEnum.OnSelectMark, OnSelectMarkTool);
+        AddEventListener(EventEnum.OnDeleteMark, OnDeleteMarkTool);
+        AddEventListener(EventEnum.OnSetMarkVisible, OnSetMarkVisible);
+        AddEventListener(EventEnum.OnEditMark, OnEditMarkTool);
+        AddEventListener(EventEnum.OnSelectPreinstall, RefreshMark);
+        
+        //自定义物体相关
+        AddEventListener(EventEnum.OnPutObject, OnPutObject);
+        AddEventListener(EventEnum.OnRemoveObject, OnRemoveObject);
+        AddEventListener(EventEnum.OnSelectObject, OnSelectObject);
+        
+        //保存预览图相关
+        AddEventListener(EventEnum.OnSavePreviewImageBegin, OnSavePreviewImageBegin);
+        AddEventListener(EventEnum.OnSavePreviewImageFinish, OnSavePreviewImageFinish);
     }
 
     public override void OnDestroyUi()
     {
-        _eventFactory.RemoveAllEventListener();
-        _eventFactory = null;
         S_DoorToolTemplate.Instance.QueueFree();
         _toolGrid.Destroy();
+    }
+
+    /// <summary>
+    /// 初始化面板数据
+    /// </summary>
+    public void InitCustomObjectData()
+    {
+        var objectPanel = MapEditorPanel.S_MapEditorObject.Instance;
+        foreach (var objectInfo in objectPanel.NormalLayerObjects)
+        {
+            OnCreateObject(objectInfo, RoomLayerEnum.NormalLayer);
+        }
+
+        foreach (var objectInfo in objectPanel.YSortLayerObjects)
+        {
+            OnCreateObject(objectInfo, RoomLayerEnum.YSortLayer);
+        }
+
+        if (_missingSet.Count > 0)
+        {
+            var str = "";
+            foreach (var item in _missingSet)
+            {
+                if (str.Length > 0)
+                {
+                    str += "，";
+                }
+                str += item;
+            }
+            EditorWindowManager.ShowTips("警告", $"发现存在丢失的自定义物体，id为：{str}");
+        }
     }
 
     public override void Process(float delta)
     {
         S_HoverPreviewRoot.Instance.Visible = ActiveHoverArea != null && !DoorHoverArea.IsDrag;
-        if (EditorMap.Instance.MouseType == EditorTileMap.MouseButtonType.Edit)
+        if (EditorMap.ActiveToolType == EditorToolEnum.MarkTool)
         {
             S_ToolRoot.Instance.Modulate = new Color(1, 1, 1, 1);
         }
@@ -125,6 +179,134 @@ public partial class MapEditorToolsPanel : MapEditorTools
         }
 
         IsOpenPopUps = UiManager.GetUiInstanceCount(UiManager.UiNames.EditorWindow) > 0;
+    }
+
+    private void AddToolMapping(EditorToolBase toolBase)
+    {
+        _toolMapping.Add(toolBase.EditorToolType, toolBase);
+    }
+
+    /// <summary>
+    /// 设置当前选择的工具
+    /// </summary>
+    public void SetActiviteTool(EditorToolEnum toolEnum)
+    {
+        if (IsDestroyed)
+        {
+            return;
+        }
+
+        if (_toolGrid == null)
+        {
+            this.CallDelay(0, () => { _SetActiviteTool(toolEnum); });
+        }
+        else
+        {
+            _SetActiviteTool(toolEnum);
+        }
+    }
+    
+    private void _SetActiviteTool(EditorToolEnum toolEnum)
+    {
+        var uiCell = _toolGrid.Find(tool => tool.Data.EditorToolType == toolEnum);
+        if (uiCell != null)
+        {
+            uiCell.Click();
+        }
+    }
+    
+    /// <summary>
+    /// 设置工具栏按钮
+    /// </summary>
+    public void SetToolButton(params EditorToolEnum[] toolEnum)
+    {
+        if (IsDestroyed)
+        {
+            return;
+        }
+
+        if (_toolGrid == null)
+        {
+            this.CallDelay(0, () => { _SetToolButton(toolEnum); });
+        }
+        else
+        {
+            _SetToolButton(toolEnum);
+        }
+    }
+
+    public void _SetToolButton(params EditorToolEnum[] toolEnum)
+    {
+        _toolGrid.RemoveAll();
+        foreach (var editorToolEnum in toolEnum)
+        {
+            if (_toolMapping.TryGetValue(editorToolEnum, out var tool))
+            {
+                _toolGrid.Add(tool);
+            }
+        }
+    }
+
+
+    //放置自定义物体
+    private void OnPutObject(object obj)
+    {
+        var info = (RoomObjectInfo)obj;
+        var layerType = MapEditorPanel.S_MapEditorObject.Instance.GetCurrentObjectLayerEnum();
+        OnCreateObject(info, layerType);
+    }
+
+    /// <summary>
+    /// 移除物体
+    /// </summary>
+    private void OnRemoveObject(object obj)
+    {
+        var info = (RoomObjectInfo)obj;
+        if (CustomObjecMapping.TryGetValue(info, out var data))
+        {
+            CustomObjecMapping.Remove(info);
+            data.Node.QueueFree();
+        }
+    }
+
+    /// <summary>
+    /// 选择物体
+    /// </summary>
+    private void OnSelectObject(object obj)
+    {
+        SetActiviteTool(EditorToolEnum.ObjectTool);
+    }
+    
+    //创建自定义物体
+    private void OnCreateObject(RoomObjectInfo info, RoomLayerEnum layerType)
+    {
+        if (ExcelConfig.EditorObject_Map.TryGetValue(info.Id, out var config))
+        {
+            var node = ResourceManager.LoadEditorObject(config);
+            
+            var template = S_ObjectTemplate.Clone();
+            template.Instance.Visible = true;
+            template.Instance.Position = new Vector2(info.X, info.Y);
+            template.Instance.Init(info, node);
+            template.Instance.Monitorable = (int)layerType == MapEditorPanel.S_MapEditorObject.Instance.S_LayerOption.Instance.Selected;
+            
+            switch (layerType)
+            {
+                case RoomLayerEnum.NormalLayer:
+                    CustomNormalRoot.AddChild(template.Instance);
+                    CustomObjecMapping.Add(info, new CustonObjectData(info, template, RoomLayerEnum.NormalLayer));
+                    break;
+                case RoomLayerEnum.YSortLayer:
+                    CustomYSortRoot.AddChild(template.Instance);
+                    CustomObjecMapping.Add(info, new CustonObjectData(info, template, RoomLayerEnum.YSortLayer));
+                    break;
+            }
+        }
+        else
+        {
+            Debug.LogError($"创建CustomObject没有找到物体配置: {info.Id}!");
+            _missingSet.Add(info.Id);
+        }
     }
 
     //刷新标记
@@ -155,11 +337,8 @@ public partial class MapEditorToolsPanel : MapEditorTools
     private void OnSelectWaveTool(object arg)
     {
         //选中编辑工具
-        if (_toolGrid.SelectIndex != _editToolIndex)
-        {
-            _toolGrid.Click(_editToolIndex);
-        }
-        
+        SetActiviteTool(EditorToolEnum.MarkTool);
+
         var selectIndex = EditorTileMapManager.SelectWaveIndex;
         var waveList = EditorTileMapManager.SelectPreinstall.WaveList;
         for (var i = 0; i < waveList.Count; i++)
@@ -202,10 +381,7 @@ public partial class MapEditorToolsPanel : MapEditorTools
     private void OnSelectMarkTool(object arg)
     {
         //选中编辑工具
-        if (_toolGrid.SelectIndex != _editToolIndex)
-        {
-            _toolGrid.Click(_editToolIndex);
-        }
+        SetActiviteTool(EditorToolEnum.MarkTool);
         
         if (arg is MarkInfo markInfo)
         {
@@ -378,7 +554,7 @@ public partial class MapEditorToolsPanel : MapEditorTools
         _doorTools.Remove(toolInstance);
         if (toolInstance.Instance.DoorAreaInfo != null)
         {
-            EditorMap.Instance.RemoveDoorArea(toolInstance.Instance.DoorAreaInfo);
+            EditorMap.RemoveDoorArea(toolInstance.Instance.DoorAreaInfo);
         }
         toolInstance.Instance.QueueFree();
         //派发修改数据修改事件
@@ -536,5 +712,30 @@ public partial class MapEditorToolsPanel : MapEditorTools
         doorTool.Instance.SetDoorHoverArea(doorHoverArea);
         _doorTools.Add(doorTool);
         return doorTool;
+    }
+    
+    private void OnSavePreviewImageBegin(object obj)
+    {
+        foreach (var custonObjectData in CustomObjecMapping)
+        {
+            custonObjectData.Value.Node.L_RectBrush.Instance.Visible = false;
+        }
+
+        _tempColor1 = CustomNormalRoot.Modulate;
+        _tempColor2 = CustomYSortRoot.Modulate;
+
+        CustomNormalRoot.Modulate = Colors.White;
+        CustomYSortRoot.Modulate = Colors.White;
+    }
+
+    private void OnSavePreviewImageFinish(object obj)
+    {
+        foreach (var custonObjectData in CustomObjecMapping)
+        {
+            custonObjectData.Value.Node.L_RectBrush.Instance.Visible = true;
+        }
+        
+        CustomNormalRoot.Modulate = _tempColor1;
+        CustomYSortRoot.Modulate = _tempColor2;
     }
 }

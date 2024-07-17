@@ -348,8 +348,42 @@ public class UiGrid<TUiCellNode, TData> : IUiGrid where TUiCellNode : IUiCellNod
     }
     
     /// <summary>
+    /// 设置当前网格组件中的所有 Cell 数据, 性能较低
+    /// </summary>
+    public void SetDataList(List<TData> array)
+    {
+        //取消选中
+        SelectIndex = -1;
+        if (array.Count > _cellList.Count)
+        {
+            do
+            {
+                var cell = GetCellInstance();
+                GridContainer.AddChild(cell.CellNode.GetUiInstance());
+            } while (array.Count > _cellList.Count);
+        }
+        else if (array.Count < _cellList.Count)
+        {
+            do
+            {
+                var cell = _cellList[_cellList.Count - 1];
+                _cellList.RemoveAt(_cellList.Count - 1);
+                ReclaimCellInstance(cell);
+            } while (array.Count < _cellList.Count);
+        }
+
+        for (var i = 0; i < _cellList.Count; i++)
+        {
+            var data = array[i];
+            _cellList[i].UpdateData(data);
+        }
+    }
+    
+    /// <summary>
     /// 设置当前网格组件中的所有 Cell 数据, 该函数为协程函数，可用于分帧处理大量数据
     /// </summary>
+    /// <param name="array">数据集合</param>
+    /// <returns></returns>
     public IEnumerator SetDataListCoroutine(ICollection<TData> array)
     {
         RemoveAll();

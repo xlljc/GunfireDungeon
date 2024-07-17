@@ -344,7 +344,7 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_item_0002 = "item_0002";
         /// <summary>
-        /// 名称:  <br/>
+        /// 名称: 挡板 <br/>
         /// 简介: 
         /// </summary>
         public const string Id_item_0003 = "item_0003";
@@ -354,7 +354,7 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_item_0004 = "item_0004";
         /// <summary>
-        /// 名称:  <br/>
+        /// 名称: 保险箱 <br/>
         /// 简介: 
         /// </summary>
         public const string Id_item_0005 = "item_0005";

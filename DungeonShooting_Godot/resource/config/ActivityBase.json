@@ -939,7 +939,7 @@
   },
   {
     "Id": "item_0003",
-    "Name": "",
+    "Name": "\u6321\u677F",
     "Type": 99,
     "Quality": 0,
     "Price": 0,
@@ -948,7 +948,7 @@
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/item/Item0003.tscn",
-    "Icon": "",
+    "Icon": "res://resource/sprite/item/hall_b/item-32.png",
     "ShowInMapEditor": false
   },
   {
@@ -967,7 +967,7 @@
   },
   {
     "Id": "item_0005",
-    "Name": "",
+    "Name": "\u4FDD\u9669\u7BB1",
     "Type": 99,
     "Quality": 0,
     "Price": 0,
@@ -976,7 +976,7 @@
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/item/Item0005.tscn",
-    "Icon": "",
+    "Icon": "res://resource/sprite/item/hall_b/item-01.png",
     "ShowInMapEditor": false
   },
   {
@@ -1186,7 +1186,7 @@
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/item/Item0020.tscn",
-    "Icon": "",
+    "Icon": "res://resource/sprite/item/hall_a/Slice_42.png",
     "ShowInMapEditor": false
   },
   {
@@ -1228,7 +1228,7 @@
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/item/Item0023.tscn",
-    "Icon": "",
+    "Icon": "res://resource/sprite/item/hall_a/Slice_40.png",
     "ShowInMapEditor": false
   },
   {
