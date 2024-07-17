@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Config;
 
 /// <summary>
 /// 角色属性类
@@ -241,5 +242,21 @@ public class RoleState
         }
 
         return gold;
+    }
+
+    /// <summary>
+    /// 计算射出的子弹
+    /// </summary>
+    public event Action<ExcelConfig.BulletBase, RefValue<ExcelConfig.BulletBase>> CalcBulletEvent;
+    public ExcelConfig.BulletBase CalcBullet(ExcelConfig.BulletBase attributeBullet)
+    {
+        if (CalcBulletEvent != null)
+        {
+            var result = new RefValue<ExcelConfig.BulletBase>(attributeBullet);
+            CalcBulletEvent(attributeBullet, result);
+            return result.Value;
+        }
+
+        return attributeBullet;
     }
 }

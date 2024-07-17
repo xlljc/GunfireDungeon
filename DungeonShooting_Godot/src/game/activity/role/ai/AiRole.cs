@@ -81,6 +81,11 @@ public abstract partial class AiRole : Role
     public float LockTargetTime { get; set; } = 0;
 
     /// <summary>
+    /// 开火时是否站立不动
+    /// </summary>
+    public bool FiringStand { get; set; } = false;
+
+    /// <summary>
     /// 视野半径, 单位像素, 发现玩家后改视野范围可以穿墙
     /// </summary>
     public float ViewRange
@@ -471,7 +476,7 @@ public abstract partial class AiRole : Role
     /// </summary>
     public void UpdateMarkTargetPosition()
     {
-        if (LookTarget != null)
+        if (LookTarget != null && AffiliationArea != null)
         {
             AffiliationArea.RoomInfo.MarkTargetPosition[LookTarget.Id] = LookTarget.Position;
         }
@@ -507,6 +512,32 @@ public abstract partial class AiRole : Role
         HasMoveDesire = v;
     }
 
+    /// <summary>
+    /// 更新玩家脸的朝向
+    /// </summary>
+    public void UpdateFace()
+    {
+        //看向目标
+        if (LookTarget != null && MountLookTarget)
+        {
+            var pos = LookTarget.Position;
+            LookPosition = pos;
+            //脸的朝向
+            var gPos = Position;
+            if (pos.X > gPos.X && Face == FaceDirection.Left)
+            {
+                Face = FaceDirection.Right;
+            }
+            else if (pos.X < gPos.X && Face == FaceDirection.Right)
+            {
+                Face = FaceDirection.Left;
+            }
+
+            //枪口跟随目标
+            MountPoint.SetLookAt(pos);
+        }
+    }
+    
     protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
     {
         //受到伤害

@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class EnemyBase
+    public partial class EnemyBase
     {
         /// <summary>
         /// 表Id
@@ -87,6 +87,19 @@ public static partial class ExcelConfig
         public int[] Gold;
 
         /// <summary>
+        /// 敌人死亡爆浆血液颜色, 填十六进制字符串(小写),  <br/>
+        /// 例如: ff0000 <br/>
+        /// 不填默认白色
+        /// </summary>
+        [JsonInclude]
+        public string BloodColor;
+
+        /// <summary>
+        /// 死亡时的尸体碎片
+        /// </summary>
+        public ActivityBase BodyFragment;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public EnemyBase Clone()
@@ -105,6 +118,8 @@ public static partial class ExcelConfig
             inst.TailAfterViewRange = TailAfterViewRange;
             inst.ViewAngleRange = ViewAngleRange;
             inst.Gold = Gold;
+            inst.BloodColor = BloodColor;
+            inst.BodyFragment = BodyFragment;
             return inst;
         }
     }
@@ -112,6 +127,9 @@ public static partial class ExcelConfig
     {
         [JsonInclude]
         public string __Activity;
+
+        [JsonInclude]
+        public string __BodyFragment;
 
     }
 }

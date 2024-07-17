@@ -39,7 +39,7 @@ public class AiTailAfterState : StateBase<AiRole, AIStateEnum>
         _viewTimer = 0;
         
         //先检查弹药是否打光
-        if (Master.IsAllWeaponTotalAmmoEmpty())
+        if ((Master.WeaponPack.Capacity > 0 && !Master.NoWeaponAttack) && Master.IsAllWeaponTotalAmmoEmpty())
         {
             //再寻找是否有可用的武器
             var targetWeapon = Master.FindTargetWeapon();

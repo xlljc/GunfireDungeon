@@ -1,5 +1,4 @@
-﻿
-/// <summary>
+﻿/// <summary>
 /// 特殊标记类型
 /// </summary>
 public enum SpecialMarkType
@@ -24,4 +23,8 @@ public enum SpecialMarkType
     /// 商店房商店老板刷新点
     /// </summary>
     ShopBoss,
+    /// <summary>
+    /// boss刷新点
+    /// </summary>
+    Boss
 }

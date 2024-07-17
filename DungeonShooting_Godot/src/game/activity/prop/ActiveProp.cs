@@ -384,7 +384,7 @@ public partial class ActiveProp : PropActivity, IPackageItem<Role>
 
     public override void Interactive(ActivityObject master)
     {
-        if (master is Player player)
+        if (master is Role player)
         {
             if (player.ActivePropsPack.Capacity == 0)
             {
@@ -427,7 +427,7 @@ public partial class ActiveProp : PropActivity, IPackageItem<Role>
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)
     {
-        if (master is Player player)
+        if (master is Role player)
         {
             if (player.ActivePropsPack.Capacity == 0)
             {

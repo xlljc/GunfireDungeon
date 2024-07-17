@@ -63,18 +63,20 @@ public class InteractiveTipBarHandler
         else
         {
             var result = (CheckInteractiveResult)o;
-            var interactiveItem = World.Current.Player.InteractiveItem;
-            //if (interactiveItem is Weapon)
-            var icon = result.GetIcon();
-            if (icon != null)
+            if (result.Target is ActivityObject interactiveItem)
             {
-                _interactiveTarget = interactiveItem;
-                //显示互动提示
-                ShowBar(result.Target, result.Target.ActivityBase.Name, icon);
-            }
-            else
-            {
-                _interactiveTarget = null;
+                //if (interactiveItem is Weapon)
+                var icon = result.GetIcon();
+                if (icon != null)
+                {
+                    _interactiveTarget = interactiveItem;
+                    //显示互动提示
+                    ShowBar(interactiveItem, interactiveItem.ActivityBase.Name, icon);
+                }
+                else
+                {
+                    _interactiveTarget = null;
+                }
             }
         }
     }

@@ -95,6 +95,11 @@ public static class GameConfig
     public const float NavigationCellSize = 4;
     
     /// <summary>
+    /// 游戏存档文件名称
+    /// </summary>
+    public const string GameSaveFile = "GameSave.json";
+    
+    /// <summary>
     /// 地形掩码纹理大小, 顶部墙壁/47格地形
     /// </summary>
     public static readonly Vector2I TerrainBit3x3 = new Vector2I(12, 4);

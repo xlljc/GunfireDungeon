@@ -4,5 +4,5 @@
 /// </summary>
 public interface IStateController
 {
-    
+    public bool Enable { get; set; }
 }

@@ -90,7 +90,7 @@ public partial class BuffProp : PropActivity
 
     public override void Interactive(ActivityObject master)
     {
-        if (master is Player role)
+        if (master is Role role)
         {
             Pickup();
             role.PickUpBuffProp(this);
@@ -99,7 +99,7 @@ public partial class BuffProp : PropActivity
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)
     {
-        if (master is Player)
+        if (master is Role)
         {
             return new CheckInteractiveResult(this, true, CheckInteractiveResult.InteractiveType.PickUp);
         }

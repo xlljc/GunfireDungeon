@@ -30,7 +30,23 @@ public partial class Gun : Weapon
 
     protected override void OnShoot(float fireRotation)
     {
-        FireManager.ShootBullet(this, fireRotation, Attribute.Bullet);
+        if (Master != null && !Master.IsDestroyed)
+        {
+            var calcBullet = Master.RoleState.CalcBullet(Attribute.Bullet);
+            FireManager.ShootBullet(this, fireRotation, calcBullet);
+            Master.ShootBulletHandler(this, fireRotation, Attribute.Bullet);
+        }
+        else if (TriggerRole != null && !TriggerRole.IsDestroyed)
+        {
+            var calcBullet = TriggerRole.RoleState.CalcBullet(Attribute.Bullet);
+            FireManager.ShootBullet(this, fireRotation, calcBullet);
+            TriggerRole.ShootBulletHandler(this, fireRotation, Attribute.Bullet);
+        }
+        else
+        {
+            FireManager.ShootBullet(this, fireRotation, Attribute.Bullet);
+            Master?.ShootBulletHandler(this, fireRotation, Attribute.Bullet);
+        }
     }
 
     // //测试用, 敌人被消灭时触发手上武器开火

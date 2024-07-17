@@ -14,6 +14,7 @@ public partial class NoWeaponEnemy : Enemy
     {
         base.OnInit();
         NoWeaponAttack = true;
+        FiringStand = true;
         WeaponPack.SetCapacity(0);
         AnimationPlayer.AnimationFinished += OnAnimationFinished;
         

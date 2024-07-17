@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class BuffPropBase
+    public partial class BuffPropBase
     {
         /// <summary>
         /// Buff Id

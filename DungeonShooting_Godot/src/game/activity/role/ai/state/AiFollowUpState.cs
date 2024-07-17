@@ -32,7 +32,7 @@ public class AiFollowUpState : StateBase<AiRole, AIStateEnum>
     public override void Process(float delta)
     {
         //先检查弹药是否打光
-        if (Master.IsAllWeaponTotalAmmoEmpty())
+        if ((Master.WeaponPack.Capacity > 0 && !Master.NoWeaponAttack) && Master.IsAllWeaponTotalAmmoEmpty())
         {
             //再寻找是否有可用的武器
             var targetWeapon = Master.FindTargetWeapon();

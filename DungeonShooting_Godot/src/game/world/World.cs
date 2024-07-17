@@ -17,7 +17,7 @@ public partial class World : CanvasModulate, ICoroutine
     /// <summary>
     /// 当前操作的玩家
     /// </summary>
-    public Player Player { get; private set; }
+    public Role Player { get; private set; }
     
     /// <summary>
     /// //对象根节点
@@ -34,6 +34,11 @@ public partial class World : CanvasModulate, ICoroutine
     /// </summary>
     public TileMap TileRoot;
 
+    /// <summary>
+    /// 背景音乐播放器
+    /// </summary>
+    public SoundManager.GameAudioPlayer BgmAudio { get; private set; }
+    
     public Node2D StaticSpriteRoot;
     public Node2D AffiliationAreaRoot;
     public Node2D FogMaskRoot;
@@ -50,13 +55,21 @@ public partial class World : CanvasModulate, ICoroutine
             if (_pause != value)
             {
                 _pause = value;
-                if (value)
+                if (value) //暂停
                 {
                     ProcessMode = ProcessModeEnum.WhenPaused;
+                    if (BgmAudio != null)
+                    {
+                        BgmAudio.SetVolume(BgmAudio.DefaultVolume * 0.4f);
+                    }
                 }
-                else
+                else //取消暂停
                 {
                     ProcessMode = ProcessModeEnum.Inherit;
+                    if (BgmAudio != null)
+                    {
+                        BgmAudio.SetVolume(BgmAudio.DefaultVolume);
+                    }
                 }
             }
         }
@@ -127,12 +140,39 @@ public partial class World : CanvasModulate, ICoroutine
     /// <summary>
     /// 设置当前操作的玩家对象
     /// </summary>
-    public void SetCurrentPlayer(Player player)
+    public void SetCurrentPlayer(Role player)
     {
+        var flag = Player == player;
         Player = player;
         //设置相机和鼠标跟随玩家
         GameCamera.Main.SetFollowTarget(player);
         GameApplication.Instance.Cursor.SetMountRole(player);
+        
+        if (!flag)
+        {
+            //通知角色改变
+            EventManager.EmitEvent(EventEnum.OnChangePlayerRole, player);
+            OnChangePlayerRole(player);
+        }
+    }
+
+    private void OnChangePlayerRole(Role player)
+    {
+    }
+
+    public void PlayBgm(string soundId)
+    {
+        StopBgm();
+        BgmAudio = SoundManager.PlayTransitionMusic(soundId, 1);
+    }
+
+    public void StopBgm()
+    {
+        if (BgmAudio != null && BgmAudio.Playing)
+        {
+            BgmAudio.TransitionToStop();
+            BgmAudio = null;
+        }
     }
     
     /// <summary>
@@ -142,6 +182,10 @@ public partial class World : CanvasModulate, ICoroutine
     /// <param name="target">目标</param>
     public void NotifyEnemyTarget(Role self, ActivityObject target)
     {
+        if (self.AffiliationArea == null)
+        {
+            return;
+        }
         foreach (var role in Role_InstanceList)
         {
             if (role != self && !role.IsDestroyed && role.AffiliationArea == self.AffiliationArea && role is AiRole enemy && !self.IsEnemy(enemy))
@@ -164,7 +208,7 @@ public partial class World : CanvasModulate, ICoroutine
     {
         return ProxyCoroutineHandler.ProxyStartCoroutine(ref _coroutineList, able);
     }
-	
+    
     public void StopCoroutine(long coroutineId)
     {
         ProxyCoroutineHandler.ProxyStopCoroutine(ref _coroutineList, coroutineId);
@@ -198,5 +242,20 @@ public partial class World : CanvasModulate, ICoroutine
         {
             OnRoleDieEvent(role);
         }
+    }
+
+    /// <summary>
+    /// 世界加载完成回调
+    /// </summary>
+    public virtual void OnLoadSuccess()
+    {
+    }
+    
+    ///  <summary>
+    /// 世界卸载完成回调
+    /// </summary>
+    public virtual void OnUnloadSuccess()
+    {
+        StopBgm();
     }
 }

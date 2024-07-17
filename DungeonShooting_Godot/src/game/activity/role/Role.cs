@@ -10,6 +10,13 @@ using Godot;
 /// </summary>
 public abstract partial class Role : ActivityObject
 {
+    public delegate void ShootBulletCallback(Role role, Weapon weapon, float fireRotation, ExcelConfig.BulletBase attributeBullet);
+    
+    /// <summary>
+    /// 发射子弹回调
+    /// </summary>
+    public event ShootBulletCallback OnShootBulletEvent;
+    
     /// <summary>
     /// 攻击目标的碰撞器所属层级, 数据源自于: <see cref="PhysicsLayer"/>
     /// </summary>
@@ -21,6 +28,14 @@ public abstract partial class Role : ActivityObject
     /// 参数2为造成对伤害值
     /// </summary>
     public event Action<Role, int> OnDamageEvent;
+
+    /// <summary>
+    /// 当角色受到伤害时回调
+    /// 参数1为造成伤害的角色
+    /// 参数2为造成伤害值
+    /// 参数3为是否受到真实伤害, 如果为false, 则表示该伤害被护盾格挡掉了
+    /// </summary>
+    public event Action<ActivityObject, int, bool> OnHitEvent;
     
     /// <summary>
     /// 是否是 Ai
@@ -290,7 +305,7 @@ public abstract partial class Role : ActivityObject
     /// <summary>
     /// 当前可以互动的物体
     /// </summary>
-    public ActivityObject InteractiveItem { get; private set; }
+    public IInteractive InteractiveItem { get; private set; }
     
     /// <summary>
     /// 瞄准辅助线, 需要手动调用 InitSubLine() 初始化
@@ -300,7 +315,7 @@ public abstract partial class Role : ActivityObject
     /// <summary>
     /// 所有角色碰撞的物体
     /// </summary>
-    public List<ActivityObject> InteractiveItemList { get; } = new List<ActivityObject>();
+    public List<IInteractive> InteractiveItemList { get; } = new List<IInteractive>();
     
     /// <summary>
     /// 角色看向的坐标
@@ -485,6 +500,8 @@ public abstract partial class Role : ActivityObject
         //连接互动物体信号
         InteractiveArea.BodyEntered += _OnPropsEnter;
         InteractiveArea.BodyExited += _OnPropsExit;
+        InteractiveArea.AreaEntered += _OnAreaEnter;
+        InteractiveArea.AreaExited += _OnAreaExit;
         
         //------------------------
         
@@ -527,10 +544,15 @@ public abstract partial class Role : ActivityObject
             {
                 InteractiveItemList.RemoveAt(i--);
             }
-            else if (!item.IsThrowing)
+            else
             {
+                var flag = true;
+                if (item is ActivityObject ao && ao.IsThrowing)
+                {
+                    flag = false;
+                }
                 //找到可互动的物体了
-                if (!findFlag)
+                if (flag && !findFlag)
                 {
                     var result = item.CheckInteractive(this);
                     var prev = _currentResultData;
@@ -541,9 +563,11 @@ public abstract partial class Role : ActivityObject
                         if (InteractiveItem != item) //更改互动物体
                         {
                             InteractiveItem = item;
+                            prev?.Target.OnTargetExitd(this);
+                            result?.Target.OnTargetEnterd(this);
                             ChangeInteractiveItem(prev, result);
                         }
-                        else if (result.Type != _currentResultData.Type) //切换状态
+                        else if (result.Type != prev.Type) //切换状态
                         {
                             ChangeInteractiveItem(prev, result);
                         }
@@ -558,6 +582,7 @@ public abstract partial class Role : ActivityObject
             var prev = _currentResultData;
             _currentResultData = null;
             InteractiveItem = null;
+            prev?.Target.OnTargetExitd(this);
             ChangeInteractiveItem(prev, null);
         }
 
@@ -817,7 +842,7 @@ public abstract partial class Role : ActivityObject
     /// <summary>
     /// 触发与碰撞的物体互动, 并返回与其互动的物体
     /// </summary>
-    public ActivityObject TriggerInteractive()
+    public IInteractive TriggerInteractive()
     {
         if (HasInteractive())
         {
@@ -879,6 +904,10 @@ public abstract partial class Role : ActivityObject
 
         PrevHitAngle = angle;
         OnHit(target, damage, angle, !flag);
+        if (OnHitEvent != null)
+        {
+            OnHitEvent(target, damage, !flag);
+        }
         
         if (target is Role targetRole && !targetRole.IsDestroyed)
         {
@@ -901,7 +930,7 @@ public abstract partial class Role : ActivityObject
                 IsDie = true;
                 
                 //禁用状态机控制器
-                var stateController = GetComponent(typeof(IStateController));
+                var stateController = GetComponent<IStateController>();
                 if (stateController != null)
                 {
                     stateController.Enable = false;
@@ -934,7 +963,10 @@ public abstract partial class Role : ActivityObject
     private IEnumerator DoDieWithAnimatedSprite()
     {
         AnimatedSprite.Play(AnimatorNames.Die);
-        yield return ToSignal(AnimatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        if (AnimatedSprite.SpriteFrames.GetFrameCount(AnimatorNames.Die) > 1)
+        {
+            yield return ToSignal(AnimatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
+        }
         DoDieHandler();
     }
 
@@ -1008,12 +1040,9 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     private void _OnPropsEnter(Node2D other)
     {
-        if (other is ActivityObject propObject && !propObject.CollisionWithMask(PhysicsLayer.OnHand))
+        if (other is IInteractive propObject)
         {
-            if (!InteractiveItemList.Contains(propObject))
-            {
-                InteractiveItemList.Add(propObject);
-            }
+            OnInteractiveEnter(propObject);
         }
     }
 
@@ -1023,22 +1052,56 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     private void _OnPropsExit(Node2D other)
     {
-        if (other is ActivityObject propObject)
+        if (other is IInteractive propObject)
         {
-            if (InteractiveItemList.Contains(propObject))
-            {
-                InteractiveItemList.Remove(propObject);
-            }
-            if (InteractiveItem == propObject)
-            {
-                var prev = _currentResultData;
-                _currentResultData = null;
-                InteractiveItem = null;
-                ChangeInteractiveItem(prev, null);
-            }
+            OnInteractiveExit(propObject);
         }
     }
     
+    
+    private void _OnAreaEnter(Area2D other)
+    {
+        if (other is IInteractive propObject)
+        {
+            OnInteractiveEnter(propObject);
+        }
+    }
+    
+    private void _OnAreaExit(Area2D other)
+    {
+        if (other is IInteractive propObject)
+        {
+            OnInteractiveExit(propObject);
+        }
+    }
+
+    private void OnInteractiveEnter(IInteractive propObject)
+    {
+        if (propObject is ActivityObject ao && ao.CollisionWithMask(PhysicsLayer.OnHand))
+        {
+            return;
+        }
+        if (!InteractiveItemList.Contains(propObject))
+        {
+            InteractiveItemList.Add(propObject);
+        }
+    }
+    
+    private void OnInteractiveExit(IInteractive propObject)
+    {
+        if (InteractiveItemList.Contains(propObject))
+        {
+            InteractiveItemList.Remove(propObject);
+        }
+        if (InteractiveItem == propObject)
+        {
+            var prev = _currentResultData;
+            _currentResultData = null;
+            InteractiveItem = null;
+            prev?.Target.OnTargetExitd(this);
+            ChangeInteractiveItem(prev, null);
+        }
+    }
     
     /// <summary>
     /// 返回当前角色是否是玩家
@@ -1077,6 +1140,11 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     public bool IsEnemy(CampEnum otherCamp)
     {
+        if (Camp == CampEnum.None || otherCamp == CampEnum.None)
+        {
+            return true;
+        }
+        
         if (otherCamp == Camp || otherCamp == CampEnum.Peace || Camp == CampEnum.Peace)
         {
             return false;
@@ -1098,7 +1166,7 @@ public abstract partial class Role : ActivityObject
     }
 
     /// <summary>
-    /// 将 Role 子节点的旋转角度转换为正常的旋转角度<br/>
+    /// 将 Role 子节点的旋转角度转换为正常的旋转角度, 单位: 弧度制<br/>
     /// 因为 Role 受到 Face 影响, 会出现转向动作, 所以需要该函数来转换旋转角度
     /// </summary>
     /// <param name="rotation">角度, 弧度制</param>
@@ -1523,5 +1591,20 @@ public abstract partial class Role : ActivityObject
         ActivePropsPack.Destroy();
         
         WeaponPack.Destroy();
+    }
+
+    /// <summary>
+    /// 武器发射子弹回调
+    /// </summary>
+    /// <param name="weapon">武器对象</param>
+    /// <param name="fireRotation">开火角度</param>
+    /// <param name="attributeBullet">子弹数据</param>
+    public void ShootBulletHandler(Weapon weapon, float fireRotation, ExcelConfig.BulletBase attributeBullet)
+    {
+        if (OnShootBulletEvent != null)
+        {
+            OnShootBulletEvent(this, weapon, fireRotation, attributeBullet);
+        }
+        //throw new NotImplementedException();
     }
 }

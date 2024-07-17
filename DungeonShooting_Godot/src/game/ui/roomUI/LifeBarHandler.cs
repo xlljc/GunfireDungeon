@@ -12,6 +12,7 @@ public class LifeBarHandler
     private bool _refreshHpFlag = false;
     private bool _refreshGoldFlag = false;
 
+    private Role _player;
     public LifeBarHandler(RoomUI.LifeBar lifeBar)
     {
         _bar = lifeBar;
@@ -42,6 +43,12 @@ public class LifeBarHandler
 
     public void Process(float delta)
     {
+        if (!_refreshGoldFlag && World.Current != null && _player != World.Current.Player)
+        {
+            _player = World.Current.Player;
+            _refreshHpFlag = true;
+        }
+        
         if (_refreshHpFlag)
         {
             _refreshHpFlag = false;
@@ -68,6 +75,10 @@ public class LifeBarHandler
     private void HandlerRefreshLife()
     {
         var player = World.Current.Player;
+        if (player == null)
+        {
+            return;
+        }
         if (player.MaxHp % 2 != 0)
         {
             Debug.LogError("玩家血量不是偶数!");
@@ -108,7 +119,13 @@ public class LifeBarHandler
     
     private void HandlerRefreshGold()
     {
-        _bar.L_Gold.L_GoldText.Instance.Text = World.Current.Player.RoleState.Gold.ToString();
+        var player = World.Current.Player;
+        if (player == null)
+        {
+            return;
+        }
+
+        _bar.L_Gold.L_GoldText.Instance.Text = player.RoleState.Gold.ToString();
     }
 
 }

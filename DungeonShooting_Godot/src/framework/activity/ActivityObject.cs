@@ -11,7 +11,7 @@ using Godot;
 /// ActivityObject 子类实例化请不要直接使用 new, 而用该在类上标上 [Tool], 并在 ActivityObject.xlsx 配置文件中注册物体, 导出配置表后使用 ActivityObject.Create(id) 来创建实例.<br/>
 /// </summary>
 [Tool]
-public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
+public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive, IOutline
 {
     /// <summary>
     /// 是否是调试模式
@@ -59,6 +59,11 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     /// </summary>
     [Export, ExportFillNode]
     public AnimatedSprite2D AnimatedSprite { get; set; }
+
+    /// <summary>
+    /// 阴影自定义缩放值
+    /// </summary>
+    public float ShadowScale { get; set; } = 1;
 
     /// <summary>
     /// 当前物体碰撞器节点, 节点名称必须叫 "Collision", 类型为 CollisionShape2D
@@ -211,9 +216,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     /// </summary>
     public World World { get; set; }
 
-    /// <summary>
-    /// 是否开启描边
-    /// </summary>
+
     public bool ShowOutline
     {
         get => _blendShaderMaterial == null ? false : _blendShaderMaterial.GetShaderParameter(ShaderParamNames.ShowOutline).AsBool();
@@ -223,10 +226,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
             _shadowBlendShaderMaterial?.SetShaderParameter(ShaderParamNames.ShowOutline, value);
         }
     }
-
-    /// <summary>
-    /// 描边颜色
-    /// </summary>
+    
     public Color OutlineColor
     {
         get => _blendShaderMaterial == null ? Colors.Black : _blendShaderMaterial.GetShaderParameter(ShaderParamNames.OutlineColor).AsColor();
@@ -362,7 +362,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
         World = world;
         ActivityBase = config;
 #if TOOLS
-        Name = GetType().Name + (_instanceIndex++);
+        Name = GetType().Name + '#' + (_instanceIndex++);
 #endif
         Id = _instanceIndex;
         
@@ -386,6 +386,17 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
         OnInit();
     }
 
+
+    public override string ToString()
+    {
+        if (ActivityBase != null)
+        {
+            return "<" + Name + ":" + ActivityBase.Id + ">";
+        }
+        
+        return "<" + Name + ">";
+    }
+    
     /// <summary>
     /// 子类重写的 _Ready() 可能会比 _InitNode() 函数调用晚, 所以禁止子类重写, 如需要 _Ready() 类似的功能需重写 OnInit()
     /// </summary>
@@ -532,21 +543,29 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     {
     }
     
-    /// <summary>
-    /// 返回是否能与其他ActivityObject互动
-    /// </summary>
-    /// <param name="master">触发者</param>
     public virtual CheckInteractiveResult CheckInteractive(ActivityObject master)
     {
         return new CheckInteractiveResult(this);
     }
-
-    /// <summary>
-    /// 与其它ActivityObject互动时调用, 如果要检测是否能互动请 CheckInteractive() 函数, 如果直接调用该函数那么属于强制互动行为, 例如子弹碰到物体
-    /// </summary>
-    /// <param name="master">触发者</param>
+    
     public virtual void Interactive(ActivityObject master)
     {
+    }
+
+    public virtual void OnTargetEnterd(ActivityObject target)
+    {
+        if (target is Player)
+        {
+            OutlineColor = Colors.White;
+        }
+    }
+
+    public virtual void OnTargetExitd(ActivityObject target)
+    {
+        if (target is Player)
+        {
+            OutlineColor = Colors.Black;
+        }
     }
 
     /// <summary>
@@ -766,6 +785,24 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
         Throw(altitude, verticalSpeed, velocity, rotateSpeed);
     }
 
+    /// <summary>
+    /// 往一个指定位置投抛物体, 使其能正好落到目标位置
+    /// </summary>
+    /// <param name="position">起始位置</param>
+    /// <param name="altitude">起始高度</param>
+    /// <param name="rotateSpeed">旋转速度</param>
+    /// <param name="targetPosition">目标位置</param>
+    /// <param name="speed">投抛到目标点的速度</param>
+    public void ThrowToPosition(Vector2 position, float altitude, float rotateSpeed, Vector2 targetPosition, float speed)
+    {
+        var distance = position.DistanceTo(targetPosition);
+        var time = distance / speed;
+        var verticalSpeed = -(altitude - 0.5f * GameConfig.G * time * time) / time;
+        var velocity = (targetPosition - position).Normalized() * speed;
+        
+        Throw(position, altitude, verticalSpeed, velocity, rotateSpeed);
+    }
+
 
     /// <summary>
     /// 强制停止投抛运动
@@ -884,7 +921,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     /// <summary>
     /// 根据类型获取一个组件
     /// </summary>
-    public T GetComponent<T>() where T : Component
+    public T GetComponent<T>()
     {
         for (int i = 0; i < _components.Count; i++)
         {
@@ -907,7 +944,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
             }
         }
 
-        return null;
+        return default;
     }
 
     /// <summary>
@@ -943,7 +980,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     /// <summary>
     /// 根据类型获取所有相同类型的组件
     /// </summary>
-    public T[] GetComponents<T>() where T : Component
+    public T[] GetComponents<T>()
     {
         var list = new List<T>();
         for (int i = 0; i < _components.Count; i++)
@@ -1420,7 +1457,7 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
         }
 
         //缩放
-        ShadowSprite.Scale = AnimatedSprite.Scale;
+        ShadowSprite.Scale = AnimatedSprite.Scale * ShadowScale;
         //阴影角度
         ShadowSprite.Rotation = 0;
         //阴影位置计算
@@ -1766,13 +1803,16 @@ public partial class ActivityObject : CharacterBody2D, IDestroy, ICoroutine
     /// 播放 AnimatedSprite 上的动画, 如果没有这个动画, 则什么也不会发生
     /// </summary>
     /// <param name="name">动画名称</param>
-    public void PlaySpriteAnimation(string name)
+    public bool PlaySpriteAnimation(string name)
     {
         var spriteFrames = AnimatedSprite.SpriteFrames;
         if (spriteFrames != null && spriteFrames.HasAnimation(name))
         {
             AnimatedSprite.Play(name);
+            return true;
         }
+        
+        return false;
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ public partial class DungeonEntrance : Area2D
         if (body is Player)
         {
             // 验证该组是否满足生成地牢的条件
-            var config = GameApplication.Instance.DungeonConfig;
+            var config = GameApplication.Instance.FirstDungeonConfig;
             var result = DungeonManager.CheckDungeon(config.GroupName);
             if (result.HasError)
             {

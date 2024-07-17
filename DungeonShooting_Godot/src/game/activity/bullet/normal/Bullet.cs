@@ -59,7 +59,7 @@ public partial class Bullet : ActivityObject, IBullet
     /// <summary>
     /// 子弹状态
     /// </summary>
-    public BulletStateEnum State { get; protected set; } = BulletStateEnum.Normal;
+    public BulletStateEnum State { get; set; } = BulletStateEnum.Normal;
 
     //当前子弹已经飞行的距离
     private float CurrFlyDistance = 0;
@@ -69,8 +69,8 @@ public partial class Bullet : ActivityObject, IBullet
     public override void OnInit()
     {
         base.OnInit();
-        OutlineColor = new Color(2.5f, 0, 0);
-        SetBlendColor(new Color(2.5f, 2.5f, 2.5f));
+        OutlineColor = new Color(2.2f, 0, 0);
+        SetBlendColor(new Color(2.2f, 2.2f, 2.2f));
 
         CollisionArea.CollisionMask = Role.AttackLayer;
     }

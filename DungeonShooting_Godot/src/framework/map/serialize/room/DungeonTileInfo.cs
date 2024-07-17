@@ -57,6 +57,18 @@ public class DungeonTileInfo
     /// </summary>
     [JsonInclude]
     public List<int> CustomTop;
+
+    /// <summary>
+    /// 普通层级自定义对象
+    /// </summary>
+    [JsonInclude]
+    public List<RoomObjectInfo> NormalLayerObjects;
+    
+    /// <summary>
+    /// Y排序层级自定义对象
+    /// </summary>
+    [JsonInclude]
+    public List<RoomObjectInfo> YSortLayerObjects;
     
     public void InitData()
     {
@@ -69,5 +81,7 @@ public class DungeonTileInfo
         CustomMiddle1 = new List<int>();
         CustomMiddle2 = new List<int>();
         CustomTop = new List<int>();
+        NormalLayerObjects = new List<RoomObjectInfo>();
+        YSortLayerObjects = new List<RoomObjectInfo>();
     }
 }

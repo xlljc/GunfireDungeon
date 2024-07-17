@@ -302,11 +302,21 @@ public partial class Player : Role
         }
 
         //血量为0, 扔掉所有武器
-        if (Hp <= 0)
+        if (Hp <= 0) //死亡
         {
             BasisVelocity = Vector2.Zero;
             Velocity = Vector2.Zero;
             ThrowAllWeapon();
+            
+            GameCamera.Main.CreateShake(new Vector2(3, 3), 1f, true);
+            GameCamera.Main.FollowsMouseAmount = 0;
+            GameCamera.Main.PlayZoomAnimation(new Vector2(2, 2), 5);
+
+            SoundManager.PlaySoundByConfig("role_die", Position);
+        }
+        else //受伤
+        {
+            SoundManager.PlaySoundByConfig("role_hurt", Position);
         }
     }
 
@@ -324,14 +334,6 @@ public partial class Player : Role
 
     protected override void ChangeInteractiveItem(CheckInteractiveResult prev, CheckInteractiveResult result)
     {
-        if (prev != null && prev.Target.ShowOutline)
-        {
-            prev.Target.OutlineColor = Colors.Black;
-        }
-        if (result != null && result.Target.ShowOutline)
-        {
-            result.Target.OutlineColor = Colors.White;
-        }
         //派发互动对象改变事件
         EventManager.EmitEvent(EventEnum.OnPlayerChangeInteractiveItem, result);
     }

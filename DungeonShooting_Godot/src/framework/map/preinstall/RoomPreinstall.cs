@@ -42,6 +42,11 @@ public class RoomPreinstall : IDestroy
     /// </summary>
     public bool IsLastWave => _currWaveIndex >= WaveList.Count;
     
+    /// <summary>
+    /// 包含的 Boss 列表
+    /// </summary>
+    public List<Boss> BossList { get; } = new List<Boss>();
+    
     //是否运行过预处理
     private bool _runPretreatment = false;
     //当前房间是否会刷新敌人
@@ -107,7 +112,7 @@ public class RoomPreinstall : IDestroy
                 }
                 else if (markInfo.SpecialMarkType == SpecialMarkType.OutPoint) //出口标记
                 {
-                    
+                    HandlerOutPointMark(world, markInfo, mark);
                 }
                 else if (markInfo.SpecialMarkType == SpecialMarkType.ShopBoss) //商店老板标记
                 {
@@ -116,6 +121,10 @@ public class RoomPreinstall : IDestroy
                 else if (markInfo.SpecialMarkType == SpecialMarkType.Treasure) //奖励宝箱标记
                 {
                     HandlerTreasureMark(world, markInfo, mark);
+                }
+                else if (markInfo.SpecialMarkType == SpecialMarkType.Boss) //Boss标记
+                {
+                    HandlerBossMark(world, markInfo, mark);
                 }
                 else
                 {
@@ -198,6 +207,11 @@ public class RoomPreinstall : IDestroy
                 return true;
             }
         }
+        else if (activityBase is MissActivityBase) //丢失物体
+        {
+            Debug.LogError("丢失物体：" + markInfoItem.Id);
+            return true;
+        }
         else
         {
             mark.Id = markInfoItem.Id;
@@ -224,6 +238,16 @@ public class RoomPreinstall : IDestroy
         return false;
     }
     
+    private void HandlerOutPointMark(World world, MarkInfo markInfo, ActivityMark mark)
+    {
+        mark.OnReadyEvent += () =>
+        {
+            var roomExit = ResourceManager.LoadAndInstantiate<RoomExit>(ResourcePath.prefab_room_RoomExit_tscn);
+            roomExit.Position = mark.Position;
+            roomExit.AddToActivityRoot(RoomLayerEnum.NormalLayer);
+        };
+    }
+    
     private void HandlerShopBossMark(World world, MarkInfo markInfo, ActivityMark mark)
     {
         mark.Id = ActivityObject.Ids.Id_shopBoss0001;
@@ -238,13 +262,20 @@ public class RoomPreinstall : IDestroy
         mark.Altitude = 0;
     }
 
+    private void HandlerBossMark(World world, MarkInfo markInfo, ActivityMark mark)
+    {
+        mark.Id = ActivityObject.Ids.Id_boss0001;
+        mark.ActivityType = ActivityType.Boss;
+        mark.Altitude = 0;
+    }
+    
     private void CheckHasEnemy()
     {
         foreach (var marks in WaveList)
         {
             foreach (var activityMark in marks)
             {
-                if (activityMark.ActivityType == ActivityType.Enemy)
+                if (activityMark.ActivityType == ActivityType.Enemy || activityMark.ActivityType == ActivityType.Boss)
                 {
                     _hsaEnemy = true;
                     return;
@@ -273,23 +304,28 @@ public class RoomPreinstall : IDestroy
             var activityMarks = WaveList[0];
             foreach (var activityMark in activityMarks)
             {
-                if (activityMark.MarkType == SpecialMarkType.Normal ||
-                    activityMark.MarkType == SpecialMarkType.Treasure ||
-                    activityMark.MarkType == SpecialMarkType.ShopBoss)
+                var activityObject = CreateItem(activityMark);
+                if (activityObject != null)
                 {
-                    var activityObject = CreateItem(activityMark);
-                    if (activityObject == null)
-                    {
-                        continue;
-                    }
                     //初始化属性
                     InitAttr(activityObject, activityMark);
+                    
                     if (_readyList == null)
                     {
                         _readyList = new List<PreloadData>();
                     }
                     _readyList.Add(new PreloadData(activityObject, GetDefaultLayer(activityMark)));
                     activityObject.OnCreateWithMark(this, activityMark);
+
+                    if (activityObject is Boss boss)
+                    {
+                        BossList.Add(boss);
+                    }
+                }
+
+                if (activityMark.OnReadyEvent != null)
+                {
+                    activityMark.OnReadyEvent();
                 }
             }
         }
@@ -317,12 +353,29 @@ public class RoomPreinstall : IDestroy
             foreach (var preloadData in _readyList)
             {
                 //有敌人
-                if (!hasEnemy && preloadData.ActivityObject is Role role && role.IsEnemyWithPlayer())
+                var activityObject = preloadData.ActivityObject;
+                if (!hasEnemy && activityObject is Role role && role.IsEnemyWithPlayer())
                 {
                     hasEnemy = true;
                 }
 
-                preloadData.ActivityObject.PutDown(preloadData.Layer);
+                //临时处理
+                //播放出生动画
+                activityObject.PutDown(preloadData.Layer);
+                if (activityObject is not Boss)
+                {
+                    activityObject.StartCoroutine(OnActivityObjectBirth(activityObject));
+                    activityObject.UpdateFall((float)GameApplication.Instance.GetProcessDeltaTime());
+                    //出生特效
+                    var effect = ObjectManager.GetPoolItem<IEffect>(ResourcePath.prefab_effect_common_Effect1_tscn);
+                    var node = (Node2D)effect;
+                    node.Position = activityObject.Position + new Vector2(0, -activityObject.Altitude);
+                    node.AddToActivityRoot(RoomLayerEnum.YSortLayer);
+                    effect.PlayEffect();
+                }
+                
+                //原本代码
+                //preloadData.ActivityObject.PutDown(preloadData.Layer);
             }
 
             _readyList.Clear();
@@ -395,6 +448,7 @@ public class RoomPreinstall : IDestroy
                         enemy.OnBornFromMark();
                     }
                     
+                    //出生特效
                     var effect = ObjectManager.GetPoolItem<IEffect>(ResourcePath.prefab_effect_common_Effect1_tscn);
                     var node = (Node2D)effect;
                     node.Position = activityObject.Position + new Vector2(0, -activityMark.Altitude);
@@ -452,11 +506,16 @@ public class RoomPreinstall : IDestroy
     //创建物体
     private ActivityObject CreateItem(ActivityMark activityMark)
     {
+        if (string.IsNullOrEmpty(activityMark.Id))
+        {
+            return null;
+        }
         var activityObject = ActivityObject.Create(activityMark.Id);
         if (activityObject == null)
         {
             return null;
         }
+
         activityObject.Position = activityMark.Position;
         activityObject.VerticalSpeed = activityMark.VerticalSpeed;
         activityObject.Altitude = activityMark.Altitude;
@@ -471,6 +530,7 @@ public class RoomPreinstall : IDestroy
             case ActivityType.Player:
             case ActivityType.Enemy:
             case ActivityType.Npc:
+            case ActivityType.Boss:
             case ActivityType.Treasure:
                 return RoomLayerEnum.YSortLayer;
             default:

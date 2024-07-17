@@ -64,11 +64,6 @@ public partial class Enemy : AiRole
     {
         base.OnInit();
         Camp = CampEnum.Camp2;
-
-        RoleState.MoveSpeed = 20;
-
-        MaxHp = 20;
-        Hp = 20;
     }
 
     protected override RoleState OnCreateRoleState()
@@ -92,9 +87,33 @@ public partial class Enemy : AiRole
         roleState.Gold = Mathf.Max(0, Utils.Random.RandomConfigRange(enemyBase.Gold));
         return roleState;
     }
-    
+
+    protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    {
+        base.OnHit(target, damage, angle, realHarm);
+
+        if (Hp > 0) //受伤
+        {
+            SoundManager.PlaySoundByConfig("enemy_hurt", Position);
+        }
+        else if (Hp <= 0) //死亡
+        {
+            SoundManager.PlaySoundByConfig("enemy_die", Position);
+        }
+    }
+
     protected override void OnDie()
     {
+        Color color;
+        if (!string.IsNullOrEmpty(_enemyAttribute.BloodColor))
+        {
+            color = Color.FromHtml(_enemyAttribute.BloodColor);
+        }
+        else
+        {
+            color = new Color(1, 1, 1, 0.5f);
+        }
+        
         var effPos = Position + new Vector2(0, -Altitude);
         //血液特效
         var blood = ObjectManager.GetPoolItem<AutoDestroyParticles>(ResourcePath.prefab_effect_enemy_EnemyBlood0001_tscn);
@@ -105,24 +124,54 @@ public partial class Enemy : AiRole
         var realVelocity = GetRealVelocity();
         var velocity = (realVelocity * 1.5f).LimitLength(80);
         //创建敌人碎片
-        var count = Utils.Random.RandomRangeInt(3, 6);
-        for (var i = 0; i < count; i++)
+        if (_enemyAttribute.BodyFragment != null)
         {
-            var debris = Create(Ids.Id_enemy_dead0001);
-            debris.PutDown(effPos, RoomLayerEnum.NormalLayer);
-            debris.MoveController.AddForce(velocity);
+            var count = Utils.Random.RandomRangeInt(3, 6);
+            for (var i = 0; i < count; i++)
+            {
+                var debris = Create(_enemyAttribute.BodyFragment);
+                debris.PutDown(effPos, RoomLayerEnum.NormalLayer);
+                debris.MoveController.AddForce(velocity);
+                if (debris is EnemyDead0001 dead0001)
+                {
+                    var gpuParticles2D = dead0001.GetNodeOrNull<GpuParticles2D>("GPUParticles2D");
+                    if (gpuParticles2D != null)
+                    {
+                        var particleProcessMaterial = (ParticleProcessMaterial)gpuParticles2D.ProcessMaterial;
+                        particleProcessMaterial.Color = color;
+                    }
+                }
+            }
         }
         
         //派发敌人死亡信号
         EventManager.EmitEvent(EventEnum.OnEnemyDie, this);
 
-        var obj = ResourceManager.LoadAndInstantiate<EnemyBlood0002>(ResourcePath.prefab_effect_enemy_EnemyBlood0002_tscn);
+        var obj = ResourceManager.LoadAndInstantiate<EnemyBlood0002>(
+            Utils.Random.RandomChoose(
+                ResourcePath.prefab_effect_enemy_EnemyBlood0002_tscn,
+                ResourcePath.prefab_effect_enemy_EnemyBlood0003_tscn,
+                ResourcePath.prefab_effect_enemy_EnemyBlood0004_tscn
+            )
+        );
         obj.AddToActivityRoot(RoomLayerEnum.NormalLayer);
         obj.InitRoom(AffiliationArea.RoomInfo);
         obj.Position = Position;
         obj.Rotation = PrevHitAngle;
         obj.ZIndex = AffiliationArea.RoomInfo.StaticImageCanvas.ZIndex;
+        obj.Modulate = color;
 
+        if (Utils.Random.RandomBoolean(0.04f)) //掉落心之容器
+        {
+            var activityObject = Create(Ids.Id_prop0002);
+            activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
+        }
+        else if (Utils.Random.RandomBoolean(0.015f)) //掉落护盾
+        {
+            var activityObject = Create(Ids.Id_prop0003);
+            activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
+        }
+        
         base.OnDie();
     }
 
@@ -134,25 +183,7 @@ public partial class Enemy : AiRole
             return;
         }
         
-        //看向目标
-        if (LookTarget != null && MountLookTarget)
-        {
-            var pos = LookTarget.Position;
-            LookPosition = pos;
-            //脸的朝向
-            var gPos = Position;
-            if (pos.X > gPos.X && Face == FaceDirection.Left)
-            {
-                Face = FaceDirection.Right;
-            }
-            else if (pos.X < gPos.X && Face == FaceDirection.Right)
-            {
-                Face = FaceDirection.Left;
-            }
-
-            //枪口跟随目标
-            MountPoint.SetLookAt(pos);
-        }
+        UpdateFace();
 
         if (RoleState.CanPickUpWeapon)
         {

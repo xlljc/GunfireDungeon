@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class WeaponBase
+    public partial class WeaponBase
     {
         /// <summary>
         /// 武器属性id

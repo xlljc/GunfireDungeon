@@ -41,6 +41,18 @@ public static class PreinstallMarkManager
         ShowInMapEditor = true
     };
 
+    /// <summary>
+    /// 丢失物体
+    /// </summary>
+    public static readonly MissActivityBase Miss = new MissActivityBase()
+    {
+        Id = "$Miss",
+        Name = "丢失引用",
+        Type = ActivityType.Other,
+        Icon = ResourcePath.resource_sprite_ui_commonIcon_UnknownActivity_png,
+        ShowInMapEditor = true
+    };
+
     private static Dictionary<ActivityType, List<ExcelConfig.ActivityBase>> _cache = new Dictionary<ActivityType, List<ExcelConfig.ActivityBase>>();
 
     private static bool _init = false;
@@ -80,6 +92,10 @@ public static class PreinstallMarkManager
         }
 
         ExcelConfig.ActivityBase_Map.TryGetValue(id, out var activityBase);
+        if (activityBase == null)
+        {
+            return Miss;
+        }
         return activityBase;
     }
 

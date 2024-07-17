@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -34,20 +34,25 @@ public class ActivityMark
     /// </summary>
     public float DelayTime { get; set; }
 
-     /// <summary>
-     /// 物体初始海拔高度
-     /// </summary>
-     public int Altitude { get; set; } = 8;
+    /// <summary>
+    /// 物体初始海拔高度
+    /// </summary>
+    public int Altitude { get; set; } = 8;
 
-     /// <summary>
-     /// 物体初始纵轴速度
-     /// </summary>
-     public float VerticalSpeed { get; set; } = 0;
+    /// <summary>
+    /// 物体初始纵轴速度
+    /// </summary>
+    public float VerticalSpeed { get; set; } = 0;
     
     /// <summary>
     /// 物体类型
     /// </summary>
     public ActivityType ActivityType { get; set; }
+
+    /// <summary>
+    /// 地牢房间加载完成事件
+    /// </summary>
+    public Action OnReadyEvent;
     
     /// <summary>
     /// 快速创建标记

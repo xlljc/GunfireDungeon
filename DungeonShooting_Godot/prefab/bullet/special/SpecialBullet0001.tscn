@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbs2xm3rn8ya1"]
+
+[ext_resource type="Script" path="res://src/game/activity/bullet/special/SpecialBullet0001.cs" id="1_n2flm"]
+[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="2_w38kf"]
+[ext_resource type="Texture2D" uid="uid://bskw374th4d8w" path="res://resource/sprite/bullet/special/SpecialBullet0001.png" id="3_ngxxk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2deln"]
+resource_local_to_scene = true
+shader = ExtResource("2_w38kf")
+shader_parameter/blend = Color(0, 0, 0, 0.470588)
+shader_parameter/schedule = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s06lj"]
+resource_local_to_scene = true
+shader = ExtResource("2_w38kf")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afa32"]
+atlas = ExtResource("3_ngxxk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2eoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afa32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpecialBullet0001" type="CharacterBody2D" node_paths=PackedStringArray("ShadowSprite", "AnimatedSprite", "Collision")]
+script = ExtResource("1_n2flm")
+ShadowSprite = NodePath("ShadowSprite")
+AnimatedSprite = NodePath("AnimatedSprite")
+Collision = NodePath("Collision")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_2deln")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_s06lj")
+sprite_frames = SubResource("SpriteFrames_e2eoq")
+
+[node name="Collision" type="CollisionShape2D" parent="."]

@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class Sound
+    public partial class Sound
     {
         /// <summary>
         /// 音效id

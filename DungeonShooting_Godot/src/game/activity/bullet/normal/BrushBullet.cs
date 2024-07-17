@@ -1,5 +1,4 @@
-﻿
-using Godot;
+﻿using Godot;
 
 /// <summary>
 /// 带笔刷的子弹

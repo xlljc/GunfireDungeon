@@ -33,7 +33,7 @@ public class CheckInteractiveResult
     /// <summary>
     /// 互动物体
     /// </summary>
-    public ActivityObject Target;
+    public IInteractive Target;
     /// <summary>
     /// 是否可以互动
     /// </summary>
@@ -43,18 +43,18 @@ public class CheckInteractiveResult
     /// </summary>
     public InteractiveType Type = InteractiveType.PickUp;
 
-    public CheckInteractiveResult(ActivityObject target)
+    public CheckInteractiveResult(IInteractive target)
     {
         Target = target;
     }
     
-    public CheckInteractiveResult(ActivityObject target, bool canInteractive)
+    public CheckInteractiveResult(IInteractive target, bool canInteractive)
     {
         Target = target;
         CanInteractive = canInteractive;
     }
     
-    public CheckInteractiveResult(ActivityObject target, bool canInteractive, InteractiveType type)
+    public CheckInteractiveResult(IInteractive target, bool canInteractive, InteractiveType type)
     {
         Target = target;
         CanInteractive = canInteractive;

@@ -143,7 +143,7 @@ public partial class Knife : Weapon
                 }
                 bullet.MoveController.ScaleAllVelocity(scale);
                 bullet.Rotation += Mathf.Pi;
-                bullet.Camp = Master.Camp;
+                bullet.Camp = TriggerRole.Camp;
                 bullet.RefreshBulletColor(false);
             }
         }

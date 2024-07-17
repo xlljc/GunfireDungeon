@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class AiAttackAttr
+    public partial class AiAttackAttr
     {
         /// <summary>
         /// Id

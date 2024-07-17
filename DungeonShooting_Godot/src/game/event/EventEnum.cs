@@ -7,6 +7,11 @@ using System.Collections.Generic;
 public enum EventEnum
 {
     /// <summary>
+    /// 切换玩家角色, 参数为<see cref="Role"/>
+    /// </summary>
+    OnChangePlayerRole,
+    
+    /// <summary>
     /// 敌人死亡, 参数为死亡的敌人的实例, 参数类型为<see cref="Role"/>
     /// </summary>
     OnEnemyDie,

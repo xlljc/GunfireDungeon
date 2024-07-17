@@ -76,7 +76,7 @@ public partial class PauseMenuPanel : PauseMenu
         else //正常重新开始
         {
             UiManager.Open_Loading();
-            GameApplication.Instance.DungeonManager.RestartDungeon(false, GameApplication.Instance.DungeonConfig, () =>
+            GameApplication.Instance.DungeonManager.RestartDungeon(false, GameApplication.Instance.FirstDungeonConfig, () =>
             {
                 UiManager.Destroy_Loading();
             });

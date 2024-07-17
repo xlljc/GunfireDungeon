@@ -7,10 +7,13 @@ namespace AiState;
 /// </summary>
 public class AiAstonishedState : StateBase<AiRole, AIStateEnum>
 {
+    /// <summary>
+    /// 用于判断是否进入过惊讶状态
+    /// </summary>
+    public bool IsEntred = false;
+    
     private float _timer;
     private object[] _args;
-    //用于判断是否进入过惊讶状态
-    private bool _flag = false;
     
     public AiAstonishedState() : base(AIStateEnum.AiAstonished)
     {
@@ -25,22 +28,19 @@ public class AiAstonishedState : StateBase<AiRole, AIStateEnum>
             return;
         }
 
-        if (_flag)
+        if (IsEntred || !Master.AnimationPlayer.HasAnimation(AnimatorNames.Astonished))
         {
             ChangeNextState(args);
             return;
         }
 
-        _flag = true;
+        IsEntred = true;
         _args = args;
-        
+
         _timer = 0.6f;
-        
+
         //播放惊讶表情
-        if (Master.AnimationPlayer.HasAnimation(AnimatorNames.Astonished))
-        {
-            Master.AnimationPlayer.Play(AnimatorNames.Astonished);
-        }
+        Master.AnimationPlayer.Play(AnimatorNames.Astonished);
     }
 
     public override void Process(float delta)

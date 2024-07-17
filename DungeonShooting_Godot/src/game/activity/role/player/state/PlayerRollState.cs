@@ -65,6 +65,8 @@ public class PlayerRollState : StateBase<Player, PlayerStateEnum>
         {
             Master.Face = FaceDirection.Left;
         }
+
+        SoundManager.PlaySoundByConfigDelay("role_rolling", Master.Position, 0.25f);
         
         yield return Master.AnimatedSprite.ToSignal(Master.AnimatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
         _coroutineId = -1;

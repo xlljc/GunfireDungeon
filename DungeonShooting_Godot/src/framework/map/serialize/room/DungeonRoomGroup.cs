@@ -20,6 +20,18 @@ public class DungeonRoomGroup : IClone<DungeonRoomGroup>
     /// </summary>
     [JsonInclude]
     public string TileSet;
+
+    /// <summary>
+    /// 背景颜色
+    /// </summary>
+    [JsonInclude]
+    public Color BgColor;
+
+    /// <summary>
+    /// 音乐ID
+    /// </summary>
+    [JsonInclude]
+    public string SoundId;
     
     /// <summary>
     /// 普通战斗房间, 进入该房间时会关上门, 并刷出若干波敌人, 消灭所有敌人后开门
@@ -207,6 +219,8 @@ public class DungeonRoomGroup : IClone<DungeonRoomGroup>
         var inst = new DungeonRoomGroup();
         inst.GroupName = GroupName;
         inst.TileSet = TileSet;
+        inst.SoundId = SoundId;
+        inst.BgColor = BgColor;
         inst.BattleList.AddRange(BattleList);
         inst.InletList.AddRange(InletList);
         inst.OutletList.AddRange(OutletList);

@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class ActivityMaterial
+    public partial class ActivityMaterial
     {
         /// <summary>
         /// 表Id

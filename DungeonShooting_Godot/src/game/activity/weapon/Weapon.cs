@@ -1157,8 +1157,10 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         //播放开火动画
         if (IsAutoPlaySpriteFrames)
         {
-            PlaySpriteAnimation(AnimatorNames.Fire);
-            PlayAnimationPlayer(AnimatorNames.Fire);
+            if (!PlayAnimationPlayer(AnimatorNames.Fire))
+            {
+                PlaySpriteAnimation(AnimatorNames.Fire);
+            }
         }
 
         //播放射击音效
@@ -1443,15 +1445,19 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         {
             if (Attribute.BeLoadedSoundDelayTime <= 0)
             {
-                PlaySpriteAnimation(AnimatorNames.BeLoaded);
-                PlayAnimationPlayer(AnimatorNames.BeLoaded);
+                if (!PlayAnimationPlayer(AnimatorNames.BeLoaded))
+                {
+                    PlaySpriteAnimation(AnimatorNames.BeLoaded);
+                }
             }
             else
             {
                 this.CallDelay(Attribute.BeLoadedSoundDelayTime, () =>
                 {
-                    PlaySpriteAnimation(AnimatorNames.BeLoaded);
-                    PlayAnimationPlayer(AnimatorNames.BeLoaded);
+                    if (!PlayAnimationPlayer(AnimatorNames.BeLoaded))
+                    {
+                        PlaySpriteAnimation(AnimatorNames.BeLoaded);
+                    }
                 });
             }
         }
@@ -1578,8 +1584,10 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         //播放换弹动画
         if (IsAutoPlaySpriteFrames)
         {
-            PlaySpriteAnimation(AnimatorNames.Reloading);
-            PlayAnimationPlayer(AnimatorNames.Reloading);
+            if (!PlayAnimationPlayer(AnimatorNames.Reloading))
+            {
+                PlaySpriteAnimation(AnimatorNames.Reloading);
+            }
         }
             
         //播放换弹音效
@@ -1775,13 +1783,18 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
     }
 
-    //播放动画
-    private void PlayAnimationPlayer(string name)
+    /// <summary>
+    /// 播放 AnimationPlayer 动画, 如果这个动画不存在, 则什么也不会发生
+    /// </summary>
+    public bool PlayAnimationPlayer(string name)
     {
         if (AnimationPlayer != null && AnimationPlayer.HasAnimation(name))
         {
             AnimationPlayer.Play(name);
+            return true;
         }
+
+        return false;
     }
 
     //帧动画播放结束

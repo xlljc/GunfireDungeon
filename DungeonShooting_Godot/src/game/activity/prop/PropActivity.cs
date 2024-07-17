@@ -1,5 +1,4 @@
-﻿
-using Godot;
+﻿using Godot;
 
 /// <summary>
 /// 道具基类

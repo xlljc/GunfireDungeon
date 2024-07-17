@@ -22,11 +22,16 @@ public class AiNotifyState : StateBase<AiRole, AIStateEnum>
             //throw new Exception("进入 AIAdvancedStateEnum.AiNotify 没有攻击目标!");
         }
         _timer = 1.2f;
-        //通知其它角色
-        Master.World.NotifyEnemyTarget(Master, Master.LookTarget);
+        
         if (Master.AnimationPlayer.HasAnimation(AnimatorNames.Notify))
         {
+            //通知其它角色
+            Master.World.NotifyEnemyTarget(Master, Master.LookTarget);
             Master.AnimationPlayer.Play(AnimatorNames.Notify);
+        }
+        else
+        {
+            ChangeState(AIStateEnum.AiTailAfter);
         }
     }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 /// <summary>
@@ -76,7 +77,7 @@ public class DungeonGenerator
     private int _failCount = 0;
 
     //最大尝试次数
-    private int _maxTryCount = 10;
+     private int _maxTryCount = 10;
     private int _currMaxLayer = 0;
 
     //地牢房间规则处理类
@@ -85,6 +86,8 @@ public class DungeonGenerator
     //上一个房间
     private RoomInfo prevRoomInfo = null;
     private readonly List<RoomInfo> _tempList = new List<RoomInfo>();
+    
+    private List<DungeonRoomSplit> _battleRoomList;
     
     public DungeonGenerator(DungeonConfig config, SeedRandom seedRandom)
     {
@@ -103,6 +106,8 @@ public class DungeonGenerator
         
         Debug.Log("创建地牢生成器, 随机种子: " + Random.Seed);
         RoomGroup.InitWeight(Random);
+
+        _battleRoomList = RoomGroup.BattleList.ToList();
     }
 
     /// <summary>
@@ -221,6 +226,7 @@ public class DungeonGenerator
                     currTryCount++;
                     if (currTryCount >= maxTryCount)
                     {
+                        Debug.Log("生成失败, 房间总数: " + RoomInfos.Count);
                         return false;
                     }
 
@@ -281,7 +287,7 @@ public class DungeonGenerator
                 {
                     _rule.GenerateRoomFail(tempPrevRoomInfo, nextRoomType);
 
-                    //Debug.Log("生成第" + (_count + 1) + "个房间失败! 失败原因: " + errorCode);
+                    //Debug.Log("生成第" + (RoomInfos.Count + 1) + "个房间失败! 失败原因: " + errorCode);
                     if (errorCode == GenerateRoomErrorCode.OutArea)
                     {
                         _failCount++;
@@ -299,6 +305,7 @@ public class DungeonGenerator
                     currTryCount++;
                     if (currTryCount >= maxTryCount)
                     {
+                        Debug.Log("生成失败, 房间总数: " + RoomInfos.Count);
                         return false;
                     }
                 }
@@ -335,7 +342,18 @@ public class DungeonGenerator
             }
             else
             {
-                roomSplit = RoomGroup.GetRandomRoom(roomType);
+                //原代码
+                //roomSplit = RoomGroup.GetRandomRoom(roomType);
+                
+                //临时处理, 不生成相同的战斗房间
+                if (roomType == DungeonRoomType.Battle && _battleRoomList.Count > 0)
+                {
+                    roomSplit = Random.RandomChooseAndRemove(_battleRoomList);
+                }
+                else
+                {
+                    roomSplit = RoomGroup.GetRandomRoom(roomType);
+                }
             }
         }
         
@@ -375,11 +393,11 @@ public class DungeonGenerator
                 if (direction == RoomDirection.Up) //上
                 {
                     room.Position = new Vector2I(prevRoom.Position.X + offset,
-                        prevRoom.Position.Y - room.Size.Y - space);
+                        prevRoom.Position.Y - room.Size.Y - space - 1);
                 }
                 else if (direction == RoomDirection.Right) //右
                 {
-                    room.Position = new Vector2I(prevRoom.Position.X + prevRoom.Size.Y + space,
+                    room.Position = new Vector2I(prevRoom.Position.X + prevRoom.Size.X + space,
                         prevRoom.Position.Y + offset);
                 }
                 else if (direction == RoomDirection.Down) //下
@@ -669,9 +687,14 @@ public class DungeonGenerator
             }
         }
 
-        //包含1个拐角的通道
-        return TryConnectCrossDoor(roomInfo, roomDoor, nextRoomInfo, nextRoomDoor);
-        //包含2个拐角的通道 (后面再开发)
+        if (Config.AllowedCornerAisles)
+        {
+            //包含1个拐角的通道
+            return TryConnectCrossDoor(roomInfo, roomDoor, nextRoomInfo, nextRoomDoor);
+            //包含2个拐角的通道 (后面再开发)
+        }
+
+        return false;
     }
 
     /// <summary>

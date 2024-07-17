@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class LiquidMaterial
+    public partial class LiquidMaterial
     {
         /// <summary>
         /// 表Id

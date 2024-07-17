@@ -96,26 +96,53 @@ public class DefaultDungeonRule : DungeonRule
             {
                 if (Generator.BattleRoomInfos.Count == Config.BattleRoomCount / (Config.RewardRoomCount + 1) * (Generator.RewardRoomInfos.Count + 1)) //奖励房间
                 {
-                    return DungeonRoomType.Reward;
+                    if (RoomGroup.RewardList.Count > 0)
+                    {
+                        return DungeonRoomType.Reward;
+                    }
+
+                    return DungeonRoomType.Battle;
                 }
             }
+
             if (Generator.ShopRoomInfos.Count < Config.ShopRoomCount)
             {
+                //原本条件
                 if (Generator.BattleRoomInfos.Count == Config.BattleRoomCount / (Config.ShopRoomCount + 1) * (Generator.ShopRoomInfos.Count + 1)) //商店
                 {
-                    return DungeonRoomType.Shop;
+                    if (RoomGroup.ShopList.Count > 0)
+                    {
+                        return DungeonRoomType.Shop;
+                    }
+                
+                    return DungeonRoomType.Battle;
+                }
+                else if (Generator.BattleRoomInfos.Count == Config.BattleRoomCount) //商店
+                {
+                    if (RoomGroup.ShopList.Count > 0)
+                    {
+                        return DungeonRoomType.Shop;
+                    }
+
+                    return DungeonRoomType.Battle;
                 }
             }
         }
 
         if (Generator.BattleRoomInfos.Count >= Config.BattleRoomCount) //战斗房间已满
         {
-            if (Generator.BossRoomInfos.Count < Config.BossRoomCount) //最后一个房间是boss房间
+            if ((Generator.BattleRoomInfos.Count >= Config.BattleRoomCount + 1 && RoomGroup.BossList.Count == 0) ||
+                Config.BossRoomCount == 0)
+            {
+                return DungeonRoomType.Outlet;
+            }
+            else if (Generator.BossRoomInfos.Count < Config.BossRoomCount) //最后一个房间是boss房间
             {
                 if (RoomGroup.BossList.Count == 0) //没有预设boss房间
                 {
                     return DungeonRoomType.Battle;
                 }
+
                 //生成boss房间
                 return DungeonRoomType.Boss;
             }

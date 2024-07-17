@@ -10,6 +10,11 @@ public class DungeonConfig
     /// 地牢使用的随机种子
     /// </summary>
     public int? RandomSeed = null;
+
+    /// <summary>
+    /// 当前地牢层级
+    /// </summary>
+    public int DungeonLayer;
     
     /// <summary>
     /// 地牢组名称
@@ -95,12 +100,18 @@ public class DungeonConfig
     /// 纵轴范围
     /// </summary>
     public int RangeY = 120;
+
+    /// <summary>
+    /// 是否允许包含拐角的过道
+    /// </summary>
+    public bool AllowedCornerAisles = false;
     
     //----------------------- 地牢编辑使用 -------------------------
     /// <summary>
     /// 是否指定了房间
     /// </summary>
     public bool HasDesignatedRoom => DesignatedRoom != null && DesignatedRoom.Count > 0;
+
     /// <summary>
     /// 指定预设的房间类型
     /// </summary>

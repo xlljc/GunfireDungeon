@@ -2,6 +2,17 @@
   "Test1": {
     "GroupName": "Test1",
     "TileSet": "TileSet1",
+    "BgColor": {
+      "R8": 0,
+      "G8": 0,
+      "B8": 0,
+      "A8": 0,
+      "H": 0,
+      "S": 0,
+      "V": 0,
+      "Luminance": 0
+    },
+    "SoundId": null,
     "BattleList": [
       {
         "ErrorType": 0,
@@ -64,22 +75,5 @@
     ],
     "EventList": [],
     "Remark": ""
-  },
-  "test2": {
-    "GroupName": "test2",
-    "TileSet": "TileSet1",
-    "BattleList": [
-      {
-        "ErrorType": 1,
-        "Path": "resource/map/tileMaps/test2/battle/1"
-      }
-    ],
-    "InletList": [],
-    "OutletList": [],
-    "BossList": [],
-    "RewardList": [],
-    "ShopList": [],
-    "EventList": [],
-    "Remark": "\u611F\u8C22\u5927\u5BB6\u7684\u652F\u6301"
   }
 }

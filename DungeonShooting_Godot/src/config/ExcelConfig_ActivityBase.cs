@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public class ActivityBase
+    public partial class ActivityBase
     {
         /// <summary>
         /// 物体唯一id <br/>
@@ -31,6 +31,7 @@ public static partial class ExcelConfig
         /// Prop(道具): 9 <br/>
         /// Treasure(宝箱): 10 <br/>
         /// Npc: 11 <br/>
+        /// Boss: 12 <br/>
         /// Other(其它类型): 99
         /// </summary>
         [JsonInclude]
@@ -95,7 +96,8 @@ public static partial class ExcelConfig
         public string Icon;
 
         /// <summary>
-        /// 是否在地图编辑器中显示该物体
+        /// 是否在地图编辑器中显示该物体 <br/>
+        /// 仅对角色, 武器, 道具, 敌人和Boss类型对物体有效
         /// </summary>
         [JsonInclude]
         public bool ShowInMapEditor;

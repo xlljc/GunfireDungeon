@@ -24,20 +24,10 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_enemy0002 = "enemy0002";
         /// <summary>
-        /// 名称: 敌人3 <br/>
-        /// 简介: 敌人3
+        /// 名称: Boss <br/>
+        /// 简介: Boss
         /// </summary>
-        public const string Id_enemy0003 = "enemy0003";
-        /// <summary>
-        /// 名称: 敌人4 <br/>
-        /// 简介: 敌人3
-        /// </summary>
-        public const string Id_enemy0004 = "enemy0004";
-        /// <summary>
-        /// 名称: 敌人5 <br/>
-        /// 简介: 敌人3
-        /// </summary>
-        public const string Id_enemy0005 = "enemy0005";
+        public const string Id_boss0001 = "boss0001";
         /// <summary>
         /// 名称: 商店老板 <br/>
         /// 简介: 商店老板
@@ -158,6 +148,16 @@ public partial class ActivityObject
         /// 简介: 
         /// </summary>
         public const string Id_bullet0009 = "bullet0009";
+        /// <summary>
+        /// 名称: boss召唤物子弹 <br/>
+        /// 简介: 
+        /// </summary>
+        public const string Id_summons0001 = "summons0001";
+        /// <summary>
+        /// 名称: boss特殊子弹 <br/>
+        /// 简介: 
+        /// </summary>
+        public const string Id_special0001 = "special0001";
         /// <summary>
         /// 名称:  <br/>
         /// 简介: 

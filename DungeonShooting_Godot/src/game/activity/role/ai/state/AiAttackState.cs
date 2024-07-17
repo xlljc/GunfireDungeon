@@ -206,9 +206,10 @@ public class AiAttackState : StateBase<AiRole, AIStateEnum>
                     Master.MountLookTarget = true;
                 }
                 
-                if (AttackState == AiAttackEnum.Attack && weapon.Attribute.AiAttackAttr.FiringStand) //开火时站立不动
+                if (AttackState == AiAttackEnum.Attack &&
+                    (Master.FiringStand || weapon.Attribute.AiAttackAttr.FiringStand)) //开火时站立不动
                 {
-                    Master.DoIdle();
+                    Master.BasisVelocity = Vector2.Zero;
                 }
                 else //正常移动
                 {
@@ -239,6 +240,15 @@ public class AiAttackState : StateBase<AiRole, AIStateEnum>
         else //攻击状态
         {
             Master.Attack();
+            
+            if (Master.FiringStand) //开火时站立不动
+            {
+                Master.BasisVelocity = Vector2.Zero;
+            }
+            else //正常移动
+            {
+                MoveHandler(delta);
+            }
         }
     }
     

@@ -39,6 +39,7 @@ public static partial class UiManager
         public const string TileSetEditorProject = "TileSetEditorProject";
         public const string EditorManager = "EditorManager";
         public const string EditorTips = "EditorTips";
+        public const string Victory = "Victory";
         public const string TileSetEditorTerrain = "TileSetEditorTerrain";
         public const string EditorColorPicker = "EditorColorPicker";
         public const string RoomUI = "RoomUI";
@@ -1674,6 +1675,54 @@ public static partial class UiManager
     public static UI.EditorTips.EditorTipsPanel[] Get_EditorTips_Instance()
     {
         return GetUiInstance<UI.EditorTips.EditorTipsPanel>(nameof(UI.EditorTips.EditorTips));
+    }
+
+    /// <summary>
+    /// 创建 Victory, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static UI.Victory.VictoryPanel Create_Victory()
+    {
+        return CreateUi<UI.Victory.VictoryPanel>(UiNames.Victory);
+    }
+
+    /// <summary>
+    /// 打开 Victory, 并返回UI实例
+    /// </summary>
+    public static UI.Victory.VictoryPanel Open_Victory()
+    {
+        return OpenUi<UI.Victory.VictoryPanel>(UiNames.Victory);
+    }
+
+    /// <summary>
+    /// 隐藏 Victory 的所有实例
+    /// </summary>
+    public static void Hide_Victory()
+    {
+        var uiInstance = Get_Victory_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Victory 的所有实例
+    /// </summary>
+    public static void Destroy_Victory()
+    {
+        var uiInstance = Get_Victory_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Victory 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static UI.Victory.VictoryPanel[] Get_Victory_Instance()
+    {
+        return GetUiInstance<UI.Victory.VictoryPanel>(nameof(UI.Victory.Victory));
     }
 
     /// <summary>

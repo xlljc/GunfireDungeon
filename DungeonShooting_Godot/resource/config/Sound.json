@@ -316,5 +316,41 @@
     "Path": "res://resource/sound/sfx/common/gold.ogg",
     "Volume": 1.5,
     "Remark": "\u91D1\u5E01"
+  },
+  {
+    "Id": "enemy_hurt",
+    "Path": "res://resource/sound/sfx/role/enemy/EnemyHurt.ogg",
+    "Volume": 1,
+    "Remark": "\u602A\u7269\u53D7\u4F24\u97F3\u6548"
+  },
+  {
+    "Id": "enemy_die",
+    "Path": "res://resource/sound/sfx/role/enemy/Enemydie.mp3",
+    "Volume": 1,
+    "Remark": "\u602A\u7269\u6B7B\u4EA1\u7206\u679C\u6C41\u97F3\u6548"
+  },
+  {
+    "Id": "role_hurt",
+    "Path": "res://resource/sound/sfx/role/player/RoleHurt.mp3",
+    "Volume": 1,
+    "Remark": "\u89D2\u8272\u53D7\u4F24\u97F3\u6548"
+  },
+  {
+    "Id": "role_die",
+    "Path": "res://resource/sound/sfx/role/player/RoleDie.mp3",
+    "Volume": 1,
+    "Remark": "\u89D2\u8272\u6B7B\u4EA1\u97F3\u6548"
+  },
+  {
+    "Id": "role_rolling",
+    "Path": "res://resource/sound/sfx/role/player/Rolling.mp3",
+    "Volume": 1,
+    "Remark": "\u89D2\u8272\u7FFB\u6EDA"
+  },
+  {
+    "Id": "role_pickup",
+    "Path": "res://resource/sound/sfx/role/player/PickupWeapon.mp3",
+    "Volume": 1,
+    "Remark": "\u89D2\u8272\u6309E\u4EA4\u4E92\u6361\u8D77"
   }
 ]

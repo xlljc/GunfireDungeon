@@ -287,7 +287,11 @@ public partial class AffiliationArea : Area2D, IDestroy
     {
         if (IsFirstEnterFlag)
         {
-            RoomInfo.World.Player.OnFirstEnterRoom(RoomInfo);
+            if (RoomInfo.World.Player is Player player)
+            {
+                player.OnFirstEnterRoom(RoomInfo);
+            }
+
             EventManager.EmitEvent(EventEnum.OnPlayerFirstEnterRoom, RoomInfo);
         }
         EventManager.EmitEvent(EventEnum.OnPlayerEnterRoom, RoomInfo);

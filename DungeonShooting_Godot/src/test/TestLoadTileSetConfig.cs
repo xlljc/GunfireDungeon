@@ -56,7 +56,7 @@ public partial class TestLoadTileSetConfig : Node2D
         //加载房间配置信息
         var asText = ResourceManager.LoadText("res://" + GameConfig.RoomTileSetDir + GameConfig.TileSetConfigFile);
         _tileSetConfig = JsonSerializer.Deserialize<System.Collections.Generic.Dictionary<string, TileSetSplit>>(asText);
-		
+        
         //加载所有数据
         foreach (var tileSetSplit in _tileSetConfig)
         {
