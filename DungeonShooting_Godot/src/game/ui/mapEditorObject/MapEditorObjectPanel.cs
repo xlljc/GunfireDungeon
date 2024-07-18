@@ -98,12 +98,29 @@ public partial class MapEditorObjectPanel : MapEditorObject, IEditorTab
     /// </summary>
     public void OnSaveData(DungeonTileInfo tileInfo)
     {
-        tileInfo.NormalLayerObjects.Clear();
+        if (tileInfo.NormalLayerObjects == null)
+        {
+            tileInfo.NormalLayerObjects = new List<RoomObjectInfo>();
+        }
+        else
+        {
+            tileInfo.NormalLayerObjects.Clear();
+        }
+
         foreach (var normalLayerObject in NormalLayerObjects)
         {
             tileInfo.NormalLayerObjects.Add(normalLayerObject.Clone());
         }
-        tileInfo.YSortLayerObjects.Clear();
+
+        if (tileInfo.YSortLayerObjects == null)
+        {
+            tileInfo.YSortLayerObjects = new List<RoomObjectInfo>();
+        }
+        else
+        {
+            tileInfo.YSortLayerObjects.Clear();
+        }
+
         foreach (var ySortLayerObject in YSortLayerObjects)
         {
             tileInfo.YSortLayerObjects.Add(ySortLayerObject.Clone());

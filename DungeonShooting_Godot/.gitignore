@@ -13,3 +13,4 @@
 /excelTool/publish
 /excelTool/Folder.DotSettings.user
 /DungeonShooting.csproj.old*
+**/.DS_Store

@@ -169,7 +169,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //背景颜色
         RenderingServer.SetDefaultClearColor(new Color(0, 0, 0, 1));
         //随机化种子
-        //GD.Randomize();
+        GD.Randomize();
         //固定帧率
         //Engine.MaxFps = TargetFps;
         //调试绘制开关
@@ -188,7 +188,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //初始化ui
         UiManager.Init();
         //调试Ui
-        //UiManager.Open_Debugger();
+        UiManager.Open_Debugger();
         
         // 初始化鼠标
         InitCursor();

@@ -99,6 +99,39 @@ public class BrushImageData
         PixelHeight = PixelMaxY - PixelMinY;
     }
 
+    private BrushImageData()
+    {
+    }
+
+    /// <summary>
+    /// 调节笔刷颜色, 并返回新的数据对象
+    /// </summary>
+    public BrushImageData Modulate(Color color)
+    {
+        var brushImageData = new BrushImageData();
+        brushImageData.Material = Material;
+        brushImageData.Width = Width;
+        brushImageData.Height = Height;
+        brushImageData.PixelMinX = PixelMinX;
+        brushImageData.PixelMinY = PixelMinY;
+        brushImageData.PixelMaxX = PixelMaxX;
+        brushImageData.PixelMaxY = PixelMaxY;
+        brushImageData.PixelWidth = PixelWidth;
+        brushImageData.PixelHeight = PixelHeight;
+        brushImageData.Pixels = new BrushPixelData[Pixels.Length];
+        for (var i = 0; i < Pixels.Length; i++)
+        {
+            var brushPixelData = brushImageData.Pixels[i] = new BrushPixelData();
+            var pixelData = Pixels[i];
+            brushPixelData.X = pixelData.X;
+            brushPixelData.Y = pixelData.Y;
+            brushPixelData.Material = pixelData.Material;
+            brushPixelData.Color = pixelData.Color * color;
+        }
+
+        return brushImageData;
+    }
+
     private static Image GetImageData(string path)
     {
         if (!_imageData.TryGetValue(path, out var image))

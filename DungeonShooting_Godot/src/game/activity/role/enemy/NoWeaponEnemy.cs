@@ -8,7 +8,7 @@ using Godot;
 [Tool]
 public partial class NoWeaponEnemy : Enemy
 {
-    //private BrushImageData _brushData;
+    private BrushImageData _brushData;
     
     public override void OnInit()
     {
@@ -18,16 +18,16 @@ public partial class NoWeaponEnemy : Enemy
         WeaponPack.SetCapacity(0);
         AnimationPlayer.AnimationFinished += OnAnimationFinished;
         
-        //_brushData = LiquidBrushManager.GetBrush("0002");
+        _brushData = LiquidBrushManager.GetBrush("0002");
     }
 
-    // protected override void Process(float delta)
-    // {
-    //     base.Process(delta);
-    //
-    //     //测试笔刷
-    //     //DrawLiquid(_brushData);
-    // }
+    protected override void Process(float delta)
+    {
+        base.Process(delta);
+    
+        //测试笔刷
+        DrawLiquid(_brushData);
+    }
 
     public override void Attack()
     {

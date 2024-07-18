@@ -132,14 +132,11 @@ public partial class Enemy : AiRole
                 var debris = Create(_enemyAttribute.BodyFragment);
                 debris.PutDown(effPos, RoomLayerEnum.NormalLayer);
                 debris.MoveController.AddForce(velocity);
-                if (debris is EnemyDead0001 dead0001)
+                
+                // 设置颜色
+                if (debris is ICorpsesFragment corpsesFragment)
                 {
-                    var gpuParticles2D = dead0001.GetNodeOrNull<GpuParticles2D>("GPUParticles2D");
-                    if (gpuParticles2D != null)
-                    {
-                        var particleProcessMaterial = (ParticleProcessMaterial)gpuParticles2D.ProcessMaterial;
-                        particleProcessMaterial.Color = color;
-                    }
+                    corpsesFragment.SetBloodColor(color);
                 }
             }
         }

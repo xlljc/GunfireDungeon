@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/game/effects/enemy/EnemyDead0001.cs" id="1_1re5v"]
 [ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="2_s7bee"]
-[ext_resource type="Texture2D" uid="uid://cn64eauvwx1uj" path="res://resource/sprite/role/enemy0001/enemy0001_Debris.png" id="3_uinig"]
+[ext_resource type="Texture2D" uid="uid://bklcysmuwku5s" path="res://resource/sprite/role/enemy0001/enemy0001_Debris.png" id="3_uinig"]
 [ext_resource type="Texture2D" uid="uid://h7hkgbwj1li" path="res://resource/sprite/common/Smoke.png" id="4_t55wd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1mj2"]
@@ -177,13 +177,14 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.4
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_rutlp")
-color = Color(0.992157, 0.788235, 0.788235, 0.627451)
+color = Color(1, 1, 1, 0.627451)
 color_ramp = SubResource("GradientTexture1D_orgu0")
 anim_offset_max = 1.0
 
-[node name="Effect0001" type="CharacterBody2D" node_paths=PackedStringArray("ShadowSprite", "AnimatedSprite", "Collision")]
+[node name="Effect0001" type="CharacterBody2D" node_paths=PackedStringArray("GPUParticles", "ShadowSprite", "AnimatedSprite", "Collision")]
 collision_layer = 128
 script = ExtResource("1_1re5v")
+GPUParticles = NodePath("GPUParticles")
 ShadowSprite = NodePath("ShadowSprite")
 AnimatedSprite = NodePath("AnimatedSprite")
 Collision = NodePath("Collision")
@@ -199,7 +200,7 @@ sprite_frames = SubResource("SpriteFrames_15g84")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0xl2q")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_p3lv8")
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_ku1mm")

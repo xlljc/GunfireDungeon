@@ -386,7 +386,7 @@ public partial class DungeonManager : Node2D
         BrushImageData.ClearBrushData();
         QueueRedraw();
         
-        yield return new WaitForSeconds(3);
+        yield return 0;
 
         //鼠标还原
         GameApplication.Instance.Cursor.SetGuiMode(true);

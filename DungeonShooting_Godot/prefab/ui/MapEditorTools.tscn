@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4u66mxndxbrg"]
+[gd_scene load_steps=14 format=3 uid="uid://uova1lj10oxv"]
 
 [ext_resource type="Script" path="res://src/game/ui/mapEditorTools/MapEditorToolsPanel.cs" id="1_mqp1c"]
 [ext_resource type="Script" path="res://src/game/ui/mapEditorTools/DoorHoverArea.cs" id="2_6qfy3"]

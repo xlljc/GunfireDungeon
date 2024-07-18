@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using UI.RoomUI;
 
@@ -13,7 +14,7 @@ public partial class RoomMapPanel : RoomMap
     //需要刷新的问号的房间队列
     private List<RoomDoorInfo> _needRefresh = new List<RoomDoorInfo>();
     //正在使用的敌人标记列表
-    private List<Sprite2D> _enemySpriteList = new List<Sprite2D>();
+    private List<Sprite2D> _aiSpriteList = new List<Sprite2D>();
     //已经回收的敌人标记
     private Stack<Sprite2D> _spriteStack = new Stack<Sprite2D>();
     //是否放大地图
@@ -53,6 +54,8 @@ public partial class RoomMapPanel : RoomMap
 
     public override void Process(float delta)
     {
+        var player = World.Current.Player;
+        
         if (_transmissionTween == null) //不在传送过程中
         {
             if (!InputManager.Map)
@@ -75,27 +78,27 @@ public partial class RoomMapPanel : RoomMap
         
         //更新敌人位置
         {
-            var enemyList = World.Current.Role_InstanceList;
-            if (enemyList.Count == 0) //没有敌人
+            var aiList = World.Current.Role_InstanceList.Where(role => role != player).ToArray();
+            if (aiList.Length == 0) //没有敌人
             {
-                foreach (var sprite in _enemySpriteList)
+                foreach (var sprite in _aiSpriteList)
                 {
                     S_Root.RemoveChild(sprite);
                     _spriteStack.Push(sprite);
                 }
-                _enemySpriteList.Clear();
+                _aiSpriteList.Clear();
             }
             else //更新位置
             {
                 var count = 0; //绘制数量
-                for (var i = 0; i < enemyList.Count; i++)
+                for (var i = 0; i < aiList.Length; i++)
                 {
-                    var role = enemyList[i];
-                    if (role is AiRole enemy && !enemy.IsDestroyed && !enemy.IsDie && enemy.AffiliationArea != null && enemy.AffiliationArea.RoomInfo.RoomFogMask.IsExplored)
+                    var role = aiList[i];
+                    if (role is AiRole aiRole && !aiRole.IsDestroyed && !aiRole.IsDie && aiRole.AffiliationArea != null && aiRole.AffiliationArea.RoomInfo.RoomFogMask.IsExplored)
                     {
                         count++;
                         Sprite2D sprite;
-                        if (i >= _enemySpriteList.Count)
+                        if (i >= _aiSpriteList.Count)
                         {
                             if (_spriteStack.Count > 0)
                             {
@@ -107,26 +110,26 @@ public partial class RoomMapPanel : RoomMap
                                 sprite.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Block_png);
                                 sprite.Modulate = new Color(1, 0, 0);
                             }
-                            _enemySpriteList.Add(sprite);
+                            _aiSpriteList.Add(sprite);
                             S_Root.AddChild(sprite);
                         }
                         else
                         {
-                            sprite = _enemySpriteList[i];
+                            sprite = _aiSpriteList[i];
                         }
                         //更新标记位置
-                        sprite.Position = enemy.GetCenterPosition() / 16;
+                        sprite.Position = aiRole.GetCenterPosition() / 16;
                     }
                 }
                 
                 //回收多余的标记
-                while (_enemySpriteList.Count > count)
+                while (_aiSpriteList.Count > count)
                 {
-                    var index = _enemySpriteList.Count - 1;
-                    var sprite = _enemySpriteList[index];
+                    var index = _aiSpriteList.Count - 1;
+                    var sprite = _aiSpriteList[index];
                     S_Root.RemoveChild(sprite);
                     _spriteStack.Push(sprite);
-                    _enemySpriteList.RemoveAt(index);
+                    _aiSpriteList.RemoveAt(index);
                 }
             }
         }
@@ -141,7 +144,6 @@ public partial class RoomMapPanel : RoomMap
             _needRefresh.Clear();
         }
 
-        var player = World.Current.Player;
         if (player != null)
         {
             //更新地图中心点位置

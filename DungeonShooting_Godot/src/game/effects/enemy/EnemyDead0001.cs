@@ -6,8 +6,14 @@ using Godot;
 /// 敌人死亡碎片
 /// </summary>
 [Tool]
-public partial class EnemyDead0001 : ActivityObject
+public partial class EnemyDead0001 : ActivityObject, ICorpsesFragment
 {
+    /// <summary>
+    /// 粒子播放器
+    /// </summary>
+    [Export, ExportFillNode]
+    public GpuParticles2D GPUParticles { get; private set; }
+    
     /// <summary>
     /// 上一帧笔刷坐标
     /// </summary>
@@ -30,8 +36,14 @@ public partial class EnemyDead0001 : ActivityObject
             Utils.Random.RandomRangeInt(-360, 360)
         );
         
-        StartCoroutine(EmitParticles());
         _brushData = LiquidBrushManager.GetBrush("0003");
+    }
+    
+    public void SetBloodColor(Color color)
+    {
+        _brushData = _brushData.Modulate(color);
+        GPUParticles.Modulate = color;
+        StartCoroutine(EmitParticles());
     }
 
     protected override void Process(float delta)
@@ -56,10 +68,9 @@ public partial class EnemyDead0001 : ActivityObject
 
     public IEnumerator EmitParticles()
     {
-        var gpuParticles2D = GetNode<GpuParticles2D>("GPUParticles2D");
-        gpuParticles2D.Emitting = true;
+        GPUParticles.Emitting = true;
         yield return new WaitForSeconds(Utils.Random.RandomRangeFloat(1f, 2.5f));
-        gpuParticles2D.Emitting = false;
+        GPUParticles.Emitting = false;
         yield return new WaitForSeconds(1);
         _playOver = true;
     }
