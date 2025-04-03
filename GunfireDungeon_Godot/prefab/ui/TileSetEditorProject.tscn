@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxrpxwsvveq8i"]
 
-[ext_resource type="Script" path="res://src/game/ui/tileSetEditorProject/TileSetEditorProjectPanel.cs" id="1_rklha"]
+[ext_resource type="Script" uid="uid://ci1wg3lwnvr0s" path="res://src/game/ui/tileSetEditorProject/TileSetEditorProjectPanel.cs" id="1_rklha"]
 [ext_resource type="Texture2D" uid="uid://blfvsup876agh" path="res://resource/sprite/ui/commonIcon/Search.png" id="3_htmoo"]
 [ext_resource type="Texture2D" uid="uid://n4atvj5fkcpg" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_6incc"]
 [ext_resource type="Texture2D" uid="uid://dggb6p4sdmfry" path="res://resource/sprite/ui/commonIcon/Edit.png" id="5_0y7kc"]

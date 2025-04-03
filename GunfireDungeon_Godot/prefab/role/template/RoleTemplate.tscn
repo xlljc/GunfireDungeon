@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyrcv2jdgr8cf"]
 
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="1_xedx7"]
-[ext_resource type="Script" path="res://src/framework/activity/hurt/HurtArea.cs" id="2_2eey0"]
-[ext_resource type="Script" path="res://src/game/activity/role/MountRotation.cs" id="3_1jj1i"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="1_xedx7"]
+[ext_resource type="Script" uid="uid://37sr6eeikn2p" path="res://src/framework/activity/hurt/HurtArea.cs" id="2_2eey0"]
+[ext_resource type="Script" uid="uid://u8ltei87jw4d" path="res://src/game/activity/role/MountRotation.cs" id="3_1jj1i"]
 [ext_resource type="SpriteFrames" uid="uid://c8h5svp76h3kw" path="res://resource/spriteFrames/role/Role_tip.tres" id="4_kn7in"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yif6x"]

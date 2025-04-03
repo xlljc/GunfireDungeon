@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://h7hkgbwj1li" path="res://resource/sprite/common/Smoke.png" id="1_bty2r"]
 [ext_resource type="Texture2D" uid="uid://uhhfgdhpk7i4" path="res://icon.png" id="1_d62vx"]
 
-
 [node name="TestRoomFog" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

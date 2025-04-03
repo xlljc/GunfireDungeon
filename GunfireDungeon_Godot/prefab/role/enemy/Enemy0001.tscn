@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://b8s1dgu63fddf"]
 
 [ext_resource type="PackedScene" uid="uid://dbrig6dq441wo" path="res://prefab/role/template/AiTemplate.tscn" id="1_2vqwe"]
-[ext_resource type="Script" path="res://src/game/activity/role/enemy/Enemy.cs" id="2_0pcq3"]
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="3_x8agd"]
+[ext_resource type="Script" uid="uid://bri0k6xeyrb1q" path="res://src/game/activity/role/enemy/Enemy.cs" id="2_0pcq3"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_x8agd"]
 [ext_resource type="SpriteFrames" uid="uid://cnctpyrn02rhd" path="res://resource/spriteFrames/role/Enemy0001.tres" id="4_qv8w5"]
 [ext_resource type="Animation" uid="uid://b4mgiysicdk2b" path="res://resource/animation/enemy/Enemy_reset.res" id="5_ffnft"]
 [ext_resource type="Animation" uid="uid://gvkkxspcdwrp" path="res://resource/animation/enemy/Enemy_astonished.res" id="5_jyt15"]
@@ -38,10 +38,10 @@ size = Vector2(12, 18)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur1ug"]
 _data = {
-"RESET": ExtResource("5_ffnft"),
-"astonished": ExtResource("5_jyt15"),
-"notify": ExtResource("6_x8gmo"),
-"query": ExtResource("7_e37p2")
+&"RESET": ExtResource("5_ffnft"),
+&"astonished": ExtResource("5_jyt15"),
+&"notify": ExtResource("6_x8gmo"),
+&"query": ExtResource("7_e37p2")
 }
 
 [node name="Enemy0001" node_paths=PackedStringArray("ViewRay", "NavigationAgent2D", "NavigationPoint", "FirePoint", "ViewArea", "ViewAreaCollision", "HurtArea", "HurtCollision", "InteractiveArea", "InteractiveCollision", "TipRoot", "TipSprite", "AnimationPlayer", "MountPoint", "BackMountPoint", "MeleeAttackArea", "MeleeAttackCollision", "ShadowSprite", "AnimatedSprite", "Collision") instance=ExtResource("1_2vqwe")]

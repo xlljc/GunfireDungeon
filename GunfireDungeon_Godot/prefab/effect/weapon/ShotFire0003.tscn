@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbas3vph0i2ro"]
 
-[ext_resource type="Script" path="res://src/game/effects/AutoDestroyParticles.cs" id="1_pdyqx"]
+[ext_resource type="Script" uid="uid://b42pg4ajp50n1" path="res://src/game/effects/AutoDestroyParticles.cs" id="1_pdyqx"]
 [ext_resource type="Texture2D" uid="uid://h7hkgbwj1li" path="res://resource/sprite/common/Smoke.png" id="1_r2unj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4wcis"]

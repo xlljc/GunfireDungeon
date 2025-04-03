@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bed63wcgyl08u"]
 
-[ext_resource type="Script" path="res://src/game/ui/editorTips/EditorTipsPanel.cs" id="1_3mdex"]
+[ext_resource type="Script" uid="uid://bnigyhwxdkahw" path="res://src/game/ui/editorTips/EditorTipsPanel.cs" id="1_3mdex"]
 
 [node name="EditorTips" type="Control"]
 layout_mode = 3

@@ -19,8 +19,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_trkjd"]
 _data = {
-"RESET": SubResource("Animation_x136i"),
-"floodlight": ExtResource("1_eorlf")
+&"RESET": SubResource("Animation_x136i"),
+&"floodlight": ExtResource("1_eorlf")
 }
 
 [node name="WeaponTemplate" type="CharacterBody2D"]

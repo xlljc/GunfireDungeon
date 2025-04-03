@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://tjbfj67t5akm"]
 
-[ext_resource type="Script" path="res://src/game/ui/mapEditorMapTile/MapEditorMapTilePanel.cs" id="1_gtth6"]
-[ext_resource type="Script" path="res://src/game/ui/mapEditorMapTile/FreeTileTab.cs" id="2_5c2no"]
+[ext_resource type="Script" uid="uid://h437wn6fihos" path="res://src/game/ui/mapEditorMapTile/MapEditorMapTilePanel.cs" id="1_gtth6"]
+[ext_resource type="Script" uid="uid://xtpod88mgo0u" path="res://src/game/ui/mapEditorMapTile/FreeTileTab.cs" id="2_5c2no"]
 [ext_resource type="Texture2D" uid="uid://d2wslibovwv7w" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="3_sibps"]
-[ext_resource type="Script" path="res://src/game/ui/mapEditorMapTile/TerrainTileTab.cs" id="4_jxcal"]
+[ext_resource type="Script" uid="uid://bdmt803583p1p" path="res://src/game/ui/mapEditorMapTile/TerrainTileTab.cs" id="4_jxcal"]
 [ext_resource type="Texture2D" uid="uid://bn47bmilcw4x0" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_f4thw"]
-[ext_resource type="Script" path="res://src/game/ui/mapEditorMapTile/CombinationTileTab.cs" id="5_ty17f"]
+[ext_resource type="Script" uid="uid://1nuvbxrvqcox" path="res://src/game/ui/mapEditorMapTile/CombinationTileTab.cs" id="5_ty17f"]
 [ext_resource type="Texture2D" uid="uid://c4ltpf5a3egu1" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="6_u35dn"]
 
 [node name="MapEditorMapTile" type="Control"]

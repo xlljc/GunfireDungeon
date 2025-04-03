@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw342xeqc5div"]
 
-[ext_resource type="Script" path="res://src/game/ui/editorWindow/EditorWindowPanel.cs" id="1_bfitg"]
+[ext_resource type="Script" uid="uid://dqhg5qemis7ui" path="res://src/game/ui/editorWindow/EditorWindowPanel.cs" id="1_bfitg"]
 
 [node name="EditorWindow" type="Control"]
 layout_mode = 3

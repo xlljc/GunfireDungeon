@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8rugox2mbl3v"]
 
-[ext_resource type="Script" path="res://src/game/ui/settlement/SettlementPanel.cs" id="1_ayhkb"]
+[ext_resource type="Script" uid="uid://c3t7u3gq6vs2e" path="res://src/game/ui/settlement/SettlementPanel.cs" id="1_ayhkb"]
 [ext_resource type="Theme" uid="uid://drb1ajgvcih7p" path="res://resource/theme/theme1.tres" id="2_63mpy"]
 
 [node name="Settlement" type="Control"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://y47kp0t5uqu0"]
 
 [ext_resource type="SpriteFrames" uid="uid://dkqd4513sog3f" path="res://resource/spriteFrames/bullet/Collision0002.tres" id="1_0qscf"]
-[ext_resource type="Script" path="res://src/game/effects/AutoDestroySprite.cs" id="2_p27g6"]
+[ext_resource type="Script" uid="uid://dydrw20qekl0j" path="res://src/game/effects/AutoDestroySprite.cs" id="2_p27g6"]
 [ext_resource type="Texture2D" uid="uid://du0f3km5jhxlg" path="res://resource/sprite/common/Smoke4.png" id="4_d8v0n"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]

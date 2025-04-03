@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://di268t2hu2c83"]
 
-[ext_resource type="Script" path="res://src/game/ui/victory/VictoryPanel.cs" id="1_suuiw"]
+[ext_resource type="Script" uid="uid://d00qc8urjndu3" path="res://src/game/ui/victory/VictoryPanel.cs" id="1_suuiw"]
 
 [node name="Victory" type="Control"]
 layout_mode = 3

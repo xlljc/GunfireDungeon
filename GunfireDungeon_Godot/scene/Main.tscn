@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://lbe753cb8heb"]
 
-[ext_resource type="Script" path="res://src/game/GameApplication.cs" id="1_mh1cq"]
-[ext_resource type="Script" path="res://src/game/camera/GameCamera.cs" id="2_2j367"]
-[ext_resource type="Shader" path="res://resource/shader/OffsetVertex.gdshader" id="2_fxoum"]
+[ext_resource type="Script" uid="uid://cclfq7lk4vn6l" path="res://src/game/GameApplication.cs" id="1_mh1cq"]
+[ext_resource type="Script" uid="uid://bm8tiu4mhyrg1" path="res://src/game/camera/GameCamera.cs" id="2_2j367"]
+[ext_resource type="Shader" uid="uid://brwri6x45dkg7" path="res://resource/shader/OffsetVertex.gdshader" id="2_fxoum"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pjtkw"]
 shader = ExtResource("2_fxoum")

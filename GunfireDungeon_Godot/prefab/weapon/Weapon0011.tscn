@@ -1,10 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c17ol2s34ehp7"]
 
 [ext_resource type="PackedScene" uid="uid://cxltmhhp4rbyk" path="res://prefab/weapon/WeaponTemplate.tscn" id="1_fgcwf"]
-[ext_resource type="Script" path="res://src/game/activity/weapon/gun/Gun.cs" id="2_m84k4"]
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="3_4rq0j"]
+[ext_resource type="Script" uid="uid://bjxr3woi1wmrq" path="res://src/game/activity/weapon/gun/Gun.cs" id="2_m84k4"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_4rq0j"]
 [ext_resource type="SpriteFrames" uid="uid://xvfg1a0xj7ng" path="res://resource/spriteFrames/weapon/Weapon0011.tres" id="4_bnkqc"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6bme"]
 resource_local_to_scene = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnwweusrc44xy"]
 
-[ext_resource type="Script" path="res://src/game/ui/setting/SettingPanel.cs" id="1_ff0oi"]
+[ext_resource type="Script" uid="uid://b7nhbvdhafses" path="res://src/game/ui/setting/SettingPanel.cs" id="1_ff0oi"]
 [ext_resource type="Texture2D" uid="uid://dawuyrurwp4ni" path="res://resource/sprite/ui/setting/option_BG.png" id="2_rgd34"]
 [ext_resource type="Theme" uid="uid://ds668te2rph30" path="res://resource/theme/mainTheme.tres" id="4_bwst8"]
 

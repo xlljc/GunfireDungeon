@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcwbprtgyahy4"]
 
 [ext_resource type="Texture2D" uid="uid://c6pesrr162s6" path="res://resource/map/tileSet/TileSet2/Main.png" id="1_jh7pr"]
-[ext_resource type="Texture2D" uid="uid://cyl8dsbu2htyf" path="res://resource/sprite/role/role5.png" id="2_f5n01"]
 [ext_resource type="Texture2D" uid="uid://bi3othr1cld04" path="res://resource/sprite/role/role7.png" id="3_1v4l1"]
+
+[sub_resource type="Resource" id="Resource_3v6wx"]
+metadata/__load_path__ = "res://resource/sprite/role/role5.png"
 
 [node name="TestLobby" type="Node2D"]
 scale = Vector2(4, 4)
@@ -13,7 +15,7 @@ texture = ExtResource("1_jh7pr")
 
 [node name="Role5" type="Sprite2D" parent="."]
 position = Vector2(124, 108)
-texture = ExtResource("2_f5n01")
+texture = SubResource("Resource_3v6wx")
 
 [node name="Role7" type="Sprite2D" parent="."]
 position = Vector2(236, 100)

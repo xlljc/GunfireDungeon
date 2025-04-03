@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dyl1dhtlxbcb3"]
 
 [ext_resource type="PackedScene" uid="uid://dbrig6dq441wo" path="res://prefab/role/template/AiTemplate.tscn" id="1_25fpq"]
-[ext_resource type="Script" path="res://src/game/activity/role/shop/ShopBoss.cs" id="2_2ng7e"]
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="2_7m501"]
+[ext_resource type="Script" uid="uid://gbkt1sehw0lb" path="res://src/game/activity/role/shop/ShopBoss.cs" id="2_2ng7e"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_7m501"]
 [ext_resource type="SpriteFrames" uid="uid://bxn63xs3f87jy" path="res://resource/spriteFrames/role/ShopBoss0001.tres" id="3_b0a5c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0nvxl"]

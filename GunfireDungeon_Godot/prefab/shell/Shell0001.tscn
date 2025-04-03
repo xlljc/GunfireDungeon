@@ -1,9 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bj4yr6ru8nhwr"]
 
-[ext_resource type="Script" path="res://src/game/activity/common/AutoFreezeObject.cs" id="1_2g70c"]
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="2_tdny6"]
+[ext_resource type="Script" uid="uid://bagiull4e76ew" path="res://src/game/activity/common/AutoFreezeObject.cs" id="1_2g70c"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_tdny6"]
 [ext_resource type="SpriteFrames" uid="uid://b8gksxl7auquc" path="res://resource/spriteFrames/shell/Shell0001.tres" id="3_ujn5y"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_px12l"]
 resource_local_to_scene = true
@@ -15,6 +14,7 @@ shader_parameter/show_outline = false
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_rainbow = false
 shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7e6fo"]
 resource_local_to_scene = true
@@ -26,6 +26,7 @@ shader_parameter/show_outline = true
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_rainbow = false
 shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fidao"]
 size = Vector2(3.75, 1.25)

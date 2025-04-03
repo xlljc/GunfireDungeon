@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjbbs1protcwb"]
 
-[ext_resource type="Script" path="res://src/test/TestNavigation2.cs" id="1"]
+[ext_resource type="Script" uid="uid://islg1kkl6f07" path="res://src/test/TestNavigation2.cs" id="1"]
 [ext_resource type="Texture2D" uid="uid://uhhfgdhpk7i4" path="res://icon.png" id="2"]
 
 [sub_resource type="NavigationPolygon" id="1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da5kqq45ow5am"]
 
-[ext_resource type="Script" path="res://src/game/ui/loading/LoadingPanel.cs" id="1_x0t5x"]
+[ext_resource type="Script" uid="uid://cwhwdd3jbuc67" path="res://src/game/ui/loading/LoadingPanel.cs" id="1_x0t5x"]
 
 [node name="Loading" type="Control"]
 layout_mode = 3

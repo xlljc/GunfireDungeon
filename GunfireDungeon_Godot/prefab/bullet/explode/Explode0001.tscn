@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://cw3c600m8rv6t"]
 
 [ext_resource type="Texture2D" uid="uid://h7hkgbwj1li" path="res://resource/sprite/common/Smoke.png" id="1_ctx3v"]
-[ext_resource type="Script" path="res://src/game/activity/bullet/explode/Explode.cs" id="1_qn5pu"]
+[ext_resource type="Script" uid="uid://dnxbh4lba1uky" path="res://src/game/activity/bullet/explode/Explode.cs" id="1_qn5pu"]
 [ext_resource type="Texture2D" uid="uid://ccdflg560oub6" path="res://resource/sprite/explode/Explode_circle0001.png" id="2_bpdnr"]
 [ext_resource type="Texture2D" uid="uid://rk73piti0qot" path="res://resource/sprite/common/Smoke2.png" id="3_xt36q"]
 [ext_resource type="Texture2D" uid="uid://cquv6nomd3tpf" path="res://resource/sprite/explode/Explode_line0001.png" id="4_i3ry2"]
@@ -299,8 +299,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6l6x"]
 _data = {
-"RESET": SubResource("Animation_20asn"),
-"play": SubResource("Animation_j6a2s")
+&"RESET": SubResource("Animation_20asn"),
+&"play": SubResource("Animation_j6a2s")
 }
 
 [node name="Explode0001" type="Area2D"]

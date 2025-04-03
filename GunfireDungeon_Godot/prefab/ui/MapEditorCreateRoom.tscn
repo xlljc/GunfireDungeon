@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfx6u04j0pbnu"]
 
-[ext_resource type="Script" path="res://src/game/ui/mapEditorCreateRoom/MapEditorCreateRoomPanel.cs" id="1_dep3f"]
+[ext_resource type="Script" uid="uid://dm1tivshggup2" path="res://src/game/ui/mapEditorCreateRoom/MapEditorCreateRoomPanel.cs" id="1_dep3f"]
 
 [node name="MapEditorCreateRoom" type="Control"]
 layout_mode = 3

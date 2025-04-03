@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnt6y33q15xfq"]
 
-[ext_resource type="Script" path="res://src/test/TestMask.cs" id="1_0yip6"]
+[ext_resource type="Script" uid="uid://gdea1bl54c2r" path="res://src/test/TestMask.cs" id="1_0yip6"]
 
 [node name="TestMask" type="Node2D" node_paths=PackedStringArray("PolygonNode")]
 script = ExtResource("1_0yip6")

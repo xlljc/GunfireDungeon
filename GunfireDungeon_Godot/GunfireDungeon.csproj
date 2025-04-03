@@ -1,0 +1,20 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>GunfireDungeon</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\game\ui\editorTools" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="android\**" />
+    <Compile Remove="excelTool\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="android\**" />
+    <EmbeddedResource Remove="excelTool\**" />
+  </ItemGroup>
+</Project>

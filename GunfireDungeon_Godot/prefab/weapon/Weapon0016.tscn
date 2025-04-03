@@ -1,10 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7s3fvpkltk1d"]
 
-[ext_resource type="Script" path="res://src/game/activity/weapon/bow/Bow.cs" id="1_k4gvs"]
-[ext_resource type="Shader" path="res://resource/shader/Blend.gdshader" id="3_cui8l"]
+[ext_resource type="Script" uid="uid://bbd3jpph3kpk7" path="res://src/game/activity/weapon/bow/Bow.cs" id="1_k4gvs"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_cui8l"]
 [ext_resource type="SpriteFrames" uid="uid://ccrflh6pjmq7r" path="res://resource/spriteFrames/weapon/Weapon0016.tres" id="4_buwa4"]
 [ext_resource type="Animation" uid="uid://v3dltmdstqad" path="res://resource/animation/weapon/Weapon_floodlight.res" id="4_nl06y"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sy2aq"]
 resource_local_to_scene = true
@@ -126,9 +125,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_trkjd"]
 _data = {
-"RESET": SubResource("Animation_x136i"),
-"floodlight": ExtResource("4_nl06y"),
-"pull": SubResource("Animation_njx7h")
+&"RESET": SubResource("Animation_x136i"),
+&"floodlight": ExtResource("4_nl06y"),
+&"pull": SubResource("Animation_njx7h")
 }
 
 [node name="Weapon0016" type="CharacterBody2D" node_paths=PackedStringArray("ArrowPoint", "FirePoint", "ShellPoint", "AnimationPlayer", "ShadowSprite", "AnimatedSprite", "Collision")]

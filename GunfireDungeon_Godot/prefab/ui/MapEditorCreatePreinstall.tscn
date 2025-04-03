@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bp1e8nom6wugk"]
 
-[ext_resource type="Script" path="res://src/game/ui/mapEditorCreatePreinstall/MapEditorCreatePreinstallPanel.cs" id="1_um8jr"]
+[ext_resource type="Script" uid="uid://4yv6t6p0aloj" path="res://src/game/ui/mapEditorCreatePreinstall/MapEditorCreatePreinstallPanel.cs" id="1_um8jr"]
 
 [node name="MapEditorCreatePreinstall" type="Control"]
 layout_mode = 3

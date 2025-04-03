@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://gby5bfwuu4kx"]
 
-[ext_resource type="Script" path="res://src/test/TestDrawSprite.cs" id="1_tplub"]
+[ext_resource type="Script" uid="uid://cmeh23ugnbjwf" path="res://src/test/TestDrawSprite.cs" id="1_tplub"]
 
 [sub_resource type="Curve2D" id="Curve2D_ft6ap"]
 _data = {
