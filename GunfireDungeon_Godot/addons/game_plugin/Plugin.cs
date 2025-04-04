@@ -46,7 +46,7 @@ namespace Plugin
                 "ActivityInstance",
                 "Node2D",
                 "res://src/framework/activity/ActivityInstance.cs",
-                "res://addons/gunfireDungeon_plugin/Mark.svg"
+                "res://addons/game_plugin/Mark.svg"
             ),
         };
         
@@ -193,7 +193,7 @@ namespace Plugin
 
         public override Texture2D _GetPluginIcon()
         {
-            return GD.Load<Texture2D>("res://addons/gunfireDungeon_plugin/Tool.svg");
+            return GD.Load<Texture2D>("res://addons/game_plugin/Tool.svg");
         }
 
         public override string _GetPluginName()

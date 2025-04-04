@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using Godot;
 using Environment = System.Environment;
 
@@ -53,12 +49,6 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
         var container = L_ScrollContainer.L_MarginContainer.L_VBoxContainer;
         //重新生成 ResourcePath
         container.L_HBoxContainer.L_Button.Instance.Pressed += GenerateResourcePath;
-        //重新生成ui代码
-        container.L_HBoxContainer4.L_Button.Instance.Pressed += OnGenerateCurrentUiCode;
-        //创建ui
-        container.L_HBoxContainer3.L_Button.Instance.Pressed += OnCreateUI;
-        //重新生成UiManagerMethods.cs代码
-        container.L_HBoxContainer5.L_Button.Instance.Pressed += GenerateUiManagerMethods;
         //生成buff属性表
         container.L_HBoxContainer6.L_Button.Instance.Pressed += GenerateBuffAttrTable;
         //导出excel表
@@ -79,9 +69,6 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
         
         var container = L_ScrollContainer.L_MarginContainer.L_VBoxContainer;
         container.L_HBoxContainer.L_Button.Instance.Pressed -= GenerateResourcePath;
-        container.L_HBoxContainer4.L_Button.Instance.Pressed -= OnGenerateCurrentUiCode;
-        container.L_HBoxContainer3.L_Button.Instance.Pressed -= OnCreateUI;
-        container.L_HBoxContainer5.L_Button.Instance.Pressed -= GenerateUiManagerMethods;
         container.L_HBoxContainer6.L_Button.Instance.Pressed -= GenerateBuffAttrTable;
         container.L_HBoxContainer7.L_Button.Instance.Pressed -= ExportExcel;
         container.L_HBoxContainer8.L_Button.Instance.Pressed -= OpenExportExcelFolder;
@@ -209,71 +196,6 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
     }
 
     /// <summary>
-    /// 重新生成当前ui的代码
-    /// </summary>
-    private void OnGenerateCurrentUiCode()
-    {
-        if (Plugin.Plugin.Instance != null)
-        {
-            var root = EditorInterface.Singleton.GetEditedSceneRoot();
-            if (root != null && Plugin.Plugin.Instance.CheckIsUi(root))
-            {
-                if (UiGenerator.GenerateUiCodeFromEditor(root))
-                {
-                    ShowTips("提示", "生成UI代码执行成功!");
-                }
-                else
-                {
-                    ShowTips("错误", "生成UI代码执行失败! 前往控制台查看错误日志!");
-                }
-            }
-            else
-            {
-                ShowTips("错误", "当前的场景不是受管束的UI场景!");
-            }
-        }
-    }
-    
-    /// <summary>
-    /// 创建Ui
-    /// </summary>
-    private void OnCreateUI()
-    {
-        var uiName = L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_LineEdit.Instance.Text;
-        ShowConfirm("提示", "是否创建UI：" + uiName, (result) =>
-        {
-            if (result)
-            {
-                //检查名称是否合规
-                if (!Regex.IsMatch(uiName, "^[A-Z][a-zA-Z0-9]*$"))
-                {
-                    ShowTips("错误", "UI名称'" + uiName + "'不符合名称约束, UI名称只允许大写字母开头, 且名称中只允许出现大小字母和数字!");
-                    return;
-                }
-
-                //检查是否有同名的Ui
-                var path = GameConfig.UiPrefabDir + uiName + ".tscn";
-                if (File.Exists(path))
-                {
-                    ShowTips("错误", "已经存在相同名称'" + uiName + "'的UI了, 不能重复创建!");
-                    return;
-                }
-                
-                //执行创建操作
-                if (UiGenerator.CreateUi(uiName, true))
-                {
-                    ShowTips("提示", "创建UI成功!");
-                }
-                else
-                {
-                    ShowTips("错误", "创建UI失败! 前往控制台查看错误日志!");
-                }
-                
-            }
-        });
-    }
-
-    /// <summary>
     /// 更新 ResourcePath
     /// </summary>
     private void GenerateResourcePath()
@@ -285,21 +207,6 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
         else
         {
             ShowTips("错误", "ResourcePath.cs生成失败! 前往控制台查看错误日志!");
-        }
-    }
-    
-    /// <summary>
-    /// 重新生成UiManagerMethods.cs代码
-    /// </summary>
-    private void GenerateUiManagerMethods()
-    {
-        if (UiManagerMethodsGenerator.Generate())
-        {
-            ShowTips("提示", "生成UiManagerMethods.cs代码执行完成!");
-        }
-        else
-        {
-            ShowTips("错误", "生成UiManagerMethods.cs代码执行失败! 前往控制台查看错误日志!");
         }
     }
 
