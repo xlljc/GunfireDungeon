@@ -71,9 +71,10 @@ namespace DsUi
                 _uiMonitor = null;
             }
 
-            RemoveToolMenuItem("创建Ui");
-            RemoveToolMenuItem("重新生成当前Ui代码");
-            RemoveToolMenuItem("重新生成UiManager中的Ui函数");
+            RemoveToolMenuItem("DsUi：创建Ui");
+            RemoveToolMenuItem("DsUi：重新生成当前Ui代码");
+            RemoveToolMenuItem("DsUi：重新生成所有Ui代码");
+            RemoveToolMenuItem("DsUi：重新生成UiManager中的Ui函数");
             RemoveAutoloadSingleton("InitUiManager");
         }
 
