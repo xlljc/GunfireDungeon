@@ -496,7 +496,7 @@ public partial class TileSetEditorTerrainPanel : TileSetEditorTerrain
         var terrain = CurrTerrain;
         if (terrain != null)
         {
-            EditorWindowManager.ShowInput("提示", $"是否删除地形'{terrain.Name}'？", terrain.Name, (v, isClose) =>
+            EditorWindowManager.ShowInput("提示", $"重命名地形'{terrain.Name}'", terrain.Name, (v, isClose) =>
             {
                 if (string.IsNullOrEmpty(v))
                 {
