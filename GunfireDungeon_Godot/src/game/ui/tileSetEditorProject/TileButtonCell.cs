@@ -2,6 +2,8 @@
 using Godot;
 using UI.TileSetEditor;
 
+using DsUi;
+
 namespace UI.TileSetEditorProject;
 
 public class TileButtonCell : UiCell<TileSetEditorProject.TileButton, TileSetSplit>

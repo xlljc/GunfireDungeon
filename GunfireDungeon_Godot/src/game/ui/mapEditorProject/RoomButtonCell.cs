@@ -2,6 +2,8 @@ using System.Linq;
 using Godot;
 using UI.TileSetEditor;
 
+using DsUi;
+
 namespace UI.MapEditorProject;
 
 public class RoomButtonCell : UiCell<MapEditorProject.RoomButton, DungeonRoomSplit>

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorMapLayer;
 
 public partial class MapEditorMapLayerPanel : MapEditorMapLayer

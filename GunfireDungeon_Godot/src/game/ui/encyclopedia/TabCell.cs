@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.Encyclopedia;
 
 public class TabCell : UiCell<Encyclopedia.TabButton, TabData>

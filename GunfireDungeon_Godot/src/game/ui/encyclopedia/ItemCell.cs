@@ -1,6 +1,8 @@
 using System.Collections;
 using Config;
 
+using DsUi;
+
 namespace UI.Encyclopedia;
 
 public class ItemCell : UiCell<Encyclopedia.ObjectButton, ExcelConfig.ActivityBase>

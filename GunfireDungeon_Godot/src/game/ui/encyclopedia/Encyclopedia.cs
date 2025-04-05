@@ -1,3 +1,5 @@
+using DsUi;
+
 namespace UI.Encyclopedia;
 
 /// <summary>

@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorProject;
 
 public class PreviewCell : UiCell<TileSetEditorProject.Preview, TileSetSourceInfo>

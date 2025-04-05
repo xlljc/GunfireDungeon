@@ -1,4 +1,6 @@
-﻿namespace UI.MapEditorSelectObject;
+﻿using DsUi;
+
+namespace UI.MapEditorSelectObject;
 
 public class TypeButtonCell : UiCell<MapEditorSelectObject.TypeButton, MapEditorSelectObjectPanel.TypeButtonData>
 {

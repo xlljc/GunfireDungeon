@@ -5,6 +5,8 @@ using Godot;
 using Godot.Collections;
 using UI.MapEditorTools;
 
+using DsUi;
+
 namespace UI.MapEditor;
 
 public partial class EditorTileMap : TileMap, IUiNodeScript

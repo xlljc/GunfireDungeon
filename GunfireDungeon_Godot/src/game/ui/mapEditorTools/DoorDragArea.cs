@@ -2,6 +2,8 @@
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorTools;
 
 public partial class DoorDragArea : Control

@@ -1,5 +1,7 @@
 ﻿using Config;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public partial class ObjectAttribute : AttributeBase

@@ -3,6 +3,8 @@ using System.Linq;
 using Godot;
 using UI.RoomUI;
 
+using DsUi;
+
 namespace UI.RoomMap;
 
 /// <summary>

@@ -1,6 +1,8 @@
 using System.Collections;
 using Godot;
 
+using DsUi;
+
 namespace UI.BottomTips;
 
 /// <summary>

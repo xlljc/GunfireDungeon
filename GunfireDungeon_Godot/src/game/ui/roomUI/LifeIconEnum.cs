@@ -1,4 +1,6 @@
-﻿namespace UI.RoomUI;
+﻿using DsUi;
+
+namespace UI.RoomUI;
 
 public enum LifeIconEnum
 {

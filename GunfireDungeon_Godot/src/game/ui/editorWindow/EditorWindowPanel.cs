@@ -1,6 +1,8 @@
 using System;
 using Godot;
 
+using DsUi;
+
 namespace UI.EditorWindow;
 
 public partial class EditorWindowPanel : EditorWindow

@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.RoomUI;
 
 public class LifeCell : UiCell<RoomUI.Life, LifeIconEnum>

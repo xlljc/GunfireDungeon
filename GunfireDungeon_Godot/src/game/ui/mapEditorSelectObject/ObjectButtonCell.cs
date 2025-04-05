@@ -1,6 +1,8 @@
 ﻿using Config;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorSelectObject;
 
 public class ObjectButtonCell : UiCell<MapEditorSelectObject.ObjectButton, ExcelConfig.ActivityBase>

@@ -4,6 +4,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorCreateRoom;
 
 public partial class MapEditorCreateRoomPanel : MapEditorCreateRoom

@@ -2,6 +2,8 @@ using System.Linq;
 using Config;
 using Godot;
 
+using DsUi;
+
 namespace UI.Encyclopedia;
 
 public partial class EncyclopediaPanel : Encyclopedia

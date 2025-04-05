@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public partial class NumberAttribute : AttributeBase

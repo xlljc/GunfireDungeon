@@ -1,6 +1,8 @@
 using Godot;
 using UI.TileSetEditor;
 
+using DsUi;
+
 namespace UI.TileSetEditorTerrain;
 
 public partial class TileSetEditorTerrainPanel : TileSetEditorTerrain

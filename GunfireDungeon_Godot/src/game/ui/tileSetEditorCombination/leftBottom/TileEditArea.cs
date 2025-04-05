@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorCombination;
 
 public partial class TileEditArea : EditorGridBg

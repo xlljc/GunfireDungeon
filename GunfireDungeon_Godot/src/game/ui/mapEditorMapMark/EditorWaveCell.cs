@@ -2,6 +2,8 @@
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorMapMark;
 
 public class EditorWaveCell : UiCell<MapEditorMapMark.WaveItem, List<MarkInfo>>

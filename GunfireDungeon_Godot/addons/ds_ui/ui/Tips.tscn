@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1bryh8u8adg6"]
+
+[node name="Tips" type="AcceptDialog"]
+initial_position = 1
+size = Vector2i(350, 180)
+dialog_autowrap = true

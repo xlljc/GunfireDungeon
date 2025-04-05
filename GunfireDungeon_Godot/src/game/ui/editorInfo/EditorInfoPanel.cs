@@ -1,5 +1,7 @@
 using System.IO;
 
+using DsUi;
+
 namespace UI.EditorInfo;
 
 public partial class EditorInfoPanel : EditorInfo

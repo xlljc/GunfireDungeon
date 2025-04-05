@@ -1,6 +1,8 @@
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorMapTile;
 
 public partial class MapEditorMapTilePanel : MapEditorMapTile, IEditorTab

@@ -7,6 +7,8 @@ using Environment = System.Environment;
 using Generator;
 #endif
 
+using DsUi;
+
 namespace UI.EditorTools;
 
 /// <summary>

@@ -4,6 +4,8 @@ using System.Linq;
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorProject;
 
 public partial class MapEditorProjectPanel : MapEditorProject

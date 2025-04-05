@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorMapMark;
 
 public partial class MapEditorMapMarkPanel : MapEditorMapMark, IEditorTab

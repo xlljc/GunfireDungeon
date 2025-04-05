@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.Json;
 using Config;
+using DsUi;
 using Godot;
 using UI.BottomTips;
 
@@ -186,7 +187,7 @@ public partial class GameApplication : Node2D, ICoroutine
         LoadGameSave();
         
         //初始化ui
-        UiManager.Init();
+        //UiManager.Init();
         //调试Ui
         UiManager.Open_Debugger();
         

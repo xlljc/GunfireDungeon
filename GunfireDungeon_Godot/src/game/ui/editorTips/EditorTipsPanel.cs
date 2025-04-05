@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.EditorTips;
 
 public partial class EditorTipsPanel : EditorTips

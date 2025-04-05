@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public partial class OptionAttribute : AttributeBase

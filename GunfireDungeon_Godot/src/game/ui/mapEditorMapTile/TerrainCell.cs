@@ -1,6 +1,8 @@
 ﻿using Godot;
 using static TerrainPeering;
 
+using DsUi;
+
 namespace UI.MapEditorMapTile;
 
 /// <summary>

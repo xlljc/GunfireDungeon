@@ -1,6 +1,8 @@
 ﻿using Godot;
 using UI.MapEditorObject;
 
+using DsUi;
+
 namespace UI.MapEditorTools;
 
 public partial class CustomObject : Area2D, IUiNodeScript

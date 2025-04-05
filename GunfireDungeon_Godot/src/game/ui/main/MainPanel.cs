@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.Main;
 
 /// <summary>

@@ -1,4 +1,6 @@
-﻿namespace UI.TileSetEditor;
+﻿using DsUi;
+
+namespace UI.TileSetEditor;
 
 public class TileSetEditorTabCell : UiCell<TileSetEditor.Tab, TileSetEditorTabData>
 {

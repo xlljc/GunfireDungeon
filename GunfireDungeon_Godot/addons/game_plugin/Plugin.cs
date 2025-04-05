@@ -7,7 +7,7 @@ using UI.EditorTools;
 namespace Plugin
 {
     [Tool]
-    public partial class Plugin : EditorPlugin, ISerializationListener
+    public partial class Plugin : EditorPlugin
     {
         /// <summary>
         /// 自定义节点类型数据
@@ -36,9 +36,6 @@ namespace Plugin
         //工具面板
         private EditorToolsPanel _editorTools;
 
-        //ui监听器
-        private NodeMonitor _uiMonitor;
-
         //自定义节点
         private CustomTypeInfo[] _customTypeInfos = new CustomTypeInfo[]
         {
@@ -53,17 +50,6 @@ namespace Plugin
         public override void _Process(double delta)
         {
             Instance = this;
-            
-            if (_uiMonitor != null)
-            {
-                _uiMonitor.Process((float) delta);
-            }
-            else
-            {
-                _uiMonitor = new NodeMonitor();
-                _uiMonitor.SceneNodeChangeEvent += GenerateUiCode;
-                OnSceneChanged(EditorInterface.Singleton.GetEditedSceneRoot());
-            }
         }
 
         public override void _EnterTree()
@@ -115,26 +101,7 @@ namespace Plugin
             _MakeVisible(false);
             
             #endregion
-            
-            //场景切换事件
-            SceneChanged += OnSceneChanged;
-
-            _uiMonitor = new NodeMonitor();
-            _uiMonitor.SceneNodeChangeEvent += GenerateUiCode;
-
-            OnSceneChanged(EditorInterface.Singleton.GetEditedSceneRoot());
         }
-        
-        public void OnBeforeSerialize()
-        {
-            SceneChanged -= OnSceneChanged;
-        }
-        
-        public void OnAfterDeserialize()
-        {
-            SceneChanged += OnSceneChanged;
-        }
-
         public override void _ExitTree()
         {
             //移除自定义节点
@@ -175,14 +142,6 @@ namespace Plugin
 
                 _editorTools.Free();
                 _editorTools = null;
-            }
-
-            SceneChanged -= OnSceneChanged;
-
-            if (_uiMonitor != null)
-            {
-                _uiMonitor.SceneNodeChangeEvent -= GenerateUiCode;
-                _uiMonitor = null;
             }
         }
 
@@ -233,32 +192,6 @@ namespace Plugin
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// 执行生成ui代码操作
-        /// </summary>
-        public void GenerateUiCode(Node node)
-        {
-            UiGenerator.GenerateUiCodeFromEditor(node);
-        }
-
-        /// <summary>
-        /// 切换场景
-        /// </summary>
-        private void OnSceneChanged(Node node)
-        {
-            if (_uiMonitor != null)
-            {
-                _uiMonitor.ChangeCurrentNode(null);
-                if (node != null)
-                {
-                    if (CheckIsUi(node))
-                    {
-                        _uiMonitor.ChangeCurrentNode(node);
-                    }
-                }
-            }
         }
     }
 }

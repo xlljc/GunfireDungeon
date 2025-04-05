@@ -1,6 +1,8 @@
 using Config;
 using Godot;
 
+using DsUi;
+
 namespace UI.Setting;
 
 public partial class SettingPanel : Setting

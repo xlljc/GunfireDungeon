@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Config;
+using DsUi;
 
 public interface IBullet : ICoroutine, IPoolItem
 {

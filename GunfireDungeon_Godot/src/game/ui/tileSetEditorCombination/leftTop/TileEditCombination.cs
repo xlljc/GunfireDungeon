@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorCombination;
 
 public partial class TileEditCombination : EditorGridBg

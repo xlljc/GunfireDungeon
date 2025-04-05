@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorCreatePreinstall;
 
 public partial class MapEditorCreatePreinstallPanel : MapEditorCreatePreinstall

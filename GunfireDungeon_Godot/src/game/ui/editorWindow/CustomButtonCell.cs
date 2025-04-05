@@ -1,4 +1,6 @@
-﻿namespace UI.EditorWindow;
+﻿using DsUi;
+
+namespace UI.EditorWindow;
 
 public class CustomButtonCell : UiCell<EditorWindow.CustomButton, EditorWindowPanel.ButtonData>
 {

@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorTerrain;
 
 public class MaskCell : UiCell<TileSetEditorTerrain.BottomCell, Rect2I>

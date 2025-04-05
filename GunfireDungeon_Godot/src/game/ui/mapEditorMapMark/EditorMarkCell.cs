@@ -3,6 +3,8 @@ using Config;
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorMapMark;
 
 public class EditorMarkCell : UiCell<MapEditorMapMark.MarkItem, MapEditorMapMarkPanel.MarkCellData>

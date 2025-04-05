@@ -2,6 +2,8 @@
 using UI.MapEditor;
 using Color = Godot.Color;
 
+using DsUi;
+
 namespace UI.MapEditorTools;
 
 /// <summary>

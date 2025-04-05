@@ -1,6 +1,8 @@
 using System.IO;
 using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorImport;
 
 public partial class TileSetEditorImportPanel : TileSetEditorImport

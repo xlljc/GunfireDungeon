@@ -4,6 +4,8 @@ using Config;
 using Godot;
 using UI.MapEditor;
 
+using DsUi;
+
 namespace UI.MapEditorObject;
 
 public partial class MapEditorObjectPanel : MapEditorObject, IEditorTab

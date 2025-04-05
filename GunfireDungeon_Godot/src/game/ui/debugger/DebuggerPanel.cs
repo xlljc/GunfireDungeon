@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.Debugger;
 
 public partial class DebuggerPanel : Debugger

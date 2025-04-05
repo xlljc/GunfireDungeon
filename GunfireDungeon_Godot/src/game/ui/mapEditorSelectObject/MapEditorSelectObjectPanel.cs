@@ -5,6 +5,8 @@ using System.Linq;
 using Config;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorSelectObject;
 
 public partial class MapEditorSelectObjectPanel : MapEditorSelectObject

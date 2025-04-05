@@ -1,6 +1,8 @@
 
 using UI.BottomTips;
 
+using DsUi;
+
 namespace UI.RoomUI;
 
 /// <summary>

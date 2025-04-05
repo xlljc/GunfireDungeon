@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Config;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public class MarkObjectCell : UiCell<MapEditorCreateMark.MarkObject, MarkInfoItem>

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Config;
 
+using DsUi;
+
 namespace UI.MapEditorObject;
 
 public class ItemCell : UiCell<MapEditorObject.Item, RoomObjectInfo>

@@ -1,6 +1,8 @@
 using System.Linq;
 using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditor;
 
 public partial class TileSetEditorPanel : TileSetEditor

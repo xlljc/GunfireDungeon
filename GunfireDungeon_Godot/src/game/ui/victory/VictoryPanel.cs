@@ -1,6 +1,8 @@
 using System;
 using Godot;
 
+using DsUi;
+
 namespace UI.Victory;
 
 public partial class VictoryPanel : Victory

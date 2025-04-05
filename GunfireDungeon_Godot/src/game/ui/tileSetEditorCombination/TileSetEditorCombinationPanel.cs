@@ -1,6 +1,8 @@
 using Godot;
 using UI.TileSetEditor;
 
+using DsUi;
+
 namespace UI.TileSetEditorCombination;
 
 public partial class TileSetEditorCombinationPanel : TileSetEditorCombination

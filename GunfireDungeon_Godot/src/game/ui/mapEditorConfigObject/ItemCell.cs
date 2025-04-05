@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Config;
 
+using DsUi;
+
 namespace UI.MapEditorConfigObject;
 
 public class ItemCell : UiCell<MapEditorConfigObject.CellButton, ExcelConfig.EditorObject>

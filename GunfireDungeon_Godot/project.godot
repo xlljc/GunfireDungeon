@@ -15,6 +15,10 @@ run/main_scene="res://scene/Main.tscn"
 config/features=PackedStringArray("4.4", "C#")
 config/icon="res://icon.png"
 
+[autoload]
+
+InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
+
 [debug]
 
 settings/fps/force_fps=60
@@ -31,7 +35,7 @@ project/assembly_name="GunfireDungeon"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/game_plugin/plugin.cfg")
+enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/game_plugin/plugin.cfg")
 
 [file_customization]
 

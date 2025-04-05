@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.WeaponRoulette;
 
 public partial class WeaponSlot : Node2D, IUiNodeScript

@@ -1,3 +1,4 @@
+namespace DsUi;
 
 // 该类为自动生成的, 请不要手动编辑, 以免造成代码丢失
 public static partial class UiManager

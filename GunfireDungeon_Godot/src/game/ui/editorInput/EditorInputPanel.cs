@@ -1,5 +1,7 @@
 using Godot;
 
+using DsUi;
+
 namespace UI.EditorInput;
 
 public partial class EditorInputPanel : EditorInput

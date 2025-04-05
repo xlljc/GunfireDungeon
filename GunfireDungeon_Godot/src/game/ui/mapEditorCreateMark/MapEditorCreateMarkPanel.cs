@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Config;
 using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public partial class MapEditorCreateMarkPanel : MapEditorCreateMark

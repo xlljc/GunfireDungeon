@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.MapEditorCreateMark;
 
 public abstract partial class AttributeBase : Control, IUiNodeScript

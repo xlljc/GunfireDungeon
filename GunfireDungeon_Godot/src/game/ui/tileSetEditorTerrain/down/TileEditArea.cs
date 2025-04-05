@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.TileSetEditorTerrain;
 
 public partial class TileEditArea : EditorGridBg

@@ -1,5 +1,7 @@
 ﻿using Godot;
 
+using DsUi;
+
 namespace UI.EditorTileImage;
 
 public partial class RectBrush : Control, IUiNodeScript

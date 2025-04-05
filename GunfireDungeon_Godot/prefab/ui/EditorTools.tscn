@@ -86,8 +86,11 @@ text = "运行"
 initial_position = 1
 size = Vector2i(350, 200)
 unresizable = true
+ok_button_text = "确定"
+cancel_button_text = "取消"
 
 [node name="Tips" type="AcceptDialog" parent="."]
 initial_position = 1
 size = Vector2i(350, 200)
 unresizable = true
+ok_button_text = "确定"
