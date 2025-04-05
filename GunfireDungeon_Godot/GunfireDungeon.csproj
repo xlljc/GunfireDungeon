@@ -6,11 +6,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\game\ui\aaa\develop\" />
-    <Folder Include="src\game\ui\aaa\editor\" />
-    <Folder Include="src\game\ui\aaa\game\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="android\**" />
     <Compile Remove="excelTool\**" />
   </ItemGroup>
