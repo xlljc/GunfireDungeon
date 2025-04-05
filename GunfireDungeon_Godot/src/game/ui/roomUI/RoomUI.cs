@@ -8,7 +8,7 @@ namespace UI.RoomUI;
 public abstract partial class RoomUI : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.InteractiveTipBar
+    /// 节点路径: RoomUI.InteractiveTipBar
     /// </summary>
     public InteractiveTipBar L_InteractiveTipBar
     {
@@ -21,7 +21,7 @@ public abstract partial class RoomUI : UiBase
     private InteractiveTipBar _L_InteractiveTipBar;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.ReloadBar
+    /// 节点路径: RoomUI.ReloadBar
     /// </summary>
     public ReloadBar L_ReloadBar
     {
@@ -34,7 +34,7 @@ public abstract partial class RoomUI : UiBase
     private ReloadBar _L_ReloadBar;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control
+    /// 节点路径: RoomUI.Control
     /// </summary>
     public Control L_Control
     {
@@ -47,7 +47,7 @@ public abstract partial class RoomUI : UiBase
     private Control _L_Control;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.WeaponRoulette.WeaponRoulettePanel"/>, 节点路径: RoomUI.WeaponRoulette
+    /// 节点路径: RoomUI.WeaponRoulette
     /// </summary>
     public WeaponRoulette L_WeaponRoulette
     {
@@ -60,7 +60,7 @@ public abstract partial class RoomUI : UiBase
     private WeaponRoulette _L_WeaponRoulette;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.RoomMap.RoomMapPanel"/>, 节点路径: RoomUI.RoomMap
+    /// 节点路径: RoomUI.RoomMap
     /// </summary>
     public RoomMap L_RoomMap
     {
@@ -73,7 +73,7 @@ public abstract partial class RoomUI : UiBase
     private RoomMap _L_RoomMap;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: RoomUI.Mask
+    /// 节点路径: RoomUI.Mask
     /// </summary>
     public Mask L_Mask
     {
@@ -106,7 +106,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.InteractiveTipBar.Icon
+    /// 路径: RoomUI.InteractiveTipBar.Icon
     /// </summary>
     public class Icon : UiNode<RoomUIPanel, Godot.TextureRect, Icon>
     {
@@ -115,7 +115,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.InteractiveTipBar.InteractiveIcon
+    /// 路径: RoomUI.InteractiveTipBar.InteractiveIcon
     /// </summary>
     public class InteractiveIcon : UiNode<RoomUIPanel, Godot.TextureRect, InteractiveIcon>
     {
@@ -124,7 +124,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Line2D"/>, 路径: RoomUI.InteractiveTipBar.Line2D
+    /// 路径: RoomUI.InteractiveTipBar.Line2D
     /// </summary>
     public class Line2D : UiNode<RoomUIPanel, Godot.Line2D, Line2D>
     {
@@ -133,7 +133,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: RoomUI.InteractiveTipBar.NameLabel
+    /// 路径: RoomUI.InteractiveTipBar.NameLabel
     /// </summary>
     public class NameLabel : UiNode<RoomUIPanel, Godot.Label, NameLabel>
     {
@@ -142,12 +142,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.InteractiveTipBar
+    /// 路径: RoomUI.InteractiveTipBar
     /// </summary>
     public class InteractiveTipBar : UiNode<RoomUIPanel, Godot.Control, InteractiveTipBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Icon
+        /// 节点路径: RoomUI.Icon
         /// </summary>
         public Icon L_Icon
         {
@@ -160,7 +160,7 @@ public abstract partial class RoomUI : UiBase
         private Icon _L_Icon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.InteractiveIcon
+        /// 节点路径: RoomUI.InteractiveIcon
         /// </summary>
         public InteractiveIcon L_InteractiveIcon
         {
@@ -173,7 +173,7 @@ public abstract partial class RoomUI : UiBase
         private InteractiveIcon _L_InteractiveIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Line2D"/>, 节点路径: RoomUI.Line2D
+        /// 节点路径: RoomUI.Line2D
         /// </summary>
         public Line2D L_Line2D
         {
@@ -186,7 +186,7 @@ public abstract partial class RoomUI : UiBase
         private Line2D _L_Line2D;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.NameLabel
+        /// 节点路径: RoomUI.NameLabel
         /// </summary>
         public NameLabel L_NameLabel
         {
@@ -203,7 +203,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: RoomUI.ReloadBar.Slot.Block
+    /// 路径: RoomUI.ReloadBar.Slot.Block
     /// </summary>
     public class Block : UiNode<RoomUIPanel, Godot.Sprite2D, Block>
     {
@@ -212,12 +212,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.ReloadBar.Slot
+    /// 路径: RoomUI.ReloadBar.Slot
     /// </summary>
     public class Slot : UiNode<RoomUIPanel, Godot.TextureRect, Slot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.ReloadBar.Block
+        /// 节点路径: RoomUI.ReloadBar.Block
         /// </summary>
         public Block L_Block
         {
@@ -234,12 +234,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.ReloadBar
+    /// 路径: RoomUI.ReloadBar
     /// </summary>
     public class ReloadBar : UiNode<RoomUIPanel, Godot.Control, ReloadBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Slot
+        /// 节点路径: RoomUI.Slot
         /// </summary>
         public Slot L_Slot
         {
@@ -256,7 +256,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.Control.LifeBar.Life.LifeIcon
+    /// 路径: RoomUI.Control.LifeBar.Life.LifeIcon
     /// </summary>
     public class LifeIcon : UiNode<RoomUIPanel, Godot.TextureRect, LifeIcon>
     {
@@ -265,12 +265,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.Control.LifeBar.Life
+    /// 路径: RoomUI.Control.LifeBar.Life
     /// </summary>
     public class Life : UiNode<RoomUIPanel, Godot.Control, Life>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.LifeBar.LifeIcon
+        /// 节点路径: RoomUI.Control.LifeBar.LifeIcon
         /// </summary>
         public LifeIcon L_LifeIcon
         {
@@ -287,7 +287,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.Control.LifeBar.Gold.GoldIcon
+    /// 路径: RoomUI.Control.LifeBar.Gold.GoldIcon
     /// </summary>
     public class GoldIcon : UiNode<RoomUIPanel, Godot.TextureRect, GoldIcon>
     {
@@ -296,7 +296,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: RoomUI.Control.LifeBar.Gold.GoldText
+    /// 路径: RoomUI.Control.LifeBar.Gold.GoldText
     /// </summary>
     public class GoldText : UiNode<RoomUIPanel, Godot.Label, GoldText>
     {
@@ -305,12 +305,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.Control.LifeBar.Gold
+    /// 路径: RoomUI.Control.LifeBar.Gold
     /// </summary>
     public class Gold : UiNode<RoomUIPanel, Godot.Control, Gold>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.LifeBar.GoldIcon
+        /// 节点路径: RoomUI.Control.LifeBar.GoldIcon
         /// </summary>
         public GoldIcon L_GoldIcon
         {
@@ -323,7 +323,7 @@ public abstract partial class RoomUI : UiBase
         private GoldIcon _L_GoldIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.LifeBar.GoldText
+        /// 节点路径: RoomUI.Control.LifeBar.GoldText
         /// </summary>
         public GoldText L_GoldText
         {
@@ -340,12 +340,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: RoomUI.Control.LifeBar
+    /// 路径: RoomUI.Control.LifeBar
     /// </summary>
     public class LifeBar : UiNode<RoomUIPanel, Godot.VBoxContainer, LifeBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.Life
+        /// 节点路径: RoomUI.Control.Life
         /// </summary>
         public Life L_Life
         {
@@ -358,7 +358,7 @@ public abstract partial class RoomUI : UiBase
         private Life _L_Life;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.Gold
+        /// 节点路径: RoomUI.Control.Gold
         /// </summary>
         public Gold L_Gold
         {
@@ -375,7 +375,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomUI.Control.ActivePropBar.ActivePropBg
+    /// 路径: RoomUI.Control.ActivePropBar.ActivePropBg
     /// </summary>
     public class ActivePropBg : UiNode<RoomUIPanel, Godot.NinePatchRect, ActivePropBg>
     {
@@ -384,7 +384,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.Control.ActivePropBar.ActivePropSprite
+    /// 路径: RoomUI.Control.ActivePropBar.ActivePropSprite
     /// </summary>
     public class ActivePropSprite : UiNode<RoomUIPanel, Godot.TextureRect, ActivePropSprite>
     {
@@ -393,7 +393,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: RoomUI.Control.ActivePropBar.CooldownProgress
+    /// 路径: RoomUI.Control.ActivePropBar.CooldownProgress
     /// </summary>
     public class CooldownProgress : UiNode<RoomUIPanel, Godot.Sprite2D, CooldownProgress>
     {
@@ -402,7 +402,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: RoomUI.Control.ActivePropBar.ActivePropCount
+    /// 路径: RoomUI.Control.ActivePropBar.ActivePropCount
     /// </summary>
     public class ActivePropCount : UiNode<RoomUIPanel, Godot.Label, ActivePropCount>
     {
@@ -411,7 +411,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomUI.Control.ActivePropBar.ActivePropPanel
+    /// 路径: RoomUI.Control.ActivePropBar.ActivePropPanel
     /// </summary>
     public class ActivePropPanel : UiNode<RoomUIPanel, Godot.NinePatchRect, ActivePropPanel>
     {
@@ -420,7 +420,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomUI.Control.ActivePropBar.ChargeProgressBar
+    /// 路径: RoomUI.Control.ActivePropBar.ChargeProgressBar
     /// </summary>
     public class ChargeProgressBar : UiNode<RoomUIPanel, Godot.NinePatchRect, ChargeProgressBar>
     {
@@ -429,7 +429,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: RoomUI.Control.ActivePropBar.ChargeProgress
+    /// 路径: RoomUI.Control.ActivePropBar.ChargeProgress
     /// </summary>
     public class ChargeProgress : UiNode<RoomUIPanel, Godot.Sprite2D, ChargeProgress>
     {
@@ -438,12 +438,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.Control.ActivePropBar
+    /// 路径: RoomUI.Control.ActivePropBar
     /// </summary>
     public class ActivePropBar : UiNode<RoomUIPanel, Godot.Control, ActivePropBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ActivePropBg
+        /// 节点路径: RoomUI.Control.ActivePropBg
         /// </summary>
         public ActivePropBg L_ActivePropBg
         {
@@ -456,7 +456,7 @@ public abstract partial class RoomUI : UiBase
         private ActivePropBg _L_ActivePropBg;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.ActivePropSprite
+        /// 节点路径: RoomUI.Control.ActivePropSprite
         /// </summary>
         public ActivePropSprite L_ActivePropSprite
         {
@@ -469,7 +469,7 @@ public abstract partial class RoomUI : UiBase
         private ActivePropSprite _L_ActivePropSprite;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.Control.CooldownProgress
+        /// 节点路径: RoomUI.Control.CooldownProgress
         /// </summary>
         public CooldownProgress L_CooldownProgress
         {
@@ -482,7 +482,7 @@ public abstract partial class RoomUI : UiBase
         private CooldownProgress _L_CooldownProgress;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.ActivePropCount
+        /// 节点路径: RoomUI.Control.ActivePropCount
         /// </summary>
         public ActivePropCount L_ActivePropCount
         {
@@ -495,7 +495,7 @@ public abstract partial class RoomUI : UiBase
         private ActivePropCount _L_ActivePropCount;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ActivePropPanel
+        /// 节点路径: RoomUI.Control.ActivePropPanel
         /// </summary>
         public ActivePropPanel L_ActivePropPanel
         {
@@ -508,7 +508,7 @@ public abstract partial class RoomUI : UiBase
         private ActivePropPanel _L_ActivePropPanel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ChargeProgressBar
+        /// 节点路径: RoomUI.Control.ChargeProgressBar
         /// </summary>
         public ChargeProgressBar L_ChargeProgressBar
         {
@@ -521,7 +521,7 @@ public abstract partial class RoomUI : UiBase
         private ChargeProgressBar _L_ChargeProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.Control.ChargeProgress
+        /// 节点路径: RoomUI.Control.ChargeProgress
         /// </summary>
         public ChargeProgress L_ChargeProgress
         {
@@ -538,7 +538,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
+    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
     /// </summary>
     public class WeaponSprite : UiNode<RoomUIPanel, Godot.TextureRect, WeaponSprite>
     {
@@ -547,12 +547,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomUI.Control.WeaponBar.WeaponPanel
+    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel
     /// </summary>
     public class WeaponPanel : UiNode<RoomUIPanel, Godot.NinePatchRect, WeaponPanel>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.WeaponBar.WeaponSprite
+        /// 节点路径: RoomUI.Control.WeaponBar.WeaponSprite
         /// </summary>
         public WeaponSprite L_WeaponSprite
         {
@@ -569,7 +569,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: RoomUI.Control.WeaponBar.AmmoCount
+    /// 路径: RoomUI.Control.WeaponBar.AmmoCount
     /// </summary>
     public class AmmoCount : UiNode<RoomUIPanel, Godot.Label, AmmoCount>
     {
@@ -578,12 +578,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.Control.WeaponBar
+    /// 路径: RoomUI.Control.WeaponBar
     /// </summary>
     public class WeaponBar : UiNode<RoomUIPanel, Godot.Control, WeaponBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.WeaponPanel
+        /// 节点路径: RoomUI.Control.WeaponPanel
         /// </summary>
         public WeaponPanel L_WeaponPanel
         {
@@ -596,7 +596,7 @@ public abstract partial class RoomUI : UiBase
         private WeaponPanel _L_WeaponPanel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.AmmoCount
+        /// 节点路径: RoomUI.Control.AmmoCount
         /// </summary>
         public AmmoCount L_AmmoCount
         {
@@ -613,12 +613,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: RoomUI.Control
+    /// 路径: RoomUI.Control
     /// </summary>
     public class Control : UiNode<RoomUIPanel, Godot.Control, Control>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: RoomUI.LifeBar
+        /// 节点路径: RoomUI.LifeBar
         /// </summary>
         public LifeBar L_LifeBar
         {
@@ -631,7 +631,7 @@ public abstract partial class RoomUI : UiBase
         private LifeBar _L_LifeBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.ActivePropBar
+        /// 节点路径: RoomUI.ActivePropBar
         /// </summary>
         public ActivePropBar L_ActivePropBar
         {
@@ -644,7 +644,7 @@ public abstract partial class RoomUI : UiBase
         private ActivePropBar _L_ActivePropBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.WeaponBar
+        /// 节点路径: RoomUI.WeaponBar
         /// </summary>
         public WeaponBar L_WeaponBar
         {
@@ -661,7 +661,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.WeaponRoulette.WeaponRoulettePanel"/>, 路径: RoomUI.WeaponRoulette
+    /// 路径: RoomUI.WeaponRoulette
     /// </summary>
     public class WeaponRoulette : UiNode<RoomUIPanel, UI.WeaponRoulette.WeaponRoulettePanel, WeaponRoulette>
     {
@@ -677,7 +677,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.RoomMap.RoomMapPanel"/>, 路径: RoomUI.RoomMap
+    /// 路径: RoomUI.RoomMap
     /// </summary>
     public class RoomMap : UiNode<RoomUIPanel, UI.RoomMap.RoomMapPanel, RoomMap>
     {
@@ -693,7 +693,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: RoomUI.Mask
+    /// 路径: RoomUI.Mask
     /// </summary>
     public class Mask : UiNode<RoomUIPanel, Godot.ColorRect, Mask>
     {
@@ -703,152 +703,152 @@ public abstract partial class RoomUI : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.InteractiveTipBar.Icon
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.InteractiveTipBar.Icon
     /// </summary>
     public Icon S_Icon => L_InteractiveTipBar.L_Icon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.InteractiveTipBar.InteractiveIcon
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.InteractiveTipBar.InteractiveIcon
     /// </summary>
     public InteractiveIcon S_InteractiveIcon => L_InteractiveTipBar.L_InteractiveIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Line2D"/>, 节点路径: RoomUI.InteractiveTipBar.Line2D
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.InteractiveTipBar.Line2D
     /// </summary>
     public Line2D S_Line2D => L_InteractiveTipBar.L_Line2D;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.InteractiveTipBar.NameLabel
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.InteractiveTipBar.NameLabel
     /// </summary>
     public NameLabel S_NameLabel => L_InteractiveTipBar.L_NameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.InteractiveTipBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.InteractiveTipBar
     /// </summary>
     public InteractiveTipBar S_InteractiveTipBar => L_InteractiveTipBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.ReloadBar.Slot.Block
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.ReloadBar.Slot.Block
     /// </summary>
     public Block S_Block => L_ReloadBar.L_Slot.L_Block;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.ReloadBar.Slot
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.ReloadBar.Slot
     /// </summary>
     public Slot S_Slot => L_ReloadBar.L_Slot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.ReloadBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.ReloadBar
     /// </summary>
     public ReloadBar S_ReloadBar => L_ReloadBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.LifeBar.Life.LifeIcon
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life.LifeIcon
     /// </summary>
     public LifeIcon S_LifeIcon => L_Control.L_LifeBar.L_Life.L_LifeIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.LifeBar.Life
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life
     /// </summary>
     public Life S_Life => L_Control.L_LifeBar.L_Life;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.LifeBar.Gold.GoldIcon
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Gold.GoldIcon
     /// </summary>
     public GoldIcon S_GoldIcon => L_Control.L_LifeBar.L_Gold.L_GoldIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.LifeBar.Gold.GoldText
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Gold.GoldText
     /// </summary>
     public GoldText S_GoldText => L_Control.L_LifeBar.L_Gold.L_GoldText;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.LifeBar.Gold
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Gold
     /// </summary>
     public Gold S_Gold => L_Control.L_LifeBar.L_Gold;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: RoomUI.Control.LifeBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar
     /// </summary>
     public LifeBar S_LifeBar => L_Control.L_LifeBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ActivePropBar.ActivePropBg
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ActivePropBg
     /// </summary>
     public ActivePropBg S_ActivePropBg => L_Control.L_ActivePropBar.L_ActivePropBg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.ActivePropBar.ActivePropSprite
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ActivePropSprite
     /// </summary>
     public ActivePropSprite S_ActivePropSprite => L_Control.L_ActivePropBar.L_ActivePropSprite;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.Control.ActivePropBar.CooldownProgress
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.CooldownProgress
     /// </summary>
     public CooldownProgress S_CooldownProgress => L_Control.L_ActivePropBar.L_CooldownProgress;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.ActivePropBar.ActivePropCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ActivePropCount
     /// </summary>
     public ActivePropCount S_ActivePropCount => L_Control.L_ActivePropBar.L_ActivePropCount;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ActivePropBar.ActivePropPanel
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ActivePropPanel
     /// </summary>
     public ActivePropPanel S_ActivePropPanel => L_Control.L_ActivePropBar.L_ActivePropPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.ActivePropBar.ChargeProgressBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ChargeProgressBar
     /// </summary>
     public ChargeProgressBar S_ChargeProgressBar => L_Control.L_ActivePropBar.L_ChargeProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomUI.Control.ActivePropBar.ChargeProgress
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar.ChargeProgress
     /// </summary>
     public ChargeProgress S_ChargeProgress => L_Control.L_ActivePropBar.L_ChargeProgress;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.ActivePropBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.ActivePropBar
     /// </summary>
     public ActivePropBar S_ActivePropBar => L_Control.L_ActivePropBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
     /// </summary>
     public WeaponSprite S_WeaponSprite => L_Control.L_WeaponBar.L_WeaponPanel.L_WeaponSprite;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel
     /// </summary>
     public WeaponPanel S_WeaponPanel => L_Control.L_WeaponBar.L_WeaponPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: RoomUI.Control.WeaponBar.AmmoCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.AmmoCount
     /// </summary>
     public AmmoCount S_AmmoCount => L_Control.L_WeaponBar.L_AmmoCount;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control.WeaponBar
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar
     /// </summary>
     public WeaponBar S_WeaponBar => L_Control.L_WeaponBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: RoomUI.Control
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control
     /// </summary>
     public Control S_Control => L_Control;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.WeaponRoulette.WeaponRoulettePanel"/>, 节点路径: RoomUI.WeaponRoulette
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.WeaponRoulette
     /// </summary>
     public WeaponRoulette S_WeaponRoulette => L_WeaponRoulette;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.RoomMap.RoomMapPanel"/>, 节点路径: RoomUI.RoomMap
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.RoomMap
     /// </summary>
     public RoomMap S_RoomMap => L_RoomMap;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: RoomUI.Mask
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Mask
     /// </summary>
     public Mask S_Mask => L_Mask;
 

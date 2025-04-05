@@ -1,7 +1,5 @@
 using DsUi;
 
-using DsUi;
-
 namespace UI.EditorTools;
 
 /// <summary>
@@ -10,7 +8,7 @@ namespace UI.EditorTools;
 public abstract partial class EditorTools : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: EditorTools.ScrollContainer
+    /// 节点路径: EditorTools.ScrollContainer
     /// </summary>
     public ScrollContainer L_ScrollContainer
     {
@@ -23,7 +21,7 @@ public abstract partial class EditorTools : UiBase
     private ScrollContainer _L_ScrollContainer;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ConfirmationDialog"/>, 节点路径: EditorTools.Confirm
+    /// 节点路径: EditorTools.Confirm
     /// </summary>
     public Confirm L_Confirm
     {
@@ -36,7 +34,7 @@ public abstract partial class EditorTools : UiBase
     private Confirm _L_Confirm;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.AcceptDialog"/>, 节点路径: EditorTools.Tips
+    /// 节点路径: EditorTools.Tips
     /// </summary>
     public Tips L_Tips
     {
@@ -59,7 +57,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label : UiNode<EditorToolsPanel, Godot.Label, Label>
     {
@@ -68,7 +66,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer.Button
     /// </summary>
     public class Button : UiNode<EditorToolsPanel, Godot.Button, Button>
     {
@@ -77,12 +75,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -95,7 +93,7 @@ public abstract partial class EditorTools : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
         /// </summary>
         public Button L_Button
         {
@@ -112,7 +110,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Label
     /// </summary>
     public class Label_1 : UiNode<EditorToolsPanel, Godot.Label, Label_1>
     {
@@ -121,7 +119,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Button
     /// </summary>
     public class Button_1 : UiNode<EditorToolsPanel, Godot.Button, Button_1>
     {
@@ -130,12 +128,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
     /// </summary>
     public class HBoxContainer6 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer6>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -148,7 +146,7 @@ public abstract partial class EditorTools : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
         /// </summary>
         public Button_1 L_Button
         {
@@ -165,7 +163,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Label
     /// </summary>
     public class Label_2 : UiNode<EditorToolsPanel, Godot.Label, Label_2>
     {
@@ -174,7 +172,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Button
     /// </summary>
     public class Button_2 : UiNode<EditorToolsPanel, Godot.Button, Button_2>
     {
@@ -183,12 +181,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
     /// </summary>
     public class HBoxContainer7 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer7>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
         /// </summary>
         public Label_2 L_Label
         {
@@ -201,7 +199,7 @@ public abstract partial class EditorTools : UiBase
         private Label_2 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
         /// </summary>
         public Button_2 L_Button
         {
@@ -218,7 +216,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Label
     /// </summary>
     public class Label_3 : UiNode<EditorToolsPanel, Godot.Label, Label_3>
     {
@@ -227,7 +225,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Button
     /// </summary>
     public class Button_3 : UiNode<EditorToolsPanel, Godot.Button, Button_3>
     {
@@ -236,12 +234,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
     /// </summary>
     public class HBoxContainer8 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer8>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
         /// </summary>
         public Label_3 L_Label
         {
@@ -254,7 +252,7 @@ public abstract partial class EditorTools : UiBase
         private Label_3 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
         /// </summary>
         public Button_3 L_Button
         {
@@ -271,12 +269,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorToolsPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -289,7 +287,7 @@ public abstract partial class EditorTools : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer6
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer6
         /// </summary>
         public HBoxContainer6 L_HBoxContainer6
         {
@@ -302,7 +300,7 @@ public abstract partial class EditorTools : UiBase
         private HBoxContainer6 _L_HBoxContainer6;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer7
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer7
         /// </summary>
         public HBoxContainer7 L_HBoxContainer7
         {
@@ -315,7 +313,7 @@ public abstract partial class EditorTools : UiBase
         private HBoxContainer7 _L_HBoxContainer7;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer8
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer8
         /// </summary>
         public HBoxContainer8 L_HBoxContainer8
         {
@@ -332,12 +330,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: EditorTools.ScrollContainer.MarginContainer
+    /// 路径: EditorTools.ScrollContainer.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<EditorToolsPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.VBoxContainer
+        /// 节点路径: EditorTools.ScrollContainer.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -354,12 +352,12 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: EditorTools.ScrollContainer
+    /// 路径: EditorTools.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<EditorToolsPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorTools.MarginContainer
+        /// 节点路径: EditorTools.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
         {
@@ -376,7 +374,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ConfirmationDialog"/>, 路径: EditorTools.Confirm
+    /// 路径: EditorTools.Confirm
     /// </summary>
     public class Confirm : UiNode<EditorToolsPanel, Godot.ConfirmationDialog, Confirm>
     {
@@ -385,7 +383,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.AcceptDialog"/>, 路径: EditorTools.Tips
+    /// 路径: EditorTools.Tips
     /// </summary>
     public class Tips : UiNode<EditorToolsPanel, Godot.AcceptDialog, Tips>
     {
@@ -395,47 +393,47 @@ public abstract partial class EditorTools : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
     /// </summary>
     public HBoxContainer6 S_HBoxContainer6 => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer6;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
     /// </summary>
     public HBoxContainer7 S_HBoxContainer7 => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer7;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
     /// </summary>
     public HBoxContainer8 S_HBoxContainer8 => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer8;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_ScrollContainer.L_MarginContainer.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorTools.ScrollContainer.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_ScrollContainer.L_MarginContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: EditorTools.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ConfirmationDialog"/>, 节点路径: EditorTools.Confirm
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.Confirm
     /// </summary>
     public Confirm S_Confirm => L_Confirm;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.AcceptDialog"/>, 节点路径: EditorTools.Tips
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.Tips
     /// </summary>
     public Tips S_Tips => L_Tips;
 

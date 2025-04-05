@@ -8,7 +8,7 @@ namespace UI.MapEditorCreateMark;
 public abstract partial class MapEditorCreateMark : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer
+    /// 节点路径: MapEditorCreateMark.MarginContainer
     /// </summary>
     public MarginContainer L_MarginContainer
     {
@@ -21,7 +21,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     private MarginContainer _L_MarginContainer;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreateMark.ExpandPanel
+    /// 节点路径: MapEditorCreateMark.ExpandPanel
     /// </summary>
     public ExpandPanel L_ExpandPanel
     {
@@ -34,7 +34,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     private ExpandPanel _L_ExpandPanel;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorCreateMark.NumberAttribute"/>, 节点路径: MapEditorCreateMark.NumberBar
+    /// 节点路径: MapEditorCreateMark.NumberBar
     /// </summary>
     public NumberBar L_NumberBar
     {
@@ -47,7 +47,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     private NumberBar _L_NumberBar;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorCreateMark.OptionAttribute"/>, 节点路径: MapEditorCreateMark.OptionBar
+    /// 节点路径: MapEditorCreateMark.OptionBar
     /// </summary>
     public OptionBar L_OptionBar
     {
@@ -60,7 +60,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     private OptionBar _L_OptionBar;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorCreateMark.ObjectAttribute"/>, 节点路径: MapEditorCreateMark.ObjectBar
+    /// 节点路径: MapEditorCreateMark.ObjectBar
     /// </summary>
     public ObjectBar L_ObjectBar
     {
@@ -86,7 +86,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.PosLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.PosLabel
     /// </summary>
     public class PosLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, PosLabel>
     {
@@ -95,7 +95,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.Label
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label : UiNode<MapEditorCreateMarkPanel, Godot.Label, Label>
     {
@@ -104,7 +104,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.PosX
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.PosX
     /// </summary>
     public class PosX : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, PosX>
     {
@@ -113,12 +113,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.Label
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -131,7 +131,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.PosX
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.PosX
         /// </summary>
         public PosX L_PosX
         {
@@ -148,7 +148,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.Label
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label_1 : UiNode<MapEditorCreateMarkPanel, Godot.Label, Label_1>
     {
@@ -157,7 +157,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.PosY
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.PosY
     /// </summary>
     public class PosY : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, PosY>
     {
@@ -166,12 +166,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2_1 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer2_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.Label
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -184,7 +184,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.PosY
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.PosY
         /// </summary>
         public PosY L_PosY
         {
@@ -201,12 +201,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer
     /// </summary>
     public class VBoxContainer_1 : UiNode<MapEditorCreateMarkPanel, Godot.VBoxContainer, VBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.HBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -219,7 +219,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.HBoxContainer2
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.HBoxContainer2
         /// </summary>
         public HBoxContainer2_1 L_HBoxContainer2
         {
@@ -236,12 +236,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2
     /// </summary>
     public class HBoxContainer2 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.PosLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.PosLabel
         /// </summary>
         public PosLabel L_PosLabel
         {
@@ -254,7 +254,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private PosLabel _L_PosLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.VBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.VBoxContainer
         /// </summary>
         public VBoxContainer_1 L_VBoxContainer
         {
@@ -271,7 +271,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.SizeLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.SizeLabel
     /// </summary>
     public class SizeLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, SizeLabel>
     {
@@ -280,7 +280,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.Label
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label_2 : UiNode<MapEditorCreateMarkPanel, Godot.Label, Label_2>
     {
@@ -289,7 +289,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.SizeX
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.SizeX
     /// </summary>
     public class SizeX : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, SizeX>
     {
@@ -298,12 +298,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_1 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.Label
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.Label
         /// </summary>
         public Label_2 L_Label
         {
@@ -316,7 +316,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Label_2 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.SizeX
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.SizeX
         /// </summary>
         public SizeX L_SizeX
         {
@@ -333,7 +333,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.Label
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label_3 : UiNode<MapEditorCreateMarkPanel, Godot.Label, Label_3>
     {
@@ -342,7 +342,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.SizeY
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.SizeY
     /// </summary>
     public class SizeY : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, SizeY>
     {
@@ -351,12 +351,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2_2 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer2_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.Label
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.Label
         /// </summary>
         public Label_3 L_Label
         {
@@ -369,7 +369,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Label_3 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.SizeY
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.SizeY
         /// </summary>
         public SizeY L_SizeY
         {
@@ -386,12 +386,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer
     /// </summary>
     public class VBoxContainer_2 : UiNode<MapEditorCreateMarkPanel, Godot.VBoxContainer, VBoxContainer_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.HBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.HBoxContainer
         /// </summary>
         public HBoxContainer_1 L_HBoxContainer
         {
@@ -404,7 +404,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer_1 _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.HBoxContainer2
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.HBoxContainer2
         /// </summary>
         public HBoxContainer2_2 L_HBoxContainer2
         {
@@ -421,12 +421,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3
     /// </summary>
     public class HBoxContainer3_1 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer3_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.SizeLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.SizeLabel
         /// </summary>
         public SizeLabel L_SizeLabel
         {
@@ -439,7 +439,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private SizeLabel _L_SizeLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.VBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.VBoxContainer
         /// </summary>
         public VBoxContainer_2 L_VBoxContainer
         {
@@ -456,7 +456,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayNameLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayNameLabel
     /// </summary>
     public class DelayNameLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, DelayNameLabel>
     {
@@ -465,7 +465,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayInput
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayInput
     /// </summary>
     public class DelayInput : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, DelayInput>
     {
@@ -474,12 +474,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer
     /// </summary>
     public class DelayContainer : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, DelayContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayNameLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayNameLabel
         /// </summary>
         public DelayNameLabel L_DelayNameLabel
         {
@@ -492,7 +492,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private DelayNameLabel _L_DelayNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayInput
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayInput
         /// </summary>
         public DelayInput L_DelayInput
         {
@@ -509,12 +509,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3
     /// </summary>
     public class HBoxContainer3 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer2
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
         {
@@ -527,7 +527,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3
         /// </summary>
         public HBoxContainer3_1 L_HBoxContainer3
         {
@@ -540,7 +540,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer3_1 _L_HBoxContainer3;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.DelayContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.DelayContainer
         /// </summary>
         public DelayContainer L_DelayContainer
         {
@@ -557,7 +557,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.AddMark
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.AddMark
     /// </summary>
     public class AddMark : UiNode<MapEditorCreateMarkPanel, Godot.Button, AddMark>
     {
@@ -566,7 +566,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.Control
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.Control
     /// </summary>
     public class Control : UiNode<MapEditorCreateMarkPanel, Godot.Control, Control>
     {
@@ -575,7 +575,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IconTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IconTitle
     /// </summary>
     public class IconTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, IconTitle>
     {
@@ -584,7 +584,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IdTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IdTitle
     /// </summary>
     public class IdTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, IdTitle>
     {
@@ -593,7 +593,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.NameTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.NameTitle
     /// </summary>
     public class NameTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, NameTitle>
     {
@@ -602,7 +602,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.TypeTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.TypeTitle
     /// </summary>
     public class TypeTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, TypeTitle>
     {
@@ -611,7 +611,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.WeightTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.WeightTitle
     /// </summary>
     public class WeightTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, WeightTitle>
     {
@@ -620,7 +620,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.ExtraTitle
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.ExtraTitle
     /// </summary>
     public class ExtraTitle : UiNode<MapEditorCreateMarkPanel, Godot.Label, ExtraTitle>
     {
@@ -629,12 +629,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_2 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.Control
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.Control
         /// </summary>
         public Control L_Control
         {
@@ -647,7 +647,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Control _L_Control;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.IconTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.IconTitle
         /// </summary>
         public IconTitle L_IconTitle
         {
@@ -660,7 +660,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private IconTitle _L_IconTitle;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.IdTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.IdTitle
         /// </summary>
         public IdTitle L_IdTitle
         {
@@ -673,7 +673,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private IdTitle _L_IdTitle;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.NameTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.NameTitle
         /// </summary>
         public NameTitle L_NameTitle
         {
@@ -686,7 +686,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private NameTitle _L_NameTitle;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.TypeTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.TypeTitle
         /// </summary>
         public TypeTitle L_TypeTitle
         {
@@ -699,7 +699,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private TypeTitle _L_TypeTitle;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.WeightTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.WeightTitle
         /// </summary>
         public WeightTitle L_WeightTitle
         {
@@ -712,7 +712,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private WeightTitle _L_WeightTitle;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ExtraTitle
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ExtraTitle
         /// </summary>
         public ExtraTitle L_ExtraTitle
         {
@@ -729,7 +729,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.ExpandButton
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.ExpandButton
     /// </summary>
     public class ExpandButton : UiNode<MapEditorCreateMarkPanel, Godot.Button, ExpandButton>
     {
@@ -738,7 +738,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.Icon
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.Icon
     /// </summary>
     public class Icon : UiNode<MapEditorCreateMarkPanel, Godot.TextureRect, Icon>
     {
@@ -747,7 +747,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.IdLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.IdLabel
     /// </summary>
     public class IdLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, IdLabel>
     {
@@ -756,7 +756,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.NameLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.NameLabel
     /// </summary>
     public class NameLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, NameLabel>
     {
@@ -765,7 +765,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.TypeLabel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.TypeLabel
     /// </summary>
     public class TypeLabel : UiNode<MapEditorCreateMarkPanel, Godot.Label, TypeLabel>
     {
@@ -774,7 +774,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.WeightEdit
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.WeightEdit
     /// </summary>
     public class WeightEdit : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, WeightEdit>
     {
@@ -783,7 +783,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer.DeleteButton
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer.DeleteButton
     /// </summary>
     public class DeleteButton : UiNode<MapEditorCreateMarkPanel, Godot.Button, DeleteButton>
     {
@@ -792,12 +792,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.CenterContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer
     /// </summary>
     public class CenterContainer : UiNode<MapEditorCreateMarkPanel, Godot.CenterContainer, CenterContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.DeleteButton
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.DeleteButton
         /// </summary>
         public DeleteButton L_DeleteButton
         {
@@ -814,12 +814,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_3 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer_3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.ExpandButton
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.ExpandButton
         /// </summary>
         public ExpandButton L_ExpandButton
         {
@@ -832,7 +832,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private ExpandButton _L_ExpandButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.Icon
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.Icon
         /// </summary>
         public Icon L_Icon
         {
@@ -845,7 +845,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private Icon _L_Icon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.IdLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.IdLabel
         /// </summary>
         public IdLabel L_IdLabel
         {
@@ -858,7 +858,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private IdLabel _L_IdLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.NameLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.NameLabel
         /// </summary>
         public NameLabel L_NameLabel
         {
@@ -871,7 +871,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private NameLabel _L_NameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.TypeLabel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.TypeLabel
         /// </summary>
         public TypeLabel L_TypeLabel
         {
@@ -884,7 +884,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private TypeLabel _L_TypeLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.WeightEdit
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.WeightEdit
         /// </summary>
         public WeightEdit L_WeightEdit
         {
@@ -897,7 +897,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private WeightEdit _L_WeightEdit;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CenterContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.CenterContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.CenterContainer
         /// </summary>
         public CenterContainer L_CenterContainer
         {
@@ -914,12 +914,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer
     /// </summary>
     public class VBoxContainer_4 : UiNode<MapEditorCreateMarkPanel, Godot.VBoxContainer, VBoxContainer_4>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.HBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.HBoxContainer
         /// </summary>
         public HBoxContainer_3 L_HBoxContainer
         {
@@ -936,12 +936,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.PanelContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject
     /// </summary>
     public class MarkObject : UiNode<MapEditorCreateMarkPanel, Godot.PanelContainer, MarkObject>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer
         /// </summary>
         public VBoxContainer_4 L_VBoxContainer
         {
@@ -958,12 +958,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<MapEditorCreateMarkPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.MarkObject
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.MarkObject
         /// </summary>
         public MarkObject L_MarkObject
         {
@@ -980,12 +980,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer_3 : UiNode<MapEditorCreateMarkPanel, Godot.VBoxContainer, VBoxContainer_3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.HBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.HBoxContainer
         /// </summary>
         public HBoxContainer_2 L_HBoxContainer
         {
@@ -998,7 +998,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer_2 _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.ScrollContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -1015,12 +1015,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer
     /// </summary>
     public class MarginContainer_1 : UiNode<MapEditorCreateMarkPanel, Godot.MarginContainer, MarginContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.VBoxContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.VBoxContainer
         /// </summary>
         public VBoxContainer_3 L_VBoxContainer
         {
@@ -1037,12 +1037,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel
     /// </summary>
     public class Panel : UiNode<MapEditorCreateMarkPanel, Godot.Panel, Panel>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.MarginContainer
+        /// 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.MarginContainer
         /// </summary>
         public MarginContainer_1 L_MarginContainer
         {
@@ -1059,12 +1059,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreateMark.MarginContainer.VBoxContainer
+    /// 路径: MapEditorCreateMark.MarginContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorCreateMarkPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.HBoxContainer3
+        /// 节点路径: MapEditorCreateMark.MarginContainer.HBoxContainer3
         /// </summary>
         public HBoxContainer3 L_HBoxContainer3
         {
@@ -1077,7 +1077,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private HBoxContainer3 _L_HBoxContainer3;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.MarginContainer.AddMark
+        /// 节点路径: MapEditorCreateMark.MarginContainer.AddMark
         /// </summary>
         public AddMark L_AddMark
         {
@@ -1090,7 +1090,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private AddMark _L_AddMark;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditorCreateMark.MarginContainer.Panel
+        /// 节点路径: MapEditorCreateMark.MarginContainer.Panel
         /// </summary>
         public Panel L_Panel
         {
@@ -1107,12 +1107,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorCreateMark.MarginContainer
+    /// 路径: MapEditorCreateMark.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<MapEditorCreateMarkPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreateMark.VBoxContainer
+        /// 节点路径: MapEditorCreateMark.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -1129,7 +1129,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.GridContainer"/>, 路径: MapEditorCreateMark.ExpandPanel.ExpandGrid
+    /// 路径: MapEditorCreateMark.ExpandPanel.ExpandGrid
     /// </summary>
     public class ExpandGrid : UiNode<MapEditorCreateMarkPanel, Godot.GridContainer, ExpandGrid>
     {
@@ -1138,12 +1138,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorCreateMark.ExpandPanel
+    /// 路径: MapEditorCreateMark.ExpandPanel
     /// </summary>
     public class ExpandPanel : UiNode<MapEditorCreateMarkPanel, Godot.MarginContainer, ExpandPanel>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: MapEditorCreateMark.ExpandGrid
+        /// 节点路径: MapEditorCreateMark.ExpandGrid
         /// </summary>
         public ExpandGrid L_ExpandGrid
         {
@@ -1160,7 +1160,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.NumberBar.AttrName
+    /// 路径: MapEditorCreateMark.NumberBar.AttrName
     /// </summary>
     public class AttrName : UiNode<MapEditorCreateMarkPanel, Godot.Label, AttrName>
     {
@@ -1169,7 +1169,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreateMark.NumberBar.NumInput
+    /// 路径: MapEditorCreateMark.NumberBar.NumInput
     /// </summary>
     public class NumInput : UiNode<MapEditorCreateMarkPanel, Godot.SpinBox, NumInput>
     {
@@ -1178,12 +1178,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorCreateMark.NumberAttribute"/>, 路径: MapEditorCreateMark.NumberBar
+    /// 路径: MapEditorCreateMark.NumberBar
     /// </summary>
     public class NumberBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.NumberAttribute, NumberBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.AttrName
+        /// 节点路径: MapEditorCreateMark.AttrName
         /// </summary>
         public AttrName L_AttrName
         {
@@ -1196,7 +1196,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private AttrName _L_AttrName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.NumInput
+        /// 节点路径: MapEditorCreateMark.NumInput
         /// </summary>
         public NumInput L_NumInput
         {
@@ -1213,7 +1213,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.OptionBar.AttrName
+    /// 路径: MapEditorCreateMark.OptionBar.AttrName
     /// </summary>
     public class AttrName_1 : UiNode<MapEditorCreateMarkPanel, Godot.Label, AttrName_1>
     {
@@ -1222,7 +1222,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: MapEditorCreateMark.OptionBar.OptionInput
+    /// 路径: MapEditorCreateMark.OptionBar.OptionInput
     /// </summary>
     public class OptionInput : UiNode<MapEditorCreateMarkPanel, Godot.OptionButton, OptionInput>
     {
@@ -1231,12 +1231,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorCreateMark.OptionAttribute"/>, 路径: MapEditorCreateMark.OptionBar
+    /// 路径: MapEditorCreateMark.OptionBar
     /// </summary>
     public class OptionBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.OptionAttribute, OptionBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.AttrName
+        /// 节点路径: MapEditorCreateMark.AttrName
         /// </summary>
         public AttrName_1 L_AttrName
         {
@@ -1249,7 +1249,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private AttrName_1 _L_AttrName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorCreateMark.OptionInput
+        /// 节点路径: MapEditorCreateMark.OptionInput
         /// </summary>
         public OptionInput L_OptionInput
         {
@@ -1266,7 +1266,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.ObjectBar.AttrName
+    /// 路径: MapEditorCreateMark.ObjectBar.AttrName
     /// </summary>
     public class AttrName_2 : UiNode<MapEditorCreateMarkPanel, Godot.Label, AttrName_2>
     {
@@ -1275,7 +1275,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.SelectButton
+    /// 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.SelectButton
     /// </summary>
     public class SelectButton : UiNode<MapEditorCreateMarkPanel, Godot.Button, SelectButton>
     {
@@ -1284,7 +1284,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectIcon
+    /// 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectIcon
     /// </summary>
     public class ObjectIcon : UiNode<MapEditorCreateMarkPanel, Godot.TextureRect, ObjectIcon>
     {
@@ -1293,7 +1293,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectName
+    /// 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectName
     /// </summary>
     public class ObjectName : UiNode<MapEditorCreateMarkPanel, Godot.Label, ObjectName>
     {
@@ -1302,7 +1302,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.DeleteButton
+    /// 路径: MapEditorCreateMark.ObjectBar.HBoxContainer.DeleteButton
     /// </summary>
     public class DeleteButton_1 : UiNode<MapEditorCreateMarkPanel, Godot.Button, DeleteButton_1>
     {
@@ -1311,12 +1311,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreateMark.ObjectBar.HBoxContainer
+    /// 路径: MapEditorCreateMark.ObjectBar.HBoxContainer
     /// </summary>
     public class HBoxContainer_4 : UiNode<MapEditorCreateMarkPanel, Godot.HBoxContainer, HBoxContainer_4>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.ObjectBar.SelectButton
+        /// 节点路径: MapEditorCreateMark.ObjectBar.SelectButton
         /// </summary>
         public SelectButton L_SelectButton
         {
@@ -1329,7 +1329,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private SelectButton _L_SelectButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorCreateMark.ObjectBar.ObjectIcon
+        /// 节点路径: MapEditorCreateMark.ObjectBar.ObjectIcon
         /// </summary>
         public ObjectIcon L_ObjectIcon
         {
@@ -1342,7 +1342,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private ObjectIcon _L_ObjectIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.ObjectBar.ObjectName
+        /// 节点路径: MapEditorCreateMark.ObjectBar.ObjectName
         /// </summary>
         public ObjectName L_ObjectName
         {
@@ -1355,7 +1355,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private ObjectName _L_ObjectName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.ObjectBar.DeleteButton
+        /// 节点路径: MapEditorCreateMark.ObjectBar.DeleteButton
         /// </summary>
         public DeleteButton_1 L_DeleteButton
         {
@@ -1372,12 +1372,12 @@ public abstract partial class MapEditorCreateMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorCreateMark.ObjectAttribute"/>, 路径: MapEditorCreateMark.ObjectBar
+    /// 路径: MapEditorCreateMark.ObjectBar
     /// </summary>
     public class ObjectBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.ObjectAttribute, ObjectBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.AttrName
+        /// 节点路径: MapEditorCreateMark.AttrName
         /// </summary>
         public AttrName_2 L_AttrName
         {
@@ -1390,7 +1390,7 @@ public abstract partial class MapEditorCreateMark : UiBase
         private AttrName_2 _L_AttrName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.HBoxContainer
+        /// 节点路径: MapEditorCreateMark.HBoxContainer
         /// </summary>
         public HBoxContainer_4 L_HBoxContainer
         {
@@ -1408,187 +1408,187 @@ public abstract partial class MapEditorCreateMark : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.PosLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.PosLabel
     /// </summary>
     public PosLabel S_PosLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer2.L_PosLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.PosX
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer.PosX
     /// </summary>
     public PosX S_PosX => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer2.L_VBoxContainer.L_HBoxContainer.L_PosX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.PosY
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer2.VBoxContainer.HBoxContainer2.PosY
     /// </summary>
     public PosY S_PosY => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer2.L_VBoxContainer.L_HBoxContainer2.L_PosY;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.SizeLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.SizeLabel
     /// </summary>
     public SizeLabel S_SizeLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer3.L_SizeLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.SizeX
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer.SizeX
     /// </summary>
     public SizeX S_SizeX => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer3.L_VBoxContainer.L_HBoxContainer.L_SizeX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.SizeY
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.HBoxContainer3.VBoxContainer.HBoxContainer2.SizeY
     /// </summary>
     public SizeY S_SizeY => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_HBoxContainer3.L_VBoxContainer.L_HBoxContainer2.L_SizeY;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayNameLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayNameLabel
     /// </summary>
     public DelayNameLabel S_DelayNameLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_DelayContainer.L_DelayNameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer.DelayInput
     /// </summary>
     public DelayInput S_DelayInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_DelayContainer.L_DelayInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.HBoxContainer3.DelayContainer
     /// </summary>
     public DelayContainer S_DelayContainer => L_MarginContainer.L_VBoxContainer.L_HBoxContainer3.L_DelayContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.AddMark
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.AddMark
     /// </summary>
     public AddMark S_AddMark => L_MarginContainer.L_VBoxContainer.L_AddMark;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.Control
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.Control
     /// </summary>
     public Control S_Control => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_Control;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IconTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IconTitle
     /// </summary>
     public IconTitle S_IconTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_IconTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IdTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.IdTitle
     /// </summary>
     public IdTitle S_IdTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_IdTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.NameTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.NameTitle
     /// </summary>
     public NameTitle S_NameTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_NameTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.TypeTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.TypeTitle
     /// </summary>
     public TypeTitle S_TypeTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_TypeTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.WeightTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.WeightTitle
     /// </summary>
     public WeightTitle S_WeightTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_WeightTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.ExtraTitle
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.HBoxContainer.ExtraTitle
     /// </summary>
     public ExtraTitle S_ExtraTitle => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_ExtraTitle;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.ExpandButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.ExpandButton
     /// </summary>
     public ExpandButton S_ExpandButton => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_ExpandButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.Icon
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.Icon
     /// </summary>
     public Icon S_Icon => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_Icon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.IdLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.IdLabel
     /// </summary>
     public IdLabel S_IdLabel => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_IdLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.NameLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.NameLabel
     /// </summary>
     public NameLabel S_NameLabel => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_NameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.TypeLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.TypeLabel
     /// </summary>
     public TypeLabel S_TypeLabel => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_TypeLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.WeightEdit
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.WeightEdit
     /// </summary>
     public WeightEdit S_WeightEdit => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_WeightEdit;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CenterContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject.VBoxContainer.HBoxContainer.CenterContainer
     /// </summary>
     public CenterContainer S_CenterContainer => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject.L_VBoxContainer.L_HBoxContainer.L_CenterContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer.MarkObject
     /// </summary>
     public MarkObject S_MarkObject => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_MarkObject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel.MarginContainer.VBoxContainer.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_Panel.L_MarginContainer.L_VBoxContainer.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.MarginContainer.VBoxContainer.Panel
     /// </summary>
     public Panel S_Panel => L_MarginContainer.L_VBoxContainer.L_Panel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: MapEditorCreateMark.ExpandPanel.ExpandGrid
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ExpandPanel.ExpandGrid
     /// </summary>
     public ExpandGrid S_ExpandGrid => L_ExpandPanel.L_ExpandGrid;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreateMark.ExpandPanel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ExpandPanel
     /// </summary>
     public ExpandPanel S_ExpandPanel => L_ExpandPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreateMark.NumberBar.NumInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.NumberBar.NumInput
     /// </summary>
     public NumInput S_NumInput => L_NumberBar.L_NumInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorCreateMark.NumberAttribute"/>, 节点路径: MapEditorCreateMark.NumberBar
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.NumberBar
     /// </summary>
     public NumberBar S_NumberBar => L_NumberBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorCreateMark.OptionBar.OptionInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.OptionBar.OptionInput
     /// </summary>
     public OptionInput S_OptionInput => L_OptionBar.L_OptionInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorCreateMark.OptionAttribute"/>, 节点路径: MapEditorCreateMark.OptionBar
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.OptionBar
     /// </summary>
     public OptionBar S_OptionBar => L_OptionBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.SelectButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.SelectButton
     /// </summary>
     public SelectButton S_SelectButton => L_ObjectBar.L_HBoxContainer.L_SelectButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectIcon
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectIcon
     /// </summary>
     public ObjectIcon S_ObjectIcon => L_ObjectBar.L_HBoxContainer.L_ObjectIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectName
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ObjectBar.HBoxContainer.ObjectName
     /// </summary>
     public ObjectName S_ObjectName => L_ObjectBar.L_HBoxContainer.L_ObjectName;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorCreateMark.ObjectAttribute"/>, 节点路径: MapEditorCreateMark.ObjectBar
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreateMark.ObjectBar
     /// </summary>
     public ObjectBar S_ObjectBar => L_ObjectBar;
 

@@ -8,7 +8,7 @@ namespace UI.Victory;
 public abstract partial class Victory : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Victory.Label
+    /// 节点路径: Victory.Label
     /// </summary>
     public Label L_Label
     {
@@ -21,7 +21,7 @@ public abstract partial class Victory : UiBase
     private Label _L_Label;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Victory.Button
+    /// 节点路径: Victory.Button
     /// </summary>
     public Button L_Button
     {
@@ -44,7 +44,7 @@ public abstract partial class Victory : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Victory.Label
+    /// 路径: Victory.Label
     /// </summary>
     public class Label : UiNode<VictoryPanel, Godot.Label, Label>
     {
@@ -53,7 +53,7 @@ public abstract partial class Victory : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Victory.Button
+    /// 路径: Victory.Button
     /// </summary>
     public class Button : UiNode<VictoryPanel, Godot.Button, Button>
     {
@@ -63,12 +63,12 @@ public abstract partial class Victory : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Victory.Label
+    /// 场景中唯一名称的节点, 节点路径: Victory.Label
     /// </summary>
     public Label S_Label => L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Victory.Button
+    /// 场景中唯一名称的节点, 节点路径: Victory.Button
     /// </summary>
     public Button S_Button => L_Button;
 

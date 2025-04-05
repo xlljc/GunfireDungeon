@@ -8,7 +8,7 @@ namespace UI.TileSetEditorCombination;
 public abstract partial class TileSetEditorCombination : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSplitContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer
+    /// 节点路径: TileSetEditorCombination.HSplitContainer
     /// </summary>
     public HSplitContainer L_HSplitContainer
     {
@@ -34,7 +34,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Node2D"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.CanvasRoot
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.CanvasRoot
     /// </summary>
     public class CanvasRoot : UiNode<TileSetEditorCombinationPanel, Godot.Node2D, CanvasRoot>
     {
@@ -43,7 +43,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Node2D"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.BrushRoot
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.BrushRoot
     /// </summary>
     public class BrushRoot : UiNode<TileSetEditorCombinationPanel, Godot.Node2D, BrushRoot>
     {
@@ -52,7 +52,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.TileSetEditorCombination.RectBrush"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.RectBrush
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.RectBrush
     /// </summary>
     public class RectBrush : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.RectBrush, RectBrush>
     {
@@ -61,12 +61,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot
     /// </summary>
     public class CombinationRoot : UiNode<TileSetEditorCombinationPanel, Godot.Control, CombinationRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CanvasRoot
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CanvasRoot
         /// </summary>
         public CanvasRoot L_CanvasRoot
         {
@@ -79,7 +79,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private CanvasRoot _L_CanvasRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.BrushRoot
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.BrushRoot
         /// </summary>
         public BrushRoot L_BrushRoot
         {
@@ -92,7 +92,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private BrushRoot _L_BrushRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.TileSetEditorCombination.RectBrush"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.RectBrush
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.RectBrush
         /// </summary>
         public RectBrush L_RectBrush
         {
@@ -109,7 +109,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.Grid
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.Grid
     /// </summary>
     public class Grid : UiNode<TileSetEditorCombinationPanel, Godot.ColorRect, Grid>
     {
@@ -118,7 +118,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.FocusBtn
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.FocusBtn
     /// </summary>
     public class FocusBtn : UiNode<TileSetEditorCombinationPanel, Godot.TextureButton, FocusBtn>
     {
@@ -127,7 +127,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.DeleteBtn
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.DeleteBtn
     /// </summary>
     public class DeleteBtn : UiNode<TileSetEditorCombinationPanel, Godot.TextureButton, DeleteBtn>
     {
@@ -136,7 +136,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.ImportBtn
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.ImportBtn
     /// </summary>
     public class ImportBtn : UiNode<TileSetEditorCombinationPanel, Godot.Button, ImportBtn>
     {
@@ -145,12 +145,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.TileSetEditorCombination.TileEditCombination"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg
     /// </summary>
     public class LeftTopBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileEditCombination, LeftTopBg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.CombinationRoot
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.CombinationRoot
         /// </summary>
         public CombinationRoot L_CombinationRoot
         {
@@ -163,7 +163,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private CombinationRoot _L_CombinationRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.Grid
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.Grid
         /// </summary>
         public Grid L_Grid
         {
@@ -176,7 +176,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private Grid _L_Grid;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.FocusBtn
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.FocusBtn
         /// </summary>
         public FocusBtn L_FocusBtn
         {
@@ -189,7 +189,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private FocusBtn _L_FocusBtn;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.DeleteBtn
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.DeleteBtn
         /// </summary>
         public DeleteBtn L_DeleteBtn
         {
@@ -202,7 +202,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private DeleteBtn _L_DeleteBtn;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.ImportBtn
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.ImportBtn
         /// </summary>
         public ImportBtn L_ImportBtn
         {
@@ -219,12 +219,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<TileSetEditorCombinationPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.TileSetEditorCombination.TileEditCombination"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.LeftTopBg
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.LeftTopBg
         /// </summary>
         public LeftTopBg L_LeftTopBg
         {
@@ -241,12 +241,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop
     /// </summary>
     public class LeftTop : UiNode<TileSetEditorCombinationPanel, Godot.Panel, LeftTop>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.MarginContainer
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
         {
@@ -263,7 +263,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot.MaskRect
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot.MaskRect
     /// </summary>
     public class MaskRect : UiNode<TileSetEditorCombinationPanel, Godot.ColorRect, MaskRect>
     {
@@ -272,12 +272,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot
     /// </summary>
     public class MaskRoot : UiNode<TileSetEditorCombinationPanel, Godot.Control, MaskRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRect
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRect
         /// </summary>
         public MaskRect L_MaskRect
         {
@@ -294,7 +294,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="EditorMaskBrush"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskBrush
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskBrush
     /// </summary>
     public class MaskBrush : UiNode<TileSetEditorCombinationPanel, EditorMaskBrush, MaskBrush>
     {
@@ -303,12 +303,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture
     /// </summary>
     public class TileTexture : UiNode<TileSetEditorCombinationPanel, Godot.TextureRect, TileTexture>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.MaskRoot
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.MaskRoot
         /// </summary>
         public MaskRoot L_MaskRoot
         {
@@ -321,7 +321,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private MaskRoot _L_MaskRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="EditorMaskBrush"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.MaskBrush
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.MaskBrush
         /// </summary>
         public MaskBrush L_MaskBrush
         {
@@ -338,7 +338,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.Grid
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.Grid
     /// </summary>
     public class Grid_1 : UiNode<TileSetEditorCombinationPanel, Godot.ColorRect, Grid_1>
     {
@@ -347,7 +347,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.FocusBtn
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.FocusBtn
     /// </summary>
     public class FocusBtn_1 : UiNode<TileSetEditorCombinationPanel, Godot.TextureButton, FocusBtn_1>
     {
@@ -356,12 +356,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.TileSetEditorCombination.TileEditArea"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg
     /// </summary>
     public class LeftBottomBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileEditArea, LeftBottomBg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.TileTexture
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.TileTexture
         /// </summary>
         public TileTexture L_TileTexture
         {
@@ -374,7 +374,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private TileTexture _L_TileTexture;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.Grid
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.Grid
         /// </summary>
         public Grid_1 L_Grid
         {
@@ -387,7 +387,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private Grid_1 _L_Grid;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.FocusBtn
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.FocusBtn
         /// </summary>
         public FocusBtn_1 L_FocusBtn
         {
@@ -404,12 +404,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer
     /// </summary>
     public class MarginContainer_1 : UiNode<TileSetEditorCombinationPanel, Godot.MarginContainer, MarginContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.TileSetEditorCombination.TileEditArea"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.LeftBottomBg
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.LeftBottomBg
         /// </summary>
         public LeftBottomBg L_LeftBottomBg
         {
@@ -426,12 +426,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom
     /// </summary>
     public class LeftBottom : UiNode<TileSetEditorCombinationPanel, Godot.Panel, LeftBottom>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.MarginContainer
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.MarginContainer
         /// </summary>
         public MarginContainer_1 L_MarginContainer
         {
@@ -448,12 +448,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VSplitContainer"/>, 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer
     /// </summary>
     public class VSplitContainer : UiNode<TileSetEditorCombinationPanel, Godot.VSplitContainer, VSplitContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.HSplitContainer.LeftTop
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.LeftTop
         /// </summary>
         public LeftTop L_LeftTop
         {
@@ -466,7 +466,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private LeftTop _L_LeftTop;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.HSplitContainer.LeftBottom
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.LeftBottom
         /// </summary>
         public LeftBottom L_LeftBottom
         {
@@ -483,7 +483,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.Label
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.Label
     /// </summary>
     public class Label : UiNode<TileSetEditorCombinationPanel, Godot.Label, Label>
     {
@@ -492,7 +492,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.PreviewImage
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public class PreviewImage : UiNode<TileSetEditorCombinationPanel, Godot.TextureRect, PreviewImage>
     {
@@ -501,7 +501,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.CellName
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.CellName
     /// </summary>
     public class CellName : UiNode<TileSetEditorCombinationPanel, Godot.Label, CellName>
     {
@@ -510,7 +510,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.SelectTexture
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public class SelectTexture : UiNode<TileSetEditorCombinationPanel, Godot.NinePatchRect, SelectTexture>
     {
@@ -519,12 +519,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton
     /// </summary>
     public class CellButton : UiNode<TileSetEditorCombinationPanel, Godot.Button, CellButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.PreviewImage
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.PreviewImage
         /// </summary>
         public PreviewImage L_PreviewImage
         {
@@ -537,7 +537,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private PreviewImage _L_PreviewImage;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellName
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellName
         /// </summary>
         public CellName L_CellName
         {
@@ -550,7 +550,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private CellName _L_CellName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.SelectTexture
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.SelectTexture
         /// </summary>
         public SelectTexture L_SelectTexture
         {
@@ -567,12 +567,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<TileSetEditorCombinationPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.CellButton
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.CellButton
         /// </summary>
         public CellButton L_CellButton
         {
@@ -589,12 +589,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.TileSetEditorCombination.TileSelected"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg
     /// </summary>
     public class RightBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileSelected, RightBg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.Label
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -607,7 +607,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.ScrollContainer
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -624,12 +624,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer
     /// </summary>
     public class MarginContainer_2 : UiNode<TileSetEditorCombinationPanel, Godot.MarginContainer, MarginContainer_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.TileSetEditorCombination.TileSelected"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.RightBg
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.RightBg
         /// </summary>
         public RightBg L_RightBg
         {
@@ -646,12 +646,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditorCombination.HSplitContainer.Right
+    /// 路径: TileSetEditorCombination.HSplitContainer.Right
     /// </summary>
     public class Right : UiNode<TileSetEditorCombinationPanel, Godot.Panel, Right>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.MarginContainer
+        /// 节点路径: TileSetEditorCombination.HSplitContainer.MarginContainer
         /// </summary>
         public MarginContainer_2 L_MarginContainer
         {
@@ -668,12 +668,12 @@ public abstract partial class TileSetEditorCombination : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSplitContainer"/>, 路径: TileSetEditorCombination.HSplitContainer
+    /// 路径: TileSetEditorCombination.HSplitContainer
     /// </summary>
     public class HSplitContainer : UiNode<TileSetEditorCombinationPanel, Godot.HSplitContainer, HSplitContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VSplitContainer"/>, 节点路径: TileSetEditorCombination.VSplitContainer
+        /// 节点路径: TileSetEditorCombination.VSplitContainer
         /// </summary>
         public VSplitContainer L_VSplitContainer
         {
@@ -686,7 +686,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         private VSplitContainer _L_VSplitContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.Right
+        /// 节点路径: TileSetEditorCombination.Right
         /// </summary>
         public Right L_Right
         {
@@ -704,122 +704,122 @@ public abstract partial class TileSetEditorCombination : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.CanvasRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.CanvasRoot
     /// </summary>
     public CanvasRoot S_CanvasRoot => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_CombinationRoot.L_CanvasRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.BrushRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.BrushRoot
     /// </summary>
     public BrushRoot S_BrushRoot => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_CombinationRoot.L_BrushRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.TileSetEditorCombination.RectBrush"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.RectBrush
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.RectBrush
     /// </summary>
     public RectBrush S_RectBrush => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_CombinationRoot.L_RectBrush;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot
     /// </summary>
     public CombinationRoot S_CombinationRoot => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_CombinationRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.DeleteBtn
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.DeleteBtn
     /// </summary>
     public DeleteBtn S_DeleteBtn => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_DeleteBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.ImportBtn
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.ImportBtn
     /// </summary>
     public ImportBtn S_ImportBtn => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg.L_ImportBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.TileSetEditorCombination.TileEditCombination"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg
     /// </summary>
     public LeftTopBg S_LeftTopBg => L_HSplitContainer.L_VSplitContainer.L_LeftTop.L_MarginContainer.L_LeftTopBg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop
     /// </summary>
     public LeftTop S_LeftTop => L_HSplitContainer.L_VSplitContainer.L_LeftTop;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot.MaskRect
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot.MaskRect
     /// </summary>
     public MaskRect S_MaskRect => L_HSplitContainer.L_VSplitContainer.L_LeftBottom.L_MarginContainer.L_LeftBottomBg.L_TileTexture.L_MaskRoot.L_MaskRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskRoot
     /// </summary>
     public MaskRoot S_MaskRoot => L_HSplitContainer.L_VSplitContainer.L_LeftBottom.L_MarginContainer.L_LeftBottomBg.L_TileTexture.L_MaskRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="EditorMaskBrush"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskBrush
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture.MaskBrush
     /// </summary>
     public MaskBrush S_MaskBrush => L_HSplitContainer.L_VSplitContainer.L_LeftBottom.L_MarginContainer.L_LeftBottomBg.L_TileTexture.L_MaskBrush;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg.TileTexture
     /// </summary>
     public TileTexture S_TileTexture => L_HSplitContainer.L_VSplitContainer.L_LeftBottom.L_MarginContainer.L_LeftBottomBg.L_TileTexture;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.TileSetEditorCombination.TileEditArea"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg
     /// </summary>
     public LeftBottomBg S_LeftBottomBg => L_HSplitContainer.L_VSplitContainer.L_LeftBottom.L_MarginContainer.L_LeftBottomBg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom
     /// </summary>
     public LeftBottom S_LeftBottom => L_HSplitContainer.L_VSplitContainer.L_LeftBottom;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VSplitContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer
     /// </summary>
     public VSplitContainer S_VSplitContainer => L_HSplitContainer.L_VSplitContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.Label
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.Label
     /// </summary>
     public Label S_Label => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.PreviewImage
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public PreviewImage S_PreviewImage => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_ScrollContainer.L_CellButton.L_PreviewImage;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.CellName
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.CellName
     /// </summary>
     public CellName S_CellName => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_ScrollContainer.L_CellButton.L_CellName;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.SelectTexture
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public SelectTexture S_SelectTexture => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_ScrollContainer.L_CellButton.L_SelectTexture;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer.CellButton
     /// </summary>
     public CellButton S_CellButton => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_ScrollContainer.L_CellButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.TileSetEditorCombination.TileSelected"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg
     /// </summary>
     public RightBg S_RightBg => L_HSplitContainer.L_Right.L_MarginContainer.L_RightBg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditorCombination.HSplitContainer.Right
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer.Right
     /// </summary>
     public Right S_Right => L_HSplitContainer.L_Right;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSplitContainer"/>, 节点路径: TileSetEditorCombination.HSplitContainer
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorCombination.HSplitContainer
     /// </summary>
     public HSplitContainer S_HSplitContainer => L_HSplitContainer;
 

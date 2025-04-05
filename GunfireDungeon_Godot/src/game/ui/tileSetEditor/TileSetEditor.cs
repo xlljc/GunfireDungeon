@@ -8,7 +8,7 @@ namespace UI.TileSetEditor;
 public abstract partial class TileSetEditor : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg
+    /// 节点路径: TileSetEditor.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -31,7 +31,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditor.Bg.VBoxContainer.Head.Back
+    /// 路径: TileSetEditor.Bg.VBoxContainer.Head.Back
     /// </summary>
     public class Back : UiNode<TileSetEditorPanel, Godot.Button, Back>
     {
@@ -40,7 +40,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditor.Bg.VBoxContainer.Head.Save
+    /// 路径: TileSetEditor.Bg.VBoxContainer.Head.Save
     /// </summary>
     public class Save : UiNode<TileSetEditorPanel, Godot.Button, Save>
     {
@@ -49,7 +49,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: TileSetEditor.Bg.VBoxContainer.Head.Title
+    /// 路径: TileSetEditor.Bg.VBoxContainer.Head.Title
     /// </summary>
     public class Title : UiNode<TileSetEditorPanel, Godot.Label, Title>
     {
@@ -58,12 +58,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditor.Bg.VBoxContainer.Head
+    /// 路径: TileSetEditor.Bg.VBoxContainer.Head
     /// </summary>
     public class Head : UiNode<TileSetEditorPanel, Godot.Panel, Head>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Back
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.Back
         /// </summary>
         public Back L_Back
         {
@@ -76,7 +76,7 @@ public abstract partial class TileSetEditor : UiBase
         private Back _L_Back;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Save
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.Save
         /// </summary>
         public Save L_Save
         {
@@ -89,7 +89,7 @@ public abstract partial class TileSetEditor : UiBase
         private Save _L_Save;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Title
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.Title
         /// </summary>
         public Title L_Title
         {
@@ -106,7 +106,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.Label
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label : UiNode<TileSetEditorPanel, Godot.Label, Label>
     {
@@ -115,7 +115,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.AddButton
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.AddButton
     /// </summary>
     public class AddButton : UiNode<TileSetEditorPanel, Godot.Button, AddButton>
     {
@@ -124,7 +124,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.DeleteButton
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.DeleteButton
     /// </summary>
     public class DeleteButton : UiNode<TileSetEditorPanel, Godot.Button, DeleteButton>
     {
@@ -133,12 +133,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_1 : UiNode<TileSetEditorPanel, Godot.HBoxContainer, HBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.Label
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -151,7 +151,7 @@ public abstract partial class TileSetEditor : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.AddButton
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.AddButton
         /// </summary>
         public AddButton L_AddButton
         {
@@ -164,7 +164,7 @@ public abstract partial class TileSetEditor : UiBase
         private AddButton _L_AddButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.DeleteButton
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.DeleteButton
         /// </summary>
         public DeleteButton L_DeleteButton
         {
@@ -181,7 +181,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.OptionButton
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.OptionButton
     /// </summary>
     public class OptionButton : UiNode<TileSetEditorPanel, Godot.OptionButton, OptionButton>
     {
@@ -190,7 +190,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ColorRect
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ColorRect
     /// </summary>
     public class ColorRect : UiNode<TileSetEditorPanel, Godot.ColorRect, ColorRect>
     {
@@ -199,7 +199,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.ErrorIcon
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.ErrorIcon
     /// </summary>
     public class ErrorIcon : UiNode<TileSetEditorPanel, Godot.TextureRect, ErrorIcon>
     {
@@ -208,7 +208,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.Select
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.Select
     /// </summary>
     public class Select : UiNode<TileSetEditorPanel, Godot.NinePatchRect, Select>
     {
@@ -217,12 +217,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab
     /// </summary>
     public class Tab : UiNode<TileSetEditorPanel, Godot.Button, Tab>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.ErrorIcon
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.ErrorIcon
         /// </summary>
         public ErrorIcon L_ErrorIcon
         {
@@ -235,7 +235,7 @@ public abstract partial class TileSetEditor : UiBase
         private ErrorIcon _L_ErrorIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Select
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Select
         /// </summary>
         public Select L_Select
         {
@@ -252,12 +252,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<TileSetEditorPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.Tab
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.Tab
         /// </summary>
         public Tab L_Tab
         {
@@ -274,12 +274,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer
     /// </summary>
     public class VBoxContainer_1 : UiNode<TileSetEditorPanel, Godot.VBoxContainer, VBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.HBoxContainer
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.HBoxContainer
         /// </summary>
         public HBoxContainer_1 L_HBoxContainer
         {
@@ -292,7 +292,7 @@ public abstract partial class TileSetEditor : UiBase
         private HBoxContainer_1 _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.OptionButton
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.OptionButton
         /// </summary>
         public OptionButton L_OptionButton
         {
@@ -305,7 +305,7 @@ public abstract partial class TileSetEditor : UiBase
         private OptionButton _L_OptionButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.ColorRect
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.ColorRect
         /// </summary>
         public ColorRect L_ColorRect
         {
@@ -318,7 +318,7 @@ public abstract partial class TileSetEditor : UiBase
         private ColorRect _L_ColorRect;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.ScrollContainer
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -335,12 +335,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot
     /// </summary>
     public class LeftRoot : UiNode<TileSetEditorPanel, Godot.Panel, LeftRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.VBoxContainer
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.VBoxContainer
         /// </summary>
         public VBoxContainer_1 L_VBoxContainer
         {
@@ -357,7 +357,7 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.RightRoot
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.RightRoot
     /// </summary>
     public class RightRoot : UiNode<TileSetEditorPanel, Godot.Panel, RightRoot>
     {
@@ -366,12 +366,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer
+    /// 路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<TileSetEditorPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.LeftRoot
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.LeftRoot
         /// </summary>
         public LeftRoot L_LeftRoot
         {
@@ -384,7 +384,7 @@ public abstract partial class TileSetEditor : UiBase
         private LeftRoot _L_LeftRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.RightRoot
+        /// 节点路径: TileSetEditor.Bg.VBoxContainer.RightRoot
         /// </summary>
         public RightRoot L_RightRoot
         {
@@ -401,12 +401,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: TileSetEditor.Bg.VBoxContainer
+    /// 路径: TileSetEditor.Bg.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<TileSetEditorPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.Head
+        /// 节点路径: TileSetEditor.Bg.Head
         /// </summary>
         public Head L_Head
         {
@@ -419,7 +419,7 @@ public abstract partial class TileSetEditor : UiBase
         private Head _L_Head;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: TileSetEditor.Bg.HBoxContainer
+        /// 节点路径: TileSetEditor.Bg.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -436,12 +436,12 @@ public abstract partial class TileSetEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: TileSetEditor.Bg
+    /// 路径: TileSetEditor.Bg
     /// </summary>
     public class Bg : UiNode<TileSetEditorPanel, Godot.Panel, Bg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: TileSetEditor.VBoxContainer
+        /// 节点路径: TileSetEditor.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -459,82 +459,82 @@ public abstract partial class TileSetEditor : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Back
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Back
     /// </summary>
     public Back S_Back => L_Bg.L_VBoxContainer.L_Head.L_Back;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Save
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Save
     /// </summary>
     public Save S_Save => L_Bg.L_VBoxContainer.L_Head.L_Save;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Title
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.Head.Title
     /// </summary>
     public Title S_Title => L_Bg.L_VBoxContainer.L_Head.L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.Head
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.Head
     /// </summary>
     public Head S_Head => L_Bg.L_VBoxContainer.L_Head;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.Label
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public Label S_Label => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_HBoxContainer.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.AddButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.AddButton
     /// </summary>
     public AddButton S_AddButton => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_HBoxContainer.L_AddButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.DeleteButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.HBoxContainer.DeleteButton
     /// </summary>
     public DeleteButton S_DeleteButton => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_HBoxContainer.L_DeleteButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.OptionButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.OptionButton
     /// </summary>
     public OptionButton S_OptionButton => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_OptionButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ColorRect
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ColorRect
     /// </summary>
     public ColorRect S_ColorRect => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.ErrorIcon
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.ErrorIcon
     /// </summary>
     public ErrorIcon S_ErrorIcon => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_ScrollContainer.L_Tab.L_ErrorIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.Select
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab.Select
     /// </summary>
     public Select S_Select => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_ScrollContainer.L_Tab.L_Select;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer.Tab
     /// </summary>
     public Tab S_Tab => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_ScrollContainer.L_Tab;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot.VBoxContainer.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot.L_VBoxContainer.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.LeftRoot
     /// </summary>
     public LeftRoot S_LeftRoot => L_Bg.L_VBoxContainer.L_HBoxContainer.L_LeftRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.RightRoot
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg.VBoxContainer.HBoxContainer.RightRoot
     /// </summary>
     public RightRoot S_RightRoot => L_Bg.L_VBoxContainer.L_HBoxContainer.L_RightRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: TileSetEditor.Bg
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditor.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 

@@ -8,7 +8,7 @@ namespace UI.MapEditorConfigObject;
 public abstract partial class MapEditorConfigObject : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorConfigObject.VBoxContainer
+    /// 节点路径: MapEditorConfigObject.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.LineEdit"/>, 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchInput
+    /// 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchInput
     /// </summary>
     public class SearchInput : UiNode<MapEditorConfigObjectPanel, Godot.LineEdit, SearchInput>
     {
@@ -40,7 +40,7 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchButton
+    /// 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchButton
     /// </summary>
     public class SearchButton : UiNode<MapEditorConfigObjectPanel, Godot.Button, SearchButton>
     {
@@ -49,12 +49,12 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorConfigObject.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorConfigObjectPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorConfigObject.VBoxContainer.SearchInput
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.SearchInput
         /// </summary>
         public SearchInput L_SearchInput
         {
@@ -67,7 +67,7 @@ public abstract partial class MapEditorConfigObject : UiBase
         private SearchInput _L_SearchInput;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorConfigObject.VBoxContainer.SearchButton
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.SearchButton
         /// </summary>
         public SearchButton L_SearchButton
         {
@@ -84,7 +84,7 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.PreviewImage
+    /// 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public class PreviewImage : UiNode<MapEditorConfigObjectPanel, Godot.TextureRect, PreviewImage>
     {
@@ -93,7 +93,7 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.CellName
+    /// 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.CellName
     /// </summary>
     public class CellName : UiNode<MapEditorConfigObjectPanel, Godot.Label, CellName>
     {
@@ -102,7 +102,7 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.SelectTexture
+    /// 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public class SelectTexture : UiNode<MapEditorConfigObjectPanel, Godot.NinePatchRect, SelectTexture>
     {
@@ -111,12 +111,12 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton
+    /// 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton
     /// </summary>
     public class CellButton : UiNode<MapEditorConfigObjectPanel, Godot.Button, CellButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.PreviewImage
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.PreviewImage
         /// </summary>
         public PreviewImage L_PreviewImage
         {
@@ -129,7 +129,7 @@ public abstract partial class MapEditorConfigObject : UiBase
         private PreviewImage _L_PreviewImage;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellName
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellName
         /// </summary>
         public CellName L_CellName
         {
@@ -142,7 +142,7 @@ public abstract partial class MapEditorConfigObject : UiBase
         private CellName _L_CellName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.SelectTexture
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.SelectTexture
         /// </summary>
         public SelectTexture L_SelectTexture
         {
@@ -159,12 +159,12 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer
+    /// 路径: MapEditorConfigObject.VBoxContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<MapEditorConfigObjectPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorConfigObject.VBoxContainer.CellButton
+        /// 节点路径: MapEditorConfigObject.VBoxContainer.CellButton
         /// </summary>
         public CellButton L_CellButton
         {
@@ -181,12 +181,12 @@ public abstract partial class MapEditorConfigObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorConfigObject.VBoxContainer
+    /// 路径: MapEditorConfigObject.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorConfigObjectPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorConfigObject.HBoxContainer
+        /// 节点路径: MapEditorConfigObject.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -199,7 +199,7 @@ public abstract partial class MapEditorConfigObject : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorConfigObject.ScrollContainer
+        /// 节点路径: MapEditorConfigObject.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -217,47 +217,47 @@ public abstract partial class MapEditorConfigObject : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchInput
     /// </summary>
     public SearchInput S_SearchInput => L_VBoxContainer.L_HBoxContainer.L_SearchInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer.SearchButton
     /// </summary>
     public SearchButton S_SearchButton => L_VBoxContainer.L_HBoxContainer.L_SearchButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.PreviewImage
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public PreviewImage S_PreviewImage => L_VBoxContainer.L_ScrollContainer.L_CellButton.L_PreviewImage;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.CellName
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.CellName
     /// </summary>
     public CellName S_CellName => L_VBoxContainer.L_ScrollContainer.L_CellButton.L_CellName;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.SelectTexture
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public SelectTexture S_SelectTexture => L_VBoxContainer.L_ScrollContainer.L_CellButton.L_SelectTexture;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer.CellButton
     /// </summary>
     public CellButton S_CellButton => L_VBoxContainer.L_ScrollContainer.L_CellButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_VBoxContainer.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorConfigObject.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorConfigObject.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_VBoxContainer;
 

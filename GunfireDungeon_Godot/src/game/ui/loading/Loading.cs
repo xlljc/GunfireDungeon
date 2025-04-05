@@ -8,26 +8,26 @@ namespace UI.Loading;
 public abstract partial class Loading : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Loading.ColorRect
+    /// 节点路径: Loading.ColorRect
     /// </summary>
     public ColorRect L_ColorRect
     {
         get
         {
-            if (_L_ColorRect == null) _L_ColorRect = new ColorRect(this, GetNodeOrNull<Godot.ColorRect>("ColorRect"));
+            if (_L_ColorRect == null) _L_ColorRect = new ColorRect((LoadingPanel)this, GetNode<Godot.ColorRect>("ColorRect"));
             return _L_ColorRect;
         }
     }
     private ColorRect _L_ColorRect;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Loading.Label
+    /// 节点路径: Loading.Label
     /// </summary>
     public Label L_Label
     {
         get
         {
-            if (_L_Label == null) _L_Label = new Label(this, GetNodeOrNull<Godot.Label>("Label"));
+            if (_L_Label == null) _L_Label = new Label((LoadingPanel)this, GetNode<Godot.Label>("Label"));
             return _L_Label;
         }
     }
@@ -40,34 +40,35 @@ public abstract partial class Loading : UiBase
 
     public sealed override void OnInitNestedUi()
     {
+
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: Loading.ColorRect
+    /// 路径: Loading.ColorRect
     /// </summary>
-    public class ColorRect : UiNode<Loading, Godot.ColorRect, ColorRect>
+    public class ColorRect : UiNode<LoadingPanel, Godot.ColorRect, ColorRect>
     {
-        public ColorRect(Loading uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public ColorRect(LoadingPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
         public override ColorRect Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Loading.Label
+    /// 路径: Loading.Label
     /// </summary>
-    public class Label : UiNode<Loading, Godot.Label, Label>
+    public class Label : UiNode<LoadingPanel, Godot.Label, Label>
     {
-        public Label(Loading uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public Label(LoadingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
         public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Loading.ColorRect
+    /// 场景中唯一名称的节点, 节点路径: Loading.ColorRect
     /// </summary>
     public ColorRect S_ColorRect => L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Loading.Label
+    /// 场景中唯一名称的节点, 节点路径: Loading.Label
     /// </summary>
     public Label S_Label => L_Label;
 

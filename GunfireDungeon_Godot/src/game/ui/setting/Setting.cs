@@ -8,7 +8,7 @@ namespace UI.Setting;
 public abstract partial class Setting : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Setting.ColorRect
+    /// 节点路径: Setting.ColorRect
     /// </summary>
     public ColorRect L_ColorRect
     {
@@ -21,7 +21,7 @@ public abstract partial class Setting : UiBase
     private ColorRect _L_ColorRect;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Setting.TextureRect
+    /// 节点路径: Setting.TextureRect
     /// </summary>
     public TextureRect L_TextureRect
     {
@@ -34,7 +34,7 @@ public abstract partial class Setting : UiBase
     private TextureRect _L_TextureRect;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Setting.ScrollContainer
+    /// 节点路径: Setting.ScrollContainer
     /// </summary>
     public ScrollContainer L_ScrollContainer
     {
@@ -57,7 +57,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: Setting.ColorRect
+    /// 路径: Setting.ColorRect
     /// </summary>
     public class ColorRect : UiNode<SettingPanel, Godot.ColorRect, ColorRect>
     {
@@ -66,7 +66,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: Setting.TextureRect
+    /// 路径: Setting.TextureRect
     /// </summary>
     public class TextureRect : UiNode<SettingPanel, Godot.TextureRect, TextureRect>
     {
@@ -75,7 +75,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.ScrollContainer.SettingMenu.Title
+    /// 路径: Setting.ScrollContainer.SettingMenu.Title
     /// </summary>
     public class Title : UiNode<SettingPanel, Godot.Label, Title>
     {
@@ -84,7 +84,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
     /// </summary>
     public class Name : UiNode<SettingPanel, Godot.Label, Name>
     {
@@ -93,7 +93,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.CheckBox"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
     /// </summary>
     public class CheckBox : UiNode<SettingPanel, Godot.CheckBox, CheckBox>
     {
@@ -102,12 +102,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen
     /// </summary>
     public class FullScreen : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.SettingMenu.Name
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
         /// </summary>
         public Name L_Name
         {
@@ -120,7 +120,7 @@ public abstract partial class Setting : UiBase
         private Name _L_Name;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CheckBox"/>, 节点路径: Setting.ScrollContainer.SettingMenu.CheckBox
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.CheckBox
         /// </summary>
         public CheckBox L_CheckBox
         {
@@ -137,7 +137,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.Label
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.Label
     /// </summary>
     public class Label : UiNode<SettingPanel, Godot.Label, Label>
     {
@@ -146,7 +146,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
     /// </summary>
     public class BGM : UiNode<SettingPanel, Godot.HSlider, BGM>
     {
@@ -155,12 +155,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen2
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2
     /// </summary>
     public class FullScreen2 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.SettingMenu.Label
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
         /// </summary>
         public Label L_Label
         {
@@ -173,7 +173,7 @@ public abstract partial class Setting : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.ScrollContainer.SettingMenu.BGM
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.BGM
         /// </summary>
         public BGM L_BGM
         {
@@ -190,7 +190,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.Label
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.Label
     /// </summary>
     public class Label_1 : UiNode<SettingPanel, Godot.Label, Label_1>
     {
@@ -199,7 +199,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
     /// </summary>
     public class SFX : UiNode<SettingPanel, Godot.HSlider, SFX>
     {
@@ -208,12 +208,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.ScrollContainer.SettingMenu.FullScreen3
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3
     /// </summary>
     public class FullScreen3 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.SettingMenu.Label
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -226,7 +226,7 @@ public abstract partial class Setting : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.ScrollContainer.SettingMenu.SFX
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.SFX
         /// </summary>
         public SFX L_SFX
         {
@@ -243,7 +243,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.ScrollContainer.SettingMenu.Back
+    /// 路径: Setting.ScrollContainer.SettingMenu.Back
     /// </summary>
     public class Back : UiNode<SettingPanel, Godot.Button, Back>
     {
@@ -252,12 +252,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.ScrollContainer.SettingMenu
+    /// 路径: Setting.ScrollContainer.SettingMenu
     /// </summary>
     public class SettingMenu : UiNode<SettingPanel, Godot.VBoxContainer, SettingMenu>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.Title
+        /// 节点路径: Setting.ScrollContainer.Title
         /// </summary>
         public Title L_Title
         {
@@ -270,7 +270,7 @@ public abstract partial class Setting : UiBase
         private Title _L_Title;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.FullScreen
+        /// 节点路径: Setting.ScrollContainer.FullScreen
         /// </summary>
         public FullScreen L_FullScreen
         {
@@ -283,7 +283,7 @@ public abstract partial class Setting : UiBase
         private FullScreen _L_FullScreen;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.FullScreen2
+        /// 节点路径: Setting.ScrollContainer.FullScreen2
         /// </summary>
         public FullScreen2 L_FullScreen2
         {
@@ -296,7 +296,7 @@ public abstract partial class Setting : UiBase
         private FullScreen2 _L_FullScreen2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.FullScreen3
+        /// 节点路径: Setting.ScrollContainer.FullScreen3
         /// </summary>
         public FullScreen3 L_FullScreen3
         {
@@ -309,7 +309,7 @@ public abstract partial class Setting : UiBase
         private FullScreen3 _L_FullScreen3;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.ScrollContainer.Back
+        /// 节点路径: Setting.ScrollContainer.Back
         /// </summary>
         public Back L_Back
         {
@@ -326,12 +326,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: Setting.ScrollContainer
+    /// 路径: Setting.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<SettingPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.SettingMenu
+        /// 节点路径: Setting.SettingMenu
         /// </summary>
         public SettingMenu L_SettingMenu
         {
@@ -349,67 +349,67 @@ public abstract partial class Setting : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Setting.ColorRect
+    /// 场景中唯一名称的节点, 节点路径: Setting.ColorRect
     /// </summary>
     public ColorRect S_ColorRect => L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Setting.TextureRect
+    /// 场景中唯一名称的节点, 节点路径: Setting.TextureRect
     /// </summary>
     public TextureRect S_TextureRect => L_TextureRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.SettingMenu.Title
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Title
     /// </summary>
     public Title S_Title => L_ScrollContainer.L_SettingMenu.L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
     /// </summary>
     public Name S_Name => L_ScrollContainer.L_SettingMenu.L_FullScreen.L_Name;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CheckBox"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
     /// </summary>
     public CheckBox S_CheckBox => L_ScrollContainer.L_SettingMenu.L_FullScreen.L_CheckBox;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen
     /// </summary>
     public FullScreen S_FullScreen => L_ScrollContainer.L_SettingMenu.L_FullScreen;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
     /// </summary>
     public BGM S_BGM => L_ScrollContainer.L_SettingMenu.L_FullScreen2.L_BGM;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2
     /// </summary>
     public FullScreen2 S_FullScreen2 => L_ScrollContainer.L_SettingMenu.L_FullScreen2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
     /// </summary>
     public SFX S_SFX => L_ScrollContainer.L_SettingMenu.L_FullScreen3.L_SFX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3
     /// </summary>
     public FullScreen3 S_FullScreen3 => L_ScrollContainer.L_SettingMenu.L_FullScreen3;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.ScrollContainer.SettingMenu.Back
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Back
     /// </summary>
     public Back S_Back => L_ScrollContainer.L_SettingMenu.L_Back;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.ScrollContainer.SettingMenu
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu
     /// </summary>
     public SettingMenu S_SettingMenu => L_ScrollContainer.L_SettingMenu;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Setting.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_ScrollContainer;
 

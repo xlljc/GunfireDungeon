@@ -8,7 +8,7 @@ namespace UI.MapEditor;
 public abstract partial class MapEditor : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg
+    /// 节点路径: MapEditor.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -62,7 +62,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditor.Bg.VBoxContainer.Head.Back
+    /// 路径: MapEditor.Bg.VBoxContainer.Head.Back
     /// </summary>
     public class Back : UiNode<MapEditorPanel, Godot.Button, Back>
     {
@@ -71,7 +71,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditor.Bg.VBoxContainer.Head.Save
+    /// 路径: MapEditor.Bg.VBoxContainer.Head.Save
     /// </summary>
     public class Save : UiNode<MapEditorPanel, Godot.Button, Save>
     {
@@ -80,7 +80,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditor.Bg.VBoxContainer.Head.Title
+    /// 路径: MapEditor.Bg.VBoxContainer.Head.Title
     /// </summary>
     public class Title : UiNode<MapEditorPanel, Godot.Label, Title>
     {
@@ -89,7 +89,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditor.Bg.VBoxContainer.Head.Play
+    /// 路径: MapEditor.Bg.VBoxContainer.Head.Play
     /// </summary>
     public class Play : UiNode<MapEditorPanel, Godot.Button, Play>
     {
@@ -98,7 +98,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditor.Bg.VBoxContainer.Head.PlaySetting
+    /// 路径: MapEditor.Bg.VBoxContainer.Head.PlaySetting
     /// </summary>
     public class PlaySetting : UiNode<MapEditorPanel, Godot.Button, PlaySetting>
     {
@@ -107,12 +107,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditor.Bg.VBoxContainer.Head
+    /// 路径: MapEditor.Bg.VBoxContainer.Head
     /// </summary>
     public class Head : UiNode<MapEditorPanel, Godot.Panel, Head>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Back
+        /// 节点路径: MapEditor.Bg.VBoxContainer.Back
         /// </summary>
         public Back L_Back
         {
@@ -125,7 +125,7 @@ public abstract partial class MapEditor : UiBase
         private Back _L_Back;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Save
+        /// 节点路径: MapEditor.Bg.VBoxContainer.Save
         /// </summary>
         public Save L_Save
         {
@@ -138,7 +138,7 @@ public abstract partial class MapEditor : UiBase
         private Save _L_Save;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditor.Bg.VBoxContainer.Title
+        /// 节点路径: MapEditor.Bg.VBoxContainer.Title
         /// </summary>
         public Title L_Title
         {
@@ -151,7 +151,7 @@ public abstract partial class MapEditor : UiBase
         private Title _L_Title;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Play
+        /// 节点路径: MapEditor.Bg.VBoxContainer.Play
         /// </summary>
         public Play L_Play
         {
@@ -164,7 +164,7 @@ public abstract partial class MapEditor : UiBase
         private Play _L_Play;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.PlaySetting
+        /// 节点路径: MapEditor.Bg.VBoxContainer.PlaySetting
         /// </summary>
         public PlaySetting L_PlaySetting
         {
@@ -181,7 +181,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapLayer.MapEditorMapLayerPanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorMapLayer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorMapLayer
     /// </summary>
     public class MapEditorMapLayer : UiNode<MapEditorPanel, UI.MapEditorMapLayer.MapEditorMapLayerPanel, MapEditorMapLayer>
     {
@@ -197,7 +197,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorConfigObject.MapEditorConfigObjectPanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorConfigObject
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorConfigObject
     /// </summary>
     public class MapEditorConfigObject : UiNode<MapEditorPanel, UI.MapEditorConfigObject.MapEditorConfigObjectPanel, MapEditorConfigObject>
     {
@@ -213,12 +213,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel
     /// </summary>
     public class LayerPanel : UiNode<MapEditorPanel, Godot.Panel, LayerPanel>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapLayer.MapEditorMapLayerPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MapEditorMapLayer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MapEditorMapLayer
         /// </summary>
         public MapEditorMapLayer L_MapEditorMapLayer
         {
@@ -231,7 +231,7 @@ public abstract partial class MapEditor : UiBase
         private MapEditorMapLayer _L_MapEditorMapLayer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorConfigObject.MapEditorConfigObjectPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MapEditorConfigObject
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MapEditorConfigObject
         /// </summary>
         public MapEditorConfigObject L_MapEditorConfigObject
         {
@@ -248,7 +248,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NavigationRegion2D"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
     /// </summary>
     public class NavigationRegion : UiNode<MapEditorPanel, Godot.NavigationRegion2D, NavigationRegion>
     {
@@ -257,7 +257,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.AnimationPlayer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
     /// </summary>
     public class ErrorCellAnimationPlayer : UiNode<MapEditorPanel, Godot.AnimationPlayer, ErrorCellAnimationPlayer>
     {
@@ -266,12 +266,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
     /// </summary>
     public class ErrorCell : UiNode<MapEditorPanel, Godot.Sprite2D, ErrorCell>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.AnimationPlayer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCellAnimationPlayer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCellAnimationPlayer
         /// </summary>
         public ErrorCellAnimationPlayer L_ErrorCellAnimationPlayer
         {
@@ -288,7 +288,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Node2D"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
     /// </summary>
     public class Brush : UiNode<MapEditorPanel, Godot.Node2D, Brush>
     {
@@ -297,12 +297,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditor.EditorTileMap"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
     /// </summary>
     public class TileMap : UiNode<MapEditorPanel, UI.MapEditor.EditorTileMap, TileMap>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NavigationRegion2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.NavigationRegion
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.NavigationRegion
         /// </summary>
         public NavigationRegion L_NavigationRegion
         {
@@ -315,7 +315,7 @@ public abstract partial class MapEditor : UiBase
         private NavigationRegion _L_NavigationRegion;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.ErrorCell
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.ErrorCell
         /// </summary>
         public ErrorCell L_ErrorCell
         {
@@ -328,7 +328,7 @@ public abstract partial class MapEditor : UiBase
         private ErrorCell _L_ErrorCell;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.Brush
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.Brush
         /// </summary>
         public Brush L_Brush
         {
@@ -345,7 +345,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorTools.MapEditorToolsPanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer.MapEditorTools
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer.MapEditorTools
     /// </summary>
     public class MapEditorTools : UiNode<MapEditorPanel, UI.MapEditorTools.MapEditorToolsPanel, MapEditorTools>
     {
@@ -361,12 +361,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.CanvasLayer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer
     /// </summary>
     public class CanvasLayer : UiNode<MapEditorPanel, Godot.CanvasLayer, CanvasLayer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorTools.MapEditorToolsPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.MapEditorTools
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.MapEditorTools
         /// </summary>
         public MapEditorTools L_MapEditorTools
         {
@@ -383,12 +383,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SubViewport"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport
     /// </summary>
     public class SubViewport : UiNode<MapEditorPanel, Godot.SubViewport, SubViewport>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditor.EditorTileMap"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.TileMap
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.TileMap
         /// </summary>
         public TileMap L_TileMap
         {
@@ -401,7 +401,7 @@ public abstract partial class MapEditor : UiBase
         private TileMap _L_TileMap;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CanvasLayer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.CanvasLayer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.CanvasLayer
         /// </summary>
         public CanvasLayer L_CanvasLayer
         {
@@ -418,12 +418,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SubViewportContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView
     /// </summary>
     public class MapView : UiNode<MapEditorPanel, Godot.SubViewportContainer, MapView>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SubViewport"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.SubViewport
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.SubViewport
         /// </summary>
         public SubViewport L_SubViewport
         {
@@ -440,7 +440,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView2
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView2
     /// </summary>
     public class MapView2 : UiNode<MapEditorPanel, Godot.TextureRect, MapView2>
     {
@@ -449,12 +449,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<MapEditorPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SubViewportContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MapView
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MapView
         /// </summary>
         public MapView L_MapView
         {
@@ -467,7 +467,7 @@ public abstract partial class MapEditor : UiBase
         private MapView _L_MapView;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MapView2
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MapView2
         /// </summary>
         public MapView2 L_MapView2
         {
@@ -484,12 +484,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left
     /// </summary>
     public class Left : UiNode<MapEditorPanel, Godot.Panel, Left>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MarginContainer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
         {
@@ -506,12 +506,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.LayerPanel
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.LayerPanel
         /// </summary>
         public LayerPanel L_LayerPanel
         {
@@ -524,7 +524,7 @@ public abstract partial class MapEditor : UiBase
         private LayerPanel _L_LayerPanel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Left
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Left
         /// </summary>
         public Left L_Left
         {
@@ -541,7 +541,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapTile.MapEditorMapTilePanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile.MapEditorMapTile
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile.MapEditorMapTile
     /// </summary>
     public class MapEditorMapTile : UiNode<MapEditorPanel, UI.MapEditorMapTile.MapEditorMapTilePanel, MapEditorMapTile>
     {
@@ -557,12 +557,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile
     /// </summary>
     public class MapTile : UiNode<MapEditorPanel, Godot.MarginContainer, MapTile>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapTile.MapEditorMapTilePanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorMapTile
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorMapTile
         /// </summary>
         public MapEditorMapTile L_MapEditorMapTile
         {
@@ -579,7 +579,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorObject.MapEditorObjectPanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject.MapEditorObject
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject.MapEditorObject
     /// </summary>
     public class MapEditorObject : UiNode<MapEditorPanel, UI.MapEditorObject.MapEditorObjectPanel, MapEditorObject>
     {
@@ -595,12 +595,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject
     /// </summary>
     public class MapObject : UiNode<MapEditorPanel, Godot.MarginContainer, MapObject>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorObject.MapEditorObjectPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorObject
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorObject
         /// </summary>
         public MapEditorObject L_MapEditorObject
         {
@@ -617,7 +617,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapMark.MapEditorMapMarkPanel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark.MapEditorMapMark
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark.MapEditorMapMark
     /// </summary>
     public class MapEditorMapMark : UiNode<MapEditorPanel, UI.MapEditorMapMark.MapEditorMapMarkPanel, MapEditorMapMark>
     {
@@ -633,12 +633,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark
     /// </summary>
     public class MapMark : UiNode<MapEditorPanel, Godot.MarginContainer, MapMark>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapMark.MapEditorMapMarkPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorMapMark
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapEditorMapMark
         /// </summary>
         public MapEditorMapMark L_MapEditorMapMark
         {
@@ -655,12 +655,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TabContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer
     /// </summary>
     public class TabContainer : UiNode<MapEditorPanel, Godot.TabContainer, TabContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapTile
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapTile
         /// </summary>
         public MapTile L_MapTile
         {
@@ -673,7 +673,7 @@ public abstract partial class MapEditor : UiBase
         private MapTile _L_MapTile;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapObject
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapObject
         /// </summary>
         public MapObject L_MapObject
         {
@@ -686,7 +686,7 @@ public abstract partial class MapEditor : UiBase
         private MapObject _L_MapObject;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapMark
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.MapMark
         /// </summary>
         public MapMark L_MapMark
         {
@@ -703,12 +703,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer
     /// </summary>
     public class MarginContainer_1 : UiNode<MapEditorPanel, Godot.MarginContainer, MarginContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TabContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.TabContainer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.TabContainer
         /// </summary>
         public TabContainer L_TabContainer
         {
@@ -725,12 +725,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right
     /// </summary>
     public class Right : UiNode<MapEditorPanel, Godot.Panel, Right>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.MarginContainer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.MarginContainer
         /// </summary>
         public MarginContainer_1 L_MarginContainer
         {
@@ -747,12 +747,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSplitContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2
     /// </summary>
     public class HSplitContainer2 : UiNode<MapEditorPanel, Godot.HSplitContainer, HSplitContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HBoxContainer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -765,7 +765,7 @@ public abstract partial class MapEditor : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.Right
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.Right
         /// </summary>
         public Right L_Right
         {
@@ -782,12 +782,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditor.Bg.VBoxContainer.HSplitContainer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer
     /// </summary>
     public class HSplitContainer : UiNode<MapEditorPanel, Godot.HBoxContainer, HSplitContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSplitContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer2
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer2
         /// </summary>
         public HSplitContainer2 L_HSplitContainer2
         {
@@ -804,12 +804,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditor.Bg.VBoxContainer
+    /// 路径: MapEditor.Bg.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.Head
+        /// 节点路径: MapEditor.Bg.Head
         /// </summary>
         public Head L_Head
         {
@@ -822,7 +822,7 @@ public abstract partial class MapEditor : UiBase
         private Head _L_Head;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditor.Bg.HSplitContainer
+        /// 节点路径: MapEditor.Bg.HSplitContainer
         /// </summary>
         public HSplitContainer L_HSplitContainer
         {
@@ -839,12 +839,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditor.Bg
+    /// 路径: MapEditor.Bg
     /// </summary>
     public class Bg : UiNode<MapEditorPanel, Godot.Panel, Bg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditor.VBoxContainer
+        /// 节点路径: MapEditor.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -862,167 +862,167 @@ public abstract partial class MapEditor : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head.Back
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head.Back
     /// </summary>
     public Back S_Back => L_Bg.L_VBoxContainer.L_Head.L_Back;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head.Save
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head.Save
     /// </summary>
     public Save S_Save => L_Bg.L_VBoxContainer.L_Head.L_Save;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head.Title
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head.Title
     /// </summary>
     public Title S_Title => L_Bg.L_VBoxContainer.L_Head.L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head.Play
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head.Play
     /// </summary>
     public Play S_Play => L_Bg.L_VBoxContainer.L_Head.L_Play;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head.PlaySetting
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head.PlaySetting
     /// </summary>
     public PlaySetting S_PlaySetting => L_Bg.L_VBoxContainer.L_Head.L_PlaySetting;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.Head
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.Head
     /// </summary>
     public Head S_Head => L_Bg.L_VBoxContainer.L_Head;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapLayer.MapEditorMapLayerPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorMapLayer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorMapLayer
     /// </summary>
     public MapEditorMapLayer S_MapEditorMapLayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_LayerPanel.L_MapEditorMapLayer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorConfigObject.MapEditorConfigObjectPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorConfigObject
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel.MapEditorConfigObject
     /// </summary>
     public MapEditorConfigObject S_MapEditorConfigObject => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_LayerPanel.L_MapEditorConfigObject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.LayerPanel
     /// </summary>
     public LayerPanel S_LayerPanel => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_LayerPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NavigationRegion2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
     /// </summary>
     public NavigationRegion S_NavigationRegion => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_NavigationRegion;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.AnimationPlayer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
     /// </summary>
     public ErrorCellAnimationPlayer S_ErrorCellAnimationPlayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_ErrorCell.L_ErrorCellAnimationPlayer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
     /// </summary>
     public ErrorCell S_ErrorCell => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_ErrorCell;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
     /// </summary>
     public Brush S_Brush => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_Brush;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditor.EditorTileMap"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
     /// </summary>
     public TileMap S_TileMap => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorTools.MapEditorToolsPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer.MapEditorTools
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer.MapEditorTools
     /// </summary>
     public MapEditorTools S_MapEditorTools => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_CanvasLayer.L_MapEditorTools;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CanvasLayer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer
     /// </summary>
     public CanvasLayer S_CanvasLayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_CanvasLayer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SubViewport"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport
     /// </summary>
     public SubViewport S_SubViewport => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SubViewportContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView
     /// </summary>
     public MapView S_MapView => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView2
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView2
     /// </summary>
     public MapView2 S_MapView2 => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left
     /// </summary>
     public Left S_Left => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapTile.MapEditorMapTilePanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile.MapEditorMapTile
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile.MapEditorMapTile
     /// </summary>
     public MapEditorMapTile S_MapEditorMapTile => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapTile.L_MapEditorMapTile;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapTile
     /// </summary>
     public MapTile S_MapTile => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapTile;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorObject.MapEditorObjectPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject.MapEditorObject
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject.MapEditorObject
     /// </summary>
     public MapEditorObject S_MapEditorObject => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapObject.L_MapEditorObject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapObject
     /// </summary>
     public MapObject S_MapObject => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapObject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapMark.MapEditorMapMarkPanel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark.MapEditorMapMark
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark.MapEditorMapMark
     /// </summary>
     public MapEditorMapMark S_MapEditorMapMark => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapMark.L_MapEditorMapMark;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer.MapMark
     /// </summary>
     public MapMark S_MapMark => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer.L_MapMark;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TabContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right.MarginContainer.TabContainer
     /// </summary>
     public TabContainer S_TabContainer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right.L_MarginContainer.L_TabContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.Right
     /// </summary>
     public Right S_Right => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_Right;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSplitContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2
     /// </summary>
     public HSplitContainer2 S_HSplitContainer2 => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer
     /// </summary>
     public HSplitContainer S_HSplitContainer => L_Bg.L_VBoxContainer.L_HSplitContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditor.Bg.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_Bg.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditor.Bg
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 

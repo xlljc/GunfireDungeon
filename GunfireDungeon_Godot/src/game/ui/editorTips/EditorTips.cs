@@ -8,13 +8,13 @@ namespace UI.EditorTips;
 public abstract partial class EditorTips : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTips.Label
+    /// 节点路径: EditorTips.Label
     /// </summary>
     public Label L_Label
     {
         get
         {
-            if (_L_Label == null) _L_Label = new Label(this, GetNodeOrNull<Godot.Label>("Label"));
+            if (_L_Label == null) _L_Label = new Label((EditorTipsPanel)this, GetNode<Godot.Label>("Label"));
             return _L_Label;
         }
     }
@@ -27,20 +27,21 @@ public abstract partial class EditorTips : UiBase
 
     public sealed override void OnInitNestedUi()
     {
+
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTips.Label
+    /// 路径: EditorTips.Label
     /// </summary>
-    public class Label : UiNode<EditorTips, Godot.Label, Label>
+    public class Label : UiNode<EditorTipsPanel, Godot.Label, Label>
     {
-        public Label(EditorTips uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public Label(EditorTipsPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
         public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTips.Label
+    /// 场景中唯一名称的节点, 节点路径: EditorTips.Label
     /// </summary>
     public Label S_Label => L_Label;
 

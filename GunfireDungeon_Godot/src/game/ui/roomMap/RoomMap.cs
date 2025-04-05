@@ -8,7 +8,7 @@ namespace UI.RoomMap;
 public abstract partial class RoomMap : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: RoomMap.Bg
+    /// 节点路径: RoomMap.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -21,7 +21,7 @@ public abstract partial class RoomMap : UiBase
     private Bg _L_Bg;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomMap.MapBar
+    /// 节点路径: RoomMap.MapBar
     /// </summary>
     public MapBar L_MapBar
     {
@@ -34,7 +34,7 @@ public abstract partial class RoomMap : UiBase
     private MapBar _L_MapBar;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomMap.MagnifyMapBar
+    /// 节点路径: RoomMap.MagnifyMapBar
     /// </summary>
     public MagnifyMapBar L_MagnifyMapBar
     {
@@ -57,7 +57,7 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: RoomMap.Bg
+    /// 路径: RoomMap.Bg
     /// </summary>
     public class Bg : UiNode<RoomMapPanel, Godot.ColorRect, Bg>
     {
@@ -66,7 +66,7 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Node2D"/>, 路径: RoomMap.MapBar.DrawContainer.Root
+    /// 路径: RoomMap.MapBar.DrawContainer.Root
     /// </summary>
     public class Root : UiNode<RoomMapPanel, Godot.Node2D, Root>
     {
@@ -75,7 +75,7 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: RoomMap.MapBar.DrawContainer.Mark
+    /// 路径: RoomMap.MapBar.DrawContainer.Mark
     /// </summary>
     public class Mark : UiNode<RoomMapPanel, Godot.Sprite2D, Mark>
     {
@@ -84,12 +84,12 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: RoomMap.MapBar.DrawContainer
+    /// 路径: RoomMap.MapBar.DrawContainer
     /// </summary>
     public class DrawContainer : UiNode<RoomMapPanel, Godot.TextureRect, DrawContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: RoomMap.MapBar.Root
+        /// 节点路径: RoomMap.MapBar.Root
         /// </summary>
         public Root L_Root
         {
@@ -102,7 +102,7 @@ public abstract partial class RoomMap : UiBase
         private Root _L_Root;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomMap.MapBar.Mark
+        /// 节点路径: RoomMap.MapBar.Mark
         /// </summary>
         public Mark L_Mark
         {
@@ -119,12 +119,12 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomMap.MapBar
+    /// 路径: RoomMap.MapBar
     /// </summary>
     public class MapBar : UiNode<RoomMapPanel, Godot.NinePatchRect, MapBar>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomMap.DrawContainer
+        /// 节点路径: RoomMap.DrawContainer
         /// </summary>
         public DrawContainer L_DrawContainer
         {
@@ -141,7 +141,7 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: RoomMap.MagnifyMapBar
+    /// 路径: RoomMap.MagnifyMapBar
     /// </summary>
     public class MagnifyMapBar : UiNode<RoomMapPanel, Godot.NinePatchRect, MagnifyMapBar>
     {
@@ -151,32 +151,32 @@ public abstract partial class RoomMap : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: RoomMap.Bg
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Node2D"/>, 节点路径: RoomMap.MapBar.DrawContainer.Root
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MapBar.DrawContainer.Root
     /// </summary>
     public Root S_Root => L_MapBar.L_DrawContainer.L_Root;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: RoomMap.MapBar.DrawContainer.Mark
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MapBar.DrawContainer.Mark
     /// </summary>
     public Mark S_Mark => L_MapBar.L_DrawContainer.L_Mark;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: RoomMap.MapBar.DrawContainer
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MapBar.DrawContainer
     /// </summary>
     public DrawContainer S_DrawContainer => L_MapBar.L_DrawContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomMap.MapBar
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MapBar
     /// </summary>
     public MapBar S_MapBar => L_MapBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: RoomMap.MagnifyMapBar
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MagnifyMapBar
     /// </summary>
     public MagnifyMapBar S_MagnifyMapBar => L_MagnifyMapBar;
 

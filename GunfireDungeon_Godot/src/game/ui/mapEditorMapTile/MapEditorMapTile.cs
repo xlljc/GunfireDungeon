@@ -8,7 +8,7 @@ namespace UI.MapEditorMapTile;
 public abstract partial class MapEditorMapTile : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer
+    /// 节点路径: MapEditorMapTile.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -21,7 +21,7 @@ public abstract partial class MapEditorMapTile : UiBase
     private VBoxContainer _L_VBoxContainer;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapTile.MaskBg
+    /// 节点路径: MapEditorMapTile.MaskBg
     /// </summary>
     public MaskBg L_MaskBg
     {
@@ -47,7 +47,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer.Label
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label : UiNode<MapEditorMapTilePanel, Godot.Label, Label>
     {
@@ -56,7 +56,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer.SourceOption
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer.SourceOption
     /// </summary>
     public class SourceOption : UiNode<MapEditorMapTilePanel, Godot.OptionButton, SourceOption>
     {
@@ -65,12 +65,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorMapTilePanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Label
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -83,7 +83,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.SourceOption
+        /// 节点路径: MapEditorMapTile.VBoxContainer.SourceOption
         /// </summary>
         public SourceOption L_SourceOption
         {
@@ -100,7 +100,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.Label
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label_1 : UiNode<MapEditorMapTilePanel, Godot.Label, Label_1>
     {
@@ -109,7 +109,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.HandleOption
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.HandleOption
     /// </summary>
     public class HandleOption : UiNode<MapEditorMapTilePanel, Godot.OptionButton, HandleOption>
     {
@@ -118,12 +118,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2
+    /// 路径: MapEditorMapTile.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2 : UiNode<MapEditorMapTilePanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Label
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -136,7 +136,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.HandleOption
+        /// 节点路径: MapEditorMapTile.VBoxContainer.HandleOption
         /// </summary>
         public HandleOption L_HandleOption
         {
@@ -153,7 +153,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.TileSprite
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.TileSprite
     /// </summary>
     public class TileSprite : UiNode<MapEditorMapTilePanel, Godot.Sprite2D, TileSprite>
     {
@@ -162,7 +162,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.Brush
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.Brush
     /// </summary>
     public class Brush : UiNode<MapEditorMapTilePanel, Godot.Control, Brush>
     {
@@ -171,12 +171,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot
     /// </summary>
     public class TabRoot : UiNode<MapEditorMapTilePanel, Godot.Control, TabRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TileSprite
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TileSprite
         /// </summary>
         public TileSprite L_TileSprite
         {
@@ -189,7 +189,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private TileSprite _L_TileSprite;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Brush
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Brush
         /// </summary>
         public Brush L_Brush
         {
@@ -206,7 +206,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Grid
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Grid
     /// </summary>
     public class Grid : UiNode<MapEditorMapTilePanel, Godot.ColorRect, Grid>
     {
@@ -215,7 +215,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.FocusBtn
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.FocusBtn
     /// </summary>
     public class FocusBtn : UiNode<MapEditorMapTilePanel, Godot.TextureButton, FocusBtn>
     {
@@ -224,12 +224,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapTile.FreeTileTab"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1
     /// </summary>
     public class Tab1 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.FreeTileTab, Tab1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.TabRoot
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.TabRoot
         /// </summary>
         public TabRoot L_TabRoot
         {
@@ -242,7 +242,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private TabRoot _L_TabRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Grid
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Grid
         /// </summary>
         public Grid L_Grid
         {
@@ -255,7 +255,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Grid _L_Grid;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.FocusBtn
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.FocusBtn
         /// </summary>
         public FocusBtn L_FocusBtn
         {
@@ -272,7 +272,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.Select
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.Select
     /// </summary>
     public class Select : UiNode<MapEditorMapTilePanel, Godot.NinePatchRect, Select>
     {
@@ -281,7 +281,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainName
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainName
     /// </summary>
     public class TerrainName : UiNode<MapEditorMapTilePanel, Godot.Label, TerrainName>
     {
@@ -290,7 +290,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.ErrorIcon
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.ErrorIcon
     /// </summary>
     public class ErrorIcon : UiNode<MapEditorMapTilePanel, Godot.TextureRect, ErrorIcon>
     {
@@ -299,7 +299,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainPreview
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainPreview
     /// </summary>
     public class TerrainPreview : UiNode<MapEditorMapTilePanel, Godot.TextureRect, TerrainPreview>
     {
@@ -308,12 +308,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem
     /// </summary>
     public class TerrainItem : UiNode<MapEditorMapTilePanel, Godot.Button, TerrainItem>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.Select
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.Select
         /// </summary>
         public Select L_Select
         {
@@ -326,7 +326,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Select _L_Select;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainName
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainName
         /// </summary>
         public TerrainName L_TerrainName
         {
@@ -339,7 +339,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private TerrainName _L_TerrainName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.ErrorIcon
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.ErrorIcon
         /// </summary>
         public ErrorIcon L_ErrorIcon
         {
@@ -352,7 +352,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private ErrorIcon _L_ErrorIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainPreview
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainPreview
         /// </summary>
         public TerrainPreview L_TerrainPreview
         {
@@ -369,12 +369,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<MapEditorMapTilePanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.TerrainItem
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.TerrainItem
         /// </summary>
         public TerrainItem L_TerrainItem
         {
@@ -391,12 +391,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapTile.TerrainTileTab"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2
     /// </summary>
     public class Tab2 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.TerrainTileTab, Tab2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -413,7 +413,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.PreviewImage
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public class PreviewImage : UiNode<MapEditorMapTilePanel, Godot.TextureRect, PreviewImage>
     {
@@ -422,7 +422,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.CellName
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.CellName
     /// </summary>
     public class CellName : UiNode<MapEditorMapTilePanel, Godot.Label, CellName>
     {
@@ -431,7 +431,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.SelectTexture
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public class SelectTexture : UiNode<MapEditorMapTilePanel, Godot.NinePatchRect, SelectTexture>
     {
@@ -440,12 +440,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton
     /// </summary>
     public class CellButton : UiNode<MapEditorMapTilePanel, Godot.Button, CellButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.PreviewImage
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.PreviewImage
         /// </summary>
         public PreviewImage L_PreviewImage
         {
@@ -458,7 +458,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private PreviewImage _L_PreviewImage;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellName
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellName
         /// </summary>
         public CellName L_CellName
         {
@@ -471,7 +471,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private CellName _L_CellName;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.SelectTexture
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.SelectTexture
         /// </summary>
         public SelectTexture L_SelectTexture
         {
@@ -488,12 +488,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer
     /// </summary>
     public class ScrollContainer_1 : UiNode<MapEditorMapTilePanel, Godot.ScrollContainer, ScrollContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.CellButton
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.CellButton
         /// </summary>
         public CellButton L_CellButton
         {
@@ -510,12 +510,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorMapTile.CombinationTileTab"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3
     /// </summary>
     public class Tab3 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.CombinationTileTab, Tab3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
         /// </summary>
         public ScrollContainer_1 L_ScrollContainer
         {
@@ -532,12 +532,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<MapEditorMapTilePanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapTile.FreeTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab1
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab1
         /// </summary>
         public Tab1 L_Tab1
         {
@@ -550,7 +550,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Tab1 _L_Tab1;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapTile.TerrainTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab2
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab2
         /// </summary>
         public Tab2 L_Tab2
         {
@@ -563,7 +563,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private Tab2 _L_Tab2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorMapTile.CombinationTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab3
+        /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.Tab3
         /// </summary>
         public Tab3 L_Tab3
         {
@@ -580,12 +580,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: MapEditorMapTile.VBoxContainer.Panel
+    /// 路径: MapEditorMapTile.VBoxContainer.Panel
     /// </summary>
     public class Panel : UiNode<MapEditorMapTilePanel, Godot.Panel, Panel>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.MarginContainer
+        /// 节点路径: MapEditorMapTile.VBoxContainer.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
         {
@@ -602,12 +602,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorMapTile.VBoxContainer
+    /// 路径: MapEditorMapTile.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorMapTilePanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapTile.HBoxContainer
+        /// 节点路径: MapEditorMapTile.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -620,7 +620,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapTile.HBoxContainer2
+        /// 节点路径: MapEditorMapTile.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
         {
@@ -633,7 +633,7 @@ public abstract partial class MapEditorMapTile : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditorMapTile.Panel
+        /// 节点路径: MapEditorMapTile.Panel
         /// </summary>
         public Panel L_Panel
         {
@@ -650,7 +650,7 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapTile.MaskBg.Label
+    /// 路径: MapEditorMapTile.MaskBg.Label
     /// </summary>
     public class Label_2 : UiNode<MapEditorMapTilePanel, Godot.Label, Label_2>
     {
@@ -659,12 +659,12 @@ public abstract partial class MapEditorMapTile : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: MapEditorMapTile.MaskBg
+    /// 路径: MapEditorMapTile.MaskBg
     /// </summary>
     public class MaskBg : UiNode<MapEditorMapTilePanel, Godot.ColorRect, MaskBg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.Label
+        /// 节点路径: MapEditorMapTile.Label
         /// </summary>
         public Label_2 L_Label
         {
@@ -682,127 +682,127 @@ public abstract partial class MapEditorMapTile : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer.SourceOption
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer.SourceOption
     /// </summary>
     public SourceOption S_SourceOption => L_VBoxContainer.L_HBoxContainer.L_SourceOption;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.HandleOption
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer2.HandleOption
     /// </summary>
     public HandleOption S_HandleOption => L_VBoxContainer.L_HBoxContainer2.L_HandleOption;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer2
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.HBoxContainer2
     /// </summary>
     public HBoxContainer2 S_HBoxContainer2 => L_VBoxContainer.L_HBoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.TileSprite
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.TileSprite
     /// </summary>
     public TileSprite S_TileSprite => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1.L_TabRoot.L_TileSprite;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.Brush
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot.Brush
     /// </summary>
     public Brush S_Brush => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1.L_TabRoot.L_Brush;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.TabRoot
     /// </summary>
     public TabRoot S_TabRoot => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1.L_TabRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Grid
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.Grid
     /// </summary>
     public Grid S_Grid => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1.L_Grid;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.FocusBtn
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1.FocusBtn
     /// </summary>
     public FocusBtn S_FocusBtn => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1.L_FocusBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapTile.FreeTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1
     /// </summary>
     public Tab1 S_Tab1 => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab1;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.Select
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.Select
     /// </summary>
     public Select S_Select => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2.L_ScrollContainer.L_TerrainItem.L_Select;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainName
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainName
     /// </summary>
     public TerrainName S_TerrainName => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2.L_ScrollContainer.L_TerrainItem.L_TerrainName;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.ErrorIcon
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.ErrorIcon
     /// </summary>
     public ErrorIcon S_ErrorIcon => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2.L_ScrollContainer.L_TerrainItem.L_ErrorIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainPreview
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem.TerrainPreview
     /// </summary>
     public TerrainPreview S_TerrainPreview => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2.L_ScrollContainer.L_TerrainItem.L_TerrainPreview;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2.ScrollContainer.TerrainItem
     /// </summary>
     public TerrainItem S_TerrainItem => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2.L_ScrollContainer.L_TerrainItem;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapTile.TerrainTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2
     /// </summary>
     public Tab2 S_Tab2 => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.PreviewImage
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.PreviewImage
     /// </summary>
     public PreviewImage S_PreviewImage => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab3.L_ScrollContainer.L_CellButton.L_PreviewImage;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.CellName
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.CellName
     /// </summary>
     public CellName S_CellName => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab3.L_ScrollContainer.L_CellButton.L_CellName;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.SelectTexture
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton.SelectTexture
     /// </summary>
     public SelectTexture S_SelectTexture => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab3.L_ScrollContainer.L_CellButton.L_SelectTexture;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3.ScrollContainer.CellButton
     /// </summary>
     public CellButton S_CellButton => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab3.L_ScrollContainer.L_CellButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorMapTile.CombinationTileTab"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3
     /// </summary>
     public Tab3 S_Tab3 => L_VBoxContainer.L_Panel.L_MarginContainer.L_Tab3;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_VBoxContainer.L_Panel.L_MarginContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: MapEditorMapTile.VBoxContainer.Panel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer.Panel
     /// </summary>
     public Panel S_Panel => L_VBoxContainer.L_Panel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapTile.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapTile.MaskBg
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapTile.MaskBg
     /// </summary>
     public MaskBg S_MaskBg => L_MaskBg;
 

@@ -8,7 +8,7 @@ namespace UI.EditorTileImage;
 public abstract partial class EditorTileImage : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer
+    /// 节点路径: EditorTileImage.HBoxContainer
     /// </summary>
     public HBoxContainer L_HBoxContainer
     {
@@ -33,7 +33,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.TileSprite
+    /// 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.TileSprite
     /// </summary>
     public class TileSprite : UiNode<EditorTileImagePanel, Godot.Sprite2D, TileSprite>
     {
@@ -42,7 +42,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.EditorTileImage.RectBrush"/>, 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.Brush
+    /// 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.Brush
     /// </summary>
     public class Brush : UiNode<EditorTileImagePanel, UI.EditorTileImage.RectBrush, Brush>
     {
@@ -51,12 +51,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot
+    /// 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot
     /// </summary>
     public class TextureRoot : UiNode<EditorTileImagePanel, Godot.Control, TextureRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TileSprite
+        /// 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TileSprite
         /// </summary>
         public TileSprite L_TileSprite
         {
@@ -69,7 +69,7 @@ public abstract partial class EditorTileImage : UiBase
         private TileSprite _L_TileSprite;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.EditorTileImage.RectBrush"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.Brush
+        /// 节点路径: EditorTileImage.HBoxContainer.Left.Bg.Brush
         /// </summary>
         public Brush L_Brush
         {
@@ -86,7 +86,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: EditorTileImage.HBoxContainer.Left.Bg.FocusBtn
+    /// 路径: EditorTileImage.HBoxContainer.Left.Bg.FocusBtn
     /// </summary>
     public class FocusBtn : UiNode<EditorTileImagePanel, Godot.TextureButton, FocusBtn>
     {
@@ -95,12 +95,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.EditorTileImage.ImageBg"/>, 路径: EditorTileImage.HBoxContainer.Left.Bg
+    /// 路径: EditorTileImage.HBoxContainer.Left.Bg
     /// </summary>
     public class Bg : UiNode<EditorTileImagePanel, UI.EditorTileImage.ImageBg, Bg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: EditorTileImage.HBoxContainer.Left.TextureRoot
+        /// 节点路径: EditorTileImage.HBoxContainer.Left.TextureRoot
         /// </summary>
         public TextureRoot L_TextureRoot
         {
@@ -113,7 +113,7 @@ public abstract partial class EditorTileImage : UiBase
         private TextureRoot _L_TextureRoot;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: EditorTileImage.HBoxContainer.Left.FocusBtn
+        /// 节点路径: EditorTileImage.HBoxContainer.Left.FocusBtn
         /// </summary>
         public FocusBtn L_FocusBtn
         {
@@ -130,12 +130,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: EditorTileImage.HBoxContainer.Left
+    /// 路径: EditorTileImage.HBoxContainer.Left
     /// </summary>
     public class Left : UiNode<EditorTileImagePanel, Godot.Panel, Left>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.EditorTileImage.ImageBg"/>, 节点路径: EditorTileImage.HBoxContainer.Bg
+        /// 节点路径: EditorTileImage.HBoxContainer.Bg
         /// </summary>
         public Bg L_Bg
         {
@@ -152,7 +152,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.Label
     /// </summary>
     public class Label : UiNode<EditorTileImagePanel, Godot.Label, Label>
     {
@@ -161,7 +161,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.StartX
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.StartX
     /// </summary>
     public class StartX : UiNode<EditorTileImagePanel, Godot.SpinBox, StartX>
     {
@@ -170,12 +170,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_1 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -188,7 +188,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.StartX
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.StartX
         /// </summary>
         public StartX L_StartX
         {
@@ -205,7 +205,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label_1 : UiNode<EditorTileImagePanel, Godot.Label, Label_1>
     {
@@ -214,7 +214,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.StartY
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.StartY
     /// </summary>
     public class StartY : UiNode<EditorTileImagePanel, Godot.SpinBox, StartY>
     {
@@ -223,12 +223,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -241,7 +241,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.StartY
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.StartY
         /// </summary>
         public StartY L_StartY
         {
@@ -258,7 +258,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.Label
     /// </summary>
     public class Label_2 : UiNode<EditorTileImagePanel, Godot.Label, Label_2>
     {
@@ -267,7 +267,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.OffsetX
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.OffsetX
     /// </summary>
     public class OffsetX : UiNode<EditorTileImagePanel, Godot.SpinBox, OffsetX>
     {
@@ -276,12 +276,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3
     /// </summary>
     public class HBoxContainer3 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer3>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label_2 L_Label
         {
@@ -294,7 +294,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label_2 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.OffsetX
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.OffsetX
         /// </summary>
         public OffsetX L_OffsetX
         {
@@ -311,7 +311,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.Label
     /// </summary>
     public class Label_3 : UiNode<EditorTileImagePanel, Godot.Label, Label_3>
     {
@@ -320,7 +320,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.OffsetY
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.OffsetY
     /// </summary>
     public class OffsetY : UiNode<EditorTileImagePanel, Godot.SpinBox, OffsetY>
     {
@@ -329,12 +329,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4
     /// </summary>
     public class HBoxContainer4 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer4>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label_3 L_Label
         {
@@ -347,7 +347,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label_3 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.OffsetY
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.OffsetY
         /// </summary>
         public OffsetY L_OffsetY
         {
@@ -364,7 +364,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.Label
     /// </summary>
     public class Label_4 : UiNode<EditorTileImagePanel, Godot.Label, Label_4>
     {
@@ -373,7 +373,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.HCount
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.HCount
     /// </summary>
     public class HCount : UiNode<EditorTileImagePanel, Godot.SpinBox, HCount>
     {
@@ -382,12 +382,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5
     /// </summary>
     public class HBoxContainer5 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer5>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label_4 L_Label
         {
@@ -400,7 +400,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label_4 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HCount
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HCount
         /// </summary>
         public HCount L_HCount
         {
@@ -417,7 +417,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.Label
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.Label
     /// </summary>
     public class Label_5 : UiNode<EditorTileImagePanel, Godot.Label, Label_5>
     {
@@ -426,7 +426,7 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.VCount
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.VCount
     /// </summary>
     public class VCount : UiNode<EditorTileImagePanel, Godot.SpinBox, VCount>
     {
@@ -435,12 +435,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6
     /// </summary>
     public class HBoxContainer6 : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer6>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.Label
         /// </summary>
         public Label_5 L_Label
         {
@@ -453,7 +453,7 @@ public abstract partial class EditorTileImage : UiBase
         private Label_5 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.VCount
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.VCount
         /// </summary>
         public VCount L_VCount
         {
@@ -470,12 +470,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer
+    /// 路径: EditorTileImage.HBoxContainer.Right.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorTileImagePanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer
         /// </summary>
         public HBoxContainer_1 L_HBoxContainer
         {
@@ -488,7 +488,7 @@ public abstract partial class EditorTileImage : UiBase
         private HBoxContainer_1 _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer2
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
         {
@@ -501,7 +501,7 @@ public abstract partial class EditorTileImage : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer3
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer3
         /// </summary>
         public HBoxContainer3 L_HBoxContainer3
         {
@@ -514,7 +514,7 @@ public abstract partial class EditorTileImage : UiBase
         private HBoxContainer3 _L_HBoxContainer3;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer4
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer4
         /// </summary>
         public HBoxContainer4 L_HBoxContainer4
         {
@@ -527,7 +527,7 @@ public abstract partial class EditorTileImage : UiBase
         private HBoxContainer4 _L_HBoxContainer4;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer5
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer5
         /// </summary>
         public HBoxContainer5 L_HBoxContainer5
         {
@@ -540,7 +540,7 @@ public abstract partial class EditorTileImage : UiBase
         private HBoxContainer5 _L_HBoxContainer5;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer6
+        /// 节点路径: EditorTileImage.HBoxContainer.Right.HBoxContainer6
         /// </summary>
         public HBoxContainer6 L_HBoxContainer6
         {
@@ -557,12 +557,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: EditorTileImage.HBoxContainer.Right
+    /// 路径: EditorTileImage.HBoxContainer.Right
     /// </summary>
     public class Right : UiNode<EditorTileImagePanel, Godot.Panel, Right>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.VBoxContainer
+        /// 节点路径: EditorTileImage.HBoxContainer.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -579,12 +579,12 @@ public abstract partial class EditorTileImage : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorTileImage.HBoxContainer
+    /// 路径: EditorTileImage.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<EditorTileImagePanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorTileImage.Left
+        /// 节点路径: EditorTileImage.Left
         /// </summary>
         public Left L_Left
         {
@@ -597,7 +597,7 @@ public abstract partial class EditorTileImage : UiBase
         private Left _L_Left;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorTileImage.Right
+        /// 节点路径: EditorTileImage.Right
         /// </summary>
         public Right L_Right
         {
@@ -615,97 +615,97 @@ public abstract partial class EditorTileImage : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.TileSprite
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.TileSprite
     /// </summary>
     public TileSprite S_TileSprite => L_HBoxContainer.L_Left.L_Bg.L_TextureRoot.L_TileSprite;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.EditorTileImage.RectBrush"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.Brush
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.Brush
     /// </summary>
     public Brush S_Brush => L_HBoxContainer.L_Left.L_Bg.L_TextureRoot.L_Brush;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot
     /// </summary>
     public TextureRoot S_TextureRoot => L_HBoxContainer.L_Left.L_Bg.L_TextureRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.FocusBtn
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left.Bg.FocusBtn
     /// </summary>
     public FocusBtn S_FocusBtn => L_HBoxContainer.L_Left.L_Bg.L_FocusBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.EditorTileImage.ImageBg"/>, 节点路径: EditorTileImage.HBoxContainer.Left.Bg
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left.Bg
     /// </summary>
     public Bg S_Bg => L_HBoxContainer.L_Left.L_Bg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorTileImage.HBoxContainer.Left
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Left
     /// </summary>
     public Left S_Left => L_HBoxContainer.L_Left;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.StartX
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer.StartX
     /// </summary>
     public StartX S_StartX => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer.L_StartX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.StartY
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2.StartY
     /// </summary>
     public StartY S_StartY => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer2.L_StartY;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer2
     /// </summary>
     public HBoxContainer2 S_HBoxContainer2 => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.OffsetX
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3.OffsetX
     /// </summary>
     public OffsetX S_OffsetX => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer3.L_OffsetX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer3
     /// </summary>
     public HBoxContainer3 S_HBoxContainer3 => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer3;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.OffsetY
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4.OffsetY
     /// </summary>
     public OffsetY S_OffsetY => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer4.L_OffsetY;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer4
     /// </summary>
     public HBoxContainer4 S_HBoxContainer4 => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer4;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.HCount
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5.HCount
     /// </summary>
     public HCount S_HCount => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer5.L_HCount;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer5
     /// </summary>
     public HBoxContainer5 S_HBoxContainer5 => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer5;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.VCount
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6.VCount
     /// </summary>
     public VCount S_VCount => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer6.L_VCount;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer.HBoxContainer6
     /// </summary>
     public HBoxContainer6 S_HBoxContainer6 => L_HBoxContainer.L_Right.L_VBoxContainer.L_HBoxContainer6;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_HBoxContainer.L_Right.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorTileImage.HBoxContainer.Right
+    /// 场景中唯一名称的节点, 节点路径: EditorTileImage.HBoxContainer.Right
     /// </summary>
     public Right S_Right => L_HBoxContainer.L_Right;
 

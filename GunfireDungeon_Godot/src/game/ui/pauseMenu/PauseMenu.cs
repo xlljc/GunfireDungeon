@@ -8,7 +8,7 @@ namespace UI.PauseMenu;
 public abstract partial class PauseMenu : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: PauseMenu.ColorRect
+    /// 节点路径: PauseMenu.ColorRect
     /// </summary>
     public ColorRect L_ColorRect
     {
@@ -21,7 +21,7 @@ public abstract partial class PauseMenu : UiBase
     private ColorRect _L_ColorRect;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PauseMenu.VBoxContainer
+    /// 节点路径: PauseMenu.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -44,7 +44,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: PauseMenu.ColorRect
+    /// 路径: PauseMenu.ColorRect
     /// </summary>
     public class ColorRect : UiNode<PauseMenuPanel, Godot.ColorRect, ColorRect>
     {
@@ -53,7 +53,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PauseMenu.VBoxContainer.Continue
+    /// 路径: PauseMenu.VBoxContainer.Continue
     /// </summary>
     public class Continue : UiNode<PauseMenuPanel, Godot.Button, Continue>
     {
@@ -62,7 +62,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PauseMenu.VBoxContainer.Restart
+    /// 路径: PauseMenu.VBoxContainer.Restart
     /// </summary>
     public class Restart : UiNode<PauseMenuPanel, Godot.Button, Restart>
     {
@@ -71,7 +71,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PauseMenu.VBoxContainer.Encyclopedia
+    /// 路径: PauseMenu.VBoxContainer.Encyclopedia
     /// </summary>
     public class Encyclopedia : UiNode<PauseMenuPanel, Godot.Button, Encyclopedia>
     {
@@ -80,7 +80,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PauseMenu.VBoxContainer.Setting
+    /// 路径: PauseMenu.VBoxContainer.Setting
     /// </summary>
     public class Setting : UiNode<PauseMenuPanel, Godot.Button, Setting>
     {
@@ -89,7 +89,7 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PauseMenu.VBoxContainer.Exit
+    /// 路径: PauseMenu.VBoxContainer.Exit
     /// </summary>
     public class Exit : UiNode<PauseMenuPanel, Godot.Button, Exit>
     {
@@ -98,12 +98,12 @@ public abstract partial class PauseMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: PauseMenu.VBoxContainer
+    /// 路径: PauseMenu.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<PauseMenuPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.Continue
+        /// 节点路径: PauseMenu.Continue
         /// </summary>
         public Continue L_Continue
         {
@@ -116,7 +116,7 @@ public abstract partial class PauseMenu : UiBase
         private Continue _L_Continue;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.Restart
+        /// 节点路径: PauseMenu.Restart
         /// </summary>
         public Restart L_Restart
         {
@@ -129,7 +129,7 @@ public abstract partial class PauseMenu : UiBase
         private Restart _L_Restart;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.Encyclopedia
+        /// 节点路径: PauseMenu.Encyclopedia
         /// </summary>
         public Encyclopedia L_Encyclopedia
         {
@@ -142,7 +142,7 @@ public abstract partial class PauseMenu : UiBase
         private Encyclopedia _L_Encyclopedia;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.Setting
+        /// 节点路径: PauseMenu.Setting
         /// </summary>
         public Setting L_Setting
         {
@@ -155,7 +155,7 @@ public abstract partial class PauseMenu : UiBase
         private Setting _L_Setting;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.Exit
+        /// 节点路径: PauseMenu.Exit
         /// </summary>
         public Exit L_Exit
         {
@@ -173,37 +173,37 @@ public abstract partial class PauseMenu : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: PauseMenu.ColorRect
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.ColorRect
     /// </summary>
     public ColorRect S_ColorRect => L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.VBoxContainer.Continue
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer.Continue
     /// </summary>
     public Continue S_Continue => L_VBoxContainer.L_Continue;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.VBoxContainer.Restart
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer.Restart
     /// </summary>
     public Restart S_Restart => L_VBoxContainer.L_Restart;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.VBoxContainer.Encyclopedia
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer.Encyclopedia
     /// </summary>
     public Encyclopedia S_Encyclopedia => L_VBoxContainer.L_Encyclopedia;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.VBoxContainer.Setting
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer.Setting
     /// </summary>
     public Setting S_Setting => L_VBoxContainer.L_Setting;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PauseMenu.VBoxContainer.Exit
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer.Exit
     /// </summary>
     public Exit S_Exit => L_VBoxContainer.L_Exit;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PauseMenu.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: PauseMenu.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_VBoxContainer;
 

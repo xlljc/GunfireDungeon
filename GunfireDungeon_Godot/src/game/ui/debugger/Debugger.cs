@@ -8,7 +8,7 @@ namespace UI.Debugger;
 public abstract partial class Debugger : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Debugger.Bg
+    /// 节点路径: Debugger.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -21,7 +21,7 @@ public abstract partial class Debugger : UiBase
     private Bg _L_Bg;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.HoverButton
+    /// 节点路径: Debugger.HoverButton
     /// </summary>
     public HoverButton L_HoverButton
     {
@@ -34,7 +34,7 @@ public abstract partial class Debugger : UiBase
     private HoverButton _L_HoverButton;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Debugger.Fps
+    /// 节点路径: Debugger.Fps
     /// </summary>
     public Fps L_Fps
     {
@@ -57,7 +57,7 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Debugger.Bg.Clear
+    /// 路径: Debugger.Bg.Clear
     /// </summary>
     public class Clear : UiNode<DebuggerPanel, Godot.Button, Clear>
     {
@@ -66,7 +66,7 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Debugger.Bg.Close
+    /// 路径: Debugger.Bg.Close
     /// </summary>
     public class Close : UiNode<DebuggerPanel, Godot.Button, Close>
     {
@@ -75,7 +75,7 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Debugger.Bg.ScrollContainer.Label
+    /// 路径: Debugger.Bg.ScrollContainer.Label
     /// </summary>
     public class Label : UiNode<DebuggerPanel, Godot.Label, Label>
     {
@@ -84,12 +84,12 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: Debugger.Bg.ScrollContainer
+    /// 路径: Debugger.Bg.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<DebuggerPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Debugger.Bg.Label
+        /// 节点路径: Debugger.Bg.Label
         /// </summary>
         public Label L_Label
         {
@@ -106,12 +106,12 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: Debugger.Bg
+    /// 路径: Debugger.Bg
     /// </summary>
     public class Bg : UiNode<DebuggerPanel, Godot.ColorRect, Bg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.Clear
+        /// 节点路径: Debugger.Clear
         /// </summary>
         public Clear L_Clear
         {
@@ -124,7 +124,7 @@ public abstract partial class Debugger : UiBase
         private Clear _L_Clear;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.Close
+        /// 节点路径: Debugger.Close
         /// </summary>
         public Close L_Close
         {
@@ -137,7 +137,7 @@ public abstract partial class Debugger : UiBase
         private Close _L_Close;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Debugger.ScrollContainer
+        /// 节点路径: Debugger.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -154,7 +154,7 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Debugger.HoverButton
+    /// 路径: Debugger.HoverButton
     /// </summary>
     public class HoverButton : UiNode<DebuggerPanel, Godot.Button, HoverButton>
     {
@@ -163,7 +163,7 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Debugger.Fps
+    /// 路径: Debugger.Fps
     /// </summary>
     public class Fps : UiNode<DebuggerPanel, Godot.Label, Fps>
     {
@@ -173,37 +173,37 @@ public abstract partial class Debugger : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.Bg.Clear
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Clear
     /// </summary>
     public Clear S_Clear => L_Bg.L_Clear;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.Bg.Close
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Close
     /// </summary>
     public Close S_Close => L_Bg.L_Close;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Debugger.Bg.ScrollContainer.Label
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.ScrollContainer.Label
     /// </summary>
     public Label S_Label => L_Bg.L_ScrollContainer.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Debugger.Bg.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_Bg.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Debugger.Bg
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Debugger.HoverButton
+    /// 场景中唯一名称的节点, 节点路径: Debugger.HoverButton
     /// </summary>
     public HoverButton S_HoverButton => L_HoverButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Debugger.Fps
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Fps
     /// </summary>
     public Fps S_Fps => L_Fps;
 

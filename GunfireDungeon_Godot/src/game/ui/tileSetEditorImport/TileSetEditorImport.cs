@@ -8,7 +8,7 @@ namespace UI.TileSetEditorImport;
 public abstract partial class TileSetEditorImport : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorImport.ImportPreviewBg
+    /// 节点路径: TileSetEditorImport.ImportPreviewBg
     /// </summary>
     public ImportPreviewBg L_ImportPreviewBg
     {
@@ -21,7 +21,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ImportPreviewBg _L_ImportPreviewBg;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ImportButton
+    /// 节点路径: TileSetEditorImport.ImportButton
     /// </summary>
     public ImportButton L_ImportButton
     {
@@ -34,7 +34,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ImportButton _L_ImportButton;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorImport.ImportLabel
+    /// 节点路径: TileSetEditorImport.ImportLabel
     /// </summary>
     public ImportLabel L_ImportLabel
     {
@@ -47,7 +47,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ImportLabel _L_ImportLabel;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorImport.ImportIcon
+    /// 节点路径: TileSetEditorImport.ImportIcon
     /// </summary>
     public ImportIcon L_ImportIcon
     {
@@ -60,7 +60,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ImportIcon _L_ImportIcon;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorImport.Control
+    /// 节点路径: TileSetEditorImport.Control
     /// </summary>
     public Control L_Control
     {
@@ -73,7 +73,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private Control _L_Control;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ImportColorPicker
+    /// 节点路径: TileSetEditorImport.ImportColorPicker
     /// </summary>
     public ImportColorPicker L_ImportColorPicker
     {
@@ -86,7 +86,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ImportColorPicker _L_ImportColorPicker;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ReimportButton
+    /// 节点路径: TileSetEditorImport.ReimportButton
     /// </summary>
     public ReimportButton L_ReimportButton
     {
@@ -99,7 +99,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private ReimportButton _L_ReimportButton;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorImport.FocusBtn
+    /// 节点路径: TileSetEditorImport.FocusBtn
     /// </summary>
     public FocusBtn L_FocusBtn
     {
@@ -122,7 +122,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: TileSetEditorImport.ImportPreviewBg
+    /// 路径: TileSetEditorImport.ImportPreviewBg
     /// </summary>
     public class ImportPreviewBg : UiNode<TileSetEditorImportPanel, Godot.ColorRect, ImportPreviewBg>
     {
@@ -131,7 +131,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditorImport.ImportButton
+    /// 路径: TileSetEditorImport.ImportButton
     /// </summary>
     public class ImportButton : UiNode<TileSetEditorImportPanel, Godot.Button, ImportButton>
     {
@@ -140,7 +140,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: TileSetEditorImport.ImportLabel
+    /// 路径: TileSetEditorImport.ImportLabel
     /// </summary>
     public class ImportLabel : UiNode<TileSetEditorImportPanel, Godot.Label, ImportLabel>
     {
@@ -149,7 +149,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: TileSetEditorImport.ImportIcon
+    /// 路径: TileSetEditorImport.ImportIcon
     /// </summary>
     public class ImportIcon : UiNode<TileSetEditorImportPanel, Godot.TextureRect, ImportIcon>
     {
@@ -158,7 +158,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Sprite2D"/>, 路径: TileSetEditorImport.Control.ImportPreview
+    /// 路径: TileSetEditorImport.Control.ImportPreview
     /// </summary>
     public class ImportPreview : UiNode<TileSetEditorImportPanel, Godot.Sprite2D, ImportPreview>
     {
@@ -167,12 +167,12 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: TileSetEditorImport.Control
+    /// 路径: TileSetEditorImport.Control
     /// </summary>
     public class Control : UiNode<TileSetEditorImportPanel, Godot.Control, Control>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: TileSetEditorImport.ImportPreview
+        /// 节点路径: TileSetEditorImport.ImportPreview
         /// </summary>
         public ImportPreview L_ImportPreview
         {
@@ -189,7 +189,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditorImport.ImportColorPicker
+    /// 路径: TileSetEditorImport.ImportColorPicker
     /// </summary>
     public class ImportColorPicker : UiNode<TileSetEditorImportPanel, Godot.Button, ImportColorPicker>
     {
@@ -198,7 +198,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: TileSetEditorImport.ReimportButton
+    /// 路径: TileSetEditorImport.ReimportButton
     /// </summary>
     public class ReimportButton : UiNode<TileSetEditorImportPanel, Godot.Button, ReimportButton>
     {
@@ -207,7 +207,7 @@ public abstract partial class TileSetEditorImport : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: TileSetEditorImport.FocusBtn
+    /// 路径: TileSetEditorImport.FocusBtn
     /// </summary>
     public class FocusBtn : UiNode<TileSetEditorImportPanel, Godot.TextureButton, FocusBtn>
     {
@@ -217,47 +217,47 @@ public abstract partial class TileSetEditorImport : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: TileSetEditorImport.ImportPreviewBg
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ImportPreviewBg
     /// </summary>
     public ImportPreviewBg S_ImportPreviewBg => L_ImportPreviewBg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ImportButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ImportButton
     /// </summary>
     public ImportButton S_ImportButton => L_ImportButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: TileSetEditorImport.ImportLabel
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ImportLabel
     /// </summary>
     public ImportLabel S_ImportLabel => L_ImportLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: TileSetEditorImport.ImportIcon
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ImportIcon
     /// </summary>
     public ImportIcon S_ImportIcon => L_ImportIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Sprite2D"/>, 节点路径: TileSetEditorImport.Control.ImportPreview
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.Control.ImportPreview
     /// </summary>
     public ImportPreview S_ImportPreview => L_Control.L_ImportPreview;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: TileSetEditorImport.Control
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.Control
     /// </summary>
     public Control S_Control => L_Control;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ImportColorPicker
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ImportColorPicker
     /// </summary>
     public ImportColorPicker S_ImportColorPicker => L_ImportColorPicker;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: TileSetEditorImport.ReimportButton
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.ReimportButton
     /// </summary>
     public ReimportButton S_ReimportButton => L_ReimportButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: TileSetEditorImport.FocusBtn
+    /// 场景中唯一名称的节点, 节点路径: TileSetEditorImport.FocusBtn
     /// </summary>
     public FocusBtn S_FocusBtn => L_FocusBtn;
 

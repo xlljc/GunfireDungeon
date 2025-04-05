@@ -169,8 +169,8 @@ namespace DsUi.Generator
         private static string GenerateClassCode(UiNodeInfo uiNodeInfo, string nameSpace)
         {
             var retraction = "    ";
-            return $"namespace {DsUiConfig.UiNamespace}.{nameSpace}{uiNodeInfo.OriginName};\n\n" +
-                   $"using DsUi;\n\n" +
+            return $"using DsUi;\n\n" +
+                   $"namespace {DsUiConfig.UiNamespace}.{nameSpace}{uiNodeInfo.OriginName};\n\n" +
                    $"/// <summary>\n" +
                    $"/// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失\n" +
                    $"/// </summary>\n" +

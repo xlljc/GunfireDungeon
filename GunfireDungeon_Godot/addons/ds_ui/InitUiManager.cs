@@ -8,5 +8,7 @@ public partial class InitUiManager : Node
     {
         //初始化Ui管理器
         UiManager.Init(GetParent());
+        
+        CallDeferred(Node.MethodName.QueueFree);
     }
 }

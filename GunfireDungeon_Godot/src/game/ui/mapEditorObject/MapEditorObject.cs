@@ -8,7 +8,7 @@ namespace UI.MapEditorObject;
 public abstract partial class MapEditorObject : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer
+    /// 节点路径: MapEditorObject.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -21,7 +21,7 @@ public abstract partial class MapEditorObject : UiBase
     private VBoxContainer _L_VBoxContainer;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.DynamicDeleteButton
+    /// 节点路径: MapEditorObject.DynamicDeleteButton
     /// </summary>
     public DynamicDeleteButton L_DynamicDeleteButton
     {
@@ -44,7 +44,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.LineEdit"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchInput
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchInput
     /// </summary>
     public class SearchInput : UiNode<MapEditorObjectPanel, Godot.LineEdit, SearchInput>
     {
@@ -53,7 +53,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchButton
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchButton
     /// </summary>
     public class SearchButton : UiNode<MapEditorObjectPanel, Godot.Button, SearchButton>
     {
@@ -62,12 +62,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorObjectPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorObject.VBoxContainer.SearchInput
+        /// 节点路径: MapEditorObject.VBoxContainer.SearchInput
         /// </summary>
         public SearchInput L_SearchInput
         {
@@ -80,7 +80,7 @@ public abstract partial class MapEditorObject : UiBase
         private SearchInput _L_SearchInput;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.VBoxContainer.SearchButton
+        /// 节点路径: MapEditorObject.VBoxContainer.SearchButton
         /// </summary>
         public SearchButton L_SearchButton
         {
@@ -97,7 +97,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer2.Label
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label : UiNode<MapEditorObjectPanel, Godot.Label, Label>
     {
@@ -106,7 +106,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer2.LayerOption
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer2.LayerOption
     /// </summary>
     public class LayerOption : UiNode<MapEditorObjectPanel, Godot.OptionButton, LayerOption>
     {
@@ -115,12 +115,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorObject.VBoxContainer.HBoxContainer2
+    /// 路径: MapEditorObject.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2 : UiNode<MapEditorObjectPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorObject.VBoxContainer.Label
+        /// 节点路径: MapEditorObject.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -133,7 +133,7 @@ public abstract partial class MapEditorObject : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorObject.VBoxContainer.LayerOption
+        /// 节点路径: MapEditorObject.VBoxContainer.LayerOption
         /// </summary>
         public LayerOption L_LayerOption
         {
@@ -150,7 +150,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Icon
+    /// 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Icon
     /// </summary>
     public class Icon : UiNode<MapEditorObjectPanel, Godot.TextureRect, Icon>
     {
@@ -159,7 +159,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Select
+    /// 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Select
     /// </summary>
     public class Select : UiNode<MapEditorObjectPanel, Godot.NinePatchRect, Select>
     {
@@ -168,12 +168,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton
+    /// 路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton
     /// </summary>
     public class ItemButton : UiNode<MapEditorObjectPanel, Godot.Button, ItemButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.Icon
+        /// 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.Icon
         /// </summary>
         public Icon L_Icon
         {
@@ -186,7 +186,7 @@ public abstract partial class MapEditorObject : UiBase
         private Icon _L_Icon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.Select
+        /// 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.Select
         /// </summary>
         public Select L_Select
         {
@@ -203,12 +203,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorObject.VBoxContainer.ItemRoot.Item
+    /// 路径: MapEditorObject.VBoxContainer.ItemRoot.Item
     /// </summary>
     public class Item : UiNode<MapEditorObjectPanel, Godot.HBoxContainer, Item>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.ItemButton
+        /// 节点路径: MapEditorObject.VBoxContainer.ItemRoot.ItemButton
         /// </summary>
         public ItemButton L_ItemButton
         {
@@ -225,12 +225,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorObject.VBoxContainer.ItemRoot
+    /// 路径: MapEditorObject.VBoxContainer.ItemRoot
     /// </summary>
     public class ItemRoot : UiNode<MapEditorObjectPanel, Godot.ScrollContainer, ItemRoot>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer.Item
+        /// 节点路径: MapEditorObject.VBoxContainer.Item
         /// </summary>
         public Item L_Item
         {
@@ -247,12 +247,12 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorObject.VBoxContainer
+    /// 路径: MapEditorObject.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorObjectPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.HBoxContainer
+        /// 节点路径: MapEditorObject.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -265,7 +265,7 @@ public abstract partial class MapEditorObject : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.HBoxContainer2
+        /// 节点路径: MapEditorObject.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
         {
@@ -278,7 +278,7 @@ public abstract partial class MapEditorObject : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorObject.ItemRoot
+        /// 节点路径: MapEditorObject.ItemRoot
         /// </summary>
         public ItemRoot L_ItemRoot
         {
@@ -295,7 +295,7 @@ public abstract partial class MapEditorObject : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorObject.DynamicDeleteButton
+    /// 路径: MapEditorObject.DynamicDeleteButton
     /// </summary>
     public class DynamicDeleteButton : UiNode<MapEditorObjectPanel, Godot.Button, DynamicDeleteButton>
     {
@@ -305,67 +305,67 @@ public abstract partial class MapEditorObject : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchInput
     /// </summary>
     public SearchInput S_SearchInput => L_VBoxContainer.L_HBoxContainer.L_SearchInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer.SearchButton
     /// </summary>
     public SearchButton S_SearchButton => L_VBoxContainer.L_HBoxContainer.L_SearchButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2.Label
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public Label S_Label => L_VBoxContainer.L_HBoxContainer2.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2.LayerOption
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2.LayerOption
     /// </summary>
     public LayerOption S_LayerOption => L_VBoxContainer.L_HBoxContainer2.L_LayerOption;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.HBoxContainer2
     /// </summary>
     public HBoxContainer2 S_HBoxContainer2 => L_VBoxContainer.L_HBoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Icon
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Icon
     /// </summary>
     public Icon S_Icon => L_VBoxContainer.L_ItemRoot.L_Item.L_ItemButton.L_Icon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Select
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton.Select
     /// </summary>
     public Select S_Select => L_VBoxContainer.L_ItemRoot.L_Item.L_ItemButton.L_Select;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item.ItemButton
     /// </summary>
     public ItemButton S_ItemButton => L_VBoxContainer.L_ItemRoot.L_Item.L_ItemButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.ItemRoot.Item
     /// </summary>
     public Item S_Item => L_VBoxContainer.L_ItemRoot.L_Item;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorObject.VBoxContainer.ItemRoot
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer.ItemRoot
     /// </summary>
     public ItemRoot S_ItemRoot => L_VBoxContainer.L_ItemRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorObject.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorObject.DynamicDeleteButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorObject.DynamicDeleteButton
     /// </summary>
     public DynamicDeleteButton S_DynamicDeleteButton => L_DynamicDeleteButton;
 

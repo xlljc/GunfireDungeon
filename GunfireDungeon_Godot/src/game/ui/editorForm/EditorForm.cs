@@ -8,7 +8,7 @@ namespace UI.EditorForm;
 public abstract partial class EditorForm : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorForm.MarginContainer
+    /// 节点路径: EditorForm.MarginContainer
     /// </summary>
     public MarginContainer L_MarginContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class EditorForm : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item.NameLabel
+    /// 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item.NameLabel
     /// </summary>
     public class NameLabel : UiNode<EditorFormPanel, Godot.Label, NameLabel>
     {
@@ -40,12 +40,12 @@ public abstract partial class EditorForm : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item
+    /// 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item
     /// </summary>
     public class Item : UiNode<EditorFormPanel, Godot.HBoxContainer, Item>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.NameLabel
+        /// 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.NameLabel
         /// </summary>
         public NameLabel L_NameLabel
         {
@@ -62,12 +62,12 @@ public abstract partial class EditorForm : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer
+    /// 路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorFormPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer.Item
+        /// 节点路径: EditorForm.MarginContainer.ScrollContainer.Item
         /// </summary>
         public Item L_Item
         {
@@ -84,12 +84,12 @@ public abstract partial class EditorForm : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: EditorForm.MarginContainer.ScrollContainer
+    /// 路径: EditorForm.MarginContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<EditorFormPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorForm.MarginContainer.VBoxContainer
+        /// 节点路径: EditorForm.MarginContainer.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -106,12 +106,12 @@ public abstract partial class EditorForm : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: EditorForm.MarginContainer
+    /// 路径: EditorForm.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<EditorFormPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: EditorForm.ScrollContainer
+        /// 节点路径: EditorForm.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -129,27 +129,27 @@ public abstract partial class EditorForm : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item.NameLabel
+    /// 场景中唯一名称的节点, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item.NameLabel
     /// </summary>
     public NameLabel S_NameLabel => L_MarginContainer.L_ScrollContainer.L_VBoxContainer.L_Item.L_NameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item
+    /// 场景中唯一名称的节点, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer.Item
     /// </summary>
     public Item S_Item => L_MarginContainer.L_ScrollContainer.L_VBoxContainer.L_Item;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorForm.MarginContainer.ScrollContainer.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_MarginContainer.L_ScrollContainer.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: EditorForm.MarginContainer.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorForm.MarginContainer.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_MarginContainer.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorForm.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorForm.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
 

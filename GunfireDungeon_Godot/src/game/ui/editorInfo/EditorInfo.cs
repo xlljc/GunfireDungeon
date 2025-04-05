@@ -8,7 +8,7 @@ namespace UI.EditorInfo;
 public abstract partial class EditorInfo : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorInfo.MarginContainer
+    /// 节点路径: EditorInfo.MarginContainer
     /// </summary>
     public MarginContainer L_MarginContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameLabel
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameLabel
     /// </summary>
     public class NameLabel : UiNode<EditorInfoPanel, Godot.Label, NameLabel>
     {
@@ -40,7 +40,7 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.LineEdit"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameInput
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameInput
     /// </summary>
     public class NameInput : UiNode<EditorInfoPanel, Godot.LineEdit, NameInput>
     {
@@ -49,12 +49,12 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<EditorInfoPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.NameLabel
+        /// 节点路径: EditorInfo.MarginContainer.VBoxContainer.NameLabel
         /// </summary>
         public NameLabel L_NameLabel
         {
@@ -67,7 +67,7 @@ public abstract partial class EditorInfo : UiBase
         private NameLabel _L_NameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.NameInput
+        /// 节点路径: EditorInfo.MarginContainer.VBoxContainer.NameInput
         /// </summary>
         public NameInput L_NameInput
         {
@@ -84,7 +84,7 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
     /// </summary>
     public class RemarkNameLabel : UiNode<EditorInfoPanel, Godot.Label, RemarkNameLabel>
     {
@@ -93,7 +93,7 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextEdit"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
     /// </summary>
     public class RemarkInput : UiNode<EditorInfoPanel, Godot.TextEdit, RemarkInput>
     {
@@ -102,12 +102,12 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5
     /// </summary>
     public class HBoxContainer5 : UiNode<EditorInfoPanel, Godot.HBoxContainer, HBoxContainer5>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.RemarkNameLabel
+        /// 节点路径: EditorInfo.MarginContainer.VBoxContainer.RemarkNameLabel
         /// </summary>
         public RemarkNameLabel L_RemarkNameLabel
         {
@@ -120,7 +120,7 @@ public abstract partial class EditorInfo : UiBase
         private RemarkNameLabel _L_RemarkNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextEdit"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.RemarkInput
+        /// 节点路径: EditorInfo.MarginContainer.VBoxContainer.RemarkInput
         /// </summary>
         public RemarkInput L_RemarkInput
         {
@@ -137,12 +137,12 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorInfo.MarginContainer.VBoxContainer
+    /// 路径: EditorInfo.MarginContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorInfoPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorInfo.MarginContainer.HBoxContainer
+        /// 节点路径: EditorInfo.MarginContainer.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -155,7 +155,7 @@ public abstract partial class EditorInfo : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorInfo.MarginContainer.HBoxContainer5
+        /// 节点路径: EditorInfo.MarginContainer.HBoxContainer5
         /// </summary>
         public HBoxContainer5 L_HBoxContainer5
         {
@@ -172,12 +172,12 @@ public abstract partial class EditorInfo : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: EditorInfo.MarginContainer
+    /// 路径: EditorInfo.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<EditorInfoPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorInfo.VBoxContainer
+        /// 节点路径: EditorInfo.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -195,42 +195,42 @@ public abstract partial class EditorInfo : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameLabel
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameLabel
     /// </summary>
     public NameLabel S_NameLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_NameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameInput
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer.NameInput
     /// </summary>
     public NameInput S_NameInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_NameInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
     /// </summary>
     public RemarkNameLabel S_RemarkNameLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5.L_RemarkNameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextEdit"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
     /// </summary>
     public RemarkInput S_RemarkInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5.L_RemarkInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer.HBoxContainer5
     /// </summary>
     public HBoxContainer5 S_HBoxContainer5 => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorInfo.MarginContainer.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorInfo.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorInfo.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
 

@@ -8,7 +8,7 @@ namespace UI.Settlement;
 public abstract partial class Settlement : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Settlement.Bg
+    /// 节点路径: Settlement.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -21,7 +21,7 @@ public abstract partial class Settlement : UiBase
     private Bg _L_Bg;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Settlement.Title
+    /// 节点路径: Settlement.Title
     /// </summary>
     public Title L_Title
     {
@@ -34,7 +34,7 @@ public abstract partial class Settlement : UiBase
     private Title _L_Title;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Settlement.ButtonList
+    /// 节点路径: Settlement.ButtonList
     /// </summary>
     public ButtonList L_ButtonList
     {
@@ -57,7 +57,7 @@ public abstract partial class Settlement : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: Settlement.Bg
+    /// 路径: Settlement.Bg
     /// </summary>
     public class Bg : UiNode<SettlementPanel, Godot.ColorRect, Bg>
     {
@@ -66,7 +66,7 @@ public abstract partial class Settlement : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Settlement.Title
+    /// 路径: Settlement.Title
     /// </summary>
     public class Title : UiNode<SettlementPanel, Godot.Label, Title>
     {
@@ -75,7 +75,7 @@ public abstract partial class Settlement : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Settlement.ButtonList.Restart
+    /// 路径: Settlement.ButtonList.Restart
     /// </summary>
     public class Restart : UiNode<SettlementPanel, Godot.Button, Restart>
     {
@@ -84,7 +84,7 @@ public abstract partial class Settlement : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Settlement.ButtonList.ToMenu
+    /// 路径: Settlement.ButtonList.ToMenu
     /// </summary>
     public class ToMenu : UiNode<SettlementPanel, Godot.Button, ToMenu>
     {
@@ -93,12 +93,12 @@ public abstract partial class Settlement : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Settlement.ButtonList
+    /// 路径: Settlement.ButtonList
     /// </summary>
     public class ButtonList : UiNode<SettlementPanel, Godot.VBoxContainer, ButtonList>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Settlement.Restart
+        /// 节点路径: Settlement.Restart
         /// </summary>
         public Restart L_Restart
         {
@@ -111,7 +111,7 @@ public abstract partial class Settlement : UiBase
         private Restart _L_Restart;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Settlement.ToMenu
+        /// 节点路径: Settlement.ToMenu
         /// </summary>
         public ToMenu L_ToMenu
         {
@@ -129,27 +129,27 @@ public abstract partial class Settlement : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: Settlement.Bg
+    /// 场景中唯一名称的节点, 节点路径: Settlement.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Settlement.Title
+    /// 场景中唯一名称的节点, 节点路径: Settlement.Title
     /// </summary>
     public Title S_Title => L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Settlement.ButtonList.Restart
+    /// 场景中唯一名称的节点, 节点路径: Settlement.ButtonList.Restart
     /// </summary>
     public Restart S_Restart => L_ButtonList.L_Restart;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Settlement.ButtonList.ToMenu
+    /// 场景中唯一名称的节点, 节点路径: Settlement.ButtonList.ToMenu
     /// </summary>
     public ToMenu S_ToMenu => L_ButtonList.L_ToMenu;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Settlement.ButtonList
+    /// 场景中唯一名称的节点, 节点路径: Settlement.ButtonList
     /// </summary>
     public ButtonList S_ButtonList => L_ButtonList;
 

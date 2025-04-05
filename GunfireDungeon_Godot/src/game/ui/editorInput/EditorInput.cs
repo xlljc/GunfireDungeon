@@ -8,7 +8,7 @@ namespace UI.EditorInput;
 public abstract partial class EditorInput : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorInput.VBoxContainer
+    /// 节点路径: EditorInput.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class EditorInput : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorInput.VBoxContainer.Label
+    /// 路径: EditorInput.VBoxContainer.Label
     /// </summary>
     public class Label : UiNode<EditorInputPanel, Godot.Label, Label>
     {
@@ -40,7 +40,7 @@ public abstract partial class EditorInput : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.LineEdit"/>, 路径: EditorInput.VBoxContainer.LineEdit
+    /// 路径: EditorInput.VBoxContainer.LineEdit
     /// </summary>
     public class LineEdit : UiNode<EditorInputPanel, Godot.LineEdit, LineEdit>
     {
@@ -49,12 +49,12 @@ public abstract partial class EditorInput : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorInput.VBoxContainer
+    /// 路径: EditorInput.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorInputPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInput.Label
+        /// 节点路径: EditorInput.Label
         /// </summary>
         public Label L_Label
         {
@@ -67,7 +67,7 @@ public abstract partial class EditorInput : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: EditorInput.LineEdit
+        /// 节点路径: EditorInput.LineEdit
         /// </summary>
         public LineEdit L_LineEdit
         {
@@ -85,17 +85,17 @@ public abstract partial class EditorInput : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorInput.VBoxContainer.Label
+    /// 场景中唯一名称的节点, 节点路径: EditorInput.VBoxContainer.Label
     /// </summary>
     public Label S_Label => L_VBoxContainer.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: EditorInput.VBoxContainer.LineEdit
+    /// 场景中唯一名称的节点, 节点路径: EditorInput.VBoxContainer.LineEdit
     /// </summary>
     public LineEdit S_LineEdit => L_VBoxContainer.L_LineEdit;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorInput.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorInput.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_VBoxContainer;
 

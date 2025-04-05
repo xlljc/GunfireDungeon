@@ -8,7 +8,7 @@ namespace UI.MapEditorCreatePreinstall;
 public abstract partial class MapEditorCreatePreinstall : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer
+    /// 节点路径: MapEditorCreatePreinstall.MarginContainer
     /// </summary>
     public MarginContainer L_MarginContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameLabel
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameLabel
     /// </summary>
     public class PreinstallNameLabel : UiNode<MapEditorCreatePreinstallPanel, Godot.Label, PreinstallNameLabel>
     {
@@ -40,7 +40,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.LineEdit"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameInput
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameInput
     /// </summary>
     public class PreinstallNameInput : UiNode<MapEditorCreatePreinstallPanel, Godot.LineEdit, PreinstallNameInput>
     {
@@ -49,12 +49,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorCreatePreinstallPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameLabel
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameLabel
         /// </summary>
         public PreinstallNameLabel L_PreinstallNameLabel
         {
@@ -67,7 +67,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private PreinstallNameLabel _L_PreinstallNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameInput
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameInput
         /// </summary>
         public PreinstallNameInput L_PreinstallNameInput
         {
@@ -84,7 +84,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.PreinstallNameLabel
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.PreinstallNameLabel
     /// </summary>
     public class PreinstallNameLabel_1 : UiNode<MapEditorCreatePreinstallPanel, Godot.Label, PreinstallNameLabel_1>
     {
@@ -93,7 +93,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.CheckBox"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.AutoCheckInput
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.AutoCheckInput
     /// </summary>
     public class AutoCheckInput : UiNode<MapEditorCreatePreinstallPanel, Godot.CheckBox, AutoCheckInput>
     {
@@ -102,12 +102,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2
     /// </summary>
     public class HBoxContainer2 : UiNode<MapEditorCreatePreinstallPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameLabel
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.PreinstallNameLabel
         /// </summary>
         public PreinstallNameLabel_1 L_PreinstallNameLabel
         {
@@ -120,7 +120,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private PreinstallNameLabel_1 _L_PreinstallNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CheckBox"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.AutoCheckInput
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.AutoCheckInput
         /// </summary>
         public AutoCheckInput L_AutoCheckInput
         {
@@ -137,7 +137,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightNameLabel
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightNameLabel
     /// </summary>
     public class WeightNameLabel : UiNode<MapEditorCreatePreinstallPanel, Godot.Label, WeightNameLabel>
     {
@@ -146,7 +146,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.SpinBox"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightInput
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightInput
     /// </summary>
     public class WeightInput : UiNode<MapEditorCreatePreinstallPanel, Godot.SpinBox, WeightInput>
     {
@@ -155,12 +155,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4
     /// </summary>
     public class HBoxContainer4 : UiNode<MapEditorCreatePreinstallPanel, Godot.HBoxContainer, HBoxContainer4>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.WeightNameLabel
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.WeightNameLabel
         /// </summary>
         public WeightNameLabel L_WeightNameLabel
         {
@@ -173,7 +173,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private WeightNameLabel _L_WeightNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.WeightInput
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.WeightInput
         /// </summary>
         public WeightInput L_WeightInput
         {
@@ -190,7 +190,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
     /// </summary>
     public class RemarkNameLabel : UiNode<MapEditorCreatePreinstallPanel, Godot.Label, RemarkNameLabel>
     {
@@ -199,7 +199,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextEdit"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
     /// </summary>
     public class RemarkInput : UiNode<MapEditorCreatePreinstallPanel, Godot.TextEdit, RemarkInput>
     {
@@ -208,12 +208,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5
     /// </summary>
     public class HBoxContainer5 : UiNode<MapEditorCreatePreinstallPanel, Godot.HBoxContainer, HBoxContainer5>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.RemarkNameLabel
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.RemarkNameLabel
         /// </summary>
         public RemarkNameLabel L_RemarkNameLabel
         {
@@ -226,7 +226,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private RemarkNameLabel _L_RemarkNameLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextEdit"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.RemarkInput
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.RemarkInput
         /// </summary>
         public RemarkInput L_RemarkInput
         {
@@ -243,12 +243,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer
+    /// 路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorCreatePreinstallPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -261,7 +261,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer2
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
         {
@@ -274,7 +274,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer4
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer4
         /// </summary>
         public HBoxContainer4 L_HBoxContainer4
         {
@@ -287,7 +287,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
         private HBoxContainer4 _L_HBoxContainer4;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer5
+        /// 节点路径: MapEditorCreatePreinstall.MarginContainer.HBoxContainer5
         /// </summary>
         public HBoxContainer5 L_HBoxContainer5
         {
@@ -304,12 +304,12 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorCreatePreinstall.MarginContainer
+    /// 路径: MapEditorCreatePreinstall.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<MapEditorCreatePreinstallPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.VBoxContainer
+        /// 节点路径: MapEditorCreatePreinstall.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -327,62 +327,62 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.LineEdit"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer.PreinstallNameInput
     /// </summary>
     public PreinstallNameInput S_PreinstallNameInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_PreinstallNameInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CheckBox"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.AutoCheckInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2.AutoCheckInput
     /// </summary>
     public AutoCheckInput S_AutoCheckInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer2.L_AutoCheckInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer2
     /// </summary>
     public HBoxContainer2 S_HBoxContainer2 => L_MarginContainer.L_VBoxContainer.L_HBoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightNameLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightNameLabel
     /// </summary>
     public WeightNameLabel S_WeightNameLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer4.L_WeightNameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.SpinBox"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4.WeightInput
     /// </summary>
     public WeightInput S_WeightInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer4.L_WeightInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer4
     /// </summary>
     public HBoxContainer4 S_HBoxContainer4 => L_MarginContainer.L_VBoxContainer.L_HBoxContainer4;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkNameLabel
     /// </summary>
     public RemarkNameLabel S_RemarkNameLabel => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5.L_RemarkNameLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextEdit"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5.RemarkInput
     /// </summary>
     public RemarkInput S_RemarkInput => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5.L_RemarkInput;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer.HBoxContainer5
     /// </summary>
     public HBoxContainer5 S_HBoxContainer5 => L_MarginContainer.L_VBoxContainer.L_HBoxContainer5;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorCreatePreinstall.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorCreatePreinstall.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
 

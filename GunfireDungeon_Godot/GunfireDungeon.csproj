@@ -1,8 +1,7 @@
 <Project Sdk="Godot.NET.Sdk/4.4.1">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RootNamespace>GunfireDungeon</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
   </PropertyGroup>
@@ -16,10 +15,5 @@
   <ItemGroup>
     <EmbeddedResource Remove="android\**" />
     <EmbeddedResource Remove="excelTool\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="addons\ds_ui\plugin.cfg" />
-    <Content Include="addons\ds_ui\ui\Confirm.tscn" />
-    <Content Include="addons\ds_ui\ui\Tips.tscn" />
   </ItemGroup>
 </Project>

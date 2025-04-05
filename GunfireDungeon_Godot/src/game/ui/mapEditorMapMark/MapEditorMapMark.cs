@@ -8,7 +8,7 @@ namespace UI.MapEditorMapMark;
 public abstract partial class MapEditorMapMark : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer
+    /// 节点路径: MapEditorMapMark.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
     {
@@ -31,7 +31,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapMark.VBoxContainer.MarkLabel
+    /// 路径: MapEditorMapMark.VBoxContainer.MarkLabel
     /// </summary>
     public class MarkLabel : UiNode<MapEditorMapMarkPanel, Godot.Label, MarkLabel>
     {
@@ -40,7 +40,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.OptionButton"/>, 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.PreinstallOption
+    /// 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.PreinstallOption
     /// </summary>
     public class PreinstallOption : UiNode<MapEditorMapMarkPanel, Godot.OptionButton, PreinstallOption>
     {
@@ -49,7 +49,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.AddPreinstall
+    /// 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.AddPreinstall
     /// </summary>
     public class AddPreinstall : UiNode<MapEditorMapMarkPanel, Godot.Button, AddPreinstall>
     {
@@ -58,7 +58,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.EditPreinstall
+    /// 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.EditPreinstall
     /// </summary>
     public class EditPreinstall : UiNode<MapEditorMapMarkPanel, Godot.Button, EditPreinstall>
     {
@@ -67,7 +67,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.DeletePreinstall
+    /// 路径: MapEditorMapMark.VBoxContainer.HBoxContainer.DeletePreinstall
     /// </summary>
     public class DeletePreinstall : UiNode<MapEditorMapMarkPanel, Godot.Button, DeletePreinstall>
     {
@@ -76,12 +76,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.HBoxContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<MapEditorMapMarkPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapMark.VBoxContainer.PreinstallOption
+        /// 节点路径: MapEditorMapMark.VBoxContainer.PreinstallOption
         /// </summary>
         public PreinstallOption L_PreinstallOption
         {
@@ -94,7 +94,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private PreinstallOption _L_PreinstallOption;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.AddPreinstall
+        /// 节点路径: MapEditorMapMark.VBoxContainer.AddPreinstall
         /// </summary>
         public AddPreinstall L_AddPreinstall
         {
@@ -107,7 +107,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private AddPreinstall _L_AddPreinstall;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.EditPreinstall
+        /// 节点路径: MapEditorMapMark.VBoxContainer.EditPreinstall
         /// </summary>
         public EditPreinstall L_EditPreinstall
         {
@@ -120,7 +120,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private EditPreinstall _L_EditPreinstall;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.DeletePreinstall
+        /// 节点路径: MapEditorMapMark.VBoxContainer.DeletePreinstall
         /// </summary>
         public DeletePreinstall L_DeletePreinstall
         {
@@ -137,7 +137,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapMark.VBoxContainer.MarkLabel2
+    /// 路径: MapEditorMapMark.VBoxContainer.MarkLabel2
     /// </summary>
     public class MarkLabel2 : UiNode<MapEditorMapMarkPanel, Godot.Label, MarkLabel2>
     {
@@ -146,7 +146,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.DynamicTool.EditButton
+    /// 路径: MapEditorMapMark.VBoxContainer.DynamicTool.EditButton
     /// </summary>
     public class EditButton : UiNode<MapEditorMapMarkPanel, Godot.Button, EditButton>
     {
@@ -155,7 +155,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.DynamicTool.DeleteButton
+    /// 路径: MapEditorMapMark.VBoxContainer.DynamicTool.DeleteButton
     /// </summary>
     public class DeleteButton : UiNode<MapEditorMapMarkPanel, Godot.Button, DeleteButton>
     {
@@ -164,12 +164,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.DynamicTool
+    /// 路径: MapEditorMapMark.VBoxContainer.DynamicTool
     /// </summary>
     public class DynamicTool : UiNode<MapEditorMapMarkPanel, Godot.HBoxContainer, DynamicTool>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.EditButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.EditButton
         /// </summary>
         public EditButton L_EditButton
         {
@@ -182,7 +182,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private EditButton _L_EditButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.DeleteButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.DeleteButton
         /// </summary>
         public DeleteButton L_DeleteButton
         {
@@ -199,7 +199,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip.Label
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip.Label
     /// </summary>
     public class Label : UiNode<MapEditorMapMarkPanel, Godot.Label, Label>
     {
@@ -208,12 +208,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ColorRect"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip
     /// </summary>
     public class AutoFillTip : UiNode<MapEditorMapMarkPanel, Godot.ColorRect, AutoFillTip>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.Label
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.Label
         /// </summary>
         public Label L_Label
         {
@@ -230,7 +230,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AddWaveButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AddWaveButton
     /// </summary>
     public class AddWaveButton : UiNode<MapEditorMapMarkPanel, Godot.Button, AddWaveButton>
     {
@@ -239,7 +239,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureButton"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.TextureButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.TextureButton
     /// </summary>
     public class TextureButton : UiNode<MapEditorMapMarkPanel, Godot.TextureButton, TextureButton>
     {
@@ -248,7 +248,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton.Select
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton.Select
     /// </summary>
     public class Select : UiNode<MapEditorMapMarkPanel, Godot.NinePatchRect, Select>
     {
@@ -257,12 +257,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton
     /// </summary>
     public class WaveButton : UiNode<MapEditorMapMarkPanel, Godot.Button, WaveButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.Select
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.Select
         /// </summary>
         public Select L_Select
         {
@@ -279,7 +279,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveVisibleButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveVisibleButton
     /// </summary>
     public class WaveVisibleButton : UiNode<MapEditorMapMarkPanel, Godot.Button, WaveVisibleButton>
     {
@@ -288,12 +288,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer
     /// </summary>
     public class WaveContainer : UiNode<MapEditorMapMarkPanel, Godot.HBoxContainer, WaveContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.TextureButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.TextureButton
         /// </summary>
         public TextureButton L_TextureButton
         {
@@ -306,7 +306,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private TextureButton _L_TextureButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveButton
         /// </summary>
         public WaveButton L_WaveButton
         {
@@ -319,7 +319,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private WaveButton _L_WaveButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveVisibleButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveVisibleButton
         /// </summary>
         public WaveVisibleButton L_WaveVisibleButton
         {
@@ -336,7 +336,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer.AddMarkButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer.AddMarkButton
     /// </summary>
     public class AddMarkButton : UiNode<MapEditorMapMarkPanel, Godot.Button, AddMarkButton>
     {
@@ -345,12 +345,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer
     /// </summary>
     public class MarginContainer : UiNode<MapEditorMapMarkPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.AddMarkButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.AddMarkButton
         /// </summary>
         public AddMarkButton L_AddMarkButton
         {
@@ -367,7 +367,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.MarkIcon
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.MarkIcon
     /// </summary>
     public class MarkIcon : UiNode<MapEditorMapMarkPanel, Godot.TextureRect, MarkIcon>
     {
@@ -376,7 +376,7 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.NinePatchRect"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.Select
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.Select
     /// </summary>
     public class Select_1 : UiNode<MapEditorMapMarkPanel, Godot.NinePatchRect, Select_1>
     {
@@ -385,12 +385,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton
     /// </summary>
     public class MarkButton : UiNode<MapEditorMapMarkPanel, Godot.Button, MarkButton>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkIcon
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkIcon
         /// </summary>
         public MarkIcon L_MarkIcon
         {
@@ -403,7 +403,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private MarkIcon _L_MarkIcon;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.NinePatchRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.Select
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.Select
         /// </summary>
         public Select_1 L_Select
         {
@@ -420,12 +420,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem
     /// </summary>
     public class MarkItem : UiNode<MapEditorMapMarkPanel, Godot.HBoxContainer, MarkItem>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkButton
         /// </summary>
         public MarkButton L_MarkButton
         {
@@ -442,12 +442,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer
     /// </summary>
     public class MarkContainer : UiNode<MapEditorMapMarkPanel, Godot.MarginContainer, MarkContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkItem
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkItem
         /// </summary>
         public MarkItem L_MarkItem
         {
@@ -464,12 +464,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem
     /// </summary>
     public class WaveItem : UiNode<MapEditorMapMarkPanel, Godot.VBoxContainer, WaveItem>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveContainer
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveContainer
         /// </summary>
         public WaveContainer L_WaveContainer
         {
@@ -482,7 +482,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private WaveContainer _L_WaveContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.MarginContainer
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
         {
@@ -495,7 +495,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private MarginContainer _L_MarginContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.MarkContainer
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.MarkContainer
         /// </summary>
         public MarkContainer L_MarkContainer
         {
@@ -512,12 +512,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer
     /// </summary>
     public class VBoxContainer_1 : UiNode<MapEditorMapMarkPanel, Godot.VBoxContainer, VBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.AutoFillTip
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.AutoFillTip
         /// </summary>
         public AutoFillTip L_AutoFillTip
         {
@@ -530,7 +530,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private AutoFillTip _L_AutoFillTip;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.AddWaveButton
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.AddWaveButton
         /// </summary>
         public AddWaveButton L_AddWaveButton
         {
@@ -543,7 +543,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private AddWaveButton _L_AddWaveButton;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.WaveItem
+        /// 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.WaveItem
         /// </summary>
         public WaveItem L_WaveItem
         {
@@ -560,12 +560,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: MapEditorMapMark.VBoxContainer.ScrollContainer
+    /// 路径: MapEditorMapMark.VBoxContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<MapEditorMapMarkPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.VBoxContainer
+        /// 节点路径: MapEditorMapMark.VBoxContainer.VBoxContainer
         /// </summary>
         public VBoxContainer_1 L_VBoxContainer
         {
@@ -582,12 +582,12 @@ public abstract partial class MapEditorMapMark : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: MapEditorMapMark.VBoxContainer
+    /// 路径: MapEditorMapMark.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<MapEditorMapMarkPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.MarkLabel
+        /// 节点路径: MapEditorMapMark.MarkLabel
         /// </summary>
         public MarkLabel L_MarkLabel
         {
@@ -600,7 +600,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private MarkLabel _L_MarkLabel;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.HBoxContainer
+        /// 节点路径: MapEditorMapMark.HBoxContainer
         /// </summary>
         public HBoxContainer L_HBoxContainer
         {
@@ -613,7 +613,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.MarkLabel2
+        /// 节点路径: MapEditorMapMark.MarkLabel2
         /// </summary>
         public MarkLabel2 L_MarkLabel2
         {
@@ -626,7 +626,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private MarkLabel2 _L_MarkLabel2;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.DynamicTool
+        /// 节点路径: MapEditorMapMark.DynamicTool
         /// </summary>
         public DynamicTool L_DynamicTool
         {
@@ -639,7 +639,7 @@ public abstract partial class MapEditorMapMark : UiBase
         private DynamicTool _L_DynamicTool;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorMapMark.ScrollContainer
+        /// 节点路径: MapEditorMapMark.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -657,127 +657,127 @@ public abstract partial class MapEditorMapMark : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.VBoxContainer.MarkLabel
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.MarkLabel
     /// </summary>
     public MarkLabel S_MarkLabel => L_VBoxContainer.L_MarkLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.OptionButton"/>, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.PreinstallOption
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.PreinstallOption
     /// </summary>
     public PreinstallOption S_PreinstallOption => L_VBoxContainer.L_HBoxContainer.L_PreinstallOption;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.AddPreinstall
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.AddPreinstall
     /// </summary>
     public AddPreinstall S_AddPreinstall => L_VBoxContainer.L_HBoxContainer.L_AddPreinstall;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.EditPreinstall
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.EditPreinstall
     /// </summary>
     public EditPreinstall S_EditPreinstall => L_VBoxContainer.L_HBoxContainer.L_EditPreinstall;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.DeletePreinstall
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer.DeletePreinstall
     /// </summary>
     public DeletePreinstall S_DeletePreinstall => L_VBoxContainer.L_HBoxContainer.L_DeletePreinstall;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.VBoxContainer.MarkLabel2
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.MarkLabel2
     /// </summary>
     public MarkLabel2 S_MarkLabel2 => L_VBoxContainer.L_MarkLabel2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool.EditButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool.EditButton
     /// </summary>
     public EditButton S_EditButton => L_VBoxContainer.L_DynamicTool.L_EditButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool.DeleteButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool.DeleteButton
     /// </summary>
     public DeleteButton S_DeleteButton => L_VBoxContainer.L_DynamicTool.L_DeleteButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.DynamicTool
     /// </summary>
     public DynamicTool S_DynamicTool => L_VBoxContainer.L_DynamicTool;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip.Label
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip.Label
     /// </summary>
     public Label S_Label => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_AutoFillTip.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AutoFillTip
     /// </summary>
     public AutoFillTip S_AutoFillTip => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_AutoFillTip;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AddWaveButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.AddWaveButton
     /// </summary>
     public AddWaveButton S_AddWaveButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_AddWaveButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.TextureButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.TextureButton
     /// </summary>
     public TextureButton S_TextureButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_WaveContainer.L_TextureButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveButton
     /// </summary>
     public WaveButton S_WaveButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_WaveContainer.L_WaveButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveVisibleButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer.WaveVisibleButton
     /// </summary>
     public WaveVisibleButton S_WaveVisibleButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_WaveContainer.L_WaveVisibleButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.WaveContainer
     /// </summary>
     public WaveContainer S_WaveContainer => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_WaveContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer.AddMarkButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer.AddMarkButton
     /// </summary>
     public AddMarkButton S_AddMarkButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarginContainer.L_AddMarkButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarginContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.MarkIcon
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton.MarkIcon
     /// </summary>
     public MarkIcon S_MarkIcon => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarkContainer.L_MarkItem.L_MarkButton.L_MarkIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem.MarkButton
     /// </summary>
     public MarkButton S_MarkButton => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarkContainer.L_MarkItem.L_MarkButton;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer.MarkItem
     /// </summary>
     public MarkItem S_MarkItem => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarkContainer.L_MarkItem;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem.MarkContainer
     /// </summary>
     public MarkContainer S_MarkContainer => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem.L_MarkContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer.VBoxContainer.WaveItem
     /// </summary>
     public WaveItem S_WaveItem => L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_WaveItem;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer
+    /// 场景中唯一名称的节点, 节点路径: MapEditorMapMark.VBoxContainer.ScrollContainer
     /// </summary>
     public ScrollContainer S_ScrollContainer => L_VBoxContainer.L_ScrollContainer;
 

@@ -8,7 +8,7 @@ namespace UI.EditorManager;
 public abstract partial class EditorManager : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorManager.Bg
+    /// 节点路径: EditorManager.Bg
     /// </summary>
     public Bg L_Bg
     {
@@ -41,7 +41,7 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: EditorManager.Bg.VBoxContainer.Head.Back
+    /// 路径: EditorManager.Bg.VBoxContainer.Head.Back
     /// </summary>
     public class Back : UiNode<EditorManagerPanel, Godot.Button, Back>
     {
@@ -50,7 +50,7 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: EditorManager.Bg.VBoxContainer.Head.Title
+    /// 路径: EditorManager.Bg.VBoxContainer.Head.Title
     /// </summary>
     public class Title : UiNode<EditorManagerPanel, Godot.Label, Title>
     {
@@ -59,12 +59,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: EditorManager.Bg.VBoxContainer.Head
+    /// 路径: EditorManager.Bg.VBoxContainer.Head
     /// </summary>
     public class Head : UiNode<EditorManagerPanel, Godot.Panel, Head>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorManager.Bg.VBoxContainer.Back
+        /// 节点路径: EditorManager.Bg.VBoxContainer.Back
         /// </summary>
         public Back L_Back
         {
@@ -77,7 +77,7 @@ public abstract partial class EditorManager : UiBase
         private Back _L_Back;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorManager.Bg.VBoxContainer.Title
+        /// 节点路径: EditorManager.Bg.VBoxContainer.Title
         /// </summary>
         public Title L_Title
         {
@@ -94,7 +94,7 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.MapEditorProject.MapEditorProjectPanel"/>, 路径: EditorManager.Bg.VBoxContainer.TabContainer.Map.MapEditorProject
+    /// 路径: EditorManager.Bg.VBoxContainer.TabContainer.Map.MapEditorProject
     /// </summary>
     public class MapEditorProject : UiNode<EditorManagerPanel, UI.MapEditorProject.MapEditorProjectPanel, MapEditorProject>
     {
@@ -110,12 +110,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: EditorManager.Bg.VBoxContainer.TabContainer.Map
+    /// 路径: EditorManager.Bg.VBoxContainer.TabContainer.Map
     /// </summary>
     public class Map : UiNode<EditorManagerPanel, Godot.MarginContainer, Map>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.MapEditorProject.MapEditorProjectPanel"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.MapEditorProject
+        /// 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.MapEditorProject
         /// </summary>
         public MapEditorProject L_MapEditorProject
         {
@@ -132,7 +132,7 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="UI.TileSetEditorProject.TileSetEditorProjectPanel"/>, 路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet.TileSetEditorProject
+    /// 路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet.TileSetEditorProject
     /// </summary>
     public class TileSetEditorProject : UiNode<EditorManagerPanel, UI.TileSetEditorProject.TileSetEditorProjectPanel, TileSetEditorProject>
     {
@@ -148,12 +148,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet
+    /// 路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet
     /// </summary>
     public class TileSet : UiNode<EditorManagerPanel, Godot.MarginContainer, TileSet>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="UI.TileSetEditorProject.TileSetEditorProjectPanel"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSetEditorProject
+        /// 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSetEditorProject
         /// </summary>
         public TileSetEditorProject L_TileSetEditorProject
         {
@@ -170,12 +170,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TabContainer"/>, 路径: EditorManager.Bg.VBoxContainer.TabContainer
+    /// 路径: EditorManager.Bg.VBoxContainer.TabContainer
     /// </summary>
     public class TabContainer : UiNode<EditorManagerPanel, Godot.TabContainer, TabContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer.Map
+        /// 节点路径: EditorManager.Bg.VBoxContainer.Map
         /// </summary>
         public Map L_Map
         {
@@ -188,7 +188,7 @@ public abstract partial class EditorManager : UiBase
         private Map _L_Map;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer.TileSet
+        /// 节点路径: EditorManager.Bg.VBoxContainer.TileSet
         /// </summary>
         public TileSet L_TileSet
         {
@@ -205,12 +205,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: EditorManager.Bg.VBoxContainer
+    /// 路径: EditorManager.Bg.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<EditorManagerPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorManager.Bg.Head
+        /// 节点路径: EditorManager.Bg.Head
         /// </summary>
         public Head L_Head
         {
@@ -223,7 +223,7 @@ public abstract partial class EditorManager : UiBase
         private Head _L_Head;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TabContainer"/>, 节点路径: EditorManager.Bg.TabContainer
+        /// 节点路径: EditorManager.Bg.TabContainer
         /// </summary>
         public TabContainer L_TabContainer
         {
@@ -240,12 +240,12 @@ public abstract partial class EditorManager : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Panel"/>, 路径: EditorManager.Bg
+    /// 路径: EditorManager.Bg
     /// </summary>
     public class Bg : UiNode<EditorManagerPanel, Godot.Panel, Bg>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorManager.VBoxContainer
+        /// 节点路径: EditorManager.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -263,52 +263,52 @@ public abstract partial class EditorManager : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: EditorManager.Bg.VBoxContainer.Head.Back
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.Head.Back
     /// </summary>
     public Back S_Back => L_Bg.L_VBoxContainer.L_Head.L_Back;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: EditorManager.Bg.VBoxContainer.Head.Title
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.Head.Title
     /// </summary>
     public Title S_Title => L_Bg.L_VBoxContainer.L_Head.L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorManager.Bg.VBoxContainer.Head
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.Head
     /// </summary>
     public Head S_Head => L_Bg.L_VBoxContainer.L_Head;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.MapEditorProject.MapEditorProjectPanel"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.Map.MapEditorProject
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.Map.MapEditorProject
     /// </summary>
     public MapEditorProject S_MapEditorProject => L_Bg.L_VBoxContainer.L_TabContainer.L_Map.L_MapEditorProject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.Map
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.Map
     /// </summary>
     public Map S_Map => L_Bg.L_VBoxContainer.L_TabContainer.L_Map;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="UI.TileSetEditorProject.TileSetEditorProjectPanel"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet.TileSetEditorProject
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet.TileSetEditorProject
     /// </summary>
     public TileSetEditorProject S_TileSetEditorProject => L_Bg.L_VBoxContainer.L_TabContainer.L_TileSet.L_TileSetEditorProject;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer.TileSet
     /// </summary>
     public TileSet S_TileSet => L_Bg.L_VBoxContainer.L_TabContainer.L_TileSet;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TabContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer.TabContainer
     /// </summary>
     public TabContainer S_TabContainer => L_Bg.L_VBoxContainer.L_TabContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: EditorManager.Bg.VBoxContainer
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg.VBoxContainer
     /// </summary>
     public VBoxContainer S_VBoxContainer => L_Bg.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Panel"/>, 节点路径: EditorManager.Bg
+    /// 场景中唯一名称的节点, 节点路径: EditorManager.Bg
     /// </summary>
     public Bg S_Bg => L_Bg;
 
