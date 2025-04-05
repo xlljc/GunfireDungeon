@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Godot;
-using UI.MapEditor;
+
 
 using DsUi;
 
-namespace UI.MapEditorMapMark;
+namespace UI.editor.MapEditorMapMark;
 
 public class EditorWaveCell : UiCell<MapEditorMapMark.WaveItem, List<MarkInfo>>
 {

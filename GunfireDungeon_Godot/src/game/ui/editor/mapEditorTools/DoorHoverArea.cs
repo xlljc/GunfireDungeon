@@ -1,6 +1,6 @@
 using Godot;
-using UI.MapEditor;
-using UI.MapEditorTools;
+
+using UI.editor.MapEditorTools;
 
 public partial class DoorHoverArea : ColorRect
 {

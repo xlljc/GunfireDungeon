@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.TileSetEditorProject;
+namespace UI.editor.TileSetEditorProject;
 
 public partial class TileSetEditorProjectPanel : TileSetEditorProject
 {

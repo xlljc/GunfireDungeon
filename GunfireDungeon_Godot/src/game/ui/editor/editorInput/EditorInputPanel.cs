@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorInput;
+namespace UI.editor.EditorInput;
 
 public partial class EditorInputPanel : EditorInput
 {

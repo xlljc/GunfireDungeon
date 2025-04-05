@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorTips;
+namespace UI.editor.EditorTips;
 
 public partial class EditorTipsPanel : EditorTips
 {

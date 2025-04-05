@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.PauseMenu;
+namespace UI.game.PauseMenu;
 
 public partial class PauseMenuPanel : PauseMenu
 {
@@ -58,13 +58,13 @@ public partial class PauseMenuPanel : PauseMenu
     //设置
     private void OnSettingClick()
     {
-        OpenNextUi(UiManager.UiName.Setting);
+        OpenNextUi(UiManager.UiName.Game_Setting);
     }
 
     //图鉴
     private void OnEncyclopediaClick()
     {
-        OpenNextUi(UiManager.UiName.Encyclopedia);
+        OpenNextUi(UiManager.UiName.Game_Encyclopedia);
     }
 
     //重新开始
@@ -77,10 +77,10 @@ public partial class PauseMenuPanel : PauseMenu
         }
         else //正常重新开始
         {
-            UiManager.Open_Loading();
+            UiManager.Open_Game_Loading();
             GameApplication.Instance.DungeonManager.RestartDungeon(false, GameApplication.Instance.FirstDungeonConfig, () =>
             {
-                UiManager.Destroy_Loading();
+                UiManager.Destroy_Game_Loading();
             });
         }
     }
@@ -95,22 +95,22 @@ public partial class PauseMenuPanel : PauseMenu
         }
         else if (World.Current is Dungeon) //在游戏地牢中
         {
-            UiManager.Open_Loading();
+            UiManager.Open_Game_Loading();
             GameApplication.Instance.DungeonManager.ExitDungeon(false, () =>
             {
                 GameApplication.Instance.DungeonManager.LoadHall(() =>
                 {
-                    UiManager.Destroy_Loading();
+                    UiManager.Destroy_Game_Loading();
                 });
             });
         }
         else //在大厅中
         {
-            UiManager.Open_Loading();
+            UiManager.Open_Game_Loading();
             GameApplication.Instance.DungeonManager.ExitHall(false, () =>
             {
-                UiManager.Destroy_Loading();
-                UiManager.Open_Main();
+                UiManager.Destroy_Game_Loading();
+                UiManager.Open_Game_Main();
             });
         }
     }

@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.TileSetEditorCombination;
+namespace UI.editor.TileSetEditorCombination;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -54,10 +54,10 @@ public abstract partial class TileSetEditorCombination : UiBase
     /// <summary>
     /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg.CombinationRoot.RectBrush
     /// </summary>
-    public class RectBrush : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.RectBrush, RectBrush>
+    public class RectBrush : UiNode<TileSetEditorCombinationPanel, UI.editor.TileSetEditorCombination.RectBrush, RectBrush>
     {
-        public RectBrush(TileSetEditorCombinationPanel uiPanel, UI.TileSetEditorCombination.RectBrush node) : base(uiPanel, node) {  }
-        public override RectBrush Clone() => new (UiPanel, (UI.TileSetEditorCombination.RectBrush)Instance.Duplicate());
+        public RectBrush(TileSetEditorCombinationPanel uiPanel, UI.editor.TileSetEditorCombination.RectBrush node) : base(uiPanel, node) {  }
+        public override RectBrush Clone() => new (UiPanel, (UI.editor.TileSetEditorCombination.RectBrush)Instance.Duplicate());
     }
 
     /// <summary>
@@ -98,7 +98,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         {
             get
             {
-                if (_L_RectBrush == null) _L_RectBrush = new RectBrush(UiPanel, Instance.GetNode<UI.TileSetEditorCombination.RectBrush>("RectBrush"));
+                if (_L_RectBrush == null) _L_RectBrush = new RectBrush(UiPanel, Instance.GetNode<UI.editor.TileSetEditorCombination.RectBrush>("RectBrush"));
                 return _L_RectBrush;
             }
         }
@@ -147,7 +147,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     /// <summary>
     /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.LeftTopBg
     /// </summary>
-    public class LeftTopBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileEditCombination, LeftTopBg>
+    public class LeftTopBg : UiNode<TileSetEditorCombinationPanel, UI.editor.TileSetEditorCombination.TileEditCombination, LeftTopBg>
     {
         /// <summary>
         /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftTop.MarginContainer.CombinationRoot
@@ -214,8 +214,8 @@ public abstract partial class TileSetEditorCombination : UiBase
         }
         private ImportBtn _L_ImportBtn;
 
-        public LeftTopBg(TileSetEditorCombinationPanel uiPanel, UI.TileSetEditorCombination.TileEditCombination node) : base(uiPanel, node) {  }
-        public override LeftTopBg Clone() => new (UiPanel, (UI.TileSetEditorCombination.TileEditCombination)Instance.Duplicate());
+        public LeftTopBg(TileSetEditorCombinationPanel uiPanel, UI.editor.TileSetEditorCombination.TileEditCombination node) : base(uiPanel, node) {  }
+        public override LeftTopBg Clone() => new (UiPanel, (UI.editor.TileSetEditorCombination.TileEditCombination)Instance.Duplicate());
     }
 
     /// <summary>
@@ -230,7 +230,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         {
             get
             {
-                if (_L_LeftTopBg == null) _L_LeftTopBg = new LeftTopBg(UiPanel, Instance.GetNode<UI.TileSetEditorCombination.TileEditCombination>("LeftTopBg"));
+                if (_L_LeftTopBg == null) _L_LeftTopBg = new LeftTopBg(UiPanel, Instance.GetNode<UI.editor.TileSetEditorCombination.TileEditCombination>("LeftTopBg"));
                 return _L_LeftTopBg;
             }
         }
@@ -358,7 +358,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     /// <summary>
     /// 路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.LeftBottomBg
     /// </summary>
-    public class LeftBottomBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileEditArea, LeftBottomBg>
+    public class LeftBottomBg : UiNode<TileSetEditorCombinationPanel, UI.editor.TileSetEditorCombination.TileEditArea, LeftBottomBg>
     {
         /// <summary>
         /// 节点路径: TileSetEditorCombination.HSplitContainer.VSplitContainer.LeftBottom.MarginContainer.TileTexture
@@ -399,8 +399,8 @@ public abstract partial class TileSetEditorCombination : UiBase
         }
         private FocusBtn_1 _L_FocusBtn;
 
-        public LeftBottomBg(TileSetEditorCombinationPanel uiPanel, UI.TileSetEditorCombination.TileEditArea node) : base(uiPanel, node) {  }
-        public override LeftBottomBg Clone() => new (UiPanel, (UI.TileSetEditorCombination.TileEditArea)Instance.Duplicate());
+        public LeftBottomBg(TileSetEditorCombinationPanel uiPanel, UI.editor.TileSetEditorCombination.TileEditArea node) : base(uiPanel, node) {  }
+        public override LeftBottomBg Clone() => new (UiPanel, (UI.editor.TileSetEditorCombination.TileEditArea)Instance.Duplicate());
     }
 
     /// <summary>
@@ -415,7 +415,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         {
             get
             {
-                if (_L_LeftBottomBg == null) _L_LeftBottomBg = new LeftBottomBg(UiPanel, Instance.GetNode<UI.TileSetEditorCombination.TileEditArea>("LeftBottomBg"));
+                if (_L_LeftBottomBg == null) _L_LeftBottomBg = new LeftBottomBg(UiPanel, Instance.GetNode<UI.editor.TileSetEditorCombination.TileEditArea>("LeftBottomBg"));
                 return _L_LeftBottomBg;
             }
         }
@@ -591,7 +591,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     /// <summary>
     /// 路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.RightBg
     /// </summary>
-    public class RightBg : UiNode<TileSetEditorCombinationPanel, UI.TileSetEditorCombination.TileSelected, RightBg>
+    public class RightBg : UiNode<TileSetEditorCombinationPanel, UI.editor.TileSetEditorCombination.TileSelected, RightBg>
     {
         /// <summary>
         /// 节点路径: TileSetEditorCombination.HSplitContainer.Right.MarginContainer.Label
@@ -619,8 +619,8 @@ public abstract partial class TileSetEditorCombination : UiBase
         }
         private ScrollContainer _L_ScrollContainer;
 
-        public RightBg(TileSetEditorCombinationPanel uiPanel, UI.TileSetEditorCombination.TileSelected node) : base(uiPanel, node) {  }
-        public override RightBg Clone() => new (UiPanel, (UI.TileSetEditorCombination.TileSelected)Instance.Duplicate());
+        public RightBg(TileSetEditorCombinationPanel uiPanel, UI.editor.TileSetEditorCombination.TileSelected node) : base(uiPanel, node) {  }
+        public override RightBg Clone() => new (UiPanel, (UI.editor.TileSetEditorCombination.TileSelected)Instance.Duplicate());
     }
 
     /// <summary>
@@ -635,7 +635,7 @@ public abstract partial class TileSetEditorCombination : UiBase
         {
             get
             {
-                if (_L_RightBg == null) _L_RightBg = new RightBg(UiPanel, Instance.GetNode<UI.TileSetEditorCombination.TileSelected>("RightBg"));
+                if (_L_RightBg == null) _L_RightBg = new RightBg(UiPanel, Instance.GetNode<UI.editor.TileSetEditorCombination.TileSelected>("RightBg"));
                 return _L_RightBg;
             }
         }

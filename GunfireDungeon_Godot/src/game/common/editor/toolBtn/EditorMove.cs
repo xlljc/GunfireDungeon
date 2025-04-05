@@ -1,6 +1,6 @@
 
 using Godot;
-using UI.MapEditor;
+using UI.editor.MapEditor;
 
 /// <summary>
 /// 移动视角按钮

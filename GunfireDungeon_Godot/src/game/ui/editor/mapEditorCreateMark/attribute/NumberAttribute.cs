@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorCreateMark;
+namespace UI.editor.MapEditorCreateMark;
 
 public partial class NumberAttribute : AttributeBase
 {

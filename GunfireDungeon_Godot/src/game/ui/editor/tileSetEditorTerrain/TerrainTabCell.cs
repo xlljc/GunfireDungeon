@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.TileSetEditorTerrain;
+namespace UI.editor.TileSetEditorTerrain;
 
 public class TerrainTabCell : UiCell<TileSetEditorTerrain.TerrainTab, TileSetTerrainInfo>
 {

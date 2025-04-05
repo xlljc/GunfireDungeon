@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Loading;
+namespace UI.game.Loading;
 
 /// <summary>
 /// 加载页面

@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorDungeonGroup;
+namespace UI.editor.EditorDungeonGroup;
 
 public partial class EditorDungeonGroupPanel : EditorDungeonGroup
 {

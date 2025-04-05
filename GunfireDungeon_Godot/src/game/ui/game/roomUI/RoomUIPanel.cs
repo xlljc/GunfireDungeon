@@ -1,9 +1,9 @@
 
-using UI.BottomTips;
 
 using DsUi;
+using UI.game.BottomTips;
 
-namespace UI.RoomUI;
+namespace UI.game.RoomUI;
 
 /// <summary>
 /// 地牢房间中的ui

@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Main;
+namespace UI.game.Main;
 
 /// <summary>
 /// 主菜单
@@ -21,10 +21,10 @@ public partial class MainPanel : Main
     //点击开始游戏
     private void OnStartGameClick()
     {
-        UiManager.Open_Loading();
+        UiManager.Open_Game_Loading();
         GameApplication.Instance.DungeonManager.LoadHall(() =>
         {
-            UiManager.Destroy_Loading();
+            UiManager.Destroy_Game_Loading();
         });
         HideUi();
     }
@@ -38,12 +38,12 @@ public partial class MainPanel : Main
     //点击开发者工具
     private void OnToolsClick()
     {
-        OpenNextUi(UiManager.UiName.EditorManager);
+        OpenNextUi(UiManager.UiName.Editor_EditorManager);
     }
 
     //点击设置按钮
     private void OnSettingClick()
     {
-        OpenNextUi(UiManager.UiName.Setting);
+        OpenNextUi(UiManager.UiName.Game_Setting);
     }
 }

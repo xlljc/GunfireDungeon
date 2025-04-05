@@ -4,7 +4,7 @@ using Config;
 
 using DsUi;
 
-namespace UI.MapEditorCreateMark;
+namespace UI.editor.MapEditorCreateMark;
 
 public class MarkObjectCell : UiCell<MapEditorCreateMark.MarkObject, MarkInfoItem>
 {

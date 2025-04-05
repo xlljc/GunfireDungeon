@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.EditorColorPicker;
+namespace UI.editor.EditorColorPicker;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失

@@ -59,10 +59,10 @@ public static class EditorPlayManager
             _config.DesignatedRoom.Add(Utils.Random.RandomChoose(dungeonRoomGroup.OutletList));
         }
         
-        UiManager.Open_Loading();
+        UiManager.Open_Game_Loading();
         GameApplication.Instance.DungeonManager.EditorPlayDungeon(prevUi, _config, () =>
         {
-            UiManager.Destroy_Loading();
+            UiManager.Destroy_Game_Loading();
         });
 }
 
@@ -74,10 +74,10 @@ public static class EditorPlayManager
         }
 
         IsPlay = false;
-        UiManager.Open_Loading();
+        UiManager.Open_Game_Loading();
         GameApplication.Instance.DungeonManager.EditorExitDungeon(false, () =>
         {
-            UiManager.Destroy_Loading();
+            UiManager.Destroy_Game_Loading();
         });
     }
 
@@ -87,12 +87,12 @@ public static class EditorPlayManager
         {
             return;
         }
-        UiManager.Open_Loading();
+        UiManager.Open_Game_Loading();
         GameApplication.Instance.DungeonManager.ExitDungeon(false, () =>
         {
             GameApplication.Instance.DungeonManager.EditorPlayDungeon(_config, () =>
             {
-                UiManager.Destroy_Loading();
+                UiManager.Destroy_Game_Loading();
             });
         });
     }

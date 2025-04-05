@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.WeaponRoulette;
+namespace UI.game.WeaponRoulette;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -197,7 +197,7 @@ public abstract partial class WeaponRoulette : UiBase
     /// <summary>
     /// 路径: WeaponRoulette.Root.RouletteBg.WeaponSlotNode
     /// </summary>
-    public class WeaponSlotNode : UiNode<WeaponRoulettePanel, UI.WeaponRoulette.WeaponSlot, WeaponSlotNode>
+    public class WeaponSlotNode : UiNode<WeaponRoulettePanel, UI.game.WeaponRoulette.WeaponSlot, WeaponSlotNode>
     {
         /// <summary>
         /// 节点路径: WeaponRoulette.Root.RouletteBg.SlotUi
@@ -225,8 +225,8 @@ public abstract partial class WeaponRoulette : UiBase
         }
         private SlotAreaNode _L_SlotAreaNode;
 
-        public WeaponSlotNode(WeaponRoulettePanel uiPanel, UI.WeaponRoulette.WeaponSlot node) : base(uiPanel, node) {  }
-        public override WeaponSlotNode Clone() => new (UiPanel, (UI.WeaponRoulette.WeaponSlot)Instance.Duplicate());
+        public WeaponSlotNode(WeaponRoulettePanel uiPanel, UI.game.WeaponRoulette.WeaponSlot node) : base(uiPanel, node) {  }
+        public override WeaponSlotNode Clone() => new (UiPanel, (UI.game.WeaponRoulette.WeaponSlot)Instance.Duplicate());
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public abstract partial class WeaponRoulette : UiBase
         {
             get
             {
-                if (_L_WeaponSlotNode == null) _L_WeaponSlotNode = new WeaponSlotNode(UiPanel, Instance.GetNode<UI.WeaponRoulette.WeaponSlot>("WeaponSlotNode"));
+                if (_L_WeaponSlotNode == null) _L_WeaponSlotNode = new WeaponSlotNode(UiPanel, Instance.GetNode<UI.game.WeaponRoulette.WeaponSlot>("WeaponSlotNode"));
                 return _L_WeaponSlotNode;
             }
         }

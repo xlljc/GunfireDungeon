@@ -1,6 +1,6 @@
 
 using Godot;
-using UI.MapEditor;
+using UI.editor.MapEditor;
 
 /// <summary>
 /// 瓷砖画笔

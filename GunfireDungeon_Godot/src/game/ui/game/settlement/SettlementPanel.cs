@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Settlement;
+namespace UI.game.Settlement;
 
 /// <summary>
 /// 结算面板
@@ -30,10 +30,10 @@ public partial class SettlementPanel : Settlement
         }
         else //正常重新开始
         {
-            UiManager.Open_Loading();
+            UiManager.Open_Game_Loading();
             GameApplication.Instance.DungeonManager.RestartDungeon(false, GameApplication.Instance.FirstDungeonConfig, () =>
             {
-                UiManager.Destroy_Loading();
+                UiManager.Destroy_Game_Loading();
             });
         }
     }
@@ -48,12 +48,12 @@ public partial class SettlementPanel : Settlement
         }
         else //正常关闭Ui, 回到大厅
         {
-            UiManager.Open_Loading();
+            UiManager.Open_Game_Loading();
             GameApplication.Instance.DungeonManager.ExitDungeon(false, () =>
             {
                 GameApplication.Instance.DungeonManager.LoadHall(() =>
                 {
-                    UiManager.Destroy_Loading();
+                    UiManager.Destroy_Game_Loading();
                 });
             });
         }

@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.MapEditorCreateMark;
+namespace UI.editor.MapEditorCreateMark;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -40,7 +40,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     {
         get
         {
-            if (_L_NumberBar == null) _L_NumberBar = new NumberBar((MapEditorCreateMarkPanel)this, GetNode<UI.MapEditorCreateMark.NumberAttribute>("NumberBar"));
+            if (_L_NumberBar == null) _L_NumberBar = new NumberBar((MapEditorCreateMarkPanel)this, GetNode<UI.editor.MapEditorCreateMark.NumberAttribute>("NumberBar"));
             return _L_NumberBar;
         }
     }
@@ -53,7 +53,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     {
         get
         {
-            if (_L_OptionBar == null) _L_OptionBar = new OptionBar((MapEditorCreateMarkPanel)this, GetNode<UI.MapEditorCreateMark.OptionAttribute>("OptionBar"));
+            if (_L_OptionBar == null) _L_OptionBar = new OptionBar((MapEditorCreateMarkPanel)this, GetNode<UI.editor.MapEditorCreateMark.OptionAttribute>("OptionBar"));
             return _L_OptionBar;
         }
     }
@@ -66,7 +66,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     {
         get
         {
-            if (_L_ObjectBar == null) _L_ObjectBar = new ObjectBar((MapEditorCreateMarkPanel)this, GetNode<UI.MapEditorCreateMark.ObjectAttribute>("ObjectBar"));
+            if (_L_ObjectBar == null) _L_ObjectBar = new ObjectBar((MapEditorCreateMarkPanel)this, GetNode<UI.editor.MapEditorCreateMark.ObjectAttribute>("ObjectBar"));
             return _L_ObjectBar;
         }
     }
@@ -1180,7 +1180,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     /// <summary>
     /// 路径: MapEditorCreateMark.NumberBar
     /// </summary>
-    public class NumberBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.NumberAttribute, NumberBar>
+    public class NumberBar : UiNode<MapEditorCreateMarkPanel, UI.editor.MapEditorCreateMark.NumberAttribute, NumberBar>
     {
         /// <summary>
         /// 节点路径: MapEditorCreateMark.AttrName
@@ -1208,8 +1208,8 @@ public abstract partial class MapEditorCreateMark : UiBase
         }
         private NumInput _L_NumInput;
 
-        public NumberBar(MapEditorCreateMarkPanel uiPanel, UI.MapEditorCreateMark.NumberAttribute node) : base(uiPanel, node) {  }
-        public override NumberBar Clone() => new (UiPanel, (UI.MapEditorCreateMark.NumberAttribute)Instance.Duplicate());
+        public NumberBar(MapEditorCreateMarkPanel uiPanel, UI.editor.MapEditorCreateMark.NumberAttribute node) : base(uiPanel, node) {  }
+        public override NumberBar Clone() => new (UiPanel, (UI.editor.MapEditorCreateMark.NumberAttribute)Instance.Duplicate());
     }
 
     /// <summary>
@@ -1233,7 +1233,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     /// <summary>
     /// 路径: MapEditorCreateMark.OptionBar
     /// </summary>
-    public class OptionBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.OptionAttribute, OptionBar>
+    public class OptionBar : UiNode<MapEditorCreateMarkPanel, UI.editor.MapEditorCreateMark.OptionAttribute, OptionBar>
     {
         /// <summary>
         /// 节点路径: MapEditorCreateMark.AttrName
@@ -1261,8 +1261,8 @@ public abstract partial class MapEditorCreateMark : UiBase
         }
         private OptionInput _L_OptionInput;
 
-        public OptionBar(MapEditorCreateMarkPanel uiPanel, UI.MapEditorCreateMark.OptionAttribute node) : base(uiPanel, node) {  }
-        public override OptionBar Clone() => new (UiPanel, (UI.MapEditorCreateMark.OptionAttribute)Instance.Duplicate());
+        public OptionBar(MapEditorCreateMarkPanel uiPanel, UI.editor.MapEditorCreateMark.OptionAttribute node) : base(uiPanel, node) {  }
+        public override OptionBar Clone() => new (UiPanel, (UI.editor.MapEditorCreateMark.OptionAttribute)Instance.Duplicate());
     }
 
     /// <summary>
@@ -1374,7 +1374,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     /// <summary>
     /// 路径: MapEditorCreateMark.ObjectBar
     /// </summary>
-    public class ObjectBar : UiNode<MapEditorCreateMarkPanel, UI.MapEditorCreateMark.ObjectAttribute, ObjectBar>
+    public class ObjectBar : UiNode<MapEditorCreateMarkPanel, UI.editor.MapEditorCreateMark.ObjectAttribute, ObjectBar>
     {
         /// <summary>
         /// 节点路径: MapEditorCreateMark.AttrName
@@ -1402,8 +1402,8 @@ public abstract partial class MapEditorCreateMark : UiBase
         }
         private HBoxContainer_4 _L_HBoxContainer;
 
-        public ObjectBar(MapEditorCreateMarkPanel uiPanel, UI.MapEditorCreateMark.ObjectAttribute node) : base(uiPanel, node) {  }
-        public override ObjectBar Clone() => new (UiPanel, (UI.MapEditorCreateMark.ObjectAttribute)Instance.Duplicate());
+        public ObjectBar(MapEditorCreateMarkPanel uiPanel, UI.editor.MapEditorCreateMark.ObjectAttribute node) : base(uiPanel, node) {  }
+        public override ObjectBar Clone() => new (UiPanel, (UI.editor.MapEditorCreateMark.ObjectAttribute)Instance.Duplicate());
     }
 
 

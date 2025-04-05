@@ -1,11 +1,11 @@
 ﻿using System;
 using Config;
 using Godot;
-using UI.MapEditor;
+
 
 using DsUi;
 
-namespace UI.MapEditorMapMark;
+namespace UI.editor.MapEditorMapMark;
 
 public class EditorMarkCell : UiCell<MapEditorMapMark.MarkItem, MapEditorMapMarkPanel.MarkCellData>
 {

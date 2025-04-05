@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Godot;
-using UI.MapEditor;
+
 
 using DsUi;
+using UI.editor.MapEditor;
 
-namespace UI.MapEditorMapLayer;
+namespace UI.editor.MapEditorMapLayer;
 
 public partial class MapEditorMapLayerPanel : MapEditorMapLayer
 {

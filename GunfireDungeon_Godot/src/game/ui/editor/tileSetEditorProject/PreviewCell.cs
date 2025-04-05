@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.TileSetEditorProject;
+namespace UI.editor.TileSetEditorProject;
 
 public class PreviewCell : UiCell<TileSetEditorProject.Preview, TileSetSourceInfo>
 {

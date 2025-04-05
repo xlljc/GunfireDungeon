@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Victory;
+namespace UI.game.Victory;
 
 public partial class VictoryPanel : Victory
 {

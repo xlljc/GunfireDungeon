@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Setting;
+namespace UI.game.Setting;
 
 public partial class SettingPanel : Setting
 {

@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.MapEditorMapTile;
+namespace UI.editor.MapEditorMapTile;
 
 /// <summary>
 /// 组合笔刷页签

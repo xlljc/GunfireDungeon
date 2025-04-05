@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.RoomUI;
+namespace UI.game.RoomUI;
 
 /// <summary>
 /// 换弹进度组件

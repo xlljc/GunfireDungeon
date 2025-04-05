@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.TileSetEditorTerrain;
+namespace UI.editor.TileSetEditorTerrain;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -455,10 +455,10 @@ public abstract partial class TileSetEditorTerrain : UiBase
     /// <summary>
     /// 路径: TileSetEditorTerrain.VSplitContainer.PanelTop.HSplitContainer.TopBg.TerrainRoot.Brush
     /// </summary>
-    public class Brush : UiNode<TileSetEditorTerrainPanel, UI.TileSetEditorTerrain.TerrainBrush, Brush>
+    public class Brush : UiNode<TileSetEditorTerrainPanel, UI.editor.TileSetEditorTerrain.TerrainBrush, Brush>
     {
-        public Brush(TileSetEditorTerrainPanel uiPanel, UI.TileSetEditorTerrain.TerrainBrush node) : base(uiPanel, node) {  }
-        public override Brush Clone() => new (UiPanel, (UI.TileSetEditorTerrain.TerrainBrush)Instance.Duplicate());
+        public Brush(TileSetEditorTerrainPanel uiPanel, UI.editor.TileSetEditorTerrain.TerrainBrush node) : base(uiPanel, node) {  }
+        public override Brush Clone() => new (UiPanel, (UI.editor.TileSetEditorTerrain.TerrainBrush)Instance.Duplicate());
     }
 
     /// <summary>
@@ -538,7 +538,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
         {
             get
             {
-                if (_L_Brush == null) _L_Brush = new Brush(UiPanel, Instance.GetNode<UI.TileSetEditorTerrain.TerrainBrush>("Brush"));
+                if (_L_Brush == null) _L_Brush = new Brush(UiPanel, Instance.GetNode<UI.editor.TileSetEditorTerrain.TerrainBrush>("Brush"));
                 return _L_Brush;
             }
         }
@@ -569,7 +569,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
     /// <summary>
     /// 路径: TileSetEditorTerrain.VSplitContainer.PanelTop.HSplitContainer.TopBg
     /// </summary>
-    public class TopBg : UiNode<TileSetEditorTerrainPanel, UI.TileSetEditorTerrain.TileEditTerrain, TopBg>
+    public class TopBg : UiNode<TileSetEditorTerrainPanel, UI.editor.TileSetEditorTerrain.TileEditTerrain, TopBg>
     {
         /// <summary>
         /// 节点路径: TileSetEditorTerrain.VSplitContainer.PanelTop.HSplitContainer.TerrainRoot
@@ -610,8 +610,8 @@ public abstract partial class TileSetEditorTerrain : UiBase
         }
         private FocusBtn _L_FocusBtn;
 
-        public TopBg(TileSetEditorTerrainPanel uiPanel, UI.TileSetEditorTerrain.TileEditTerrain node) : base(uiPanel, node) {  }
-        public override TopBg Clone() => new (UiPanel, (UI.TileSetEditorTerrain.TileEditTerrain)Instance.Duplicate());
+        public TopBg(TileSetEditorTerrainPanel uiPanel, UI.editor.TileSetEditorTerrain.TileEditTerrain node) : base(uiPanel, node) {  }
+        public override TopBg Clone() => new (UiPanel, (UI.editor.TileSetEditorTerrain.TileEditTerrain)Instance.Duplicate());
     }
 
     /// <summary>
@@ -639,7 +639,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
         {
             get
             {
-                if (_L_TopBg == null) _L_TopBg = new TopBg(UiPanel, Instance.GetNode<UI.TileSetEditorTerrain.TileEditTerrain>("TopBg"));
+                if (_L_TopBg == null) _L_TopBg = new TopBg(UiPanel, Instance.GetNode<UI.editor.TileSetEditorTerrain.TileEditTerrain>("TopBg"));
                 return _L_TopBg;
             }
         }
@@ -767,7 +767,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
     /// <summary>
     /// 路径: TileSetEditorTerrain.VSplitContainer.PanelBottom.BottomBg
     /// </summary>
-    public class BottomBg : UiNode<TileSetEditorTerrainPanel, UI.TileSetEditorTerrain.TileEditArea, BottomBg>
+    public class BottomBg : UiNode<TileSetEditorTerrainPanel, UI.editor.TileSetEditorTerrain.TileEditArea, BottomBg>
     {
         /// <summary>
         /// 节点路径: TileSetEditorTerrain.VSplitContainer.PanelBottom.TileTexture
@@ -808,8 +808,8 @@ public abstract partial class TileSetEditorTerrain : UiBase
         }
         private FocusBtn_1 _L_FocusBtn;
 
-        public BottomBg(TileSetEditorTerrainPanel uiPanel, UI.TileSetEditorTerrain.TileEditArea node) : base(uiPanel, node) {  }
-        public override BottomBg Clone() => new (UiPanel, (UI.TileSetEditorTerrain.TileEditArea)Instance.Duplicate());
+        public BottomBg(TileSetEditorTerrainPanel uiPanel, UI.editor.TileSetEditorTerrain.TileEditArea node) : base(uiPanel, node) {  }
+        public override BottomBg Clone() => new (UiPanel, (UI.editor.TileSetEditorTerrain.TileEditArea)Instance.Duplicate());
     }
 
     /// <summary>
@@ -824,7 +824,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
         {
             get
             {
-                if (_L_BottomBg == null) _L_BottomBg = new BottomBg(UiPanel, Instance.GetNode<UI.TileSetEditorTerrain.TileEditArea>("BottomBg"));
+                if (_L_BottomBg == null) _L_BottomBg = new BottomBg(UiPanel, Instance.GetNode<UI.editor.TileSetEditorTerrain.TileEditArea>("BottomBg"));
                 return _L_BottomBg;
             }
         }

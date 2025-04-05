@@ -1,6 +1,6 @@
 
 using Godot;
-using UI.MapEditor;
+using UI.editor.MapEditor;
 
 /// <summary>
 /// 地图编辑器工具栏图标逻辑基类

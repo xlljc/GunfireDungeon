@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.TileSetEditorCombination;
+namespace UI.editor.TileSetEditorCombination;
 
 public partial class RectBrush : Node2D
 {

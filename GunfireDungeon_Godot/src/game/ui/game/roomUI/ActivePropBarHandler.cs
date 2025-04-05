@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.RoomUI;
+namespace UI.game.RoomUI;
 
 public class ActivePropBarHandler
 {

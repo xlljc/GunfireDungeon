@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.BottomTips;
+namespace UI.game.BottomTips;
 
 /// <summary>
 /// 底部提示面板
@@ -102,7 +102,7 @@ public partial class BottomTipsPanel : BottomTips
     private static BottomTipsPanel _instance;
     public static void Init()
     {
-        _instance = UiManager.CreateUi<BottomTipsPanel>(UiManager.UiName.BottomTips);
+        _instance = UiManager.CreateUi<BottomTipsPanel>(UiManager.UiName.Game_BottomTips);
     }
 
     /// <summary>

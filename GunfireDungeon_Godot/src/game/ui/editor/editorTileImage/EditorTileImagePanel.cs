@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorTileImage;
+namespace UI.editor.EditorTileImage;
 
 public partial class EditorTileImagePanel : EditorTileImage
 {

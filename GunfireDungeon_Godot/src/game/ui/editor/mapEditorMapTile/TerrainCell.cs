@@ -3,7 +3,7 @@ using static TerrainPeering;
 
 using DsUi;
 
-namespace UI.MapEditorMapTile;
+namespace UI.editor.MapEditorMapTile;
 
 /// <summary>
 /// 地形选项

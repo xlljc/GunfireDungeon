@@ -4,7 +4,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Encyclopedia;
+namespace UI.game.Encyclopedia;
 
 public partial class EncyclopediaPanel : Encyclopedia
 {

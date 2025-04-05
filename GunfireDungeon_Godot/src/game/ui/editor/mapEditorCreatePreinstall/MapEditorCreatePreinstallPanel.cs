@@ -4,7 +4,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorCreatePreinstall;
+namespace UI.editor.MapEditorCreatePreinstall;
 
 public partial class MapEditorCreatePreinstallPanel : MapEditorCreatePreinstall
 {

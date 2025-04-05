@@ -7,45 +7,45 @@ public static partial class UiManager
     public static class UiName
     {
         public const string Debug_Debugger = "debug/Debugger";
-        public const string BottomTips = "BottomTips";
-        public const string EditorColorPicker = "EditorColorPicker";
-        public const string EditorDungeonGroup = "EditorDungeonGroup";
-        public const string EditorForm = "EditorForm";
-        public const string EditorImportCombination = "EditorImportCombination";
-        public const string EditorInfo = "EditorInfo";
-        public const string EditorInput = "EditorInput";
-        public const string EditorManager = "EditorManager";
-        public const string EditorTileImage = "EditorTileImage";
-        public const string EditorTips = "EditorTips";
-        public const string EditorTools = "EditorTools";
-        public const string EditorWindow = "EditorWindow";
-        public const string Encyclopedia = "Encyclopedia";
-        public const string Loading = "Loading";
-        public const string Main = "Main";
-        public const string MapEditor = "MapEditor";
-        public const string MapEditorConfigObject = "MapEditorConfigObject";
-        public const string MapEditorCreateMark = "MapEditorCreateMark";
-        public const string MapEditorCreatePreinstall = "MapEditorCreatePreinstall";
-        public const string MapEditorCreateRoom = "MapEditorCreateRoom";
-        public const string MapEditorMapLayer = "MapEditorMapLayer";
-        public const string MapEditorMapMark = "MapEditorMapMark";
-        public const string MapEditorMapTile = "MapEditorMapTile";
-        public const string MapEditorObject = "MapEditorObject";
-        public const string MapEditorProject = "MapEditorProject";
-        public const string MapEditorSelectObject = "MapEditorSelectObject";
-        public const string MapEditorTools = "MapEditorTools";
-        public const string PauseMenu = "PauseMenu";
-        public const string RoomMap = "RoomMap";
-        public const string RoomUI = "RoomUI";
-        public const string Setting = "Setting";
-        public const string Settlement = "Settlement";
-        public const string TileSetEditor = "TileSetEditor";
-        public const string TileSetEditorCombination = "TileSetEditorCombination";
-        public const string TileSetEditorImport = "TileSetEditorImport";
-        public const string TileSetEditorProject = "TileSetEditorProject";
-        public const string TileSetEditorTerrain = "TileSetEditorTerrain";
-        public const string Victory = "Victory";
-        public const string WeaponRoulette = "WeaponRoulette";
+        public const string Develop_EditorTools = "develop/EditorTools";
+        public const string Editor_EditorColorPicker = "editor/EditorColorPicker";
+        public const string Editor_EditorDungeonGroup = "editor/EditorDungeonGroup";
+        public const string Editor_EditorForm = "editor/EditorForm";
+        public const string Editor_EditorImportCombination = "editor/EditorImportCombination";
+        public const string Editor_EditorInfo = "editor/EditorInfo";
+        public const string Editor_EditorInput = "editor/EditorInput";
+        public const string Editor_EditorManager = "editor/EditorManager";
+        public const string Editor_EditorTileImage = "editor/EditorTileImage";
+        public const string Editor_EditorTips = "editor/EditorTips";
+        public const string Editor_EditorWindow = "editor/EditorWindow";
+        public const string Editor_MapEditor = "editor/MapEditor";
+        public const string Editor_MapEditorConfigObject = "editor/MapEditorConfigObject";
+        public const string Editor_MapEditorCreateMark = "editor/MapEditorCreateMark";
+        public const string Editor_MapEditorCreatePreinstall = "editor/MapEditorCreatePreinstall";
+        public const string Editor_MapEditorCreateRoom = "editor/MapEditorCreateRoom";
+        public const string Editor_MapEditorMapLayer = "editor/MapEditorMapLayer";
+        public const string Editor_MapEditorMapMark = "editor/MapEditorMapMark";
+        public const string Editor_MapEditorMapTile = "editor/MapEditorMapTile";
+        public const string Editor_MapEditorObject = "editor/MapEditorObject";
+        public const string Editor_MapEditorProject = "editor/MapEditorProject";
+        public const string Editor_MapEditorSelectObject = "editor/MapEditorSelectObject";
+        public const string Editor_MapEditorTools = "editor/MapEditorTools";
+        public const string Editor_TileSetEditor = "editor/TileSetEditor";
+        public const string Editor_TileSetEditorCombination = "editor/TileSetEditorCombination";
+        public const string Editor_TileSetEditorImport = "editor/TileSetEditorImport";
+        public const string Editor_TileSetEditorProject = "editor/TileSetEditorProject";
+        public const string Editor_TileSetEditorTerrain = "editor/TileSetEditorTerrain";
+        public const string Game_BottomTips = "game/BottomTips";
+        public const string Game_Encyclopedia = "game/Encyclopedia";
+        public const string Game_Loading = "game/Loading";
+        public const string Game_Main = "game/Main";
+        public const string Game_PauseMenu = "game/PauseMenu";
+        public const string Game_RoomMap = "game/RoomMap";
+        public const string Game_RoomUI = "game/RoomUI";
+        public const string Game_Setting = "game/Setting";
+        public const string Game_Settlement = "game/Settlement";
+        public const string Game_Victory = "game/Victory";
+        public const string Game_WeaponRoulette = "game/WeaponRoulette";
     }
 
     /// <summary>
@@ -69,19 +69,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 BottomTips, 并返回UI实例
+    /// 打开 develop/EditorTools, 并返回UI实例
     /// </summary>
-    public static UI.BottomTips.BottomTipsPanel Open_BottomTips()
+    public static UI.develop.EditorTools.EditorToolsPanel Open_Develop_EditorTools()
     {
-        return OpenUi<UI.BottomTips.BottomTipsPanel>(UiName.BottomTips);
+        return OpenUi<UI.develop.EditorTools.EditorToolsPanel>(UiName.Develop_EditorTools);
     }
 
     /// <summary>
-    /// 销毁 BottomTips 的所有实例
+    /// 销毁 develop/EditorTools 的所有实例
     /// </summary>
-    public static void Destroy_BottomTips()
+    public static void Destroy_Develop_EditorTools()
     {
-        var uiInstance = GetUiInstance<UI.BottomTips.BottomTipsPanel>(nameof(UI.BottomTips.BottomTips));
+        var uiInstance = GetUiInstance<UI.develop.EditorTools.EditorToolsPanel>(nameof(UI.develop.EditorTools.EditorTools));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -89,19 +89,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorColorPicker, 并返回UI实例
+    /// 打开 editor/EditorColorPicker, 并返回UI实例
     /// </summary>
-    public static UI.EditorColorPicker.EditorColorPickerPanel Open_EditorColorPicker()
+    public static UI.editor.EditorColorPicker.EditorColorPickerPanel Open_Editor_EditorColorPicker()
     {
-        return OpenUi<UI.EditorColorPicker.EditorColorPickerPanel>(UiName.EditorColorPicker);
+        return OpenUi<UI.editor.EditorColorPicker.EditorColorPickerPanel>(UiName.Editor_EditorColorPicker);
     }
 
     /// <summary>
-    /// 销毁 EditorColorPicker 的所有实例
+    /// 销毁 editor/EditorColorPicker 的所有实例
     /// </summary>
-    public static void Destroy_EditorColorPicker()
+    public static void Destroy_Editor_EditorColorPicker()
     {
-        var uiInstance = GetUiInstance<UI.EditorColorPicker.EditorColorPickerPanel>(nameof(UI.EditorColorPicker.EditorColorPicker));
+        var uiInstance = GetUiInstance<UI.editor.EditorColorPicker.EditorColorPickerPanel>(nameof(UI.editor.EditorColorPicker.EditorColorPicker));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -109,19 +109,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorDungeonGroup, 并返回UI实例
+    /// 打开 editor/EditorDungeonGroup, 并返回UI实例
     /// </summary>
-    public static UI.EditorDungeonGroup.EditorDungeonGroupPanel Open_EditorDungeonGroup()
+    public static UI.editor.EditorDungeonGroup.EditorDungeonGroupPanel Open_Editor_EditorDungeonGroup()
     {
-        return OpenUi<UI.EditorDungeonGroup.EditorDungeonGroupPanel>(UiName.EditorDungeonGroup);
+        return OpenUi<UI.editor.EditorDungeonGroup.EditorDungeonGroupPanel>(UiName.Editor_EditorDungeonGroup);
     }
 
     /// <summary>
-    /// 销毁 EditorDungeonGroup 的所有实例
+    /// 销毁 editor/EditorDungeonGroup 的所有实例
     /// </summary>
-    public static void Destroy_EditorDungeonGroup()
+    public static void Destroy_Editor_EditorDungeonGroup()
     {
-        var uiInstance = GetUiInstance<UI.EditorDungeonGroup.EditorDungeonGroupPanel>(nameof(UI.EditorDungeonGroup.EditorDungeonGroup));
+        var uiInstance = GetUiInstance<UI.editor.EditorDungeonGroup.EditorDungeonGroupPanel>(nameof(UI.editor.EditorDungeonGroup.EditorDungeonGroup));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -129,19 +129,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorForm, 并返回UI实例
+    /// 打开 editor/EditorForm, 并返回UI实例
     /// </summary>
-    public static UI.EditorForm.EditorFormPanel Open_EditorForm()
+    public static UI.editor.EditorForm.EditorFormPanel Open_Editor_EditorForm()
     {
-        return OpenUi<UI.EditorForm.EditorFormPanel>(UiName.EditorForm);
+        return OpenUi<UI.editor.EditorForm.EditorFormPanel>(UiName.Editor_EditorForm);
     }
 
     /// <summary>
-    /// 销毁 EditorForm 的所有实例
+    /// 销毁 editor/EditorForm 的所有实例
     /// </summary>
-    public static void Destroy_EditorForm()
+    public static void Destroy_Editor_EditorForm()
     {
-        var uiInstance = GetUiInstance<UI.EditorForm.EditorFormPanel>(nameof(UI.EditorForm.EditorForm));
+        var uiInstance = GetUiInstance<UI.editor.EditorForm.EditorFormPanel>(nameof(UI.editor.EditorForm.EditorForm));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -149,19 +149,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorImportCombination, 并返回UI实例
+    /// 打开 editor/EditorImportCombination, 并返回UI实例
     /// </summary>
-    public static UI.EditorImportCombination.EditorImportCombinationPanel Open_EditorImportCombination()
+    public static UI.editor.EditorImportCombination.EditorImportCombinationPanel Open_Editor_EditorImportCombination()
     {
-        return OpenUi<UI.EditorImportCombination.EditorImportCombinationPanel>(UiName.EditorImportCombination);
+        return OpenUi<UI.editor.EditorImportCombination.EditorImportCombinationPanel>(UiName.Editor_EditorImportCombination);
     }
 
     /// <summary>
-    /// 销毁 EditorImportCombination 的所有实例
+    /// 销毁 editor/EditorImportCombination 的所有实例
     /// </summary>
-    public static void Destroy_EditorImportCombination()
+    public static void Destroy_Editor_EditorImportCombination()
     {
-        var uiInstance = GetUiInstance<UI.EditorImportCombination.EditorImportCombinationPanel>(nameof(UI.EditorImportCombination.EditorImportCombination));
+        var uiInstance = GetUiInstance<UI.editor.EditorImportCombination.EditorImportCombinationPanel>(nameof(UI.editor.EditorImportCombination.EditorImportCombination));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -169,19 +169,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorInfo, 并返回UI实例
+    /// 打开 editor/EditorInfo, 并返回UI实例
     /// </summary>
-    public static UI.EditorInfo.EditorInfoPanel Open_EditorInfo()
+    public static UI.editor.EditorInfo.EditorInfoPanel Open_Editor_EditorInfo()
     {
-        return OpenUi<UI.EditorInfo.EditorInfoPanel>(UiName.EditorInfo);
+        return OpenUi<UI.editor.EditorInfo.EditorInfoPanel>(UiName.Editor_EditorInfo);
     }
 
     /// <summary>
-    /// 销毁 EditorInfo 的所有实例
+    /// 销毁 editor/EditorInfo 的所有实例
     /// </summary>
-    public static void Destroy_EditorInfo()
+    public static void Destroy_Editor_EditorInfo()
     {
-        var uiInstance = GetUiInstance<UI.EditorInfo.EditorInfoPanel>(nameof(UI.EditorInfo.EditorInfo));
+        var uiInstance = GetUiInstance<UI.editor.EditorInfo.EditorInfoPanel>(nameof(UI.editor.EditorInfo.EditorInfo));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -189,19 +189,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorInput, 并返回UI实例
+    /// 打开 editor/EditorInput, 并返回UI实例
     /// </summary>
-    public static UI.EditorInput.EditorInputPanel Open_EditorInput()
+    public static UI.editor.EditorInput.EditorInputPanel Open_Editor_EditorInput()
     {
-        return OpenUi<UI.EditorInput.EditorInputPanel>(UiName.EditorInput);
+        return OpenUi<UI.editor.EditorInput.EditorInputPanel>(UiName.Editor_EditorInput);
     }
 
     /// <summary>
-    /// 销毁 EditorInput 的所有实例
+    /// 销毁 editor/EditorInput 的所有实例
     /// </summary>
-    public static void Destroy_EditorInput()
+    public static void Destroy_Editor_EditorInput()
     {
-        var uiInstance = GetUiInstance<UI.EditorInput.EditorInputPanel>(nameof(UI.EditorInput.EditorInput));
+        var uiInstance = GetUiInstance<UI.editor.EditorInput.EditorInputPanel>(nameof(UI.editor.EditorInput.EditorInput));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -209,19 +209,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorManager, 并返回UI实例
+    /// 打开 editor/EditorManager, 并返回UI实例
     /// </summary>
-    public static UI.EditorManager.EditorManagerPanel Open_EditorManager()
+    public static UI.editor.EditorManager.EditorManagerPanel Open_Editor_EditorManager()
     {
-        return OpenUi<UI.EditorManager.EditorManagerPanel>(UiName.EditorManager);
+        return OpenUi<UI.editor.EditorManager.EditorManagerPanel>(UiName.Editor_EditorManager);
     }
 
     /// <summary>
-    /// 销毁 EditorManager 的所有实例
+    /// 销毁 editor/EditorManager 的所有实例
     /// </summary>
-    public static void Destroy_EditorManager()
+    public static void Destroy_Editor_EditorManager()
     {
-        var uiInstance = GetUiInstance<UI.EditorManager.EditorManagerPanel>(nameof(UI.EditorManager.EditorManager));
+        var uiInstance = GetUiInstance<UI.editor.EditorManager.EditorManagerPanel>(nameof(UI.editor.EditorManager.EditorManager));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -229,19 +229,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorTileImage, 并返回UI实例
+    /// 打开 editor/EditorTileImage, 并返回UI实例
     /// </summary>
-    public static UI.EditorTileImage.EditorTileImagePanel Open_EditorTileImage()
+    public static UI.editor.EditorTileImage.EditorTileImagePanel Open_Editor_EditorTileImage()
     {
-        return OpenUi<UI.EditorTileImage.EditorTileImagePanel>(UiName.EditorTileImage);
+        return OpenUi<UI.editor.EditorTileImage.EditorTileImagePanel>(UiName.Editor_EditorTileImage);
     }
 
     /// <summary>
-    /// 销毁 EditorTileImage 的所有实例
+    /// 销毁 editor/EditorTileImage 的所有实例
     /// </summary>
-    public static void Destroy_EditorTileImage()
+    public static void Destroy_Editor_EditorTileImage()
     {
-        var uiInstance = GetUiInstance<UI.EditorTileImage.EditorTileImagePanel>(nameof(UI.EditorTileImage.EditorTileImage));
+        var uiInstance = GetUiInstance<UI.editor.EditorTileImage.EditorTileImagePanel>(nameof(UI.editor.EditorTileImage.EditorTileImage));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -249,19 +249,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorTips, 并返回UI实例
+    /// 打开 editor/EditorTips, 并返回UI实例
     /// </summary>
-    public static UI.EditorTips.EditorTipsPanel Open_EditorTips()
+    public static UI.editor.EditorTips.EditorTipsPanel Open_Editor_EditorTips()
     {
-        return OpenUi<UI.EditorTips.EditorTipsPanel>(UiName.EditorTips);
+        return OpenUi<UI.editor.EditorTips.EditorTipsPanel>(UiName.Editor_EditorTips);
     }
 
     /// <summary>
-    /// 销毁 EditorTips 的所有实例
+    /// 销毁 editor/EditorTips 的所有实例
     /// </summary>
-    public static void Destroy_EditorTips()
+    public static void Destroy_Editor_EditorTips()
     {
-        var uiInstance = GetUiInstance<UI.EditorTips.EditorTipsPanel>(nameof(UI.EditorTips.EditorTips));
+        var uiInstance = GetUiInstance<UI.editor.EditorTips.EditorTipsPanel>(nameof(UI.editor.EditorTips.EditorTips));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -269,19 +269,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorTools, 并返回UI实例
+    /// 打开 editor/EditorWindow, 并返回UI实例
     /// </summary>
-    public static UI.EditorTools.EditorToolsPanel Open_EditorTools()
+    public static UI.editor.EditorWindow.EditorWindowPanel Open_Editor_EditorWindow()
     {
-        return OpenUi<UI.EditorTools.EditorToolsPanel>(UiName.EditorTools);
+        return OpenUi<UI.editor.EditorWindow.EditorWindowPanel>(UiName.Editor_EditorWindow);
     }
 
     /// <summary>
-    /// 销毁 EditorTools 的所有实例
+    /// 销毁 editor/EditorWindow 的所有实例
     /// </summary>
-    public static void Destroy_EditorTools()
+    public static void Destroy_Editor_EditorWindow()
     {
-        var uiInstance = GetUiInstance<UI.EditorTools.EditorToolsPanel>(nameof(UI.EditorTools.EditorTools));
+        var uiInstance = GetUiInstance<UI.editor.EditorWindow.EditorWindowPanel>(nameof(UI.editor.EditorWindow.EditorWindow));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -289,19 +289,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 EditorWindow, 并返回UI实例
+    /// 打开 editor/MapEditor, 并返回UI实例
     /// </summary>
-    public static UI.EditorWindow.EditorWindowPanel Open_EditorWindow()
+    public static UI.editor.MapEditor.MapEditorPanel Open_Editor_MapEditor()
     {
-        return OpenUi<UI.EditorWindow.EditorWindowPanel>(UiName.EditorWindow);
+        return OpenUi<UI.editor.MapEditor.MapEditorPanel>(UiName.Editor_MapEditor);
     }
 
     /// <summary>
-    /// 销毁 EditorWindow 的所有实例
+    /// 销毁 editor/MapEditor 的所有实例
     /// </summary>
-    public static void Destroy_EditorWindow()
+    public static void Destroy_Editor_MapEditor()
     {
-        var uiInstance = GetUiInstance<UI.EditorWindow.EditorWindowPanel>(nameof(UI.EditorWindow.EditorWindow));
+        var uiInstance = GetUiInstance<UI.editor.MapEditor.MapEditorPanel>(nameof(UI.editor.MapEditor.MapEditor));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -309,19 +309,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Encyclopedia, 并返回UI实例
+    /// 打开 editor/MapEditorConfigObject, 并返回UI实例
     /// </summary>
-    public static UI.Encyclopedia.EncyclopediaPanel Open_Encyclopedia()
+    public static UI.editor.MapEditorConfigObject.MapEditorConfigObjectPanel Open_Editor_MapEditorConfigObject()
     {
-        return OpenUi<UI.Encyclopedia.EncyclopediaPanel>(UiName.Encyclopedia);
+        return OpenUi<UI.editor.MapEditorConfigObject.MapEditorConfigObjectPanel>(UiName.Editor_MapEditorConfigObject);
     }
 
     /// <summary>
-    /// 销毁 Encyclopedia 的所有实例
+    /// 销毁 editor/MapEditorConfigObject 的所有实例
     /// </summary>
-    public static void Destroy_Encyclopedia()
+    public static void Destroy_Editor_MapEditorConfigObject()
     {
-        var uiInstance = GetUiInstance<UI.Encyclopedia.EncyclopediaPanel>(nameof(UI.Encyclopedia.Encyclopedia));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorConfigObject.MapEditorConfigObjectPanel>(nameof(UI.editor.MapEditorConfigObject.MapEditorConfigObject));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -329,19 +329,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Loading, 并返回UI实例
+    /// 打开 editor/MapEditorCreateMark, 并返回UI实例
     /// </summary>
-    public static UI.Loading.LoadingPanel Open_Loading()
+    public static UI.editor.MapEditorCreateMark.MapEditorCreateMarkPanel Open_Editor_MapEditorCreateMark()
     {
-        return OpenUi<UI.Loading.LoadingPanel>(UiName.Loading);
+        return OpenUi<UI.editor.MapEditorCreateMark.MapEditorCreateMarkPanel>(UiName.Editor_MapEditorCreateMark);
     }
 
     /// <summary>
-    /// 销毁 Loading 的所有实例
+    /// 销毁 editor/MapEditorCreateMark 的所有实例
     /// </summary>
-    public static void Destroy_Loading()
+    public static void Destroy_Editor_MapEditorCreateMark()
     {
-        var uiInstance = GetUiInstance<UI.Loading.LoadingPanel>(nameof(UI.Loading.Loading));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateMark.MapEditorCreateMarkPanel>(nameof(UI.editor.MapEditorCreateMark.MapEditorCreateMark));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -349,19 +349,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Main, 并返回UI实例
+    /// 打开 editor/MapEditorCreatePreinstall, 并返回UI实例
     /// </summary>
-    public static UI.Main.MainPanel Open_Main()
+    public static UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel Open_Editor_MapEditorCreatePreinstall()
     {
-        return OpenUi<UI.Main.MainPanel>(UiName.Main);
+        return OpenUi<UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(UiName.Editor_MapEditorCreatePreinstall);
     }
 
     /// <summary>
-    /// 销毁 Main 的所有实例
+    /// 销毁 editor/MapEditorCreatePreinstall 的所有实例
     /// </summary>
-    public static void Destroy_Main()
+    public static void Destroy_Editor_MapEditorCreatePreinstall()
     {
-        var uiInstance = GetUiInstance<UI.Main.MainPanel>(nameof(UI.Main.Main));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(nameof(UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstall));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -369,19 +369,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditor, 并返回UI实例
+    /// 打开 editor/MapEditorCreateRoom, 并返回UI实例
     /// </summary>
-    public static UI.MapEditor.MapEditorPanel Open_MapEditor()
+    public static UI.editor.MapEditorCreateRoom.MapEditorCreateRoomPanel Open_Editor_MapEditorCreateRoom()
     {
-        return OpenUi<UI.MapEditor.MapEditorPanel>(UiName.MapEditor);
+        return OpenUi<UI.editor.MapEditorCreateRoom.MapEditorCreateRoomPanel>(UiName.Editor_MapEditorCreateRoom);
     }
 
     /// <summary>
-    /// 销毁 MapEditor 的所有实例
+    /// 销毁 editor/MapEditorCreateRoom 的所有实例
     /// </summary>
-    public static void Destroy_MapEditor()
+    public static void Destroy_Editor_MapEditorCreateRoom()
     {
-        var uiInstance = GetUiInstance<UI.MapEditor.MapEditorPanel>(nameof(UI.MapEditor.MapEditor));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateRoom.MapEditorCreateRoomPanel>(nameof(UI.editor.MapEditorCreateRoom.MapEditorCreateRoom));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -389,19 +389,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorConfigObject, 并返回UI实例
+    /// 打开 editor/MapEditorMapLayer, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorConfigObject.MapEditorConfigObjectPanel Open_MapEditorConfigObject()
+    public static UI.editor.MapEditorMapLayer.MapEditorMapLayerPanel Open_Editor_MapEditorMapLayer()
     {
-        return OpenUi<UI.MapEditorConfigObject.MapEditorConfigObjectPanel>(UiName.MapEditorConfigObject);
+        return OpenUi<UI.editor.MapEditorMapLayer.MapEditorMapLayerPanel>(UiName.Editor_MapEditorMapLayer);
     }
 
     /// <summary>
-    /// 销毁 MapEditorConfigObject 的所有实例
+    /// 销毁 editor/MapEditorMapLayer 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorConfigObject()
+    public static void Destroy_Editor_MapEditorMapLayer()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorConfigObject.MapEditorConfigObjectPanel>(nameof(UI.MapEditorConfigObject.MapEditorConfigObject));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapLayer.MapEditorMapLayerPanel>(nameof(UI.editor.MapEditorMapLayer.MapEditorMapLayer));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -409,19 +409,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorCreateMark, 并返回UI实例
+    /// 打开 editor/MapEditorMapMark, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorCreateMark.MapEditorCreateMarkPanel Open_MapEditorCreateMark()
+    public static UI.editor.MapEditorMapMark.MapEditorMapMarkPanel Open_Editor_MapEditorMapMark()
     {
-        return OpenUi<UI.MapEditorCreateMark.MapEditorCreateMarkPanel>(UiName.MapEditorCreateMark);
+        return OpenUi<UI.editor.MapEditorMapMark.MapEditorMapMarkPanel>(UiName.Editor_MapEditorMapMark);
     }
 
     /// <summary>
-    /// 销毁 MapEditorCreateMark 的所有实例
+    /// 销毁 editor/MapEditorMapMark 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorCreateMark()
+    public static void Destroy_Editor_MapEditorMapMark()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorCreateMark.MapEditorCreateMarkPanel>(nameof(UI.MapEditorCreateMark.MapEditorCreateMark));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapMark.MapEditorMapMarkPanel>(nameof(UI.editor.MapEditorMapMark.MapEditorMapMark));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -429,19 +429,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorCreatePreinstall, 并返回UI实例
+    /// 打开 editor/MapEditorMapTile, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel Open_MapEditorCreatePreinstall()
+    public static UI.editor.MapEditorMapTile.MapEditorMapTilePanel Open_Editor_MapEditorMapTile()
     {
-        return OpenUi<UI.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(UiName.MapEditorCreatePreinstall);
+        return OpenUi<UI.editor.MapEditorMapTile.MapEditorMapTilePanel>(UiName.Editor_MapEditorMapTile);
     }
 
     /// <summary>
-    /// 销毁 MapEditorCreatePreinstall 的所有实例
+    /// 销毁 editor/MapEditorMapTile 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorCreatePreinstall()
+    public static void Destroy_Editor_MapEditorMapTile()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(nameof(UI.MapEditorCreatePreinstall.MapEditorCreatePreinstall));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapTile.MapEditorMapTilePanel>(nameof(UI.editor.MapEditorMapTile.MapEditorMapTile));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -449,19 +449,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorCreateRoom, 并返回UI实例
+    /// 打开 editor/MapEditorObject, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorCreateRoom.MapEditorCreateRoomPanel Open_MapEditorCreateRoom()
+    public static UI.editor.MapEditorObject.MapEditorObjectPanel Open_Editor_MapEditorObject()
     {
-        return OpenUi<UI.MapEditorCreateRoom.MapEditorCreateRoomPanel>(UiName.MapEditorCreateRoom);
+        return OpenUi<UI.editor.MapEditorObject.MapEditorObjectPanel>(UiName.Editor_MapEditorObject);
     }
 
     /// <summary>
-    /// 销毁 MapEditorCreateRoom 的所有实例
+    /// 销毁 editor/MapEditorObject 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorCreateRoom()
+    public static void Destroy_Editor_MapEditorObject()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorCreateRoom.MapEditorCreateRoomPanel>(nameof(UI.MapEditorCreateRoom.MapEditorCreateRoom));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorObject.MapEditorObjectPanel>(nameof(UI.editor.MapEditorObject.MapEditorObject));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -469,19 +469,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorMapLayer, 并返回UI实例
+    /// 打开 editor/MapEditorProject, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorMapLayer.MapEditorMapLayerPanel Open_MapEditorMapLayer()
+    public static UI.editor.MapEditorProject.MapEditorProjectPanel Open_Editor_MapEditorProject()
     {
-        return OpenUi<UI.MapEditorMapLayer.MapEditorMapLayerPanel>(UiName.MapEditorMapLayer);
+        return OpenUi<UI.editor.MapEditorProject.MapEditorProjectPanel>(UiName.Editor_MapEditorProject);
     }
 
     /// <summary>
-    /// 销毁 MapEditorMapLayer 的所有实例
+    /// 销毁 editor/MapEditorProject 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorMapLayer()
+    public static void Destroy_Editor_MapEditorProject()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorMapLayer.MapEditorMapLayerPanel>(nameof(UI.MapEditorMapLayer.MapEditorMapLayer));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorProject.MapEditorProjectPanel>(nameof(UI.editor.MapEditorProject.MapEditorProject));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -489,19 +489,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorMapMark, 并返回UI实例
+    /// 打开 editor/MapEditorSelectObject, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorMapMark.MapEditorMapMarkPanel Open_MapEditorMapMark()
+    public static UI.editor.MapEditorSelectObject.MapEditorSelectObjectPanel Open_Editor_MapEditorSelectObject()
     {
-        return OpenUi<UI.MapEditorMapMark.MapEditorMapMarkPanel>(UiName.MapEditorMapMark);
+        return OpenUi<UI.editor.MapEditorSelectObject.MapEditorSelectObjectPanel>(UiName.Editor_MapEditorSelectObject);
     }
 
     /// <summary>
-    /// 销毁 MapEditorMapMark 的所有实例
+    /// 销毁 editor/MapEditorSelectObject 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorMapMark()
+    public static void Destroy_Editor_MapEditorSelectObject()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorMapMark.MapEditorMapMarkPanel>(nameof(UI.MapEditorMapMark.MapEditorMapMark));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorSelectObject.MapEditorSelectObjectPanel>(nameof(UI.editor.MapEditorSelectObject.MapEditorSelectObject));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -509,19 +509,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorMapTile, 并返回UI实例
+    /// 打开 editor/MapEditorTools, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorMapTile.MapEditorMapTilePanel Open_MapEditorMapTile()
+    public static UI.editor.MapEditorTools.MapEditorToolsPanel Open_Editor_MapEditorTools()
     {
-        return OpenUi<UI.MapEditorMapTile.MapEditorMapTilePanel>(UiName.MapEditorMapTile);
+        return OpenUi<UI.editor.MapEditorTools.MapEditorToolsPanel>(UiName.Editor_MapEditorTools);
     }
 
     /// <summary>
-    /// 销毁 MapEditorMapTile 的所有实例
+    /// 销毁 editor/MapEditorTools 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorMapTile()
+    public static void Destroy_Editor_MapEditorTools()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorMapTile.MapEditorMapTilePanel>(nameof(UI.MapEditorMapTile.MapEditorMapTile));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorTools.MapEditorToolsPanel>(nameof(UI.editor.MapEditorTools.MapEditorTools));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -529,19 +529,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorObject, 并返回UI实例
+    /// 打开 editor/TileSetEditor, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorObject.MapEditorObjectPanel Open_MapEditorObject()
+    public static UI.editor.TileSetEditor.TileSetEditorPanel Open_Editor_TileSetEditor()
     {
-        return OpenUi<UI.MapEditorObject.MapEditorObjectPanel>(UiName.MapEditorObject);
+        return OpenUi<UI.editor.TileSetEditor.TileSetEditorPanel>(UiName.Editor_TileSetEditor);
     }
 
     /// <summary>
-    /// 销毁 MapEditorObject 的所有实例
+    /// 销毁 editor/TileSetEditor 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorObject()
+    public static void Destroy_Editor_TileSetEditor()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorObject.MapEditorObjectPanel>(nameof(UI.MapEditorObject.MapEditorObject));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditor.TileSetEditorPanel>(nameof(UI.editor.TileSetEditor.TileSetEditor));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -549,19 +549,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorProject, 并返回UI实例
+    /// 打开 editor/TileSetEditorCombination, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorProject.MapEditorProjectPanel Open_MapEditorProject()
+    public static UI.editor.TileSetEditorCombination.TileSetEditorCombinationPanel Open_Editor_TileSetEditorCombination()
     {
-        return OpenUi<UI.MapEditorProject.MapEditorProjectPanel>(UiName.MapEditorProject);
+        return OpenUi<UI.editor.TileSetEditorCombination.TileSetEditorCombinationPanel>(UiName.Editor_TileSetEditorCombination);
     }
 
     /// <summary>
-    /// 销毁 MapEditorProject 的所有实例
+    /// 销毁 editor/TileSetEditorCombination 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorProject()
+    public static void Destroy_Editor_TileSetEditorCombination()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorProject.MapEditorProjectPanel>(nameof(UI.MapEditorProject.MapEditorProject));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorCombination.TileSetEditorCombinationPanel>(nameof(UI.editor.TileSetEditorCombination.TileSetEditorCombination));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -569,19 +569,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorSelectObject, 并返回UI实例
+    /// 打开 editor/TileSetEditorImport, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorSelectObject.MapEditorSelectObjectPanel Open_MapEditorSelectObject()
+    public static UI.editor.TileSetEditorImport.TileSetEditorImportPanel Open_Editor_TileSetEditorImport()
     {
-        return OpenUi<UI.MapEditorSelectObject.MapEditorSelectObjectPanel>(UiName.MapEditorSelectObject);
+        return OpenUi<UI.editor.TileSetEditorImport.TileSetEditorImportPanel>(UiName.Editor_TileSetEditorImport);
     }
 
     /// <summary>
-    /// 销毁 MapEditorSelectObject 的所有实例
+    /// 销毁 editor/TileSetEditorImport 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorSelectObject()
+    public static void Destroy_Editor_TileSetEditorImport()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorSelectObject.MapEditorSelectObjectPanel>(nameof(UI.MapEditorSelectObject.MapEditorSelectObject));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorImport.TileSetEditorImportPanel>(nameof(UI.editor.TileSetEditorImport.TileSetEditorImport));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -589,19 +589,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 MapEditorTools, 并返回UI实例
+    /// 打开 editor/TileSetEditorProject, 并返回UI实例
     /// </summary>
-    public static UI.MapEditorTools.MapEditorToolsPanel Open_MapEditorTools()
+    public static UI.editor.TileSetEditorProject.TileSetEditorProjectPanel Open_Editor_TileSetEditorProject()
     {
-        return OpenUi<UI.MapEditorTools.MapEditorToolsPanel>(UiName.MapEditorTools);
+        return OpenUi<UI.editor.TileSetEditorProject.TileSetEditorProjectPanel>(UiName.Editor_TileSetEditorProject);
     }
 
     /// <summary>
-    /// 销毁 MapEditorTools 的所有实例
+    /// 销毁 editor/TileSetEditorProject 的所有实例
     /// </summary>
-    public static void Destroy_MapEditorTools()
+    public static void Destroy_Editor_TileSetEditorProject()
     {
-        var uiInstance = GetUiInstance<UI.MapEditorTools.MapEditorToolsPanel>(nameof(UI.MapEditorTools.MapEditorTools));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorProject.TileSetEditorProjectPanel>(nameof(UI.editor.TileSetEditorProject.TileSetEditorProject));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -609,19 +609,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 PauseMenu, 并返回UI实例
+    /// 打开 editor/TileSetEditorTerrain, 并返回UI实例
     /// </summary>
-    public static UI.PauseMenu.PauseMenuPanel Open_PauseMenu()
+    public static UI.editor.TileSetEditorTerrain.TileSetEditorTerrainPanel Open_Editor_TileSetEditorTerrain()
     {
-        return OpenUi<UI.PauseMenu.PauseMenuPanel>(UiName.PauseMenu);
+        return OpenUi<UI.editor.TileSetEditorTerrain.TileSetEditorTerrainPanel>(UiName.Editor_TileSetEditorTerrain);
     }
 
     /// <summary>
-    /// 销毁 PauseMenu 的所有实例
+    /// 销毁 editor/TileSetEditorTerrain 的所有实例
     /// </summary>
-    public static void Destroy_PauseMenu()
+    public static void Destroy_Editor_TileSetEditorTerrain()
     {
-        var uiInstance = GetUiInstance<UI.PauseMenu.PauseMenuPanel>(nameof(UI.PauseMenu.PauseMenu));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorTerrain.TileSetEditorTerrainPanel>(nameof(UI.editor.TileSetEditorTerrain.TileSetEditorTerrain));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -629,19 +629,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 RoomMap, 并返回UI实例
+    /// 打开 game/BottomTips, 并返回UI实例
     /// </summary>
-    public static UI.RoomMap.RoomMapPanel Open_RoomMap()
+    public static UI.game.BottomTips.BottomTipsPanel Open_Game_BottomTips()
     {
-        return OpenUi<UI.RoomMap.RoomMapPanel>(UiName.RoomMap);
+        return OpenUi<UI.game.BottomTips.BottomTipsPanel>(UiName.Game_BottomTips);
     }
 
     /// <summary>
-    /// 销毁 RoomMap 的所有实例
+    /// 销毁 game/BottomTips 的所有实例
     /// </summary>
-    public static void Destroy_RoomMap()
+    public static void Destroy_Game_BottomTips()
     {
-        var uiInstance = GetUiInstance<UI.RoomMap.RoomMapPanel>(nameof(UI.RoomMap.RoomMap));
+        var uiInstance = GetUiInstance<UI.game.BottomTips.BottomTipsPanel>(nameof(UI.game.BottomTips.BottomTips));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -649,19 +649,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 RoomUI, 并返回UI实例
+    /// 打开 game/Encyclopedia, 并返回UI实例
     /// </summary>
-    public static UI.RoomUI.RoomUIPanel Open_RoomUI()
+    public static UI.game.Encyclopedia.EncyclopediaPanel Open_Game_Encyclopedia()
     {
-        return OpenUi<UI.RoomUI.RoomUIPanel>(UiName.RoomUI);
+        return OpenUi<UI.game.Encyclopedia.EncyclopediaPanel>(UiName.Game_Encyclopedia);
     }
 
     /// <summary>
-    /// 销毁 RoomUI 的所有实例
+    /// 销毁 game/Encyclopedia 的所有实例
     /// </summary>
-    public static void Destroy_RoomUI()
+    public static void Destroy_Game_Encyclopedia()
     {
-        var uiInstance = GetUiInstance<UI.RoomUI.RoomUIPanel>(nameof(UI.RoomUI.RoomUI));
+        var uiInstance = GetUiInstance<UI.game.Encyclopedia.EncyclopediaPanel>(nameof(UI.game.Encyclopedia.Encyclopedia));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -669,19 +669,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Setting, 并返回UI实例
+    /// 打开 game/Loading, 并返回UI实例
     /// </summary>
-    public static UI.Setting.SettingPanel Open_Setting()
+    public static UI.game.Loading.LoadingPanel Open_Game_Loading()
     {
-        return OpenUi<UI.Setting.SettingPanel>(UiName.Setting);
+        return OpenUi<UI.game.Loading.LoadingPanel>(UiName.Game_Loading);
     }
 
     /// <summary>
-    /// 销毁 Setting 的所有实例
+    /// 销毁 game/Loading 的所有实例
     /// </summary>
-    public static void Destroy_Setting()
+    public static void Destroy_Game_Loading()
     {
-        var uiInstance = GetUiInstance<UI.Setting.SettingPanel>(nameof(UI.Setting.Setting));
+        var uiInstance = GetUiInstance<UI.game.Loading.LoadingPanel>(nameof(UI.game.Loading.Loading));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -689,19 +689,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Settlement, 并返回UI实例
+    /// 打开 game/Main, 并返回UI实例
     /// </summary>
-    public static UI.Settlement.SettlementPanel Open_Settlement()
+    public static UI.game.Main.MainPanel Open_Game_Main()
     {
-        return OpenUi<UI.Settlement.SettlementPanel>(UiName.Settlement);
+        return OpenUi<UI.game.Main.MainPanel>(UiName.Game_Main);
     }
 
     /// <summary>
-    /// 销毁 Settlement 的所有实例
+    /// 销毁 game/Main 的所有实例
     /// </summary>
-    public static void Destroy_Settlement()
+    public static void Destroy_Game_Main()
     {
-        var uiInstance = GetUiInstance<UI.Settlement.SettlementPanel>(nameof(UI.Settlement.Settlement));
+        var uiInstance = GetUiInstance<UI.game.Main.MainPanel>(nameof(UI.game.Main.Main));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -709,19 +709,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 TileSetEditor, 并返回UI实例
+    /// 打开 game/PauseMenu, 并返回UI实例
     /// </summary>
-    public static UI.TileSetEditor.TileSetEditorPanel Open_TileSetEditor()
+    public static UI.game.PauseMenu.PauseMenuPanel Open_Game_PauseMenu()
     {
-        return OpenUi<UI.TileSetEditor.TileSetEditorPanel>(UiName.TileSetEditor);
+        return OpenUi<UI.game.PauseMenu.PauseMenuPanel>(UiName.Game_PauseMenu);
     }
 
     /// <summary>
-    /// 销毁 TileSetEditor 的所有实例
+    /// 销毁 game/PauseMenu 的所有实例
     /// </summary>
-    public static void Destroy_TileSetEditor()
+    public static void Destroy_Game_PauseMenu()
     {
-        var uiInstance = GetUiInstance<UI.TileSetEditor.TileSetEditorPanel>(nameof(UI.TileSetEditor.TileSetEditor));
+        var uiInstance = GetUiInstance<UI.game.PauseMenu.PauseMenuPanel>(nameof(UI.game.PauseMenu.PauseMenu));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -729,19 +729,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 TileSetEditorCombination, 并返回UI实例
+    /// 打开 game/RoomMap, 并返回UI实例
     /// </summary>
-    public static UI.TileSetEditorCombination.TileSetEditorCombinationPanel Open_TileSetEditorCombination()
+    public static UI.game.RoomMap.RoomMapPanel Open_Game_RoomMap()
     {
-        return OpenUi<UI.TileSetEditorCombination.TileSetEditorCombinationPanel>(UiName.TileSetEditorCombination);
+        return OpenUi<UI.game.RoomMap.RoomMapPanel>(UiName.Game_RoomMap);
     }
 
     /// <summary>
-    /// 销毁 TileSetEditorCombination 的所有实例
+    /// 销毁 game/RoomMap 的所有实例
     /// </summary>
-    public static void Destroy_TileSetEditorCombination()
+    public static void Destroy_Game_RoomMap()
     {
-        var uiInstance = GetUiInstance<UI.TileSetEditorCombination.TileSetEditorCombinationPanel>(nameof(UI.TileSetEditorCombination.TileSetEditorCombination));
+        var uiInstance = GetUiInstance<UI.game.RoomMap.RoomMapPanel>(nameof(UI.game.RoomMap.RoomMap));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -749,19 +749,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 TileSetEditorImport, 并返回UI实例
+    /// 打开 game/RoomUI, 并返回UI实例
     /// </summary>
-    public static UI.TileSetEditorImport.TileSetEditorImportPanel Open_TileSetEditorImport()
+    public static UI.game.RoomUI.RoomUIPanel Open_Game_RoomUI()
     {
-        return OpenUi<UI.TileSetEditorImport.TileSetEditorImportPanel>(UiName.TileSetEditorImport);
+        return OpenUi<UI.game.RoomUI.RoomUIPanel>(UiName.Game_RoomUI);
     }
 
     /// <summary>
-    /// 销毁 TileSetEditorImport 的所有实例
+    /// 销毁 game/RoomUI 的所有实例
     /// </summary>
-    public static void Destroy_TileSetEditorImport()
+    public static void Destroy_Game_RoomUI()
     {
-        var uiInstance = GetUiInstance<UI.TileSetEditorImport.TileSetEditorImportPanel>(nameof(UI.TileSetEditorImport.TileSetEditorImport));
+        var uiInstance = GetUiInstance<UI.game.RoomUI.RoomUIPanel>(nameof(UI.game.RoomUI.RoomUI));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -769,19 +769,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 TileSetEditorProject, 并返回UI实例
+    /// 打开 game/Setting, 并返回UI实例
     /// </summary>
-    public static UI.TileSetEditorProject.TileSetEditorProjectPanel Open_TileSetEditorProject()
+    public static UI.game.Setting.SettingPanel Open_Game_Setting()
     {
-        return OpenUi<UI.TileSetEditorProject.TileSetEditorProjectPanel>(UiName.TileSetEditorProject);
+        return OpenUi<UI.game.Setting.SettingPanel>(UiName.Game_Setting);
     }
 
     /// <summary>
-    /// 销毁 TileSetEditorProject 的所有实例
+    /// 销毁 game/Setting 的所有实例
     /// </summary>
-    public static void Destroy_TileSetEditorProject()
+    public static void Destroy_Game_Setting()
     {
-        var uiInstance = GetUiInstance<UI.TileSetEditorProject.TileSetEditorProjectPanel>(nameof(UI.TileSetEditorProject.TileSetEditorProject));
+        var uiInstance = GetUiInstance<UI.game.Setting.SettingPanel>(nameof(UI.game.Setting.Setting));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -789,19 +789,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 TileSetEditorTerrain, 并返回UI实例
+    /// 打开 game/Settlement, 并返回UI实例
     /// </summary>
-    public static UI.TileSetEditorTerrain.TileSetEditorTerrainPanel Open_TileSetEditorTerrain()
+    public static UI.game.Settlement.SettlementPanel Open_Game_Settlement()
     {
-        return OpenUi<UI.TileSetEditorTerrain.TileSetEditorTerrainPanel>(UiName.TileSetEditorTerrain);
+        return OpenUi<UI.game.Settlement.SettlementPanel>(UiName.Game_Settlement);
     }
 
     /// <summary>
-    /// 销毁 TileSetEditorTerrain 的所有实例
+    /// 销毁 game/Settlement 的所有实例
     /// </summary>
-    public static void Destroy_TileSetEditorTerrain()
+    public static void Destroy_Game_Settlement()
     {
-        var uiInstance = GetUiInstance<UI.TileSetEditorTerrain.TileSetEditorTerrainPanel>(nameof(UI.TileSetEditorTerrain.TileSetEditorTerrain));
+        var uiInstance = GetUiInstance<UI.game.Settlement.SettlementPanel>(nameof(UI.game.Settlement.Settlement));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -809,19 +809,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 Victory, 并返回UI实例
+    /// 打开 game/Victory, 并返回UI实例
     /// </summary>
-    public static UI.Victory.VictoryPanel Open_Victory()
+    public static UI.game.Victory.VictoryPanel Open_Game_Victory()
     {
-        return OpenUi<UI.Victory.VictoryPanel>(UiName.Victory);
+        return OpenUi<UI.game.Victory.VictoryPanel>(UiName.Game_Victory);
     }
 
     /// <summary>
-    /// 销毁 Victory 的所有实例
+    /// 销毁 game/Victory 的所有实例
     /// </summary>
-    public static void Destroy_Victory()
+    public static void Destroy_Game_Victory()
     {
-        var uiInstance = GetUiInstance<UI.Victory.VictoryPanel>(nameof(UI.Victory.Victory));
+        var uiInstance = GetUiInstance<UI.game.Victory.VictoryPanel>(nameof(UI.game.Victory.Victory));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -829,19 +829,19 @@ public static partial class UiManager
     }
 
     /// <summary>
-    /// 打开 WeaponRoulette, 并返回UI实例
+    /// 打开 game/WeaponRoulette, 并返回UI实例
     /// </summary>
-    public static UI.WeaponRoulette.WeaponRoulettePanel Open_WeaponRoulette()
+    public static UI.game.WeaponRoulette.WeaponRoulettePanel Open_Game_WeaponRoulette()
     {
-        return OpenUi<UI.WeaponRoulette.WeaponRoulettePanel>(UiName.WeaponRoulette);
+        return OpenUi<UI.game.WeaponRoulette.WeaponRoulettePanel>(UiName.Game_WeaponRoulette);
     }
 
     /// <summary>
-    /// 销毁 WeaponRoulette 的所有实例
+    /// 销毁 game/WeaponRoulette 的所有实例
     /// </summary>
-    public static void Destroy_WeaponRoulette()
+    public static void Destroy_Game_WeaponRoulette()
     {
-        var uiInstance = GetUiInstance<UI.WeaponRoulette.WeaponRoulettePanel>(nameof(UI.WeaponRoulette.WeaponRoulette));
+        var uiInstance = GetUiInstance<UI.game.WeaponRoulette.WeaponRoulettePanel>(nameof(UI.game.WeaponRoulette.WeaponRoulette));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();

@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.MapEditorProject;
+namespace UI.editor.MapEditorProject;
 
 public class GroupButtonCell : UiCell<MapEditorProject.GroupButton, DungeonRoomGroup>
 {

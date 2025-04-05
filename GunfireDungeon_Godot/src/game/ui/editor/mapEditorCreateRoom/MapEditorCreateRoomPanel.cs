@@ -6,7 +6,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorCreateRoom;
+namespace UI.editor.MapEditorCreateRoom;
 
 public partial class MapEditorCreateRoomPanel : MapEditorCreateRoom
 {

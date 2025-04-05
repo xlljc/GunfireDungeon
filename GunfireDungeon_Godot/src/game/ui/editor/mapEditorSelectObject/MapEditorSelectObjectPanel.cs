@@ -7,7 +7,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorSelectObject;
+namespace UI.editor.MapEditorSelectObject;
 
 public partial class MapEditorSelectObjectPanel : MapEditorSelectObject
 {

@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorImportCombination;
+namespace UI.editor.EditorImportCombination;
 
 public partial class EditorImportCombinationPanel : EditorImportCombination
 {

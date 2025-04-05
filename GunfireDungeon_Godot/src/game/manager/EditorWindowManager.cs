@@ -7,19 +7,19 @@ using System.Linq;
 using Config;
 using DsUi;
 using Godot;
-using UI.EditorColorPicker;
-using UI.EditorDungeonGroup;
-using UI.EditorForm;
-using UI.EditorImportCombination;
-using UI.EditorInfo;
-using UI.EditorInput;
-using UI.EditorTileImage;
-using UI.EditorTips;
-using UI.EditorWindow;
-using UI.MapEditorCreateMark;
-using UI.MapEditorCreatePreinstall;
-using UI.MapEditorCreateRoom;
-using UI.MapEditorSelectObject;
+using UI.editor.EditorColorPicker;
+using UI.editor.EditorDungeonGroup;
+using UI.editor.EditorForm;
+using UI.editor.EditorImportCombination;
+using UI.editor.EditorInfo;
+using UI.editor.EditorInput;
+using UI.editor.EditorTileImage;
+using UI.editor.EditorTips;
+using UI.editor.EditorWindow;
+using UI.editor.MapEditorCreateMark;
+using UI.editor.MapEditorCreatePreinstall;
+using UI.editor.MapEditorCreateRoom;
+using UI.editor.MapEditorSelectObject;
 
 /// <summary>
 /// 通用弹窗管理类
@@ -36,7 +36,7 @@ public static class EditorWindowManager
     public static void ShowColorPicker(Vector2 position, Color color, ColorPicker.ColorChangedEventHandler onChangeColor, Action onClose = null)
     {
         var window = CreateWindowInstance();
-        var colorPickerPanel = window.OpenBody<EditorColorPickerPanel>(UiManager.UiName.EditorColorPicker);
+        var colorPickerPanel = window.OpenBody<EditorColorPickerPanel>(UiManager.UiName.Editor_EditorColorPicker);
         window.SetWindowTitle("颜色选择器");
         window.SetWindowSize(new Vector2I(298, 720));
         window.S_Window.Instance.Position = new Vector2I((int)(position.X - 298f * 0.5f), (int)(position.Y + 80));
@@ -101,7 +101,7 @@ public static class EditorWindowManager
                 window.CloseWindow();
             })
         );
-        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.EditorTips);
+        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.Editor_EditorTips);
         body.SetMessage(message);
     }
 
@@ -131,7 +131,7 @@ public static class EditorWindowManager
                 window.CloseWindow();
             })
         );
-        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.EditorTips);
+        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.Editor_EditorTips);
         body.SetMessage(message);
         return  window;
     }
@@ -167,7 +167,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle(title);
         window.SetWindowSize(new Vector2I(450, 230));
-        var body = window.OpenBody<EditorInputPanel>(UiManager.UiName.EditorInput);
+        var body = window.OpenBody<EditorInputPanel>(UiManager.UiName.Editor_EditorInput);
         window.CloseEvent += () =>
         {
             onClose(body.GetValue(), false);
@@ -224,7 +224,7 @@ public static class EditorWindowManager
                 onClose(2);
             })
         );
-        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.EditorTips);
+        var body = window.OpenBody<EditorTipsPanel>(UiManager.UiName.Editor_EditorTips);
         body.SetMessage(message);
     }
 
@@ -238,7 +238,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("创建地牢组");
         window.SetWindowSize(new Vector2I(700, 500));
-        var body = window.OpenBody<EditorDungeonGroupPanel>(UiManager.UiName.EditorDungeonGroup);
+        var body = window.OpenBody<EditorDungeonGroupPanel>(UiManager.UiName.Editor_EditorDungeonGroup);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
             {
@@ -288,7 +288,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("编辑地牢组");
         window.SetWindowSize(new Vector2I(700, 500));
-        var body = window.OpenBody<EditorDungeonGroupPanel>(UiManager.UiName.EditorDungeonGroup);
+        var body = window.OpenBody<EditorDungeonGroupPanel>(UiManager.UiName.Editor_EditorDungeonGroup);
         body.InitData(group);
         body.SetEditMode();
         window.SetButtonList(
@@ -315,10 +315,10 @@ public static class EditorWindowManager
     /// <param name="onCreateRoom">创建成功时回调</param>
     public static void ShowCreateRoom(string groupName, int roomType, Action<DungeonRoomSplit> onCreateRoom)
     {
-        var window = UiManager.Open_EditorWindow();
+        var window = UiManager.Open_Editor_EditorWindow();
         window.SetWindowTitle("创建地牢房间");
         window.SetWindowSize(new Vector2I(700, 600));
-        var body = window.OpenBody<MapEditorCreateRoomPanel>(UiManager.UiName.MapEditorCreateRoom);
+        var body = window.OpenBody<MapEditorCreateRoomPanel>(UiManager.UiName.Editor_MapEditorCreateRoom);
         if (groupName != null)
         {
             body.SetSelectGroup(groupName);
@@ -350,10 +350,10 @@ public static class EditorWindowManager
     /// <param name="onSave">保存时回调</param>
     public static void ShowEditRoom(DungeonRoomSplit roomSplit, Action<DungeonRoomSplit> onSave)
     {
-        var window = UiManager.Open_EditorWindow();
+        var window = UiManager.Open_Editor_EditorWindow();
         window.SetWindowTitle("编辑地牢房间");
         window.SetWindowSize(new Vector2I(700, 600));
-        var body = window.OpenBody<MapEditorCreateRoomPanel>(UiManager.UiName.MapEditorCreateRoom);
+        var body = window.OpenBody<MapEditorCreateRoomPanel>(UiManager.UiName.Editor_MapEditorCreateRoom);
         body.InitEditData(roomSplit);
         
         window.SetButtonList(
@@ -382,10 +382,10 @@ public static class EditorWindowManager
     /// <param name="onCreatePreinstall">创建成功时的回调</param>
     public static void ShowCreatePreinstall(DungeonRoomType roomType, List<RoomPreinstallInfo> list, Action<RoomPreinstallInfo> onCreatePreinstall)
     {
-        var window = UiManager.Open_EditorWindow();
+        var window = UiManager.Open_Editor_EditorWindow();
         window.SetWindowTitle("创建房间预设");
         window.SetWindowSize(new Vector2I(700, 600));
-        var body = window.OpenBody<MapEditorCreatePreinstallPanel>(UiManager.UiName.MapEditorCreatePreinstall);
+        var body = window.OpenBody<MapEditorCreatePreinstallPanel>(UiManager.UiName.Editor_MapEditorCreatePreinstall);
         body.InitData(roomType);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
@@ -413,10 +413,10 @@ public static class EditorWindowManager
     /// <param name="onSavePreinstall">保存时的回调</param>
     public static void ShowEditPreinstall(DungeonRoomType roomType, List<RoomPreinstallInfo> list, RoomPreinstallInfo preinstallInfo, Action<RoomPreinstallInfo> onSavePreinstall)
     {
-        var window = UiManager.Open_EditorWindow();
+        var window = UiManager.Open_Editor_EditorWindow();
         window.SetWindowTitle("创建房间预设");
         window.SetWindowSize(new Vector2I(700, 600));
-        var body = window.OpenBody<MapEditorCreatePreinstallPanel>(UiManager.UiName.MapEditorCreatePreinstall);
+        var body = window.OpenBody<MapEditorCreatePreinstallPanel>(UiManager.UiName.Editor_MapEditorCreatePreinstall);
         body.InitData(roomType, preinstallInfo);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
@@ -447,7 +447,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("创建标记");
         window.SetWindowSize(new Vector2I(1400, 900));
-        var body = window.OpenBody<MapEditorCreateMarkPanel>(UiManager.UiName.MapEditorCreateMark);
+        var body = window.OpenBody<MapEditorCreateMarkPanel>(UiManager.UiName.Editor_MapEditorCreateMark);
         body.InitData(position, preloading);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
@@ -478,7 +478,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("编辑标记");
         window.SetWindowSize(new Vector2I(1400, 900));
-        var body = window.OpenBody<MapEditorCreateMarkPanel>(UiManager.UiName.MapEditorCreateMark);
+        var body = window.OpenBody<MapEditorCreateMarkPanel>(UiManager.UiName.Editor_MapEditorCreateMark);
         body.InitData(data, preloading);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
@@ -508,7 +508,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.S_Window.Instance.Size = new Vector2I(1000, 700);
         window.SetWindowTitle("选择物体");
-        var body = window.OpenBody<MapEditorSelectObjectPanel>(UiManager.UiName.MapEditorSelectObject);
+        var body = window.OpenBody<MapEditorSelectObjectPanel>(UiManager.UiName.Editor_MapEditorSelectObject);
         //设置显示的物体类型
         body.SetShowType(findType);
         window.SetButtonList(
@@ -552,7 +552,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.S_Window.Instance.Size = new Vector2I(750, 650);
         window.SetWindowTitle("导入组合");
-        var body = window.OpenBody<EditorImportCombinationPanel>(UiManager.UiName.EditorImportCombination);
+        var body = window.OpenBody<EditorImportCombinationPanel>(UiManager.UiName.Editor_EditorImportCombination);
         body.InitData(showName, color, texture);
         var accept = false;
         if (onCancel != null)
@@ -592,7 +592,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.S_Window.Instance.Size = new Vector2I(750, 650);
         window.SetWindowTitle("编辑组合");
-        var body = window.OpenBody<EditorImportCombinationPanel>(UiManager.UiName.EditorImportCombination);
+        var body = window.OpenBody<EditorImportCombinationPanel>(UiManager.UiName.Editor_EditorImportCombination);
         body.InitData(showName, color, texture);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("删除", () =>
@@ -629,7 +629,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("创建TileSet");
         window.SetWindowSize(new Vector2I(700, 500));
-        var body = window.OpenBody<EditorInfoPanel>(UiManager.UiName.EditorInfo);
+        var body = window.OpenBody<EditorInfoPanel>(UiManager.UiName.Editor_EditorInfo);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
             {
@@ -678,7 +678,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("编辑TileSet");
         window.SetWindowSize(new Vector2I(700, 500));
-        var body = window.OpenBody<EditorInfoPanel>(UiManager.UiName.EditorInfo);
+        var body = window.OpenBody<EditorInfoPanel>(UiManager.UiName.Editor_EditorInfo);
         body.InitData(new EditorInfoData(tileSetSplit.TileSetInfo.Name, tileSetSplit.Remark));
         body.SetNameInputEnable(false);
         window.SetButtonList(
@@ -708,7 +708,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("创建Terrain");
         window.SetWindowSize(new Vector2I(600, 350));
-        var body = window.OpenBody<EditorFormPanel>(UiManager.UiName.EditorForm);
+        var body = window.OpenBody<EditorFormPanel>(UiManager.UiName.Editor_EditorForm);
         
         //第一项
         var item1 = new FormItemData<LineEdit>("地形名称", new LineEdit()
@@ -766,7 +766,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("创建Terrain");
         window.SetWindowSize(new Vector2I(600, 350));
-        var body = window.OpenBody<EditorFormPanel>(UiManager.UiName.EditorForm);
+        var body = window.OpenBody<EditorFormPanel>(UiManager.UiName.Editor_EditorForm);
         
         //第一项
         var item1 = new FormItemData<LineEdit>("地形名称", new LineEdit()
@@ -818,7 +818,7 @@ public static class EditorWindowManager
         var window = CreateWindowInstance(parentUi);
         window.SetWindowTitle("导入纹理");
         window.SetWindowSize(new Vector2I(1400, 800));
-        var body = window.OpenBody<EditorTileImagePanel>(UiManager.UiName.EditorTileImage);
+        var body = window.OpenBody<EditorTileImagePanel>(UiManager.UiName.Editor_EditorTileImage);
         body.InitData(image);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
@@ -838,10 +838,10 @@ public static class EditorWindowManager
     {
         if (parentUi != null)
         {
-            return parentUi.OpenNestedUi<EditorWindowPanel>(UiManager.UiName.EditorWindow);
+            return parentUi.OpenNestedUi<EditorWindowPanel>(UiManager.UiName.Editor_EditorWindow);
         }
 
-        return UiManager.Open_EditorWindow();
+        return UiManager.Open_Editor_EditorWindow();
     }
 
     private static IEnumerator DelayTimeLabel(float time, Button button)

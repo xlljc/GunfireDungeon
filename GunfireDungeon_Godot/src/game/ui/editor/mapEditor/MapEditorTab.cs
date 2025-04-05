@@ -1,6 +1,6 @@
 ﻿using DsUi;
 
-namespace UI.MapEditor;
+namespace UI.editor.MapEditor;
 
 public enum MapEditorTab
 {

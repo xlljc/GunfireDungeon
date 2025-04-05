@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.RoomUI;
+namespace UI.game.RoomUI;
 
 /// <summary>
 /// 互动提示文本

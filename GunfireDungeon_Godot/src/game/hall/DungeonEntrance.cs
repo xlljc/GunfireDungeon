@@ -20,17 +20,17 @@ public partial class DungeonEntrance : Area2D
             var result = DungeonManager.CheckDungeon(config.GroupName);
             if (result.HasError)
             {
-                UiManager.Destroy_Loading();
+                UiManager.Destroy_Game_Loading();
                 EditorWindowManager.ShowTips("警告", "当前组'" + config.GroupName + "'" + result.ErrorMessage + ", 不能生成地牢!");
             }
             else
             {
-                UiManager.Open_Loading();
+                UiManager.Open_Game_Loading();
                 GameApplication.Instance.DungeonManager.ExitHall(true, () =>
                 {
                     GameApplication.Instance.DungeonManager.LoadDungeon(config, () =>
                     {
-                        UiManager.Destroy_Loading();
+                        UiManager.Destroy_Game_Loading();
                     });
                 });
             }

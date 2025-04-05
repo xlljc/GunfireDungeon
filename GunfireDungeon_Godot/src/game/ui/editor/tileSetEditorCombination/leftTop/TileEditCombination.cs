@@ -5,7 +5,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.TileSetEditorCombination;
+namespace UI.editor.TileSetEditorCombination;
 
 public partial class TileEditCombination : EditorGridBg
 {

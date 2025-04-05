@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kw3o772vpne"]
 
-[ext_resource type="Script" uid="uid://cyv4c7etaywna" path="res://src/game/ui/aaa/develop/editorTools/EditorToolsPanel.cs" id="1_y8kqk"]
+[ext_resource type="Script" uid="uid://cyv4c7etaywna" path="res://src/game/ui/develop/editorTools/EditorToolsPanel.cs" id="1_y8kqk"]
 
 [node name="EditorTools" type="Control"]
 layout_mode = 3

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using Config;
 using Godot;
-using UI.MapEditor;
 
 using DsUi;
+using UI.editor.MapEditor;
 
-namespace UI.MapEditorTools;
+namespace UI.editor.MapEditorTools;
 
 public partial class MapEditorToolsPanel : MapEditorTools
 {
@@ -180,7 +180,7 @@ public partial class MapEditorToolsPanel : MapEditorTools
             S_ToolRoot.Instance.Modulate = new Color(1, 1, 1, 0.4f);
         }
 
-        IsOpenPopUps = UiManager.GetUiInstanceCount(UiManager.UiName.EditorWindow) > 0;
+        IsOpenPopUps = UiManager.GetUiInstanceCount(UiManager.UiName.Editor_EditorWindow) > 0;
     }
 
     private void AddToolMapping(EditorToolBase toolBase)

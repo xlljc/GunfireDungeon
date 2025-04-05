@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Encyclopedia;
+namespace UI.game.Encyclopedia;
 
 public class TabCell : UiCell<Encyclopedia.TabButton, TabData>
 {

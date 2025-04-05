@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorMapTile;
+namespace UI.editor.MapEditorMapTile;
 
 public class CombinationCell : UiCell<MapEditorMapTile.CellButton, ImportCombinationData>
 {

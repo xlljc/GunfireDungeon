@@ -9,7 +9,7 @@ using Generator;
 
 using DsUi;
 
-namespace UI.EditorTools;
+namespace UI.develop.EditorTools;
 
 /// <summary>
 /// Godot编辑器扩展工具
@@ -268,7 +268,7 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
     /// </summary>
     public static void ShowTipsInEditor(string title, string message, Action onClose)
     {
-        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.EditorTools);
+        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.Develop_EditorTools);
         if (editorToolsInstance.Length > 0)
         {
             editorToolsInstance[0].ShowTips(title, message, onClose);
@@ -280,7 +280,7 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
     /// </summary>
     public static void ShowConfirmInEditor(string title, string message, Action<bool> onClose = null)
     {
-        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.EditorTools);
+        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.Develop_EditorTools);
         if (editorToolsInstance.Length > 0)
         {
             editorToolsInstance[0].ShowConfirm(title, message, onClose);

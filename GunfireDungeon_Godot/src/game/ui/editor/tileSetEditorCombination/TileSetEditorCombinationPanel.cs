@@ -2,8 +2,9 @@ using Godot;
 using UI.TileSetEditor;
 
 using DsUi;
+using UI.editor.TileSetEditor;
 
-namespace UI.TileSetEditorCombination;
+namespace UI.editor.TileSetEditorCombination;
 
 public partial class TileSetEditorCombinationPanel : TileSetEditorCombination
 {

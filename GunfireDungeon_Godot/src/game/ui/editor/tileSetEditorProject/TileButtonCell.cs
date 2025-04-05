@@ -3,8 +3,9 @@ using Godot;
 using UI.TileSetEditor;
 
 using DsUi;
+using UI.editor.TileSetEditor;
 
-namespace UI.TileSetEditorProject;
+namespace UI.editor.TileSetEditorProject;
 
 public class TileButtonCell : UiCell<TileSetEditorProject.TileButton, TileSetSplit>
 {
@@ -49,7 +50,7 @@ public class TileButtonCell : UiCell<TileSetEditorProject.TileButton, TileSetSpl
     public override void OnDoubleClick()
     {
         //打开TileSet编辑器面板
-        var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiName.TileSetEditor);
+        var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiName.Editor_TileSetEditor);
         tileSetEditorPanel.InitData(Data);
     }
 

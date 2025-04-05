@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Config;
 using Godot;
-using UI.MapEditor;
+
 
 using DsUi;
+using UI.editor.MapEditor;
 
-namespace UI.MapEditorObject;
+namespace UI.editor.MapEditorObject;
 
 public partial class MapEditorObjectPanel : MapEditorObject, IEditorTab
 {

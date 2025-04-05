@@ -1,5 +1,5 @@
 ﻿
-using UI.MapEditor;
+using UI.editor.MapEditor;
 
 /// <summary>
 /// 编辑物体标记

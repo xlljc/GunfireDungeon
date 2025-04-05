@@ -1,6 +1,6 @@
 ﻿using DsUi;
 
-namespace UI.EditorWindow;
+namespace UI.editor.EditorWindow;
 
 public class CustomButtonCell : UiCell<EditorWindow.CustomButton, EditorWindowPanel.ButtonData>
 {

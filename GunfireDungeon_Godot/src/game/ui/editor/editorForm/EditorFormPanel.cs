@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorForm;
+namespace UI.editor.EditorForm;
 
 /// <summary>
 /// 最基础的表单显示Ui

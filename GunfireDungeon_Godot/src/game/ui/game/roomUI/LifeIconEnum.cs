@@ -1,6 +1,6 @@
 ﻿using DsUi;
 
-namespace UI.RoomUI;
+namespace UI.game.RoomUI;
 
 public enum LifeIconEnum
 {

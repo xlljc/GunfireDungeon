@@ -3,7 +3,7 @@ using Config;
 
 using DsUi;
 
-namespace UI.Encyclopedia;
+namespace UI.game.Encyclopedia;
 
 public class ItemCell : UiCell<Encyclopedia.ObjectButton, ExcelConfig.ActivityBase>
 {

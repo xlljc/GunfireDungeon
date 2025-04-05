@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorColorPicker;
+namespace UI.editor.EditorColorPicker;
 
 public partial class EditorColorPickerPanel : EditorColorPicker
 {

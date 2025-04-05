@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.MapEditorTools;
+namespace UI.editor.MapEditorTools;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -27,7 +27,7 @@ public abstract partial class MapEditorTools : UiBase
     {
         get
         {
-            if (_L_ObjectTemplate == null) _L_ObjectTemplate = new ObjectTemplate((MapEditorToolsPanel)this, GetNode<UI.MapEditorTools.CustomObject>("ObjectTemplate"));
+            if (_L_ObjectTemplate == null) _L_ObjectTemplate = new ObjectTemplate((MapEditorToolsPanel)this, GetNode<UI.editor.MapEditorTools.CustomObject>("ObjectTemplate"));
             return _L_ObjectTemplate;
         }
     }
@@ -225,25 +225,25 @@ public abstract partial class MapEditorTools : UiBase
     /// <summary>
     /// 路径: MapEditorTools.ToolRoot.DoorToolTemplate.StartBtn
     /// </summary>
-    public class StartBtn : UiNode<MapEditorToolsPanel, UI.MapEditorTools.DoorDragButton, StartBtn>
+    public class StartBtn : UiNode<MapEditorToolsPanel, UI.editor.MapEditorTools.DoorDragButton, StartBtn>
     {
-        public StartBtn(MapEditorToolsPanel uiPanel, UI.MapEditorTools.DoorDragButton node) : base(uiPanel, node) {  }
-        public override StartBtn Clone() => new (UiPanel, (UI.MapEditorTools.DoorDragButton)Instance.Duplicate());
+        public StartBtn(MapEditorToolsPanel uiPanel, UI.editor.MapEditorTools.DoorDragButton node) : base(uiPanel, node) {  }
+        public override StartBtn Clone() => new (UiPanel, (UI.editor.MapEditorTools.DoorDragButton)Instance.Duplicate());
     }
 
     /// <summary>
     /// 路径: MapEditorTools.ToolRoot.DoorToolTemplate.EndBtn
     /// </summary>
-    public class EndBtn : UiNode<MapEditorToolsPanel, UI.MapEditorTools.DoorDragButton, EndBtn>
+    public class EndBtn : UiNode<MapEditorToolsPanel, UI.editor.MapEditorTools.DoorDragButton, EndBtn>
     {
-        public EndBtn(MapEditorToolsPanel uiPanel, UI.MapEditorTools.DoorDragButton node) : base(uiPanel, node) {  }
-        public override EndBtn Clone() => new (UiPanel, (UI.MapEditorTools.DoorDragButton)Instance.Duplicate());
+        public EndBtn(MapEditorToolsPanel uiPanel, UI.editor.MapEditorTools.DoorDragButton node) : base(uiPanel, node) {  }
+        public override EndBtn Clone() => new (UiPanel, (UI.editor.MapEditorTools.DoorDragButton)Instance.Duplicate());
     }
 
     /// <summary>
     /// 路径: MapEditorTools.ToolRoot.DoorToolTemplate
     /// </summary>
-    public class DoorToolTemplate : UiNode<MapEditorToolsPanel, UI.MapEditorTools.DoorDragArea, DoorToolTemplate>
+    public class DoorToolTemplate : UiNode<MapEditorToolsPanel, UI.editor.MapEditorTools.DoorDragArea, DoorToolTemplate>
     {
         /// <summary>
         /// 节点路径: MapEditorTools.ToolRoot.DoorArea
@@ -265,7 +265,7 @@ public abstract partial class MapEditorTools : UiBase
         {
             get
             {
-                if (_L_StartBtn == null) _L_StartBtn = new StartBtn(UiPanel, Instance.GetNode<UI.MapEditorTools.DoorDragButton>("StartBtn"));
+                if (_L_StartBtn == null) _L_StartBtn = new StartBtn(UiPanel, Instance.GetNode<UI.editor.MapEditorTools.DoorDragButton>("StartBtn"));
                 return _L_StartBtn;
             }
         }
@@ -278,23 +278,23 @@ public abstract partial class MapEditorTools : UiBase
         {
             get
             {
-                if (_L_EndBtn == null) _L_EndBtn = new EndBtn(UiPanel, Instance.GetNode<UI.MapEditorTools.DoorDragButton>("EndBtn"));
+                if (_L_EndBtn == null) _L_EndBtn = new EndBtn(UiPanel, Instance.GetNode<UI.editor.MapEditorTools.DoorDragButton>("EndBtn"));
                 return _L_EndBtn;
             }
         }
         private EndBtn _L_EndBtn;
 
-        public DoorToolTemplate(MapEditorToolsPanel uiPanel, UI.MapEditorTools.DoorDragArea node) : base(uiPanel, node) {  }
-        public override DoorToolTemplate Clone() => new (UiPanel, (UI.MapEditorTools.DoorDragArea)Instance.Duplicate());
+        public DoorToolTemplate(MapEditorToolsPanel uiPanel, UI.editor.MapEditorTools.DoorDragArea node) : base(uiPanel, node) {  }
+        public override DoorToolTemplate Clone() => new (UiPanel, (UI.editor.MapEditorTools.DoorDragArea)Instance.Duplicate());
     }
 
     /// <summary>
     /// 路径: MapEditorTools.ToolRoot.MarkTemplate
     /// </summary>
-    public class MarkTemplate : UiNode<MapEditorToolsPanel, UI.MapEditorTools.MarkTool, MarkTemplate>
+    public class MarkTemplate : UiNode<MapEditorToolsPanel, UI.editor.MapEditorTools.MarkTool, MarkTemplate>
     {
-        public MarkTemplate(MapEditorToolsPanel uiPanel, UI.MapEditorTools.MarkTool node) : base(uiPanel, node) {  }
-        public override MarkTemplate Clone() => new (UiPanel, (UI.MapEditorTools.MarkTool)Instance.Duplicate());
+        public MarkTemplate(MapEditorToolsPanel uiPanel, UI.editor.MapEditorTools.MarkTool node) : base(uiPanel, node) {  }
+        public override MarkTemplate Clone() => new (UiPanel, (UI.editor.MapEditorTools.MarkTool)Instance.Duplicate());
     }
 
     /// <summary>
@@ -374,7 +374,7 @@ public abstract partial class MapEditorTools : UiBase
         {
             get
             {
-                if (_L_DoorToolTemplate == null) _L_DoorToolTemplate = new DoorToolTemplate(UiPanel, Instance.GetNode<UI.MapEditorTools.DoorDragArea>("DoorToolTemplate"));
+                if (_L_DoorToolTemplate == null) _L_DoorToolTemplate = new DoorToolTemplate(UiPanel, Instance.GetNode<UI.editor.MapEditorTools.DoorDragArea>("DoorToolTemplate"));
                 return _L_DoorToolTemplate;
             }
         }
@@ -387,7 +387,7 @@ public abstract partial class MapEditorTools : UiBase
         {
             get
             {
-                if (_L_MarkTemplate == null) _L_MarkTemplate = new MarkTemplate(UiPanel, Instance.GetNode<UI.MapEditorTools.MarkTool>("MarkTemplate"));
+                if (_L_MarkTemplate == null) _L_MarkTemplate = new MarkTemplate(UiPanel, Instance.GetNode<UI.editor.MapEditorTools.MarkTool>("MarkTemplate"));
                 return _L_MarkTemplate;
             }
         }
@@ -427,7 +427,7 @@ public abstract partial class MapEditorTools : UiBase
     /// <summary>
     /// 路径: MapEditorTools.ObjectTemplate
     /// </summary>
-    public class ObjectTemplate : UiNode<MapEditorToolsPanel, UI.MapEditorTools.CustomObject, ObjectTemplate>
+    public class ObjectTemplate : UiNode<MapEditorToolsPanel, UI.editor.MapEditorTools.CustomObject, ObjectTemplate>
     {
         /// <summary>
         /// 节点路径: MapEditorTools.CollisionShape2D
@@ -468,8 +468,8 @@ public abstract partial class MapEditorTools : UiBase
         }
         private RectBrush _L_RectBrush;
 
-        public ObjectTemplate(MapEditorToolsPanel uiPanel, UI.MapEditorTools.CustomObject node) : base(uiPanel, node) {  }
-        public override ObjectTemplate Clone() => new (UiPanel, (UI.MapEditorTools.CustomObject)Instance.Duplicate());
+        public ObjectTemplate(MapEditorToolsPanel uiPanel, UI.editor.MapEditorTools.CustomObject node) : base(uiPanel, node) {  }
+        public override ObjectTemplate Clone() => new (UiPanel, (UI.editor.MapEditorTools.CustomObject)Instance.Duplicate());
     }
 
     /// <summary>

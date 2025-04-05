@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.TileSetEditorTerrain;
+namespace UI.editor.TileSetEditorTerrain;
 
 public partial class TerrainBrush : Control, IUiNodeScript
 {

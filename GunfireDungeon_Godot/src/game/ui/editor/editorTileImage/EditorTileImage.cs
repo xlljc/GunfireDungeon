@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.EditorTileImage;
+namespace UI.editor.EditorTileImage;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -27,8 +27,6 @@ public abstract partial class EditorTileImage : UiBase
 
     public sealed override void OnInitNestedUi()
     {
-        _ = L_HBoxContainer.L_Left.L_Bg;
-        _ = L_HBoxContainer.L_Left.L_Bg.L_TextureRoot.L_Brush;
 
     }
 
@@ -44,10 +42,10 @@ public abstract partial class EditorTileImage : UiBase
     /// <summary>
     /// 路径: EditorTileImage.HBoxContainer.Left.Bg.TextureRoot.Brush
     /// </summary>
-    public class Brush : UiNode<EditorTileImagePanel, UI.EditorTileImage.RectBrush, Brush>
+    public class Brush : UiNode<EditorTileImagePanel, UI.editor.EditorTileImage.RectBrush, Brush>
     {
-        public Brush(EditorTileImagePanel uiPanel, UI.EditorTileImage.RectBrush node) : base(uiPanel, node) {  }
-        public override Brush Clone() => new (UiPanel, (UI.EditorTileImage.RectBrush)Instance.Duplicate());
+        public Brush(EditorTileImagePanel uiPanel, UI.editor.EditorTileImage.RectBrush node) : base(uiPanel, node) {  }
+        public override Brush Clone() => new (UiPanel, (UI.editor.EditorTileImage.RectBrush)Instance.Duplicate());
     }
 
     /// <summary>
@@ -75,7 +73,7 @@ public abstract partial class EditorTileImage : UiBase
         {
             get
             {
-                if (_L_Brush == null) _L_Brush = new Brush(UiPanel, Instance.GetNode<UI.EditorTileImage.RectBrush>("Brush"));
+                if (_L_Brush == null) _L_Brush = new Brush(UiPanel, Instance.GetNode<UI.editor.EditorTileImage.RectBrush>("Brush"));
                 return _L_Brush;
             }
         }
@@ -97,7 +95,7 @@ public abstract partial class EditorTileImage : UiBase
     /// <summary>
     /// 路径: EditorTileImage.HBoxContainer.Left.Bg
     /// </summary>
-    public class Bg : UiNode<EditorTileImagePanel, UI.EditorTileImage.ImageBg, Bg>
+    public class Bg : UiNode<EditorTileImagePanel, UI.editor.EditorTileImage.ImageBg, Bg>
     {
         /// <summary>
         /// 节点路径: EditorTileImage.HBoxContainer.Left.TextureRoot
@@ -125,8 +123,8 @@ public abstract partial class EditorTileImage : UiBase
         }
         private FocusBtn _L_FocusBtn;
 
-        public Bg(EditorTileImagePanel uiPanel, UI.EditorTileImage.ImageBg node) : base(uiPanel, node) {  }
-        public override Bg Clone() => new (UiPanel, (UI.EditorTileImage.ImageBg)Instance.Duplicate());
+        public Bg(EditorTileImagePanel uiPanel, UI.editor.EditorTileImage.ImageBg node) : base(uiPanel, node) {  }
+        public override Bg Clone() => new (UiPanel, (UI.editor.EditorTileImage.ImageBg)Instance.Duplicate());
     }
 
     /// <summary>
@@ -141,7 +139,7 @@ public abstract partial class EditorTileImage : UiBase
         {
             get
             {
-                if (_L_Bg == null) _L_Bg = new Bg(UiPanel, Instance.GetNode<UI.EditorTileImage.ImageBg>("Bg"));
+                if (_L_Bg == null) _L_Bg = new Bg(UiPanel, Instance.GetNode<UI.editor.EditorTileImage.ImageBg>("Bg"));
                 return _L_Bg;
             }
         }

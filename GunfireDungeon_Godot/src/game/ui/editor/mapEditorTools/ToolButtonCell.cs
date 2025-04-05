@@ -1,6 +1,6 @@
 ﻿using DsUi;
 
-namespace UI.MapEditorTools;
+namespace UI.editor.MapEditorTools;
 
 public class ToolButtonCell : UiCell<MapEditorTools.ToolButton, EditorToolBase>
 {

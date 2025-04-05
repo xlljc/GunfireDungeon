@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.EditorTileImage;
+namespace UI.editor.EditorTileImage;
 
 public partial class RectBrush : Control, IUiNodeScript
 {

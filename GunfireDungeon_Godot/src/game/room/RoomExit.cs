@@ -29,18 +29,18 @@ public partial class RoomExit : Area2D
                 if (string.IsNullOrEmpty(nextName)) //没有下一层, 表示已经通关
                 {
                     World.Current.Pause = true;
-                    var openVictory = UiManager.Open_Victory();
+                    var openVictory = UiManager.Open_Game_Victory();
                     openVictory.Callback = () =>
                     {
                         //先直接返回大厅, 后面再补充流程
-                        UiManager.Open_Loading();
+                        UiManager.Open_Game_Loading();
                         GameApplication.Instance.DungeonManager.LoadRoleId = ActivityObject.Ids.Id_role0001;
                         GameApplication.Instance.DungeonManager.ExitDungeon(false, () =>
                         {
                             GameApplication.Instance.DungeonManager.LoadHall(() =>
                             {
                                 World.Current.Pause = false;
-                                UiManager.Destroy_Loading();
+                                UiManager.Destroy_Game_Loading();
                             });
                         });
                     };
@@ -49,10 +49,10 @@ public partial class RoomExit : Area2D
                 {
                     var config = gameApplication.GetDungeonConfig(nextName, gameApplication.DungeonManager.CurrConfig.DungeonLayer + 1);
                     
-                    UiManager.Open_Loading();
+                    UiManager.Open_Game_Loading();
                     GameApplication.Instance.DungeonManager.RestartDungeon(true, config, () =>
                     {
-                        UiManager.Destroy_Loading();
+                        UiManager.Destroy_Game_Loading();
                     });
                 }
             }

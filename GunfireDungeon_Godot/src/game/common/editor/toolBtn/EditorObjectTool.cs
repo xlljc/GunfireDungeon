@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using DsUi;
 using Godot;
-using UI.MapEditor;
-using UI.MapEditorObject;
-using UI.MapEditorTools;
+using UI.editor.MapEditor;
+using UI.editor.MapEditor;
+using UI.editor.MapEditorObject;
+using UI.editor.MapEditorTools;
 
 public class EditorObjectTool : EditorToolBase
 {

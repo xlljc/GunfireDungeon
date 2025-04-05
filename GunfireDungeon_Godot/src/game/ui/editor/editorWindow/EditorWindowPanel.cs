@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorWindow;
+namespace UI.editor.EditorWindow;
 
 public partial class EditorWindowPanel : EditorWindow
 {

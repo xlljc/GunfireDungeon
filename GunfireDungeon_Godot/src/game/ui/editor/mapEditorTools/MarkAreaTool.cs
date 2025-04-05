@@ -1,10 +1,10 @@
 ﻿using Godot;
-using UI.MapEditor;
+
 using Color = Godot.Color;
 
 using DsUi;
 
-namespace UI.MapEditorTools;
+namespace UI.editor.MapEditorTools;
 
 /// <summary>
 /// 标记区域工具

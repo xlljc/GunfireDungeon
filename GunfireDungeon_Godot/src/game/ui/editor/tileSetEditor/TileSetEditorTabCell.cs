@@ -1,6 +1,7 @@
 ﻿using DsUi;
+using UI.TileSetEditor;
 
-namespace UI.TileSetEditor;
+namespace UI.editor.TileSetEditor;
 
 public class TileSetEditorTabCell : UiCell<TileSetEditor.Tab, TileSetEditorTabData>
 {

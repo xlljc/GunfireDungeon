@@ -254,7 +254,7 @@ public partial class DungeonManager : Node2D
                 //鼠标改为Ui鼠标
                 GameApplication.Instance.Cursor.SetGuiMode(true);
                 //打开暂停Ui
-                UiManager.Open_PauseMenu();
+                UiManager.Open_Game_PauseMenu();
             }
             
             //更新迷雾
@@ -321,7 +321,7 @@ public partial class DungeonManager : Node2D
         yield return 0;
                 
         //打开游戏中的ui
-        UiManager.Open_RoomUI();
+        UiManager.Open_Game_RoomUI();
         yield return 0;
         
         //创建玩家
@@ -364,7 +364,7 @@ public partial class DungeonManager : Node2D
         hall.RoomInfo.Destroy();
         yield return 0;
         
-        UiManager.Destroy_RoomUI();
+        UiManager.Destroy_Game_RoomUI();
         yield return 0;
         if (!keepPlayer)
         {
@@ -436,14 +436,14 @@ public partial class DungeonManager : Node2D
                         {
                             _prevUi.ShowUi();
                             //尝试关闭加载Ui
-                            UiManager.Destroy_Loading();
+                            UiManager.Destroy_Game_Loading();
                         }
                     }
                     else //正常关闭Ui
                     {
-                        UiManager.Open_Main();
+                        UiManager.Open_Game_Main();
                         //尝试关闭加载Ui
-                        UiManager.Destroy_Loading();
+                        UiManager.Destroy_Game_Loading();
                     }
                     EditorWindowManager.ShowTips("错误", "生成房间尝试次数过多，生成地牢房间失败，请加大房间门连接区域，或者修改地牢生成规则！");
                     yield break;
@@ -506,7 +506,7 @@ public partial class DungeonManager : Node2D
         yield return _dungeonGenerator.EachRoomCoroutine(info => info.OnReady());
         
         //打开游戏中的ui
-        UiManager.Open_RoomUI();
+        UiManager.Open_Game_RoomUI();
         yield return 0;
         
         //创建自定义物体
@@ -565,7 +565,7 @@ public partial class DungeonManager : Node2D
         AutoTileConfig = null;
         _dungeonGenerator = null;
         
-        UiManager.Destroy_RoomUI();
+        UiManager.Destroy_Game_RoomUI();
         yield return 0;
         if (!keepPlayer)
         {

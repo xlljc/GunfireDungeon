@@ -3,7 +3,7 @@ using Config;
 
 using DsUi;
 
-namespace UI.MapEditorObject;
+namespace UI.editor.MapEditorObject;
 
 public class ItemCell : UiCell<MapEditorObject.Item, RoomObjectInfo>
 {

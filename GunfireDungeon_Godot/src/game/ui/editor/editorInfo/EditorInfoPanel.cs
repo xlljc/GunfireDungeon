@@ -2,7 +2,7 @@ using System.IO;
 
 using DsUi;
 
-namespace UI.EditorInfo;
+namespace UI.editor.EditorInfo;
 
 public partial class EditorInfoPanel : EditorInfo
 {

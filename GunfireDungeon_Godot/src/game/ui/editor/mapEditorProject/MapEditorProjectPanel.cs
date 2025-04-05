@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using UI.MapEditor;
+
 
 using DsUi;
+using UI.editor.MapEditor;
 
-namespace UI.MapEditorProject;
+namespace UI.editor.MapEditorProject;
 
 public partial class MapEditorProjectPanel : MapEditorProject
 {
@@ -102,7 +103,7 @@ public partial class MapEditorProjectPanel : MapEditorProject
     public void OpenSelectRoom(DungeonRoomSplit room, TileSetSplit tileSetSplit)
     {
         //创建地牢Ui
-        var mapEditor = ParentUi.OpenNextUi<MapEditorPanel>(UiManager.UiName.MapEditor);
+        var mapEditor = ParentUi.OpenNextUi<MapEditorPanel>(UiManager.UiName.Editor_MapEditor);
         //加载地牢
         mapEditor.LoadMap(room, tileSetSplit);
     }

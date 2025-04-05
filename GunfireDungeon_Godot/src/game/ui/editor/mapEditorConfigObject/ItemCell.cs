@@ -3,7 +3,7 @@ using Config;
 
 using DsUi;
 
-namespace UI.MapEditorConfigObject;
+namespace UI.editor.MapEditorConfigObject;
 
 public class ItemCell : UiCell<MapEditorConfigObject.CellButton, ExcelConfig.EditorObject>
 {

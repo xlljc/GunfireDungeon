@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorSelectObject;
+namespace UI.editor.MapEditorSelectObject;
 
 public class ObjectButtonCell : UiCell<MapEditorSelectObject.ObjectButton, ExcelConfig.ActivityBase>
 {

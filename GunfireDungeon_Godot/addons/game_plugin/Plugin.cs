@@ -2,7 +2,7 @@
 using System;
 using Generator;
 using Godot;
-using UI.EditorTools;
+using UI.develop.EditorTools;
 
 namespace Plugin
 {

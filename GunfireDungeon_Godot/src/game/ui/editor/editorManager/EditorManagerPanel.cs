@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.EditorManager;
+namespace UI.editor.EditorManager;
 
 public partial class EditorManagerPanel : EditorManager
 {

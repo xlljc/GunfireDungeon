@@ -3,7 +3,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditorMapTile;
+namespace UI.editor.MapEditorMapTile;
 
 /// <summary>
 /// 自由笔刷页签

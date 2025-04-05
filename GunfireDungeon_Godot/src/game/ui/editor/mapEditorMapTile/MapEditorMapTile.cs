@@ -1,6 +1,6 @@
 using DsUi;
 
-namespace UI.MapEditorMapTile;
+namespace UI.editor.MapEditorMapTile;
 
 /// <summary>
 /// Ui代码, 该类是根据ui场景自动生成的, 请不要手动编辑该类, 以免造成代码丢失
@@ -226,7 +226,7 @@ public abstract partial class MapEditorMapTile : UiBase
     /// <summary>
     /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab1
     /// </summary>
-    public class Tab1 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.FreeTileTab, Tab1>
+    public class Tab1 : UiNode<MapEditorMapTilePanel, UI.editor.MapEditorMapTile.FreeTileTab, Tab1>
     {
         /// <summary>
         /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.TabRoot
@@ -267,8 +267,8 @@ public abstract partial class MapEditorMapTile : UiBase
         }
         private FocusBtn _L_FocusBtn;
 
-        public Tab1(MapEditorMapTilePanel uiPanel, UI.MapEditorMapTile.FreeTileTab node) : base(uiPanel, node) {  }
-        public override Tab1 Clone() => new (UiPanel, (UI.MapEditorMapTile.FreeTileTab)Instance.Duplicate());
+        public Tab1(MapEditorMapTilePanel uiPanel, UI.editor.MapEditorMapTile.FreeTileTab node) : base(uiPanel, node) {  }
+        public override Tab1 Clone() => new (UiPanel, (UI.editor.MapEditorMapTile.FreeTileTab)Instance.Duplicate());
     }
 
     /// <summary>
@@ -393,7 +393,7 @@ public abstract partial class MapEditorMapTile : UiBase
     /// <summary>
     /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab2
     /// </summary>
-    public class Tab2 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.TerrainTileTab, Tab2>
+    public class Tab2 : UiNode<MapEditorMapTilePanel, UI.editor.MapEditorMapTile.TerrainTileTab, Tab2>
     {
         /// <summary>
         /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
@@ -408,8 +408,8 @@ public abstract partial class MapEditorMapTile : UiBase
         }
         private ScrollContainer _L_ScrollContainer;
 
-        public Tab2(MapEditorMapTilePanel uiPanel, UI.MapEditorMapTile.TerrainTileTab node) : base(uiPanel, node) {  }
-        public override Tab2 Clone() => new (UiPanel, (UI.MapEditorMapTile.TerrainTileTab)Instance.Duplicate());
+        public Tab2(MapEditorMapTilePanel uiPanel, UI.editor.MapEditorMapTile.TerrainTileTab node) : base(uiPanel, node) {  }
+        public override Tab2 Clone() => new (UiPanel, (UI.editor.MapEditorMapTile.TerrainTileTab)Instance.Duplicate());
     }
 
     /// <summary>
@@ -512,7 +512,7 @@ public abstract partial class MapEditorMapTile : UiBase
     /// <summary>
     /// 路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.Tab3
     /// </summary>
-    public class Tab3 : UiNode<MapEditorMapTilePanel, UI.MapEditorMapTile.CombinationTileTab, Tab3>
+    public class Tab3 : UiNode<MapEditorMapTilePanel, UI.editor.MapEditorMapTile.CombinationTileTab, Tab3>
     {
         /// <summary>
         /// 节点路径: MapEditorMapTile.VBoxContainer.Panel.MarginContainer.ScrollContainer
@@ -527,8 +527,8 @@ public abstract partial class MapEditorMapTile : UiBase
         }
         private ScrollContainer_1 _L_ScrollContainer;
 
-        public Tab3(MapEditorMapTilePanel uiPanel, UI.MapEditorMapTile.CombinationTileTab node) : base(uiPanel, node) {  }
-        public override Tab3 Clone() => new (UiPanel, (UI.MapEditorMapTile.CombinationTileTab)Instance.Duplicate());
+        public Tab3(MapEditorMapTilePanel uiPanel, UI.editor.MapEditorMapTile.CombinationTileTab node) : base(uiPanel, node) {  }
+        public override Tab3 Clone() => new (UiPanel, (UI.editor.MapEditorMapTile.CombinationTileTab)Instance.Duplicate());
     }
 
     /// <summary>
@@ -543,7 +543,7 @@ public abstract partial class MapEditorMapTile : UiBase
         {
             get
             {
-                if (_L_Tab1 == null) _L_Tab1 = new Tab1(UiPanel, Instance.GetNode<UI.MapEditorMapTile.FreeTileTab>("Tab1"));
+                if (_L_Tab1 == null) _L_Tab1 = new Tab1(UiPanel, Instance.GetNode<UI.editor.MapEditorMapTile.FreeTileTab>("Tab1"));
                 return _L_Tab1;
             }
         }
@@ -556,7 +556,7 @@ public abstract partial class MapEditorMapTile : UiBase
         {
             get
             {
-                if (_L_Tab2 == null) _L_Tab2 = new Tab2(UiPanel, Instance.GetNode<UI.MapEditorMapTile.TerrainTileTab>("Tab2"));
+                if (_L_Tab2 == null) _L_Tab2 = new Tab2(UiPanel, Instance.GetNode<UI.editor.MapEditorMapTile.TerrainTileTab>("Tab2"));
                 return _L_Tab2;
             }
         }
@@ -569,7 +569,7 @@ public abstract partial class MapEditorMapTile : UiBase
         {
             get
             {
-                if (_L_Tab3 == null) _L_Tab3 = new Tab3(UiPanel, Instance.GetNode<UI.MapEditorMapTile.CombinationTileTab>("Tab3"));
+                if (_L_Tab3 == null) _L_Tab3 = new Tab3(UiPanel, Instance.GetNode<UI.editor.MapEditorMapTile.CombinationTileTab>("Tab3"));
                 return _L_Tab3;
             }
         }

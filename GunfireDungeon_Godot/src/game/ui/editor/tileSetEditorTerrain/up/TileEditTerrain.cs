@@ -2,7 +2,7 @@
 
 using DsUi;
 
-namespace UI.TileSetEditorTerrain;
+namespace UI.editor.TileSetEditorTerrain;
 
 public partial class TileEditTerrain : EditorGridBg
 {

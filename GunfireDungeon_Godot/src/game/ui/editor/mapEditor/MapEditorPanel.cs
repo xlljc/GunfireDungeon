@@ -4,7 +4,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.MapEditor;
+namespace UI.editor.MapEditor;
 
 public partial class MapEditorPanel : MapEditor
 {

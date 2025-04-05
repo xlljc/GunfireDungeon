@@ -3,8 +3,9 @@ using Godot;
 using UI.TileSetEditor;
 
 using DsUi;
+using UI.editor.TileSetEditor;
 
-namespace UI.MapEditorProject;
+namespace UI.editor.MapEditorProject;
 
 public class RoomButtonCell : UiCell<MapEditorProject.RoomButton, DungeonRoomSplit>
 {
@@ -59,7 +60,7 @@ public class RoomButtonCell : UiCell<MapEditorProject.RoomButton, DungeonRoomSpl
                 if (v)
                 {
                     //跳转编辑TileSet页面
-                    var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiName.TileSetEditor);
+                    var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiName.Editor_TileSetEditor);
                     tileSetEditorPanel.InitData(tileSetSplit);
                 }
             });

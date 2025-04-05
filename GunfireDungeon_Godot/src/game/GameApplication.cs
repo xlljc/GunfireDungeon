@@ -5,7 +5,7 @@ using System.Text.Json;
 using Config;
 using DsUi;
 using Godot;
-using UI.BottomTips;
+using UI.game.BottomTips;
 
 public partial class GameApplication : Node2D, ICoroutine
 {
@@ -205,7 +205,7 @@ public partial class GameApplication : Node2D, ICoroutine
         this.CallDelay(0, () =>
         {
             //打开主菜单Ui
-            UiManager.Open_Main();
+            UiManager.Open_Game_Main();
         });
         //UiManager.Open_MapEditorProject();
     }

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using UI.RoomUI;
 
 using DsUi;
+using UI.game.RoomUI;
 
-namespace UI.RoomMap;
+namespace UI.game.RoomMap;
 
 /// <summary>
 /// 房间的小地图
@@ -67,7 +67,7 @@ public partial class RoomMapPanel : RoomMap
             //按下地图按键
             if (InputManager.Map && !_isMagnifyMap && !_pressMapFlag) //展开小地图
             {
-                if (UiManager.GetUiInstanceCount(UiManager.UiName.PauseMenu) == 0 && !InputManager.Roulette)
+                if (UiManager.GetUiInstanceCount(UiManager.UiName.Game_PauseMenu) == 0 && !InputManager.Roulette)
                 {
                     ExpandMap();
                 }

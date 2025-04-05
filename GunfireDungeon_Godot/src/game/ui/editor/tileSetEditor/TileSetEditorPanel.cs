@@ -2,8 +2,9 @@ using System.Linq;
 using Godot;
 
 using DsUi;
+using UI.TileSetEditor;
 
-namespace UI.TileSetEditor;
+namespace UI.editor.TileSetEditor;
 
 public partial class TileSetEditorPanel : TileSetEditor
 {
@@ -83,17 +84,17 @@ public partial class TileSetEditorPanel : TileSetEditor
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "纹理",
-            UiName = UiManager.UiName.TileSetEditorImport,
+            UiName = UiManager.UiName.Editor_TileSetEditorImport,
         });
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "地形",
-            UiName = UiManager.UiName.TileSetEditorTerrain,
+            UiName = UiManager.UiName.Editor_TileSetEditorTerrain,
         });
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "组合",
-            UiName = UiManager.UiName.TileSetEditorCombination,
+            UiName = UiManager.UiName.Editor_TileSetEditorCombination,
         });
         TabGrid.Visible = false;
 
