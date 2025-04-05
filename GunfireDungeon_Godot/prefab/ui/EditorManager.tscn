@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd0jthh4nqnoj"]
 
 [ext_resource type="Script" uid="uid://baj4mll7ravka" path="res://src/game/ui/editorManager/EditorManagerPanel.cs" id="1_6qnog"]
-[ext_resource type="Texture2D" uid="uid://cajcnlimvoxk" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_ykjr7"]
+[ext_resource type="Texture2D" uid="uid://beb4h46xebidc" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_ykjr7"]
 [ext_resource type="PackedScene" uid="uid://dh7y03tq6v0a2" path="res://prefab/ui/MapEditorProject.tscn" id="3_hlfkf"]
 [ext_resource type="PackedScene" uid="uid://bxrpxwsvveq8i" path="res://prefab/ui/TileSetEditorProject.tscn" id="4_mejcx"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjbbs1protcwb"]
 
 [ext_resource type="Script" uid="uid://islg1kkl6f07" path="res://src/test/TestNavigation2.cs" id="1"]
-[ext_resource type="Texture2D" uid="uid://uhhfgdhpk7i4" path="res://icon.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://n5dn6p2e04d4" path="res://icon.png" id="2"]
 
 [sub_resource type="NavigationPolygon" id="1"]
 vertices = PackedVector2Array(1138, 78, 1168, 948, 1070, 733, 1033, 218, 79, 73, 950, 211, 975, 834, 888, 830, 62, 978, 806, 831, 883, 208, 796, 205, 288, 833, 286, 610, 807, 609, 208, 836, 212, 202, 795, 525, 300, 527, 292, 192)

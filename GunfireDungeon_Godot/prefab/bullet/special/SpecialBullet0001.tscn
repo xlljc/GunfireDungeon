@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bg2uaer4lq2mt" path="res://src/game/activity/bullet/special/SpecialBullet0001.cs" id="1_n2flm"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_w38kf"]
-[ext_resource type="Texture2D" uid="uid://bskw374th4d8w" path="res://resource/sprite/bullet/special/SpecialBullet0001.png" id="3_ngxxk"]
+[ext_resource type="Texture2D" uid="uid://btl7unpntiu6u" path="res://resource/sprite/bullet/special/SpecialBullet0001.png" id="3_ngxxk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2deln"]
 resource_local_to_scene = true

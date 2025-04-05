@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ddqc1k0x50yau" path="res://src/game/activity/bullet/summons/Summons.cs" id="1_86dyv"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_pmcyj"]
-[ext_resource type="Texture2D" uid="uid://ckd0dyueicc4r" path="res://resource/sprite/bullet/summons/Summons0001.png" id="3_osoic"]
-[ext_resource type="Texture2D" uid="uid://h7hkgbwj1li" path="res://resource/sprite/common/Smoke.png" id="4_m8coj"]
+[ext_resource type="Texture2D" uid="uid://dx58ibte4tkht" path="res://resource/sprite/bullet/summons/Summons0001.png" id="3_osoic"]
+[ext_resource type="Texture2D" uid="uid://dj6e0chlxnnl8" path="res://resource/sprite/common/Smoke.png" id="4_m8coj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bs7yr"]
 resource_local_to_scene = true

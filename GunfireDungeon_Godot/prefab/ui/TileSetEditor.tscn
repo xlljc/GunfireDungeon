@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://dn5brsxa6w3l6"]
 
 [ext_resource type="Script" uid="uid://6tka30k2v6a8" path="res://src/game/ui/tileSetEditor/TileSetEditorPanel.cs" id="1_rgx4n"]
-[ext_resource type="Texture2D" uid="uid://cajcnlimvoxk" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_naycu"]
-[ext_resource type="Texture2D" uid="uid://cat35d7ueu7gu" path="res://resource/sprite/ui/commonIcon/Save.png" id="3_bcuxk"]
-[ext_resource type="Texture2D" uid="uid://bn47bmilcw4x0" path="res://resource/sprite/ui/commonIcon/Select2.png" id="4_t8bqb"]
-[ext_resource type="Texture2D" uid="uid://n4atvj5fkcpg" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_u8gg1"]
-[ext_resource type="Texture2D" uid="uid://c5778ntk2rdon" path="res://resource/sprite/ui/commonIcon/Delete.png" id="5_gepb1"]
-[ext_resource type="Texture2D" uid="uid://c4ltpf5a3egu1" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="7_2tur5"]
+[ext_resource type="Texture2D" uid="uid://beb4h46xebidc" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_naycu"]
+[ext_resource type="Texture2D" uid="uid://b5f2urfi40j1j" path="res://resource/sprite/ui/commonIcon/Save.png" id="3_bcuxk"]
+[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="4_t8bqb"]
+[ext_resource type="Texture2D" uid="uid://b0dnbsixwh5v7" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_u8gg1"]
+[ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="5_gepb1"]
+[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="7_2tur5"]
 
 [node name="TileSetEditor" type="Control"]
 layout_mode = 3

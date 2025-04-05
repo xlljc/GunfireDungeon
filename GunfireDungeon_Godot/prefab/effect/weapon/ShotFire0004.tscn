@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://yg8n8xi3ucqi"]
 
-[ext_resource type="Texture2D" uid="uid://dw3amegyt2ehh" path="res://resource/sprite/shootFire/ShotFire0003.png" id="1_lxoh4"]
+[ext_resource type="Texture2D" uid="uid://bdxo5mkcfj7r5" path="res://resource/sprite/shootFire/ShotFire0003.png" id="1_lxoh4"]
 [ext_resource type="Script" uid="uid://dydrw20qekl0j" path="res://src/game/effects/AutoDestroySprite.cs" id="2_qlt57"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cqk8"]

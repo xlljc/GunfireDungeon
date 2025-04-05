@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvl3xslqlk6j" path="res://src/game/effects/enemy/EnemyDead0002.cs" id="1_1faeu"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_q163q"]
-[ext_resource type="Texture2D" uid="uid://c5oifmf3ultn2" path="res://resource/sprite/role/enemy0002/Enemy0002_dead.png" id="3_l0kbp"]
+[ext_resource type="Texture2D" uid="uid://2gctey4x5bna" path="res://resource/sprite/role/enemy0002/Enemy0002_dead.png" id="3_l0kbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1mj2"]
 resource_local_to_scene = true

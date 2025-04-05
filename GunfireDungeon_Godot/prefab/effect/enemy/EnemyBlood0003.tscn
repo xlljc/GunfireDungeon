@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcgsdlklegiia"]
 
-[ext_resource type="Texture2D" uid="uid://cjg050p1t5skx" path="res://resource/sprite/role/dle_liquid/enemy0003.png" id="1_ybkq0"]
+[ext_resource type="Texture2D" uid="uid://dsnkse276ghjp" path="res://resource/sprite/role/dle_liquid/enemy0003.png" id="1_ybkq0"]
 [ext_resource type="Script" uid="uid://bs7t8b8lo5gim" path="res://src/game/effects/enemy/EnemyBlood0002.cs" id="2_pfwfh"]
 
 [sub_resource type="Animation" id="Animation_p16al"]

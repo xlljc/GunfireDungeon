@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1m4kunwifxax"]
 
-[ext_resource type="Texture2D" uid="uid://cg6fwn5mtofsl" path="res://resource/sprite/role/enemy0001/enemy0001.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://dto03bc2qbhnj" path="res://resource/sprite/shell/Shell0001.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cf0j8obin1bws" path="res://resource/sprite/role/enemy0001/enemy0001.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dygjis588bl0e" path="res://resource/sprite/shell/Shell0001.png" id="4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ch2b5"]
 margins = Vector2i(80, 144)

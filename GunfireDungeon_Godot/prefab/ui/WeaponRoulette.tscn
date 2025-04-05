@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbjpknb3d5gfw"]
 
 [ext_resource type="Script" uid="uid://bsyk8ga2tjsi7" path="res://src/game/ui/weaponRoulette/WeaponRoulettePanel.cs" id="1_1uvbk"]
-[ext_resource type="Texture2D" uid="uid://e6krxgte01j3" path="res://resource/sprite/ui/roulette/RouletteBg.png" id="2_k6gjh"]
+[ext_resource type="Texture2D" uid="uid://cpiqyjomox1l5" path="res://resource/sprite/ui/roulette/RouletteBg.png" id="2_k6gjh"]
 [ext_resource type="Script" uid="uid://dhkdbvc8oufa7" path="res://src/game/ui/weaponRoulette/WeaponSlot.cs" id="3_8v011"]
 [ext_resource type="Shader" uid="uid://bukuvnjyi8ggb" path="res://resource/shader/Outline.gdshader" id="4_p348k"]
-[ext_resource type="Texture2D" uid="uid://dmm8jw06bhffh" path="res://resource/sprite/ui/commonIcon/Lock.png" id="6_7mog3"]
+[ext_resource type="Texture2D" uid="uid://vuaph41l7x0t" path="res://resource/sprite/ui/commonIcon/Lock.png" id="6_7mog3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1wmw"]
 resource_local_to_scene = true

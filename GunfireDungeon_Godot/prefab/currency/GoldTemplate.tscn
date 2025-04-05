@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1ivwjcmrtemh" path="res://src/game/activity/currency/Gold.cs" id="1_p60kl"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_5nps8"]
-[ext_resource type="Texture2D" uid="uid://cthwlbqve6i1l" path="res://resource/sprite/currency/Gold_shadow.png" id="3_6xm1s"]
+[ext_resource type="Texture2D" uid="uid://dxmgquso3iuxb" path="res://resource/sprite/currency/Gold_shadow.png" id="3_6xm1s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qdjhs"]
 resource_local_to_scene = true

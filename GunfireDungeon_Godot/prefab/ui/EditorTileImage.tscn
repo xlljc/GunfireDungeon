@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0j60lj0euk3y"]
 
 [ext_resource type="Script" uid="uid://cpij38mlyc5mi" path="res://src/game/ui/editorTileImage/EditorTileImagePanel.cs" id="1_y1hns"]
-[ext_resource type="Texture2D" uid="uid://d2wslibovwv7w" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="2_ntsra"]
+[ext_resource type="Texture2D" uid="uid://c24s6kbsih118" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="2_ntsra"]
 [ext_resource type="Script" uid="uid://b6w7uap72jtrn" path="res://src/game/ui/editorTileImage/ImageBg.cs" id="2_qkj2u"]
 [ext_resource type="Script" uid="uid://cfqfos46y6i67" path="res://src/game/ui/editorTileImage/RectBrush.cs" id="3_fic1t"]
 

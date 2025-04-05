@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://dh7y03tq6v0a2"]
 
 [ext_resource type="Script" uid="uid://lrknr202v2d8" path="res://src/game/ui/mapEditorProject/MapEditorProjectPanel.cs" id="1_5aioo"]
-[ext_resource type="Texture2D" uid="uid://blfvsup876agh" path="res://resource/sprite/ui/commonIcon/Search.png" id="3_f5h8c"]
-[ext_resource type="Texture2D" uid="uid://n4atvj5fkcpg" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_okvq0"]
-[ext_resource type="Texture2D" uid="uid://bn47bmilcw4x0" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_rcbyx"]
-[ext_resource type="Texture2D" uid="uid://dggb6p4sdmfry" path="res://resource/sprite/ui/commonIcon/Edit.png" id="6_qalh0"]
-[ext_resource type="Texture2D" uid="uid://c5778ntk2rdon" path="res://resource/sprite/ui/commonIcon/Delete.png" id="7_lnry3"]
-[ext_resource type="Texture2D" uid="uid://c4ltpf5a3egu1" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="9_xrt38"]
+[ext_resource type="Texture2D" uid="uid://dg8pxnmakjf6" path="res://resource/sprite/ui/commonIcon/Search.png" id="3_f5h8c"]
+[ext_resource type="Texture2D" uid="uid://b0dnbsixwh5v7" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_okvq0"]
+[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_rcbyx"]
+[ext_resource type="Texture2D" uid="uid://c1wknwc3gbnsu" path="res://resource/sprite/ui/commonIcon/Edit.png" id="6_qalh0"]
+[ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="7_lnry3"]
+[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="9_xrt38"]
 
 [node name="MapEditorProject" type="Control"]
 layout_mode = 3
