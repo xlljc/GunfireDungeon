@@ -27,6 +27,8 @@ public abstract partial class EditorTileImage : UiBase
 
     public sealed override void OnInitNestedUi()
     {
+        _ = L_HBoxContainer.L_Left.L_Bg;
+        _ = L_HBoxContainer.L_Left.L_Bg.L_TextureRoot.L_Brush;
 
     }
 
