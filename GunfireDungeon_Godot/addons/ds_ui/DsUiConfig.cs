@@ -13,7 +13,7 @@ public static class DsUiConfig
     /// <summary>
     /// UiManager 打开和关闭 ui 的代码
     /// </summary>
-    public const string UiManagerMethodsCodePath = "src/ui/UiManager_Methods.cs";
+    public const string UiManagerMethodsCodePath = "src/game/manager/UiManager_Methods.cs";
 
     /// <summary>
     /// Ui预制体保存路径
@@ -23,5 +23,5 @@ public static class DsUiConfig
     /// <summary>
     /// Ui代码保存路径
     /// </summary>
-    public const string UiCodeDir = "src/ui/";
+    public const string UiCodeDir = "src/game/ui/";
 }
