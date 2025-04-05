@@ -76,7 +76,7 @@ namespace Plugin
                 }
             }
 
-            _editorTools = GD.Load<PackedScene>(ResourcePath.prefab_ui_EditorTools_tscn).Instantiate<EditorToolsPanel>();
+            _editorTools = GD.Load<PackedScene>(ResourcePath.prefab_ui_develop_EditorTools_tscn).Instantiate<EditorToolsPanel>();
             var editorMainScreen = EditorInterface.Singleton.GetEditorMainScreen();
             editorMainScreen.AddChild(_editorTools);
 

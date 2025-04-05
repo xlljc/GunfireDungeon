@@ -16,8 +16,8 @@
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="12_fgyob"]
 [ext_resource type="Texture2D" uid="uid://blma3p7lvkhft" path="res://resource/sprite/ui/roomUI/ChargeProgressBar.png" id="13_6w7qi"]
 [ext_resource type="Texture2D" uid="uid://3tb6r2vcoikk" path="res://resource/sprite/ui/roomUI/ChargeProgress.png" id="13_vuglj"]
-[ext_resource type="PackedScene" uid="uid://bmj3p25gwpqpn" path="res://prefab/ui/RoomMap.tscn" id="16_rp3sg"]
-[ext_resource type="PackedScene" uid="uid://dbjpknb3d5gfw" path="res://prefab/ui/WeaponRoulette.tscn" id="17_ydc4r"]
+[ext_resource type="PackedScene" uid="uid://bmj3p25gwpqpn" path="res://prefab/ui/game/RoomMap.tscn" id="16_rp3sg"]
+[ext_resource type="PackedScene" uid="uid://dbjpknb3d5gfw" path="res://prefab/ui/game/WeaponRoulette.tscn" id="17_ydc4r"]
 
 [sub_resource type="Gradient" id="1"]
 colors = PackedColorArray(0.4, 0.498039, 1, 1, 0.4, 0.498039, 1, 0.313726)

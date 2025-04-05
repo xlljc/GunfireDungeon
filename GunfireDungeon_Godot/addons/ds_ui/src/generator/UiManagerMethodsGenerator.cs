@@ -96,7 +96,8 @@ namespace DsUi.Generator
                     // 判断文件是否是ui
                     if (!File.Exists(DsUiConfig.UiCodeDir + csCodePath))
                     {
-                        GD.Print($"------检测到非ui文件: {fullName}");
+                        GD.Print($"----------- 检测到非ui文件: {fullName}，找不到对应Ui代码：{DsUiConfig.UiCodeDir + csCodePath}");
+                        continue;
                     }
                     GD.Print($"检测到ui文件: {fullName}");
                     

@@ -6,8 +6,9 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\game\ui\debug\" />
-    <Folder Include="src\game\ui\editorTools" />
+    <Folder Include="src\game\ui\aaa\develop\" />
+    <Folder Include="src\game\ui\aaa\editor\" />
+    <Folder Include="src\game\ui\aaa\game\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="android\**" />
