@@ -47,7 +47,7 @@ folder_colors={
 
 [gui]
 
-theme/custom="res://resource/theme/mainTheme.tres"
+theme/custom="uid://ds668te2rph30"
 
 [importer_defaults]
 

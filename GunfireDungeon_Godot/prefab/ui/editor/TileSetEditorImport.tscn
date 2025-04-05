@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4h6gt4jkx25e"]
 
-[ext_resource type="Script" uid="uid://b0glle81ovd4s" path="res://src/game/ui/tileSetEditorImport/TileSetEditorImportPanel.cs" id="1_rkxih"]
+[ext_resource type="Script" uid="uid://b0glle81ovd4s" path="res://src/game/ui/editor/tileSetEditorImport/TileSetEditorImportPanel.cs" id="1_rkxih"]
 [ext_resource type="Texture2D" uid="uid://c48ojyuqlia23" path="res://resource/sprite/ui/commonIcon/Import.png" id="2_cc6ug"]
 [ext_resource type="Texture2D" uid="uid://c24s6kbsih118" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="3_tbedj"]
 
@@ -46,6 +46,7 @@ offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "点击导入纹理或者将纹理拖拽到该区域, 格式为'.png'"
+horizontal_alignment = 1
 
 [node name="ImportIcon" type="TextureRect" parent="."]
 layout_mode = 1

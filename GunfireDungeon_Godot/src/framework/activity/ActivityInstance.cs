@@ -447,7 +447,7 @@ public partial class ActivityInstance : Node2D
         {
             _errorSprite = new Sprite2D();
             _errorSprite.AddToGroup(GroupName);
-            _errorSprite.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Error_mini_png);
+            _errorSprite.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Error_png);
             AddChild(_errorSprite);
             MoveChild(_errorSprite, GetChildCount() - 1);
         }

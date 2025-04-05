@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb2ekkpxifd7g"]
+[gd_scene load_steps=7 format=3 uid="uid://bb2ekkpxifd7g"]
 
-[ext_resource type="Script" uid="uid://bsyrwqek8xte3" path="res://src/game/ui/mapEditorMapLayer/MapEditorMapLayerPanel.cs" id="1_3j05m"]
+[ext_resource type="Script" uid="uid://bsyrwqek8xte3" path="res://src/game/ui/editor/mapEditorMapLayer/MapEditorMapLayerPanel.cs" id="1_3j05m"]
 [ext_resource type="Texture2D" uid="uid://vuaph41l7x0t" path="res://resource/sprite/ui/commonIcon/Lock.png" id="2_pfhyj"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="3_k8b5h"]
 [ext_resource type="Texture2D" uid="uid://2xeq28o34dh6" path="res://resource/sprite/ui/commonIcon/Visible.png" id="3_rqjh4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk25p"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ks3o"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="MapEditorMapLayer" type="Control"]
 layout_mode = 3
@@ -27,19 +33,22 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "淡化未选中的层"
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_tk25p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ks3o")
 flat = true
+icon_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LayerButton" type="Button" parent="VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "layer1"

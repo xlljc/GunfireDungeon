@@ -52,7 +52,7 @@ public partial class MapEditorSelectObjectPanel : MapEditorSelectObject
         _objectGrid = new UiGrid<ObjectButton, ExcelConfig.ActivityBase>(S_ObjectButton, typeof(ObjectButtonCell));
         _objectGrid.SetAutoColumns(true);
         _objectGrid.SetHorizontalExpand(true);
-        _objectGrid.SetCellOffset(new Vector2I(10, 10));
+        _objectGrid.SetCellOffset(new Vector2I(2, 2));
     }
 
     public override void OnDestroyUi()

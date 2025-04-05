@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://1kdlshgpe3q2"]
+[gd_scene load_steps=5 format=3 uid="uid://1kdlshgpe3q2"]
 
-[ext_resource type="Script" uid="uid://dqt8vjjd8xxax" path="res://src/game/ui/mapEditorConfigObject/MapEditorConfigObjectPanel.cs" id="1_qm00b"]
+[ext_resource type="Script" uid="uid://dqt8vjjd8xxax" path="res://src/game/ui/editor/mapEditorConfigObject/MapEditorConfigObjectPanel.cs" id="1_qm00b"]
 [ext_resource type="Texture2D" uid="uid://dg8pxnmakjf6" path="res://resource/sprite/ui/commonIcon/Search.png" id="2_rkdcy"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="3_65sjj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkon3"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.431373, 0.905882, 1)
 
 [node name="MapEditorConfigObject" type="Control"]
 layout_mode = 3
@@ -37,14 +45,17 @@ placeholder_text = "搜索"
 [node name="SearchButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("2_rkdcy")
+flat = true
+icon_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="CellButton" type="Button" parent="VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(112, 162)
+custom_minimum_size = Vector2(83, 123)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_nkon3")
 
 [node name="PreviewImage" type="TextureRect" parent="VBoxContainer/ScrollContainer/CellButton"]
 layout_mode = 1
@@ -54,7 +65,7 @@ anchor_bottom = 1.0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = -2.0
-offset_bottom = -52.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -67,10 +78,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -52.0
+offset_top = -42.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "名称"
 horizontal_alignment = 1
 vertical_alignment = 1

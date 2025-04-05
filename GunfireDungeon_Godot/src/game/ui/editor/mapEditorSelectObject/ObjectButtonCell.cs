@@ -15,6 +15,7 @@ public class ObjectButtonCell : UiCell<MapEditorSelectObject.ObjectButton, Excel
     public override void OnSetData(ExcelConfig.ActivityBase data)
     {
         CellNode.L_ObjectName.Instance.Text = data.Name;
+        CellNode.Instance.TooltipText = data.Name;
         if (!string.IsNullOrEmpty(data.Icon))
         {
             CellNode.L_PreviewImage.Instance.Visible = true;

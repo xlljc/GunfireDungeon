@@ -7,7 +7,7 @@ using UI.editor.MapEditor;
 public class EditorMarkTool : EditorToolBase
 {
     public EditorMarkTool(EditorTileMap editorTileMap) : base(
-        ResourcePath.resource_sprite_ui_commonIcon_DoorTool_png, "编辑物体标记", true, editorTileMap, EditorToolEnum.MarkTool)
+        ResourcePath.resource_sprite_ui_commonIcon_ObjectTool_png, "编辑物体标记", true, editorTileMap, EditorToolEnum.MarkTool)
     {
     }
 

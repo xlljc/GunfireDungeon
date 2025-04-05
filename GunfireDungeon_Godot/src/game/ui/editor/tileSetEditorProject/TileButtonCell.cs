@@ -39,11 +39,11 @@ public class TileButtonCell : UiCell<TileSetEditorProject.TileButton, TileSetSpl
 
         if (hasError)
         {
-            CellNode.L_Icon.Instance.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Error_mini_png);
+            CellNode.L_Icon.Instance.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Error_png);
         }
         else
         {
-            CellNode.L_Icon.Instance.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Success_mini_png);
+            CellNode.L_Icon.Instance.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Success_png);
         }
     }
 

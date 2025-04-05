@@ -36,7 +36,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_mqp1c")
-Layer = null
 metadata/_edit_vertical_guides_ = [1900.0]
 
 [node name="ToolRoot" type="Control" parent="."]
@@ -199,15 +198,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -84.0
+offset_left = -70.0
 offset_top = 19.0
 offset_right = -20.0
-offset_bottom = 83.0
+offset_bottom = 69.0
 grow_horizontal = 0
 
 [node name="ToolButton" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture_normal = ExtResource("2_rwvbg")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Select" type="NinePatchRect" parent="HBoxContainer/ToolButton"]
 layout_mode = 1

@@ -18,7 +18,7 @@ public class EditorObjectTool : EditorToolBase
 
     
     public EditorObjectTool(EditorTileMap editorTileMap) : base(
-        ResourcePath.resource_sprite_ui_commonIcon_DoorTool_png, "编辑物体", true, editorTileMap, EditorToolEnum.ObjectTool)
+        ResourcePath.resource_sprite_ui_commonIcon_ObjectTool_png, "编辑物体", true, editorTileMap, EditorToolEnum.ObjectTool)
     {
     }
 

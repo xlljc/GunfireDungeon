@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bt4xo2lb4h4rx"]
 
-[ext_resource type="Script" uid="uid://cse15hiqgnnrv" path="res://src/game/ui/mapEditorCreateMark/MapEditorCreateMarkPanel.cs" id="1_cjivg"]
+[ext_resource type="Script" uid="uid://cse15hiqgnnrv" path="res://src/game/ui/editor/mapEditorCreateMark/MapEditorCreateMarkPanel.cs" id="1_cjivg"]
 [ext_resource type="Texture2D" uid="uid://b0dnbsixwh5v7" path="res://resource/sprite/ui/commonIcon/Add.png" id="2_pxemo"]
 [ext_resource type="Material" uid="uid://cces3bhds7jyi" path="res://resource/material/Blend.tres" id="2_xb40b"]
 [ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="3_7xihk"]
 [ext_resource type="Texture2D" uid="uid://b11nxkuyq8xus" path="res://resource/sprite/ui/commonIcon/Right.png" id="3_v5clf"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="4_7uegb"]
-[ext_resource type="Script" uid="uid://ceg36n113neeb" path="res://src/game/ui/mapEditorCreateMark/attribute/NumberAttribute.cs" id="6_1ym7l"]
-[ext_resource type="Script" uid="uid://bsv2tp3it2ldd" path="res://src/game/ui/mapEditorCreateMark/attribute/ObjectAttribute.cs" id="7_516p2"]
-[ext_resource type="Script" uid="uid://cihpsh2mmb7o1" path="res://src/game/ui/mapEditorCreateMark/attribute/OptionAttribute.cs" id="7_o1tg2"]
+[ext_resource type="Script" uid="uid://ceg36n113neeb" path="res://src/game/ui/editor/mapEditorCreateMark/attribute/NumberAttribute.cs" id="6_1ym7l"]
+[ext_resource type="Script" uid="uid://bsv2tp3it2ldd" path="res://src/game/ui/editor/mapEditorCreateMark/attribute/ObjectAttribute.cs" id="7_516p2"]
+[ext_resource type="Script" uid="uid://cihpsh2mmb7o1" path="res://src/game/ui/editor/mapEditorCreateMark/attribute/OptionAttribute.cs" id="7_o1tg2"]
 [ext_resource type="Texture2D" uid="uid://c1wknwc3gbnsu" path="res://resource/sprite/ui/commonIcon/Edit.png" id="7_yeuy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywcv8"]
@@ -176,6 +176,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "添加物体"
 icon = ExtResource("2_pxemo")
+flat = true
 
 [node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -322,6 +323,8 @@ custom_minimum_size = Vector2(43, 43)
 layout_mode = 2
 size_flags_vertical = 4
 icon = ExtResource("3_7xihk")
+flat = true
+icon_alignment = 1
 
 [node name="ExpandPanel" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -453,6 +456,8 @@ layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 60.0
 icon = ExtResource("7_yeuy4")
+flat = true
+icon_alignment = 1
 
 [node name="ObjectIcon" type="TextureRect" parent="ObjectBar/HBoxContainer"]
 visible = false
@@ -473,3 +478,5 @@ layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 60.0
 icon = ExtResource("3_7xihk")
+flat = true
+icon_alignment = 1

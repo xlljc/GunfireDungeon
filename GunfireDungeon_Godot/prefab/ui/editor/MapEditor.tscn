@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://csbxfkdupsckv"]
 
-[ext_resource type="Script" uid="uid://ubxesu2ygxum" path="res://src/game/ui/mapEditor/MapEditorPanel.cs" id="1_5s7a0"]
+[ext_resource type="Script" uid="uid://ubxesu2ygxum" path="res://src/game/ui/editor/mapEditor/MapEditorPanel.cs" id="1_5s7a0"]
 [ext_resource type="Texture2D" uid="uid://beb4h46xebidc" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_gkcw7"]
 [ext_resource type="Texture2D" uid="uid://b5f2urfi40j1j" path="res://resource/sprite/ui/commonIcon/Save.png" id="3_qq8k4"]
 [ext_resource type="Texture2D" uid="uid://dxulsa7y4jdh2" path="res://resource/sprite/ui/commonIcon/Play.png" id="4_2imnr"]
 [ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="4_465u2"]
-[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/mapEditor/tileView/EditorTileMap.cs" id="4_mhy1a"]
+[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/editor/mapEditor/tileView/EditorTileMap.cs" id="4_mhy1a"]
 [ext_resource type="Texture2D" uid="uid://rsy6yfuf1u2k" path="res://resource/sprite/ui/commonIcon/Setting.png" id="5_ubl8b"]
 [ext_resource type="PackedScene" uid="uid://uova1lj10oxv" path="res://prefab/ui/editor/MapEditorTools.tscn" id="6_7pvgu"]
 [ext_resource type="PackedScene" uid="uid://1kdlshgpe3q2" path="res://prefab/ui/editor/MapEditorConfigObject.tscn" id="7_42mx1"]
@@ -103,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Head" type="Panel" parent="Bg/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Back" type="Button" parent="Bg/VBoxContainer/Head"]
@@ -111,10 +111,11 @@ layout_mode = 2
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 62.0
-offset_bottom = 68.0
+offset_bottom = 48.0
 grow_vertical = 2
 size_flags_horizontal = 0
 icon = ExtResource("2_gkcw7")
+flat = true
 icon_alignment = 1
 
 [node name="Save" type="Button" parent="Bg/VBoxContainer/Head"]
@@ -122,10 +123,11 @@ layout_mode = 2
 offset_left = 64.0
 offset_top = 2.0
 offset_right = 124.0
-offset_bottom = 68.0
+offset_bottom = 48.0
 grow_vertical = 2
 size_flags_horizontal = 0
 icon = ExtResource("3_qq8k4")
+flat = true
 icon_alignment = 1
 
 [node name="Title" type="Label" parent="Bg/VBoxContainer/Head"]
@@ -133,7 +135,7 @@ layout_mode = 0
 offset_left = 136.0
 offset_top = 2.0
 offset_right = 272.0
-offset_bottom = 68.0
+offset_bottom = 48.0
 text = "正在编辑"
 vertical_alignment = 1
 
@@ -144,11 +146,12 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -61.0
 offset_top = 2.0
-offset_right = -1.0
-offset_bottom = 68.0
+offset_right = -15.0
+offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 icon = ExtResource("4_2imnr")
+flat = true
 icon_alignment = 1
 
 [node name="PlaySetting" type="Button" parent="Bg/VBoxContainer/Head"]
@@ -158,11 +161,12 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 1.0
 offset_top = 2.0
-offset_right = 61.0
-offset_bottom = 68.0
+offset_right = 47.0
+offset_bottom = 48.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 icon = ExtResource("5_ubl8b")
+flat = true
 icon_alignment = 1
 
 [node name="HSplitContainer" type="HBoxContainer" parent="Bg/VBoxContainer"]
@@ -186,10 +190,18 @@ layout_mode = 2
 
 [node name="MapEditorMapLayer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/LayerPanel" instance=ExtResource("7_ychtn")]
 layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
 
 [node name="MapEditorConfigObject" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/LayerPanel" instance=ExtResource("7_42mx1")]
 visible = false
 layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
 
 [node name="Left" type="Panel" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -241,7 +253,7 @@ centered = false
 
 [node name="ErrorCellAnimationPlayer" type="AnimationPlayer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap/ErrorCell"]
 libraries = {
-"": SubResource("AnimationLibrary_371oi")
+&"": SubResource("AnimationLibrary_371oi")
 }
 
 [node name="Brush" type="Node2D" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap"]
@@ -277,10 +289,12 @@ theme_override_constants/margin_bottom = 2
 [node name="TabContainer" type="TabContainer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/Right/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="MapTile" type="MarginContainer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/Right/MarginContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
+metadata/_tab_index = 0
 
 [node name="MapEditorMapTile" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/Right/MarginContainer/TabContainer/MapTile" instance=ExtResource("10_4fu5v")]
 layout_mode = 2
@@ -289,6 +303,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 10
+metadata/_tab_index = 1
 
 [node name="MapEditorObject" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/Right/MarginContainer/TabContainer/MapObject" instance=ExtResource("12_vpk4h")]
 layout_mode = 2
@@ -297,6 +312,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 10
+metadata/_tab_index = 2
 
 [node name="MapEditorMapMark" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/Right/MarginContainer/TabContainer/MapMark" instance=ExtResource("8_8tgeu")]
 layout_mode = 2

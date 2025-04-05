@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh7y03tq6v0a2"]
+[gd_scene load_steps=9 format=3 uid="uid://dh7y03tq6v0a2"]
 
-[ext_resource type="Script" uid="uid://lrknr202v2d8" path="res://src/game/ui/mapEditorProject/MapEditorProjectPanel.cs" id="1_5aioo"]
+[ext_resource type="Script" uid="uid://lrknr202v2d8" path="res://src/game/ui/editor/mapEditorProject/MapEditorProjectPanel.cs" id="1_5aioo"]
 [ext_resource type="Texture2D" uid="uid://dg8pxnmakjf6" path="res://resource/sprite/ui/commonIcon/Search.png" id="3_f5h8c"]
 [ext_resource type="Texture2D" uid="uid://b0dnbsixwh5v7" path="res://resource/sprite/ui/commonIcon/Add.png" id="4_okvq0"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_rcbyx"]
 [ext_resource type="Texture2D" uid="uid://c1wknwc3gbnsu" path="res://resource/sprite/ui/commonIcon/Edit.png" id="6_qalh0"]
+[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error.png" id="7_7igof"]
 [ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="7_lnry3"]
-[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="9_xrt38"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7igof"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.431373, 0.905882, 1)
 
 [node name="MapEditorProject" type="Control"]
 layout_mode = 3
@@ -30,7 +38,7 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 1.5
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
 layout_mode = 1
@@ -59,6 +67,8 @@ placeholder_text = "搜索"
 [node name="GroupSearchButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("3_f5h8c")
+flat = true
+icon_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)
@@ -68,26 +78,33 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 10
 icon = ExtResource("4_okvq0")
+flat = true
+icon_alignment = 1
 
 [node name="GroupEditButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 icon = ExtResource("6_qalh0")
+flat = true
+icon_alignment = 1
 
 [node name="GroupDeleteButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 icon = ExtResource("7_lnry3")
+flat = true
+icon_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="GroupButton" type="Button" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "testGroup1"
 alignment = 0
 text_overrun_behavior = 3
+icon_alignment = 1
 
 [node name="SelectTexture" type="NinePatchRect" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/GroupButton"]
 layout_mode = 1
@@ -106,7 +123,7 @@ patch_margin_bottom = 4
 [node name="Panel2" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 8.0
+size_flags_stretch_ratio = 8.5
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel2"]
 layout_mode = 1
@@ -128,37 +145,46 @@ custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 
 [node name="RoomSearchInput" type="LineEdit" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 placeholder_text = "搜索"
 
 [node name="RoomTypeButton" type="OptionButton" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="RoomSearchButton" type="Button" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("3_f5h8c")
+flat = true
+icon_alignment = 1
 
 [node name="RoomAddButton" type="Button" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("4_okvq0")
+flat = true
+icon_alignment = 1
 
 [node name="RoomEditButton" type="Button" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("6_qalh0")
+flat = true
+icon_alignment = 1
 
 [node name="RoomDeleteButton" type="Button" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 icon = ExtResource("7_lnry3")
+flat = true
+icon_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="RoomButton" type="Button" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(200, 285)
+custom_minimum_size = Vector2(140, 210)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_7igof")
 
 [node name="PreviewImage" type="TextureRect" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/ScrollContainer/RoomButton"]
 layout_mode = 1
@@ -168,10 +194,11 @@ anchor_bottom = 1.0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = -2.0
-offset_bottom = -87.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+expand_mode = 5
 stretch_mode = 5
 
 [node name="RoomName" type="Label" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/ScrollContainer/RoomButton"]
@@ -180,8 +207,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -86.0
-offset_bottom = -43.0
+offset_top = -71.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Room1"
@@ -195,7 +222,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -43.0
+offset_top = -35.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "战斗"
@@ -219,8 +247,8 @@ patch_margin_bottom = 4
 
 [node name="ErrorTexture" type="TextureRect" parent="HBoxContainer/Panel2/MarginContainer/VBoxContainer/ScrollContainer/RoomButton"]
 layout_mode = 0
-offset_left = 157.0
-offset_top = 158.0
-offset_right = 197.0
-offset_bottom = 198.0
-texture = ExtResource("9_xrt38")
+offset_left = 95.0
+offset_top = 96.0
+offset_right = 135.0
+offset_bottom = 136.0
+texture = ExtResource("7_7igof")

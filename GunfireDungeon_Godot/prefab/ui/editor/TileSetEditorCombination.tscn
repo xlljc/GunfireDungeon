@@ -1,15 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://daias2tkvj20c"]
+[gd_scene load_steps=12 format=3 uid="uid://daias2tkvj20c"]
 
-[ext_resource type="Script" uid="uid://da85ekib03ik7" path="res://src/game/ui/tileSetEditorCombination/TileSetEditorCombinationPanel.cs" id="1_to1lc"]
-[ext_resource type="Script" uid="uid://i6j0fehfkda8" path="res://src/game/ui/tileSetEditorCombination/leftBottom/TileEditArea.cs" id="2_h43yx"]
-[ext_resource type="Script" uid="uid://dsn4lwbcujj13" path="res://src/game/ui/tileSetEditorCombination/leftTop/RectBrush.cs" id="3_avikb"]
+[ext_resource type="Script" uid="uid://da85ekib03ik7" path="res://src/game/ui/editor/tileSetEditorCombination/TileSetEditorCombinationPanel.cs" id="1_to1lc"]
+[ext_resource type="Script" uid="uid://i6j0fehfkda8" path="res://src/game/ui/editor/tileSetEditorCombination/leftBottom/TileEditArea.cs" id="2_h43yx"]
+[ext_resource type="Script" uid="uid://dsn4lwbcujj13" path="res://src/game/ui/editor/tileSetEditorCombination/leftTop/RectBrush.cs" id="3_avikb"]
 [ext_resource type="Texture2D" uid="uid://x720gbsdy1qo" path="res://resource/sprite/ui/commonIcon/Delete2.png" id="5_6jqro"]
 [ext_resource type="Texture2D" uid="uid://dxulsa7y4jdh2" path="res://resource/sprite/ui/commonIcon/Play.png" id="6_75xjp"]
-[ext_resource type="Script" uid="uid://b1e4tye0xreb2" path="res://src/game/ui/tileSetEditorCombination/leftTop/TileEditCombination.cs" id="6_bb3jf"]
+[ext_resource type="Script" uid="uid://b1e4tye0xreb2" path="res://src/game/ui/editor/tileSetEditorCombination/leftTop/TileEditCombination.cs" id="6_bb3jf"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="6_g5ey6"]
-[ext_resource type="Script" uid="uid://ch204srivtjbr" path="res://src/game/ui/tileSetEditorCombination/right/TileSelected.cs" id="6_gql80"]
+[ext_resource type="Script" uid="uid://ch204srivtjbr" path="res://src/game/ui/editor/tileSetEditorCombination/right/TileSelected.cs" id="6_gql80"]
 [ext_resource type="Script" uid="uid://8jk5o3d2luys" path="res://src/game/common/editor/EditorMaskBrush.cs" id="7_k0dkc"]
 [ext_resource type="Texture2D" uid="uid://c24s6kbsih118" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="7_mbnpy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2talc"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.431373, 0.905882, 1)
 
 [node name="TileSetEditorCombination" type="Control"]
 layout_mode = 3
@@ -128,14 +136,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -191.0
+offset_left = -137.0
 offset_top = -84.0
-offset_right = -15.0
+offset_right = -17.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "导入组合"
 icon = ExtResource("6_75xjp")
+flat = true
 
 [node name="LeftBottom" type="Panel" parent="HSplitContainer/VSplitContainer"]
 layout_mode = 2
@@ -257,6 +266,7 @@ size_flags_vertical = 3
 [node name="CellButton" type="Button" parent="HSplitContainer/Right/MarginContainer/RightBg/ScrollContainer"]
 custom_minimum_size = Vector2(120, 170)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_2talc")
 
 [node name="PreviewImage" type="TextureRect" parent="HSplitContainer/Right/MarginContainer/RightBg/ScrollContainer/CellButton"]
 layout_mode = 1

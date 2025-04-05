@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://tjbfj67t5akm"]
+[gd_scene load_steps=9 format=3 uid="uid://tjbfj67t5akm"]
 
-[ext_resource type="Script" uid="uid://h437wn6fihos" path="res://src/game/ui/mapEditorMapTile/MapEditorMapTilePanel.cs" id="1_gtth6"]
-[ext_resource type="Script" uid="uid://xtpod88mgo0u" path="res://src/game/ui/mapEditorMapTile/FreeTileTab.cs" id="2_5c2no"]
+[ext_resource type="Script" uid="uid://h437wn6fihos" path="res://src/game/ui/editor/mapEditorMapTile/MapEditorMapTilePanel.cs" id="1_gtth6"]
+[ext_resource type="Script" uid="uid://xtpod88mgo0u" path="res://src/game/ui/editor/mapEditorMapTile/FreeTileTab.cs" id="2_5c2no"]
 [ext_resource type="Texture2D" uid="uid://c24s6kbsih118" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="3_sibps"]
-[ext_resource type="Script" uid="uid://bdmt803583p1p" path="res://src/game/ui/mapEditorMapTile/TerrainTileTab.cs" id="4_jxcal"]
+[ext_resource type="Script" uid="uid://bdmt803583p1p" path="res://src/game/ui/editor/mapEditorMapTile/TerrainTileTab.cs" id="4_jxcal"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_f4thw"]
-[ext_resource type="Script" uid="uid://1nuvbxrvqcox" path="res://src/game/ui/mapEditorMapTile/CombinationTileTab.cs" id="5_ty17f"]
-[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error_mini.png" id="6_u35dn"]
+[ext_resource type="Script" uid="uid://1nuvbxrvqcox" path="res://src/game/ui/editor/mapEditorMapTile/CombinationTileTab.cs" id="5_ty17f"]
+[ext_resource type="Texture2D" uid="uid://c0a1pd8qdb5qy" path="res://resource/sprite/ui/commonIcon/Error.png" id="6_u35dn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7ila"]
+bg_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.431373, 0.905882, 1)
 
 [node name="MapEditorMapTile" type="Control"]
 layout_mode = 3
@@ -48,8 +56,8 @@ text = "笔刷类型："
 [node name="HandleOption" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "自由绘制"
 popup/item_0/id = 0
 popup/item_1/text = "地形绘制"
@@ -148,6 +156,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_k7ila")
 
 [node name="Select" type="NinePatchRect" parent="VBoxContainer/Panel/MarginContainer/Tab2/ScrollContainer/TerrainItem"]
 layout_mode = 1
@@ -216,8 +225,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CellButton" type="Button" parent="VBoxContainer/Panel/MarginContainer/Tab3/ScrollContainer"]
-custom_minimum_size = Vector2(120, 170)
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_k7ila")
 
 [node name="PreviewImage" type="TextureRect" parent="VBoxContainer/Panel/MarginContainer/Tab3/ScrollContainer/CellButton"]
 layout_mode = 1

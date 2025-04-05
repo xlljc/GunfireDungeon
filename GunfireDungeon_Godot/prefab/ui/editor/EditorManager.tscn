@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd0jthh4nqnoj"]
 
-[ext_resource type="Script" uid="uid://baj4mll7ravka" path="res://src/game/ui/editorManager/EditorManagerPanel.cs" id="1_6qnog"]
+[ext_resource type="Script" uid="uid://baj4mll7ravka" path="res://src/game/ui/editor/editorManager/EditorManagerPanel.cs" id="1_6qnog"]
 [ext_resource type="Texture2D" uid="uid://beb4h46xebidc" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_ykjr7"]
 [ext_resource type="PackedScene" uid="uid://dh7y03tq6v0a2" path="res://prefab/ui/editor/MapEditorProject.tscn" id="3_hlfkf"]
 [ext_resource type="PackedScene" uid="uid://bxrpxwsvveq8i" path="res://prefab/ui/editor/TileSetEditorProject.tscn" id="4_mejcx"]
@@ -32,7 +32,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="Head" type="Panel" parent="Bg/VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Back" type="Button" parent="Bg/VBoxContainer/Head"]
@@ -40,9 +40,10 @@ layout_mode = 2
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 62.0
-offset_bottom = 68.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 icon = ExtResource("2_ykjr7")
+flat = true
 icon_alignment = 1
 
 [node name="Title" type="Label" parent="Bg/VBoxContainer/Head"]
@@ -59,14 +60,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "地图管理器"
+vertical_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="Bg/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="Map" type="MarginContainer" parent="Bg/VBoxContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
+metadata/_tab_index = 0
 
 [node name="MapEditorProject" parent="Bg/VBoxContainer/TabContainer/Map" instance=ExtResource("3_hlfkf")]
 layout_mode = 2
@@ -75,6 +79,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 10
+metadata/_tab_index = 1
 
 [node name="TileSetEditorProject" parent="Bg/VBoxContainer/TabContainer/TileSet" instance=ExtResource("4_mejcx")]
 layout_mode = 2
