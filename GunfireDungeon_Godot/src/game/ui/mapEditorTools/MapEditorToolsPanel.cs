@@ -180,7 +180,7 @@ public partial class MapEditorToolsPanel : MapEditorTools
             S_ToolRoot.Instance.Modulate = new Color(1, 1, 1, 0.4f);
         }
 
-        IsOpenPopUps = UiManager.GetUiInstanceCount(UiManager.UiNames.EditorWindow) > 0;
+        IsOpenPopUps = UiManager.GetUiInstanceCount(UiManager.UiName.EditorWindow) > 0;
     }
 
     private void AddToolMapping(EditorToolBase toolBase)

@@ -102,7 +102,7 @@ public partial class MapEditorProjectPanel : MapEditorProject
     public void OpenSelectRoom(DungeonRoomSplit room, TileSetSplit tileSetSplit)
     {
         //创建地牢Ui
-        var mapEditor = ParentUi.OpenNextUi<MapEditorPanel>(UiManager.UiNames.MapEditor);
+        var mapEditor = ParentUi.OpenNextUi<MapEditorPanel>(UiManager.UiName.MapEditor);
         //加载地牢
         mapEditor.LoadMap(room, tileSetSplit);
     }

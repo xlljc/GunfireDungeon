@@ -49,7 +49,7 @@ public class TileButtonCell : UiCell<TileSetEditorProject.TileButton, TileSetSpl
     public override void OnDoubleClick()
     {
         //打开TileSet编辑器面板
-        var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiNames.TileSetEditor);
+        var tileSetEditorPanel = CellNode.UiPanel.ParentUi.OpenNextUi<TileSetEditorPanel>(UiManager.UiName.TileSetEditor);
         tileSetEditorPanel.InitData(Data);
     }
 

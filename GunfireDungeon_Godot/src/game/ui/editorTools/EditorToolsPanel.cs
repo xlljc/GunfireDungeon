@@ -268,7 +268,7 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
     /// </summary>
     public static void ShowTipsInEditor(string title, string message, Action onClose)
     {
-        var editorToolsInstance = UiManager.Get_EditorTools_Instance();
+        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.EditorTools);
         if (editorToolsInstance.Length > 0)
         {
             editorToolsInstance[0].ShowTips(title, message, onClose);
@@ -280,7 +280,7 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
     /// </summary>
     public static void ShowConfirmInEditor(string title, string message, Action<bool> onClose = null)
     {
-        var editorToolsInstance = UiManager.Get_EditorTools_Instance();
+        var editorToolsInstance = UiManager.GetUiInstance<EditorToolsPanel>(UiManager.UiName.EditorTools);
         if (editorToolsInstance.Length > 0)
         {
             editorToolsInstance[0].ShowConfirm(title, message, onClose);

@@ -38,12 +38,12 @@ public partial class MainPanel : Main
     //点击开发者工具
     private void OnToolsClick()
     {
-        OpenNextUi(UiManager.UiNames.EditorManager);
+        OpenNextUi(UiManager.UiName.EditorManager);
     }
 
     //点击设置按钮
     private void OnSettingClick()
     {
-        OpenNextUi(UiManager.UiNames.Setting);
+        OpenNextUi(UiManager.UiName.Setting);
     }
 }

@@ -1,6 +1,7 @@
 using Godot;
 
 using DsUi;
+using UI.TileSetEditor;
 
 namespace UI.EditorTileImage;
 
@@ -12,7 +13,7 @@ public partial class ImageBg : EditorGridBg
     {
         base.SetUiNode(uiNode);
         InitNode(UiNode.L_TextureRoot.Instance);
-        var arr = UiManager.Get_TileSetEditor_Instance();
+        var arr = UiManager.GetUiInstance<TileSetEditorPanel>(UiManager.UiName.TileSetEditor);
         if (arr.Length > 0)
         {
             UiNode.Instance.Color = arr[0].BgColor;

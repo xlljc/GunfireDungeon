@@ -83,17 +83,17 @@ public partial class TileSetEditorPanel : TileSetEditor
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "纹理",
-            UiName = UiManager.UiNames.TileSetEditorImport,
+            UiName = UiManager.UiName.TileSetEditorImport,
         });
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "地形",
-            UiName = UiManager.UiNames.TileSetEditorTerrain,
+            UiName = UiManager.UiName.TileSetEditorTerrain,
         });
         TabGrid.Add(new TileSetEditorTabData()
         {
             Text = "组合",
-            UiName = UiManager.UiNames.TileSetEditorCombination,
+            UiName = UiManager.UiName.TileSetEditorCombination,
         });
         TabGrid.Visible = false;
 

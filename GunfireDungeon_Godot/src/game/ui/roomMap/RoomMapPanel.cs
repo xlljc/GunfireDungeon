@@ -67,7 +67,7 @@ public partial class RoomMapPanel : RoomMap
             //按下地图按键
             if (InputManager.Map && !_isMagnifyMap && !_pressMapFlag) //展开小地图
             {
-                if (UiManager.GetUiInstanceCount(UiManager.UiNames.PauseMenu) == 0 && !InputManager.Roulette)
+                if (UiManager.GetUiInstanceCount(UiManager.UiName.PauseMenu) == 0 && !InputManager.Roulette)
                 {
                     ExpandMap();
                 }

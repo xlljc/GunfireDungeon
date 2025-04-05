@@ -2,7 +2,7 @@ using Godot;
 
 using DsUi;
 
-namespace UI.Debugger;
+namespace UI.debug.Debugger;
 
 public partial class DebuggerPanel : Debugger
 {

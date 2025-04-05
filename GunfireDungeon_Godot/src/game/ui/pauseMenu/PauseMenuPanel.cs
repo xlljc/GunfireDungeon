@@ -58,13 +58,13 @@ public partial class PauseMenuPanel : PauseMenu
     //设置
     private void OnSettingClick()
     {
-        OpenNextUi(UiManager.UiNames.Setting);
+        OpenNextUi(UiManager.UiName.Setting);
     }
 
     //图鉴
     private void OnEncyclopediaClick()
     {
-        OpenNextUi(UiManager.UiNames.Encyclopedia);
+        OpenNextUi(UiManager.UiName.Encyclopedia);
     }
 
     //重新开始

@@ -189,7 +189,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //初始化ui
         //UiManager.Init();
         //调试Ui
-        UiManager.Open_Debugger();
+        UiManager.Open_Debug_Debugger();
         
         // 初始化鼠标
         InitCursor();
