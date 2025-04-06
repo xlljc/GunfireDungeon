@@ -51,6 +51,8 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
         var container = L_ScrollContainer.L_MarginContainer.L_VBoxContainer;
         //重新生成 ResourcePath
         container.L_HBoxContainer.L_Button.Instance.Pressed += GenerateResourcePath;
+        //填充当前ActivityObject字段和属性
+        container.L_HBoxContainer2.L_Button.Instance.Pressed += InitActivityObject;
         //生成buff属性表
         container.L_HBoxContainer6.L_Button.Instance.Pressed += GenerateBuffAttrTable;
         //导出excel表
@@ -209,6 +211,21 @@ public partial class EditorToolsPanel : EditorTools, ISerializationListener
         else
         {
             ShowTips("错误", "ResourcePath.cs生成失败! 前往控制台查看错误日志!");
+        }
+    }
+    
+    /// <summary>
+    /// 初始化当前ActivityObject
+    /// </summary>
+    private void InitActivityObject()
+    {
+        if (ActivityObjectTool.InitActivityObject())
+        {
+            ShowTips("提示", "ActivityObject.cs生成完成!");
+        }
+        else
+        {
+            ShowTips("错误", "ActivityObject.cs生成失败! 前往控制台查看错误日志!");
         }
     }
 

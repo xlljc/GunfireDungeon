@@ -10,7 +10,6 @@ using Godot;
 /// <summary>
 /// Boss逻辑类
 /// </summary>
-[Tool]
 public partial class Boss : AiRole
 {
     private long _attaclCoroutine = -1;

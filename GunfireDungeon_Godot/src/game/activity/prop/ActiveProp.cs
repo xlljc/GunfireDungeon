@@ -8,7 +8,6 @@ using Godot;
 /// <summary>
 /// 主动使用道具
 /// </summary>
-[Tool]
 public partial class ActiveProp : PropActivity, IPackageItem<Role>
 {
     /// <summary>

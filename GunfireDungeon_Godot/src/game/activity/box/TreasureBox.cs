@@ -3,7 +3,6 @@ using Godot;
 /// <summary>
 /// 宝箱
 /// </summary>
-[Tool]
 public partial class TreasureBox : ObstacleObject
 {
     public bool IsOpen { get; private set; }

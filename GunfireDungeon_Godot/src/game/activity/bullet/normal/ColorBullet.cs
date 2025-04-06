@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 随机颜色子弹
 /// </summary>
-[Tool]
 public partial class ColorBullet : Bullet
 {
     public override void OnInit()

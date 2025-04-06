@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 爆炸子弹
 /// </summary>
-[Tool]
 public partial class BoomBullet : Bullet
 {
     public override void OnLimeOver()

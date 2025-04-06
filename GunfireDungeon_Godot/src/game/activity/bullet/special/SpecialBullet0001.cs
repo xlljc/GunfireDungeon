@@ -6,7 +6,6 @@ using Godot;
 /// <summary>
 /// 垂直往填上飞, 落在地上爆炸产生一个子弹圈
 /// </summary>
-[Tool]
 public partial class SpecialBullet0001 : ActivityObject, IPoolItem
 {
     /// <summary>

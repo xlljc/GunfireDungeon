@@ -3,7 +3,6 @@
 /// <summary>
 /// 带笔刷的子弹
 /// </summary>
-[Tool]
 public partial class BrushBullet : Bullet
 {
     /// <summary>

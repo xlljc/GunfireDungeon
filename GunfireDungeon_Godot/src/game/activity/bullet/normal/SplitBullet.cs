@@ -6,7 +6,6 @@ using Godot;
 /// <summary>
 /// 分裂子弹
 /// </summary>
-[Tool]
 public partial class SplitBullet : Bullet
 {
     /// <summary>

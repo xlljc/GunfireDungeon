@@ -110,7 +110,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer2.Label
     /// </summary>
     public class Label_1 : UiNode<EditorToolsPanel, Godot.Label, Label_1>
     {
@@ -119,7 +119,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer2.Button
     /// </summary>
     public class Button_1 : UiNode<EditorToolsPanel, Godot.Button, Button_1>
     {
@@ -128,9 +128,9 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer2
     /// </summary>
-    public class HBoxContainer6 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer6>
+    public class HBoxContainer2 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
         /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
@@ -158,12 +158,12 @@ public abstract partial class EditorTools : UiBase
         }
         private Button_1 _L_Button;
 
-        public HBoxContainer6(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer6 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public HBoxContainer2(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Label
     /// </summary>
     public class Label_2 : UiNode<EditorToolsPanel, Godot.Label, Label_2>
     {
@@ -172,7 +172,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6.Button
     /// </summary>
     public class Button_2 : UiNode<EditorToolsPanel, Godot.Button, Button_2>
     {
@@ -181,9 +181,9 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6
     /// </summary>
-    public class HBoxContainer7 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer7>
+    public class HBoxContainer6 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer6>
     {
         /// <summary>
         /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
@@ -211,12 +211,12 @@ public abstract partial class EditorTools : UiBase
         }
         private Button_2 _L_Button;
 
-        public HBoxContainer7(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer7 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public HBoxContainer6(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer6 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Label
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Label
     /// </summary>
     public class Label_3 : UiNode<EditorToolsPanel, Godot.Label, Label_3>
     {
@@ -225,7 +225,7 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Button
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7.Button
     /// </summary>
     public class Button_3 : UiNode<EditorToolsPanel, Godot.Button, Button_3>
     {
@@ -234,9 +234,9 @@ public abstract partial class EditorTools : UiBase
     }
 
     /// <summary>
-    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer7
     /// </summary>
-    public class HBoxContainer8 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer8>
+    public class HBoxContainer7 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer7>
     {
         /// <summary>
         /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
@@ -264,6 +264,59 @@ public abstract partial class EditorTools : UiBase
         }
         private Button_3 _L_Button;
 
+        public HBoxContainer7(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer7 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Label
+    /// </summary>
+    public class Label_4 : UiNode<EditorToolsPanel, Godot.Label, Label_4>
+    {
+        public Label_4(EditorToolsPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_4 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8.Button
+    /// </summary>
+    public class Button_4 : UiNode<EditorToolsPanel, Godot.Button, Button_4>
+    {
+        public Button_4(EditorToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override Button_4 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer8
+    /// </summary>
+    public class HBoxContainer8 : UiNode<EditorToolsPanel, Godot.HBoxContainer, HBoxContainer8>
+    {
+        /// <summary>
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Label
+        /// </summary>
+        public Label_4 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_4(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_4 _L_Label;
+
+        /// <summary>
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.Button
+        /// </summary>
+        public Button_4 L_Button
+        {
+            get
+            {
+                if (_L_Button == null) _L_Button = new Button_4(UiPanel, Instance.GetNode<Godot.Button>("Button"));
+                return _L_Button;
+            }
+        }
+        private Button_4 _L_Button;
+
         public HBoxContainer8(EditorToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override HBoxContainer8 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
@@ -285,6 +338,19 @@ public abstract partial class EditorTools : UiBase
             }
         }
         private HBoxContainer _L_HBoxContainer;
+
+        /// <summary>
+        /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer2
+        /// </summary>
+        public HBoxContainer2 L_HBoxContainer2
+        {
+            get
+            {
+                if (_L_HBoxContainer2 == null) _L_HBoxContainer2 = new HBoxContainer2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer2"));
+                return _L_HBoxContainer2;
+            }
+        }
+        private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
         /// 节点路径: EditorTools.ScrollContainer.MarginContainer.HBoxContainer6
@@ -396,6 +462,11 @@ public abstract partial class EditorTools : UiBase
     /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer2
+    /// </summary>
+    public HBoxContainer2 S_HBoxContainer2 => L_ScrollContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: EditorTools.ScrollContainer.MarginContainer.VBoxContainer.HBoxContainer6

@@ -3,7 +3,6 @@ using Godot;
 /// <summary>
 /// 停止移动后自动冻结对象
 /// </summary>
-[Tool]
 public partial class AutoFreezeObject : ActivityObject
 {
     /// <summary>

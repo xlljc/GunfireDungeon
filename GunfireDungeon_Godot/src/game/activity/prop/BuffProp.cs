@@ -8,7 +8,6 @@ using Godot;
 /// <summary>
 /// 通用被动道具实体类
 /// </summary>
-[Tool]
 public partial class BuffProp : PropActivity
 {
     /// <summary>

@@ -1,7 +1,6 @@
 ﻿
 using Godot;
 
-[Tool]
 public partial class EnemyDead0002 : AutoFreezeObject
 {
     private BrushImageData _brushData;

@@ -3,7 +3,6 @@
 /// <summary>
 /// 可被子弹击中的区域
 /// </summary>
-[Tool]
 public partial class HurtArea : Area2D, IHurt
 {
     /// <summary>

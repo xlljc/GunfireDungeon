@@ -1,7 +1,6 @@
 ﻿
 using Godot;
 
-[Tool]
 public partial class TrailBullet : Bullet
 {
     private static Color TerrainColor = new Color(0xf5 / 255f + 0.8f, 0x7e / 255f + 0.45f, 0x7a / 255f + 0.45f, 0.7f);

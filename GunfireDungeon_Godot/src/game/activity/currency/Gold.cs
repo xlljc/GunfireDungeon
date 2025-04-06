@@ -5,7 +5,6 @@ using Godot;
 /// <summary>
 /// 金币类
 /// </summary>
-[Tool]
 public partial class Gold : ActivityObject, IPoolItem
 {
     /// <summary>

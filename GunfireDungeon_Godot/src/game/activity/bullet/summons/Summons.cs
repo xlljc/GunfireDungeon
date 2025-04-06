@@ -5,7 +5,6 @@ using Godot;
 /// <summary>
 /// boss用于召唤小怪的投射物
 /// </summary>
-[Tool]
 public partial class Summons : ActivityObject
 {
     private ActivityObject _target;

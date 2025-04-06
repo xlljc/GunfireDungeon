@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 房间的门, 门有两种状态, 打开和关闭
 /// </summary>
-[Tool]
 public partial class RoomDoor : ActivityObject
 {
     /// <summary>

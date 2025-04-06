@@ -346,17 +346,6 @@ public abstract partial class Role : ActivityObject
     //护盾恢复计时器
     private float _shieldRecoveryTimer = 0;
 
-    protected override void OnExamineExportFillNode(string propertyName, Node node, bool isJustCreated)
-    {
-        base.OnExamineExportFillNode(propertyName, node, isJustCreated);
-        if (propertyName == nameof(TipSprite))
-        {
-            var sprite = (AnimatedSprite2D)node;
-            sprite.SpriteFrames =
-                ResourceManager.Load<SpriteFrames>(ResourcePath.resource_spriteFrames_role_Role_tip_tres);
-        }
-    }
-
     /// <summary>
     /// 创建角色的 RoleState 对象
     /// </summary>
@@ -472,7 +461,7 @@ public abstract partial class Role : ActivityObject
     {
     }
     
-    public override void EnterTree()
+    public override void _EnterTree()
     {
         if (!World.Role_InstanceList.Contains(this))
         {
@@ -480,7 +469,7 @@ public abstract partial class Role : ActivityObject
         }
     }
 
-    public override void ExitTree()
+    public override void _ExitTree()
     {
         World.Role_InstanceList.Remove(this);
     }

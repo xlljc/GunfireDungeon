@@ -8,7 +8,6 @@ using Godot.Collections;
 /// <summary>
 /// 子弹类
 /// </summary>
-[Tool]
 public partial class Bullet : ActivityObject, IBullet
 {
     public event Action OnReclaimEvent;

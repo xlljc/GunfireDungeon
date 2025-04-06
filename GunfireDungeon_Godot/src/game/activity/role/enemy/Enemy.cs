@@ -8,7 +8,6 @@ using Godot;
 /// <summary>
 /// 敌人，可以携带武器
 /// </summary>
-[Tool]
 public partial class Enemy : AiRole
 {
     /// <summary>

@@ -9,9 +9,8 @@ using Godot;
 /// <summary>
 /// 房间内活动物体基类, 所有物体都必须继承该类,<br/>
 /// 该类提供基础物体运动模拟, 互动接口, 自定义组件, 协程等功能<br/>
-/// ActivityObject 子类实例化请不要直接使用 new, 而用该在类上标上 [Tool], 并在 ActivityObject.xlsx 配置文件中注册物体, 导出配置表后使用 ActivityObject.Create(id) 来创建实例.<br/>
+/// ActivityObject 子类实例化请不要直接使用 new, 并在 ActivityObject.xlsx 配置文件中注册物体, 导出配置表后使用 ActivityObject.Create(id) 来创建实例.<br/>
 /// </summary>
-[Tool]
 public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive, IOutline
 {
     /// <summary>
@@ -336,15 +335,6 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     //初始化节点
     private void _InitNode(ExcelConfig.ActivityBase config, World world)
     {
-#if TOOLS
-        if (!Engine.IsEditorHint())
-        {
-            if (GetType().GetCustomAttributes(typeof(ToolAttribute), false).Length == 0)
-            {
-                throw new Exception($"ActivityObject子类'{GetType().FullName}'没有加[Tool]标记!");
-            }
-        }
-#endif
         if (config.Material == null)
         {
             ActivityMaterial = ExcelConfig.ActivityMaterial_List[0];
@@ -404,37 +394,6 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     public sealed override void _Ready()
     {
 
-    }
-    
-    /// <summary>
-    /// 子类需要重写 _EnterTree() 函数, 请重写 EnterTree()
-    /// </summary>
-    public sealed override void _EnterTree()
-    {
-#if TOOLS
-        // 在工具模式下创建的 template 节点自动创建对应的必要子节点
-        if (Engine.IsEditorHint())
-        {
-            _InitNodeInEditor();
-            return;
-        }
-#endif
-        EnterTree();
-    }
-    
-    /// <summary>
-    /// 子类需要重写 _ExitTree() 函数, 请重写 ExitTree()
-    /// </summary>
-    public sealed override void _ExitTree()
-    {
-#if TOOLS
-        // 在工具模式下创建的 template 节点自动创建对应的必要子节点
-        if (Engine.IsEditorHint())
-        {
-            return;
-        }
-#endif
-        ExitTree();
     }
 
     /// <summary>
@@ -527,20 +486,6 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 物体初始化时调用
     /// </summary>
     public virtual void OnInit()
-    {
-    }
-    
-    /// <summary>
-    /// 进入场景树时调用
-    /// </summary>
-    public virtual void EnterTree()
-    {
-    }
-
-    /// <summary>
-    /// 离开场景树时调用
-    /// </summary>
-    public virtual void ExitTree()
     {
     }
     

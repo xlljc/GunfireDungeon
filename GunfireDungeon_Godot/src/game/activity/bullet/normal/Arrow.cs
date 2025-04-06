@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 弓箭
 /// </summary>
-[Tool]
 public partial class Arrow : Bullet, IMountItem
 {
     [Export, ExportFillNode]

@@ -3,7 +3,6 @@
 /// <summary>
 /// 弓箭
 /// </summary>
-[Tool]
 public partial class Bow : Weapon
 {
     /// <summary>

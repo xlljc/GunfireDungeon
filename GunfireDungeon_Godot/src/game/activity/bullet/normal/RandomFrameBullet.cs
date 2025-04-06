@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 随机选择帧的子弹
 /// </summary>
-[Tool]
 public partial class RandomFrameBullet : Bullet
 {
     public override void OnInit()

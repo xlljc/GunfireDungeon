@@ -2,6 +2,12 @@ using Godot;
 
 public partial class TestActivity : ActivityObject
 {
+    [Export]
+    public int Abc;
+
+    [Export]
+    public string Def;
+    
     public override void OnInit()
     {
         EnableVerticalMotion = false;

@@ -4,7 +4,6 @@ using Godot;
 /// <summary>
 /// 近战武器,刀
 /// </summary>
-[Tool]
 public partial class Knife : Weapon
 {
     /// <summary>

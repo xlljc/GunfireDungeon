@@ -6,7 +6,6 @@ using Godot;
 /// <summary>
 /// 敌人死亡碎片
 /// </summary>
-[Tool]
 public partial class EnemyDead0001 : ActivityObject, ICorpsesFragment
 {
     /// <summary>

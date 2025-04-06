@@ -5,7 +5,6 @@ using Godot.Collections;
 /// <summary>
 /// 商店老板
 /// </summary>
-[Tool]
 public partial class ShopBoss : AiRole
 {
     [Export]
