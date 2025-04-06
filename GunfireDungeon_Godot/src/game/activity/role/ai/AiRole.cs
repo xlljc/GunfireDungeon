@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AiState;
 using Godot;
 
@@ -54,18 +55,6 @@ public abstract partial class AiRole : Role
     public Marker2D FirePoint { get; set; }
     
     /// <summary>
-    /// 视野区域
-    /// </summary>
-    [Export, ExportFillNode]
-    public Area2D ViewArea { get; set; }
-    
-    /// <summary>
-    /// 视野区域碰撞器形状
-    /// </summary>
-    [Export, ExportFillNode]
-    public CollisionPolygon2D ViewAreaCollision { get; set; }
-    
-    /// <summary>
     /// 当前敌人所看向的对象, 也就是枪口指向的对象
     /// </summary>
     public ActivityObject LookTarget { get; set; }
@@ -88,23 +77,7 @@ public abstract partial class AiRole : Role
     /// <summary>
     /// 视野半径, 单位像素, 发现玩家后改视野范围可以穿墙
     /// </summary>
-    public float ViewRange
-    {
-        get => _viewRange;
-        set
-        {
-            if (Math.Abs(_viewRange - value) > 0.001f)
-            {
-                if (ViewAreaCollision != null)
-                {
-                    ViewAreaCollision.Polygon = Utils.CreateSectorPolygon(0, value, ViewAngleRange, 4);
-                }
-            }
-            _viewRange = value;
-        }
-    }
-
-    private float _viewRange = -1;
+    public float ViewRange { get; set; } = -1;
 
     /// <summary>
     /// 默认视野半径
@@ -136,19 +109,10 @@ public abstract partial class AiRole : Role
     /// </summary>
     public bool HasMoveDesire { get; private set; } = true;
 
-    /// <summary>
-    /// 临时存储攻击目标, 获取该值请调用 GetAttackTarget() 函数
-    /// </summary>
-    private Role _attackTarget = null;
-    
-    private HashSet<Role> _viewTargets = new HashSet<Role>();
-
     public override void OnInit()
     {
         base.OnInit();
         IsAi = true;
-        ViewArea.BodyEntered += OnViewAreaBodyEntered;
-        ViewArea.BodyExited += OnViewAreaBodyExited;
         
         StateController = AddComponent<StateController<AiRole, AIStateEnum>>();
         
@@ -185,16 +149,8 @@ public abstract partial class AiRole : Role
                 TargetHasOcclusion = TestViewRayCast(LookTarget.GetCenterPosition());
                 TestViewRayCastOver();
 
-                if (LookTarget is Role role)
-                {
-                    TargetInViewRange = _viewTargets.Contains(role);
-                }
-                else
-                {
-                    TargetInViewRange = true;
-                }
-
-                TargetInView = !TargetHasOcclusion && TargetInViewRange;
+                TargetInViewRange = true;
+                TargetInView = !TargetHasOcclusion;
             }
         }
 
@@ -202,44 +158,91 @@ public abstract partial class AiRole : Role
         ViewRange = StateController.CurrState == AIStateEnum.AiNormal ? DefaultViewRange : TailAfterViewRange;
     }
 
-    /// <summary>
-    /// 计算攻击的目标对象, 当 HasAttackDesire 为 true 时才会调用
-    /// </summary>
-    /// <param name="perspective">上一次发现的角色在本次检测中是否开启视野透视</param>
-    public Role CalcAttackTarget(bool perspective = true)
+    public Role CalcAttackTarget2()
     {
-        //目标丢失
-        if (_attackTarget == null || _attackTarget.IsDestroyed || !IsEnemy(_attackTarget))
+        var enemyItems = AffiliationArea?.FindEnterItems(o => o is Role role && role != this && IsEnemy(role));
+        if (enemyItems == null || enemyItems.Length == 0) return null;
+
+        try
         {
-            _attackTarget = RefreshAttackTargets(_attackTarget);
-            return _attackTarget;
+            var pos = Position;
+            //排序距离升序
+            var enumerable = enemyItems
+                .Select(i => new KeyValuePair<Role, float>((Role)i, i.Position.DistanceSquaredTo(pos)))
+                .OrderBy(i => i.Value).ToArray();
+            foreach (var pair in enumerable)
+            {
+                if (TestViewRayCast(pair.Key.GetCenterPosition()))
+                {
+                    return pair.Key;
+                }
+            }
+
+            return enumerable.First().Key;
         }
-        
-        if (!perspective)
+        finally
         {
-            //被墙阻挡
-            if (TestViewRayCast(_attackTarget.GetCenterPosition()))
-            {
-                _attackTarget = RefreshAttackTargets(_attackTarget);
-                TestViewRayCastOver();
-                return _attackTarget;
-            }
-            else
-            {
-                TestViewRayCastOver();
-            }
+            TestViewRayCastOver();
         }
-        
-        return _attackTarget;
     }
-    
-    /// <summary>
-    /// 设置攻击目标, 强制设置
-    /// </summary>
-    public void SetAttackTarget(Role target)
-    {
-        _attackTarget = target;
-    }
+
+    // public Role CalcAttackTarget2()
+    // {
+    //     var pos = Position;
+    //     var len = float.MaxValue;
+    //     var enterItems = AffiliationArea?.FindEnterItems(o =>
+    //     {
+    //         if (o is Role role && role != this && IsEnemy(role))
+    //         {
+    //             var tempLen = o.Position.DistanceSquaredTo(pos);
+    //             if (tempLen < len)
+    //             {
+    //                 len = tempLen;
+    //                 return true;
+    //             }
+    //         }
+    //
+    //         return false;
+    //     });
+    //     
+    //     
+    //     if (enterItems != null && enterItems.Length > 0)
+    //     {
+    //         return (Role)enterItems[enterItems.Length - 1];
+    //     }
+    //     return null;
+    // }
+
+    // /// <summary>
+    // /// 计算攻击的目标对象, 当 HasAttackDesire 为 true 时才会调用
+    // /// </summary>
+    // /// <param name="perspective">上一次发现的角色在本次检测中是否开启视野透视</param>
+    // public Role CalcAttackTarget(bool perspective = true)
+    // {
+    //     //目标丢失
+    //     if (_attackTarget == null || _attackTarget.IsDestroyed || !IsEnemy(_attackTarget))
+    //     {
+    //         _attackTarget = RefreshAttackTargets(_attackTarget);
+    //         return _attackTarget;
+    //     }
+    //     
+    //     if (!perspective)
+    //     {
+    //         //被墙阻挡
+    //         if (TestViewRayCast(_attackTarget.GetCenterPosition()))
+    //         {
+    //             _attackTarget = RefreshAttackTargets(_attackTarget);
+    //             TestViewRayCastOver();
+    //             return _attackTarget;
+    //         }
+    //         else
+    //         {
+    //             TestViewRayCastOver();
+    //         }
+    //     }
+    //     
+    //     return _attackTarget;
+    // }
     
     /// <summary>
     /// 返回地上的武器是否有可以拾取的, 也包含没有被其他敌人标记的武器
@@ -379,47 +382,51 @@ public abstract partial class AiRole : Role
         }
         
         //拾起地上的武器
-        if (InteractiveItem is Weapon weapon)
+        foreach (var interactive in InteractiveItemList)
         {
-            if (WeaponPack.ActiveItem == null) //手上没有武器, 无论如何也要拾起
+            if (interactive is Weapon weapon)
             {
-                TriggerInteractive();
-                return;
-            }
-
-            //没弹药了
-            if (weapon.IsTotalAmmoEmpty())
-            {
-                return;
-            }
-            
-            var index = WeaponPack.FindIndex((we, i) => we.ActivityBase.Id == weapon.ActivityBase.Id);
-            if (index != -1) //与武器背包中武器类型相同, 补充子弹
-            {
-                if (!WeaponPack.GetItem(index).IsAmmoFull())
+                if (WeaponPack.ActiveItem == null) //手上没有武器, 无论如何也要拾起
                 {
                     TriggerInteractive();
+                    return;
                 }
 
-                return;
-            }
-
-            // var index2 = Holster.FindWeapon((we, i) =>
-            //     we.Attribute.WeightType == weapon.Attribute.WeightType && we.IsTotalAmmoEmpty());
-            var index2 = WeaponPack.FindIndex((we, i) => we.IsTotalAmmoEmpty());
-            if (index2 != -1) //扔掉没子弹的武器
-            {
-                ThrowWeapon(index2);
-                TriggerInteractive();
-                return;
-            }
+                //没弹药了
+                if (weapon.IsTotalAmmoEmpty())
+                {
+                    return;
+                }
             
-            // if (Holster.HasVacancy()) //有空位, 拾起武器
-            // {
-            //     TriggerInteractive();
-            //     return;
-            // }
+                var index = WeaponPack.FindIndex((we, i) => we.ActivityBase.Id == weapon.ActivityBase.Id);
+                if (index != -1) //与武器背包中武器类型相同, 补充子弹
+                {
+                    if (!WeaponPack.GetItem(index).IsAmmoFull())
+                    {
+                        TriggerInteractive();
+                    }
+
+                    return;
+                }
+
+                // var index2 = Holster.FindWeapon((we, i) =>
+                //     we.Attribute.WeightType == weapon.Attribute.WeightType && we.IsTotalAmmoEmpty());
+                var index2 = WeaponPack.FindIndex((we, i) => we.IsTotalAmmoEmpty());
+                if (index2 != -1) //扔掉没子弹的武器
+                {
+                    ThrowWeapon(index2);
+                    TriggerInteractive();
+                    return;
+                }
+            
+                // if (Holster.HasVacancy()) //有空位, 拾起武器
+                // {
+                //     TriggerInteractive();
+                //     return;
+                // }
+            }
         }
+        
     }
     
     /// <summary>
@@ -452,6 +459,7 @@ public abstract partial class AiRole : Role
         // NavigationAgent2D.Velocity = (nextPos - Position - NavigationPoint.Position).Normalized() * RoleState.MoveSpeed;
         
         AnimatedSprite.Play(AnimatorNames.Run);
+        GD.Print("Move -- BasisVelocity: " + BasisVelocity);
         //计算移动
         var nextPos = NavigationAgent2D.GetNextPathPosition();
         BasisVelocity = (nextPos - Position - NavigationPoint.Position).Normalized() * RoleState.MoveSpeed;
@@ -539,10 +547,9 @@ public abstract partial class AiRole : Role
         var state = StateController.CurrState;
         if (state == AIStateEnum.AiNormal)
         {
-            LookTarget = target;
             if (target is Role role)
             {
-                _attackTarget = role;
+                LookTarget = role;
             }
             //进入跟随状态
             StateController.ChangeState(AIStateEnum.AiTailAfter);
@@ -551,10 +558,9 @@ public abstract partial class AiRole : Role
         {
             if (LookTarget == null)
             {
-                LookTarget = target;
                 if (target is Role role)
                 {
-                    _attackTarget = role;
+                    LookTarget = target;
                 }
                 var findAmmo = (AiFindAmmoState)StateController.CurrStateBase;
                 StateController.ChangeState(AIStateEnum.AiFindAmmo, findAmmo.TargetWeapon);
@@ -562,30 +568,13 @@ public abstract partial class AiRole : Role
         }
         else if (TargetHasOcclusion || !TargetInView)
         {
-            LookTarget = target;
             if (target is Role role)
             {
-                _attackTarget = role;
+                LookTarget = target;
             }
         }
     }
     
-    private void OnViewAreaBodyEntered(Node2D node)
-    {
-        if (node is Role role)
-        {
-            _viewTargets.Add(role);
-        }
-    }
-
-    private void OnViewAreaBodyExited(Node2D node)
-    {
-        if (node is Role role)
-        {
-            _viewTargets.Remove(role);
-        }
-    }
-
     private Role RefreshAttackTargets(Role prevRole)
     {
         if (LookTarget is Role role && !role.IsDestroyed && IsEnemy(role))
@@ -597,21 +586,21 @@ public abstract partial class AiRole : Role
             }
         }
         
-        if (_viewTargets.Count == 0)
-        {
-            return null;
-        }
-        foreach (var attackTarget in _viewTargets)
-        {
-            if (prevRole != attackTarget && !attackTarget.IsDestroyed && IsEnemy(attackTarget))
-            {
-                if (!TestViewRayCast(attackTarget.GetCenterPosition()))
-                {
-                    TestViewRayCastOver();
-                    return attackTarget;
-                }
-            }
-        }
+        // if (_viewTargets.Count == 0)
+        // {
+        //     return null;
+        // }
+        // foreach (var attackTarget in _viewTargets)
+        // {
+        //     if (prevRole != attackTarget && !attackTarget.IsDestroyed && IsEnemy(attackTarget))
+        //     {
+        //         if (!TestViewRayCast(attackTarget.GetCenterPosition()))
+        //         {
+        //             TestViewRayCastOver();
+        //             return attackTarget;
+        //         }
+        //     }
+        // }
         
         TestViewRayCastOver();
         return null;

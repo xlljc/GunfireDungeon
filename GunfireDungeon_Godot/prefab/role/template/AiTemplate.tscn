@@ -36,13 +36,6 @@ enabled = false
 [node name="MeleeAttackArea" parent="MountPoint" index="0"]
 visible = true
 
-[node name="ViewArea" type="Area2D" parent="MountPoint" index="1"]
-collision_layer = 0
-collision_mask = 16
-monitorable = false
-
-[node name="ViewAreaCollision" type="CollisionPolygon2D" parent="MountPoint/ViewArea" index="0"]
-
 [node name="FirePoint" type="Marker2D" parent="." index="8"]
 
 [node name="NavigationPoint" type="Marker2D" parent="." index="9"]

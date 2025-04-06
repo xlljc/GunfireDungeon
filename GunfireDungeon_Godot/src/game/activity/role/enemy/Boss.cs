@@ -50,7 +50,6 @@ public partial class Boss : AiRole
         }
         base.Process(delta);
         LookTarget = World.Player;
-        ViewArea.LookAt(LookTarget.Position);
         //UpdateFace();
 
         var velocity = BasisVelocity;

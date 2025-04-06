@@ -46,42 +46,23 @@ public class AiNormalState : StateBase<AiRole, AIStateEnum>
 
     public override void Process(float delta)
     {
+        if (Master.LookTarget != null)
+        {
+            //进入跟随状态
+            ChangeState(AIStateEnum.AiTailAfter);
+            return;
+        }
+        
         if (Master.HasAttackDesire) //有攻击欲望
         {
-            //获取攻击目标
-            var attackTarget = Master.CalcAttackTarget(false);
-            if (attackTarget != null)
+            var target = Master.CalcAttackTarget2();
+            if (target != null)
             {
                 //发现玩家
-                Master.LookTarget = attackTarget;
+                Master.LookTarget = target;
                 //进入跟随状态
                 ChangeState(AIStateEnum.AiTailAfter);
                 return;
-            }
-            else //寻找房间内最近的敌人
-            {
-                var pos = Master.Position;
-                var len = float.MaxValue;
-                var enterItems = Master.AffiliationArea?.FindEnterItems(o =>
-                {
-                    if (o is Role role && role != Master && Master.IsEnemy(role))
-                    {
-                        var tempLen = o.Position.DistanceSquaredTo(pos);
-                        if (tempLen < len)
-                        {
-                            len = tempLen;
-                            return true;
-                        }
-                    }
-
-                    return false;
-                });
-                
-                if (enterItems != null && enterItems.Length > 0)
-                {
-                    Master.SetAttackTarget((Role)(Master.LookTarget = enterItems[enterItems.Length - 1]));
-                    ChangeState(AIStateEnum.AiTailAfter);
-                }
             }
         }
 

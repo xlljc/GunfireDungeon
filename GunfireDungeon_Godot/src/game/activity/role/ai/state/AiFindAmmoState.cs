@@ -57,20 +57,6 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
             return;
         }
 
-        if (Master.LookTarget == null) //没有目标
-        {
-            //攻击目标
-            var attackTarget = Master.CalcAttackTarget();
-            if (attackTarget != null)
-            {
-                //发现玩家
-                Master.LookTarget = attackTarget;
-                //进入跟随
-                ChangeState(AIStateEnum.AiTailAfter);
-                return;
-            }
-        }
-
         //更新目标位置
         if (_navigationUpdateTimer <= 0)
         {
