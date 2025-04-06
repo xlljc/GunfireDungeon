@@ -49,27 +49,39 @@ public class AiNormalState : StateBase<AiRole, AIStateEnum>
         if (Master.HasAttackDesire) //有攻击欲望
         {
             //获取攻击目标
-            var attackTarget = Master.GetAttackTarget(false);
+            var attackTarget = Master.CalcAttackTarget(false);
             if (attackTarget != null)
             {
                 //发现玩家
                 Master.LookTarget = attackTarget;
-                //判断是否进入通知状态
-                if (Master.World.Role_InstanceList.FindIndex(role =>
-                        role is AiRole enemy &&
-                        enemy != Master && !enemy.IsDie && enemy.AffiliationArea == Master.AffiliationArea &&
-                        enemy.StateController.CurrState == AIStateEnum.AiNormal) != -1)
-                {
-                    //进入惊讶状态, 然后再进入通知状态
-                    ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiNotify);
-                }
-                else
-                {
-                    //进入惊讶状态, 然后再进入跟随状态
-                    ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiTailAfter);
-                }
-
+                //进入跟随状态
+                ChangeState(AIStateEnum.AiTailAfter);
                 return;
+            }
+            else //寻找房间内最近的敌人
+            {
+                var pos = Master.Position;
+                var len = float.MaxValue;
+                var enterItems = Master.AffiliationArea?.FindEnterItems(o =>
+                {
+                    if (o is Role role && role != Master && Master.IsEnemy(role))
+                    {
+                        var tempLen = o.Position.DistanceSquaredTo(pos);
+                        if (tempLen < len)
+                        {
+                            len = tempLen;
+                            return true;
+                        }
+                    }
+
+                    return false;
+                });
+                
+                if (enterItems != null && enterItems.Length > 0)
+                {
+                    Master.SetAttackTarget((Role)(Master.LookTarget = enterItems[enterItems.Length - 1]));
+                    ChangeState(AIStateEnum.AiTailAfter);
+                }
             }
         }
 

@@ -179,7 +179,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //调整窗口分辨率
         OnWindowSizeChanged();
         //窗体大小改变
-        //GetWindow().SizeChanged += OnWindowSizeChanged;
+        GetWindow().SizeChanged += OnWindowSizeChanged;
 
         ImageCanvas.Init(GetTree().CurrentScene);
         

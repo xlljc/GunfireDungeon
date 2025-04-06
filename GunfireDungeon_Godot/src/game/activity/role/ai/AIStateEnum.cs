@@ -2,21 +2,9 @@
 public enum AIStateEnum
 {
     /// <summary>
-    /// Ai 状态, 正常, 未发现目标
+    /// Ai 状态, 正常
     /// </summary>
     AiNormal,
-    /// <summary>
-    /// 找到玩家，准备通知其他敌人
-    /// </summary>
-    AiNotify,
-    /// <summary>
-    /// 惊讶状态
-    /// </summary>
-    AiAstonished,
-    /// <summary>
-    /// 收到其他敌人通知, 前往发现目标的位置
-    /// </summary>
-    AiLeaveFor,
     /// <summary>
     /// 发现目标, 目标不在视野内, 但是知道位置
     /// </summary>

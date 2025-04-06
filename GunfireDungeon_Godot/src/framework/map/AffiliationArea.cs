@@ -21,7 +21,7 @@ public partial class AffiliationArea : Area2D, IDestroy
     private readonly HashSet<ActivityObject> _includeItems = new HashSet<ActivityObject>();
 
     /// <summary>
-    /// 已经进入 AffiliationArea 所在范围内的物体, 物体一旦离开该区域就会立刻从该集合中删除
+    /// 已经进入 AffiliationArea 所在范围内的物体, 物体一旦离开该区域就会立刻从该集合中删除, 范围比 IncludeItems 小
     /// </summary>
     private readonly HashSet<ActivityObject> _enterItems = new HashSet<ActivityObject>();
     

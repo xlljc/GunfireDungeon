@@ -54,7 +54,7 @@ public class AiTailAfterState : StateBase<AiRole, AIStateEnum>
     {
         //这个状态下不会有攻击事件, 所以没必要每一帧检查是否弹药耗尽
 
-        var target = Master.GetAttackTarget();
+        var target = Master.CalcAttackTarget();
         if (target == null)
         {
             Master.LookTarget = null;
@@ -116,6 +116,8 @@ public class AiTailAfterState : StateBase<AiRole, AIStateEnum>
 
     public override void DebugDraw()
     {
+        if (Master.LookTarget == null) return;
+        
         var playerPos = Master.LookTarget.GetCenterPosition();
         if (_isInViewRange)
         {

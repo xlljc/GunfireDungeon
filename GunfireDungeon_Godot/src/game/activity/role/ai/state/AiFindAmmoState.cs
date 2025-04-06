@@ -21,9 +21,6 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
     private float _tailAfterTimer = 0;
     private ActivityObject _attackTarget;
 
-    private float _idleTimer = 0;
-    private bool _playAnimFlag = false;
-
     public AiFindAmmoState() : base(AIStateEnum.AiFindAmmo)
     {
     }
@@ -50,25 +47,10 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
 
         //标记武器
         TargetWeapon.SetSign(SignNames.AiFindWeaponSign, Master);
-        
-        _playAnimFlag = prev == AIStateEnum.AiLeaveFor;
-        if (_playAnimFlag)
-        {
-            if (Master.AnimationPlayer.HasAnimation(AnimatorNames.Query))
-            {
-                Master.AnimationPlayer.Play(AnimatorNames.Query);
-            }
-        }
     }
 
     public override void Process(float delta)
     {
-        if (_playAnimFlag && _idleTimer > 0)
-        {
-            _idleTimer -= delta;
-            return;
-        }
-        
         if (!Master.IsAllWeaponTotalAmmoEmpty()) //已经有弹药了
         {
             RunNextState();
@@ -78,13 +60,13 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
         if (Master.LookTarget == null) //没有目标
         {
             //攻击目标
-            var attackTarget = Master.GetAttackTarget();
+            var attackTarget = Master.CalcAttackTarget();
             if (attackTarget != null)
             {
                 //发现玩家
                 Master.LookTarget = attackTarget;
-                //进入惊讶状态, 然后再进入通知状态
-                ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiFindAmmo, TargetWeapon);
+                //进入跟随
+                ChangeState(AIStateEnum.AiTailAfter);
                 return;
             }
         }
@@ -160,7 +142,8 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
     {
         if (_attackTarget != null)
         {
-            ChangeState(AIStateEnum.AiLeaveFor, _attackTarget);
+            Master.LookTarget = _attackTarget;
+            ChangeState(AIStateEnum.AiTailAfter);
         }
         else if (Master.LookTarget != null)
         {

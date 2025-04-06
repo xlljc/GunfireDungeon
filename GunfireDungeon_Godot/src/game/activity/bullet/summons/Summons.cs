@@ -23,8 +23,6 @@ public partial class Summons : ActivityObject
 
         if (_target != null)
         {
-            var stateBase = (AiAstonishedState)enemy.StateController.GetState(AIStateEnum.AiAstonished);
-            stateBase.IsEntred = true;
             enemy.LookTarget = _target;
         }
         enemy.PutDown(Position, RoomLayerEnum.YSortLayer);

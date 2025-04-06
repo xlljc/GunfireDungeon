@@ -176,35 +176,6 @@ public partial class World : CanvasModulate, ICoroutine
         }
     }
     
-    /// <summary>
-    /// 通知其他敌人发现目标了
-    /// </summary>
-    /// <param name="self">发送通知的角色</param>
-    /// <param name="target">目标</param>
-    public void NotifyEnemyTarget(Role self, ActivityObject target)
-    {
-        if (self.AffiliationArea == null)
-        {
-            return;
-        }
-        foreach (var role in Role_InstanceList)
-        {
-            if (role != self && !role.IsDestroyed && role.AffiliationArea == self.AffiliationArea && role is AiRole enemy && !self.IsEnemy(enemy))
-            {
-                //将未发现目标的敌人状态置为惊讶状态
-                var controller = enemy.StateController;
-                //延时通知效果
-                role.CallDelay(Utils.Random.RandomRangeFloat(0.2f, 1f), () =>
-                {
-                    if (controller.CurrState == AIStateEnum.AiNormal)
-                    {
-                        controller.ChangeState(AIStateEnum.AiLeaveFor, target);
-                    }
-                });
-            }
-        }
-    }
-    
     public long StartCoroutine(IEnumerator able)
     {
         return ProxyCoroutineHandler.ProxyStartCoroutine(ref _coroutineList, able);

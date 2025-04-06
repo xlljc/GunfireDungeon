@@ -156,12 +156,9 @@ public abstract partial class AiRole : Role
         StateController.Register(new AiNormalState());
         StateController.Register(new AiTailAfterState());
         StateController.Register(new AiFollowUpState());
-        StateController.Register(new AiLeaveForState());
         StateController.Register(new AiSurroundState());
         StateController.Register(new AiFindAmmoState());
         StateController.Register(new AiAttackState());
-        StateController.Register(new AiAstonishedState());
-        StateController.Register(new AiNotifyState());
         
         //默认状态
         StateController.ChangeStateInstant(AIStateEnum.AiNormal);
@@ -202,24 +199,14 @@ public abstract partial class AiRole : Role
         }
 
         //更新视野范围
-        switch (StateController.CurrState)
-        {
-            case AIStateEnum.AiNormal:
-            case AIStateEnum.AiNotify:
-            case AIStateEnum.AiAstonished:
-                ViewRange = DefaultViewRange;
-                break;
-            default:
-                ViewRange = TailAfterViewRange;
-                break;
-        }
+        ViewRange = StateController.CurrState == AIStateEnum.AiNormal ? DefaultViewRange : TailAfterViewRange;
     }
 
     /// <summary>
-    /// 获取攻击的目标对象, 当 HasAttackDesire 为 true 时才会调用
+    /// 计算攻击的目标对象, 当 HasAttackDesire 为 true 时才会调用
     /// </summary>
     /// <param name="perspective">上一次发现的角色在本次检测中是否开启视野透视</param>
-    public Role GetAttackTarget(bool perspective = true)
+    public Role CalcAttackTarget(bool perspective = true)
     {
         //目标丢失
         if (_attackTarget == null || _attackTarget.IsDestroyed || !IsEnemy(_attackTarget))
@@ -244,6 +231,14 @@ public abstract partial class AiRole : Role
         }
         
         return _attackTarget;
+    }
+    
+    /// <summary>
+    /// 设置攻击目标, 强制设置
+    /// </summary>
+    public void SetAttackTarget(Role target)
+    {
+        _attackTarget = target;
     }
     
     /// <summary>
@@ -378,7 +373,7 @@ public abstract partial class AiRole : Role
     {
         //这几个状态不需要主动拾起武器操作
         var state = StateController.CurrState;
-        if (state == AIStateEnum.AiNormal || state == AIStateEnum.AiNotify || state == AIStateEnum.AiAstonished || state == AIStateEnum.AiAttack)
+        if (state == AIStateEnum.AiNormal || state == AIStateEnum.AiAttack)
         {
             return;
         }
@@ -549,29 +544,8 @@ public abstract partial class AiRole : Role
             {
                 _attackTarget = role;
             }
-            //判断是否进入通知状态
-            if (World.Role_InstanceList.FindIndex(role =>
-                    role is AiRole aiRole && 
-                    aiRole != this && !aiRole.IsDie && aiRole.AffiliationArea == AffiliationArea &&
-                    aiRole.StateController.CurrState == AIStateEnum.AiNormal) != -1)
-            {
-                //进入惊讶状态, 然后再进入通知状态
-                StateController.ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiNotify);
-            }
-            else
-            {
-                //进入惊讶状态, 然后再进入跟随状态
-                StateController.ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiTailAfter);
-            }
-        }
-        else if (state == AIStateEnum.AiLeaveFor)
-        {
-            LookTarget = target;
-            if (target is Role role)
-            {
-                _attackTarget = role;
-            }
-            StateController.ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiTailAfter);
+            //进入跟随状态
+            StateController.ChangeState(AIStateEnum.AiTailAfter);
         }
         else if (state == AIStateEnum.AiFindAmmo)
         {
@@ -583,18 +557,15 @@ public abstract partial class AiRole : Role
                     _attackTarget = role;
                 }
                 var findAmmo = (AiFindAmmoState)StateController.CurrStateBase;
-                StateController.ChangeState(AIStateEnum.AiAstonished, AIStateEnum.AiFindAmmo, findAmmo.TargetWeapon);
+                StateController.ChangeState(AIStateEnum.AiFindAmmo, findAmmo.TargetWeapon);
             }
         }
-        else if (state != AIStateEnum.AiAstonished && state != AIStateEnum.AiNotify)
+        else if (TargetHasOcclusion || !TargetInView)
         {
-            if (TargetHasOcclusion || !TargetInView)
+            LookTarget = target;
+            if (target is Role role)
             {
-                LookTarget = target;
-                if (target is Role role)
-                {
-                    _attackTarget = role;
-                }
+                _attackTarget = role;
             }
         }
     }
