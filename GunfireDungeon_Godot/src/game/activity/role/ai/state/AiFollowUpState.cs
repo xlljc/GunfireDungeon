@@ -23,7 +23,6 @@ public class AiFollowUpState : StateBase<AiRole, AIStateEnum>
         {
             ChangeState(AIStateEnum.AiNormal);
             return;
-            //throw new Exception("进入 AIAdvancedStateEnum.AiFollowUp 状态时角色没有攻击目标!");
         }
         
         _navigationUpdateTimer = 0;
@@ -46,6 +45,13 @@ public class AiFollowUpState : StateBase<AiRole, AIStateEnum>
                 //切换到随机移动状态
                 ChangeState(AIStateEnum.AiSurround);
             }
+        }
+        
+        //更改攻击状态：目标丢失、销毁、或者阵营转变
+        if (Master.LookTarget == null || Master.LookTarget.IsDestroyed || (Master.LookTarget is Role role && !Master.IsEnemy(role)))
+        {
+            ChangeState(AIStateEnum.AiNormal);
+            return;
         }
 
         var playerPos = Master.LookTarget.GetCenterPosition();

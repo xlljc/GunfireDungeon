@@ -49,13 +49,13 @@ public class AiNormalState : StateBase<AiRole, AIStateEnum>
         if (Master.LookTarget != null)
         {
             //进入跟随状态
-            ChangeState(AIStateEnum.AiTailAfter);
+            ChangeState(AIStateEnum.AiTailAfter, Master.LookTarget);
             return;
         }
         
         if (Master.HasAttackDesire) //有攻击欲望
         {
-            var target = Master.CalcAttackTarget2();
+            var target = Master.CalcAttackTarget();
             if (target != null)
             {
                 //发现玩家

@@ -19,7 +19,7 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
     private float _navigationInterval = 1f;
     
     private float _tailAfterTimer = 0;
-    private ActivityObject _attackTarget;
+    private Role _attackTarget;
 
     public AiFindAmmoState() : base(AIStateEnum.AiFindAmmo)
     {
@@ -34,7 +34,7 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
 
         if (args.Length >= 2)
         {
-            _attackTarget = (ActivityObject)args[1];
+            _attackTarget = (Role)args[1];
         }
         else
         {
@@ -128,8 +128,7 @@ public class AiFindAmmoState : StateBase<AiRole, AIStateEnum>
     {
         if (_attackTarget != null)
         {
-            Master.LookTarget = _attackTarget;
-            ChangeState(AIStateEnum.AiTailAfter);
+            ChangeState(AIStateEnum.AiTailAfter, _attackTarget);
         }
         else if (Master.LookTarget != null)
         {
