@@ -8,9 +8,12 @@ namespace UI.editor.MapEditorCreateMark;
 
 public partial class MapEditorCreateMarkPanel : MapEditorCreateMark
 {
-
+    /// <summary>
+    /// 标记数据
+    /// </summary>
+    public MarkInfo MarkInfo { get; private set; }
+    
     private UiGrid<MarkObject, MarkInfoItem> _grid;
-    private MarkInfo _markInfo;
     private bool _preloading;
     
     public override void OnCreateUi()
@@ -64,7 +67,7 @@ public partial class MapEditorCreateMarkPanel : MapEditorCreateMark
     /// <param name="preloading">是否提前加载</param>
     public void InitData(MarkInfo data, bool preloading)
     {
-        _markInfo = data;
+        MarkInfo = data;
         _preloading = preloading;
         S_SizeX.Instance.Value = data.Size.X;
         S_SizeY.Instance.Value = data.Size.Y;
@@ -80,10 +83,10 @@ public partial class MapEditorCreateMarkPanel : MapEditorCreateMark
             S_DelayInput.Instance.Value = data.DelayTime;
         }
 
-        if (_markInfo.SpecialMarkType != SpecialMarkType.Normal) //特殊标记
+        if (MarkInfo.SpecialMarkType != SpecialMarkType.Normal) //特殊标记
         {
             var markInfoItem = new MarkInfoItem();
-            markInfoItem.SpecialMarkType = _markInfo.SpecialMarkType;
+            markInfoItem.SpecialMarkType = MarkInfo.SpecialMarkType;
             _grid.Add(markInfoItem);
             //隐藏选项
             S_AddMark.Instance.Visible = false;
@@ -122,9 +125,9 @@ public partial class MapEditorCreateMarkPanel : MapEditorCreateMark
         data.Position = new SerializeVector2((float)S_PosX.Instance.Value, (float)S_PosY.Instance.Value);
         data.Size = new SerializeVector2((float)S_SizeX.Instance.Value, (float)S_SizeY.Instance.Value);
         
-        if (_markInfo != null)
+        if (MarkInfo != null)
         {
-            data.SpecialMarkType = _markInfo.SpecialMarkType;
+            data.SpecialMarkType = MarkInfo.SpecialMarkType;
         }
         else
         {

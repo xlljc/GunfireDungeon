@@ -184,11 +184,11 @@ public static class ResourceManager
             }
             else if (markInfo.SpecialMarkType == SpecialMarkType.OutPoint) //出口标记
             {
-                return LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_BirthMark_png);
+                return LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Exit_png);
             }
             else if (markInfo.SpecialMarkType == SpecialMarkType.Treasure) //宝箱
             {
-                return LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_BirthMark_png);
+                return LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_Chest_png);
             }
             else if (markInfo.SpecialMarkType == SpecialMarkType.ShopBoss) //商店老板
             {

@@ -17,6 +17,8 @@ public class EditorWaveCell : UiCell<MapEditorMapMark.WaveItem, List<MarkInfo>>
     
     public override void OnInit()
     {
+        CellNode.L_WaveContainer.L_WaveButton.L_Select.Instance.Visible = false;
+        
         //这里不绑定 Click 函数, 而是绑定 OnClickHandler, 因为 Select 交给 MapEditorMapMarkPanel 处理了
         CellNode.L_WaveContainer.L_WaveButton.Instance.Pressed += OnClickHandler;
         CellNode.L_WaveContainer.L_TextureButton.Instance.Pressed += OnExpandOrClose;

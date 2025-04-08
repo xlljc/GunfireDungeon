@@ -40,7 +40,7 @@ public class MarkObjectCell : UiCell<MapEditorCreateMark.MarkObject, MarkInfoIte
             
             //图标
             CellNode.L_VBoxContainer.L_HBoxContainer.L_Icon.Instance.Visible = true;
-            CellNode.L_VBoxContainer.L_HBoxContainer.L_Icon.Instance.Texture = ResourceManager.LoadTexture2D(ResourcePath.resource_sprite_ui_commonIcon_BirthMark_png);
+            CellNode.L_VBoxContainer.L_HBoxContainer.L_Icon.Instance.Texture = ResourceManager.GetMarkIcon(CellNode.UiPanel.MarkInfo);
             
             CellNode.L_VBoxContainer.L_HBoxContainer.L_CenterContainer.L_DeleteButton.Instance.Visible = false;
             CellNode.L_VBoxContainer.L_HBoxContainer.L_WeightEdit.Instance.Visible = false;
