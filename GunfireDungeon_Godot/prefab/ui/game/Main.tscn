@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.109804, 0.0666667, 0.0901961, 1)
+color = Color(0.141176, 0.141176, 0.141176, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -96,7 +96,7 @@ offset_top = -100.0
 offset_right = 215.0
 offset_bottom = -68.0
 grow_vertical = 0
-text = "b站:小李xlxl"
+text = "bilibili:小李xlxl"
 uri = "https://space.bilibili.com/259437820"
 
 [node name="LinkButton2" type="LinkButton" parent="."]

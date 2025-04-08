@@ -192,99 +192,99 @@ public partial class ActivityInstance : Node2D
     {
         _jsonText = null;
     }
-    
-    public override void _Ready()
-    {
-#if TOOLS
-        if (!Engine.IsEditorHint())
-        {
-#endif
-            var world = World.Current;
-            if (world != null && world.YSortLayer != null && world.NormalLayer != null)
-            {
-                DoCreateObject();
-            }
-#if TOOLS
-        }
-#endif
-    }
-
-    public override void _Process(double delta)
-    {
-#if TOOLS
-        if (Engine.IsEditorHint())
-        {
-            if (_dirty || (_activityObject != null && _activityObject.GetParent() != this))
-            {
-                _dirty = false;
-                
-                if (_prevId != _id)
-                {
-                    OnChangeActivityId(_id);
-                }
-                else if (string.IsNullOrEmpty(_id))
-                {
-                    ShowErrorSprite();
-                }
-
-                OnChangeCollisionVisible();
-            }
-
-            if (_activityObject != null)
-            {
-                _activityObject.Collision.Position = _collPos;
-                _activityObject.UpdateShadowSprite((float)delta);
-                _activityObject.CalcThrowAnimatedPosition();
-            }
-        }
-        else
-        {
-#endif
-            var world = World.Current;
-            if (world != null && world.YSortLayer != null && world.NormalLayer != null)
-            {
-                DoCreateObject();
-            }
-#if TOOLS
-        }
-#endif
-    }
-
-    public override void _EnterTree()
-    {
-#if TOOLS
-        if (Engine.IsEditorHint())
-        {
-            _dirty = true;
-            
-            var children = GetChildren();
-            foreach (var child in children)
-            {
-                if (child is ActivityObject)
-                {
-                    child.QueueFree();
-                }
-            }
-            if (_activityObject != null)
-            {
-                _activityObject.QueueFree();
-            }
-            _activityObject = null;
-            _prevId = null;
-        }
-#endif
-    }
-
-    public override void _ExitTree()
-    {
-#if TOOLS
-        if (Engine.IsEditorHint() && _activityObject != null)
-        {
-            _activityObject.QueueFree();
-            _activityObject = null;
-        }
-#endif
-    }
+//     
+//     public override void _Ready()
+//     {
+// #if TOOLS
+//         if (!Engine.IsEditorHint())
+//         {
+// #endif
+//             var world = World.Current;
+//             if (world != null && world.YSortLayer != null && world.NormalLayer != null)
+//             {
+//                 DoCreateObject();
+//             }
+// #if TOOLS
+//         }
+// #endif
+//     }
+//
+//     public override void _Process(double delta)
+//     {
+// #if TOOLS
+//         if (Engine.IsEditorHint())
+//         {
+//             if (_dirty || (_activityObject != null && _activityObject.GetParent() != this))
+//             {
+//                 _dirty = false;
+//                 
+//                 if (_prevId != _id)
+//                 {
+//                     OnChangeActivityId(_id);
+//                 }
+//                 else if (string.IsNullOrEmpty(_id))
+//                 {
+//                     ShowErrorSprite();
+//                 }
+//
+//                 OnChangeCollisionVisible();
+//             }
+//
+//             if (_activityObject != null)
+//             {
+//                 _activityObject.Collision.Position = _collPos;
+//                 _activityObject.UpdateShadowSprite((float)delta);
+//                 _activityObject.CalcThrowAnimatedPosition();
+//             }
+//         }
+//         else
+//         {
+// #endif
+//             var world = World.Current;
+//             if (world != null && world.YSortLayer != null && world.NormalLayer != null)
+//             {
+//                 DoCreateObject();
+//             }
+// #if TOOLS
+//         }
+// #endif
+//     }
+//
+//     public override void _EnterTree()
+//     {
+// #if TOOLS
+//         if (Engine.IsEditorHint())
+//         {
+//             _dirty = true;
+//             
+//             var children = GetChildren();
+//             foreach (var child in children)
+//             {
+//                 if (child is ActivityObject)
+//                 {
+//                     child.QueueFree();
+//                 }
+//             }
+//             if (_activityObject != null)
+//             {
+//                 _activityObject.QueueFree();
+//             }
+//             _activityObject = null;
+//             _prevId = null;
+//         }
+// #endif
+//     }
+//
+//     public override void _ExitTree()
+//     {
+// #if TOOLS
+//         if (Engine.IsEditorHint() && _activityObject != null)
+//         {
+//             _activityObject.QueueFree();
+//             _activityObject = null;
+//         }
+// #endif
+//     }
 
     private ActivityObject DoCreateObject()
     {
