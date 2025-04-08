@@ -264,7 +264,8 @@ namespace DsUi
             {
                 ParentUi.RecordNestedUi(this, null, UiManager.RecordType.Close);
             }
-            
+
+            RemoveAllEventListener();
             QueueFree();
         }
 
