@@ -26,52 +26,60 @@ public static class TileMapUtils
         foreach (var (x, y) in autoCellLayerGrid)
         {
             //计算范围
-                if (x < xStart)
-                    xStart = x;
-                else if (x > xEnd)
-                    xEnd = x;
+            if (x < xStart)
+                xStart = x;
+            else if (x > xEnd)
+                xEnd = x;
 
-                if (y < yStart)
-                    yStart = y;
-                else if (y > yEnd)
-                    yEnd = y;
-                
-                //填充墙壁
-                if (!autoCellLayerGrid.Contains(new Vector2I(x, y - 1)))
+            if (y < yStart)
+                yStart = y;
+            else if (y > yEnd)
+                yEnd = y;
+
+            //填充墙壁
+            if (!autoCellLayerGrid.Contains(new Vector2I(x, y - 1)))
+            {
+                var left = autoCellLayerGrid.Contains(new Vector2I(x - 1, y - 1));
+                var right = autoCellLayerGrid.Contains(new Vector2I(x + 1, y - 1));
+                if (left && right)
                 {
-                    var left = autoCellLayerGrid.Contains(new Vector2I(x - 1, y - 1));
-                    var right = autoCellLayerGrid.Contains(new Vector2I(x + 1, y - 1));
-                    if (left && right)
-                    {
-                        var tileCellData1 = autoTileConfig.Wall_Vertical_SingleTop;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId, tileCellData1.AutoTileCoords);
-                        var tileCellData2 = autoTileConfig.Wall_Vertical_SingleBottom;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId, tileCellData2.AutoTileCoords);
-                    }
-                    else if (left)
-                    {
-                        var tileCellData1 = autoTileConfig.Wall_Vertical_LeftTop;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId, tileCellData1.AutoTileCoords);
-                        var tileCellData2 = autoTileConfig.Wall_Vertical_LeftBottom;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId, tileCellData2.AutoTileCoords);
-                    }
-                    else if (right)
-                    {
-                        var tileCellData1 = autoTileConfig.Wall_Vertical_RightTop;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId, tileCellData1.AutoTileCoords);
-                        var tileCellData2 = autoTileConfig.Wall_Vertical_RightBottom;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId, tileCellData2.AutoTileCoords);
-                    }
-                    else
-                    {
-                        var tileCellData1 = autoTileConfig.Wall_Vertical_CenterTop;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId, tileCellData1.AutoTileCoords);
-                        var tileCellData2 = autoTileConfig.Wall_Vertical_CenterBottom;
-                        tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId, tileCellData2.AutoTileCoords);
-                    }
+                    var tileCellData1 = autoTileConfig.Wall_Vertical_SingleTop;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                        tileCellData1.AutoTileCoords);
+                    var tileCellData2 = autoTileConfig.Wall_Vertical_SingleBottom;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                        tileCellData2.AutoTileCoords);
                 }
+                else if (left)
+                {
+                    var tileCellData1 = autoTileConfig.Wall_Vertical_LeftTop;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                        tileCellData1.AutoTileCoords);
+                    var tileCellData2 = autoTileConfig.Wall_Vertical_LeftBottom;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                        tileCellData2.AutoTileCoords);
+                }
+                else if (right)
+                {
+                    var tileCellData1 = autoTileConfig.Wall_Vertical_RightTop;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                        tileCellData1.AutoTileCoords);
+                    var tileCellData2 = autoTileConfig.Wall_Vertical_RightBottom;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                        tileCellData2.AutoTileCoords);
+                }
+                else
+                {
+                    var tileCellData1 = autoTileConfig.Wall_Vertical_CenterTop;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                        tileCellData1.AutoTileCoords);
+                    var tileCellData2 = autoTileConfig.Wall_Vertical_CenterBottom;
+                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                        tileCellData2.AutoTileCoords);
+                }
+            }
         }
-        
+
         //绘制临时边界
         var temp1 = new List<Vector2I>();
         for (var x = xStart - 3; x <= xEnd + 3; x++)

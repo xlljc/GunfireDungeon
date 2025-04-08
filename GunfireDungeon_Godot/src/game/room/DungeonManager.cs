@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections;
+using System.Linq;
 using Config;
 using DsUi;
 using Godot;
@@ -1046,6 +1047,9 @@ public partial class DungeonManager : Node2D
         DrawString(ResourceManager.DefaultFont16Px, pos1 - new Vector2I(0, 10), "Id: " + roomInfo.Id.ToString());
         DrawString(ResourceManager.DefaultFont16Px, pos1 + new Vector2I(0, 10), "Layer: " + roomInfo.Layer.ToString());
 
+        //绘制房间区域
+        DrawRect(new Rect2(roomInfo.Position * cellSize, roomInfo.Size * cellSize), Colors.Blue, false);
+        
         //绘制门
         foreach (var roomDoor in roomInfo.Doors)
         {
@@ -1074,9 +1078,6 @@ public partial class DungeonManager : Node2D
                     break;
             }
             
-            //绘制房间区域
-            DrawRect(new Rect2(roomInfo.Position * cellSize, roomInfo.Size * cellSize), Colors.Blue, false);
-
             if (roomDoor.HasCross && roomDoor.RoomInfo.Id < roomDoor.ConnectRoom.Id)
             {
                 DrawRect(new Rect2(roomDoor.Cross * cellSize, new Vector2(cellSize * 4, cellSize * 4)), Colors.Yellow, false);
