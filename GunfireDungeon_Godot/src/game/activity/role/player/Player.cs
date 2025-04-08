@@ -48,7 +48,7 @@ public partial class Player : Role
         ActivePropsPack.SetCapacity(1);
         
         // debug用
-        DebugSet();
+        // DebugSet();
         
         //注册状态机
         StateController.Register(new PlayerIdleState());
@@ -76,7 +76,7 @@ public partial class Player : Role
         CollisionLayer = PhysicsLayer.None;
         CollisionMask = PhysicsLayer.None;
         
-        this.CallDelay(3, () =>
+        this.CallDelay(1, () =>
         {
             GameCamera.Main.Zoom = new Vector2(0.5f, 0.5f);
         });

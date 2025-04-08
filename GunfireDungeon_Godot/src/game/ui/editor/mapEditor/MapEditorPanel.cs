@@ -116,10 +116,24 @@ public partial class MapEditorPanel : MapEditor
     public override void OnShowUi()
     {
         OnMapViewResized();
+        if (S_TileMap.GetParent() == null)
+        {
+            S_SubViewport.AddChild(S_TileMap);
+        }
+    }
+
+    public override void OnHideUi()
+    {
+        S_SubViewport.RemoveChild(S_TileMap);
     }
 
     public override void OnDestroyUi()
     {
+        if (S_TileMap.GetParent() == null)
+        {
+            S_TileMap.QueueFree();
+        }
+        
         //清除选中的标记
         EditorTileMapManager.SetSelectMark(null);
         //清除选中的波
