@@ -109,7 +109,7 @@ public class AiAttackState : StateBase<AiRole, AIStateEnum>
     private void WeaponRoleProcess(float delta)
     {
         var weapon = Master.WeaponPack.ActiveItem;
-        if (weapon == null)
+        if (weapon == null || AttackState == AiAttackEnum.Reloading)
         {
             //攻击结束
             ChangeState(PrevState);

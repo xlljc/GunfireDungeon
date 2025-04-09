@@ -28,20 +28,6 @@
     "ShowInMapEditor": true
   },
   {
-    "Id": "enemy0002",
-    "Name": "\u654C\u4EBA2",
-    "Type": 4,
-    "Quality": 0,
-    "Price": 0,
-    "Intro": "\u654C\u4EBA2",
-    "Details": "",
-    "IsStatic": false,
-    "__Material": "",
-    "Prefab": "res://prefab/role/enemy/Enemy0002.tscn",
-    "Icon": "res://resource/sprite/role/enemy0002/Enemy0002.png",
-    "ShowInMapEditor": true
-  },
-  {
     "Id": "boss0001",
     "Name": "Boss",
     "Type": 12,

@@ -69,8 +69,8 @@ public partial class Bullet : ActivityObject, IBullet
     public override void OnInit()
     {
         base.OnInit();
-        OutlineColor = new Color(2.2f, 0, 0);
-        SetBlendColor(new Color(2.2f, 2.2f, 2.2f));
+        OutlineColor = new Color(2.3f, 0, 0);
+        SetBlendColor(new Color(1,1,1));
 
         CollisionArea.CollisionMask = Role.AttackLayer;
     }

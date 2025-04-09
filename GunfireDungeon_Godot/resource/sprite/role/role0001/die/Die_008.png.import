@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nuvvp8437thc"
-path="res://.godot/imported/HallGround.png-2873a7eb29764ca56ab60dacac63ab3f.ctex"
+uid="uid://ctx8ugfu0igo5"
+path="res://.godot/imported/Die_008.png-5a3abd316eff171fb77142f42d12fab2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/sprite/tile/HallGround.png"
-dest_files=["res://.godot/imported/HallGround.png-2873a7eb29764ca56ab60dacac63ab3f.ctex"]
+source_file="res://resource/sprite/role/role0001/die/Die_008.png"
+dest_files=["res://.godot/imported/Die_008.png-5a3abd316eff171fb77142f42d12fab2.ctex"]
 
 [params]
 

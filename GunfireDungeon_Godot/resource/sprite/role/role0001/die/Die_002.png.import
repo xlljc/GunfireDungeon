@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5tjeo0vy8uld"
-path="res://.godot/imported/Sprite-0002-Sheet-export.png-2abb636cc5171f887ec942bd98ca08b0.ctex"
+uid="uid://bfiefahuo1pf"
+path="res://.godot/imported/Die_002.png-8d8cb3127dbb6defb9d8effa30e28fb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/sprite/role/role0001/dle/Sprite-0002-Sheet-export.png"
-dest_files=["res://.godot/imported/Sprite-0002-Sheet-export.png-2abb636cc5171f887ec942bd98ca08b0.ctex"]
+source_file="res://resource/sprite/role/role0001/die/Die_002.png"
+dest_files=["res://.godot/imported/Die_002.png-8d8cb3127dbb6defb9d8effa30e28fb1.ctex"]
 
 [params]
 

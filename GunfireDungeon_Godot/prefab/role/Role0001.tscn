@@ -47,7 +47,7 @@ texture = ExtResource("3_vx7tr")
 [node name="AnimatedSprite" parent="." index="2"]
 material = SubResource("ShaderMaterial_8hgu2")
 sprite_frames = ExtResource("4_galcc")
-animation = &"die"
+animation = &"roll"
 
 [node name="Collision" parent="." index="3"]
 position = Vector2(0, 0)
@@ -60,5 +60,5 @@ position = Vector2(0, 0)
 
 [node name="AnimationPlayer" parent="." index="8"]
 libraries = {
-"": SubResource("AnimationLibrary_ka171")
+&"": SubResource("AnimationLibrary_ka171")
 }
