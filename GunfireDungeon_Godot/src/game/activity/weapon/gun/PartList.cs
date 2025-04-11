@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// 武器逻辑块列表
+/// 武器零件列表
 /// </summary>
-public class LogicBlockList
+public class PartList
 {
     /// <summary>
     /// 列表长度
@@ -16,44 +16,44 @@ public class LogicBlockList
     /// </summary>
     public Weapon Weapon { get; }
 
-    private readonly LogicBlockBase[] _logicBlocks;
+    private readonly PartBase[] _logicBlocks;
     private bool _dirty = true;
     
-    public LogicBlockList(int maxLen, Weapon weapon)
+    public PartList(int maxLen, Weapon weapon)
     {
-        _logicBlocks = new LogicBlockBase[maxLen];
+        _logicBlocks = new PartBase[maxLen];
         Weapon = weapon;
     }
 
     /// <summary>
-    /// 为指定索引设置逻辑块
+    /// 为指定索引设置零件
     /// </summary>
-    public LogicBlockBase SetLogicBlock(int index, LogicBlockBase logicBlock)
+    public PartBase SetLogicBlock(int index, PartBase part)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
-            logicBlock.LogicBlockList = this;
-            logicBlock.Weapon = Weapon;
-            logicBlock.Index = index;
+            part.PartList = this;
+            part.Weapon = Weapon;
+            part.Index = index;
             
             var prev = _logicBlocks[index];
             if (prev != null)
             {
-                logicBlock.Index = -1;
-                logicBlock.Weapon = null;
+                part.Index = -1;
+                part.Weapon = null;
             }
-            _logicBlocks[index] = logicBlock;
+            _logicBlocks[index] = part;
             _dirty = true;
-            return logicBlock;
+            return part;
         }
 
         return null;
     }
 
     /// <summary>
-    /// 获取指定位置逻辑块
+    /// 获取指定位置零件
     /// </summary>
-    public LogicBlockBase GetLogicBlock(int index)
+    public PartBase GetLogicBlock(int index)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
@@ -64,9 +64,9 @@ public class LogicBlockList
     }
 
     /// <summary>
-    /// 移除指定位置逻辑块
+    /// 移除指定位置零件
     /// </summary>
-    public LogicBlockBase RemoveLogicBlock(int index)
+    public PartBase RemoveLogicBlock(int index)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
@@ -82,11 +82,11 @@ public class LogicBlockList
     }
 
     /// <summary>
-    /// 获取第一个逻辑块
+    /// 获取第一个零件
     /// </summary>
-    public LogicBlockBase GetFirstLogicBlock()
+    public PartBase GetFirstLogicBlock()
     {
-        LogicBlockBase temp = null;
+        PartBase temp = null;
         for (var i = 0; i < _logicBlocks.Length; i++)
         {
             temp = _logicBlocks[i];
@@ -100,9 +100,9 @@ public class LogicBlockList
     }
     
     /// <summary>
-    /// 规划下一次执行的逻辑块，并组装成一个链表，然后调用该链表的 Execute() 方法执行整个逻辑块
+    /// 规划下一次执行的零件，并组装成一个链表，然后调用该链表的 Execute() 方法执行整个零件
     /// </summary>
-    public PlanningLogicItem Planning()
+    public PlanningPartItem Planning()
     {
         if (_dirty)
         {
@@ -114,7 +114,7 @@ public class LogicBlockList
 
         if (temp != null)
         {
-            var start = new PlanningLogicItem(temp);
+            var start = new PlanningPartItem(temp);
             PlanningEach(start);
             return start;
         }
@@ -122,9 +122,9 @@ public class LogicBlockList
         return null;
     }
 
-    private void PlanningEach(PlanningLogicItem root)
+    private void PlanningEach(PlanningPartItem root)
     {
-        var next = root.LogicBlock.PlanningNext(root.LogicBlock.Children);
+        var next = root.Part.PlanningNext(root.Part.Children);
         if (next == null || next.Length == 0)
         {
             return;
@@ -137,7 +137,7 @@ public class LogicBlockList
             {
                 continue;
             }
-            var tempNext = new PlanningLogicItem(block);
+            var tempNext = new PlanningPartItem(block);
             temp.Next = tempNext;
             tempNext.Prev = temp;
             temp = tempNext;
@@ -154,7 +154,7 @@ public class LogicBlockList
         {
             if (logic != null)
             {
-                logic.Children = new LogicBlockBase[logic.Occupancy];
+                logic.Children = new PartBase[logic.Occupancy];
             }
         }
 
@@ -165,24 +165,24 @@ public class LogicBlockList
         }
     }
 
-    private int EachTree(LogicBlockBase logicBlock)
+    private int EachTree(PartBase part)
     {
-        if (logicBlock.Occupancy <= 0)
+        if (part.Occupancy <= 0)
         {
             return 0;
         }
 
         var v = 0;
-        for (var i = 1; i <= logicBlock.Occupancy; i++)
+        for (var i = 1; i <= part.Occupancy; i++)
         {
-            var next = GetLogicBlock(logicBlock.Index + i + v);
+            var next = GetLogicBlock(part.Index + i + v);
             if (next != null)
             {
                 v += EachTree(next);
-                logicBlock.Children[i - 1] = next;
+                part.Children[i - 1] = next;
             }
         }
 
-        return logicBlock.Occupancy;
+        return part.Occupancy;
     }
 }

@@ -1,0 +1,15 @@
+﻿
+/// <summary>
+/// 子弹增益零件
+/// </summary>
+public class BuffPart : PartBase
+{
+    /// <summary>
+    /// 零件消耗法力值
+    /// </summary>
+    public int UseMana { get; set; }
+    
+    public BuffPart() : base(PartType.Buff)
+    {
+    }
+}

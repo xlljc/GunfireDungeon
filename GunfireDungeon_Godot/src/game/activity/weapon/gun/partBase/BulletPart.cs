@@ -2,8 +2,16 @@
 using Config;
 using Godot;
 
-public class BulletLogicBlock : LogicBlockBase
+/// <summary>
+/// 子弹零件
+/// </summary>
+public class BulletPart : PartBase
 {
+    /// <summary>
+    /// 逻辑块消耗法力值
+    /// </summary>
+    public int UseMana { get; set; }
+    
     /// <summary>
     /// 散射角度
     /// </summary>
@@ -14,6 +22,10 @@ public class BulletLogicBlock : LogicBlockBase
     /// </summary>
     public ExcelConfig.BulletBase Bullet { get; set; }
 
+    public BulletPart() : base(PartType.Bullet)
+    {
+    }
+    
     public override void Execute(float fireRotation)
     {
         Debug.Log($"射击子弹({Index}), fireRotation:{fireRotation}");

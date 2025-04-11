@@ -162,14 +162,14 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     public int CurrManaBuffer { get; private set; } = 200;
     
     /// <summary>
-    /// 缓冲区法力恢复速度
+    /// 缓冲区每秒法力恢复速度
     /// </summary>
-    public int ManaRecoverySpeed { get; private set; } = 100;
+    public int ManaRecoverySpeed { get; private set; } = 10;
     
     /// <summary>
-    /// 开火逻辑块列表
+    /// 开火零件列表
     /// </summary>
-    public LogicBlockList FireBlockList { get; private set; }
+    public PartList FirePartList { get; private set; }
     
     //--------------------------------------------------------------------------------------------
 
@@ -356,7 +356,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         
         //弹药量
         CurrAmmo = Attribute.AmmoCapacity;
-        FireBlockList = new LogicBlockList(10, this);
+        FirePartList = new PartList(10, this);
     }
 
     /// <summary>
@@ -1158,7 +1158,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             _continuousCount = _continuousCount > 0 ? _continuousCount - 1 : 0;
         }
 
-        var logicItem = FireBlockList.Planning();
+        var logicItem = FirePartList.Planning();
         if (logicItem == null)
         {
             return;
@@ -1184,8 +1184,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             fireRotation += GlobalRotation;
         }
 
-        Debug.Log("---------------------------------------------");
-        //执行逻辑块
+        //执行零件
         var errorIndex = logicItem.Execute(fireRotation);
         // 没有正常发射出子弹
         if (errorIndex == 0)
@@ -1311,7 +1310,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     }
 
     /// <summary>
-    /// 使用法力值
+    /// 使用法力值，返回是否成功
     /// </summary>
     public bool UseManaBuff(int mana)
     {

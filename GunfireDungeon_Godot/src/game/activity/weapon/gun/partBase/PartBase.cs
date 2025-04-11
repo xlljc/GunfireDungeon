@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// 武器逻辑块基类
+/// 武器零件基类
 /// </summary>
-public abstract class LogicBlockBase
+public abstract class PartBase
 {
     /// <summary>
-    /// 逻辑块消耗法力值
+    /// 零件类型
     /// </summary>
-    public int UseMana { get; set; }
+    public PartType PartType { get; }
     
     /// <summary>
-    /// 占用后置逻辑块数量，在调用 PlanningNext() 函数时，这个值就是 occupancy 参数的数组的长度
+    /// 占用后置零件数量，在调用 PlanningNext() 函数时，这个值就是 occupancy 参数的数组的长度
     /// </summary>
     public int Occupancy { get; set; }
 
@@ -22,38 +22,45 @@ public abstract class LogicBlockBase
     public Weapon Weapon { get; set; }
 
     /// <summary>
-    /// 逻辑块在武器逻辑槽中的索引，如果为 -1 则代表逻辑块未加入到逻辑槽中
+    /// 零件在武器逻辑槽中的索引，如果为 -1 则代表零件未加入到逻辑槽中
     /// </summary>
     public int Index { get; set; } = -1;
 
     /// <summary>
     /// 所属逻辑槽
     /// </summary>
-    public LogicBlockList LogicBlockList { get; set; }
+    public PartList PartList { get; set; }
     
     /// <summary>
-    /// 子逻辑块列表，这个是由 LogicBlockList 控制的
+    /// 子零件列表，这个是由 PartList 控制的
     /// </summary>
-    public LogicBlockBase[] Children { get; set; }
+    public PartBase[] Children { get; set; }
+
+    public PartBase(PartType partType)
+    {
+        PartType = partType;
+    }
 
     /// <summary>
-    /// 执行逻辑块
+    /// 执行零件
     /// </summary>
     /// <param name="fireRotation">开火时武器角度</param>
-    public abstract void Execute(float fireRotation);
+    public virtual void Execute(float fireRotation)
+    {
+    }
 
     /// <summary>
-    /// 获取下一个与该逻辑块绑定运行的逻辑块，如果没有则返回 null
-    /// <param name="occupancy">后置逻辑块对象数组</param>
+    /// 获取下一个与该零件绑定运行的零件，如果没有则返回 null
+    /// <param name="occupancy">后置零件对象数组</param>
     /// </summary>
-    public virtual LogicBlockBase[] PlanningNext(LogicBlockBase[] occupancy)
+    public virtual PartBase[] PlanningNext(PartBase[] occupancy)
     {
         return occupancy;
     }
 
     public override string ToString()
     {
-        return $"({GetType().Name}: UseMana: {UseMana}, Occupancy: {Occupancy})";
+        return $"({GetType().Name}: Type: {PartType}, Occupancy: {Occupancy})";
     }
 
     public string GetTreeString()
