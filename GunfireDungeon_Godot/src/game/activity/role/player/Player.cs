@@ -62,6 +62,11 @@ public partial class Player : Role
         _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
         
         WeaponPack.SetCapacity(10);
+        
+        this.CallDelay(0.5f, () =>
+        {
+            PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
+        });
     }
 
     private void DebugSet()
@@ -84,13 +89,10 @@ public partial class Player : Role
         World.TileRoot.SetLayerEnabled(MapLayer.AutoTopLayer, false);
         World.TileRoot.SetLayerEnabled(MapLayer.AutoMiddleLayer, false);
         
-        // this.CallDelay(0.5f, () =>
-        // {
-        //     PickUpWeapon(Create<Weapon>(Ids.Id_weapon0009));
-        //     PickUpWeapon(Create<Weapon>(Ids.Id_weapon0008));
-        //     PickUpWeapon(Create<Weapon>(Ids.Id_weapon0007));
-        //     PickUpWeapon(Create<Weapon>(Ids.Id_weapon0006));
-        // });
+        this.CallDelay(0.5f, () =>
+        {
+            PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
+        });
         World.Color = new Color(1, 1, 1, 1); //关闭迷雾
         //显示房间小地图
         this.CallDelay(1, () =>
@@ -195,12 +197,12 @@ public partial class Player : Role
             if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
             {
                 Attack();
-                // //测试用,触发房间内地上的武器开火
-                // var weaponArray = AffiliationArea.FindEnterItems(o => o is Weapon);
-                // foreach (Weapon activityObject in weaponArray)
-                // {
-                //     activityObject.Trigger(this);
-                // }
+                //测试用,触发房间内地上的武器开火
+                var weaponArray = AffiliationArea.FindEnterItems(o => o is Weapon);
+                foreach (Weapon activityObject in weaponArray)
+                {
+                    activityObject.Trigger(this);
+                }
             }
         }
 

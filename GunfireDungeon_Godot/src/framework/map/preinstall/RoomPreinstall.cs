@@ -608,7 +608,8 @@ public class RoomPreinstall : IDestroy
             }
             if (activityMark.Attr.TryGetValue("ResidueAmmo", out var residueAmmo)) //剩余弹药
             {
-                weapon.SetResidueAmmo(int.Parse(residueAmmo));
+                // weapon.SetResidueAmmo(int.Parse(residueAmmo));
+                Debug.LogError("设置剩余法力值还未实现！！！----1");
             }
         }
         else if (activityMark.ActivityType == ActivityType.Enemy) //敌人类型
@@ -626,7 +627,8 @@ public class RoomPreinstall : IDestroy
                     }
                     if (activityMark.Attr.TryGetValue("ResidueAmmo", out var residueAmmo)) //剩余弹药
                     {
-                        weapon.SetResidueAmmo(int.Parse(residueAmmo));
+                        // weapon.SetResidueAmmo(int.Parse(residueAmmo));
+                        Debug.LogError("设置剩余法力值还未实现！！！----2");
                     }
                 }
             }

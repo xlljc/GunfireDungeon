@@ -111,10 +111,10 @@ public partial class Knife : Weapon
         }
     }
 
-    protected override void OnShoot(float fireRotation)
-    {
-        
-    }
+    // protected override void OnShoot(float fireRotation)
+    // {
+    //     
+    // }
 
     protected override int UseAmmoCount()
     {

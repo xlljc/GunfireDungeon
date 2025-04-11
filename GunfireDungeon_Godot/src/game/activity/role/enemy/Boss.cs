@@ -97,7 +97,7 @@ public partial class Boss : AiRole
                     var item = itemSlot[i];
                     if (item != null)
                     {
-                        total += item.TotalAmmon;
+                        total += (int)item.CurrMana;
                         break;
                     }
                 }

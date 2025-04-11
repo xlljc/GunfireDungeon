@@ -217,15 +217,7 @@ public static class TileMapUtils
                 {
                     var atlasCoords = tileMap.GetCellAtlasCoords(MapLayer.AutoFloorLayer, pos);
                     var layer = autoTileConfig.GetLayer(atlasCoords);
-                    if (layer == MapLayer.AutoMiddleLayer)
-                    {
-                        layer = MapLayer.AutoMiddleLayer;
-                    }
-                    else if (layer == MapLayer.AutoTopLayer)
-                    {
-                        layer = MapLayer.AutoTopLayer;
-                    }
-                    else
+                    if (layer != MapLayer.AutoMiddleLayer && layer != MapLayer.AutoTopLayer)
                     {
                         Debug.LogError($"异常图块: {pos}, 这个图块的图集坐标'{atlasCoords}'不属于'MiddleMapLayer'和'TopMapLayer'!");
                         continue;

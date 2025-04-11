@@ -569,12 +569,30 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.AmmoCount
+    /// 路径: RoomUI.Control.WeaponBar.CurrAmmoCount
     /// </summary>
-    public class AmmoCount : UiNode<RoomUIPanel, Godot.Label, AmmoCount>
+    public class CurrAmmoCount : UiNode<RoomUIPanel, Godot.Label, CurrAmmoCount>
     {
-        public AmmoCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override AmmoCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public CurrAmmoCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override CurrAmmoCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaBuffCount
+    /// </summary>
+    public class ManaBuffCount : UiNode<RoomUIPanel, Godot.Label, ManaBuffCount>
+    {
+        public ManaBuffCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override ManaBuffCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaCount
+    /// </summary>
+    public class ManaCount : UiNode<RoomUIPanel, Godot.Label, ManaCount>
+    {
+        public ManaCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override ManaCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
@@ -596,17 +614,43 @@ public abstract partial class RoomUI : UiBase
         private WeaponPanel _L_WeaponPanel;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.AmmoCount
+        /// 节点路径: RoomUI.Control.CurrAmmoCount
         /// </summary>
-        public AmmoCount L_AmmoCount
+        public CurrAmmoCount L_CurrAmmoCount
         {
             get
             {
-                if (_L_AmmoCount == null) _L_AmmoCount = new AmmoCount(UiPanel, Instance.GetNode<Godot.Label>("AmmoCount"));
-                return _L_AmmoCount;
+                if (_L_CurrAmmoCount == null) _L_CurrAmmoCount = new CurrAmmoCount(UiPanel, Instance.GetNode<Godot.Label>("CurrAmmoCount"));
+                return _L_CurrAmmoCount;
             }
         }
-        private AmmoCount _L_AmmoCount;
+        private CurrAmmoCount _L_CurrAmmoCount;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.ManaBuffCount
+        /// </summary>
+        public ManaBuffCount L_ManaBuffCount
+        {
+            get
+            {
+                if (_L_ManaBuffCount == null) _L_ManaBuffCount = new ManaBuffCount(UiPanel, Instance.GetNode<Godot.Label>("ManaBuffCount"));
+                return _L_ManaBuffCount;
+            }
+        }
+        private ManaBuffCount _L_ManaBuffCount;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.ManaCount
+        /// </summary>
+        public ManaCount L_ManaCount
+        {
+            get
+            {
+                if (_L_ManaCount == null) _L_ManaCount = new ManaCount(UiPanel, Instance.GetNode<Godot.Label>("ManaCount"));
+                return _L_ManaCount;
+            }
+        }
+        private ManaCount _L_ManaCount;
 
         public WeaponBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
         public override WeaponBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
@@ -823,9 +867,19 @@ public abstract partial class RoomUI : UiBase
     public WeaponPanel S_WeaponPanel => L_Control.L_WeaponBar.L_WeaponPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.AmmoCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.CurrAmmoCount
     /// </summary>
-    public AmmoCount S_AmmoCount => L_Control.L_WeaponBar.L_AmmoCount;
+    public CurrAmmoCount S_CurrAmmoCount => L_Control.L_WeaponBar.L_CurrAmmoCount;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaBuffCount
+    /// </summary>
+    public ManaBuffCount S_ManaBuffCount => L_Control.L_WeaponBar.L_ManaBuffCount;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaCount
+    /// </summary>
+    public ManaCount S_ManaCount => L_Control.L_WeaponBar.L_ManaCount;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar

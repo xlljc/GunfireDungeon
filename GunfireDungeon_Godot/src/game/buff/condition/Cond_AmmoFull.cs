@@ -21,13 +21,7 @@ public class Cond_AmmoFull : ConditionFragment
         {
             return false;
         }
-        if (_type)
-        {
-            return !Role.WeaponPack.ActiveItem.IsAmmoFull();
-        }
-        else
-        {
-            return Role.WeaponPack.ActiveItem.IsAmmoFull();
-        }
+
+        return true;
     }
 }

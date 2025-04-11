@@ -22,14 +22,6 @@ public class Eff_TotalAmmo : EffectFragment
 
     public override void OnUse()
     {
-        var weapon = Role.WeaponPack.ActiveItem;
-        if (_initParam)
-        {
-            weapon.SetTotalAmmo(weapon.TotalAmmon + _value);
-        }
-        else
-        {
-            weapon.SetTotalAmmo(weapon.Attribute.MaxAmmoCapacity);
-        }
+        
     }
 }

@@ -227,7 +227,8 @@ public class MarkObjectCell : UiCell<MapEditorCreateMark.MarkObject, MarkInfoIte
                 if (weapon != null)
                 {
                     numberBar.L_NumInput.Instance.MaxValue = weapon.AmmoCapacity; //弹夹上限
-                    numberBar2.L_NumInput.Instance.MaxValue = weapon.MaxAmmoCapacity; //容量上限
+                    numberBar2.L_NumInput.Instance.MaxValue = 0; //容量上限
+                    Debug.LogError("当前法力值上限还未实现！！！----1");
                 }
 
                 if (markInfoItem.Attr != null)

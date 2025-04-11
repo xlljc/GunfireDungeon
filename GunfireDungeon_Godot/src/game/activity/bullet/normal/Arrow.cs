@@ -28,7 +28,8 @@ public partial class Arrow : Bullet, IMountItem
             if (index >= 0)
             {
                 var weapon = role.WeaponPack.GetItem(index);
-                weapon.SetResidueAmmo(weapon.ResidueAmmo + 1);
+                //weapon.SetResidueAmmo(weapon.ResidueAmmo + 1);
+                Debug.LogError("设置法力总数还未实现！！！");
                 ObjectPool.Reclaim(this);
             }
         }

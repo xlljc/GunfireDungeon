@@ -89,7 +89,8 @@ public partial class ObjectAttribute : AttributeBase
             //弹药
             _currAmmonAttr.L_NumInput.Instance.MaxValue = weapon.AmmoCapacity;
             _currAmmonAttr.L_NumInput.Instance.Value = weapon.AmmoCapacity;
-            _residueAmmoAttr.L_NumInput.Instance.MaxValue = weapon.MaxAmmoCapacity;
+            _residueAmmoAttr.L_NumInput.Instance.MaxValue = 0;
+            Debug.LogError("当前法力值上限还未实现！！！----2");
             _residueAmmoAttr.L_NumInput.Instance.Value = weapon.AmmoCapacity;
         }
     }

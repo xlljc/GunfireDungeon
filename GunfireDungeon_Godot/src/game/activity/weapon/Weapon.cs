@@ -37,16 +37,6 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     public int CurrAmmo { get; private set; }
 
     /// <summary>
-    /// 剩余弹药量(备用弹药)
-    /// </summary>
-    public int ResidueAmmo { get; private set; }
-    
-    /// <summary>
-    /// 总弹药量(备用弹药 + 当前弹夹弹药)
-    /// </summary>
-    public int TotalAmmon => CurrAmmo + ResidueAmmo;
-
-    /// <summary>
     /// 武器管的开火点
     /// </summary>
     [Export, ExportFillNode]
@@ -148,9 +138,44 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// 武器当前射速
     /// </summary>
     public float CurrentFiringSpeed { get; private set; }
+
+    //----------------------
+    
+    /// <summary>
+    /// 最大法力值
+    /// </summary>
+    public int MaxMana { get; private set; } = 2200;
+
+    /// <summary>
+    /// 当前法力值
+    /// </summary>
+    public int CurrMana { get; private set; } = 2200;
+
+    /// <summary>
+    /// 缓冲区法力最大值
+    /// </summary>
+    public int MaxManaBuffer { get; private set; } = 200;
+
+    /// <summary>
+    /// 当前缓冲区法力值
+    /// </summary>
+    public int CurrManaBuffer { get; private set; } = 200;
+    
+    /// <summary>
+    /// 缓冲区法力恢复速度
+    /// </summary>
+    public int ManaRecoverySpeed { get; private set; } = 100;
+    
+    /// <summary>
+    /// 开火逻辑块列表
+    /// </summary>
+    public LogicBlockList FireBlockList { get; private set; }
     
     //--------------------------------------------------------------------------------------------
 
+    //回复法力值计时器
+    private float _manaRecoveryValue;
+    
     //触发板机是是否计算弹药消耗
     private bool _triggerCalcAmmon = true;
     
@@ -328,29 +353,18 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             Debug.LogError("警告: 未找到 AI 武器属性: " + attribute.Id);
             _aiWeaponAttribute = attribute;
         }
-
-        if (Attribute.AmmoCapacity > Attribute.MaxAmmoCapacity)
-        {
-            Attribute.AmmoCapacity = Attribute.MaxAmmoCapacity;
-            Debug.LogError("弹夹的容量不能超过弹药上限, 武器id: " + ActivityBase.Id);
-        }
+        
         //弹药量
         CurrAmmo = Attribute.AmmoCapacity;
-        //剩余弹药量
-        ResidueAmmo = Mathf.Min(Attribute.StandbyAmmoCapacity + CurrAmmo, Attribute.MaxAmmoCapacity) - CurrAmmo;
+        FireBlockList = new LogicBlockList(10, this);
     }
 
     /// <summary>
     /// 单次开火时调用的函数
     /// </summary>
-    protected abstract void OnFire();
-
-    /// <summary>
-    /// 发射子弹时调用的函数, 每发射一枚子弹调用一次,
-    /// 如果做霰弹武器效果, 一次开火发射5枚子弹, 则该函数调用5次
-    /// </summary>
-    /// <param name="fireRotation">开火时枪口旋转角度, 弧度制</param>
-    protected abstract void OnShoot(float fireRotation);
+    protected virtual void OnFire()
+    {
+    }
 
     /// <summary>
     /// 上膛开始时调用
@@ -516,6 +530,29 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         //未开火时间
         _noAttackTime += delta;
         
+        //缓冲区充能
+        if (CurrMana > 0 && ManaRecoverySpeed > 0 && CurrManaBuffer < MaxManaBuffer)
+        {
+            _manaRecoveryValue += Mathf.Min(ManaRecoverySpeed * delta, MaxManaBuffer - CurrManaBuffer);
+            if (_manaRecoveryValue >= 1f)
+            {
+                var tempVal = _manaRecoveryValue % 1f;
+                var value = (int)(_manaRecoveryValue - tempVal);
+                if (CurrMana >= value)
+                {
+                    CurrMana -= value;
+                    CurrManaBuffer += value;
+                    _manaRecoveryValue = tempVal;
+                }
+                else
+                {
+                    CurrManaBuffer += CurrMana;
+                    CurrMana = 0;
+                    _manaRecoveryValue = 0;
+                }
+            }
+        }
+        
         //这把武器被扔在地上, 或者当前武器没有被使用
         //if (Master == null || Master.WeaponPack.ActiveItem != this)
         if ((Master != null && Master.WeaponPack.ActiveItem != this) || !_triggerRoleFlag) //在背上, 或者被扔出去了
@@ -599,7 +636,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                             if (_reloadTimer <= 0)
                             {
                                 ReloadSuccess();
-                                if (_aloneReloadStop || ResidueAmmo == 0 || CurrAmmo == Attribute.AmmoCapacity) //单独装弹完成
+                                if (_aloneReloadStop || CurrAmmo == Attribute.AmmoCapacity) //单独装弹完成
                                 {
                                     AloneReloadStateFinish();
                                     if (Attribute.AloneReloadFinishIntervalTime <= 0)
@@ -1112,34 +1149,6 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// </summary>
     private void TriggerFire()
     {
-        _attackFlag = true;
-        _noAttackTime = 0;
-        _reloadShellFlag = false;
-
-        //减子弹数量
-        if (_triggerCalcAmmon)
-        {
-            if (_playerWeaponAttribute != _weaponAttribute) //Ai使用该武器, 有一定概率不消耗弹药
-            {
-                var count = UseAmmoCount();
-                CurrAmmo -= count;
-                if (Utils.Random.RandomRangeFloat(0, 1) >= _weaponAttribute.AiAttackAttr.AmmoConsumptionProbability) //不消耗弹药
-                {
-                    ResidueAmmo += count;
-                }
-            }
-            else
-            {
-                CurrAmmo -= UseAmmoCount();
-            }
-        }
-        else //不消耗弹药
-        {
-            var count = UseAmmoCount();
-            CurrAmmo -= count;
-            ResidueAmmo += count;
-        }
-
         if (CurrAmmo == 0)
         {
             _continuousCount = 0;
@@ -1149,6 +1158,47 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             _continuousCount = _continuousCount > 0 ? _continuousCount - 1 : 0;
         }
 
+        var logicItem = FireBlockList.Planning();
+        if (logicItem == null)
+        {
+            return;
+        }
+        
+
+        //武器口角度
+        var angle = new Vector2(GameConfig.ScatteringDistance, CurrScatteringRange).Angle();
+
+        //先算武器口方向
+        var tempRotation = Utils.Random.RandomRangeFloat(-angle, angle);
+        var tempAngle = Mathf.RadToDeg(tempRotation);
+
+        //开火时枪口角度
+        var fireRotation = tempRotation;
+        
+        if (Master != null)
+        {
+            fireRotation += Master.MountPoint.RealRotation;
+        }
+        else
+        {
+            fireRotation += GlobalRotation;
+        }
+
+        Debug.Log("---------------------------------------------");
+        //执行逻辑块
+        var errorIndex = logicItem.Execute(fireRotation);
+        // 没有正常发射出子弹
+        if (errorIndex == 0)
+        {
+            return;
+        }
+        
+        _attackFlag = true;
+        _noAttackTime = 0;
+        _reloadShellFlag = false;
+
+        CurrAmmo -= UseAmmoCount();
+        
         //开火间隙, 这里的60指的是60秒
         _fireInterval = 60 / CurrentFiringSpeed;
         //攻击冷却
@@ -1171,40 +1221,10 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         {
             ThrowShellHandler(1f);
         }
-        
+
         //触发开火函数
         OnFire();
-
-
-        //武器口角度
-        var angle = new Vector2(GameConfig.ScatteringDistance, CurrScatteringRange).Angle();
-
-        //先算武器口方向
-        var tempRotation = Utils.Random.RandomRangeFloat(-angle, angle);
-        var tempAngle = Mathf.RadToDeg(tempRotation);
-
-        //开火时枪口角度
-        var fireRotation = tempRotation;
         
-        //开火发射的子弹数量
-        var bulletCount = Utils.Random.RandomConfigRange(Attribute.FireBulletCountRange);
-        if (Master != null)
-        {
-            bulletCount = Master.RoleState.CalcBulletCount(bulletCount);
-            fireRotation += Master.MountPoint.RealRotation;
-        }
-        else
-        {
-            fireRotation += GlobalRotation;
-        }
-
-        //创建子弹
-        for (var i = 0; i < bulletCount; i++)
-        {
-            //发射子弹
-            OnShoot(fireRotation);
-        }
-
         //开火添加散射值
         ScatteringRangeAddHandler();
         
@@ -1264,14 +1284,6 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
 
         return AiUseAttribute;
     }
-    
-    /// <summary>
-    /// 返回弹药是否到达上限
-    /// </summary>
-    public bool IsAmmoFull()
-    {
-        return CurrAmmo + ResidueAmmo >= Attribute.MaxAmmoCapacity;
-    }
 
     /// <summary>
     /// 返回弹夹是否打空
@@ -1286,7 +1298,8 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// </summary>
     public bool IsTotalAmmoEmpty()
     {
-        return CurrAmmo + ResidueAmmo == 0;
+        // 判断法力值和弹丸法术是否消耗殆尽
+        return CurrMana == 0;
     }
 
     /// <summary>
@@ -1298,63 +1311,29 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     }
 
     /// <summary>
-    /// 强制修改备用弹药量
+    /// 使用法力值
     /// </summary>
-    public void SetResidueAmmo(int count)
+    public bool UseManaBuff(int mana)
     {
-        ResidueAmmo = Mathf.Clamp(count, 0, Attribute.MaxAmmoCapacity - CurrAmmo);
+        if (!_triggerCalcAmmon)
+        {
+            return true;
+        }
+        if (CurrManaBuffer < mana)
+        {
+            return false;
+        }
+        CurrManaBuffer -= mana;
+
+        return true;
     }
     
-    /// <summary>
-    /// 强制修改弹药量, 优先改动备用弹药
-    /// </summary>
-    public void SetTotalAmmo(int total)
-    {
-        if (total < 0)
-        {
-            return;
-        }
-        var totalAmmo = CurrAmmo + ResidueAmmo;
-        if (totalAmmo == total)
-        {
-            return;
-        }
-        
-        if (total > totalAmmo) //弹药增加
-        {
-            ResidueAmmo = Mathf.Min(total - CurrAmmo, Attribute.MaxAmmoCapacity - CurrAmmo);
-        }
-        else //弹药减少
-        {
-            if (CurrAmmo < total)
-            {
-                ResidueAmmo = total - CurrAmmo;
-            }
-            else
-            {
-                CurrAmmo = total;
-                ResidueAmmo = 0;
-            }
-        }
-    }
-
-    /// <summary>
-    /// 拾起的弹药数量, 如果到达容量上限, 则返回拾取完毕后剩余的弹药数量
-    /// </summary>
-    /// <param name="count">弹药数量</param>
-    private int PickUpAmmo(int count)
-    {
-        var num = ResidueAmmo;
-        ResidueAmmo = Mathf.Min(ResidueAmmo + count, Attribute.MaxAmmoCapacity - CurrAmmo);
-        return count - ResidueAmmo + num;
-    }
-
     /// <summary>
     /// 触发换弹
     /// </summary>
     public void Reload()
     {
-        if (!Reloading && CurrAmmo < Attribute.AmmoCapacity && ResidueAmmo > 0 && _beLoadedState != 1)
+        if (!Reloading && CurrAmmo < Attribute.AmmoCapacity && _beLoadedState != 1)
         {
             Reloading = true;
             _playReloadFinishSoundFlag = false;
@@ -1731,52 +1710,25 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     {
         if (Attribute.AloneReload) //单独装填
         {
-            if (ResidueAmmo >= Attribute.AloneReloadCount) //剩余子弹充足
+
+            if (CurrAmmo + Attribute.AloneReloadCount <= Attribute.AmmoCapacity)
             {
-                if (CurrAmmo + Attribute.AloneReloadCount <= Attribute.AmmoCapacity)
-                {
-                    ResidueAmmo -= Attribute.AloneReloadCount;
-                    CurrAmmo += Attribute.AloneReloadCount;
-                }
-                else //子弹满了
-                {
-                    var num = Attribute.AmmoCapacity - CurrAmmo;
-                    CurrAmmo = Attribute.AmmoCapacity;
-                    ResidueAmmo -= num;
-                }
+                CurrAmmo += Attribute.AloneReloadCount;
             }
-            else if (ResidueAmmo != 0) //剩余子弹不足
+            else //子弹满了
             {
-                if (ResidueAmmo + CurrAmmo <= Attribute.AmmoCapacity)
-                {
-                    CurrAmmo += ResidueAmmo;
-                    ResidueAmmo = 0;
-                }
-                else //子弹满了
-                {
-                    var num = Attribute.AmmoCapacity - CurrAmmo;
-                    CurrAmmo = Attribute.AmmoCapacity;
-                    ResidueAmmo -= num;
-                }
+                CurrAmmo = Attribute.AmmoCapacity;
             }
 
-            if (!_aloneReloadStop && ResidueAmmo != 0 && CurrAmmo != Attribute.AmmoCapacity) //继续装弹
+
+            if (!_aloneReloadStop && CurrAmmo != Attribute.AmmoCapacity) //继续装弹
             {
                 ReloadHandler();
             }
         }
         else //换弹结束
         {
-            if (CurrAmmo + ResidueAmmo >= Attribute.AmmoCapacity)
-            {
-                ResidueAmmo -= Attribute.AmmoCapacity - CurrAmmo;
-                CurrAmmo = Attribute.AmmoCapacity;
-            }
-            else
-            {
-                CurrAmmo += ResidueAmmo;
-                ResidueAmmo = 0;
-            }
+            CurrAmmo = Attribute.AmmoCapacity;
 
             StopReload();
             ReloadFinishHandler();
@@ -1826,39 +1778,21 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                     //容量为0
                     return result;
                 }
+
                 var masterWeapon = roleMaster.WeaponPack.ActiveItem;
-                //查找是否有同类型武器
-                var index = roleMaster.WeaponPack.FindIndex(ActivityBase.Id);
-                if (index != -1) //如果有这个武器
+                if (roleMaster.WeaponPack.HasVacancy()) //有空位, 能拾起武器
                 {
-                    if (CurrAmmo + ResidueAmmo != 0) //子弹不为空
-                    {
-                        var targetWeapon = roleMaster.WeaponPack.GetItem(index);
-                        if (!targetWeapon.IsAmmoFull()) //背包里面的武器子弹未满
-                        {
-                            //可以互动拾起弹药
-                            result.CanInteractive = true;
-                            result.Type = CheckInteractiveResult.InteractiveType.Bullet;
-                            return result;
-                        }
-                    }
+                    //可以互动, 拾起武器
+                    result.CanInteractive = true;
+                    result.Type = CheckInteractiveResult.InteractiveType.PickUp;
+                    return result;
                 }
-                else //没有武器
+                else if (masterWeapon != null) //替换武器  // && masterWeapon.Attribute.WeightType == Attribute.WeightType)
                 {
-                    if (roleMaster.WeaponPack.HasVacancy()) //有空位, 能拾起武器
-                    {
-                        //可以互动, 拾起武器
-                        result.CanInteractive = true;
-                        result.Type = CheckInteractiveResult.InteractiveType.PickUp;
-                        return result;
-                    }
-                    else if (masterWeapon != null) //替换武器  // && masterWeapon.Attribute.WeightType == Attribute.WeightType)
-                    {
-                        //可以互动, 切换武器
-                        result.CanInteractive = true;
-                        result.Type = CheckInteractiveResult.InteractiveType.Replace;
-                        return result;
-                    }
+                    //可以互动, 切换武器
+                    result.CanInteractive = true;
+                    result.Type = CheckInteractiveResult.InteractiveType.Replace;
+                    return result;
                 }
             }
         }
@@ -1876,63 +1810,12 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                 return;
             }
             var holster = roleMaster.WeaponPack;
-            //查找是否有同类型武器
-            var index = holster.FindIndex(ActivityBase.Id);
-            if (index != -1) //如果有这个武器
+            if (!holster.HasVacancy()) //没有空位置, 扔掉当前武器
             {
-                if (CurrAmmo + ResidueAmmo == 0) //没有子弹了
-                {
-                    return;
-                }
-
-                var weapon = holster.GetItem(index);
-                //子弹上限
-                var maxCount = Attribute.MaxAmmoCapacity;
-                //是否捡到子弹
-                var flag = false;
-                if (ResidueAmmo > 0 && weapon.CurrAmmo + weapon.ResidueAmmo < maxCount)
-                {
-                    var count = weapon.PickUpAmmo(ResidueAmmo);
-                    if (count != ResidueAmmo)
-                    {
-                        ResidueAmmo = count;
-                        flag = true;
-                    }
-                }
-
-                if (CurrAmmo > 0 && weapon.CurrAmmo + weapon.ResidueAmmo < maxCount)
-                {
-                    var count = weapon.PickUpAmmo(CurrAmmo);
-                    if (count != CurrAmmo)
-                    {
-                        CurrAmmo = count;
-                        flag = true;
-                    }
-                }
-
-                //播放互动效果
-                if (flag)
-                {
-                    Throw(GlobalPosition, 0, Utils.Random.RandomRangeInt(20, 50), Vector2.Zero, Utils.Random.RandomRangeInt(-180, 180));
-                    //没有子弹了, 停止播放泛白效果
-                    if (IsTotalAmmoEmpty())
-                    {
-                        //停止动画
-                        AnimationPlayer.Stop();
-                        //清除泛白效果
-                        SetBlendSchedule(0);
-                    }
-                }
+                //替换武器
+                roleMaster.ThrowWeapon();
             }
-            else //没有武器
-            {
-                if (!holster.HasVacancy()) //没有空位置, 扔掉当前武器
-                {
-                    //替换武器
-                    roleMaster.ThrowWeapon();
-                }
-                roleMaster.PickUpWeapon(this);
-            }
+            roleMaster.PickUpWeapon(this);
         }
     }
 

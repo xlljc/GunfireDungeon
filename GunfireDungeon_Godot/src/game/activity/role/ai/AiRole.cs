@@ -343,17 +343,6 @@ public abstract partial class AiRole : Role
                 {
                     return;
                 }
-            
-                var index = WeaponPack.FindIndex((we, i) => we.ActivityBase.Id == weapon.ActivityBase.Id);
-                if (index != -1) //与武器背包中武器类型相同, 补充子弹
-                {
-                    if (!WeaponPack.GetItem(index).IsAmmoFull())
-                    {
-                        TriggerInteractive();
-                    }
-
-                    return;
-                }
 
                 // var index2 = Holster.FindWeapon((we, i) =>
                 //     we.Attribute.WeightType == weapon.Attribute.WeightType && we.IsTotalAmmoEmpty());

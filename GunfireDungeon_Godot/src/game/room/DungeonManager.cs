@@ -338,7 +338,7 @@ public partial class DungeonManager : Node2D
         player.PutDown(RoomLayerEnum.YSortLayer);
         CurrWorld.SetCurrentPlayer(player);
         affiliation.InsertItem(player);
-        player.WeaponPack.PickupItem(ActivityObject.Create<Weapon>(ActivityObject.Ids.Id_weapon0001));
+        //player.WeaponPack.PickupItem(ActivityObject.Create<Weapon>(ActivityObject.Ids.Id_weapon0001));
         yield return 0;
         player.Collision.Disabled = false;
         

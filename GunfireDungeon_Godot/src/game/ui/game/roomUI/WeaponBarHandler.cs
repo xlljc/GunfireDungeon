@@ -9,7 +9,6 @@ public class WeaponBarHandler
     private RoomUI.WeaponBar _weaponBar;
 
     private int _prevAmmo = -1;
-    private int _prevResidue = -1;
     
     public WeaponBarHandler(RoomUI.WeaponBar weaponBar)
     {
@@ -31,7 +30,7 @@ public class WeaponBarHandler
         if (weapon != null)
         {
             SetWeaponTexture(weapon.GetCurrentTexture());
-            SetWeaponAmmunition(weapon.CurrAmmo, weapon.ResidueAmmo);
+            SetWeaponAmmunition(weapon.CurrAmmo, weapon.CurrManaBuffer, weapon.MaxManaBuffer, weapon.CurrMana, weapon.MaxMana);
         }
         else
         {
@@ -59,15 +58,10 @@ public class WeaponBarHandler
     /// <summary>
     /// 设置弹药数据
     /// </summary>
-    /// <param name="curr">当前弹夹弹药量</param>
-    /// <param name="total">剩余弹药总数</param>
-    public void SetWeaponAmmunition(int curr, int total)
+    public void SetWeaponAmmunition(int currAmmo, int currManaBuffer, int maxManaBuffer, int currMana, int maxMana)
     {
-        if (curr != _prevAmmo || total != _prevResidue)
-        {
-            _weaponBar.L_AmmoCount.Instance.Text = curr + " / " + total;
-            _prevAmmo = curr;
-            _prevResidue = total;
-        }
+        _weaponBar.L_ManaCount.Instance.Text = currMana + "/" + maxMana;
+        _weaponBar.L_CurrAmmoCount.Instance.Text = currAmmo.ToString();
+        _weaponBar.L_ManaBuffCount.Instance.Text = currManaBuffer + "/" + maxManaBuffer;
     }
 }
