@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmj3p25gwpqpn"]
 
-[ext_resource type="Script" uid="uid://cadecvqd7wxap" path="res://src/game/ui/roomMap/RoomMapPanel.cs" id="1_ng7b3"]
+[ext_resource type="Script" uid="uid://cadecvqd7wxap" path="res://src/game/ui/game/roomMap/RoomMapPanel.cs" id="1_ng7b3"]
 [ext_resource type="Texture2D" uid="uid://cb31ethhkxi3e" path="res://resource/sprite/ui/roomMap/MapBar.png" id="2_m52os"]
 [ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="3_el2ne"]
 [ext_resource type="Texture2D" uid="uid://ceoduo62gww5y" path="res://resource/sprite/role/role0001/Role0001_head.png" id="4_6wquw"]

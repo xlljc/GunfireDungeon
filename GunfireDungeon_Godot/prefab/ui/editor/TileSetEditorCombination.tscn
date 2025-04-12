@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b1e4tye0xreb2" path="res://src/game/ui/editor/tileSetEditorCombination/leftTop/TileEditCombination.cs" id="6_bb3jf"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="6_g5ey6"]
 [ext_resource type="Script" uid="uid://ch204srivtjbr" path="res://src/game/ui/editor/tileSetEditorCombination/right/TileSelected.cs" id="6_gql80"]
-[ext_resource type="Script" uid="uid://8jk5o3d2luys" path="res://src/game/common/editor/EditorMaskBrush.cs" id="7_k0dkc"]
+[ext_resource type="Script" uid="uid://8jk5o3d2luys" path="res://src/game/ui/component/editor/EditorMaskBrush.cs" id="7_k0dkc"]
 [ext_resource type="Texture2D" uid="uid://c24s6kbsih118" path="res://resource/sprite/ui/commonIcon/CenterTool.png" id="7_mbnpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2talc"]

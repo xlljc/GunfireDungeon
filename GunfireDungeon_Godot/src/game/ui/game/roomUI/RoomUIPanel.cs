@@ -2,6 +2,8 @@
 
 using DsUi;
 using UI.game.BottomTips;
+using UI.game.RoomMap;
+using UI.game.WeaponRoulette;
 
 namespace UI.game.RoomUI;
 
@@ -10,6 +12,11 @@ namespace UI.game.RoomUI;
 /// </summary>
 public partial class RoomUIPanel : RoomUI
 {
+    /// <summary>
+    /// 房间小地图
+    /// </summary>
+    public RoomMapPanel RoomMap { get; private set; }
+    
     private ReloadBarHandler _reloadBar;
     private InteractiveTipBarHandler _interactiveTipBar;
     private WeaponBarHandler _weaponBar;
@@ -18,8 +25,6 @@ public partial class RoomUIPanel : RoomUI
     
     private EventFactory _factory;
 
-    private bool _showMap = false;
-
     public override void OnCreateUi()
     {
         _reloadBar = new ReloadBarHandler(L_ReloadBar);
@@ -27,6 +32,8 @@ public partial class RoomUIPanel : RoomUI
         _weaponBar = new WeaponBarHandler(L_Control.L_WeaponBar);
         _activePropBar = new ActivePropBarHandler(L_Control.L_ActivePropBar);
         _lifeBar = new LifeBarHandler(L_Control.L_LifeBar);
+        
+        RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
     }
 
     public override void OnShowUi()
@@ -43,11 +50,11 @@ public partial class RoomUIPanel : RoomUI
         //大厅中不显示小地图
         if (World.Current is Hall)
         {
-            S_RoomMap.Instance.HideUi();
+            RoomMap.HideUi();
         }
         else
         {
-            S_RoomMap.Instance.ShowUi();
+            RoomMap.ShowUi();
         }
     }
 

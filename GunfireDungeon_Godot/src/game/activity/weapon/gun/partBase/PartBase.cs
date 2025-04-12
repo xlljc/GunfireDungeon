@@ -58,6 +58,14 @@ public abstract class PartBase
         return occupancy;
     }
 
+    /// <summary>
+    /// 获取法力值消耗
+    /// </summary>
+    public virtual int GetMana()
+    {
+        return 0;
+    }
+    
     public override string ToString()
     {
         return $"({GetType().Name}: Type: {PartType}, Occupancy: {Occupancy})";

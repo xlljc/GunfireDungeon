@@ -29,24 +29,7 @@ public class PlanningPartItem
     /// </summary>
     public int CalcMana()
     {
-        return GetMana() + (Next != null ? Next.CalcMana() : 0);
-    }
-
-    /// <summary>
-    /// 获取法力值消耗
-    /// </summary>
-    public int GetMana()
-    {
-        if (Part is BuffPart buffPart)
-        {
-            return buffPart.UseMana;
-        }
-        else if (Part is BulletPart bulletPart)
-        {
-            return bulletPart.UseMana;
-        }
-
-        return 0;
+        return Part.GetMana() + (Next != null ? Next.CalcMana() : 0);
     }
 
     /// <summary>
@@ -59,7 +42,7 @@ public class PlanningPartItem
 
     private int Execute(int index, float fireRotation)
     {
-        var mana = GetMana();
+        var mana = Part.GetMana();
         if (mana > 0 && !Part.Weapon.UseManaBuff(mana))
         {
             return index;

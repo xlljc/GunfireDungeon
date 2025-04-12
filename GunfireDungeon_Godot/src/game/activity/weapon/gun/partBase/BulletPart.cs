@@ -26,6 +26,11 @@ public class BulletPart : PartBase
     {
     }
     
+    public override int GetMana()
+    {
+        return UseMana;
+    }
+    
     public override void Execute(float fireRotation)
     {
         Debug.Log($"射击子弹({Index}), fireRotation:{fireRotation}");

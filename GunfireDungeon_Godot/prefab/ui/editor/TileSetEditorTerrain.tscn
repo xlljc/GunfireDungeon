@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bgrqjtkdrhps3" path="res://src/game/ui/editor/tileSetEditorTerrain/TileSetEditorTerrainPanel.cs" id="1_6jjk7"]
 [ext_resource type="Texture2D" uid="uid://b0dnbsixwh5v7" path="res://resource/sprite/ui/commonIcon/Add.png" id="2_ns54l"]
 [ext_resource type="Script" uid="uid://br47ck0tnrmuk" path="res://src/game/ui/editor/tileSetEditorTerrain/down/TileEditArea.cs" id="2_ynf0r"]
-[ext_resource type="Script" uid="uid://8jk5o3d2luys" path="res://src/game/common/editor/EditorMaskBrush.cs" id="3_gydh0"]
+[ext_resource type="Script" uid="uid://8jk5o3d2luys" path="res://src/game/ui/component/editor/EditorMaskBrush.cs" id="3_gydh0"]
 [ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="3_jn1bd"]
 [ext_resource type="Texture2D" uid="uid://c1wknwc3gbnsu" path="res://resource/sprite/ui/commonIcon/Edit.png" id="3_xmuhh"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="4_ka47m"]

@@ -12,4 +12,9 @@ public class BuffPart : PartBase
     public BuffPart() : base(PartType.Buff)
     {
     }
+
+    public override int GetMana()
+    {
+        return UseMana;
+    }
 }
