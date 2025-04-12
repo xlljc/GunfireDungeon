@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvpmtfupny8iu"]
+[gd_scene load_steps=25 format=3 uid="uid://bvpmtfupny8iu"]
 
 [ext_resource type="Script" uid="uid://ibbcnmafy0xd" path="res://src/game/ui/game/roomUI/RoomUIPanel.cs" id="1_tfcrp"]
 [ext_resource type="Texture2D" uid="uid://c6bvy3gvqmaw0" path="res://resource/sprite/ui/roomUI/icon_bullet.png" id="2_ruc0p"]
 [ext_resource type="Texture2D" uid="uid://ctqjf7oi4rg5a" path="res://resource/sprite/ui/keyboard/e.png" id="3_h7n2a"]
+[ext_resource type="FontFile" uid="uid://dd5aeidrx6qvu" path="res://resource/font/VonwaonBitmap-16px.ttf" id="4_h406q"]
 [ext_resource type="Texture2D" uid="uid://brcgd0hdvwfao" path="res://resource/sprite/ui/roomUI/ReloadBar.png" id="4_hy44s"]
 [ext_resource type="Texture2D" uid="uid://dxb00j736r5ma" path="res://resource/sprite/ui/roomUI/ReloadBarBlock.png" id="5_w3lq2"]
 [ext_resource type="Texture2D" uid="uid://80tjj1bh3r72" path="res://resource/sprite/ui/roomUI/Life_full.png" id="6_ggviq"]
@@ -16,6 +17,9 @@
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="12_fgyob"]
 [ext_resource type="Texture2D" uid="uid://blma3p7lvkhft" path="res://resource/sprite/ui/roomUI/ChargeProgressBar.png" id="13_6w7qi"]
 [ext_resource type="Texture2D" uid="uid://3tb6r2vcoikk" path="res://resource/sprite/ui/roomUI/ChargeProgress.png" id="13_vuglj"]
+[ext_resource type="PackedScene" uid="uid://d03w81wvnbpsa" path="res://prefab/ui/component/game/ProgressBar.tscn" id="17_3h7xx"]
+[ext_resource type="Texture2D" uid="uid://cxfd0mwijpnox" path="res://resource/sprite/ui/commonIcon/Mana.png" id="19_lc56i"]
+[ext_resource type="Texture2D" uid="uid://cmcl7js46mcce" path="res://resource/sprite/ui/roomUI/GunBullet1.png" id="20_081mo"]
 
 [sub_resource type="Gradient" id="1"]
 colors = PackedColorArray(0.4, 0.498039, 1, 1, 0.4, 0.498039, 1, 0.313726)
@@ -59,7 +63,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_tfcrp")
 metadata/_edit_vertical_guides_ = [1901.0, 1852.0]
-metadata/_edit_horizontal_guides_ = [954.0, 1062.0]
+metadata/_edit_horizontal_guides_ = [956.0, 1064.0]
 
 [node name="InteractiveTipBar" type="Control" parent="."]
 anchors_preset = 0
@@ -110,6 +114,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("4_h406q")
 text = "物体名称"
 label_settings = SubResource("LabelSettings_toas6")
 horizontal_alignment = 1
@@ -214,9 +219,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -106.0
+offset_top = -104.0
 offset_right = 45.0
-offset_bottom = -79.0
+offset_bottom = -77.0
 grow_vertical = 0
 scale = Vector2(4, 4)
 
@@ -316,21 +321,32 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -261.0
-offset_top = -150.0
-offset_right = -196.0
-offset_bottom = -112.0
+offset_left = -260.0
+offset_top = -148.0
+offset_right = -48.0
+offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(4, 4)
+
+[node name="ManaBuffProgress" parent="Control/WeaponBar" instance=ExtResource("17_3h7xx")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 60.0
+
+[node name="Number" parent="Control/WeaponBar/ManaBuffProgress" index="0"]
+visible = false
 
 [node name="WeaponPanel" type="NinePatchRect" parent="Control/WeaponBar"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 11.0
+offset_top = 44.0
 offset_right = 53.0
+offset_bottom = -81.0
 grow_vertical = 2
+scale = Vector2(4, 4)
 texture = ExtResource("10_q3fs8")
 region_rect = Rect2(0, 0, 8, 8)
 patch_margin_left = 2
@@ -349,48 +365,44 @@ grow_vertical = 2
 texture = ExtResource("11_lsai4")
 stretch_mode = 3
 
-[node name="CurrAmmoCount" type="Label" parent="Control/WeaponBar"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -56.0
-offset_right = 23.0
-offset_bottom = 43.0
-grow_horizontal = 0
-scale = Vector2(0.25, 0.25)
-text = "30/90"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="ManaProgress" parent="Control/WeaponBar" instance=ExtResource("17_3h7xx")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 36.0
 
-[node name="ManaBuffCount" type="Label" parent="Control/WeaponBar"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -34.25
-offset_right = 54.75
-offset_bottom = 43.0
-grow_horizontal = 0
-scale = Vector2(0.25, 0.25)
-text = "30/90"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="ManaIcon" type="TextureRect" parent="Control/WeaponBar"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = -2.0
+offset_bottom = 10.0
+scale = Vector2(4, 4)
+texture = ExtResource("19_lc56i")
 
-[node name="ManaCount" type="Label" parent="Control/WeaponBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WeaponBar"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -56.5
-offset_top = -10.0
-offset_right = 121.5
-offset_bottom = 33.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -1532.0
+offset_right = 64.0
 grow_horizontal = 0
-scale = Vector2(0.25, 0.25)
-text = "30/90"
-horizontal_alignment = 2
-vertical_alignment = 1
+grow_vertical = 0
+pivot_offset = Vector2(32, 1060)
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="BulletItem" type="TextureRect" parent="Control/WeaponBar/VBoxContainer"]
+material = ExtResource("7_iw6pa")
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("20_081mo")
+stretch_mode = 5
 
 [node name="Mask" type="ColorRect" parent="."]
 visible = false
@@ -402,3 +414,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[editable path="Control/WeaponBar/ManaBuffProgress"]

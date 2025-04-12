@@ -24,7 +24,7 @@ public partial class RoomUIPanel : RoomUI
     private LifeBarHandler _lifeBar;
     
     private EventFactory _factory;
-
+    
     public override void OnCreateUi()
     {
         _reloadBar = new ReloadBarHandler(L_ReloadBar);

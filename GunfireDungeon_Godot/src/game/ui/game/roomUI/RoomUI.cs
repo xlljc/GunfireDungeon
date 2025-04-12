@@ -502,6 +502,37 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaBuffProgress.Number
+    /// </summary>
+    public class Number : UiNode<RoomUIPanel, Godot.Label, Number>
+    {
+        public Number(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaBuffProgress
+    /// </summary>
+    public class ManaBuffProgress : UiNode<RoomUIPanel, CommProgressBar, ManaBuffProgress>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.Number
+        /// </summary>
+        public Number L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number _L_Number;
+
+        public ManaBuffProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override ManaBuffProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
     /// </summary>
     public class WeaponSprite : UiNode<RoomUIPanel, Godot.TextureRect, WeaponSprite>
@@ -533,30 +564,74 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.CurrAmmoCount
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.Number
     /// </summary>
-    public class CurrAmmoCount : UiNode<RoomUIPanel, Godot.Label, CurrAmmoCount>
+    public class Number_1 : UiNode<RoomUIPanel, Godot.Label, Number_1>
     {
-        public CurrAmmoCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override CurrAmmoCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public Number_1(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaBuffCount
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress
     /// </summary>
-    public class ManaBuffCount : UiNode<RoomUIPanel, Godot.Label, ManaBuffCount>
+    public class ManaProgress : UiNode<RoomUIPanel, CommProgressBar, ManaProgress>
     {
-        public ManaBuffCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override ManaBuffCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.Number
+        /// </summary>
+        public Number_1 L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number_1(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number_1 _L_Number;
+
+        public ManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override ManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaCount
+    /// 路径: RoomUI.Control.WeaponBar.ManaIcon
     /// </summary>
-    public class ManaCount : UiNode<RoomUIPanel, Godot.Label, ManaCount>
+    public class ManaIcon : UiNode<RoomUIPanel, Godot.TextureRect, ManaIcon>
     {
-        public ManaCount(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override ManaCount Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public ManaIcon(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override ManaIcon Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.VBoxContainer.BulletItem
+    /// </summary>
+    public class BulletItem : UiNode<RoomUIPanel, Godot.TextureRect, BulletItem>
+    {
+        public BulletItem(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override BulletItem Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.VBoxContainer
+    /// </summary>
+    public class VBoxContainer : UiNode<RoomUIPanel, Godot.VBoxContainer, VBoxContainer>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.BulletItem
+        /// </summary>
+        public BulletItem L_BulletItem
+        {
+            get
+            {
+                if (_L_BulletItem == null) _L_BulletItem = new BulletItem(UiPanel, Instance.GetNode<Godot.TextureRect>("BulletItem"));
+                return _L_BulletItem;
+            }
+        }
+        private BulletItem _L_BulletItem;
+
+        public VBoxContainer(RoomUIPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -564,6 +639,19 @@ public abstract partial class RoomUI : UiBase
     /// </summary>
     public class WeaponBar : UiNode<RoomUIPanel, Godot.Control, WeaponBar>
     {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.ManaBuffProgress
+        /// </summary>
+        public ManaBuffProgress L_ManaBuffProgress
+        {
+            get
+            {
+                if (_L_ManaBuffProgress == null) _L_ManaBuffProgress = new ManaBuffProgress(UiPanel, Instance.GetNode<CommProgressBar>("ManaBuffProgress"));
+                return _L_ManaBuffProgress;
+            }
+        }
+        private ManaBuffProgress _L_ManaBuffProgress;
+
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponPanel
         /// </summary>
@@ -578,43 +666,43 @@ public abstract partial class RoomUI : UiBase
         private WeaponPanel _L_WeaponPanel;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.CurrAmmoCount
+        /// 节点路径: RoomUI.Control.ManaProgress
         /// </summary>
-        public CurrAmmoCount L_CurrAmmoCount
+        public ManaProgress L_ManaProgress
         {
             get
             {
-                if (_L_CurrAmmoCount == null) _L_CurrAmmoCount = new CurrAmmoCount(UiPanel, Instance.GetNode<Godot.Label>("CurrAmmoCount"));
-                return _L_CurrAmmoCount;
+                if (_L_ManaProgress == null) _L_ManaProgress = new ManaProgress(UiPanel, Instance.GetNode<CommProgressBar>("ManaProgress"));
+                return _L_ManaProgress;
             }
         }
-        private CurrAmmoCount _L_CurrAmmoCount;
+        private ManaProgress _L_ManaProgress;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.ManaBuffCount
+        /// 节点路径: RoomUI.Control.ManaIcon
         /// </summary>
-        public ManaBuffCount L_ManaBuffCount
+        public ManaIcon L_ManaIcon
         {
             get
             {
-                if (_L_ManaBuffCount == null) _L_ManaBuffCount = new ManaBuffCount(UiPanel, Instance.GetNode<Godot.Label>("ManaBuffCount"));
-                return _L_ManaBuffCount;
+                if (_L_ManaIcon == null) _L_ManaIcon = new ManaIcon(UiPanel, Instance.GetNode<Godot.TextureRect>("ManaIcon"));
+                return _L_ManaIcon;
             }
         }
-        private ManaBuffCount _L_ManaBuffCount;
+        private ManaIcon _L_ManaIcon;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.ManaCount
+        /// 节点路径: RoomUI.Control.VBoxContainer
         /// </summary>
-        public ManaCount L_ManaCount
+        public VBoxContainer L_VBoxContainer
         {
             get
             {
-                if (_L_ManaCount == null) _L_ManaCount = new ManaCount(UiPanel, Instance.GetNode<Godot.Label>("ManaCount"));
-                return _L_ManaCount;
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                return _L_VBoxContainer;
             }
         }
-        private ManaCount _L_ManaCount;
+        private VBoxContainer _L_VBoxContainer;
 
         public WeaponBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
         public override WeaponBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
@@ -789,6 +877,11 @@ public abstract partial class RoomUI : UiBase
     public ActivePropBar S_ActivePropBar => L_Control.L_ActivePropBar;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaBuffProgress
+    /// </summary>
+    public ManaBuffProgress S_ManaBuffProgress => L_Control.L_WeaponBar.L_ManaBuffProgress;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
     /// </summary>
     public WeaponSprite S_WeaponSprite => L_Control.L_WeaponBar.L_WeaponPanel.L_WeaponSprite;
@@ -799,19 +892,24 @@ public abstract partial class RoomUI : UiBase
     public WeaponPanel S_WeaponPanel => L_Control.L_WeaponBar.L_WeaponPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.CurrAmmoCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaProgress
     /// </summary>
-    public CurrAmmoCount S_CurrAmmoCount => L_Control.L_WeaponBar.L_CurrAmmoCount;
+    public ManaProgress S_ManaProgress => L_Control.L_WeaponBar.L_ManaProgress;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaBuffCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaIcon
     /// </summary>
-    public ManaBuffCount S_ManaBuffCount => L_Control.L_WeaponBar.L_ManaBuffCount;
+    public ManaIcon S_ManaIcon => L_Control.L_WeaponBar.L_ManaIcon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaCount
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.VBoxContainer.BulletItem
     /// </summary>
-    public ManaCount S_ManaCount => L_Control.L_WeaponBar.L_ManaCount;
+    public BulletItem S_BulletItem => L_Control.L_WeaponBar.L_VBoxContainer.L_BulletItem;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.VBoxContainer
+    /// </summary>
+    public VBoxContainer S_VBoxContainer => L_Control.L_WeaponBar.L_VBoxContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar

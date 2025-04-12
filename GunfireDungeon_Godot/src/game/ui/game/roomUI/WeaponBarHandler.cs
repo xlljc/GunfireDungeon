@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 
 using DsUi;
 
@@ -9,10 +10,17 @@ public class WeaponBarHandler
     private RoomUI.WeaponBar _weaponBar;
 
     private int _prevAmmo = -1;
+    private UiGrid<RoomUI.BulletItem, bool> _bulletGrid;
+
+
+    private Weapon _prevWeapon;
+    private int _prevBullet;
     
     public WeaponBarHandler(RoomUI.WeaponBar weaponBar)
     {
         _weaponBar = weaponBar;
+        _bulletGrid =
+            weaponBar.UiPanel.CreateUiGrid<RoomUI.BulletItem, bool, GunBulletCell>(weaponBar.UiPanel.S_BulletItem);
         SetWeaponTexture(null);
     }
 
@@ -35,6 +43,40 @@ public class WeaponBarHandler
         else
         {
             SetWeaponTexture(null);
+        }
+
+        //武器有变化
+        if (_prevWeapon != weapon)
+        {
+            _prevWeapon = weapon;
+            if (weapon != null)
+            {
+                var list = new bool[weapon.Attribute.AmmoCapacity];
+                for (var i = 0; i < weapon.Attribute.AmmoCapacity; i++)
+                {
+                    list[weapon.Attribute.AmmoCapacity - i - 1] = i < weapon.CurrAmmo;
+                }
+                _bulletGrid.SetDataList(list);
+            }
+        }
+        else if (weapon != null && _prevAmmo != weapon.CurrAmmo) //子弹有变化
+        {
+            int max, min;
+            if (weapon.CurrAmmo > _prevAmmo)
+            {
+                max = weapon.CurrAmmo;
+                min = _prevAmmo;
+            }
+            else
+            {
+                max = _prevAmmo;
+                min = weapon.CurrAmmo;
+            }
+            for (var i = min; i < max; i++)
+            {
+                _bulletGrid.UpdateByIndex(weapon.Attribute.AmmoCapacity - i - 1, i < weapon.CurrAmmo);
+            }
+            _prevAmmo = weapon.CurrAmmo;
         }
     }
 
@@ -60,8 +102,9 @@ public class WeaponBarHandler
     /// </summary>
     public void SetWeaponAmmunition(int currAmmo, int currManaBuffer, int maxManaBuffer, int currMana, int maxMana)
     {
-        _weaponBar.L_ManaCount.Instance.Text = currMana + "/" + maxMana;
-        _weaponBar.L_CurrAmmoCount.Instance.Text = currAmmo.ToString();
-        _weaponBar.L_ManaBuffCount.Instance.Text = currManaBuffer + "/" + maxManaBuffer;
+        _weaponBar.L_ManaProgress.Instance.MaxValue = maxMana;
+        _weaponBar.L_ManaProgress.Instance.Value = currMana;
+        _weaponBar.L_ManaBuffProgress.Instance.MaxValue = maxManaBuffer;
+        _weaponBar.L_ManaBuffProgress.Instance.Value = currManaBuffer;
     }
 }

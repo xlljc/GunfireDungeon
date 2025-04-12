@@ -197,12 +197,12 @@ public partial class Player : Role
             if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
             {
                 Attack();
-                //测试用,触发房间内地上的武器开火
-                var weaponArray = AffiliationArea.FindEnterItems(o => o is Weapon);
-                foreach (Weapon activityObject in weaponArray)
-                {
-                    activityObject.Trigger(this);
-                }
+                // //测试用,触发房间内地上的武器开火
+                // var weaponArray = AffiliationArea.FindEnterItems(o => o is Weapon);
+                // foreach (Weapon activityObject in weaponArray)
+                // {
+                //     activityObject.Trigger(this);
+                // }
             }
         }
 

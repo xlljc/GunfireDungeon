@@ -66,6 +66,7 @@ public class ResourcePath
     public const string prefab_shell_Shell0002_tscn = "res://prefab/shell/Shell0002.tscn";
     public const string prefab_shell_Shell0003_tscn = "res://prefab/shell/Shell0003.tscn";
     public const string prefab_shell_Shell0004_tscn = "res://prefab/shell/Shell0004.tscn";
+    public const string prefab_ui_component_game_ProgressBar_tscn = "res://prefab/ui/component/game/ProgressBar.tscn";
     public const string prefab_ui_debug_Debugger_tscn = "res://prefab/ui/debug/Debugger.tscn";
     public const string prefab_ui_develop_EditorTools_tscn = "res://prefab/ui/develop/EditorTools.tscn";
     public const string prefab_ui_editor_EditorColorPicker_tscn = "res://prefab/ui/editor/EditorColorPicker.tscn";
@@ -372,6 +373,7 @@ public class ResourcePath
     public const string resource_sprite_shootFire_ShotFire0001_png = "res://resource/sprite/shootFire/ShotFire0001.png";
     public const string resource_sprite_shootFire_ShotFire0002_png = "res://resource/sprite/shootFire/ShotFire0002.png";
     public const string resource_sprite_shootFire_ShotFire0003_png = "res://resource/sprite/shootFire/ShotFire0003.png";
+    public const string resource_sprite_tile_Hall_png = "res://resource/sprite/tile/Hall.png";
     public const string resource_sprite_ui_font_bg_png = "res://resource/sprite/ui/font_bg.png";
     public const string resource_sprite_ui_GUI_png = "res://resource/sprite/ui/GUI.png";
     public const string resource_sprite_ui_commonIcon_Add_png = "res://resource/sprite/ui/commonIcon/Add.png";
@@ -394,6 +396,7 @@ public class ResourcePath
     public const string resource_sprite_ui_commonIcon_Hide_png = "res://resource/sprite/ui/commonIcon/Hide.png";
     public const string resource_sprite_ui_commonIcon_Import_png = "res://resource/sprite/ui/commonIcon/Import.png";
     public const string resource_sprite_ui_commonIcon_Lock_png = "res://resource/sprite/ui/commonIcon/Lock.png";
+    public const string resource_sprite_ui_commonIcon_Mana_png = "res://resource/sprite/ui/commonIcon/Mana.png";
     public const string resource_sprite_ui_commonIcon_Mark_png = "res://resource/sprite/ui/commonIcon/Mark.png";
     public const string resource_sprite_ui_commonIcon_MarkCell_png = "res://resource/sprite/ui/commonIcon/MarkCell.png";
     public const string resource_sprite_ui_commonIcon_MarkCell_placeholder_png = "res://resource/sprite/ui/commonIcon/MarkCell_placeholder.png";
@@ -433,6 +436,8 @@ public class ResourcePath
     public const string resource_sprite_ui_roomUI_ChargeProgress_png = "res://resource/sprite/ui/roomUI/ChargeProgress.png";
     public const string resource_sprite_ui_roomUI_ChargeProgressBar_png = "res://resource/sprite/ui/roomUI/ChargeProgressBar.png";
     public const string resource_sprite_ui_roomUI_Cooldown_png = "res://resource/sprite/ui/roomUI/Cooldown.png";
+    public const string resource_sprite_ui_roomUI_GunBullet1_png = "res://resource/sprite/ui/roomUI/GunBullet1.png";
+    public const string resource_sprite_ui_roomUI_GunBullet2_png = "res://resource/sprite/ui/roomUI/GunBullet2.png";
     public const string resource_sprite_ui_roomUI_icon_bullet_png = "res://resource/sprite/ui/roomUI/icon_bullet.png";
     public const string resource_sprite_ui_roomUI_icon_pickup_png = "res://resource/sprite/ui/roomUI/icon_pickup.png";
     public const string resource_sprite_ui_roomUI_icon_replace_png = "res://resource/sprite/ui/roomUI/icon_replace.png";
@@ -552,24 +557,4 @@ public class ResourcePath
     public const string scene_Dungeon_tscn = "res://scene/Dungeon.tscn";
     public const string scene_Hall_tscn = "res://scene/Hall.tscn";
     public const string scene_Main_tscn = "res://scene/Main.tscn";
-    public const string scene_test_TestCreateSector_tscn = "res://scene/test/TestCreateSector.tscn";
-    public const string scene_test_TestDrawSprite_tscn = "res://scene/test/TestDrawSprite.tscn";
-    public const string scene_test_TestGridData_tscn = "res://scene/test/TestGridData.tscn";
-    public const string scene_test_TestLoadTileSetConfig_tscn = "res://scene/test/TestLoadTileSetConfig.tscn";
-    public const string scene_test_TestLobby_tscn = "res://scene/test/TestLobby.tscn";
-    public const string scene_test_TestMask_tscn = "res://scene/test/TestMask.tscn";
-    public const string scene_test_TestMask2_tscn = "res://scene/test/TestMask2.tscn";
-    public const string scene_test_TestNavigation2_tscn = "res://scene/test/TestNavigation2.tscn";
-    public const string scene_test_TestNavigationPolygon_tscn = "res://scene/test/TestNavigationPolygon.tscn";
-    public const string scene_test_TestNewTerrain_tscn = "res://scene/test/TestNewTerrain.tscn";
-    public const string scene_test_TestNewTileMap_tscn = "res://scene/test/TestNewTileMap.tscn";
-    public const string scene_test_TestOptimizeSprite_tscn = "res://scene/test/TestOptimizeSprite.tscn";
-    public const string scene_test_TestOutline_tscn = "res://scene/test/TestOutline.tscn";
-    public const string scene_test_TestPerfectPixel_tscn = "res://scene/test/TestPerfectPixel.tscn";
-    public const string scene_test_TestPerfectPixelScene_tscn = "res://scene/test/TestPerfectPixelScene.tscn";
-    public const string scene_test_TestRoomFog_tscn = "res://scene/test/TestRoomFog.tscn";
-    public const string scene_test_TestShader_tscn = "res://scene/test/TestShader.tscn";
-    public const string scene_test_TestTerrain2x2_tscn = "res://scene/test/TestTerrain2x2.tscn";
-    public const string scene_test_TestTileLayer_tscn = "res://scene/test/TestTileLayer.tscn";
-    public const string scene_test_TestTrail_tscn = "res://scene/test/TestTrail.tscn";
 }
