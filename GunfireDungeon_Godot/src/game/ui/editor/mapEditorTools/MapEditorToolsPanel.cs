@@ -341,6 +341,11 @@ public partial class MapEditorToolsPanel : MapEditorTools
         //选中编辑工具
         SetActiviteTool(EditorToolEnum.MarkTool);
 
+        if (EditorTileMapManager.SelectPreinstall == null)
+        {
+            return;
+        }
+        
         var selectIndex = EditorTileMapManager.SelectWaveIndex;
         var waveList = EditorTileMapManager.SelectPreinstall.WaveList;
         for (var i = 0; i < waveList.Count; i++)
