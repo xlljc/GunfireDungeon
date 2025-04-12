@@ -12,6 +12,7 @@ public partial class Gun : Weapon
         base.OnInit();
         FirePartList.SetLogicBlock(0, new TakeTurnsBuffPart()
         {
+            UseMana = 5,
             Occupancy = 3,
         });
         FirePartList.SetLogicBlock(1, new BulletPart()

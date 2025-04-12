@@ -58,6 +58,18 @@ public static partial class ExcelConfig
         public int AmmoCapacity;
 
         /// <summary>
+        /// 弹药容量上限
+        /// </summary>
+        [JsonInclude]
+        public int MaxAmmoCapacity;
+
+        /// <summary>
+        /// 默认起始备用弹药数量
+        /// </summary>
+        [JsonInclude]
+        public int StandbyAmmoCapacity;
+
+        /// <summary>
         /// 换弹是否显示换弹进度
         /// </summary>
         [JsonInclude]
@@ -387,6 +399,8 @@ public static partial class ExcelConfig
             inst.IsMelee = IsMelee;
             inst.ContinuousShoot = ContinuousShoot;
             inst.AmmoCapacity = AmmoCapacity;
+            inst.MaxAmmoCapacity = MaxAmmoCapacity;
+            inst.StandbyAmmoCapacity = StandbyAmmoCapacity;
             inst.ShowReloadBar = ShowReloadBar;
             inst.AutoReload = AutoReload;
             inst.ReloadTime = ReloadTime;

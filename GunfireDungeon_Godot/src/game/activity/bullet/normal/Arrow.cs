@@ -19,20 +19,20 @@ public partial class Arrow : Bullet, IMountItem
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)
     {
-        if (master is Role role) //如果角色有弓箭武器, 则可以拾起地上的箭
-        {
-            var index = role.WeaponPack.FindIndex((weapon, index) =>
-            {
-                return weapon.ActivityBase.Id == Ids.Id_weapon0016;
-            });
-            if (index >= 0)
-            {
-                var weapon = role.WeaponPack.GetItem(index);
-                //weapon.SetResidueAmmo(weapon.ResidueAmmo + 1);
-                Debug.LogError("设置法力总数还未实现！！！");
-                ObjectPool.Reclaim(this);
-            }
-        }
+        // if (master is Role role) //如果角色有弓箭武器, 则可以拾起地上的箭
+        // {
+        //     var index = role.WeaponPack.FindIndex((weapon, index) =>
+        //     {
+        //         return weapon.ActivityBase.Id == Ids.Id_weapon0016;
+        //     });
+        //     if (index >= 0)
+        //     {
+        //         var weapon = role.WeaponPack.GetItem(index);
+        //         //weapon.SetResidueAmmo(weapon.ResidueAmmo + 1);
+        //         Debug.LogError("设置法力总数还未实现！！！");
+        //         ObjectPool.Reclaim(this);
+        //     }
+        // }
         return base.CheckInteractive(master);
     }
 
