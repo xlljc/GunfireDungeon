@@ -115,7 +115,7 @@ public class SubLine : Component<Role>
                 StopCoroutine(_cid);
                 _cid = 0;
             }
-            _range = Utils.GetConfigRangeEnd(weapon.Attribute.Bullet.DistanceRange);
+            _range = GameConfig.AiAttackDistance;
             _line2D.DefaultColor = _color;
         }
     }

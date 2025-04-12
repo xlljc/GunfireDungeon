@@ -108,6 +108,17 @@ public static partial class ExcelConfig
         public int[] Penetration;
 
         /// <summary>
+        /// 射击音效
+        /// </summary>
+        public Sound ShootSound;
+
+        /// <summary>
+        /// 开火特效, 该特效脚本必须实现IEffect接口
+        /// </summary>
+        [JsonInclude]
+        public string FireEffect;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public BulletBase Clone()
@@ -126,7 +137,15 @@ public static partial class ExcelConfig
             inst.VerticalSpeed = VerticalSpeed;
             inst.BounceCount = BounceCount;
             inst.Penetration = Penetration;
+            inst.ShootSound = ShootSound;
+            inst.FireEffect = FireEffect;
             return inst;
         }
+    }
+    private class Ref_BulletBase : BulletBase
+    {
+        [JsonInclude]
+        public string __ShootSound;
+
     }
 }

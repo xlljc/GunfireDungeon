@@ -131,6 +131,7 @@ public static partial class ExcelConfig
         _InitActivePropBaseRef();
         _InitActivityBaseRef();
         _InitBuffPropBaseRef();
+        _InitBulletBaseRef();
         _InitEnemyBaseRef();
         _InitWeaponBaseRef();
     }
@@ -229,7 +230,7 @@ public static partial class ExcelConfig
         try
         {
             var text = _ReadConfigAsText("res://resource/config/BulletBase.json");
-            BulletBase_List = JsonSerializer.Deserialize<List<BulletBase>>(text);
+            BulletBase_List = new List<BulletBase>(JsonSerializer.Deserialize<List<Ref_BulletBase>>(text));
             BulletBase_Map = new Dictionary<string, BulletBase>();
             foreach (var item in BulletBase_List)
             {
@@ -390,6 +391,25 @@ public static partial class ExcelConfig
             }
         }
     }
+    private static void _InitBulletBaseRef()
+    {
+        foreach (Ref_BulletBase item in BulletBase_List)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(item.__ShootSound))
+                {
+                    item.ShootSound = Sound_Map[item.__ShootSound];
+                }
+
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr(e.ToString());
+                throw new Exception("初始化'BulletBase'引用其他表数据失败, 当前行id: " + item.Id);
+            }
+        }
+    }
     private static void _InitEnemyBaseRef()
     {
         foreach (Ref_EnemyBase item in EnemyBase_List)
@@ -425,19 +445,9 @@ public static partial class ExcelConfig
                     item.Activity = ActivityBase_Map[item.__Activity];
                 }
 
-                if (!string.IsNullOrEmpty(item.__Bullet))
-                {
-                    item.Bullet = BulletBase_Map[item.__Bullet];
-                }
-
                 if (!string.IsNullOrEmpty(item.__Shell))
                 {
                     item.Shell = ActivityBase_Map[item.__Shell];
-                }
-
-                if (!string.IsNullOrEmpty(item.__ShootSound))
-                {
-                    item.ShootSound = Sound_Map[item.__ShootSound];
                 }
 
                 if (!string.IsNullOrEmpty(item.__BeginReloadSound))

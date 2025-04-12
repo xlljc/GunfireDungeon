@@ -4,7 +4,7 @@ public class PlanningResult
     public enum ErrorType
     {
         /// <summary>
-        /// 执行成功
+        /// 执行成功，Data 参数为 PlanningRefValue
         /// </summary>
         None,
         /// <summary>

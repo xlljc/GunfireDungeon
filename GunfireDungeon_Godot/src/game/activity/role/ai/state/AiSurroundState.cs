@@ -133,7 +133,7 @@ public class AiSurroundState : StateBase<AiRole, AIStateEnum>
                 var weapon = Master.WeaponPack.ActiveItem;
                 if (weapon != null)
                 {
-                    if (masterPosition.DistanceSquaredTo(Master.LookTarget.GetCenterPosition()) > Mathf.Pow(Master.GetWeaponRange(0.7f), 2)) //玩家离开正常射击范围
+                    if (masterPosition.DistanceSquaredTo(Master.LookTarget.GetCenterPosition()) > Mathf.Pow(GameConfig.AiAttackDistance, 2)) //玩家离开正常射击范围
                     {
                         ChangeState(AIStateEnum.AiFollowUp);
                     }
@@ -166,7 +166,7 @@ public class AiSurroundState : StateBase<AiRole, AIStateEnum>
     private void RunOver(Vector2 targetPos)
     {
         var weapon = Master.WeaponPack.ActiveItem;
-        var distance = (int)(weapon == null ? 150 : (Utils.GetConfigRangeStart(weapon.Attribute.Bullet.DistanceRange) * 0.7f));
+        var distance = (int)(weapon == null ? 150 : GameConfig.AiAttackDistance);
         _nextPosition = new Vector2(
             targetPos.X + Utils.Random.RandomRangeInt(-distance, distance),
             targetPos.Y + Utils.Random.RandomRangeInt(-distance, distance)

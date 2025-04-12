@@ -100,8 +100,15 @@ public class RandomPool
             }
             else if (activityType == ActivityType.Prop) //道具
             {
-                mark.Id = GetRandomProp().Id;
+                var prop = GetRandomProp();
+                if (prop == null)
+                {
+                    continue;
+                }
+
+                mark.Id = prop.Id;
             }
+
             tempWave.Add(mark);
         }
     }

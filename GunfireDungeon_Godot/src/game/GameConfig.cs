@@ -13,7 +13,10 @@ public static class GameConfig
     /// 重力加速度
     /// </summary>
     public static float G = 250f;
-
+    /// <summary>
+    /// Ai攻击距离
+    /// </summary>
+    public static float AiAttackDistance = 300;
     
     // ----------------------- 常量 -----------------------
 

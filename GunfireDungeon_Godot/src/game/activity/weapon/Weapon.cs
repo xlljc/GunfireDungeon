@@ -1196,6 +1196,8 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             Debug.Log("没有足够的法力值!!! ------ index:" + result.Data);
             return;
         }
+
+        var refValue = (PlanningRefValue)result.Data;
         
         _attackFlag = true;
         _noAttackTime = 0;
@@ -1218,7 +1220,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
 
         //播放射击音效
-        PlayShootSound();
+        PlayShootSound(refValue.FirstBulletBase.ShootSound);
         
         //抛弹
         if (!Attribute.ReloadThrowShell && (Attribute.ContinuousShoot || !Attribute.ManualBeLoaded))
@@ -1491,11 +1493,11 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     }
 
     //播放射击音效
-    private void PlayShootSound()
+    private void PlayShootSound(ExcelConfig.Sound sound)
     {
-        if (Attribute.ShootSound != null)
+        if (sound != null)
         {
-            SoundManager.PlaySoundByConfig(Attribute.ShootSound, GlobalPosition, TriggerRole);
+            SoundManager.PlaySoundByConfig(sound, GlobalPosition, TriggerRole);
         }
     }
 

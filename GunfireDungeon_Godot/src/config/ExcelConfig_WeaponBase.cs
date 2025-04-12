@@ -31,15 +31,6 @@ public static partial class ExcelConfig
         public float Weight;
 
         /// <summary>
-        /// 武器类型: <br/>
-        /// 1.副武器 <br/>
-        /// 2.主武器 <br/>
-        /// 3.重型武器
-        /// </summary>
-        [JsonInclude]
-        public byte WeightType;
-
-        /// <summary>
         /// 标记是否是近战武器
         /// </summary>
         [JsonInclude]
@@ -56,18 +47,6 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public int AmmoCapacity;
-
-        /// <summary>
-        /// 弹药容量上限
-        /// </summary>
-        [JsonInclude]
-        public int MaxAmmoCapacity;
-
-        /// <summary>
-        /// 默认起始备用弹药数量
-        /// </summary>
-        [JsonInclude]
-        public int StandbyAmmoCapacity;
 
         /// <summary>
         /// 换弹是否显示换弹进度
@@ -191,13 +170,6 @@ public static partial class ExcelConfig
         public float FiringSpeedBackTime;
 
         /// <summary>
-        /// 单次开火发射子弹数量区间 <br/>
-        /// 格式为[value]或者[min,max]
-        /// </summary>
-        [JsonInclude]
-        public int[] FireBulletCountRange;
-
-        /// <summary>
         /// 从按下扳机到发射第一发子弹的延时时, 如果中途松开扳机, 那么延时时间会重新计算, 必须将 'LooseShoot' 设置为 false
         /// </summary>
         [JsonInclude]
@@ -271,17 +243,6 @@ public static partial class ExcelConfig
         public float UpliftAngleRestore;
 
         /// <summary>
-        /// 开火特效, 该特效脚本必须实现IEffect接口
-        /// </summary>
-        [JsonInclude]
-        public string FireEffect;
-
-        /// <summary>
-        /// 默认射出的子弹
-        /// </summary>
-        public BulletBase Bullet;
-
-        /// <summary>
         /// 默认抛出的弹壳
         /// </summary>
         public ActivityBase Shell;
@@ -323,11 +284,6 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public float[] MeleeAttackRepelRange;
-
-        /// <summary>
-        /// 射击音效
-        /// </summary>
-        public Sound ShootSound;
 
         /// <summary>
         /// 开始换弹音效
@@ -395,12 +351,9 @@ public static partial class ExcelConfig
             inst.Remark = Remark;
             inst.Activity = Activity;
             inst.Weight = Weight;
-            inst.WeightType = WeightType;
             inst.IsMelee = IsMelee;
             inst.ContinuousShoot = ContinuousShoot;
             inst.AmmoCapacity = AmmoCapacity;
-            inst.MaxAmmoCapacity = MaxAmmoCapacity;
-            inst.StandbyAmmoCapacity = StandbyAmmoCapacity;
             inst.ShowReloadBar = ShowReloadBar;
             inst.AutoReload = AutoReload;
             inst.ReloadTime = ReloadTime;
@@ -421,7 +374,6 @@ public static partial class ExcelConfig
             inst.FiringSpeedAddSpeed = FiringSpeedAddSpeed;
             inst.FiringSpeedBackSpeed = FiringSpeedBackSpeed;
             inst.FiringSpeedBackTime = FiringSpeedBackTime;
-            inst.FireBulletCountRange = FireBulletCountRange;
             inst.DelayedTime = DelayedTime;
             inst.StartScatteringRange = StartScatteringRange;
             inst.FinalScatteringRange = FinalScatteringRange;
@@ -434,8 +386,6 @@ public static partial class ExcelConfig
             inst.UpliftAngle = UpliftAngle;
             inst.DefaultAngle = DefaultAngle;
             inst.UpliftAngleRestore = UpliftAngleRestore;
-            inst.FireEffect = FireEffect;
-            inst.Bullet = Bullet;
             inst.Shell = Shell;
             inst.ReloadThrowShell = ReloadThrowShell;
             inst.ThrowShellCount = ThrowShellCount;
@@ -443,7 +393,6 @@ public static partial class ExcelConfig
             inst.CanMeleeAttack = CanMeleeAttack;
             inst.MeleeAttackHarmRange = MeleeAttackHarmRange;
             inst.MeleeAttackRepelRange = MeleeAttackRepelRange;
-            inst.ShootSound = ShootSound;
             inst.BeginReloadSound = BeginReloadSound;
             inst.BeginReloadSoundDelayTime = BeginReloadSoundDelayTime;
             inst.ReloadSound = ReloadSound;
@@ -463,13 +412,7 @@ public static partial class ExcelConfig
         public string __Activity;
 
         [JsonInclude]
-        public string __Bullet;
-
-        [JsonInclude]
         public string __Shell;
-
-        [JsonInclude]
-        public string __ShootSound;
 
         [JsonInclude]
         public string __BeginReloadSound;

@@ -25,6 +25,22 @@ public class PlanningPartItem
     }
 
     /// <summary>
+    /// 获取链表起始零件
+    /// </summary>
+    public PlanningPartItem GetStartItem()
+    {
+        return Prev != null ? Prev.GetStartItem() : this;
+    }
+
+    /// <summary>
+    /// 获取链表结束零件
+    /// </summary>
+    public PlanningPartItem GetEndItem()
+    {
+        return Next != null ? Next.GetEndItem() : this;
+    }
+
+    /// <summary>
     /// 计算法力值消耗
     /// </summary>
     public int CalcMana()
@@ -37,11 +53,11 @@ public class PlanningPartItem
     /// </summary>
     public PlanningResult Execute(float fireRotation)
     {
-        var hasBullet = false;
-        var result = Execute(0, fireRotation, ref hasBullet);
+        var refValue = new PlanningRefValue();
+        var result = Execute(0, fireRotation, refValue);
         if (result == null)
         {
-            if (!hasBullet) //没有子弹零件
+            if (!refValue.HasBullet) //没有子弹零件
             {
                 return new PlanningResult()
                 {
@@ -52,21 +68,27 @@ public class PlanningPartItem
             return new PlanningResult()
             {
                 Error = PlanningResult.ErrorType.None,
+                Data = refValue,
             };
         }
         return result;
     }
 
-    private PlanningResult Execute(int index, float fireRotation, ref bool hasBullet)
+    private PlanningResult Execute(int index, float fireRotation, PlanningRefValue refValue)
     {
         if (Part.PartType == PartType.Bullet)
         {
-            hasBullet = true;
+            if (!refValue.HasBullet)
+            {
+                refValue.HasBullet = true;
+                refValue.FirstBulletBase = ((BulletPart)Part).Bullet;
+            }
         }
         
         var mana = Part.GetMana();
         if (mana > 0 && !Part.Weapon.UseManaBuff(mana))
         {
+            // 法力值不够
             return new PlanningResult()
             {
                 Error = PlanningResult.ErrorType.NoMana,
@@ -74,13 +96,19 @@ public class PlanningPartItem
             };
         }
 
+        // 执行零件逻辑
         Part.Execute(fireRotation);
 
         if (Next != null)
         {
-            return Next.Execute(index + 1, fireRotation, ref hasBullet);
+            return Next.Execute(index + 1, fireRotation, refValue);
         }
 
         return null;
+    }
+    
+    private void DoAddBuff(PlanningPartItem item)
+    {
+        
     }
 }

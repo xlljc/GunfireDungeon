@@ -32,7 +32,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "shooting0005",
+    "FireEffect": ""
   },
   {
     "Id": "0002",
@@ -68,7 +70,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0003",
@@ -103,7 +107,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0004",
@@ -138,7 +144,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0005",
@@ -173,7 +181,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "shooting0011",
+    "FireEffect": ""
   },
   {
     "Id": "0006",
@@ -208,7 +218,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0007",
@@ -243,7 +255,9 @@
     ],
     "Penetration": [
       1
-    ]
+    ],
+    "__ShootSound": "shooting0012",
+    "FireEffect": ""
   },
   {
     "Id": "0008",
@@ -278,7 +292,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0009",
@@ -313,7 +329,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "0010",
@@ -348,7 +366,9 @@
     ],
     "Penetration": [
       0
-    ]
+    ],
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "1001",
@@ -379,7 +399,9 @@
     "BounceCount": [
       0
     ],
-    "Penetration": null
+    "Penetration": null,
+    "__ShootSound": "",
+    "FireEffect": ""
   },
   {
     "Id": "2001",
@@ -406,6 +428,8 @@
     ],
     "VerticalSpeed": null,
     "BounceCount": null,
-    "Penetration": null
+    "Penetration": null,
+    "__ShootSound": "",
+    "FireEffect": ""
   }
 ]

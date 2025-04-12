@@ -158,45 +158,45 @@ public partial class Knife : Weapon
 
     private void HandlerCollision(IHurt hurt)
     {
-        if (TriggerRole == null || hurt.CanHurt(TriggerRole.Camp))
-        {
-            var damage = Utils.Random.RandomConfigRange(Attribute.Bullet.HarmRange);
-            //计算子弹造成的伤害
-            if (TriggerRole != null)
-            {
-                damage = TriggerRole.RoleState.CalcDamage(damage);
-            }
-            //击退
-            var attr = GetUseAttribute(TriggerRole);
-            var repel = Utils.Random.RandomConfigRange(attr.Bullet.RepelRange);
-            //计算击退
-            if (TriggerRole != null)
-            {
-                repel = TriggerRole.RoleState.CalcBulletRepel(repel);
-            }
-        
-            var globalPosition = GlobalPosition;
-            if (repel != 0)
-            {
-                var o = hurt.GetActivityObject();
-                if (o != null && o is not Player) //不是玩家才能被击退
-                {
-                    Vector2 position;
-                    if (TriggerRole != null)
-                    {
-                        position = o.GlobalPosition - TriggerRole.MountPoint.GlobalPosition;
-                    }
-                    else
-                    {
-                        position = o.GlobalPosition - globalPosition;
-                    }
-                    var v2 = position.Normalized() * repel;
-                    o.AddRepelForce(v2);
-                }
-            }
-            
-            //造成伤害
-            hurt.Hurt(TriggerRole, damage, (hurt.GetPosition() - globalPosition).Angle());
-        }
+        // if (TriggerRole == null || hurt.CanHurt(TriggerRole.Camp))
+        // {
+        //     var damage = Utils.Random.RandomConfigRange(Attribute.Bullet.HarmRange);
+        //     //计算子弹造成的伤害
+        //     if (TriggerRole != null)
+        //     {
+        //         damage = TriggerRole.RoleState.CalcDamage(damage);
+        //     }
+        //     //击退
+        //     var attr = GetUseAttribute(TriggerRole);
+        //     var repel = Utils.Random.RandomConfigRange(attr.Bullet.RepelRange);
+        //     //计算击退
+        //     if (TriggerRole != null)
+        //     {
+        //         repel = TriggerRole.RoleState.CalcBulletRepel(repel);
+        //     }
+        //
+        //     var globalPosition = GlobalPosition;
+        //     if (repel != 0)
+        //     {
+        //         var o = hurt.GetActivityObject();
+        //         if (o != null && o is not Player) //不是玩家才能被击退
+        //         {
+        //             Vector2 position;
+        //             if (TriggerRole != null)
+        //             {
+        //                 position = o.GlobalPosition - TriggerRole.MountPoint.GlobalPosition;
+        //             }
+        //             else
+        //             {
+        //                 position = o.GlobalPosition - globalPosition;
+        //             }
+        //             var v2 = position.Normalized() * repel;
+        //             o.AddRepelForce(v2);
+        //         }
+        //     }
+        //     
+        //     //造成伤害
+        //     hurt.Hurt(TriggerRole, damage, (hurt.GetPosition() - globalPosition).Angle());
+        // }
     }
 }

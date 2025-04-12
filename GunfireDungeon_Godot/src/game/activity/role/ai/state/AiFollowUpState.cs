@@ -75,7 +75,7 @@ public class AiFollowUpState : StateBase<AiRole, AIStateEnum>
         var distanceSquared = Master.Position.DistanceSquaredTo(playerPos);
         if (weapon != null)
         {
-            inAttackRange = distanceSquared <= Mathf.Pow(Master.GetWeaponRange(0.7f), 2);
+            inAttackRange = distanceSquared <= Mathf.Pow(GameConfig.AiAttackDistance, 2);
         }
         else
         {
@@ -103,7 +103,7 @@ public class AiFollowUpState : StateBase<AiRole, AIStateEnum>
                 if (weapon != null)
                 {
                     //距离够近, 可以切换到环绕模式
-                    if (distanceSquared <= Mathf.Pow(Utils.GetConfigRangeStart(weapon.Attribute.Bullet.DistanceRange) * 0.7f, 2))
+                    if (distanceSquared <= Mathf.Pow(GameConfig.AiAttackDistance, 2))
                     {
                         ChangeState(AIStateEnum.AiSurround);
                     }

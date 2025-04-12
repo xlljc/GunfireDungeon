@@ -282,21 +282,6 @@ public abstract partial class AiRole : Role
     }
 
     /// <summary>
-    /// 获取武器攻击范围 (最大距离值与最小距离的中间值)
-    /// </summary>
-    /// <param name="weight">从最小到最大距离的过渡量, 0 - 1, 默认 0.5</param>
-    public float GetWeaponRange(float weight = 0.5f)
-    {
-        if (WeaponPack.ActiveItem != null)
-        {
-            var attribute = WeaponPack.ActiveItem.Attribute;
-            return Mathf.Lerp(Utils.GetConfigRangeStart(attribute.Bullet.DistanceRange), Utils.GetConfigRangeEnd(attribute.Bullet.DistanceRange), weight);
-        }
-
-        return 0;
-    }
-
-    /// <summary>
     /// 调用视野检测, 如果被墙壁和其它物体遮挡, 则返回true
     /// </summary>
     public bool TestViewRayCast(Vector2 target)

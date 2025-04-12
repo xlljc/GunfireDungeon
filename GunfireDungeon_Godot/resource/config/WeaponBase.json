@@ -4,12 +4,9 @@
     "Remark": "\u624B\u67AA",
     "__Activity": "weapon0003",
     "Weight": 20,
-    "WeightType": 1,
     "IsMelee": false,
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
-    "MaxAmmoCapacity": 180,
-    "StandbyAmmoCapacity": 168,
     "ShowReloadBar": true,
     "AutoReload": false,
     "ReloadTime": 1.4,
@@ -32,9 +29,6 @@
     "FiringSpeedAddSpeed": 0,
     "FiringSpeedBackSpeed": 0,
     "FiringSpeedBackTime": 0,
-    "FireBulletCountRange": [
-      1
-    ],
     "DelayedTime": 0,
     "StartScatteringRange": 5,
     "FinalScatteringRange": 25,
@@ -50,8 +44,6 @@
     "UpliftAngle": 20,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
-    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn",
-    "__Bullet": "0001",
     "__Shell": "shell0001",
     "ReloadThrowShell": false,
     "ThrowShellCount": 1,
@@ -63,7 +55,6 @@
     "MeleeAttackRepelRange": [
       100
     ],
-    "__ShootSound": "shooting0004",
     "__BeginReloadSound": "reloading0001",
     "BeginReloadSoundDelayTime": 0,
     "__ReloadSound": "",
@@ -80,12 +71,9 @@
     "Remark": "\u624B\u67AA",
     "__Activity": "",
     "Weight": 20,
-    "WeightType": 1,
     "IsMelee": false,
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
-    "MaxAmmoCapacity": 180,
-    "StandbyAmmoCapacity": 168,
     "ShowReloadBar": true,
     "AutoReload": false,
     "ReloadTime": 1.4,
@@ -108,9 +96,6 @@
     "FiringSpeedAddSpeed": 0,
     "FiringSpeedBackSpeed": 0,
     "FiringSpeedBackTime": 0,
-    "FireBulletCountRange": [
-      1
-    ],
     "DelayedTime": 0,
     "StartScatteringRange": 5,
     "FinalScatteringRange": 25,
@@ -126,8 +111,6 @@
     "UpliftAngle": 20,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
-    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn",
-    "__Bullet": "0001",
     "__Shell": "shell0001",
     "ReloadThrowShell": false,
     "ThrowShellCount": 1,
@@ -139,7 +122,6 @@
     "MeleeAttackRepelRange": [
       100
     ],
-    "__ShootSound": "shooting0004",
     "__BeginReloadSound": "reloading0001",
     "BeginReloadSoundDelayTime": 0,
     "__ReloadSound": "",

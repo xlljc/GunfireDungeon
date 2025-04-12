@@ -157,16 +157,16 @@ public partial class Enemy : AiRole
         obj.ZIndex = AffiliationArea.RoomInfo.StaticImageCanvas.ZIndex;
         obj.Modulate = color;
 
-        if (Utils.Random.RandomBoolean(0.04f)) //掉落心之容器
-        {
-            var activityObject = Create(Ids.Id_prop0002);
-            activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
-        }
-        else if (Utils.Random.RandomBoolean(0.015f)) //掉落护盾
-        {
-            var activityObject = Create(Ids.Id_prop0003);
-            activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
-        }
+        // if (Utils.Random.RandomBoolean(0.04f)) //掉落心之容器
+        // {
+        //     var activityObject = Create(Ids.Id_prop0002);
+        //     activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
+        // }
+        // else if (Utils.Random.RandomBoolean(0.015f)) //掉落护盾
+        // {
+        //     var activityObject = Create(Ids.Id_prop0003);
+        //     activityObject.Throw(Position, 8, 35, Vector2.Zero, 0);
+        // }
         
         base.OnDie();
     }
