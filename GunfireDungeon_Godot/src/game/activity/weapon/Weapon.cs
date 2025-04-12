@@ -1185,10 +1185,15 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
 
         //执行零件
-        var errorIndex = logicItem.Execute(fireRotation);
-        // 没有正常发射出子弹
-        if (errorIndex == 0)
+        var result = logicItem.Execute(fireRotation);
+        if (result.Error == PlanningResult.ErrorType.NoBullet) //没有子弹零件
         {
+            Debug.Log("没有子弹零件!!!");
+            return;
+        }
+        else if (result.Error == PlanningResult.ErrorType.NoMana) //没有足够的法力值
+        {
+            Debug.Log("没有足够的法力值!!! ------ index:" + result.Data);
             return;
         }
         
