@@ -11,7 +11,7 @@ using Godot;
 /// </summary>
 public abstract partial class Role : ActivityObject
 {
-    public delegate void ShootBulletCallback(Role role, Weapon weapon, float fireRotation, ExcelConfig.BulletBase attributeBullet);
+    public delegate void ShootBulletCallback(Role role, Weapon weapon, float fireRotation, IBullet bullet);
     
     /// <summary>
     /// 发射子弹回调
@@ -1588,12 +1588,12 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     /// <param name="weapon">武器对象</param>
     /// <param name="fireRotation">开火角度</param>
-    /// <param name="attributeBullet">子弹数据</param>
-    public void ShootBulletHandler(Weapon weapon, float fireRotation, ExcelConfig.BulletBase attributeBullet)
+    /// <param name="bullet">子弹数据</param>
+    public void ShootBulletHandler(Weapon weapon, float fireRotation, IBullet bullet)
     {
         if (OnShootBulletEvent != null)
         {
-            OnShootBulletEvent(this, weapon, fireRotation, attributeBullet);
+            OnShootBulletEvent(this, weapon, fireRotation, bullet);
         }
         //throw new NotImplementedException();
     }

@@ -31,34 +31,41 @@ public class BulletPart : PartBase
         return UseMana;
     }
     
-    public override void Execute(float fireRotation)
+    public override void Execute(float fireRotation, PlanningPartItem partItem)
     {
         Debug.Log($"射击子弹({Index}), fireRotation:{fireRotation}");
         if (Bullet != null)
         {
-            ShootBullet(fireRotation, Bullet);
+            var bullet = ShootBullet(fireRotation, Bullet);
+            if (bullet != null)
+            {
+                
+            }
         }
     }
 
-    public void ShootBullet(float fireRotation, ExcelConfig.BulletBase bullet)
+    public IBullet ShootBullet(float fireRotation, ExcelConfig.BulletBase bullet)
     {
         fireRotation += Mathf.DegToRad(Utils.Random.RandomRangeFloat(-ScatteringAngle, ScatteringAngle));
         if (Weapon.Master != null && !Weapon.Master.IsDestroyed)
         {
             var calcBullet = Weapon.Master.RoleState.CalcBullet(bullet);
-            FireManager.ShootBullet(Weapon, fireRotation, calcBullet);
-            Weapon.Master.ShootBulletHandler(Weapon, fireRotation, bullet);
+            var bInst = FireManager.ShootBullet(Weapon, fireRotation, calcBullet);
+            Weapon.Master.ShootBulletHandler(Weapon, fireRotation, bInst);
+            return bInst;
         }
         else if (Weapon.TriggerRole != null && !Weapon.TriggerRole.IsDestroyed)
         {
             var calcBullet = Weapon.TriggerRole.RoleState.CalcBullet(bullet);
-            FireManager.ShootBullet(Weapon, fireRotation, calcBullet);
-            Weapon.TriggerRole.ShootBulletHandler(Weapon, fireRotation, bullet);
+            var bInst = FireManager.ShootBullet(Weapon, fireRotation, calcBullet);
+            Weapon.TriggerRole.ShootBulletHandler(Weapon, fireRotation, bInst);
+            return bInst;
         }
         else
         {
-            FireManager.ShootBullet(Weapon, fireRotation, bullet);
-            Weapon.Master?.ShootBulletHandler(Weapon, fireRotation, bullet);
+            var bInst = FireManager.ShootBullet(Weapon, fireRotation, bullet);
+            Weapon.Master?.ShootBulletHandler(Weapon, fireRotation, bInst);
+            return bInst;
         }
     }
 }

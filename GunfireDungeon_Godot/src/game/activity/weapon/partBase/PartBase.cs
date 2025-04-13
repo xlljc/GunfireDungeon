@@ -32,6 +32,11 @@ public abstract class PartBase
     public PartList PartList { get; set; }
     
     /// <summary>
+    /// 父零件，这个是由 PartList 控制的
+    /// </summary>
+    public PartBase Parent { get; set; }
+    
+    /// <summary>
     /// 子零件列表，这个是由 PartList 控制的
     /// </summary>
     public PartBase[] Children { get; set; }
@@ -45,7 +50,8 @@ public abstract class PartBase
     /// 执行零件
     /// </summary>
     /// <param name="fireRotation">开火时武器角度</param>
-    public virtual void Execute(float fireRotation)
+    /// <param name="partItem">当前零件所属零件列表</param>
+    public virtual void Execute(float fireRotation, PlanningPartItem partItem)
     {
     }
 

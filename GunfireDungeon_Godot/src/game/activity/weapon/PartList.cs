@@ -155,6 +155,7 @@ public class PartList
             if (logic != null)
             {
                 logic.Children = new PartBase[logic.Occupancy];
+                logic.Parent = null;
             }
         }
 
@@ -179,6 +180,7 @@ public class PartList
             if (next != null)
             {
                 v += EachTree(next);
+                next.Parent = part;
                 part.Children[i - 1] = next;
             }
         }

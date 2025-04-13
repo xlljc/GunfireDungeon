@@ -97,7 +97,7 @@ public class PlanningPartItem
         }
 
         // 执行零件逻辑
-        Part.Execute(fireRotation);
+        Part.Execute(fireRotation, this);
 
         if (Next != null)
         {
