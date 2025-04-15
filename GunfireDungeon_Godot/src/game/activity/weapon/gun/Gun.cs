@@ -10,30 +10,49 @@ public partial class Gun : Weapon
     public override void OnInit()
     {
         base.OnInit();
-        FirePartList.SetLogicBlock(0, new TakeTurnsBuffPart()
+        FirePartList.SetLogicBlock(0, new FinishPlayBuffPart()
         {
-            UseMana = 5,
-            Occupancy = 3,
+            Mana = 5,
+            Occupancy = 2,
         });
+        
         FirePartList.SetLogicBlock(1, new BulletPart()
         {
-            UseMana = 30,
+            Mana = 30,
             ScatteringAngle = 10,
             Bullet = ExcelConfig.BulletBase_Map["0001"]
         });
         FirePartList.SetLogicBlock(2, new BulletPart()
         {
-            UseMana = 50,
+            Mana = 50,
             ScatteringAngle = 10,
             Bullet = ExcelConfig.BulletBase_Map["0005"]
         });
         
-        FirePartList.SetLogicBlock(3, new BulletPart()
-        {
-            UseMana = 40,
-            ScatteringAngle = 10,
-            Bullet = ExcelConfig.BulletBase_Map["0007"]
-        });
+        // FirePartList.SetLogicBlock(0, new TakeTurnsBuffPart()
+        // {
+        //     Mana = 5,
+        //     Occupancy = 3,
+        // });
+        // FirePartList.SetLogicBlock(1, new BulletPart()
+        // {
+        //     Mana = 30,
+        //     ScatteringAngle = 10,
+        //     Bullet = ExcelConfig.BulletBase_Map["0001"]
+        // });
+        // FirePartList.SetLogicBlock(2, new BulletPart()
+        // {
+        //     Mana = 50,
+        //     ScatteringAngle = 10,
+        //     Bullet = ExcelConfig.BulletBase_Map["0005"]
+        // });
+        //
+        // FirePartList.SetLogicBlock(3, new BulletPart()
+        // {
+        //     Mana = 40,
+        //     ScatteringAngle = 10,
+        //     Bullet = ExcelConfig.BulletBase_Map["0007"]
+        // });
         
         FirePartList.RefreshLogicTree();
         GD.Print(FirePartList.GetFirstLogicBlock().GetTreeString());

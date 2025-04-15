@@ -1157,12 +1157,6 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         {
             _continuousCount = _continuousCount > 0 ? _continuousCount - 1 : 0;
         }
-
-        var logicItem = FirePartList.Planning();
-        if (logicItem == null)
-        {
-            return;
-        }
         
 
         //武器口角度
@@ -1185,7 +1179,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
 
         //执行零件
-        var result = logicItem.Execute(fireRotation);
+        var result = FirePartList.Execute(fireRotation);
         if (result.Error == PlanningResult.ErrorType.NoBullet) //没有子弹零件
         {
             Debug.Log("没有子弹零件!!!");
@@ -1193,11 +1187,13 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
         else if (result.Error == PlanningResult.ErrorType.NoMana) //没有足够的法力值
         {
-            Debug.Log("没有足够的法力值!!! ------ index:" + result.Data);
+            if (result.HasValue(PlanningResult.Index))
+            {
+                Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningResult.Index));
+            }
+            
             return;
         }
-
-        var refValue = (PlanningRefValue)result.Data;
         
         _attackFlag = true;
         _noAttackTime = 0;
@@ -1219,9 +1215,12 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             }
         }
 
-        //播放射击音效
-        PlayShootSound(refValue.FirstBulletBase.ShootSound);
-        
+        if (result.HasValue(PlanningResult.FirstBullet))
+        {
+            //播放射击音效
+            PlayShootSound(result.GetValue<ExcelConfig.BulletBase>(PlanningResult.FirstBullet).ShootSound);
+        }
+       
         //抛弹
         if (!Attribute.ReloadThrowShell && (Attribute.ContinuousShoot || !Attribute.ManualBeLoaded))
         {

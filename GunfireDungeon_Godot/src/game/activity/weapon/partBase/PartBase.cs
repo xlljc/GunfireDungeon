@@ -37,7 +37,7 @@ public abstract class PartBase
     public PartBase Parent { get; set; }
     
     /// <summary>
-    /// 子零件列表，这个是由 PartList 控制的
+    /// 子零件列表，这个是由 PartList 控制的，长度与 Occupancy 一致
     /// </summary>
     public PartBase[] Children { get; set; }
 
@@ -47,21 +47,13 @@ public abstract class PartBase
     }
 
     /// <summary>
-    /// 执行零件
+    /// 执行零件，返回这一步产生的子弹对象
     /// </summary>
     /// <param name="fireRotation">开火时武器角度</param>
-    /// <param name="partItem">当前零件所属零件列表</param>
-    public virtual void Execute(float fireRotation, PlanningPartItem partItem)
+    /// <param name="result">执行逻辑树将会返回的数据，可以在上面绑定数据</param>
+    public virtual IBullet[] Execute(float fireRotation, PlanningResult result)
     {
-    }
-
-    /// <summary>
-    /// 获取下一个与该零件绑定运行的零件，如果没有则返回 null
-    /// <param name="occupancy">后置零件对象数组</param>
-    /// </summary>
-    public virtual PartBase[] PlanningNext(PartBase[] occupancy)
-    {
-        return occupancy;
+        return null;
     }
 
     /// <summary>
@@ -70,6 +62,15 @@ public abstract class PartBase
     public virtual int GetMana()
     {
         return 0;
+    }
+
+    /// <summary>
+    /// 消耗法力值
+    /// </summary>
+    /// <param name="mana"></param>
+    public bool UseMana(int mana)
+    {
+        return Weapon.UseManaBuff(mana);
     }
     
     public override string ToString()

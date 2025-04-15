@@ -7,7 +7,7 @@ public abstract class BuffPart : PartBase
     /// <summary>
     /// 零件消耗法力值
     /// </summary>
-    public int UseMana { get; set; }
+    public int Mana { get; set; }
     
     public BuffPart() : base(PartType.Buff)
     {
@@ -15,6 +15,6 @@ public abstract class BuffPart : PartBase
 
     public override int GetMana()
     {
-        return UseMana;
+        return Mana;
     }
 }

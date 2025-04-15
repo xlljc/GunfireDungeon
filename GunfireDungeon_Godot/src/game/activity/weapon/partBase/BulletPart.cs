@@ -10,7 +10,7 @@ public class BulletPart : PartBase
     /// <summary>
     /// 逻辑块消耗法力值
     /// </summary>
-    public int UseMana { get; set; }
+    public int Mana { get; set; }
     
     /// <summary>
     /// 散射角度
@@ -28,20 +28,29 @@ public class BulletPart : PartBase
     
     public override int GetMana()
     {
-        return UseMana;
+        return Mana;
     }
     
-    public override void Execute(float fireRotation, PlanningPartItem partItem)
+    public override IBullet[] Execute(float fireRotation, PlanningResult result)
     {
+        if (!UseMana(GetMana()))
+        {
+            result.Error = PlanningResult.ErrorType.NoMana;
+            return null;
+        }
         Debug.Log($"射击子弹({Index}), fireRotation:{fireRotation}");
         if (Bullet != null)
         {
-            var bullet = ShootBullet(fireRotation, Bullet);
-            if (bullet != null)
+            if (!result.HasValue(PlanningResult.FirstBullet))
             {
-                
+                result.Error = PlanningResult.ErrorType.None;
+                result.SetValue(PlanningResult.FirstBullet, Bullet);
             }
+            var bullet = ShootBullet(fireRotation, Bullet);
+            return new [] {bullet};
         }
+        
+        return null;
     }
 
     public IBullet ShootBullet(float fireRotation, ExcelConfig.BulletBase bullet)

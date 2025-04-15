@@ -99,10 +99,7 @@ public class PartList
         return temp;
     }
     
-    /// <summary>
-    /// 规划下一次执行的零件，并组装成一个链表，然后调用该链表的 Execute() 方法执行整个零件
-    /// </summary>
-    public PlanningPartItem Planning()
+    public PlanningResult Execute(float fireRotation)
     {
         if (_dirty)
         {
@@ -110,39 +107,14 @@ public class PartList
             RefreshLogicTree();
         }
         
-        var temp = GetFirstLogicBlock();
-
-        if (temp != null)
+        var result = new PlanningResult();
+        var first = GetFirstLogicBlock();
+        if (first != null)
         {
-            var start = new PlanningPartItem(temp);
-            PlanningEach(start);
-            return start;
+            first.Execute(fireRotation, result);
         }
 
-        return null;
-    }
-
-    private void PlanningEach(PlanningPartItem root)
-    {
-        var next = root.Part.PlanningNext(root.Part.Children);
-        if (next == null || next.Length == 0)
-        {
-            return;
-        }
-
-        var temp = root;
-        foreach (var block in next)
-        {
-            if (block == null)
-            {
-                continue;
-            }
-            var tempNext = new PlanningPartItem(block);
-            temp.Next = tempNext;
-            tempNext.Prev = temp;
-            temp = tempNext;
-            PlanningEach(tempNext);
-        }
+        return result;
     }
 
     /// <summary>
