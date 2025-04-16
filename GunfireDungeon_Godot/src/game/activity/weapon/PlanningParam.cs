@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 public class PlanningParam
@@ -19,15 +20,20 @@ public class PlanningParam
         NoBullet,
     }
 
+    public delegate bool UseManaCallback(int mana);
+    
     /// <summary>
+    /// 没有足够的法力值的零件索引
     /// <see cref="int"/>
     /// </summary>
-    public const string Index = "Index";
+    public const string NoManaIndex = "NoManaIndex";
     /// <summary>
+    /// 第一个发射出去的子弹
     /// <see cref="Config.ExcelConfig.BulletBase"/>
     /// </summary>
     public const string FirstBullet = "FirstBullet";
     /// <summary>
+    /// 上一个发射出去的子弹
     /// <see cref="IBullet"/>
     /// </summary>
     public const string PrevBullet = "PrevBullet";
@@ -43,10 +49,12 @@ public class PlanningParam
     public ErrorType Error = ErrorType.NoBullet;
     
     private Dictionary<string, object> _data;
+    private readonly UseManaCallback _useManaFunc;
     
-    public PlanningParam(float fireRotation)
+    public PlanningParam(float fireRotation, UseManaCallback callback)
     {
         FireRotation = fireRotation;
+        _useManaFunc = callback;
     }
 
     public void SetValue(string key, object value)
@@ -83,5 +91,18 @@ public class PlanningParam
             return false;
         }
         return _data.ContainsKey(key);
+    }
+
+    /// <summary>
+    /// 使用法力值，返回是否执行成功
+    /// </summary>
+    public bool UseManaBuff(int mana)
+    {
+        if (_useManaFunc != null)
+        {
+            return _useManaFunc(mana);
+        }
+
+        return false;
     }
 }

@@ -38,7 +38,7 @@ public class WeaponBarHandler
         if (weapon != null)
         {
             SetWeaponTexture(weapon.GetCurrentTexture());
-            SetWeaponAmmunition(weapon.CurrAmmo, weapon.CurrManaBuffer, weapon.MaxManaBuffer, weapon.CurrMana, weapon.MaxMana);
+            SetWeaponAmmunition(weapon.CurrAmmo, weapon.CurrManaBuffer, weapon.Attribute.MaxManaBuffer, weapon.CurrMana, weapon.Attribute.MaxMana);
         }
         else
         {

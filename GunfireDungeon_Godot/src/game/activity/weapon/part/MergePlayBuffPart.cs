@@ -8,7 +8,7 @@ public class MergePlayBuffPart : BuffPart
 {
     public override IBullet[] Execute(PlanningParam param)
     {
-        if (!UseMana(GetMana()))
+        if (!param.UseManaBuff(Mana))
         {
             return null;
         }

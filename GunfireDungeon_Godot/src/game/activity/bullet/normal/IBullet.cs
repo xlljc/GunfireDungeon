@@ -25,6 +25,11 @@ public interface IBullet : ICoroutine, IPoolItem
     /// 子弹状态
     /// </summary>
     BulletStateEnum State { get; }
+    
+    /// <summary>
+    /// 子弹离地面高度
+    /// </summary>
+    float Altitude { get; set; }
 
     /// <summary>
     /// 初始化子弹数据

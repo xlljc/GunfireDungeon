@@ -47,15 +47,15 @@ public static class FireManager
     /// <summary>
     /// 根据武器创建 BulletData
     /// </summary>
-    public static BulletData GetBulletData(Weapon weapon, Vector2 position, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static BulletData GetBulletData(Weapon weapon, Vector2 position, float altitude, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return CreateSolidBulletData(weapon, position, fireRotation, bullet);
+            return CreateSolidBulletData(weapon, position, altitude, fireRotation, bullet);
         }
         else if (bullet.Type == 2) //激光子弹
         {
-            return CreateLaserData(weapon, position, fireRotation, bullet);
+            return CreateLaserData(weapon, position, altitude, fireRotation, bullet);
         }
         else
         {
@@ -93,16 +93,16 @@ public static class FireManager
     /// <summary>
     /// 通过武器发射子弹
     /// </summary>
-    public static IBullet ShootBullet(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static IBullet ShootBullet(Weapon weapon, Vector2 postion, float altitude, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return ShootSolidBullet(CreateSolidBulletData(weapon, postion, fireRotation, bullet),
+            return ShootSolidBullet(CreateSolidBulletData(weapon, postion, altitude, fireRotation, bullet),
                 weapon.TriggerRole != null ? weapon.TriggerRole.Camp : CampEnum.None);
         }
         else if (bullet.Type == 2) //激光子弹
         {
-            return ShootLaser(CreateLaserData(weapon, postion, fireRotation, bullet),
+            return ShootLaser(CreateLaserData(weapon, postion, altitude, fireRotation, bullet),
                 weapon.TriggerRole != null ? weapon.TriggerRole.Camp : CampEnum.None);
         }
         else
@@ -172,13 +172,14 @@ public static class FireManager
     
     //-----------------------------------------------------------------------------------
 
-    private static BulletData CreateSolidBulletData(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
+    private static BulletData CreateSolidBulletData(Weapon weapon, Vector2 postion, float altitude, float fireRotation, ExcelConfig.BulletBase bullet)
     {
+        var hasRole = weapon.TriggerRole != null && !weapon.TriggerRole.IsDestroyed;
         var data = new BulletData(weapon.World)
         {
             Weapon = weapon,
             BulletBase = bullet,
-            TriggerRole = weapon.TriggerRole,
+            TriggerRole = hasRole ? weapon.TriggerRole : null,
             Harm = Utils.Random.RandomConfigRange(bullet.HarmRange),
             Repel = Utils.Random.RandomConfigRange(bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(bullet.DistanceRange),
@@ -190,9 +191,9 @@ public static class FireManager
         };
         
         var deviationAngle = Utils.Random.RandomConfigRange(bullet.DeviationAngleRange);
-        if (weapon.TriggerRole != null)
+        if (hasRole)
         {
-            data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
+            //data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
             var roleState = weapon.TriggerRole.RoleState;
             data.Harm = roleState.CalcDamage(data.Harm);
             data.Repel = roleState.CalcBulletRepel(data.Repel);
@@ -207,11 +208,8 @@ public static class FireManager
                 data.FlySpeed *= weapon.AiUseAttribute.AiAttackAttr.BulletSpeedScale;
             }
         }
-        else
-        {
-            data.Altitude = 1;
-        }
 
+        data.Altitude = altitude;
         data.Rotation = fireRotation + Mathf.DegToRad(deviationAngle);
         return data;
     }
@@ -262,13 +260,14 @@ public static class FireManager
         return data;
     }
 
-    private static BulletData CreateLaserData(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
+    private static BulletData CreateLaserData(Weapon weapon, Vector2 postion, float altitude, float fireRotation, ExcelConfig.BulletBase bullet)
     {
+        var hasRole = weapon.TriggerRole != null && !weapon.TriggerRole.IsDestroyed;
         var data = new BulletData(weapon.World)
         {
             Weapon = weapon,
             BulletBase = bullet,
-            TriggerRole = weapon.TriggerRole,
+            TriggerRole = hasRole ? weapon.TriggerRole : null,
             Harm = Utils.Random.RandomConfigRange(bullet.HarmRange),
             Repel = Utils.Random.RandomConfigRange(bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(bullet.DistanceRange),
@@ -281,18 +280,14 @@ public static class FireManager
         var deviationAngle = Utils.Random.RandomConfigRange(bullet.DeviationAngleRange);
         if (weapon.TriggerRole != null)
         {
-            data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
             var roleState = weapon.TriggerRole.RoleState;
             data.Harm = roleState.CalcDamage(data.Harm);
             data.Repel = roleState.CalcBulletRepel(data.Repel);
             data.BounceCount = roleState.CalcBulletBounceCount(data.BounceCount);
             deviationAngle = roleState.CalcBulletDeviationAngle(deviationAngle);
         }
-        else
-        {
-            data.Altitude = 1;
-        }
 
+        data.Altitude = altitude;
         data.Rotation = fireRotation + Mathf.DegToRad(deviationAngle);
         return data;
     }

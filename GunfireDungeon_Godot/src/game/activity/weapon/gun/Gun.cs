@@ -12,7 +12,8 @@ public partial class Gun : Weapon
         base.OnInit();
         FirePartList.SetLogicBlock(0, new FinishPlayBuffPart()
         {
-            Mana = 5,
+            Mana = 50,
+            BehindMaxMana = 60,
             Occupancy = 2,
         });
         

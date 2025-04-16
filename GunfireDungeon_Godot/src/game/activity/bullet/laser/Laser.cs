@@ -34,6 +34,12 @@ public partial class Laser : Area2D, IBullet
     public BulletData BulletData { get; private set; }
     public BulletStateEnum State { get; protected set; } = BulletStateEnum.Normal;
 
+    public float Altitude
+    {
+        get => BulletData.Altitude;
+        set => BulletData.Altitude = value;
+    }
+
     public bool IsDestroyed { get; private set; }
     
     public float Width { get; set; }

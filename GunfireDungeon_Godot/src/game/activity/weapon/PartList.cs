@@ -107,7 +107,7 @@ public class PartList
             RefreshLogicTree();
         }
         
-        var result = new PlanningParam(fireRotation);
+        var result = new PlanningParam(fireRotation, Weapon.UseManaBuff);
         var first = GetFirstLogicBlock();
         if (first != null)
         {

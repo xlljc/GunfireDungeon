@@ -33,9 +33,10 @@ public class BulletPart : PartBase
     
     public override IBullet[] Execute(PlanningParam param)
     {
-        if (!UseMana(GetMana()))
+        if (!param.UseManaBuff(Mana))
         {
             param.Error = PlanningParam.ErrorType.NoMana;
+            param.SetValue(PlanningParam.NoManaIndex, Index);
             return null;
         }
         Debug.Log($"射击子弹({Index}), fireRotation:{param.FireRotation}");
@@ -47,42 +48,54 @@ public class BulletPart : PartBase
                 param.SetValue(PlanningParam.FirstBullet, Bullet);
             }
 
-            Vector2 firePos;
+            Vector2 firePos; // 开火位置
+            float altitude; //子弹高度
             if (param.HasValue(PlanningParam.PrevBullet))
             {
-                firePos = param.GetValue<IBullet>(PlanningParam.PrevBullet).GetEndPosition();
+                var bulletInst = param.GetValue<IBullet>(PlanningParam.PrevBullet);
+                firePos = bulletInst.GetEndPosition();
+                altitude = bulletInst.Altitude;
             }
             else
             {
                 firePos = Weapon.FirePoint.GlobalPosition;
+                if (Weapon.TriggerRole != null && !Weapon.TriggerRole.IsDestroyed)
+                {
+                    altitude = Weapon.TriggerRole.GetFirePointAltitude();
+                }
+                else
+                {
+                    altitude = 1;
+                }
             }
-            var bullet = ShootBullet(param.FireRotation, firePos, Bullet);
+            
+            var bullet = ShootBullet(firePos, altitude, param.FireRotation, Bullet);
             return new [] {bullet};
         }
         
         return null;
     }
 
-    public IBullet ShootBullet(float fireRotation, Vector2 position, ExcelConfig.BulletBase bullet)
+    public IBullet ShootBullet(Vector2 position, float altitude, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         fireRotation += Mathf.DegToRad(Utils.Random.RandomRangeFloat(-ScatteringAngle, ScatteringAngle));
         if (Weapon.Master != null && !Weapon.Master.IsDestroyed)
         {
             var calcBullet = Weapon.Master.RoleState.CalcBullet(bullet);
-            var bInst = FireManager.ShootBullet(Weapon, position, fireRotation, calcBullet);
+            var bInst = FireManager.ShootBullet(Weapon, position, altitude, fireRotation, calcBullet);
             Weapon.Master.ShootBulletHandler(Weapon, fireRotation, bInst);
             return bInst;
         }
         else if (Weapon.TriggerRole != null && !Weapon.TriggerRole.IsDestroyed)
         {
             var calcBullet = Weapon.TriggerRole.RoleState.CalcBullet(bullet);
-            var bInst = FireManager.ShootBullet(Weapon, position, fireRotation, calcBullet);
+            var bInst = FireManager.ShootBullet(Weapon, position, altitude, fireRotation, calcBullet);
             Weapon.TriggerRole.ShootBulletHandler(Weapon, fireRotation, bInst);
             return bInst;
         }
         else
         {
-            var bInst = FireManager.ShootBullet(Weapon, position, fireRotation, bullet);
+            var bInst = FireManager.ShootBullet(Weapon, position, altitude, fireRotation, bullet);
             Weapon.Master?.ShootBulletHandler(Weapon, fireRotation, bInst);
             return bInst;
         }

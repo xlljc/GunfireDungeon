@@ -49,6 +49,36 @@ public static partial class ExcelConfig
         public int AmmoCapacity;
 
         /// <summary>
+        /// 最大存储法力值 <br/>
+        /// 注意：ai武器不需要填写该字段
+        /// </summary>
+        [JsonInclude]
+        public int MaxMana;
+
+        /// <summary>
+        /// 缓冲区法力最大值，武器开火将从缓冲区消耗法力值 <br/>
+        /// 注意：ai武器不需要填写该字段
+        /// </summary>
+        [JsonInclude]
+        public int MaxManaBuffer;
+
+        /// <summary>
+        /// 缓冲区每秒法力恢复量 <br/>
+        /// 注意：ai武器不需要填写该字段
+        /// </summary>
+        [JsonInclude]
+        public int ManaRecoverySpeed;
+
+        /// <summary>
+        /// 零件列表 <br/>
+        /// key：零件列表名称，例如“Fire”为开火零件列表 <br/>
+        /// value：零件对象配置列表，可以填 null 生成占位格以增加武器零件列表最大容量 <br/>
+        /// 注意：ai武器不需要填写该字段
+        /// </summary>
+        [JsonInclude]
+        public Dictionary<string, string[]> PartPack;
+
+        /// <summary>
         /// 换弹是否显示换弹进度
         /// </summary>
         [JsonInclude]
@@ -354,6 +384,10 @@ public static partial class ExcelConfig
             inst.IsMelee = IsMelee;
             inst.ContinuousShoot = ContinuousShoot;
             inst.AmmoCapacity = AmmoCapacity;
+            inst.MaxMana = MaxMana;
+            inst.MaxManaBuffer = MaxManaBuffer;
+            inst.ManaRecoverySpeed = ManaRecoverySpeed;
+            inst.PartPack = PartPack;
             inst.ShowReloadBar = ShowReloadBar;
             inst.AutoReload = AutoReload;
             inst.ReloadTime = ReloadTime;

@@ -137,34 +137,17 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// <summary>
     /// 武器当前射速
     /// </summary>
-    public float CurrentFiringSpeed { get; private set; }
-
-    //----------------------
-    
-    /// <summary>
-    /// 最大法力值
-    /// </summary>
-    public int MaxMana { get; private set; } = 2200;
+    public float CurrFiringSpeed { get; private set; }
 
     /// <summary>
-    /// 当前法力值
+    /// 当前存储法力值
     /// </summary>
-    public int CurrMana { get; private set; } = 2200;
-
-    /// <summary>
-    /// 缓冲区法力最大值
-    /// </summary>
-    public int MaxManaBuffer { get; private set; } = 200;
+    public int CurrMana { get; private set; }
 
     /// <summary>
     /// 当前缓冲区法力值
     /// </summary>
-    public int CurrManaBuffer { get; private set; } = 200;
-    
-    /// <summary>
-    /// 缓冲区每秒法力恢复速度
-    /// </summary>
-    public int ManaRecoverySpeed { get; private set; } = 10;
+    public int CurrManaBuffer { get; private set; }
     
     /// <summary>
     /// 开火零件列表
@@ -325,7 +308,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     
     public override void OnInit()
     {
-        InitWeapon(GetWeaponAttribute(ActivityBase.Id).Clone());
+        InitWeapon(GetWeaponAttribute(ActivityBase.Id));
         AnimatedSprite.AnimationFinished += OnAnimatedSpriteFinished;
         AnimationPlayer.AnimationFinished += OnAnimationPlayerFinished;
         _gripPoint = AnimatedSprite.Position;
@@ -342,21 +325,34 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// </summary>
     private void InitWeapon(ExcelConfig.WeaponBase attribute)
     {
+        attribute = attribute.Clone();
         _playerWeaponAttribute = attribute;
         SetCurrentWeaponAttribute(attribute);
         if (ExcelConfig.WeaponBase_Map.TryGetValue(attribute.Id + "_ai", out var aiAttr))
         {
-            _aiWeaponAttribute = aiAttr;
+            _aiWeaponAttribute = aiAttr.Clone();
         }
         else
         {
             Debug.LogError("警告: 未找到 AI 武器属性: " + attribute.Id);
-            _aiWeaponAttribute = attribute;
+            _aiWeaponAttribute = attribute.Clone();
         }
         
         //弹药量
         CurrAmmo = Attribute.AmmoCapacity;
-        FirePartList = new PartList(10, this);
+        //当前法力值缓冲区
+        CurrManaBuffer = Attribute.MaxManaBuffer;
+        //当前法力值
+        CurrMana = Attribute.MaxMana;
+
+        if (attribute.PartPack.TryGetValue("Fire", out var partList))
+        {
+            FirePartList = new PartList(partList.Length, this);
+        }
+        else
+        {
+            FirePartList = new PartList(0, this);
+        }
     }
 
     /// <summary>
@@ -531,9 +527,9 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         _noAttackTime += delta;
         
         //缓冲区充能
-        if (CurrMana > 0 && ManaRecoverySpeed > 0 && CurrManaBuffer < MaxManaBuffer)
+        if (CurrMana > 0 && Attribute.ManaRecoverySpeed > 0 && CurrManaBuffer < Attribute.MaxManaBuffer)
         {
-            _manaRecoveryValue += Mathf.Min(ManaRecoverySpeed * delta, MaxManaBuffer - CurrManaBuffer);
+            _manaRecoveryValue += Mathf.Min(Attribute.ManaRecoverySpeed * delta, Attribute.MaxManaBuffer - CurrManaBuffer);
             if (_manaRecoveryValue >= 1f)
             {
                 var tempVal = _manaRecoveryValue % 1f;
@@ -1187,9 +1183,9 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
         else if (result.Error == PlanningParam.ErrorType.NoMana) //没有足够的法力值
         {
-            if (result.HasValue(PlanningParam.Index))
+            if (result.HasValue(PlanningParam.NoManaIndex))
             {
-                Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningParam.Index));
+                Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningParam.NoManaIndex));
             }
             
             return;
@@ -1202,7 +1198,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         CurrAmmo -= UseAmmoCount();
         
         //开火间隙, 这里的60指的是60秒
-        _fireInterval = 60 / CurrentFiringSpeed;
+        _fireInterval = 60 / CurrFiringSpeed;
         //攻击冷却
         _attackTimer += _fireInterval;
 
@@ -1685,12 +1681,12 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     {
         if (Attribute.ContinuousShoot)
         {
-            CurrentFiringSpeed = Mathf.MoveToward(CurrentFiringSpeed, Attribute.FinalFiringSpeed,
+            CurrFiringSpeed = Mathf.MoveToward(CurrFiringSpeed, Attribute.FinalFiringSpeed,
                 Attribute.FiringSpeedAddSpeed * delta);
         }
         else
         {
-            CurrentFiringSpeed = Attribute.StartFiringSpeed;
+            CurrFiringSpeed = Attribute.StartFiringSpeed;
         }
     }
     
@@ -1699,12 +1695,12 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     {
         if (Attribute.ContinuousShoot)
         {
-            CurrentFiringSpeed = Mathf.MoveToward(CurrentFiringSpeed, Attribute.StartFiringSpeed, 
+            CurrFiringSpeed = Mathf.MoveToward(CurrFiringSpeed, Attribute.StartFiringSpeed, 
                 Attribute.FiringSpeedBackSpeed * delta);
         }
         else
         {
-            CurrentFiringSpeed = Attribute.StartFiringSpeed;
+            CurrFiringSpeed = Attribute.StartFiringSpeed;
         }
     }
 
@@ -2048,7 +2044,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         {
             _weaponAttribute = attr;
             //重置开火速率
-            CurrentFiringSpeed = _weaponAttribute.StartFiringSpeed;
+            CurrFiringSpeed = _weaponAttribute.StartFiringSpeed;
         }
     }
 

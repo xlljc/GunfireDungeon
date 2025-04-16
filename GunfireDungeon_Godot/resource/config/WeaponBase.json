@@ -7,6 +7,20 @@
     "IsMelee": false,
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
+    "MaxMana": 2000,
+    "MaxManaBuffer": 150,
+    "ManaRecoverySpeed": 50,
+    "PartPack": {
+      "Fire": [
+        "1001",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
     "ShowReloadBar": true,
     "AutoReload": false,
     "ReloadTime": 1.4,
@@ -74,6 +88,10 @@
     "IsMelee": false,
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
+    "MaxMana": 2000,
+    "MaxManaBuffer": 150,
+    "ManaRecoverySpeed": 50,
+    "PartPack": null,
     "ShowReloadBar": true,
     "AutoReload": false,
     "ReloadTime": 1.4,

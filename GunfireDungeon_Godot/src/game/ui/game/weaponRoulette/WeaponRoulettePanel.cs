@@ -240,7 +240,7 @@ public partial class WeaponRoulettePanel : WeaponRoulette
                     slotNode.L_SlotUi.L_WeaponUi.Instance.Visible = true;
                     slotNode.L_SlotUi.L_WeaponUi.L_WeaponIcon.Instance.Texture = weapon.GetDefaultTexture();
                     slotNode.L_SlotUi.L_WeaponUi.L_AmmoLabel.Instance.Text = 
-                        weapon.CurrMana + "/" + weapon.MaxMana;
+                        weapon.CurrMana + "/" + weapon.Attribute.MaxMana;
                     slotNode.Instance.SetWeapon(weapon);
                     slotNode.L_SlotAreaNode.Instance.Monitoring = true;
                 }

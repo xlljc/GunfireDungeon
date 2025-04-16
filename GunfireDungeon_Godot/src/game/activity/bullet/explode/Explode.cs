@@ -168,7 +168,7 @@ public partial class Explode : Area2D, IPoolItem
 
         if (hurt.CanHurt(Camp))
         {
-            var target = BulletData.TriggerRole.IsDestroyed ? null : BulletData.TriggerRole;
+            var target = (BulletData.TriggerRole == null || BulletData.TriggerRole.IsDestroyed) ? null : BulletData.TriggerRole;
             if (len <= _hitRadius) //在伤害半径内
             {
                 hurt.Hurt(target, _harm, angle);

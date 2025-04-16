@@ -62,15 +62,6 @@ public abstract class PartBase
     {
         return 0;
     }
-
-    /// <summary>
-    /// 消耗法力值
-    /// </summary>
-    /// <param name="mana"></param>
-    public bool UseMana(int mana)
-    {
-        return Weapon.UseManaBuff(mana);
-    }
     
     public override string ToString()
     {
