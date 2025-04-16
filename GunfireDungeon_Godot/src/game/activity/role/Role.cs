@@ -1179,6 +1179,14 @@ public abstract partial class Role : ActivityObject
     }
     
     /// <summary>
+    /// 获取开火点位置
+    /// </summary>
+    public virtual Vector2 GetFirePoint()
+    {
+        return MountPoint.GlobalPosition;
+    }
+    
+    /// <summary>
     /// 当拾起某个武器时调用
     /// </summary>
     protected virtual void OnPickUpWeapon(Weapon weapon)

@@ -2,17 +2,14 @@
 using System;
 using Config;
 using DsUi;
+using Godot;
 
 public interface IBullet : ICoroutine, IPoolItem
 {
     /// <summary>
-    /// 当物体被回收时的事件
+    /// 当子弹运行逻辑执行完成时触发
     /// </summary>
-    event Action OnReclaimEvent;
-    /// <summary>
-    /// 离开对象池时的事件
-    /// </summary>
-    event Action OnLeavePoolEvent;
+    event Action OnLogicalFinishEvent;
 
     /// <summary>
     /// 子弹所在阵营
@@ -38,4 +35,14 @@ public interface IBullet : ICoroutine, IPoolItem
     /// 子弹运行逻辑执行完成
     /// </summary>
     void LogicalFinish();
+
+    /// <summary>
+    /// 绑定子弹运行逻辑执行完成事件，仅执行一次，自动解绑
+    /// </summary>
+    void BindSingleLogicalFinishEvent(Action callback);
+
+    /// <summary>
+    /// 获取子弹结束点的位置
+    /// </summary>
+    Vector2 GetEndPosition();
 }

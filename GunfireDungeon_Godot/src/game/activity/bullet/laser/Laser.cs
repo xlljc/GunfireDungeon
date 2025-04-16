@@ -25,10 +25,8 @@ public partial class Laser : Area2D, IBullet
     public Sprite2D LineSprite { get; private set; }
     public RectangleShape2D Shape { get; private set; }
 
+    public event Action OnLogicalFinishEvent;
     public CampEnum Camp { get; set; }
-    
-    public event Action OnReclaimEvent;
-    public event Action OnLeavePoolEvent;
     
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
@@ -45,6 +43,7 @@ public partial class Laser : Area2D, IBullet
     private float _pixelScale;
     private Tween _tween;
     private bool _init = false;
+    private List<Action> _onLogicalFinishEventList = new List<Action>();
 
     public override void _Ready()
     {
@@ -255,9 +254,28 @@ public partial class Laser : Area2D, IBullet
     
     public void LogicalFinish()
     {
+        if (OnLogicalFinishEvent != null)
+        {
+            OnLogicalFinishEvent();
+        }
+        foreach (var action in _onLogicalFinishEventList)
+        {
+            action.Invoke();
+        }
+        _onLogicalFinishEventList.Clear();
         ObjectPool.Reclaim(this);
     }
-    
+
+    public void BindSingleLogicalFinishEvent(Action callback)
+    {
+        _onLogicalFinishEventList.Add(callback);
+    }
+
+    public Vector2 GetEndPosition()
+    {
+        return Position;
+    }
+
     public virtual void OnReclaim()
     {
         State = BulletStateEnum.Normal;
@@ -267,10 +285,6 @@ public partial class Laser : Area2D, IBullet
             {
                 particles2D.Emitting = false;
             }
-        }
-        if (OnReclaimEvent != null)
-        {
-            OnReclaimEvent();
         }
 
         if (_tween != null)
@@ -283,10 +297,7 @@ public partial class Laser : Area2D, IBullet
 
     public virtual void OnLeavePool()
     {
+        _onLogicalFinishEventList.Clear();
         StopAllCoroutine();
-        if (OnLeavePoolEvent != null)
-        {
-            OnLeavePoolEvent();
-        }
     }
 }

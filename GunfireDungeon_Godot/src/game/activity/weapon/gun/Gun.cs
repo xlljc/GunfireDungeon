@@ -18,13 +18,24 @@ public partial class Gun : Weapon
         
         FirePartList.SetLogicBlock(1, new BulletPart()
         {
-            Mana = 30,
+            Mana = 12,
             ScatteringAngle = 10,
             Bullet = ExcelConfig.BulletBase_Map["0001"]
         });
-        FirePartList.SetLogicBlock(2, new BulletPart()
+        FirePartList.SetLogicBlock(2, new MergePlayBuffPart()
         {
-            Mana = 50,
+            Mana = 2,
+            Occupancy = 2,
+        });
+        FirePartList.SetLogicBlock(3, new BulletPart()
+        {
+            Mana = 25,
+            ScatteringAngle = 10,
+            Bullet = ExcelConfig.BulletBase_Map["0005"]
+        });
+        FirePartList.SetLogicBlock(4, new BulletPart()
+        {
+            Mana = 25,
             ScatteringAngle = 10,
             Bullet = ExcelConfig.BulletBase_Map["0005"]
         });

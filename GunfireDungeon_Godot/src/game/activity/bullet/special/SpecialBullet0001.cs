@@ -41,7 +41,7 @@ public partial class SpecialBullet0001 : ActivityObject, IPoolItem
         if (!string.IsNullOrEmpty(_bulletId) && (_role != null && !_role.IsDestroyed))
         {
             var bulletBase = ExcelConfig.BulletBase_Map[_bulletId];
-            var bulletData = FireManager.GetBulletData(_role, 0, bulletBase);
+            var bulletData = FireManager.GetBulletData(_role, _role.GetFirePoint(), 0, bulletBase);
             
             //创建分裂子弹
             var a = Mathf.Pi * 2 / _bulletCount;

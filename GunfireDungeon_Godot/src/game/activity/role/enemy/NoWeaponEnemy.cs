@@ -54,7 +54,7 @@ public partial class NoWeaponEnemy : Enemy
         effect.PlayEffect();
         
         var targetPosition = LookTarget.GetCenterPosition();
-        var bulletData = FireManager.GetBulletData(this, 0, ExcelConfig.BulletBase_Map["0006"]);
+        var bulletData = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0006"]);
         for (var i = 0; i < 8; i++)
         {
             var data = bulletData.Clone();

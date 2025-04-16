@@ -206,4 +206,14 @@ public partial class Enemy : AiRole
         StateController.Enable = false;
         this.CallDelay(0.7f, () => StateController.Enable = true);
     }
+    
+    public override float GetFirePointAltitude()
+    {
+        return -FirePoint.Position.Y;
+    }
+    
+    public override Vector2 GetFirePoint()
+    {
+        return FirePoint.GlobalPosition;
+    }
 }

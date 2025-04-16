@@ -99,7 +99,7 @@ public class PartList
         return temp;
     }
     
-    public PlanningResult Execute(float fireRotation)
+    public PlanningParam Execute(float fireRotation)
     {
         if (_dirty)
         {
@@ -107,11 +107,11 @@ public class PartList
             RefreshLogicTree();
         }
         
-        var result = new PlanningResult();
+        var result = new PlanningParam(fireRotation);
         var first = GetFirstLogicBlock();
         if (first != null)
         {
-            first.Execute(fireRotation, result);
+            first.Execute(result);
         }
 
         return result;

@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-public class PlanningResult
+public class PlanningParam
 {
     public enum ErrorType
     {
@@ -19,12 +19,23 @@ public class PlanningResult
         NoBullet,
     }
 
-    
+    /// <summary>
+    /// <see cref="int"/>
+    /// </summary>
     public const string Index = "Index";
     /// <summary>
     /// <see cref="Config.ExcelConfig.BulletBase"/>
     /// </summary>
     public const string FirstBullet = "FirstBullet";
+    /// <summary>
+    /// <see cref="IBullet"/>
+    /// </summary>
+    public const string PrevBullet = "PrevBullet";
+
+    /// <summary>
+    /// 开火角度
+    /// </summary>
+    public float FireRotation;
 
     /// <summary>
     /// 执行结果
@@ -32,6 +43,11 @@ public class PlanningResult
     public ErrorType Error = ErrorType.NoBullet;
     
     private Dictionary<string, object> _data;
+    
+    public PlanningParam(float fireRotation)
+    {
+        FireRotation = fireRotation;
+    }
 
     public void SetValue(string key, object value)
     {

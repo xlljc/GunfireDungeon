@@ -1180,16 +1180,16 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
 
         //执行零件
         var result = FirePartList.Execute(fireRotation);
-        if (result.Error == PlanningResult.ErrorType.NoBullet) //没有子弹零件
+        if (result.Error == PlanningParam.ErrorType.NoBullet) //没有子弹零件
         {
             Debug.Log("没有子弹零件!!!");
             return;
         }
-        else if (result.Error == PlanningResult.ErrorType.NoMana) //没有足够的法力值
+        else if (result.Error == PlanningParam.ErrorType.NoMana) //没有足够的法力值
         {
-            if (result.HasValue(PlanningResult.Index))
+            if (result.HasValue(PlanningParam.Index))
             {
-                Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningResult.Index));
+                Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningParam.Index));
             }
             
             return;
@@ -1215,10 +1215,10 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
             }
         }
 
-        if (result.HasValue(PlanningResult.FirstBullet))
+        if (result.HasValue(PlanningParam.FirstBullet))
         {
             //播放射击音效
-            PlayShootSound(result.GetValue<ExcelConfig.BulletBase>(PlanningResult.FirstBullet).ShootSound);
+            PlayShootSound(result.GetValue<ExcelConfig.BulletBase>(PlanningParam.FirstBullet).ShootSound);
         }
        
         //抛弹

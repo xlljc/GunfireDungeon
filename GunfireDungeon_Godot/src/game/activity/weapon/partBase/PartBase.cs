@@ -47,11 +47,10 @@ public abstract class PartBase
     }
 
     /// <summary>
-    /// 执行零件，返回这一步产生的子弹对象
+    /// 执行零件，返回这一步产生的子弹对象，允许返回null
     /// </summary>
-    /// <param name="fireRotation">开火时武器角度</param>
-    /// <param name="result">执行逻辑树将会返回的数据，可以在上面绑定数据</param>
-    public virtual IBullet[] Execute(float fireRotation, PlanningResult result)
+    /// <param name="param">执行逻辑树将会返回的数据，可以在上面绑定数据</param>
+    public virtual IBullet[] Execute(PlanningParam param)
     {
         return null;
     }

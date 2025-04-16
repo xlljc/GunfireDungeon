@@ -4,23 +4,23 @@
 /// </summary>
 public class TakeTurnsBuffPart : BuffPart
 {
-    private int index = 0;
+    private int _index = 0;
 
-    public override IBullet[] Execute(float fireRotation, PlanningResult result)
+    public override IBullet[] Execute(PlanningParam param)
     {
         if (!UseMana(GetMana()))
         {
             return null;
         }
-        if (index >= Children.Length)
+        if (_index >= Children.Length)
         {
-            index = 0;
+            _index = 0;
         }
 
-        var child = Children[index++];
+        var child = Children[_index++];
         if (child != null)
         {
-            return child.Execute(fireRotation, result);
+            return child.Execute(param);
         }
         
         return null;

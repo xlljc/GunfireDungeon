@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DsUi;
 using Godot;
 using Godot.Collections;
@@ -10,13 +11,12 @@ using Godot.Collections;
 /// </summary>
 public partial class Bullet : ActivityObject, IBullet
 {
-    public event Action OnReclaimEvent;
-    public event Action OnLeavePoolEvent;
     
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
-    
+
     public CampEnum Camp { get; set; }
+    public event Action OnLogicalFinishEvent;
     
     /// <summary>
     /// 子弹伤害碰撞区域
@@ -65,6 +65,7 @@ public partial class Bullet : ActivityObject, IBullet
     private float CurrFlyDistance = 0;
 
     private bool _init = false;
+    private List<Action> _onLogicalFinishEventList = new List<Action>();
 
     public override void OnInit()
     {
@@ -351,9 +352,28 @@ public partial class Bullet : ActivityObject, IBullet
 
     public virtual void LogicalFinish()
     {
+        if (OnLogicalFinishEvent != null)
+        {
+            OnLogicalFinishEvent();
+        }
+        foreach (var action in _onLogicalFinishEventList)
+        {
+            action.Invoke();
+        }
+        _onLogicalFinishEventList.Clear();
         ObjectPool.Reclaim(this);
     }
-    
+
+    public void BindSingleLogicalFinishEvent(Action callback)
+    {
+        _onLogicalFinishEventList.Add(callback);
+    }
+
+    public Vector2 GetEndPosition()
+    {
+        return Position;
+    }
+
     public virtual void OnReclaim()
     {
         State = BulletStateEnum.Normal;
@@ -365,10 +385,7 @@ public partial class Bullet : ActivityObject, IBullet
                 particles2D.Emitting = false;
             }
         }
-        if (OnReclaimEvent != null)
-        {
-            OnReclaimEvent();
-        }
+
         if (AffiliationArea != null)
         {
             AffiliationArea.RemoveItem(this);
@@ -380,11 +397,8 @@ public partial class Bullet : ActivityObject, IBullet
     {
         Visible = true;
         MoveController.ClearForce();
+        _onLogicalFinishEventList.Clear();
         StopAllCoroutine();
-        if (OnLeavePoolEvent != null)
-        {
-            OnLeavePoolEvent();
-        }
     }
 
     /// <summary>

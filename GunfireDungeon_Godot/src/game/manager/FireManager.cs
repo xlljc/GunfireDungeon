@@ -47,15 +47,15 @@ public static class FireManager
     /// <summary>
     /// 根据武器创建 BulletData
     /// </summary>
-    public static BulletData GetBulletData(Weapon weapon, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static BulletData GetBulletData(Weapon weapon, Vector2 position, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return CreateSolidBulletData(weapon, fireRotation, bullet);
+            return CreateSolidBulletData(weapon, position, fireRotation, bullet);
         }
         else if (bullet.Type == 2) //激光子弹
         {
-            return CreateLaserData(weapon, fireRotation, bullet);
+            return CreateLaserData(weapon, position, fireRotation, bullet);
         }
         else
         {
@@ -68,11 +68,11 @@ public static class FireManager
     /// <summary>
     /// 根据角色创建 BulletData
     /// </summary>
-    public static BulletData GetBulletData(Role trigger, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static BulletData GetBulletData(Role trigger, Vector2 position, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return CreateSolidBulletData(trigger, fireRotation, bullet);
+            return CreateSolidBulletData(trigger, position, fireRotation, bullet);
         }
 
         return null;
@@ -93,16 +93,16 @@ public static class FireManager
     /// <summary>
     /// 通过武器发射子弹
     /// </summary>
-    public static IBullet ShootBullet(Weapon weapon, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static IBullet ShootBullet(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return ShootSolidBullet(CreateSolidBulletData(weapon, fireRotation, bullet),
+            return ShootSolidBullet(CreateSolidBulletData(weapon, postion, fireRotation, bullet),
                 weapon.TriggerRole != null ? weapon.TriggerRole.Camp : CampEnum.None);
         }
         else if (bullet.Type == 2) //激光子弹
         {
-            return ShootLaser(CreateLaserData(weapon, fireRotation, bullet),
+            return ShootLaser(CreateLaserData(weapon, postion, fireRotation, bullet),
                 weapon.TriggerRole != null ? weapon.TriggerRole.Camp : CampEnum.None);
         }
         else
@@ -116,11 +116,11 @@ public static class FireManager
     /// <summary>
     /// 通 Role 对象直接发射子弹
     /// </summary>
-    public static IBullet ShootBullet(Role trigger, float fireRotation, ExcelConfig.BulletBase bullet)
+    public static IBullet ShootBullet(Role trigger, Vector2 position, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         if (bullet.Type == 1) //实体子弹
         {
-            return ShootSolidBullet(CreateSolidBulletData(trigger, fireRotation, bullet), trigger.Camp);
+            return ShootSolidBullet(CreateSolidBulletData(trigger, position, fireRotation, bullet), trigger.Camp);
         }
 
         return null;
@@ -172,7 +172,7 @@ public static class FireManager
     
     //-----------------------------------------------------------------------------------
 
-    private static BulletData CreateSolidBulletData(Weapon weapon, float fireRotation, ExcelConfig.BulletBase bullet)
+    private static BulletData CreateSolidBulletData(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         var data = new BulletData(weapon.World)
         {
@@ -186,7 +186,7 @@ public static class FireManager
             VerticalSpeed = Utils.Random.RandomConfigRange(bullet.VerticalSpeed),
             BounceCount = Utils.Random.RandomConfigRange(bullet.BounceCount),
             Penetration = Utils.Random.RandomConfigRange(bullet.Penetration),
-            Position = weapon.FirePoint.GlobalPosition,
+            Position = postion,
         };
         
         var deviationAngle = Utils.Random.RandomConfigRange(bullet.DeviationAngleRange);
@@ -216,7 +216,7 @@ public static class FireManager
         return data;
     }
     
-    private static BulletData CreateSolidBulletData(Role role, float fireRotation, ExcelConfig.BulletBase bullet)
+    private static BulletData CreateSolidBulletData(Role role, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         var data = new BulletData(role.World)
         {
@@ -230,16 +230,17 @@ public static class FireManager
             VerticalSpeed = Utils.Random.RandomConfigRange(bullet.VerticalSpeed),
             BounceCount = Utils.Random.RandomConfigRange(bullet.BounceCount),
             Penetration = Utils.Random.RandomConfigRange(bullet.Penetration),
+            Position = postion
         };
-
-        if (role is Enemy enemy)
-        {
-            data.Position = enemy.FirePoint.GlobalPosition;
-        }
-        else
-        {
-            data.Position = role.MountPoint.GlobalPosition;
-        }
+        
+        // if (role is Enemy enemy)
+        // {
+        //     data.Position = enemy.FirePoint.GlobalPosition;
+        // }
+        // else
+        // {
+        //     data.Position = role.MountPoint.GlobalPosition;
+        // }
 
         var deviationAngle = Utils.Random.RandomConfigRange(bullet.DeviationAngleRange);
         data.Altitude = role.GetFirePointAltitude();
@@ -261,7 +262,7 @@ public static class FireManager
         return data;
     }
 
-    private static BulletData CreateLaserData(Weapon weapon, float fireRotation, ExcelConfig.BulletBase bullet)
+    private static BulletData CreateLaserData(Weapon weapon, Vector2 postion, float fireRotation, ExcelConfig.BulletBase bullet)
     {
         var data = new BulletData(weapon.World)
         {
@@ -273,7 +274,7 @@ public static class FireManager
             MaxDistance = Utils.Random.RandomConfigRange(bullet.DistanceRange),
             BounceCount = Utils.Random.RandomConfigRange(bullet.BounceCount),
             LifeTime = Utils.Random.RandomConfigRange(bullet.LifeTimeRange),
-            Position = weapon.FirePoint.GlobalPosition,
+            Position = postion,
             FlySpeed = Utils.Random.RandomConfigRange(bullet.SpeedRange),
         };
 
