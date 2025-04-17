@@ -91,7 +91,7 @@ public class RandomPool
                     var weaponAttribute = Weapon.GetWeaponAttribute(weapon.Id);
                     mark.Attr.Add("Weapon", weapon.Id); //武器id
                     mark.Attr.Add("CurrAmmon", weaponAttribute.AmmoCapacity.ToString()); //弹夹弹药量
-                    mark.Attr.Add("ResidueAmmo", weaponAttribute.AmmoCapacity.ToString()); //剩余弹药量
+                    mark.Attr.Add("ResidueMana", weaponAttribute.AmmoCapacity.ToString()); //剩余法力值
                 }
             }
             else if (activityType == ActivityType.Weapon) //武器

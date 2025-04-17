@@ -339,11 +339,11 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         }
         
         //弹药量
-        CurrAmmo = Attribute.AmmoCapacity;
-        //当前法力值缓冲区
-        CurrManaBuffer = Attribute.MaxManaBuffer;
+        SetCurrAmmo(Attribute.AmmoCapacity);
+        //当前缓冲区法力值
+        SetCurrBuffMana(Attribute.MaxManaBuffer);
         //当前法力值
-        CurrMana = Attribute.MaxMana;
+        SetCurrMana(Attribute.MaxMana);
 
         if (attribute.PartPack.TryGetValue("Fire", out var partList))
         {
@@ -1309,6 +1309,22 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     public void SetCurrAmmo(int count)
     {
         CurrAmmo = Mathf.Clamp(count, 0, Attribute.AmmoCapacity);
+    }
+    
+    /// <summary>
+    /// 强制设置当前武器法力值
+    /// </summary>
+    public void SetCurrMana(int count)
+    {
+        CurrMana = Mathf.Clamp(count, 0, Attribute.MaxMana);
+    }
+
+    /// <summary>
+    /// 强制设置当前武器缓冲区法力值
+    /// </summary>
+    public void SetCurrBuffMana(int count)
+    {
+        CurrManaBuffer = Mathf.Clamp(count, 0, Attribute.MaxManaBuffer);
     }
 
     /// <summary>

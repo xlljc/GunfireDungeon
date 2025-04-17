@@ -606,10 +606,9 @@ public class RoomPreinstall : IDestroy
             {
                 weapon.SetCurrAmmo(int.Parse(currAmmon));
             }
-            if (activityMark.Attr.TryGetValue("ResidueAmmo", out var residueAmmo)) //剩余弹药
+            if (activityMark.Attr.TryGetValue("ResidueMana", out var residueMana)) //剩余法力值
             {
-                // weapon.SetResidueAmmo(int.Parse(residueAmmo));
-                Debug.LogError("设置剩余法力值还未实现！！！----1");
+                weapon.SetCurrMana(int.Parse(residueMana));
             }
         }
         else if (activityMark.ActivityType == ActivityType.Enemy) //敌人类型
@@ -625,10 +624,9 @@ public class RoomPreinstall : IDestroy
                     {
                         weapon.SetCurrAmmo(int.Parse(currAmmon));
                     }
-                    if (activityMark.Attr.TryGetValue("ResidueAmmo", out var residueAmmo)) //剩余弹药
+                    if (activityMark.Attr.TryGetValue("ResidueMana", out var residueMana)) //剩余法力值
                     {
-                        // weapon.SetResidueAmmo(int.Parse(residueAmmo));
-                        Debug.LogError("设置剩余法力值还未实现！！！----2");
+                        weapon.SetCurrMana(int.Parse(residueMana));
                     }
                 }
             }

@@ -15,7 +15,7 @@ public partial class ObjectAttribute : AttributeBase
     private ExcelConfig.WeaponBase _selectWeapon;
     //关联属性
     private MapEditorCreateMark.NumberBar _currAmmonAttr;
-    private MapEditorCreateMark.NumberBar _residueAmmoAttr;
+    private MapEditorCreateMark.NumberBar _residueManaAttr;
 
     public override void SetUiNode(IUiNode uiNode)
     {
@@ -70,7 +70,7 @@ public partial class ObjectAttribute : AttributeBase
             _selectWeapon = null;
             //隐藏关联属性
             _currAmmonAttr.Instance.Visible = false;
-            _residueAmmoAttr.Instance.Visible = false;
+            _residueManaAttr.Instance.Visible = false;
             _objectBar.L_HBoxContainer.L_ObjectIcon.Instance.Visible = false;
             _objectBar.L_HBoxContainer.L_ObjectName.Instance.Text = "<未选择>";
         }
@@ -81,7 +81,7 @@ public partial class ObjectAttribute : AttributeBase
             var o = weapon.Activity;
             //显示关联属性
             _currAmmonAttr.Instance.Visible = true;
-            _residueAmmoAttr.Instance.Visible = true;
+            _residueManaAttr.Instance.Visible = true;
             //显示数据
             _objectBar.L_HBoxContainer.L_ObjectName.Instance.Text = o.Name;
             _objectBar.L_HBoxContainer.L_ObjectIcon.Instance.Visible = true;
@@ -89,20 +89,19 @@ public partial class ObjectAttribute : AttributeBase
             //弹药
             _currAmmonAttr.L_NumInput.Instance.MaxValue = weapon.AmmoCapacity;
             _currAmmonAttr.L_NumInput.Instance.Value = weapon.AmmoCapacity;
-            _residueAmmoAttr.L_NumInput.Instance.MaxValue = 0;
-            Debug.LogError("当前法力值上限还未实现！！！----2");
-            _residueAmmoAttr.L_NumInput.Instance.Value = weapon.AmmoCapacity;
+            _residueManaAttr.L_NumInput.Instance.MaxValue = weapon.MaxMana;
+            _residueManaAttr.L_NumInput.Instance.Value = weapon.MaxMana;
         }
     }
 
     /// <summary>
     /// 设置关联的属性
     /// </summary>
-    public void SetRelevancyAttr(MapEditorCreateMark.NumberBar currAmmonAttr, MapEditorCreateMark.NumberBar residueAmmoAttr)
+    public void SetRelevancyAttr(MapEditorCreateMark.NumberBar currAmmonAttr, MapEditorCreateMark.NumberBar residueManaAttr)
     {
         _currAmmonAttr = currAmmonAttr;
-        _residueAmmoAttr = residueAmmoAttr;
+        _residueManaAttr = residueManaAttr;
         currAmmonAttr.Instance.Visible = false;
-        residueAmmoAttr.Instance.Visible = false;
+        residueManaAttr.Instance.Visible = false;
     }
 }

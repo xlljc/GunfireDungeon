@@ -53,8 +53,12 @@ public partial class NoWeaponEnemy : Enemy
         node.AddToActivityRoot(RoomLayerEnum.YSortLayer);
         effect.PlayEffect();
         
+        var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0006"]);
+        param.Position = GetFirePoint();
+        param.FireRotation = 0;
+        
         var targetPosition = LookTarget.GetCenterPosition();
-        var bulletData = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0006"]);
+        var bulletData = FireManager.GetBulletData(this, param);
         for (var i = 0; i < 8; i++)
         {
             var data = bulletData.Clone();

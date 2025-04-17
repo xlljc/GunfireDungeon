@@ -179,7 +179,10 @@ public partial class Boss : AiRole
     //发射两个子弹圈
     private IEnumerator RunAttack1()
     {
-        var bulletData = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0030"]);
+        var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0030"]);
+        param.Position = GetFirePoint();
+        param.FireRotation = 0;
+        var bulletData = FireManager.GetBulletData(this, param);
         bulletData.Altitude = 1;
         
         AnimatedSprite.Play("readyAttack1");
@@ -221,7 +224,10 @@ public partial class Boss : AiRole
     //全屏发射子弹
     private IEnumerator RunAttack2()
     {
-        var bulletData = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0030"]);
+        var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0030"]);
+        param.Position = GetFirePoint();
+        param.FireRotation = 0;
+        var bulletData = FireManager.GetBulletData(this, param);
         bulletData.Altitude = 1;
         AnimatedSprite.Play("readyAttack6");
         yield return ToSignal(AnimatedSprite, AnimatedSprite2D.SignalName.AnimationFinished);
@@ -260,8 +266,11 @@ public partial class Boss : AiRole
         
         for (var j = 0; j < 3; j++)
         {
-            var angle = Position.AngleToPoint(LookTarget.Position);
-            var bulletData = FireManager.GetBulletData(this, GetFirePoint(), angle - r * 0.5f, ExcelConfig.BulletBase_Map["0030"]);
+            var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0030"]);
+            param.Position = GetFirePoint();
+            param.FireRotation = Position.AngleToPoint(LookTarget.Position) - r * 0.5f;
+            
+            var bulletData = FireManager.GetBulletData(this, param);
             bulletData.Altitude = 1;
         
             for (var i = 0; i < 100; i++)
@@ -328,9 +337,13 @@ public partial class Boss : AiRole
         AnimatedSprite.Play("attack1");
         yield return new WaitForSeconds(0.2f);
 
-        for (int i = 0; i < 5; i++)
+        for (var i = 0; i < 5; i++)
         {
-            var bulletData = FireManager.GetBulletData(this, GetFirePoint(), Utils.Random.RandomRangeFloat(0, Mathf.Pi * 2), ExcelConfig.BulletBase_Map["0034"]);
+            var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0034"]);
+            param.Position = GetFirePoint();
+            param.FireRotation = Utils.Random.RandomRangeFloat(0, Mathf.Pi * 2);
+            
+            var bulletData = FireManager.GetBulletData(this, param);
             bulletData.Altitude = 1;
             
             var shootBullet = FireManager.ShootBullet(bulletData, Camp);
@@ -339,7 +352,11 @@ public partial class Boss : AiRole
                 bullet.HideShadowSprite();
                 if (bullet is SplitBullet splitBullet)
                 {
-                    var childBullet = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0030"]);
+                    var param2 = new FireBulletParam(ExcelConfig.BulletBase_Map["0030"]);
+                    param2.Position = GetFirePoint();
+                    param2.FireRotation = 0;
+                    
+                    var childBullet = FireManager.GetBulletData(this, param2);
                     childBullet.Altitude = 1;
                     splitBullet.SetSplitBullet(childBullet, 20);
                     splitBullet.OnCreateSplitBulletEvent += iBullet =>
@@ -371,7 +388,11 @@ public partial class Boss : AiRole
         AnimatedSprite.Play("attack1");
         yield return new WaitForSeconds(0.2f);
 
-        var bulletData = FireManager.GetBulletData(this, GetFirePoint(), 0, ExcelConfig.BulletBase_Map["0030"]);
+        var param = new FireBulletParam(ExcelConfig.BulletBase_Map["0030"]);
+        param.Position = GetFirePoint();
+        param.FireRotation = 0;
+        
+        var bulletData = FireManager.GetBulletData(this, param);
         bulletData.Altitude = 1;
         var count = 50;
         for (var i = 0; i < count; i++)
