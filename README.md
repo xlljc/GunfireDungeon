@@ -1,60 +1,81 @@
-## A dungeon shooting game developed with Godot
+## A Dungeon Shooter Game Developed with Godot  
 
-**Godot version:** `4.4 mono`
-**.Net version:** `9.0`
+**Godot Version:** `4.4 mono`  
+
+**.Net Version:** `9.0`  
 
 **English** | [**中文简体**](./README-zh.md)
 
 ---
-### Game Definition
+### Game Definition  
 
-**Game name:** *Gunfire Dungeon*
-**English name:** *Gunfire Dungeon*
-**Art style:** 2D pixel
-**Game tags:** Roguelite, top-down view, dungeon exploration, dual-stick shooting
-**Reference games:** *Enter the Gungeon*, *Noita*
-**Core introduction:** The overall game process consists of several layers of dungeons, with each layer composed of several rooms. Each room is separated by a door. Every time the player enters a room, they need to eliminate all the enemies in the room before they can leave and enter the next room. The player needs to explore and fight in these rooms, collect dropped items and passive abilities, gradually grow stronger, defeat the boss, and enter the next layer. This cycle repeats until the player defeats the boss on the last layer to complete the game.
-**Game background:** Under conception
+**Game Title:** 《Gunfire Dungeon》  
 
-**The game comes with a powerful map editor, which allows players to create their own maps and share them easily.**
+**English Title:** 《Gunfire Dungeon》  
 
----
-### Preview Images
-##### In-game
-![gif](GunfireDungeon_Document/文档资源/preview_gif.gif)
-![png](GunfireDungeon_Document/文档资源/preview1.png)
+**Art Style:** 2D Pixel  
 
-##### Map Editor
-Room Manager
-![png](GunfireDungeon_Document/文档资源/preview2.png)
-Room Terrain Editing
-![png](GunfireDungeon_Document/文档资源/preview3_gif.gif)
-Room Decoration Editing
-![png](GunfireDungeon_Document/文档资源/preview2_gif.gif)
-Room Preset Editing
-![png](GunfireDungeon_Document/文档资源/preview3.png)
+**Game Tags:** Roguelite, Top-down, Dungeon Exploration, Twin-stick Shooter  
+
+**Reference Games:** 《Enter the Gungeon》, 《Noita》  
+
+**Core Overview:** The game consists of multiple dungeon layers, each composed of several rooms separated by doors. Players must clear all enemies in a room before proceeding to the next. Through exploration, combat, and collecting dropped items and passives, players grow stronger, defeat bosses, and advance to the next layer. This cycle repeats until the final boss is defeated to complete the game.  
+
+**Game Background:** Under development  
+
+**The game includes a powerful built-in map editor, allowing players to create and share their own maps.**  
 
 ---
-### Starting the Project
+### Preview Images  
 
-The directory structure of the Git repository is as follows:
-> ├ GunfireDungeon_Document (Directory related to update logs) 
-> └ GunfireDungeon_Godot (Godot project directory)
+##### In-Game  
 
-Please ensure that you have installed `.net9` and `godot mono4.4`.
+![gif](GunfireDungeon_Document/文档资源/preview_gif.gif)  
+![png](GunfireDungeon_Document/文档资源/preview1.png)  
 
-Godot download link: https://godotengine.org/download
-.net9 download link: https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+##### Map Editor  
 
-Open `GunfireDungeon_Godot/project.godot` using the Mono version of Godot.
+Room Manager  
 
-And when opening it for the first time, please enable these two plugins:
+![png](GunfireDungeon_Document/文档资源/preview2.png)  
 
-![setting.png](GunfireDungeon_Document/文档资源/setting.png)
+Room Terrain Editing  
+
+![png](GunfireDungeon_Document/文档资源/preview3_gif.gif)  
+
+Room Decoration Editing  
+
+![png](GunfireDungeon_Document/文档资源/preview2_gif.gif)  
+
+Room Preset Editing  
+
+![png](GunfireDungeon_Document/文档资源/preview3.png)  
 
 ---
-### Other Information
+### Launching the Project  
 
-**Development log:** [DevelopmentLog.md](GunfireDungeon_Document/开发日志.md) 
-**Bilibili channel:** https://space.bilibili.com/259437820 
-**Project UI plugin:** https://github.com/xlljc/Ds_Ui
+The directory structure of the git repository is as follows:  
+> ├ GunfireDungeon_Document (Directory for update logs and related files)  
+> └ GunfireDungeon_Godot (Godot project directory)  
+
+Ensure `.NET 9` and `Godot Mono 4.4` are installed.  
+
+Godot download link: [https://godotengine.org/download](GunfireDungeon_Document/文档资源/setting.png)  
+
+.NET 9 download link: [https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0](GunfireDungeon_Document/文档资源/setting.png)  
+
+Open `GunfireDungeon_Godot/project.godot` using Godot Mono.  
+
+On first launch, enable these two plugins:  
+
+![setting.png](GunfireDungeon_Document/文档资源/setting.png)  
+
+---
+### Other  
+
+**Development Log:** [Development Log.md](GunfireDungeon_Document/Development Log.md)  
+
+**Bilibili:** [https://space.bilibili.com/259437820](GunfireDungeon_Document/文档资源/setting.png)  
+
+**UI Plugin for the Project:** [https://github.com/xlljc/Ds_Ui](GunfireDungeon_Document/文档资源/setting.png)  
+[file content end]
