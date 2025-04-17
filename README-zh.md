@@ -1,11 +1,14 @@
+[**English**](./README.md) | **中文简体**
+
+主分支长时间不更新？请切换到[develop](/develop)分支查看最新代码
+
+
 
 ## 一款由Godot开发的地牢射击类型的游戏
 
 **Godot版本：** `4.4 mono`
 
 **.Net版本：** `9.0`
-
-[**English**](./README.md) | **中文简体**
 
 ---
 ### 游戏定义
@@ -57,6 +60,7 @@
 
 git仓库的目录结构如下
 > ├ GunfireDungeon_Document (更新日志相关的目录) 
+>
 > └ GunfireDungeon_Godot (Godot工程目录)
 
 

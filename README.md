@@ -1,15 +1,19 @@
+**English** | [**中文简体**](./README-zh.md)
+
+Is the main branch not updated for a long time? Please switch to the [develop](/develop) branch to view the latest code.
+
+
+
 ## A Dungeon Shooter Game Developed with Godot  
 
 **Godot Version:** `4.4 mono`  
 
 **.Net Version:** `9.0`  
 
-**English** | [**中文简体**](./README-zh.md)
-
 ---
 ### Game Definition  
 
-**Game Title:** 《Gunfire Dungeon》  
+**Game Title:** 《枪火地牢》  
 
 **English Title:** 《Gunfire Dungeon》  
 
@@ -55,7 +59,8 @@ Room Preset Editing
 ### Launching the Project  
 
 The directory structure of the git repository is as follows:  
-> ├ GunfireDungeon_Document (Directory for update logs and related files)  
+> ├ GunfireDungeon_Document (Directory for update logs and related files) 
+>
 > └ GunfireDungeon_Godot (Godot project directory)  
 
 Ensure `.NET 9` and `Godot Mono 4.4` are installed.  
@@ -73,7 +78,7 @@ On first launch, enable these two plugins:
 ---
 ### Other  
 
-**Development Log:** [Development Log.md](GunfireDungeon_Document/Development Log.md)  
+**Development Log:** [Development Log.md](GunfireDungeon_Document/开发日志.md)  
 
 **Bilibili:** [https://space.bilibili.com/259437820](GunfireDungeon_Document/文档资源/setting.png)  
 
