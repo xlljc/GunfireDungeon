@@ -1,6 +1,6 @@
 **English** | [**中文简体**](./README-zh.md)
 
-Is the main branch not updated for a long time? Please switch to the [develop](/develop) branch to view the latest code.
+Is the main branch not updated for a long time? Please switch to the [develop](https://github.com/xlljc/GunfireDungeon/tree/develop) branch to view the latest code.
 
 
 

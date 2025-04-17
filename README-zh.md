@@ -1,6 +1,6 @@
 [**English**](./README.md) | **中文简体**
 
-主分支长时间不更新？请切换到[develop](/develop)分支查看最新代码
+主分支长时间不更新？请切换到[develop](https://github.com/xlljc/GunfireDungeon/tree/develop)分支查看最新代码
 
 
 
