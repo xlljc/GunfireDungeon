@@ -79,7 +79,8 @@ public partial class NoWeaponEnemy : Enemy
         
         //派发敌人死亡信号
         EventManager.EmitEvent(EventEnum.OnEnemyDie, this);
-        Destroy();
+        //移出场景，但是不销毁
+        GetParent().RemoveChild(this);
     }
 
     private void OnAnimationFinished(StringName name)

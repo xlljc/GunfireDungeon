@@ -410,8 +410,8 @@ public abstract partial class AiRole : Role
         ThrowAllWeapon();
         //创建金币
         Gold.CreateGold(Position, RoleState.Gold);
-        //销毁
-        Destroy();
+        //移出场景，但是不销毁
+        GetParent().RemoveChild(this);
     }
 
     /// <summary>

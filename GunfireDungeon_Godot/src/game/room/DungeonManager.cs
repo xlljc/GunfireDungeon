@@ -99,7 +99,7 @@ public partial class DungeonManager : Node2D
         if (CurrWorld != null)
         {
             ClearWorld();
-            CurrWorld.QueueFree();
+            CurrWorld.Destroy();
         }
         
         //销毁池中所有物体

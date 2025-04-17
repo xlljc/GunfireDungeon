@@ -7,7 +7,8 @@ using System.Collections.Generic;
 public static class ObjectPool
 {
     private static Dictionary<string, Stack<IPoolItem>> _pool = new Dictionary<string, Stack<IPoolItem>>();
-
+    private static List<Role> _deadRoleList = new List<Role>();
+    
     /// <summary>
     /// 回收一个对象
     /// </summary>
@@ -57,10 +58,24 @@ public static class ObjectPool
     }
 
     /// <summary>
+    /// 添加角色死亡记录，角色不会调用 Destroy() 方法
+    /// </summary>
+    public static void AddRoleDie(Role role)
+    {
+        _deadRoleList.Add(role);
+    }
+    
+    /// <summary>
     /// 销毁所有池中的物体
     /// </summary>
     public static void DisposeAllItem()
     {
+        foreach (var role in _deadRoleList)
+        {
+            role.Destroy();
+        }
+        _deadRoleList.Clear();
+        
         foreach (var keyValuePair in _pool)
         {
             var poolItems = keyValuePair.Value;

@@ -8,7 +8,7 @@ using Godot;
 /// <summary>
 /// 游戏世界
 /// </summary>
-public partial class World : CanvasModulate, ICoroutine
+public partial class World : CanvasModulate, ICoroutine, IDestroy
 {
     /// <summary>
     /// 当前的游戏世界对象
@@ -39,6 +39,8 @@ public partial class World : CanvasModulate, ICoroutine
     /// 背景音乐播放器
     /// </summary>
     public SoundManager.GameAudioPlayer BgmAudio { get; private set; }
+    
+    public bool IsDestroyed { get; private set; }
     
     public Node2D StaticSpriteRoot;
     public Node2D AffiliationAreaRoot;
@@ -210,6 +212,7 @@ public partial class World : CanvasModulate, ICoroutine
     /// </summary>
     public void OnRoleDie(Role role)
     {
+        ObjectPool.AddRoleDie(role);
         if (OnRoleDieEvent != null)
         {
             OnRoleDieEvent(role);
@@ -229,5 +232,12 @@ public partial class World : CanvasModulate, ICoroutine
     public virtual void OnUnloadSuccess()
     {
         StopBgm();
+    }
+    
+    public virtual void Destroy()
+    {
+        if (IsDestroyed) return;
+        IsDestroyed = true;
+        QueueFree();
     }
 }
