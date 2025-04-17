@@ -49,7 +49,11 @@ public partial class Player : Role
         
         // debug用
         // DebugSet();
-        
+        this.CallDelay(0.5f, () =>
+        {
+            Create(Ids.Id_part_comm0001).PutDown(Position, RoomLayerEnum.NormalLayer);
+        });
+
         //注册状态机
         StateController.Register(new PlayerIdleState());
         StateController.Register(new PlayerMoveState());

@@ -66,6 +66,11 @@ public abstract partial class Role : ActivityObject
     public CampEnum Camp { get; set; }
 
     /// <summary>
+    /// 携带的零件道具列表
+    /// </summary>
+    public PartPackage PartPropPack { get; private set; }
+    
+    /// <summary>
     /// 携带的被动道具列表
     /// </summary>
     public List<BuffProp> BuffPropPack { get; } = new List<BuffProp>();
@@ -448,6 +453,20 @@ public abstract partial class Role : ActivityObject
     }
     
     /// <summary>
+    /// 当拾起某个零件道具时调用
+    /// </summary>
+    protected virtual void OnPickUpPartProp(PartProp partProp)
+    {
+    }
+    
+    /// <summary>
+    /// 当移除某个零件道具时调用
+    /// </summary>
+    protected virtual void OnRemovePartProp(PartProp partProp)
+    {
+    }
+    
+    /// <summary>
     /// 当拾起某个被动道具时调用
     /// </summary>
     protected virtual void OnPickUpBuffProp(BuffProp buffProp)
@@ -480,6 +499,8 @@ public abstract partial class Role : ActivityObject
         RoleState = OnCreateRoleState();
         ActivePropsPack = AddComponent<Package<ActiveProp, Role>>();
         ActivePropsPack.SetCapacity(RoleState.CanPickUpWeapon ? 1 : 0);
+        PartPropPack = AddComponent<PartPackage>();
+        PartPropPack.SetCapacity(25);
         
         _startScale = Scale;
         
@@ -720,8 +741,49 @@ public abstract partial class Role : ActivityObject
         return (Face == FaceDirection.Left && pos.X <= gps.X) ||
                (Face == FaceDirection.Right && pos.X >= gps.X);
     }
-    
-    
+
+    public bool PickUpPartProp(PartProp partProp)
+    {
+        if (PartPropPack.Contains(partProp))
+        {
+            Debug.LogError("零件道具已经在背包中了!");
+            return false;
+        }
+        
+        PartPropPack.Add(partProp);
+        OnPickUpPartProp(partProp);
+        return true;
+    }
+
+    public void ThrowPartProp(PartProp partProp)
+    {
+        if (!PartPropPack.Remove(partProp))
+        {
+            Debug.LogError("当前零件道具不在角色背包中!");
+            return;
+        }
+
+        OnRemovePartProp(partProp);
+        //播放抛出效果
+        partProp.ThrowProp(this, GlobalPosition);
+    }
+
+    public void ThrowPartProp(int index)
+    {
+        var buffProp = PartPropPack.Get(index);
+        if (buffProp == null)
+        {
+            Debug.LogError("指定位置零件为null!");
+            return;
+        }
+
+        PartPropPack.Remove(index);
+        OnRemovePartProp(buffProp);
+        //播放抛出效果
+        buffProp.ThrowProp(this, GlobalPosition);
+    }
+
+
     /// <summary>
     /// 拾起主动道具, 返回是否成功拾起, 如果不想立刻切换到该道具, exchange 请传 false
     /// </summary>

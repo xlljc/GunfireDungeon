@@ -550,6 +550,11 @@ public static class ExcelGenerator
                                         ActivityType v = default;
                                         data.Add(field, v);
                                     }
+                                    else if (mappingData.TypeStr == nameof(PartType))
+                                    {
+                                        PartType v = default;
+                                        data.Add(field, v);
+                                    }
                                     else
                                     {
                                         data.Add(field, null);
@@ -743,6 +748,7 @@ public static class ExcelGenerator
             case "color": return typeof(SerializeColor).FullName;
             case "activityType": return typeof(ActivityType).FullName;
             case "activityQuality": return typeof(ActivityQuality).FullName;
+            case "partType": return typeof(PartType).FullName;
         }
 
         return typeName;
@@ -771,6 +777,7 @@ public static class ExcelGenerator
             case "color": return typeof(SerializeColor).AssemblyQualifiedName;
             case "activityType": return typeof(ActivityType).AssemblyQualifiedName;
             case "activityQuality": return typeof(ActivityQuality).AssemblyQualifiedName;
+            case "partType": return typeof(PartType).AssemblyQualifiedName;
         }
 
         return typeName;

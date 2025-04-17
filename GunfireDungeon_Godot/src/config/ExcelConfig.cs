@@ -89,6 +89,15 @@ public static partial class ExcelConfig
     public static Dictionary<string, LiquidMaterial> LiquidMaterial_Map { get; private set; }
 
     /// <summary>
+    /// PartBase.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
+    /// </summary>
+    public static List<PartBase> PartBase_List { get; private set; }
+    /// <summary>
+    /// PartBase.xlsx表数据集合, 里 Map 形式存储, key 为 Id
+    /// </summary>
+    public static Dictionary<string, PartBase> PartBase_Map { get; private set; }
+
+    /// <summary>
     /// Sound.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
     /// </summary>
     public static List<Sound> Sound_List { get; private set; }
@@ -125,6 +134,7 @@ public static partial class ExcelConfig
         _InitEditorObjectConfig();
         _InitEnemyBaseConfig();
         _InitLiquidMaterialConfig();
+        _InitPartBaseConfig();
         _InitSoundConfig();
         _InitWeaponBaseConfig();
 
@@ -295,6 +305,24 @@ public static partial class ExcelConfig
         {
             GD.PrintErr(e.ToString());
             throw new Exception("初始化表'LiquidMaterial'失败!");
+        }
+    }
+    private static void _InitPartBaseConfig()
+    {
+        try
+        {
+            var text = _ReadConfigAsText("res://resource/config/PartBase.json");
+            PartBase_List = JsonSerializer.Deserialize<List<PartBase>>(text);
+            PartBase_Map = new Dictionary<string, PartBase>();
+            foreach (var item in PartBase_List)
+            {
+                PartBase_Map.Add(item.Id, item);
+            }
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr(e.ToString());
+            throw new Exception("初始化表'PartBase'失败!");
         }
     }
     private static void _InitSoundConfig()

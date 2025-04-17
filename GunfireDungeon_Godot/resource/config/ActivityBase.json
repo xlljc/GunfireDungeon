@@ -308,6 +308,20 @@
     "ShowInMapEditor": false
   },
   {
+    "Id": "part_comm0001",
+    "Name": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53",
+    "Type": 9,
+    "Quality": 1,
+    "Price": 0,
+    "Intro": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53",
+    "Details": "",
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/part/PartActivityObject.tscn",
+    "Icon": "",
+    "ShowInMapEditor": false
+  },
+  {
     "Id": "treasure_box0001",
     "Name": "\u6728\u8D28\u5B9D\u7BB1",
     "Type": 10,

@@ -119,6 +119,11 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_enemy_dead0002 = "enemy_dead0002";
         /// <summary>
+        /// 名称: 通用零件物体 <br/>
+        /// 简介: 通用零件物体
+        /// </summary>
+        public const string Id_part_comm0001 = "part_comm0001";
+        /// <summary>
         /// 名称: 木质宝箱 <br/>
         /// 简介: 木质宝箱
         /// </summary>

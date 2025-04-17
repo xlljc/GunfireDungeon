@@ -49,22 +49,19 @@ public static partial class ExcelConfig
         public int AmmoCapacity;
 
         /// <summary>
-        /// 最大存储法力值 <br/>
-        /// 注意：ai武器不需要填写该字段
+        /// 最大存储法力值
         /// </summary>
         [JsonInclude]
         public int MaxMana;
 
         /// <summary>
-        /// 缓冲区法力最大值，武器开火将从缓冲区消耗法力值 <br/>
-        /// 注意：ai武器不需要填写该字段
+        /// 缓冲区法力最大值，武器开火将从缓冲区消耗法力值
         /// </summary>
         [JsonInclude]
         public int MaxManaBuffer;
 
         /// <summary>
-        /// 缓冲区每秒法力恢复量 <br/>
-        /// 注意：ai武器不需要填写该字段
+        /// 缓冲区每秒法力恢复量
         /// </summary>
         [JsonInclude]
         public int ManaRecoverySpeed;
