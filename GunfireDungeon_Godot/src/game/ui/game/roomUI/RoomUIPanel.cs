@@ -2,6 +2,7 @@
 
 using DsUi;
 using UI.game.BottomTips;
+using UI.game.PartPackUI;
 using UI.game.RoomMap;
 using UI.game.WeaponRoulette;
 
@@ -16,6 +17,11 @@ public partial class RoomUIPanel : RoomUI
     /// 房间小地图
     /// </summary>
     public RoomMapPanel RoomMap { get; private set; }
+    
+    /// <summary>
+    /// 武器零件Ui
+    /// </summary>
+    public PartPackUIPanel PartPack { get; private set; }
     
     private ReloadBarHandler _reloadBar;
     private InteractiveTipBarHandler _interactiveTipBar;
@@ -32,8 +38,10 @@ public partial class RoomUIPanel : RoomUI
         _weaponBar = new WeaponBarHandler(L_Control.L_WeaponBar);
         _activePropBar = new ActivePropBarHandler(L_Control.L_ActivePropBar);
         _lifeBar = new LifeBarHandler(L_Control.L_LifeBar);
-        
-        RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
+
+        RoomMap = S_BulletItem.OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
+        PartPack = OpenNestedUi<PartPackUIPanel>(UiManager.UiName.Game_PartPackUI);
+        PartPack.HideUi();
     }
 
     public override void OnShowUi()
@@ -75,8 +83,18 @@ public partial class RoomUIPanel : RoomUI
         _weaponBar.Process(delta);
         _activePropBar.Process(delta);
         _lifeBar.Process(delta);
-        
-        
+
+        if (InputManager.PartPackage)
+        {
+            if (PartPack.IsOpen)
+            {
+                PartPack.HideUi();
+            }
+            else
+            {
+                PartPack.ShowUi();
+            }
+        }
     }
 
     //玩家拾起道具, 弹出提示

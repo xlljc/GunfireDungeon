@@ -63,26 +63,26 @@ public partial class WeaponRoulettePanel : WeaponRoulette
 
     public override void Process(float delta)
     {
-        if (!InputManager.Roulette)
+        if (!InputManager.PartPackage)
         {
             _pressRouletteFlag = false;
         }
 
         //按下地图按键
-        if (InputManager.Roulette && !_isMagnifyRoulette) //打开轮盘
+        if (InputManager.PartPackage && !_isMagnifyRoulette) //打开轮盘
         {
             if (UiManager.GetUiInstanceCount(UiManager.UiName.Game_PauseMenu) == 0 && !InputManager.Map)
             {
                 ExpandRoulette();
             }
         }
-        else if (!InputManager.Roulette && _isMagnifyRoulette) //关闭轮盘
+        else if (!InputManager.PartPackage && _isMagnifyRoulette) //关闭轮盘
         {
             ShrinkRoulette();
         }
 
         //已经打开地图
-        if (InputManager.Roulette)
+        if (InputManager.PartPackage)
         {
             S_MouseArea.Instance.GlobalPosition = GetGlobalMousePosition();
 

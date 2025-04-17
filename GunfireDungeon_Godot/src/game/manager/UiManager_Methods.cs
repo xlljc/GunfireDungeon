@@ -39,6 +39,7 @@ public static partial class UiManager
         public const string Game_Encyclopedia = "game/Encyclopedia";
         public const string Game_Loading = "game/Loading";
         public const string Game_Main = "game/Main";
+        public const string Game_PartPackUI = "game/PartPackUI";
         public const string Game_PauseMenu = "game/PauseMenu";
         public const string Game_RoomMap = "game/RoomMap";
         public const string Game_RoomUI = "game/RoomUI";
@@ -702,6 +703,26 @@ public static partial class UiManager
     public static void Destroy_Game_Main()
     {
         var uiInstance = GetUiInstance<UI.game.Main.MainPanel>(nameof(UI.game.Main.Main));
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 打开 game/PartPackUI, 并返回UI实例
+    /// </summary>
+    public static UI.game.PartPackUI.PartPackUIPanel Open_Game_PartPackUI()
+    {
+        return OpenUi<UI.game.PartPackUI.PartPackUIPanel>(UiName.Game_PartPackUI);
+    }
+
+    /// <summary>
+    /// 销毁 game/PartPackUI 的所有实例
+    /// </summary>
+    public static void Destroy_Game_PartPackUI()
+    {
+        var uiInstance = GetUiInstance<UI.game.PartPackUI.PartPackUIPanel>(nameof(UI.game.PartPackUI.PartPackUI));
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();

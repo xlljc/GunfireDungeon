@@ -52,6 +52,9 @@ public partial class Player : Role
         this.CallDelay(0.5f, () =>
         {
             Create(Ids.Id_part_comm0001).PutDown(Position, RoomLayerEnum.NormalLayer);
+            Create(Ids.Id_part_comm0001).PutDown(Position + new Vector2(10, 10), RoomLayerEnum.NormalLayer);
+            Create(Ids.Id_part_comm0001).PutDown(Position + new Vector2(20, 20), RoomLayerEnum.NormalLayer);
+            Create(Ids.Id_part_comm0001).PutDown(Position + new Vector2(30, 30), RoomLayerEnum.NormalLayer);
         });
 
         //注册状态机
@@ -210,7 +213,7 @@ public partial class Player : Role
             }
         }
 
-        if (InputManager.Roulette) //打开武器轮盘
+        if (InputManager.PartPackage) //打开武器轮盘
         {
             //UiManager.Open_WeaponRoulette();
         }

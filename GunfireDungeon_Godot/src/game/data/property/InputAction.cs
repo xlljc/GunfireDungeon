@@ -17,7 +17,7 @@ public static class InputAction
     /// <summary>
     /// 鼠标中建
     /// </summary>
-    public static readonly StringName mouseMiddle = "mouse_middle";
+    public static readonly StringName MouseMiddle = "mouse_middle";
 
     public static readonly StringName MoveLeft = "move_left";
     public static readonly StringName MoveRight = "move_right";
@@ -35,5 +35,5 @@ public static class InputAction
     public static readonly StringName RemoveProp = "removeProp";
     public static readonly StringName Map = "map";
     public static readonly StringName Menu = "menu";
-    public static readonly StringName Roulette = "roulette";
+    public static readonly StringName PartPackage = "partPackage";
 }

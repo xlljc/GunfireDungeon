@@ -17,9 +17,9 @@ public static class InputManager
     public static Vector2 CursorPosition { get; private set; }
     
     /// <summary>
-    /// 是否按下打开轮盘按钮, 键鼠: 键盘Tab
+    /// 是否按下打开零件背包按钮, 键鼠: 键盘Tab
     /// </summary>
-    public static bool Roulette { get; set; }
+    public static bool PartPackage { get; set; }
     
     /// <summary>
     /// 是否按下切换上一把武器, 键鼠: 键盘Q
@@ -105,6 +105,6 @@ public static class InputManager
         ExchangeProp = Input.IsActionJustPressed(InputAction.ExchangeProp);
         Map = Input.IsActionPressed(InputAction.Map);
         Menu = Input.IsActionJustPressed(InputAction.Menu);
-        Roulette = Input.IsActionPressed(InputAction.Roulette);
+        PartPackage = Input.IsActionJustPressed(InputAction.PartPackage);
     }
 }

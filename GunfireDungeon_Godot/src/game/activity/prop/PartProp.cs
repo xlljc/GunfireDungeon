@@ -17,7 +17,7 @@ public partial class PartProp : PropActivity
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)
     {
-        if (master is Role)
+        if (master is Role role && role.PartPropPack.FindEmptyIndex() >= 0)
         {
             return new CheckInteractiveResult(this, true, CheckInteractiveResult.InteractiveType.PickUp);
         }
