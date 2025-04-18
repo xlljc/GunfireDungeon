@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b2xq02i3vxct"]
 
-[ext_resource type="Script" uid="uid://datvi3vhhjh10" path="res://src/game/ui/encyclopedia/EncyclopediaPanel.cs" id="1_hd86y"]
+[ext_resource type="Script" uid="uid://datvi3vhhjh10" path="res://src/game/ui/game/encyclopedia/EncyclopediaPanel.cs" id="1_hd86y"]
 [ext_resource type="Texture2D" uid="uid://c4al0ewqebpo2" path="res://resource/sprite/ui/encyclopedia/TitleBg.png" id="3_gdtik"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_o1xl7"]
 [ext_resource type="Texture2D" uid="uid://6kf2ln8ki6yh" path="res://resource/sprite/ui/encyclopedia/Panel2.png" id="4_21546"]

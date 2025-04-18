@@ -143,6 +143,7 @@ public static partial class ExcelConfig
         _InitBuffPropBaseRef();
         _InitBulletBaseRef();
         _InitEnemyBaseRef();
+        _InitPartBaseRef();
         _InitWeaponBaseRef();
     }
     private static void _InitActivePropBaseConfig()
@@ -312,7 +313,7 @@ public static partial class ExcelConfig
         try
         {
             var text = _ReadConfigAsText("res://resource/config/PartBase.json");
-            PartBase_List = JsonSerializer.Deserialize<List<PartBase>>(text);
+            PartBase_List = new List<PartBase>(JsonSerializer.Deserialize<List<Ref_PartBase>>(text));
             PartBase_Map = new Dictionary<string, PartBase>();
             foreach (var item in PartBase_List)
             {
@@ -459,6 +460,25 @@ public static partial class ExcelConfig
             {
                 GD.PrintErr(e.ToString());
                 throw new Exception("初始化'EnemyBase'引用其他表数据失败, 当前行id: " + item.Id);
+            }
+        }
+    }
+    private static void _InitPartBaseRef()
+    {
+        foreach (Ref_PartBase item in PartBase_List)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(item.__ActivityTemplate))
+                {
+                    item.ActivityTemplate = ActivityBase_Map[item.__ActivityTemplate];
+                }
+
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr(e.ToString());
+                throw new Exception("初始化'PartBase'引用其他表数据失败, 当前行id: " + item.Id);
             }
         }
     }

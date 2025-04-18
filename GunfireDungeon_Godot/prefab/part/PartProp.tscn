@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfwmldb3dpyiy"]
+
+[ext_resource type="Script" uid="uid://ds2guxdb2v06c" path="res://src/game/activity/prop/PartProp.cs" id="1_vwnk8"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_1cv1w"]
+[ext_resource type="Texture2D" uid="uid://dow8ft8vh1og" path="res://resource/sprite/ui/commonIcon/Missing.png" id="3_vwnk8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwnk8"]
+resource_local_to_scene = true
+shader = ExtResource("3_1cv1w")
+shader_parameter/blend = Color(0, 0, 0, 0.470588)
+shader_parameter/schedule = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_of8f5"]
+resource_local_to_scene = true
+shader = ExtResource("3_1cv1w")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfaxe"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vwnk8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pwcc"]
+size = Vector2(14, 14)
+
+[node name="PartProp" type="CharacterBody2D" node_paths=PackedStringArray("ShadowSprite", "AnimatedSprite", "Collision")]
+collision_layer = 4
+script = ExtResource("1_vwnk8")
+ShadowSprite = NodePath("ShadowSprite")
+AnimatedSprite = NodePath("AnimatedSprite")
+Collision = NodePath("Collision")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_vwnk8")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_of8f5")
+sprite_frames = SubResource("SpriteFrames_lfaxe")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5pwcc")

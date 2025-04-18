@@ -113,6 +113,8 @@ public partial class GameApplication : Node2D, ICoroutine
         BuffProp.InitBuffAttribute();
         //初始化主动道具数据
         ActiveProp.InitActiveAttribute();
+        //初始化零件数据
+        PartProp.InitPartAttribute();
         
         foreach (var dungeonRoomGroup in RoomConfig)
         {

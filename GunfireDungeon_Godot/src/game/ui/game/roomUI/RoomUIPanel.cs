@@ -44,7 +44,7 @@ public partial class RoomUIPanel : RoomUI
         _activePropBar = new ActivePropBarHandler(L_Control.L_ActivePropBar);
         _lifeBar = new LifeBarHandler(L_Control.L_LifeBar);
 
-        RoomMap = S_BulletItem.OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
+        RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
         PartPack = OpenNestedUi<PartPackUIPanel>(UiManager.UiName.Game_PartPackUI);
         PartPack.HideUi();
     }

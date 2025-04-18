@@ -317,7 +317,7 @@
     "Details": "",
     "IsStatic": false,
     "__Material": "",
-    "Prefab": "res://prefab/part/PartActivityObject.tscn",
+    "Prefab": "res://prefab/part/PartProp.tscn",
     "Icon": "",
     "ShowInMapEditor": false
   },

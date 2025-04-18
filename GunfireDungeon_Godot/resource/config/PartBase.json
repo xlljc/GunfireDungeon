@@ -2,9 +2,27 @@
   {
     "Id": "0001",
     "Name": "\u5B50\u5F391",
-    "Remark": "",
-    "Icon": "",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": "\u5B50\u5F391\u7B80\u4ECB",
+    "Details": "\u5B50\u5F391\u8BE6\u60C5",
+    "Quality": 1,
+    "Price": 50,
+    "Icon": "res://resource/sprite/prop/part/PartProp0001.png",
     "Type": 0,
-    "Mana": 20
+    "Mana": 20,
+    "Remark": ""
+  },
+  {
+    "Id": "0002",
+    "Name": "\u5B50\u5F392",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": "\u5B50\u5F392\u7B80\u4ECB",
+    "Details": "\u5B50\u5F392\u8BE6\u60C5",
+    "Quality": 2,
+    "Price": 60,
+    "Icon": "res://resource/sprite/prop/part/PartProp0002.png",
+    "Type": 0,
+    "Mana": 30,
+    "Remark": ""
   }
 ]

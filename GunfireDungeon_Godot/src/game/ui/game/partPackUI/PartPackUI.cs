@@ -7,19 +7,6 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public abstract partial class PartPackUI : UiBase
 {
-    /// <summary>
-    /// 节点路径: PartPackUI.Label
-    /// </summary>
-    public Label L_Label
-    {
-        get
-        {
-            if (_L_Label == null) _L_Label = new Label((PartPackUIPanel)this, GetNode<Godot.Label>("Label"));
-            return _L_Label;
-        }
-    }
-    private Label _L_Label;
-
 
     public PartPackUI() : base(UiManager.UiName.Game_PartPackUI)
     {
@@ -30,19 +17,5 @@ public abstract partial class PartPackUI : UiBase
 
     }
 
-    /// <summary>
-    /// 路径: PartPackUI.Label
-    /// </summary>
-    public class Label : UiNode<PartPackUIPanel, Godot.Label, Label>
-    {
-        public Label(PartPackUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: PartPackUI.Label
-    /// </summary>
-    public Label S_Label => L_Label;
 
 }
