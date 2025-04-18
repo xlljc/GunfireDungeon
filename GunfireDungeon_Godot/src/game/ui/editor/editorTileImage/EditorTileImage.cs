@@ -21,7 +21,7 @@ public abstract partial class EditorTileImage : UiBase
     private HBoxContainer _L_HBoxContainer;
 
 
-    public EditorTileImage() : base(nameof(EditorTileImage))
+    public EditorTileImage() : base(UiManager.UiName.Editor_EditorTileImage)
     {
     }
 

@@ -21,7 +21,7 @@ public abstract partial class MapEditorMapMark : UiBase
     private VBoxContainer _L_VBoxContainer;
 
 
-    public MapEditorMapMark() : base(nameof(MapEditorMapMark))
+    public MapEditorMapMark() : base(UiManager.UiName.Editor_MapEditorMapMark)
     {
     }
 

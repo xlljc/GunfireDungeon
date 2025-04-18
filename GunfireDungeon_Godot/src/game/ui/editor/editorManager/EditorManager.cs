@@ -21,7 +21,7 @@ public abstract partial class EditorManager : UiBase
     private Bg _L_Bg;
 
 
-    public EditorManager() : base(nameof(EditorManager))
+    public EditorManager() : base(UiManager.UiName.Editor_EditorManager)
     {
     }
 

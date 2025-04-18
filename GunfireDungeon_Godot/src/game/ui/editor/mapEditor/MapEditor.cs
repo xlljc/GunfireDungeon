@@ -21,7 +21,7 @@ public abstract partial class MapEditor : UiBase
     private Bg _L_Bg;
 
 
-    public MapEditor() : base(nameof(MapEditor))
+    public MapEditor() : base(UiManager.UiName.Editor_MapEditor)
     {
     }
 

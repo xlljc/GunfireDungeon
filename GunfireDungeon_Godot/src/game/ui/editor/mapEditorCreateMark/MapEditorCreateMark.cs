@@ -73,7 +73,7 @@ public abstract partial class MapEditorCreateMark : UiBase
     private ObjectBar _L_ObjectBar;
 
 
-    public MapEditorCreateMark() : base(nameof(MapEditorCreateMark))
+    public MapEditorCreateMark() : base(UiManager.UiName.Editor_MapEditorCreateMark)
     {
     }
 

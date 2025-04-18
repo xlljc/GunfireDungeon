@@ -34,7 +34,7 @@ public abstract partial class TileSetEditorTerrain : UiBase
     private DragSprite _L_DragSprite;
 
 
-    public TileSetEditorTerrain() : base(nameof(TileSetEditorTerrain))
+    public TileSetEditorTerrain() : base(UiManager.UiName.Editor_TileSetEditorTerrain)
     {
     }
 

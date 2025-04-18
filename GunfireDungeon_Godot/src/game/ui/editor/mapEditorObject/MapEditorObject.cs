@@ -34,7 +34,7 @@ public abstract partial class MapEditorObject : UiBase
     private DynamicDeleteButton _L_DynamicDeleteButton;
 
 
-    public MapEditorObject() : base(nameof(MapEditorObject))
+    public MapEditorObject() : base(UiManager.UiName.Editor_MapEditorObject)
     {
     }
 

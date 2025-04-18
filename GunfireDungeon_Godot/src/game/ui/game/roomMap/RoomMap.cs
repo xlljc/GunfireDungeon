@@ -47,7 +47,7 @@ public abstract partial class RoomMap : UiBase
     private MagnifyMapBar _L_MagnifyMapBar;
 
 
-    public RoomMap() : base(nameof(RoomMap))
+    public RoomMap() : base(UiManager.UiName.Game_RoomMap)
     {
     }
 

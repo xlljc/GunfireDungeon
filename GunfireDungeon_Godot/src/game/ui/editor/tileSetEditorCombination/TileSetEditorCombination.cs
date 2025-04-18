@@ -21,7 +21,7 @@ public abstract partial class TileSetEditorCombination : UiBase
     private HSplitContainer _L_HSplitContainer;
 
 
-    public TileSetEditorCombination() : base(nameof(TileSetEditorCombination))
+    public TileSetEditorCombination() : base(UiManager.UiName.Editor_TileSetEditorCombination)
     {
     }
 

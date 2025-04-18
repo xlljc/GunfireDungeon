@@ -47,7 +47,7 @@ public abstract partial class MapEditorTools : UiBase
     private HBoxContainer _L_HBoxContainer;
 
 
-    public MapEditorTools() : base(nameof(MapEditorTools))
+    public MapEditorTools() : base(UiManager.UiName.Editor_MapEditorTools)
     {
     }
 

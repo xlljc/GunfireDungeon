@@ -21,7 +21,7 @@ public abstract partial class TileSetEditorProject : UiBase
     private Panel _L_Panel;
 
 
-    public TileSetEditorProject() : base(nameof(TileSetEditorProject))
+    public TileSetEditorProject() : base(UiManager.UiName.Editor_TileSetEditorProject)
     {
     }
 

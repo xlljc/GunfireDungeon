@@ -21,7 +21,7 @@ public abstract partial class EditorInput : UiBase
     private VBoxContainer _L_VBoxContainer;
 
 
-    public EditorInput() : base(nameof(EditorInput))
+    public EditorInput() : base(UiManager.UiName.Editor_EditorInput)
     {
     }
 

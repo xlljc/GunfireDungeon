@@ -73,7 +73,7 @@ public abstract partial class Main : UiBase
     private LinkButton2 _L_LinkButton2;
 
 
-    public Main() : base(nameof(Main))
+    public Main() : base(UiManager.UiName.Game_Main)
     {
     }
 

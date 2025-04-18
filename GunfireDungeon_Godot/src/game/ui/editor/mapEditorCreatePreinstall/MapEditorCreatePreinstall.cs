@@ -21,7 +21,7 @@ public abstract partial class MapEditorCreatePreinstall : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public MapEditorCreatePreinstall() : base(nameof(MapEditorCreatePreinstall))
+    public MapEditorCreatePreinstall() : base(UiManager.UiName.Editor_MapEditorCreatePreinstall)
     {
     }
 

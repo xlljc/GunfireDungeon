@@ -21,7 +21,7 @@ public abstract partial class BottomTips : UiBase
     private Panel _L_Panel;
 
 
-    public BottomTips() : base(nameof(BottomTips))
+    public BottomTips() : base(UiManager.UiName.Game_BottomTips)
     {
     }
 

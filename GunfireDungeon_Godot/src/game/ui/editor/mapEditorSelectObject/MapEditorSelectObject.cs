@@ -21,7 +21,7 @@ public abstract partial class MapEditorSelectObject : UiBase
     private HBoxContainer _L_HBoxContainer;
 
 
-    public MapEditorSelectObject() : base(nameof(MapEditorSelectObject))
+    public MapEditorSelectObject() : base(UiManager.UiName.Editor_MapEditorSelectObject)
     {
     }
 

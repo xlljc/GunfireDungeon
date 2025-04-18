@@ -21,7 +21,7 @@ public abstract partial class TileSetEditor : UiBase
     private Bg _L_Bg;
 
 
-    public TileSetEditor() : base(nameof(TileSetEditor))
+    public TileSetEditor() : base(UiManager.UiName.Editor_TileSetEditor)
     {
     }
 

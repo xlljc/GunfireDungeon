@@ -47,7 +47,7 @@ public abstract partial class WeaponRoulette : UiBase
     private MouseArea _L_MouseArea;
 
 
-    public WeaponRoulette() : base(nameof(WeaponRoulette))
+    public WeaponRoulette() : base(UiManager.UiName.Game_WeaponRoulette)
     {
     }
 

@@ -186,8 +186,6 @@ public partial class GameApplication : Node2D, ICoroutine
         //加载存档
         LoadGameSave();
         
-        //初始化ui
-        //UiManager.Init();
         //调试Ui
         UiManager.Open_Debug_Debugger();
         
@@ -207,7 +205,6 @@ public partial class GameApplication : Node2D, ICoroutine
             //打开主菜单Ui
             UiManager.Open_Game_Main();
         });
-        //UiManager.Open_MapEditorProject();
     }
 
     public override void _Process(double delta)

@@ -34,7 +34,7 @@ public abstract partial class Victory : UiBase
     private Button _L_Button;
 
 
-    public Victory() : base(nameof(Victory))
+    public Victory() : base(UiManager.UiName.Game_Victory)
     {
     }
 

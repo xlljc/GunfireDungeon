@@ -60,7 +60,7 @@ public abstract partial class RoomUI : UiBase
     private Mask _L_Mask;
 
 
-    public RoomUI() : base(nameof(RoomUI))
+    public RoomUI() : base(UiManager.UiName.Game_RoomUI)
     {
     }
 

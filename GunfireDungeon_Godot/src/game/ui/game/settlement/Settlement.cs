@@ -47,7 +47,7 @@ public abstract partial class Settlement : UiBase
     private ButtonList _L_ButtonList;
 
 
-    public Settlement() : base(nameof(Settlement))
+    public Settlement() : base(UiManager.UiName.Game_Settlement)
     {
     }
 

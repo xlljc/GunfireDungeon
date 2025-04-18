@@ -22,7 +22,12 @@ public partial class RoomUIPanel : RoomUI
     /// 武器零件Ui
     /// </summary>
     public PartPackUIPanel PartPack { get; private set; }
-    
+
+    /// <summary>
+    /// 遮挡Ui数量
+    /// </summary>
+    public int OcclusionCount { get; set; }
+
     private ReloadBarHandler _reloadBar;
     private InteractiveTipBarHandler _interactiveTipBar;
     private WeaponBarHandler _weaponBar;

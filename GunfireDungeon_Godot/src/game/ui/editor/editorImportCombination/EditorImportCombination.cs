@@ -21,7 +21,7 @@ public abstract partial class EditorImportCombination : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public EditorImportCombination() : base(nameof(EditorImportCombination))
+    public EditorImportCombination() : base(UiManager.UiName.Editor_EditorImportCombination)
     {
     }
 

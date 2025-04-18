@@ -21,7 +21,7 @@ public abstract partial class EditorInfo : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public EditorInfo() : base(nameof(EditorInfo))
+    public EditorInfo() : base(UiManager.UiName.Editor_EditorInfo)
     {
     }
 

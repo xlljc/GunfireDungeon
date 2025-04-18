@@ -34,7 +34,7 @@ public abstract partial class Encyclopedia : UiBase
     private NinePatchRect _L_NinePatchRect;
 
 
-    public Encyclopedia() : base(nameof(Encyclopedia))
+    public Encyclopedia() : base(UiManager.UiName.Game_Encyclopedia)
     {
     }
 

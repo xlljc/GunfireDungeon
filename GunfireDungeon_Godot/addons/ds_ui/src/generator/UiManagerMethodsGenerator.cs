@@ -34,7 +34,7 @@ namespace DsUi.Generator
                                   $"    {{\n";
                 var methodClass = "";
 
-                GenEachPrefab(new DirectoryInfo(DsUiConfig.UiPrefabDir), ref code, ref uiNameClass, ref methodClass);
+                GenEachPrefab(new DirectoryInfo(DsUiConfig.UiPrefabDir), ref uiNameClass, ref methodClass);
 
                 uiNameClass += $"    }}\n\n";
                 code += uiNameClass;
@@ -52,13 +52,13 @@ namespace DsUi.Generator
             return true;
         }
 
-        private static void GenEachPrefab(DirectoryInfo directoryInfo, ref string code, ref string uiNameClass,
+        private static void GenEachPrefab(DirectoryInfo directoryInfo, ref string uiNameClass,
             ref string methodClass)
         {
             var directoryInfos = directoryInfo.GetDirectories();
             foreach (var dir in directoryInfos)
             {
-                GenEachPrefab(dir, ref code, ref uiNameClass, ref methodClass);
+                GenEachPrefab(dir, ref uiNameClass, ref methodClass);
             }
 
             var fileInfos = directoryInfo.GetFiles();
@@ -88,7 +88,7 @@ namespace DsUi.Generator
                         }
                         else
                         {
-                            csCodePath += ds_ui.FirstToLower(names[i]) + "/";
+                            csCodePath += UiGeneratorUtils.FirstToLower(names[i]) + "/";
                         }
                     }
 
@@ -102,7 +102,7 @@ namespace DsUi.Generator
                     GD.Print($"检测到ui文件: {fullName}");
                     
                     // Path_Name
-                    var pathName2 = ds_ui.FirstToUpper(pathName.Replace('/', '_'));
+                    var pathName2 = UiGeneratorUtils.FirstToUpper(pathName.Replace('/', '_'));
                     // UI.path.Name
                     var csNamespace = DsUiConfig.UiNamespace + "." + names.Join(".");
                     // UI.path.Name.NamePanel
@@ -122,7 +122,7 @@ namespace DsUi.Generator
                                    $"    /// </summary>\n" +
                                    $"    public static void Destroy_{pathName2}()\n" +
                                    $"    {{\n" +
-                                   $"        var uiInstance = GetUiInstance<{csFullName}>(nameof({csNamespace}.{uiName}));\n" + 
+                                   $"        var uiInstance = GetUiInstance<{csFullName}>(UiName.{pathName2});\n" + 
                                    $"        foreach (var uiPanel in uiInstance)\n" +
                                    $"        {{\n" +
                                    $"            uiPanel.Destroy();\n" +

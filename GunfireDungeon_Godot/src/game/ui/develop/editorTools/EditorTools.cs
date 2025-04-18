@@ -47,7 +47,7 @@ public abstract partial class EditorTools : UiBase
     private Tips _L_Tips;
 
 
-    public EditorTools() : base(nameof(EditorTools))
+    public EditorTools() : base(UiManager.UiName.Develop_EditorTools)
     {
     }
 

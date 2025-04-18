@@ -21,7 +21,7 @@ public abstract partial class EditorTips : UiBase
     private Label _L_Label;
 
 
-    public EditorTips() : base(nameof(EditorTips))
+    public EditorTips() : base(UiManager.UiName.Editor_EditorTips)
     {
     }
 

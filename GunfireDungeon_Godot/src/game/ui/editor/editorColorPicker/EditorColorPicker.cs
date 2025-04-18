@@ -21,7 +21,7 @@ public abstract partial class EditorColorPicker : UiBase
     private ColorPicker _L_ColorPicker;
 
 
-    public EditorColorPicker() : base(nameof(EditorColorPicker))
+    public EditorColorPicker() : base(UiManager.UiName.Editor_EditorColorPicker)
     {
     }
 

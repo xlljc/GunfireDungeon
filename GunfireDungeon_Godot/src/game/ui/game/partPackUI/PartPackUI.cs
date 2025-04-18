@@ -21,7 +21,7 @@ public abstract partial class PartPackUI : UiBase
     private Label _L_Label;
 
 
-    public PartPackUI() : base(nameof(PartPackUI))
+    public PartPackUI() : base(UiManager.UiName.Game_PartPackUI)
     {
     }
 

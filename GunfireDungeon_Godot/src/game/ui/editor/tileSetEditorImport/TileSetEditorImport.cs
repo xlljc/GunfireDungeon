@@ -112,7 +112,7 @@ public abstract partial class TileSetEditorImport : UiBase
     private FocusBtn _L_FocusBtn;
 
 
-    public TileSetEditorImport() : base(nameof(TileSetEditorImport))
+    public TileSetEditorImport() : base(UiManager.UiName.Editor_TileSetEditorImport)
     {
     }
 

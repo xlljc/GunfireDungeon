@@ -34,7 +34,7 @@ public abstract partial class EditorWindow : UiBase
     private Window _L_Window;
 
 
-    public EditorWindow() : base(nameof(EditorWindow))
+    public EditorWindow() : base(UiManager.UiName.Editor_EditorWindow)
     {
     }
 

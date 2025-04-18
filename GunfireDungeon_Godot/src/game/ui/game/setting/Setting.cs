@@ -47,7 +47,7 @@ public abstract partial class Setting : UiBase
     private ScrollContainer _L_ScrollContainer;
 
 
-    public Setting() : base(nameof(Setting))
+    public Setting() : base(UiManager.UiName.Game_Setting)
     {
     }
 

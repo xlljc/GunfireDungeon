@@ -21,7 +21,7 @@ public abstract partial class MapEditorMapLayer : UiBase
     private VBoxContainer _L_VBoxContainer;
 
 
-    public MapEditorMapLayer() : base(nameof(MapEditorMapLayer))
+    public MapEditorMapLayer() : base(UiManager.UiName.Editor_MapEditorMapLayer)
     {
     }
 

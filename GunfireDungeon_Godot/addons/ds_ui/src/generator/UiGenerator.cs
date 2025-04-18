@@ -29,8 +29,9 @@ namespace DsUi.Generator
                 var uiName = uiPath.Substring(index);
                 var subPath = uiPath.Substring(0, index);
                 var nameSpace = subPath.Replace("/", ".");
+                var uiNameFiledName = UiGeneratorUtils.FirstToUpper(subPath.Replace("/", "_")) + uiName;
                 
-                var scriptPath = DsUiConfig.UiCodeDir + subPath + ds_ui.FirstToLower(uiName);
+                var scriptPath = DsUiConfig.UiCodeDir + subPath + UiGeneratorUtils.FirstToLower(uiName);
                 var scriptFile = scriptPath + "/" + uiName + "Panel.cs";
                 var scriptCode = $"using Godot;\n" +
                                  $"\n" +
@@ -78,7 +79,7 @@ namespace DsUi.Generator
                 ResourceSaver.Save(scene, prefabResPath);
 
                 //生成Ui结构代码
-                GenerateUiCode(uiNode, scriptPath + "/" + uiName + ".cs", nameSpace);
+                GenerateUiCode(uiNode, uiNameFiledName, scriptPath + "/" + uiName + ".cs", nameSpace);
 
                 //生成 ResourcePath.cs 代码
                 //ResourcePathGenerator.Generate();
@@ -105,11 +106,11 @@ namespace DsUi.Generator
         /// <summary>
         /// 根据指定ui节点生成相应的Ui类, 并保存到指定路径下
         /// </summary>
-        public static void GenerateUiCode(Node control, string path, string nameSpace)
+        public static void GenerateUiCode(Node control, string uiNameFiledName, string path, string nameSpace)
         {
             _nodeNameMap.Clear();
             _nestedIndex = 1;
-            var uiNode = EachNodeFromEditor(control.Name, control);
+            var uiNode = EachNodeFromEditor(uiNameFiledName, control.Name, control);
             var code = GenerateClassCode(uiNode, nameSpace);
             File.WriteAllText(path, code);
         }
@@ -135,16 +136,17 @@ namespace DsUi.Generator
                 var resourcePath = control.GetScript().As<CSharpScript>().ResourcePath;
                 var index = resourcePath.LastIndexOf("/", StringComparison.Ordinal);
                 var uiName = resourcePath.Substring(index + 1, resourcePath.Length - index - 8 - 1);
-                
+
                 var temp = "res://" + DsUiConfig.UiCodeDir;
                 var subPath = resourcePath.Substring(temp.Length, resourcePath.Length - temp.Length - uiName.Length * 2 - 9);
                 var nameSpace = subPath.Replace("/", ".");
+                var uiNameFiledName = UiGeneratorUtils.FirstToUpper(subPath.Replace("/", "_")) + uiName;
 
-                var codeFilePath = DsUiConfig.UiCodeDir + subPath + ds_ui.FirstToLower(uiName) + "/" + uiName + ".cs";
+                var codeFilePath = DsUiConfig.UiCodeDir + subPath + UiGeneratorUtils.FirstToLower(uiName) + "/" + uiName + ".cs";
                 
                 GD.Print("重新生成ui代码: " + codeFilePath);
                 
-                var uiNode = EachNodeFromEditor(uiName, control);
+                var uiNode = EachNodeFromEditor(uiNameFiledName, uiName, control);
                 var code = GenerateClassCode(uiNode, nameSpace);
 
                 foreach (var pair in _nodeNameMap)
@@ -178,7 +180,7 @@ namespace DsUi.Generator
                    $"{{\n" +
                    GeneratePropertyListClassCode("", uiNodeInfo.OriginName + ".", uiNodeInfo, retraction) +
                    $"\n" +
-                   $"    public {uiNodeInfo.OriginName}() : base(nameof({uiNodeInfo.OriginName}))\n" +
+                   $"    public {uiNodeInfo.OriginName}() : base(UiManager.UiName.{uiNodeInfo.UiNameFiledName})\n" +
                    $"    {{\n" +
                    $"    }}\n" +
                    $"\n" +
@@ -403,7 +405,7 @@ namespace DsUi.Generator
         /// <summary>
         /// 在编辑器下递归解析节点, 由于编辑器下绑定用户脚本的节点无法直接判断节点类型, 那么就只能获取节点的脚本然后解析名称和命名空间
         /// </summary>
-        private static UiNodeInfo EachNodeFromEditor(string uiRootName, Node node)
+        private static UiNodeInfo EachNodeFromEditor(string uiNameFiledName, string uiRootName, Node node)
         {
             UiNodeInfo uiNode;
             //原名称
@@ -427,7 +429,7 @@ namespace DsUi.Generator
             var script = node.GetScript().As<CSharpScript>();
             if (script == null) //无脚本, 说明是内置节点
             {
-                uiNode = new UiNodeInfo(uiRootName, fieldName, originName, className, node.GetType().FullName, false);
+                uiNode = new UiNodeInfo(uiNameFiledName, uiRootName, fieldName, originName, className, node.GetType().FullName, false);
             }
             else //存在脚本
             {
@@ -447,7 +449,7 @@ namespace DsUi.Generator
                     nodeTypeName = fileName;
                 }
                 isNodeScript = CheckNodeScript(nodeTypeName);
-                uiNode = new UiNodeInfo(uiRootName, fieldName, originName, className, nodeTypeName, isNodeScript);
+                uiNode = new UiNodeInfo(uiNameFiledName, uiRootName, fieldName, originName, className, nodeTypeName, isNodeScript);
 
                 //检测是否是引用Ui
                 if (fileName.EndsWith("Panel"))
@@ -492,7 +494,7 @@ namespace DsUi.Generator
                             uiNode.Children = new List<UiNodeInfo>();
                         }
 
-                        uiNode.Children.Add(EachNodeFromEditor(uiRootName, children));
+                        uiNode.Children.Add(EachNodeFromEditor(uiNameFiledName, uiRootName, children));
                     }
                 }
             }
@@ -537,10 +539,13 @@ namespace DsUi.Generator
                         var node = ResourceLoader.Load<PackedScene>(resPath).Instantiate();
                         try
                         {
-                            GD.Print($"\n---------------------------------\n检测到Ui: {resPath}");
-                            if (!cb(node))
+                            if (UiGeneratorUtils.CheckIsUi(node))
                             {
-                                return false;
+                                GD.Print($"\n---------------------------------\n检测到Ui: {resPath}");
+                                if (!cb(node))
+                                {
+                                    return false;
+                                }
                             }
                         }
                         finally
@@ -556,6 +561,11 @@ namespace DsUi.Generator
 
         private class UiNodeInfo
         {
+            /// <summary>
+            /// UiName 类中字段名称
+            /// </summary>
+            public string UiNameFiledName;
+            
             /// <summary>
             /// 层级名称
             /// </summary>
@@ -596,7 +606,7 @@ namespace DsUi.Generator
             /// </summary>
             public bool IsRefUi;
 
-            public UiNodeInfo(string uiRootName, string name, string originName, string className, string nodeTypeName,
+            public UiNodeInfo(string uiNameFiledName, string uiRootName, string name, string originName, string className, string nodeTypeName,
                 bool isNodeScript)
             {
                 UiRootName = uiRootName;
@@ -605,6 +615,7 @@ namespace DsUi.Generator
                 ClassName = className;
                 NodeTypeName = nodeTypeName;
                 IsNodeScript = isNodeScript;
+                UiNameFiledName = uiNameFiledName;
                 if (isNodeScript)
                 {
                     GD.Print("发现 IUiNodeScript 节点: " + originName);

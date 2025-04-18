@@ -47,7 +47,7 @@ public abstract partial class Debugger : UiBase
     private Fps _L_Fps;
 
 
-    public Debugger() : base(nameof(Debugger))
+    public Debugger() : base(UiManager.UiName.Debug_Debugger)
     {
     }
 

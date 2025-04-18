@@ -2,6 +2,7 @@ using System;
 using Config;
 using DsUi;
 using Godot;
+using UI.game.RoomUI;
 
 
 /// <summary>
@@ -154,100 +155,81 @@ public partial class Player : Role
             MountPoint.SetLookAt(mousePos);
         }
 
-        if (InputManager.ExchangeWeapon) //切换武器
+        var uiPanels = UiManager.GetUiInstance<RoomUIPanel>(UiManager.UiName.Game_RoomUI);
+        if (uiPanels.Length > 0 && uiPanels[0].OcclusionCount <= 0) // 没有其他遮挡Ui打开
         {
-            ExchangeNextWeapon();
-        }
-        else if (InputManager.ThrowWeapon) //扔掉武器
-        {
-            ThrowWeapon();
-
-            // //测试用的, 所有敌人也扔掉武器
-            // if (Affiliation != null)
-            // {
-            //     var enemies = Affiliation.FindIncludeItems(o =>
-            //     {
-            //         return o.CollisionWithMask(PhysicsLayer.Enemy);
-            //     });
-            //     foreach (var activityObject in enemies)
-            //     {
-            //         if (activityObject is Enemy enemy)
-            //         {
-            //             enemy.ThrowWeapon();
-            //         }
-            //     }
-            // }
-        }
-        else if (InputManager.Interactive) //互动物体
-        {
-            TriggerInteractive();
-        }
-        else if (InputManager.Reload) //换弹
-        {
-            Reload();
-        }
-
-        var meleeAttackFlag = false;
-        if (InputManager.MeleeAttack) //近战攻击
-        {
-            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
+            if (InputManager.ExchangeWeapon) //切换武器
             {
-                if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
+                ExchangeNextWeapon();
+            }
+            else if (InputManager.ThrowWeapon) //扔掉武器
+            {
+                ThrowWeapon();
+            }
+            else if (InputManager.Interactive) //互动物体
+            {
+                TriggerInteractive();
+            }
+            else if (InputManager.Reload) //换弹
+            {
+                Reload();
+            }
+
+            var meleeAttackFlag = false;
+            if (InputManager.MeleeAttack) //近战攻击
+            {
+                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
                 {
-                    meleeAttackFlag = true;
-                    MeleeAttack();
+                    if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
+                    {
+                        meleeAttackFlag = true;
+                        MeleeAttack();
+                    }
+                }
+            }
+
+            if (!meleeAttackFlag && InputManager.Fire) //正常开火
+            {
+                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
+                {
+                    Attack();
+                }
+            }
+
+            if (InputManager.UseActiveProp) //使用道具
+            {
+                UseActiveProp();
+            }
+            else if (InputManager.ExchangeProp) //切换道具
+            {
+                ExchangeNextActiveProp();
+            }
+            else if (InputManager.RemoveProp) //扔掉道具
+            {
+                ThrowActiveProp();
+            }
+            
+            if (Input.IsKeyPressed(Key.P)) //测试用, 自杀
+            {
+                //Hurt(1000, 0);
+                Hp = 0;
+                HurtHandler(this, 1000, 0);
+            }
+            else if (Input.IsKeyPressed(Key.O)) //测试用, 消灭房间内所有敌人
+            {
+                var enemyList = AffiliationArea.FindIncludeItems(o => o is Role role && role.IsEnemyWithPlayer());
+                foreach (var enemy in enemyList)
+                {
+                    var hurt = ((Enemy)enemy).HurtArea;
+                    if (hurt.CanHurt(Camp))
+                    {
+                        hurt.Hurt(this, 1000, 0);
+                    }
                 }
             }
         }
-        if (!meleeAttackFlag && InputManager.Fire) //正常开火
-        {
-            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
-            {
-                Attack();
-                // //测试用,触发房间内地上的武器开火
-                // var weaponArray = AffiliationArea.FindEnterItems(o => o is Weapon);
-                // foreach (Weapon activityObject in weaponArray)
-                // {
-                //     activityObject.Trigger(this);
-                // }
-            }
-        }
 
-        if (InputManager.PartPackage) //打开武器轮盘
-        {
-            //UiManager.Open_WeaponRoulette();
-        }
-        else if (InputManager.UseActiveProp) //使用道具
-        {
-            UseActiveProp();
-        }
-        else if (InputManager.ExchangeProp) //切换道具
-        {
-            ExchangeNextActiveProp();
-        }
-        else if (InputManager.RemoveProp) //扔掉道具
-        {
-            ThrowActiveProp();
-        }
 
-        if (Input.IsKeyPressed(Key.P)) //测试用, 自杀
-        {
-            //Hurt(1000, 0);
-            Hp = 0;
-            HurtHandler(this, 1000, 0);
-        }
-        else if (Input.IsKeyPressed(Key.O)) //测试用, 消灭房间内所有敌人
-        {
-            var enemyList = AffiliationArea.FindIncludeItems(o => o is Role role && role.IsEnemyWithPlayer());
-            foreach (var enemy in enemyList)
-            {
-                var hurt = ((Enemy)enemy).HurtArea;
-                if (hurt.CanHurt(Camp))
-                {
-                    hurt.Hurt(this, 1000, 0);
-                }
-            }
-        }
         // //测试用
         // if (InputManager.Roll) //鼠标处触发互动物体
         // {

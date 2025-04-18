@@ -21,7 +21,7 @@ public abstract partial class MapEditorCreateRoom : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public MapEditorCreateRoom() : base(nameof(MapEditorCreateRoom))
+    public MapEditorCreateRoom() : base(UiManager.UiName.Editor_MapEditorCreateRoom)
     {
     }
 

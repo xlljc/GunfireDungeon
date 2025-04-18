@@ -34,7 +34,7 @@ public abstract partial class PauseMenu : UiBase
     private VBoxContainer _L_VBoxContainer;
 
 
-    public PauseMenu() : base(nameof(PauseMenu))
+    public PauseMenu() : base(UiManager.UiName.Game_PauseMenu)
     {
     }
 

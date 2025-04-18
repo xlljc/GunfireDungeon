@@ -21,7 +21,7 @@ public abstract partial class EditorForm : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public EditorForm() : base(nameof(EditorForm))
+    public EditorForm() : base(UiManager.UiName.Editor_EditorForm)
     {
     }
 

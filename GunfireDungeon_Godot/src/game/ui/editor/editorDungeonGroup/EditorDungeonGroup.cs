@@ -21,7 +21,7 @@ public abstract partial class EditorDungeonGroup : UiBase
     private MarginContainer _L_MarginContainer;
 
 
-    public EditorDungeonGroup() : base(nameof(EditorDungeonGroup))
+    public EditorDungeonGroup() : base(UiManager.UiName.Editor_EditorDungeonGroup)
     {
     }
 

@@ -34,7 +34,7 @@ public abstract partial class MapEditorMapTile : UiBase
     private MaskBg _L_MaskBg;
 
 
-    public MapEditorMapTile() : base(nameof(MapEditorMapTile))
+    public MapEditorMapTile() : base(UiManager.UiName.Editor_MapEditorMapTile)
     {
     }
 

@@ -34,7 +34,7 @@ public abstract partial class Loading : UiBase
     private Label _L_Label;
 
 
-    public Loading() : base(nameof(Loading))
+    public Loading() : base(UiManager.UiName.Game_Loading)
     {
     }
 

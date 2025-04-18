@@ -21,7 +21,7 @@ public abstract partial class MapEditorProject : UiBase
     private HBoxContainer _L_HBoxContainer;
 
 
-    public MapEditorProject() : base(nameof(MapEditorProject))
+    public MapEditorProject() : base(UiManager.UiName.Editor_MapEditorProject)
     {
     }
 

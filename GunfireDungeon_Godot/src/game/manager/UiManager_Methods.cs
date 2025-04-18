@@ -62,7 +62,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Debug_Debugger()
     {
-        var uiInstance = GetUiInstance<UI.debug.Debugger.DebuggerPanel>(nameof(UI.debug.Debugger.Debugger));
+        var uiInstance = GetUiInstance<UI.debug.Debugger.DebuggerPanel>(UiName.Debug_Debugger);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -82,7 +82,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Develop_EditorTools()
     {
-        var uiInstance = GetUiInstance<UI.develop.EditorTools.EditorToolsPanel>(nameof(UI.develop.EditorTools.EditorTools));
+        var uiInstance = GetUiInstance<UI.develop.EditorTools.EditorToolsPanel>(UiName.Develop_EditorTools);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -102,7 +102,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorColorPicker()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorColorPicker.EditorColorPickerPanel>(nameof(UI.editor.EditorColorPicker.EditorColorPicker));
+        var uiInstance = GetUiInstance<UI.editor.EditorColorPicker.EditorColorPickerPanel>(UiName.Editor_EditorColorPicker);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -122,7 +122,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorDungeonGroup()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorDungeonGroup.EditorDungeonGroupPanel>(nameof(UI.editor.EditorDungeonGroup.EditorDungeonGroup));
+        var uiInstance = GetUiInstance<UI.editor.EditorDungeonGroup.EditorDungeonGroupPanel>(UiName.Editor_EditorDungeonGroup);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -142,7 +142,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorForm()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorForm.EditorFormPanel>(nameof(UI.editor.EditorForm.EditorForm));
+        var uiInstance = GetUiInstance<UI.editor.EditorForm.EditorFormPanel>(UiName.Editor_EditorForm);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -162,7 +162,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorImportCombination()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorImportCombination.EditorImportCombinationPanel>(nameof(UI.editor.EditorImportCombination.EditorImportCombination));
+        var uiInstance = GetUiInstance<UI.editor.EditorImportCombination.EditorImportCombinationPanel>(UiName.Editor_EditorImportCombination);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -182,7 +182,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorInfo()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorInfo.EditorInfoPanel>(nameof(UI.editor.EditorInfo.EditorInfo));
+        var uiInstance = GetUiInstance<UI.editor.EditorInfo.EditorInfoPanel>(UiName.Editor_EditorInfo);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -202,7 +202,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorInput()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorInput.EditorInputPanel>(nameof(UI.editor.EditorInput.EditorInput));
+        var uiInstance = GetUiInstance<UI.editor.EditorInput.EditorInputPanel>(UiName.Editor_EditorInput);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -222,7 +222,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorManager()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorManager.EditorManagerPanel>(nameof(UI.editor.EditorManager.EditorManager));
+        var uiInstance = GetUiInstance<UI.editor.EditorManager.EditorManagerPanel>(UiName.Editor_EditorManager);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -242,7 +242,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorTileImage()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorTileImage.EditorTileImagePanel>(nameof(UI.editor.EditorTileImage.EditorTileImage));
+        var uiInstance = GetUiInstance<UI.editor.EditorTileImage.EditorTileImagePanel>(UiName.Editor_EditorTileImage);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -262,7 +262,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorTips()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorTips.EditorTipsPanel>(nameof(UI.editor.EditorTips.EditorTips));
+        var uiInstance = GetUiInstance<UI.editor.EditorTips.EditorTipsPanel>(UiName.Editor_EditorTips);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -282,7 +282,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_EditorWindow()
     {
-        var uiInstance = GetUiInstance<UI.editor.EditorWindow.EditorWindowPanel>(nameof(UI.editor.EditorWindow.EditorWindow));
+        var uiInstance = GetUiInstance<UI.editor.EditorWindow.EditorWindowPanel>(UiName.Editor_EditorWindow);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -302,7 +302,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditor()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditor.MapEditorPanel>(nameof(UI.editor.MapEditor.MapEditor));
+        var uiInstance = GetUiInstance<UI.editor.MapEditor.MapEditorPanel>(UiName.Editor_MapEditor);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -322,7 +322,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorConfigObject()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorConfigObject.MapEditorConfigObjectPanel>(nameof(UI.editor.MapEditorConfigObject.MapEditorConfigObject));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorConfigObject.MapEditorConfigObjectPanel>(UiName.Editor_MapEditorConfigObject);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -342,7 +342,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorCreateMark()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateMark.MapEditorCreateMarkPanel>(nameof(UI.editor.MapEditorCreateMark.MapEditorCreateMark));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateMark.MapEditorCreateMarkPanel>(UiName.Editor_MapEditorCreateMark);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -362,7 +362,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorCreatePreinstall()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(nameof(UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstall));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreatePreinstall.MapEditorCreatePreinstallPanel>(UiName.Editor_MapEditorCreatePreinstall);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -382,7 +382,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorCreateRoom()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateRoom.MapEditorCreateRoomPanel>(nameof(UI.editor.MapEditorCreateRoom.MapEditorCreateRoom));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorCreateRoom.MapEditorCreateRoomPanel>(UiName.Editor_MapEditorCreateRoom);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -402,7 +402,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorMapLayer()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorMapLayer.MapEditorMapLayerPanel>(nameof(UI.editor.MapEditorMapLayer.MapEditorMapLayer));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapLayer.MapEditorMapLayerPanel>(UiName.Editor_MapEditorMapLayer);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -422,7 +422,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorMapMark()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorMapMark.MapEditorMapMarkPanel>(nameof(UI.editor.MapEditorMapMark.MapEditorMapMark));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapMark.MapEditorMapMarkPanel>(UiName.Editor_MapEditorMapMark);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -442,7 +442,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorMapTile()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorMapTile.MapEditorMapTilePanel>(nameof(UI.editor.MapEditorMapTile.MapEditorMapTile));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorMapTile.MapEditorMapTilePanel>(UiName.Editor_MapEditorMapTile);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -462,7 +462,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorObject()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorObject.MapEditorObjectPanel>(nameof(UI.editor.MapEditorObject.MapEditorObject));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorObject.MapEditorObjectPanel>(UiName.Editor_MapEditorObject);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -482,7 +482,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorProject()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorProject.MapEditorProjectPanel>(nameof(UI.editor.MapEditorProject.MapEditorProject));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorProject.MapEditorProjectPanel>(UiName.Editor_MapEditorProject);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -502,7 +502,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorSelectObject()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorSelectObject.MapEditorSelectObjectPanel>(nameof(UI.editor.MapEditorSelectObject.MapEditorSelectObject));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorSelectObject.MapEditorSelectObjectPanel>(UiName.Editor_MapEditorSelectObject);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -522,7 +522,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_MapEditorTools()
     {
-        var uiInstance = GetUiInstance<UI.editor.MapEditorTools.MapEditorToolsPanel>(nameof(UI.editor.MapEditorTools.MapEditorTools));
+        var uiInstance = GetUiInstance<UI.editor.MapEditorTools.MapEditorToolsPanel>(UiName.Editor_MapEditorTools);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -542,7 +542,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_TileSetEditor()
     {
-        var uiInstance = GetUiInstance<UI.editor.TileSetEditor.TileSetEditorPanel>(nameof(UI.editor.TileSetEditor.TileSetEditor));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditor.TileSetEditorPanel>(UiName.Editor_TileSetEditor);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -562,7 +562,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_TileSetEditorCombination()
     {
-        var uiInstance = GetUiInstance<UI.editor.TileSetEditorCombination.TileSetEditorCombinationPanel>(nameof(UI.editor.TileSetEditorCombination.TileSetEditorCombination));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorCombination.TileSetEditorCombinationPanel>(UiName.Editor_TileSetEditorCombination);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -582,7 +582,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_TileSetEditorImport()
     {
-        var uiInstance = GetUiInstance<UI.editor.TileSetEditorImport.TileSetEditorImportPanel>(nameof(UI.editor.TileSetEditorImport.TileSetEditorImport));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorImport.TileSetEditorImportPanel>(UiName.Editor_TileSetEditorImport);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -602,7 +602,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_TileSetEditorProject()
     {
-        var uiInstance = GetUiInstance<UI.editor.TileSetEditorProject.TileSetEditorProjectPanel>(nameof(UI.editor.TileSetEditorProject.TileSetEditorProject));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorProject.TileSetEditorProjectPanel>(UiName.Editor_TileSetEditorProject);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -622,7 +622,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Editor_TileSetEditorTerrain()
     {
-        var uiInstance = GetUiInstance<UI.editor.TileSetEditorTerrain.TileSetEditorTerrainPanel>(nameof(UI.editor.TileSetEditorTerrain.TileSetEditorTerrain));
+        var uiInstance = GetUiInstance<UI.editor.TileSetEditorTerrain.TileSetEditorTerrainPanel>(UiName.Editor_TileSetEditorTerrain);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -642,7 +642,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_BottomTips()
     {
-        var uiInstance = GetUiInstance<UI.game.BottomTips.BottomTipsPanel>(nameof(UI.game.BottomTips.BottomTips));
+        var uiInstance = GetUiInstance<UI.game.BottomTips.BottomTipsPanel>(UiName.Game_BottomTips);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -662,7 +662,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Encyclopedia()
     {
-        var uiInstance = GetUiInstance<UI.game.Encyclopedia.EncyclopediaPanel>(nameof(UI.game.Encyclopedia.Encyclopedia));
+        var uiInstance = GetUiInstance<UI.game.Encyclopedia.EncyclopediaPanel>(UiName.Game_Encyclopedia);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -682,7 +682,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Loading()
     {
-        var uiInstance = GetUiInstance<UI.game.Loading.LoadingPanel>(nameof(UI.game.Loading.Loading));
+        var uiInstance = GetUiInstance<UI.game.Loading.LoadingPanel>(UiName.Game_Loading);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -702,7 +702,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Main()
     {
-        var uiInstance = GetUiInstance<UI.game.Main.MainPanel>(nameof(UI.game.Main.Main));
+        var uiInstance = GetUiInstance<UI.game.Main.MainPanel>(UiName.Game_Main);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -722,7 +722,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_PartPackUI()
     {
-        var uiInstance = GetUiInstance<UI.game.PartPackUI.PartPackUIPanel>(nameof(UI.game.PartPackUI.PartPackUI));
+        var uiInstance = GetUiInstance<UI.game.PartPackUI.PartPackUIPanel>(UiName.Game_PartPackUI);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -742,7 +742,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_PauseMenu()
     {
-        var uiInstance = GetUiInstance<UI.game.PauseMenu.PauseMenuPanel>(nameof(UI.game.PauseMenu.PauseMenu));
+        var uiInstance = GetUiInstance<UI.game.PauseMenu.PauseMenuPanel>(UiName.Game_PauseMenu);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -762,7 +762,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_RoomMap()
     {
-        var uiInstance = GetUiInstance<UI.game.RoomMap.RoomMapPanel>(nameof(UI.game.RoomMap.RoomMap));
+        var uiInstance = GetUiInstance<UI.game.RoomMap.RoomMapPanel>(UiName.Game_RoomMap);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -782,7 +782,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_RoomUI()
     {
-        var uiInstance = GetUiInstance<UI.game.RoomUI.RoomUIPanel>(nameof(UI.game.RoomUI.RoomUI));
+        var uiInstance = GetUiInstance<UI.game.RoomUI.RoomUIPanel>(UiName.Game_RoomUI);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -802,7 +802,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Setting()
     {
-        var uiInstance = GetUiInstance<UI.game.Setting.SettingPanel>(nameof(UI.game.Setting.Setting));
+        var uiInstance = GetUiInstance<UI.game.Setting.SettingPanel>(UiName.Game_Setting);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -822,7 +822,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Settlement()
     {
-        var uiInstance = GetUiInstance<UI.game.Settlement.SettlementPanel>(nameof(UI.game.Settlement.Settlement));
+        var uiInstance = GetUiInstance<UI.game.Settlement.SettlementPanel>(UiName.Game_Settlement);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -842,7 +842,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_Victory()
     {
-        var uiInstance = GetUiInstance<UI.game.Victory.VictoryPanel>(nameof(UI.game.Victory.Victory));
+        var uiInstance = GetUiInstance<UI.game.Victory.VictoryPanel>(UiName.Game_Victory);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
@@ -862,7 +862,7 @@ public static partial class UiManager
     /// </summary>
     public static void Destroy_Game_WeaponRoulette()
     {
-        var uiInstance = GetUiInstance<UI.game.WeaponRoulette.WeaponRoulettePanel>(nameof(UI.game.WeaponRoulette.WeaponRoulette));
+        var uiInstance = GetUiInstance<UI.game.WeaponRoulette.WeaponRoulettePanel>(UiName.Game_WeaponRoulette);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();
