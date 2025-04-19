@@ -212,7 +212,7 @@ public abstract partial class PartPackUI : UiBase
     }
 
     /// <summary>
-    /// 路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.SubLine
+    /// 路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.SubLine
     /// </summary>
     public class SubLine : UiNode<PartPackUIPanel, Godot.ColorRect, SubLine>
     {
@@ -265,6 +265,19 @@ public abstract partial class PartPackUI : UiBase
     /// </summary>
     public class PartListItem : UiNode<PartPackUIPanel, Godot.Control, PartListItem>
     {
+        /// <summary>
+        /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.SubLine
+        /// </summary>
+        public SubLine L_SubLine
+        {
+            get
+            {
+                if (_L_SubLine == null) _L_SubLine = new SubLine(UiPanel, Instance.GetNode<Godot.ColorRect>("SubLine"));
+                return _L_SubLine;
+            }
+        }
+        private SubLine _L_SubLine;
+
         /// <summary>
         /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.ListName
         /// </summary>
@@ -325,19 +338,6 @@ public abstract partial class PartPackUI : UiBase
             }
         }
         private VBoxContainer_2 _L_VBoxContainer;
-
-        /// <summary>
-        /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.SubLine
-        /// </summary>
-        public SubLine L_SubLine
-        {
-            get
-            {
-                if (_L_SubLine == null) _L_SubLine = new SubLine(UiPanel, Instance.GetNode<Godot.ColorRect>("SubLine"));
-                return _L_SubLine;
-            }
-        }
-        private SubLine _L_SubLine;
 
         /// <summary>
         /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.PartListItem
@@ -477,9 +477,9 @@ public abstract partial class PartPackUI : UiBase
     public WeaponBuffMana S_WeaponBuffMana => L_VBoxContainer.L_WeaponBg.L_VBoxContainer.L_WeaponItem.L_VBoxContainer.L_WeaponBuffMana;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.SubLine
+    /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.SubLine
     /// </summary>
-    public SubLine S_SubLine => L_VBoxContainer.L_WeaponBg.L_VBoxContainer.L_WeaponItem.L_SubLine;
+    public SubLine S_SubLine => L_VBoxContainer.L_WeaponBg.L_VBoxContainer.L_WeaponItem.L_PartListItem.L_SubLine;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.ListName

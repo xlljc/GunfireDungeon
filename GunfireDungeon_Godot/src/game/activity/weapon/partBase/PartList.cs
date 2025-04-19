@@ -1,10 +1,11 @@
 ﻿
+using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
 /// 武器零件列表
 /// </summary>
-public class PartList
+public class PartList : IEnumerable
 {
     /// <summary>
     /// 列表长度
@@ -158,5 +159,10 @@ public class PartList
         }
 
         return part.Occupancy;
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return _logicBlocks.GetEnumerator();
     }
 }

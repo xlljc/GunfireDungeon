@@ -153,6 +153,11 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// 开火零件列表
     /// </summary>
     public PartList FirePartList { get; private set; }
+
+    /// <summary>
+    /// 所有零件列表
+    /// </summary>
+    public Dictionary<string, PartList> PartListMap { get; } = new Dictionary<string, PartList>();
     
     //--------------------------------------------------------------------------------------------
 
@@ -353,6 +358,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         {
             FirePartList = new PartList(0, this);
         }
+        PartListMap.Add("Fire", FirePartList);
     }
 
     /// <summary>

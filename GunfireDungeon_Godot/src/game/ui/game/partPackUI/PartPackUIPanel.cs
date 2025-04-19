@@ -22,6 +22,9 @@ public partial class PartPackUIPanel : PartPackUI
     /// </summary>
     public UiGrid<WeaponItem, Weapon> WeaponListGrid;
     
+    public float PartListCellHeight { get; private set; } = 106;
+    public float WeaponCellOriginHeight { get; private set; } = 124;
+    
     private List<Weapon> _cahceWeapons = new List<Weapon>();
 
     public override void OnCreateUi()
@@ -31,6 +34,9 @@ public partial class PartPackUIPanel : PartPackUI
             RoomUiPanel = uiPanel;
         }
 
+        WeaponCellOriginHeight = S_WeaponItem.Instance.CustomMinimumSize.Y;
+        PartListCellHeight = S_PartListItem.Instance.CustomMinimumSize.Y;
+        
         PartPackGrid = CreateUiGrid<PartPackItem, PartProp, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
         PartPackGrid.SetCellOffset(new Vector2I(8, 8));
@@ -111,13 +117,6 @@ public partial class PartPackUIPanel : PartPackUI
     private void RefreshWeaponList(List<Weapon> list)
     {
         WeaponListGrid.SetDataList(list);
-        if (list.Count > 0)
-        {
-            WeaponListGrid.Add(list[0]);
-            WeaponListGrid.Add(list[0]);
-            WeaponListGrid.Add(list[0]);
-            WeaponListGrid.Add(list[0]);
-        }
     }
 
     public void RefreshPartPack(PartPackage package)
