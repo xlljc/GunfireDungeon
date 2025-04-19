@@ -1,5 +1,8 @@
 ﻿
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PartPackage : Component<Role>, IEnumerable
 {
@@ -148,5 +151,10 @@ public class PartPackage : Component<Role>, IEnumerable
     public IEnumerator GetEnumerator()
     {
         return _partPropPack.GetEnumerator();
+    }
+
+    public List<PartProp> ToList()
+    {
+        return _partPropPack.ToList();
     }
 }

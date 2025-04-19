@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://lo71pmoaul0j"]
+
+[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="1_6v3ft"]
+[ext_resource type="Texture2D" uid="uid://bck7myadgwmuy" path="res://resource/sprite/prop/part/PartProp0001.png" id="2_vpdwa"]
+
+[node name="PartPackItem" type="NinePatchRect"]
+custom_minimum_size = Vector2(80, 80)
+size_flags_horizontal = 0
+texture = ExtResource("1_6v3ft")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="PartIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = -18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_vpdwa")

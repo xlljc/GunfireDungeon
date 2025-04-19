@@ -278,7 +278,7 @@ project/assembly_name="GunfireDungeon"
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.109804, 0.0666667, 0.0901961, 1)
+environment/defaults/default_clear_color=Color(0.141176, 0.141176, 0.141176, 1)
 2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
 

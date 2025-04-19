@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
 /// 物体背包类
 /// </summary>
-public class Package<T, S> : Component<S> where T : ActivityObject, IPackageItem<S> where S : Role
+public class Package<T, S> : Component<S>, IEnumerable where T : ActivityObject, IPackageItem<S> where S : Role
 {
     /// <summary>
     /// 当前使用对象改变时回调
@@ -461,5 +462,10 @@ public class Package<T, S> : Component<S> where T : ActivityObject, IPackageItem
                 ItemSlot[i] = null;
             }
         }
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return ItemSlot.GetEnumerator();
     }
 }

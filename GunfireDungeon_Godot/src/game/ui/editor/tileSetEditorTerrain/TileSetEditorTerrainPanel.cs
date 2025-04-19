@@ -140,7 +140,7 @@ public partial class TileSetEditorTerrainPanel : TileSetEditorTerrain
         var cellRoot = S_TopBg.L_TerrainRoot.L_CellRoot;
         var sRightCell = cellRoot.L_RightCell;
         sRightCell.Instance.Position = texture.Position;
-        var grid = CreateUiGrid<RightCell, byte, TerrainCell>(sRightCell, cellRoot.Instance);
+        var grid = CreateUiGrid<RightCell, byte, TerrainCell>(sRightCell, cellRoot.Instance, sRightCell.Instance.Position);
         grid.GridContainer.MouseFilter = MouseFilterEnum.Ignore;
         grid.SetCellOffset(Vector2I.Zero);
         grid.SetColumns(size.X);

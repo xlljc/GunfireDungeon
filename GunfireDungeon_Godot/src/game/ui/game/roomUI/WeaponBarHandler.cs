@@ -38,7 +38,7 @@ public class WeaponBarHandler
         if (weapon != null)
         {
             SetWeaponTexture(weapon.GetCurrentTexture());
-            SetWeaponAmmunition(weapon.CurrAmmo, weapon.CurrManaBuffer, weapon.Attribute.MaxManaBuffer, weapon.CurrMana, weapon.Attribute.MaxMana);
+            SetWeaponAmmunition(weapon.CurrBufferMana, weapon.Attribute.MaxBufferMana, weapon.CurrMana, weapon.Attribute.MaxMana);
         }
         else
         {
@@ -100,11 +100,11 @@ public class WeaponBarHandler
     /// <summary>
     /// 设置弹药数据
     /// </summary>
-    public void SetWeaponAmmunition(int currAmmo, int currManaBuffer, int maxManaBuffer, int currMana, int maxMana)
+    public void SetWeaponAmmunition(int currBufferMana, int maxBufferMana, int currMana, int maxMana)
     {
         _weaponBar.L_ManaProgress.Instance.MaxValue = maxMana;
         _weaponBar.L_ManaProgress.Instance.Value = currMana;
-        _weaponBar.L_ManaBuffProgress.Instance.MaxValue = maxManaBuffer;
-        _weaponBar.L_ManaBuffProgress.Instance.Value = currManaBuffer;
+        _weaponBar.L_BufferManaProgress.Instance.MaxValue = maxBufferMana;
+        _weaponBar.L_BufferManaProgress.Instance.Value = currBufferMana;
     }
 }

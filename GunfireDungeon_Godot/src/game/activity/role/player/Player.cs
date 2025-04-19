@@ -62,7 +62,7 @@ public partial class Player : Role
         
         _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
         
-        WeaponPack.SetCapacity(10);
+        PartPropPack.SetCapacity(10);
         
         this.CallDelay(0.5f, () =>
         {
@@ -369,6 +369,16 @@ public partial class Player : Role
     protected override void OnRemoveBuffProp(BuffProp buffProp)
     {
         EventManager.EmitEvent(EventEnum.OnPlayerRemoveProp, buffProp);
+    }
+    
+    protected override void OnPickUpPartProp(PartProp partProp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerRemoveProp, partProp);
+    }
+
+    protected override void OnRemovePartProp(PartProp partProp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerRemoveProp, partProp);
     }
 
     /// <summary>

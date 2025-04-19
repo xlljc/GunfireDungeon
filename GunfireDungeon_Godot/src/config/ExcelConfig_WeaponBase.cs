@@ -58,7 +58,7 @@ public static partial class ExcelConfig
         /// 缓冲区法力最大值，武器开火将从缓冲区消耗法力值
         /// </summary>
         [JsonInclude]
-        public int MaxManaBuffer;
+        public int MaxBufferMana;
 
         /// <summary>
         /// 缓冲区每秒法力恢复量
@@ -382,7 +382,7 @@ public static partial class ExcelConfig
             inst.ContinuousShoot = ContinuousShoot;
             inst.AmmoCapacity = AmmoCapacity;
             inst.MaxMana = MaxMana;
-            inst.MaxManaBuffer = MaxManaBuffer;
+            inst.MaxBufferMana = MaxBufferMana;
             inst.ManaRecoverySpeed = ManaRecoverySpeed;
             inst.PartPack = PartPack;
             inst.ShowReloadBar = ShowReloadBar;

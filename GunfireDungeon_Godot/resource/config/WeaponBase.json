@@ -8,7 +8,7 @@
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
     "MaxMana": 2000,
-    "MaxManaBuffer": 150,
+    "MaxBufferMana": 150,
     "ManaRecoverySpeed": 50,
     "PartPack": {
       "Fire": [
@@ -89,7 +89,7 @@
     "ContinuousShoot": false,
     "AmmoCapacity": 12,
     "MaxMana": 2000,
-    "MaxManaBuffer": 150,
+    "MaxBufferMana": 150,
     "ManaRecoverySpeed": 50,
     "PartPack": null,
     "ShowReloadBar": true,

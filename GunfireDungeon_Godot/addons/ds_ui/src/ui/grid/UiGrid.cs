@@ -111,11 +111,14 @@ namespace DsUi
         //选中的cell索引
         private int _selectIndex = -1;
 
-        public UiGrid(TUiCellNode template, Node parent, Type cellType)
+        private Vector2 _initPos;
+
+        public UiGrid(TUiCellNode template, Node parent, Vector2 position, Type cellType)
         {
             GridContainer = new UiGridContainer(OnReady, OnProcess);
             GridContainer.Ready += OnReady;
             _template = template;
+            _initPos = position;
             _cellType = cellType;
             parent.AddChild(GridContainer);
             var uiInstance = _template.GetUiInstance();
@@ -141,6 +144,7 @@ namespace DsUi
             uiInstance.GetParent().RemoveChild(uiInstance);
             if (uiInstance is Control control)
             {
+                _initPos = control.Position;
                 _size = control.Size;
                 if (control.CustomMinimumSize == Vector2.Zero)
                 {
@@ -555,10 +559,7 @@ namespace DsUi
 
         private void OnReady()
         {
-            if (_template.GetUiInstance() is Control control)
-            {
-                GridContainer.Position = control.Position;
-            }
+            GridContainer.Position = _initPos;
         }
 
         private void OnProcess(float delta)

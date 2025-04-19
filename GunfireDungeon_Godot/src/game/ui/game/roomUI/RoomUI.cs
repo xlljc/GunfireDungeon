@@ -502,7 +502,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaBuffProgress.Number
+    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.Number
     /// </summary>
     public class Number : UiNode<RoomUIPanel, Godot.Label, Number>
     {
@@ -511,9 +511,9 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaBuffProgress
+    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress
     /// </summary>
-    public class ManaBuffProgress : UiNode<RoomUIPanel, CommProgressBar, ManaBuffProgress>
+    public class BufferManaProgress : UiNode<RoomUIPanel, CommProgressBar, BufferManaProgress>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponBar.Number
@@ -528,8 +528,8 @@ public abstract partial class RoomUI : UiBase
         }
         private Number _L_Number;
 
-        public ManaBuffProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
-        public override ManaBuffProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+        public BufferManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override BufferManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
     }
 
     /// <summary>
@@ -640,17 +640,17 @@ public abstract partial class RoomUI : UiBase
     public class WeaponBar : UiNode<RoomUIPanel, Godot.Control, WeaponBar>
     {
         /// <summary>
-        /// 节点路径: RoomUI.Control.ManaBuffProgress
+        /// 节点路径: RoomUI.Control.BufferManaProgress
         /// </summary>
-        public ManaBuffProgress L_ManaBuffProgress
+        public BufferManaProgress L_BufferManaProgress
         {
             get
             {
-                if (_L_ManaBuffProgress == null) _L_ManaBuffProgress = new ManaBuffProgress(UiPanel, Instance.GetNode<CommProgressBar>("ManaBuffProgress"));
-                return _L_ManaBuffProgress;
+                if (_L_BufferManaProgress == null) _L_BufferManaProgress = new BufferManaProgress(UiPanel, Instance.GetNode<CommProgressBar>("BufferManaProgress"));
+                return _L_BufferManaProgress;
             }
         }
-        private ManaBuffProgress _L_ManaBuffProgress;
+        private BufferManaProgress _L_BufferManaProgress;
 
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponPanel
@@ -877,9 +877,9 @@ public abstract partial class RoomUI : UiBase
     public ActivePropBar S_ActivePropBar => L_Control.L_ActivePropBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.ManaBuffProgress
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.BufferManaProgress
     /// </summary>
-    public ManaBuffProgress S_ManaBuffProgress => L_Control.L_WeaponBar.L_ManaBuffProgress;
+    public BufferManaProgress S_BufferManaProgress => L_Control.L_WeaponBar.L_BufferManaProgress;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite

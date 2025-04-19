@@ -328,14 +328,14 @@ offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="ManaBuffProgress" parent="Control/WeaponBar" instance=ExtResource("17_3h7xx")]
+[node name="BufferManaProgress" parent="Control/WeaponBar" instance=ExtResource("17_3h7xx")]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 48.0
 offset_right = 208.0
 offset_bottom = 60.0
 
-[node name="Number" parent="Control/WeaponBar/ManaBuffProgress" index="0"]
+[node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="0"]
 visible = false
 
 [node name="WeaponPanel" type="NinePatchRect" parent="Control/WeaponBar"]
@@ -415,4 +415,4 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[editable path="Control/WeaponBar/ManaBuffProgress"]
+[editable path="Control/WeaponBar/BufferManaProgress"]

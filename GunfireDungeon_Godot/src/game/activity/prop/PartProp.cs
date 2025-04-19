@@ -7,6 +7,11 @@ using Godot;
 /// </summary>
 public partial class PartProp : PropActivity
 {
+    /// <summary>
+    /// 图标
+    /// </summary>
+    public Texture2D Icon;
+    
     //前置id
     private const string _prefixId = "partProp";
     private static bool _isInit = false;
@@ -52,8 +57,8 @@ public partial class PartProp : PropActivity
     {
         base.OnInit();
         var spriteFrames = AnimatedSprite.SpriteFrames;
-        var texture = ResourceManager.LoadTexture2D(ActivityBase.Icon);
-        spriteFrames.SetFrame(AnimatorNames.Default, 0, texture);
+        Icon = ResourceManager.LoadTexture2D(ActivityBase.Icon);
+        spriteFrames.SetFrame(AnimatorNames.Default, 0, Icon);
     }
 
     public override void Interactive(ActivityObject master)

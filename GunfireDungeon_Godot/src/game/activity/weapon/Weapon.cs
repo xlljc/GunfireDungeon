@@ -147,7 +147,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// <summary>
     /// 当前缓冲区法力值
     /// </summary>
-    public int CurrManaBuffer { get; private set; }
+    public int CurrBufferMana { get; private set; }
     
     /// <summary>
     /// 开火零件列表
@@ -341,7 +341,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         //弹药量
         SetCurrAmmo(Attribute.AmmoCapacity);
         //当前缓冲区法力值
-        SetCurrBuffMana(Attribute.MaxManaBuffer);
+        SetCurrBufferMana(Attribute.MaxBufferMana);
         //当前法力值
         SetCurrMana(Attribute.MaxMana);
 
@@ -527,9 +527,9 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         _noAttackTime += delta;
         
         //缓冲区充能
-        if (CurrMana > 0 && Attribute.ManaRecoverySpeed > 0 && CurrManaBuffer < Attribute.MaxManaBuffer)
+        if (CurrMana > 0 && Attribute.ManaRecoverySpeed > 0 && CurrBufferMana < Attribute.MaxBufferMana)
         {
-            _manaRecoveryValue += Mathf.Min(Attribute.ManaRecoverySpeed * delta, Attribute.MaxManaBuffer - CurrManaBuffer);
+            _manaRecoveryValue += Mathf.Min(Attribute.ManaRecoverySpeed * delta, Attribute.MaxBufferMana - CurrBufferMana);
             if (_manaRecoveryValue >= 1f)
             {
                 var tempVal = _manaRecoveryValue % 1f;
@@ -537,12 +537,12 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                 if (CurrMana >= value)
                 {
                     CurrMana -= value;
-                    CurrManaBuffer += value;
+                    CurrBufferMana += value;
                     _manaRecoveryValue = tempVal;
                 }
                 else
                 {
-                    CurrManaBuffer += CurrMana;
+                    CurrBufferMana += CurrMana;
                     CurrMana = 0;
                     _manaRecoveryValue = 0;
                 }
@@ -1322,25 +1322,25 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// <summary>
     /// 强制设置当前武器缓冲区法力值
     /// </summary>
-    public void SetCurrBuffMana(int count)
+    public void SetCurrBufferMana(int count)
     {
-        CurrManaBuffer = Mathf.Clamp(count, 0, Attribute.MaxManaBuffer);
+        CurrBufferMana = Mathf.Clamp(count, 0, Attribute.MaxBufferMana);
     }
 
     /// <summary>
     /// 使用法力值，返回是否成功
     /// </summary>
-    public bool UseManaBuff(int mana)
+    public bool UseBufferMana(int mana)
     {
         if (!_triggerCalcAmmon)
         {
             return true;
         }
-        if (CurrManaBuffer < mana)
+        if (CurrBufferMana < mana)
         {
             return false;
         }
-        CurrManaBuffer -= mana;
+        CurrBufferMana -= mana;
 
         return true;
     }

@@ -67,7 +67,6 @@ public partial class Gun : Weapon
         // });
         
         FirePartList.RefreshLogicTree();
-        GD.Print(FirePartList.GetFirstLogicBlock().GetTreeString());
     }
     
     protected override void OnFire()
