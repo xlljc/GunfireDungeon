@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://5yl1fxpychfq"]
+[gd_scene load_steps=8 format=3 uid="uid://5yl1fxpychfq"]
 
 [ext_resource type="Script" uid="uid://dekdtxo18rhp0" path="res://src/game/ui/game/partPackUI/PartPackUIPanel.cs" id="1_req0c"]
-[ext_resource type="Texture2D" uid="uid://bck7myadgwmuy" path="res://resource/sprite/prop/part/PartProp0001.png" id="2_h22eq"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="2_oywjh"]
 [ext_resource type="PackedScene" uid="uid://lo71pmoaul0j" path="res://prefab/ui/component/game/PartPackItem.tscn" id="3_v4de6"]
 [ext_resource type="Shader" uid="uid://bukuvnjyi8ggb" path="res://resource/shader/Outline.gdshader" id="4_3klww"]
@@ -154,33 +153,3 @@ offset_bottom = 71.0
 theme_override_fonts/font = ExtResource("5_pne8q")
 theme_override_font_sizes/font_size = 32
 text = "开火"
-
-[node name="PartPackItem7" type="NinePatchRect" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-offset_left = 107.0
-offset_top = 11.0
-offset_right = 187.0
-offset_bottom = 91.0
-size_flags_horizontal = 0
-texture = ExtResource("2_oywjh")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="PartIcon" type="TextureRect" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem/PartPackItem7"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -36.0
-offset_top = -36.0
-offset_right = -18.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(4, 4)
-texture = ExtResource("2_h22eq")

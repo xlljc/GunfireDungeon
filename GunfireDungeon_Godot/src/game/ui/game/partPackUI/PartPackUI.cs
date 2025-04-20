@@ -230,37 +230,6 @@ public abstract partial class PartPackUI : UiBase
     }
 
     /// <summary>
-    /// 路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.PartPackItem7.PartIcon
-    /// </summary>
-    public class PartIcon_1 : UiNode<PartPackUIPanel, Godot.TextureRect, PartIcon_1>
-    {
-        public PartIcon_1(PartPackUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override PartIcon_1 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.PartPackItem7
-    /// </summary>
-    public class PartPackItem7 : UiNode<PartPackUIPanel, Godot.NinePatchRect, PartPackItem7>
-    {
-        /// <summary>
-        /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.PartIcon
-        /// </summary>
-        public PartIcon_1 L_PartIcon
-        {
-            get
-            {
-                if (_L_PartIcon == null) _L_PartIcon = new PartIcon_1(UiPanel, Instance.GetNode<Godot.TextureRect>("PartIcon"));
-                return _L_PartIcon;
-            }
-        }
-        private PartIcon_1 _L_PartIcon;
-
-        public PartPackItem7(PartPackUIPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
-        public override PartPackItem7 Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
-    }
-
-    /// <summary>
     /// 路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem
     /// </summary>
     public class PartListItem : UiNode<PartPackUIPanel, Godot.Control, PartListItem>
@@ -290,19 +259,6 @@ public abstract partial class PartPackUI : UiBase
             }
         }
         private ListName _L_ListName;
-
-        /// <summary>
-        /// 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartPackItem7
-        /// </summary>
-        public PartPackItem7 L_PartPackItem7
-        {
-            get
-            {
-                if (_L_PartPackItem7 == null) _L_PartPackItem7 = new PartPackItem7(UiPanel, Instance.GetNode<Godot.NinePatchRect>("PartPackItem7"));
-                return _L_PartPackItem7;
-            }
-        }
-        private PartPackItem7 _L_PartPackItem7;
 
         public PartListItem(PartPackUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
         public override PartListItem Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
@@ -447,6 +403,11 @@ public abstract partial class PartPackUI : UiBase
     public Border S_Border => L_VBoxContainer.L_PartBg.L_Border;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.PartBg.PartPackItem.PartIcon
+    /// </summary>
+    public PartIcon S_PartIcon => L_VBoxContainer.L_PartBg.L_PartPackItem.L_PartIcon;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.PartBg.PartPackItem
     /// </summary>
     public PartPackItem S_PartPackItem => L_VBoxContainer.L_PartBg.L_PartPackItem;
@@ -485,11 +446,6 @@ public abstract partial class PartPackUI : UiBase
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.ListName
     /// </summary>
     public ListName S_ListName => L_VBoxContainer.L_WeaponBg.L_VBoxContainer.L_WeaponItem.L_PartListItem.L_ListName;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem.PartPackItem7
-    /// </summary>
-    public PartPackItem7 S_PartPackItem7 => L_VBoxContainer.L_WeaponBg.L_VBoxContainer.L_WeaponItem.L_PartListItem.L_PartPackItem7;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.WeaponBg.VBoxContainer.WeaponItem.PartListItem

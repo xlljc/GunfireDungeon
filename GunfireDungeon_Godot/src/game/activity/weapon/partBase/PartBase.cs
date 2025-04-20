@@ -19,7 +19,9 @@ public abstract class PartBase
     /// <summary>
     /// 所属武器，没有装备到武器上时该值为 null
     /// </summary>
-    public Weapon Weapon { get; set; }
+    public Weapon Weapon => PartProp?.Weapon;
+    
+    public PartProp PartProp { get; }
 
     /// <summary>
     /// 零件在武器逻辑槽中的索引，如果为 -1 则代表零件未加入到逻辑槽中
@@ -41,8 +43,9 @@ public abstract class PartBase
     /// </summary>
     public PartBase[] Children { get; set; }
 
-    public PartBase(PartType partType)
+    public PartBase(PartProp prop, PartType partType)
     {
+        PartProp = prop;
         PartType = partType;
     }
 

@@ -6,6 +6,10 @@ public class TakeTurnsBuffPart : BuffPart
 {
     private int _index = 0;
 
+    public TakeTurnsBuffPart(PartProp prop) : base(prop)
+    {
+    }
+    
     public override IBullet[] Execute(PlanningParam param)
     {
         if (!param.UseManaBuff(Mana))

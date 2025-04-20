@@ -10,14 +10,24 @@ public partial class PartProp : PropActivity
     /// <summary>
     /// 图标
     /// </summary>
-    public Texture2D Icon;
+    public Texture2D Icon { get; private set; }
+
+    /// <summary>
+    /// 所挂载的武器，没有装备到武器上时该值为 null
+    /// </summary>
+    public Weapon Weapon { get; set; }
+    
+    /// <summary>
+    /// 零件处理逻辑
+    /// </summary>
+    public PartBase PartBase { get; private set; }
     
     //前置id
     private const string _prefixId = "partProp";
     private static bool _isInit = false;
     
     /// <summary>
-    /// 初始化零件属性
+    /// 初始化零件属性，并注册零件
     /// </summary>
     public static void InitPartAttribute()
     {
@@ -48,17 +58,28 @@ public partial class PartProp : PropActivity
         }
     }
 
+    /// <summary>
+    /// 创建零件对象
+    /// </summary>
+    /// <param name="partPropBaseId">零件在 PartBase 表中的 Id</param>
     public static PartProp CreatePropActivity(string partPropBaseId)
     {
         return Create<PartProp>(_prefixId + partPropBaseId);
     }
-
+    
     public override void OnInit()
     {
         base.OnInit();
         var spriteFrames = AnimatedSprite.SpriteFrames;
         Icon = ResourceManager.LoadTexture2D(ActivityBase.Icon);
         spriteFrames.SetFrame(AnimatorNames.Default, 0, Icon);
+
+        PartBase = new BulletPart(this)
+        {
+            Mana = 12,
+            ScatteringAngle = 10,
+            Bullet = ExcelConfig.BulletBase_Map["0001"]
+        };
     }
 
     public override void Interactive(ActivityObject master)

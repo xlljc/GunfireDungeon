@@ -36,7 +36,7 @@ public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
     {
         RefreshBaseInfo();
     }
-
+    
     private void RefreshBaseInfo()
     {
         if (Data == null)

@@ -11,38 +11,39 @@ public class PartList : IEnumerable
     /// 列表长度
     /// </summary>
     public int Length => _logicBlocks.Length;
-    
+
     /// <summary>
     /// 所属武器
     /// </summary>
     public Weapon Weapon { get; }
 
-    private readonly PartBase[] _logicBlocks;
+    private readonly PartProp[] _logicBlocks;
     private bool _dirty = true;
-    
+
     public PartList(int maxLen, Weapon weapon)
     {
-        _logicBlocks = new PartBase[maxLen];
+        _logicBlocks = new PartProp[maxLen];
         Weapon = weapon;
     }
 
     /// <summary>
     /// 为指定索引设置零件
     /// </summary>
-    public PartBase SetLogicBlock(int index, PartBase part)
+    public PartProp SetLogicBlock(int index, PartProp part)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
-            part.PartList = this;
+            part.PartBase.PartList = this;
             part.Weapon = Weapon;
-            part.Index = index;
-            
+            part.PartBase.Index = index;
+
             var prev = _logicBlocks[index];
             if (prev != null)
             {
-                part.Index = -1;
+                part.PartBase.Index = -1;
                 part.Weapon = null;
             }
+
             _logicBlocks[index] = part;
             _dirty = true;
             return part;
@@ -54,7 +55,7 @@ public class PartList : IEnumerable
     /// <summary>
     /// 获取指定位置零件
     /// </summary>
-    public PartBase GetLogicBlock(int index)
+    public PartProp GetLogicBlock(int index)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
@@ -67,12 +68,12 @@ public class PartList : IEnumerable
     /// <summary>
     /// 移除指定位置零件
     /// </summary>
-    public PartBase RemoveLogicBlock(int index)
+    public PartProp RemoveLogicBlock(int index)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
             var logicBlock = _logicBlocks[index];
-            logicBlock.Index = -1;
+            logicBlock.PartBase.Index = -1;
             logicBlock.Weapon = null;
             _logicBlocks[index] = null;
             _dirty = true;
@@ -85,9 +86,9 @@ public class PartList : IEnumerable
     /// <summary>
     /// 获取第一个零件
     /// </summary>
-    public PartBase GetFirstLogicBlock()
+    public PartProp GetFirstLogicBlock()
     {
-        PartBase temp = null;
+        PartProp temp = null;
         for (var i = 0; i < _logicBlocks.Length; i++)
         {
             temp = _logicBlocks[i];
@@ -96,10 +97,10 @@ public class PartList : IEnumerable
                 break;
             }
         }
-        
+
         return temp;
     }
-    
+
     public PlanningParam Execute(float fireRotation)
     {
         if (_dirty)
@@ -107,12 +108,12 @@ public class PartList : IEnumerable
             _dirty = false;
             RefreshLogicTree();
         }
-        
+
         var result = new PlanningParam(fireRotation, Weapon.UseBufferMana);
         var first = GetFirstLogicBlock();
         if (first != null)
         {
-            first.Execute(result);
+            first.PartBase.Execute(result);
         }
 
         return result;
@@ -127,8 +128,8 @@ public class PartList : IEnumerable
         {
             if (logic != null)
             {
-                logic.Children = new PartBase[logic.Occupancy];
-                logic.Parent = null;
+                logic.PartBase.Children = new PartBase[logic.PartBase.Occupancy];
+                logic.PartBase.Parent = null;
             }
         }
 
@@ -139,26 +140,26 @@ public class PartList : IEnumerable
         }
     }
 
-    private int EachTree(PartBase part)
+    private int EachTree(PartProp part)
     {
-        if (part.Occupancy <= 0)
+        if (part.PartBase.Occupancy <= 0)
         {
             return 0;
         }
 
         var v = 0;
-        for (var i = 1; i <= part.Occupancy; i++)
+        for (var i = 1; i <= part.PartBase.Occupancy; i++)
         {
-            var next = GetLogicBlock(part.Index + i + v);
+            var next = GetLogicBlock(part.PartBase.Index + i + v);
             if (next != null)
             {
                 v += EachTree(next);
-                next.Parent = part;
-                part.Children[i - 1] = next;
+                next.PartBase.Parent = part.PartBase;
+                part.PartBase.Children[i - 1] = next.PartBase;
             }
         }
 
-        return part.Occupancy;
+        return part.PartBase.Occupancy;
     }
 
     public IEnumerator GetEnumerator()

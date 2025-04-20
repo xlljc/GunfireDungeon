@@ -9,7 +9,7 @@ public abstract class BuffPart : PartBase
     /// </summary>
     public int Mana { get; set; }
     
-    public BuffPart() : base(PartType.Buff)
+    public BuffPart(PartProp prop) : base(prop, PartType.Buff)
     {
     }
 

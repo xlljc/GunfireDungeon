@@ -6,6 +6,10 @@ public class FinishPlayBuffPart : BuffPart
 {
     public int BehindMaxMana { get; set; }
     
+    public FinishPlayBuffPart(PartProp prop) : base(prop)
+    {
+    }
+    
     public override IBullet[] Execute(PlanningParam param)
     {
         if (!param.UseManaBuff(Mana))
