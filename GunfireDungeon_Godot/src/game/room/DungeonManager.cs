@@ -539,7 +539,7 @@ public partial class DungeonManager : Node2D
         yield return 0;
         player.Collision.Disabled = false;
         
-        GameCamera.Main.Zoom = Vector2.One;
+        GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom;
         GameApplication.Instance.Cursor.SetGuiMode(false);
         //派发进入地牢事件
         EventManager.EmitEvent(EventEnum.OnEnterDungeon);

@@ -293,7 +293,7 @@ public partial class Player : Role
             
             GameCamera.Main.CreateShake(new Vector2(3, 3), 1f, true);
             GameCamera.Main.FollowsMouseAmount = 0;
-            GameCamera.Main.PlayZoomAnimation(new Vector2(2, 2), 5);
+            GameCamera.Main.PlayZoomAnimation(GameApplication.Instance.DefaultCameraZoom * 2, 5);
 
             SoundManager.PlaySoundByConfig("role_die", Position);
         }

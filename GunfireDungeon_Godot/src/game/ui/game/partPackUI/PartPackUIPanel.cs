@@ -25,6 +25,7 @@ public partial class PartPackUIPanel : PartPackUI
     public float PartListCellHeight { get; private set; } = 106;
     public float WeaponCellOriginHeight { get; private set; } = 124;
     public Vector2 WeaponCellPartPosition { get; } = new Vector2(107, 11);
+    public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
 
@@ -40,7 +41,7 @@ public partial class PartPackUIPanel : PartPackUI
         
         PartPackGrid = CreateUiGrid<PartPackItem, PartProp, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
-        PartPackGrid.SetCellOffset(new Vector2I(8, 8));
+        PartPackGrid.SetCellOffset(CellOffset);
 
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);

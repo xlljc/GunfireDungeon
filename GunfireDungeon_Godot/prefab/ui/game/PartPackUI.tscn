@@ -129,19 +129,21 @@ theme_override_font_sizes/font_size = 32
 text = "缓冲区：99/99"
 
 [node name="PartListItem" type="Control" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem"]
-layout_mode = 2
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_top = 124.0
-offset_right = 560.0
 offset_bottom = 230.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SubLine" type="ColorRect" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem"]
-layout_mode = 0
-offset_left = 4.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_top = -4.0
-offset_right = 559.0
+grow_horizontal = 2
 color = Color(1, 1, 1, 0.2)
 
 [node name="ListName" type="Label" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem"]

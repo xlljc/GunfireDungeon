@@ -10,26 +10,45 @@ using UI.game.BottomTips;
 public partial class GameApplication : Node2D, ICoroutine
 {
     public static GameApplication Instance { get; private set; }
-    
-    /// <summary>
-    /// 游戏渲染视口
-    /// </summary>
-    public SubViewport SubViewport;
 
     /// <summary>
-    /// SubViewportContainer 组件
+    /// 是否启用调试绘制
     /// </summary>
-    public SubViewportContainer SubViewportContainer;
+    [Export]
+    public bool DebugDraw;
+
+    /// <summary>
+    /// 调试模式下是否使用完美像素
+    /// </summary>
+    [Export]
+    public bool DebugUsePerfectPixel;
 
     /// <summary>
     /// 场景根节点
     /// </summary>
+    [Export]
     public Node2D SceneRoot;
     
     /// <summary>
     /// 全局根节点
     /// </summary>
+    [Export]
     public Node2D GlobalNodeRoot;
+    
+    /// <summary>
+    /// 游戏渲染视口
+    /// </summary>
+    [Export]
+    private SubViewport SubViewport;
+
+    /// <summary>
+    /// SubViewportContainer 组件
+    /// </summary>
+    [Export]
+    private SubViewportContainer SubViewportContainer;
+
+    [Export]
+    private CanvasLayer ViewCanvas;
     
     /// <summary>
     /// 游戏目标帧率
@@ -86,13 +105,17 @@ public partial class GameApplication : Node2D, ICoroutine
     /// </summary>
     public GameSave GameSave { get; private set; }
     
+    /// <summary>
+    /// 默认相机缩放
+    /// </summary>
+    public Vector2 DefaultCameraZoom { get; private set; } = Vector2.Zero;
+    
     //开启的协程
     private List<CoroutineData> _coroutineList;
     
     public GameApplication()
     {
         Instance = this;
-        //TargetFps = 20;
         TargetFps = Mathf.RoundToInt(DisplayServer.ScreenGetRefreshRate());
         
         Utils.InitRandom();
@@ -164,11 +187,8 @@ public partial class GameApplication : Node2D, ICoroutine
 
     public override void _EnterTree()
     {
-        SubViewport = GetNode<SubViewport>("ViewCanvas/SubViewportContainer/SubViewport");
-        SubViewportContainer = GetNode<SubViewportContainer>("ViewCanvas/SubViewportContainer");
-        SceneRoot = GetNode<Node2D>("ViewCanvas/SubViewportContainer/SubViewport/SceneRoot");
-        GlobalNodeRoot = GetNode<Node2D>("GlobalNodeRoot");
-        
+        //编辑器弹窗设置为使用windows弹窗
+        GetViewport().GuiEmbedSubwindows = false;
         //背景颜色
         RenderingServer.SetDefaultClearColor(new Color(0, 0, 0, 1));
         //随机化种子
@@ -176,8 +196,18 @@ public partial class GameApplication : Node2D, ICoroutine
         //固定帧率
         //Engine.MaxFps = TargetFps;
         //调试绘制开关
-        //ActivityObject.IsDebug = true;
+        ActivityObject.IsDebug = DebugDraw;
         //Engine.TimeScale = 0.2f;
+
+        if (!DebugUsePerfectPixel) //不使用完美像素
+        {
+            DefaultCameraZoom = new Vector2(PixelScale, PixelScale);
+            GameCamera.Main.Zoom = DefaultCameraZoom;
+            SceneRoot.Reparent(this);
+            GameCamera.Main.Reparent(this);
+            MoveChild(GlobalNodeRoot, GetChildCount() - 1);
+        }
+        
         //调整窗口分辨率
         OnWindowSizeChanged();
         //窗体大小改变
@@ -224,6 +254,10 @@ public partial class GameApplication : Node2D, ICoroutine
     /// </summary>
     public Vector2 GlobalToViewPosition(Vector2 globalPos)
     {
+        if (!DebugUsePerfectPixel)
+        {
+            return globalPos;
+        }
         return globalPos / PixelScale - (ViewportSize / 2) + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
     }
 
@@ -232,6 +266,10 @@ public partial class GameApplication : Node2D, ICoroutine
     /// </summary>
     public Vector2 ViewToGlobalPosition(Vector2 viewPos)
     {
+        if (!DebugUsePerfectPixel)
+        {
+            return viewPos;
+        }
         return (viewPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + (ViewportSize / 2)) * PixelScale;
     }
     
@@ -267,6 +305,11 @@ public partial class GameApplication : Node2D, ICoroutine
         }
         RoomConfig = roomConfig;
         InitReadyRoom();
+    }
+
+    public ShaderMaterial GetSubViewportContainerMaterial()
+    {
+        return (ShaderMaterial)SubViewportContainer.Material;
     }
 
     //初始化房间配置

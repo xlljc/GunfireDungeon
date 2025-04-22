@@ -77,7 +77,11 @@ public partial class GameCamera : Camera2D
     
     public override void _Ready()
     {
-        _offsetShader = (ShaderMaterial)GameApplication.Instance.SubViewportContainer.Material;
+        if (GameApplication.Instance.DebugUsePerfectPixel)
+        {
+            _offsetShader = GameApplication.Instance.GetSubViewportContainerMaterial();
+        }
+        
         _camPos = GlobalPosition;
     }
     
@@ -101,11 +105,18 @@ public partial class GameCamera : Camera2D
                 _camPos = targetPosition.Lerp(mousePosition, FollowsMouseAmount);
             }
 
-            var cameraPosition = _camPos;
-            var roundPos = cameraPosition.Round();
-            PixelOffset = roundPos - cameraPosition;
-            _offsetShader.SetShaderParameter("offset", PixelOffset);
-            GlobalPosition = roundPos;
+            if (GameApplication.Instance.DebugUsePerfectPixel)
+            {
+                var cameraPosition = _camPos;
+                var roundPos = cameraPosition.Round();
+                PixelOffset = roundPos - cameraPosition;
+                _offsetShader?.SetShaderParameter("offset", PixelOffset);
+                GlobalPosition = roundPos;
+            }
+            else
+            {
+                GlobalPosition = _camPos;
+            }
             
             Offset = _shakeOffset.Round();
             

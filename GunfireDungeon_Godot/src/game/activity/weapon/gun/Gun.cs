@@ -46,11 +46,11 @@ public partial class Gun : Weapon
     
     protected override void OnFire()
     {
-        // if (Master == World.Player)
-        // {
-        //     //创建抖动
-        //     GameCamera.Main.DirectionalShake(Vector2.Right.Rotated(GlobalRotation) * Attribute.CameraShake);
-        // }
+        if (Master == World.Player)
+        {
+            //创建抖动
+            GameCamera.Main.DirectionalShake(Vector2.Right.Rotated(GlobalRotation) * Attribute.CameraShake);
+        }
         //
         // //创建开火特效
         // if (!string.IsNullOrEmpty(Attribute.FireEffect))

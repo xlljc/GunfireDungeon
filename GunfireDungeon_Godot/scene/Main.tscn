@@ -8,8 +8,13 @@
 shader = ExtResource("2_fxoum")
 shader_parameter/offset = Vector2(0, 0)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("SceneRoot", "GlobalNodeRoot", "SubViewport", "SubViewportContainer", "ViewCanvas")]
 script = ExtResource("1_mh1cq")
+SceneRoot = NodePath("ViewCanvas/SubViewportContainer/SubViewport/SceneRoot")
+GlobalNodeRoot = NodePath("GlobalNodeRoot")
+SubViewport = NodePath("ViewCanvas/SubViewportContainer/SubViewport")
+SubViewportContainer = NodePath("ViewCanvas/SubViewportContainer")
+ViewCanvas = NodePath("ViewCanvas")
 metadata/_edit_vertical_guides_ = []
 
 [node name="ViewCanvas" type="CanvasLayer" parent="."]
