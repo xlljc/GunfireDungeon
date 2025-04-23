@@ -49,7 +49,8 @@ public class FreezeSprite : IDestroy
         var affiliationArea = ActivityObject.AffiliationArea;
         if (affiliationArea == null)
         {
-            Debug.LogError("物体的 AffiliationArea 属性为空，不能调用 Freeze() 函数！");
+            Debug.LogError("物体的 AffiliationArea 属性为空，不能调用 Freeze() 函数，现在直接调用 Destroy() ！");
+            Destroy();
             return;
         }
 

@@ -74,18 +74,15 @@ public partial class GameCamera : Camera2D
     {
         Main = this;
     }
-    
+
     public override void _Ready()
     {
-        if (GameApplication.Instance.PerfectPixel)
-        {
-            _offsetShader = GameApplication.Instance.GetSubViewportContainerMaterial();
-        }
+        _offsetShader = GameApplication.Instance.GetSubViewportContainerMaterial();
 
         FollowsMouseAmount = GameApplication.Instance.GameSave.FollowsMouseAmount;
         _camPos = GlobalPosition;
     }
-    
+
     //_PhysicsProcess
     public override void _PhysicsProcess(double delta)
     {
