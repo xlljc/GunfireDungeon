@@ -306,7 +306,7 @@ public partial class SoundManager
     {
         return PlaySoundEffectPosition(
             sound.Path,
-            GameApplication.Instance.ViewToGlobalPosition(viewPosition),
+            GameApplication.Instance.WorldToUiPosition(viewPosition),
             CalcRoleVolume(sound.Volume, triggerRole)
         );
     }
@@ -339,7 +339,7 @@ public partial class SoundManager
     {
         return PlaySoundEffectPositionDelay(
             sound.Path,
-            GameApplication.Instance.ViewToGlobalPosition(viewPosition),
+            GameApplication.Instance.WorldToUiPosition(viewPosition),
             delayTime,
             CalcRoleVolume(sound.Volume, triggerRole)
         );

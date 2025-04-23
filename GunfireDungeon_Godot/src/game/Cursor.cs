@@ -108,7 +108,7 @@ public partial class Cursor : Node2D
     {
         if (targetGun != null)
         {
-            var tunPos = GameApplication.Instance.ViewToGlobalPosition(targetGun.GlobalPosition);
+            var tunPos = GameApplication.Instance.WorldToUiPosition(targetGun.GlobalPosition);
             var len = GlobalPosition.DistanceTo(tunPos);
             if (targetGun.Attribute != null)
             {

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnwweusrc44xy"]
+[gd_scene load_steps=3 format=3 uid="uid://bnwweusrc44xy"]
 
-[ext_resource type="Script" uid="uid://b7nhbvdhafses" path="res://src/game/ui/setting/SettingPanel.cs" id="1_ff0oi"]
-[ext_resource type="Texture2D" uid="uid://b0c2xj2ksjky0" path="res://resource/sprite/ui/setting/option_BG.png" id="2_rgd34"]
+[ext_resource type="Script" uid="uid://b7nhbvdhafses" path="res://src/game/ui/game/setting/SettingPanel.cs" id="1_ff0oi"]
 [ext_resource type="Theme" uid="uid://ds668te2rph30" path="res://resource/theme/mainTheme.tres" id="4_bwst8"]
 
 [node name="Setting" type="Control"]
@@ -22,23 +21,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.941176)
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -538.0
-offset_top = -320.0
-offset_right = 538.0
-offset_bottom = 320.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_rgd34")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(600, 500)
@@ -116,6 +98,27 @@ text = "音效音量"
 vertical_alignment = 1
 
 [node name="SFX" type="HSlider" parent="ScrollContainer/SettingMenu/FullScreen3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="FullScreen4" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/FullScreen4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "鼠标跟随进度"
+vertical_alignment = 1
+
+[node name="FollowsMouseAmount" type="HSlider" parent="ScrollContainer/SettingMenu/FullScreen4"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3

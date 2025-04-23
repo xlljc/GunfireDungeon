@@ -84,7 +84,7 @@ public partial class Player : Role
         
         this.CallDelay(1, () =>
         {
-            GameCamera.Main.Zoom = new Vector2(0.5f, 0.5f);
+            GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom / 2f;
         });
         
         World.TileRoot.SetLayerEnabled(MapLayer.AutoTopLayer, false);

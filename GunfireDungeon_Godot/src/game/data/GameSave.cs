@@ -24,6 +24,12 @@ public class GameSave
     [JsonInclude]
     public float SfxVolume = 0.5f;
 
+    /// <summary>
+    /// 鼠标跟随进度（0 - 1）
+    /// </summary>
+    [JsonInclude]
+    public float FollowsMouseAmount = 0f;
+
     public void Init()
     {
         if (FullScreen)

@@ -26,25 +26,37 @@ public partial class SettingPanel : Setting
         }
         
         //声音设置BGM
+        var save = GameApplication.Instance.GameSave;
         S_BGM.Instance.ValueChanged += (double v) =>
         {
             var value = (float)v;
-            GameApplication.Instance.GameSave.BgmVolume = value;
+            save.BgmVolume = value;
             SoundManager.SetBusValue(BUS.BGM, value);
         };
         //声音设置SFX
         S_SFX.Instance.ValueChanged += (double v) =>
         {
             var value = (float)v;
-            GameApplication.Instance.GameSave.SfxVolume = value;
+            save.SfxVolume = value;
             SoundManager.SetBusValue(BUS.SFX, value);
+        };
+        //鼠标跟随进度
+        S_FollowsMouseAmount.Instance.ValueChanged += (double v) =>
+        {
+            save.FollowsMouseAmount = (float)v;
+            if (GameCamera.Main != null)
+            {
+                GameCamera.Main.FollowsMouseAmount = (float)v;
+            }
         };
         //声音设置设置BGM SFX的值
         S_SFX.Instance.VisibilityChanged += () =>
         {
-            S_BGM.Instance.Value = GameApplication.Instance.GameSave.BgmVolume;
-            S_SFX.Instance.Value = GameApplication.Instance.GameSave.SfxVolume;
+            S_BGM.Instance.Value = save.BgmVolume;
+            S_SFX.Instance.Value = save.SfxVolume;
+            S_FollowsMouseAmount.Instance.Value = save.FollowsMouseAmount;
         };
+
 
         //---------------------- 视频设置 -----------------------------
         //全屏属性

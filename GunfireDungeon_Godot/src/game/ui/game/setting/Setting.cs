@@ -21,19 +21,6 @@ public abstract partial class Setting : UiBase
     private ColorRect _L_ColorRect;
 
     /// <summary>
-    /// 节点路径: Setting.TextureRect
-    /// </summary>
-    public TextureRect L_TextureRect
-    {
-        get
-        {
-            if (_L_TextureRect == null) _L_TextureRect = new TextureRect((SettingPanel)this, GetNode<Godot.TextureRect>("TextureRect"));
-            return _L_TextureRect;
-        }
-    }
-    private TextureRect _L_TextureRect;
-
-    /// <summary>
     /// 节点路径: Setting.ScrollContainer
     /// </summary>
     public ScrollContainer L_ScrollContainer
@@ -63,15 +50,6 @@ public abstract partial class Setting : UiBase
     {
         public ColorRect(SettingPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
         public override ColorRect Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: Setting.TextureRect
-    /// </summary>
-    public class TextureRect : UiNode<SettingPanel, Godot.TextureRect, TextureRect>
-    {
-        public TextureRect(SettingPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
     }
 
     /// <summary>
@@ -243,6 +221,59 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4.Label
+    /// </summary>
+    public class Label_2 : UiNode<SettingPanel, Godot.Label, Label_2>
+    {
+        public Label_2(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4.FollowsMouseAmount
+    /// </summary>
+    public class FollowsMouseAmount : UiNode<SettingPanel, Godot.HSlider, FollowsMouseAmount>
+    {
+        public FollowsMouseAmount(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
+        public override FollowsMouseAmount Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4
+    /// </summary>
+    public class FullScreen4 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen4>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
+        /// </summary>
+        public Label_2 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_2(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_2 _L_Label;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.FollowsMouseAmount
+        /// </summary>
+        public FollowsMouseAmount L_FollowsMouseAmount
+        {
+            get
+            {
+                if (_L_FollowsMouseAmount == null) _L_FollowsMouseAmount = new FollowsMouseAmount(UiPanel, Instance.GetNode<Godot.HSlider>("FollowsMouseAmount"));
+                return _L_FollowsMouseAmount;
+            }
+        }
+        private FollowsMouseAmount _L_FollowsMouseAmount;
+
+        public FullScreen4(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override FullScreen4 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Setting.ScrollContainer.SettingMenu.Back
     /// </summary>
     public class Back : UiNode<SettingPanel, Godot.Button, Back>
@@ -309,6 +340,19 @@ public abstract partial class Setting : UiBase
         private FullScreen3 _L_FullScreen3;
 
         /// <summary>
+        /// 节点路径: Setting.ScrollContainer.FullScreen4
+        /// </summary>
+        public FullScreen4 L_FullScreen4
+        {
+            get
+            {
+                if (_L_FullScreen4 == null) _L_FullScreen4 = new FullScreen4(UiPanel, Instance.GetNode<Godot.HBoxContainer>("FullScreen4"));
+                return _L_FullScreen4;
+            }
+        }
+        private FullScreen4 _L_FullScreen4;
+
+        /// <summary>
         /// 节点路径: Setting.ScrollContainer.Back
         /// </summary>
         public Back L_Back
@@ -354,11 +398,6 @@ public abstract partial class Setting : UiBase
     public ColorRect S_ColorRect => L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.TextureRect
-    /// </summary>
-    public TextureRect S_TextureRect => L_TextureRect;
-
-    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Title
     /// </summary>
     public Title S_Title => L_ScrollContainer.L_SettingMenu.L_Title;
@@ -397,6 +436,16 @@ public abstract partial class Setting : UiBase
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3
     /// </summary>
     public FullScreen3 S_FullScreen3 => L_ScrollContainer.L_SettingMenu.L_FullScreen3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen4.FollowsMouseAmount
+    /// </summary>
+    public FollowsMouseAmount S_FollowsMouseAmount => L_ScrollContainer.L_SettingMenu.L_FullScreen4.L_FollowsMouseAmount;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen4
+    /// </summary>
+    public FullScreen4 S_FullScreen4 => L_ScrollContainer.L_SettingMenu.L_FullScreen4;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Back

@@ -502,7 +502,7 @@ public partial class DungeonManager : Node2D
             CurrWorld.PlayBgm(_dungeonGenerator.RoomGroup.SoundId);
         }
         
-        GameCamera.Main.FollowsMouseAmount = 0.15f;
+        GameCamera.Main.FollowsMouseAmount = GameApplication.Instance.GameSave.FollowsMouseAmount;
 
         //地牢加载即将完成
         yield return _dungeonGenerator.EachRoomCoroutine(info => info.OnReady());

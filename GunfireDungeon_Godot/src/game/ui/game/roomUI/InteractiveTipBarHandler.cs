@@ -48,7 +48,7 @@ public class InteractiveTipBarHandler
     /// <param name="icon">显示图标</param>
     public void ShowBar(ActivityObject target, string showText, Texture2D icon)
     {
-        _interactiveTipBar.Instance.GlobalPosition = GameApplication.Instance.ViewToGlobalPosition(_interactiveTarget.GlobalPosition);
+        _interactiveTipBar.Instance.GlobalPosition = GameApplication.Instance.WorldToUiPosition(_interactiveTarget.GlobalPosition);
         _interactiveTipBar.L_Icon.Instance.Texture = icon;
         _interactiveTipBar.Instance.Visible = true;
         _interactiveTipBar.L_NameLabel.Instance.Text = showText;
@@ -90,7 +90,9 @@ public class InteractiveTipBarHandler
     {
         if (_interactiveTarget != null)
         {
-            _interactiveTipBar.Instance.GlobalPosition = GameApplication.Instance.ViewToGlobalPosition(_interactiveTarget.GlobalPosition);
+            var pos = GameApplication.Instance.WorldToUiPosition(_interactiveTarget.GlobalPosition);
+            Debug.Log("pos: " + pos);
+            _interactiveTipBar.Instance.GlobalPosition = pos;
         }
     }
 }

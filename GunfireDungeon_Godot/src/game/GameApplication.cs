@@ -18,10 +18,10 @@ public partial class GameApplication : Node2D, ICoroutine
     public bool DebugDraw;
 
     /// <summary>
-    /// 调试模式下是否使用完美像素
+    /// 是否使用完美像素
     /// </summary>
     [Export]
-    public bool DebugUsePerfectPixel;
+    public bool PerfectPixel;
 
     /// <summary>
     /// 场景根节点
@@ -49,6 +49,9 @@ public partial class GameApplication : Node2D, ICoroutine
 
     [Export]
     private CanvasLayer ViewCanvas;
+
+    [Export]
+    private Node NoPerfectPixelRoot;
     
     /// <summary>
     /// 游戏目标帧率
@@ -108,7 +111,7 @@ public partial class GameApplication : Node2D, ICoroutine
     /// <summary>
     /// 默认相机缩放
     /// </summary>
-    public Vector2 DefaultCameraZoom { get; private set; } = Vector2.Zero;
+    public Vector2 DefaultCameraZoom { get; private set; } = Vector2.One;
     
     //开启的协程
     private List<CoroutineData> _coroutineList;
@@ -199,7 +202,7 @@ public partial class GameApplication : Node2D, ICoroutine
         ActivityObject.IsDebug = DebugDraw;
         //Engine.TimeScale = 0.2f;
 
-        if (!DebugUsePerfectPixel) //不使用完美像素
+        if (!PerfectPixel) //不使用完美像素
         {
             DefaultCameraZoom = new Vector2(PixelScale, PixelScale);
             GameCamera.Main.Zoom = DefaultCameraZoom;
@@ -248,31 +251,33 @@ public partial class GameApplication : Node2D, ICoroutine
         //协程更新
         ProxyCoroutineHandler.ProxyUpdateCoroutine(ref _coroutineList, newDelta);
     }
-    
+
     /// <summary>
-    /// 将 viewport 以外的全局坐标 转换成 viewport 内的全局坐标
+    /// 将Ui坐标转换为游戏中的世界坐标
     /// </summary>
-    public Vector2 GlobalToViewPosition(Vector2 globalPos)
+    public Vector2 UiToWorldPosition(Vector2 uiPos)
     {
-        if (!DebugUsePerfectPixel)
+        if (PerfectPixel)
         {
-            return globalPos;
+            return uiPos / PixelScale - (ViewportSize / 2) + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
         }
-        return globalPos / PixelScale - (ViewportSize / 2) + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
+
+        return uiPos;
     }
 
     /// <summary>
-    /// 将 viewport 以内的全局坐标 转换成 viewport 外的全局坐标
+    /// 将游戏中的世界坐标转换为Ui坐标
     /// </summary>
-    public Vector2 ViewToGlobalPosition(Vector2 viewPos)
+    public Vector2 WorldToUiPosition(Vector2 worldPos)
     {
-        if (!DebugUsePerfectPixel)
+        if (PerfectPixel)
         {
-            return viewPos;
+            return (worldPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + (ViewportSize / 2)) * PixelScale;
         }
-        return (viewPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + (ViewportSize / 2)) * PixelScale;
+
+        return (worldPos - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset)) * GameCamera.Main.Zoom + (GetWindow().Size / 2);
     }
-    
+
     public long StartCoroutine(IEnumerator able)
     {
         return ProxyCoroutineHandler.ProxyStartCoroutine(ref _coroutineList, able);

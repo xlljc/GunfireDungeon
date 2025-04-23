@@ -1,5 +1,6 @@
 {
   "FullScreen": false,
   "BgmVolume": 0.5,
-  "SfxVolume": 0.37
+  "SfxVolume": 0.37,
+  "FollowsMouseAmount": 0.11
 }

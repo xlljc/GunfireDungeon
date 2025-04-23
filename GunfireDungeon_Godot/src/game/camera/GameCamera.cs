@@ -77,11 +77,12 @@ public partial class GameCamera : Camera2D
     
     public override void _Ready()
     {
-        if (GameApplication.Instance.DebugUsePerfectPixel)
+        if (GameApplication.Instance.PerfectPixel)
         {
             _offsetShader = GameApplication.Instance.GetSubViewportContainerMaterial();
         }
-        
+
+        FollowsMouseAmount = GameApplication.Instance.GameSave.FollowsMouseAmount;
         _camPos = GlobalPosition;
     }
     
@@ -105,7 +106,7 @@ public partial class GameCamera : Camera2D
                 _camPos = targetPosition.Lerp(mousePosition, FollowsMouseAmount);
             }
 
-            if (GameApplication.Instance.DebugUsePerfectPixel)
+            if (GameApplication.Instance.PerfectPixel)
             {
                 var cameraPosition = _camPos;
                 var roundPos = cameraPosition.Round();

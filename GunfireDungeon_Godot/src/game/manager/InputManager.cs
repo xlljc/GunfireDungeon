@@ -90,7 +90,8 @@ public static class InputManager
         var application = GameApplication.Instance;
         if (application != null)
         {
-            CursorPosition = application.GlobalToViewPosition(application.GetGlobalMousePosition());
+            CursorPosition = application.SceneRoot.GetGlobalMousePosition();
+            //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
         }
 
         ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);

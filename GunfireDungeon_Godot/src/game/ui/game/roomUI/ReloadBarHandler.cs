@@ -47,7 +47,7 @@ public class ReloadBarHandler
     public void ShowBar(Vector2 position, float progress)
     {
         _reloadBar.Instance.Visible = true;
-        _reloadBar.Instance.GlobalPosition = GameApplication.Instance.ViewToGlobalPosition(position);
+        _reloadBar.Instance.GlobalPosition = GameApplication.Instance.WorldToUiPosition(position);
         progress = Mathf.Clamp(progress, 0, 1);
         _reloadBar.L_Slot.L_Block.Instance.Position = new Vector2(startX + (width - 3) * progress, 0);
     }
