@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DsUi;
 using Godot;
 
@@ -44,8 +45,13 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
     public void RefreshPartPack(PartList list)
     {
         var temp = new List<PartProp>();
+        var i = 0;
         foreach (PartProp o in list)
         {
+            if (i++>=1)
+            {
+                break;
+            }
             temp.Add(o);
         }
     
@@ -57,6 +63,7 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         var rect = Data.WeaponListCell.CellNode.Instance;
         var minimumSize = rect.CustomMinimumSize;
         minimumSize.X = CellNode.UiPanel.WeaponCellPartPosition.X + _partGrid.GridContainer.Size.X + CellNode.UiPanel.CellOffset.X * 2;
+        minimumSize.X = Math.Max(minimumSize.X, CellNode.UiPanel.WeaponCellOriginSize.X);
         rect.CustomMinimumSize = minimumSize;
 
         var cellSize = new Vector2(minimumSize.X, _partGrid.GridContainer.Size.Y + 6f * GameApplication.Instance.PixelScale);

@@ -23,7 +23,7 @@ public partial class PartPackUIPanel : PartPackUI
     public UiGrid<WeaponItem, Weapon> WeaponListGrid;
     
     public float PartListCellHeight { get; private set; } = 106;
-    public float WeaponCellOriginHeight { get; private set; } = 124;
+    public Vector2 WeaponCellOriginSize { get; private set; } = new Vector2(560, 124f);
     public Vector2 WeaponCellPartPosition { get; } = new Vector2(107, 11);
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
@@ -36,7 +36,7 @@ public partial class PartPackUIPanel : PartPackUI
             RoomUiPanel = uiPanel;
         }
 
-        WeaponCellOriginHeight = S_WeaponItem.Instance.CustomMinimumSize.Y;
+        WeaponCellOriginSize = S_WeaponItem.Instance.CustomMinimumSize;
         PartListCellHeight = S_PartListItem.Instance.CustomMinimumSize.Y;
         
         PartPackGrid = CreateUiGrid<PartPackItem, PartProp, PartPackCell>(S_PartPackItem);

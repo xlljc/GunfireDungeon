@@ -52,7 +52,7 @@ public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
     private void OnPartListGridResized()
     {
         var minimumSize = CellNode.Instance.CustomMinimumSize;
-        minimumSize.Y = CellNode.UiPanel.WeaponCellOriginHeight + _partListGrid.GridContainer.Size.Y;
+        minimumSize.Y = CellNode.UiPanel.WeaponCellOriginSize.Y + _partListGrid.GridContainer.Size.Y;
         CellNode.Instance.CustomMinimumSize = minimumSize;
     }
 }
