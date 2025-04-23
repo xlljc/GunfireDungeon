@@ -49,34 +49,49 @@ text = "游戏设置"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FullScreen" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+[node name="BoxContainer" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/FullScreen"]
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "全屏"
 
-[node name="CheckBox" type="CheckBox" parent="ScrollContainer/SettingMenu/FullScreen"]
+[node name="FullScreen" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="FullScreen2" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+[node name="BoxContainer2" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/FullScreen2"]
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "完美像素"
+
+[node name="PerfectPixel" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BoxContainer3" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "背景音量"
 vertical_alignment = 1
 
-[node name="BGM" type="HSlider" parent="ScrollContainer/SettingMenu/FullScreen2"]
+[node name="BGM" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer3"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -85,19 +100,19 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[node name="FullScreen3" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+[node name="BoxContainer4" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/FullScreen3"]
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "音效音量"
 vertical_alignment = 1
 
-[node name="SFX" type="HSlider" parent="ScrollContainer/SettingMenu/FullScreen3"]
+[node name="SFX" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer4"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -106,19 +121,19 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[node name="FullScreen4" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+[node name="BoxContainer5" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/FullScreen4"]
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer5"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "鼠标跟随进度"
 vertical_alignment = 1
 
-[node name="FollowsMouseAmount" type="HSlider" parent="ScrollContainer/SettingMenu/FullScreen4"]
+[node name="FollowsMouseAmount" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer5"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3

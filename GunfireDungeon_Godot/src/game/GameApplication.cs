@@ -18,12 +18,6 @@ public partial class GameApplication : Node2D, ICoroutine
     public bool DebugDraw;
 
     /// <summary>
-    /// 是否使用完美像素
-    /// </summary>
-    [Export]
-    public bool PerfectPixel;
-
-    /// <summary>
     /// 场景根节点
     /// </summary>
     [Export]
@@ -52,6 +46,11 @@ public partial class GameApplication : Node2D, ICoroutine
 
     [Export]
     private Node NoPerfectPixelRoot;
+
+    /// <summary>
+    /// 是否使用完美像素
+    /// </summary>
+    public bool PerfectPixel { get; private set; } = true;
     
     /// <summary>
     /// 游戏目标帧率
@@ -201,15 +200,6 @@ public partial class GameApplication : Node2D, ICoroutine
         //调试绘制开关
         ActivityObject.IsDebug = DebugDraw;
         //Engine.TimeScale = 0.2f;
-
-        if (!PerfectPixel) //不使用完美像素
-        {
-            DefaultCameraZoom = new Vector2(PixelScale, PixelScale);
-            GameCamera.Main.Zoom = DefaultCameraZoom;
-            SceneRoot.Reparent(this);
-            GameCamera.Main.Reparent(this);
-            MoveChild(GlobalNodeRoot, GetChildCount() - 1);
-        }
         
         //调整窗口分辨率
         OnWindowSizeChanged();
@@ -219,7 +209,7 @@ public partial class GameApplication : Node2D, ICoroutine
         ImageCanvas.Init(GetTree().CurrentScene);
         
         //加载存档
-        LoadGameSave();
+        LoadGameSave(this);
         
         //调试Ui
         UiManager.Open_Debug_Debugger();
@@ -259,10 +249,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return uiPos / PixelScale - (ViewportSize / 2) + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
+            return uiPos / PixelScale - ViewportSize / 2 + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
         }
 
-        return uiPos;
+        return (uiPos - GetWindow().Size / 2) / GameCamera.Main.Zoom + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
     }
 
     /// <summary>
@@ -272,10 +262,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return (worldPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + (ViewportSize / 2)) * PixelScale;
+            return (worldPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + ViewportSize / 2) * PixelScale;
         }
 
-        return (worldPos - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset)) * GameCamera.Main.Zoom + (GetWindow().Size / 2);
+        return (worldPos - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + GetWindow().Size / 2;
     }
 
     public long StartCoroutine(IEnumerator able)
@@ -312,9 +302,37 @@ public partial class GameApplication : Node2D, ICoroutine
         InitReadyRoom();
     }
 
+    /// <summary>
+    /// 获取子视图容器的材质，该材质用于完美像素
+    /// </summary>
+    /// <returns></returns>
     public ShaderMaterial GetSubViewportContainerMaterial()
     {
         return (ShaderMaterial)SubViewportContainer.Material;
+    }
+
+    /// <summary>
+    /// 设置是否启用完美像素
+    /// </summary>
+    public void SetPerfectPixel(bool v)
+    {
+        if (PerfectPixel == v) return;
+        PerfectPixel = v;
+
+        if (v) //完美像素
+        {
+            DefaultCameraZoom = Vector2.One;
+            GameCamera.Main.Zoom = DefaultCameraZoom;
+            SceneRoot.Reparent(SubViewport);
+            GameCamera.Main.Reparent(SubViewport);
+        }
+        else
+        {
+            DefaultCameraZoom = new Vector2(PixelScale, PixelScale);
+            GameCamera.Main.Zoom = DefaultCameraZoom;
+            SceneRoot.Reparent(NoPerfectPixelRoot);
+            GameCamera.Main.Reparent(NoPerfectPixelRoot);
+        }
     }
 
     //初始化房间配置
@@ -400,9 +418,9 @@ public partial class GameApplication : Node2D, ICoroutine
         cursorLayer.AddChild(Cursor);
     }
 
-    private void LoadGameSave()
+    private void LoadGameSave(GameApplication app)
     {
         GameSave = GameSave.Load();
-        GameSave.Init();
+        GameSave.Init(app);
     }
 }

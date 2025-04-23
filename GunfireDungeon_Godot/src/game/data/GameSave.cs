@@ -30,7 +30,13 @@ public class GameSave
     [JsonInclude]
     public float FollowsMouseAmount = 0f;
 
-    public void Init()
+    /// <summary>
+    /// 是否使用完美像素
+    /// </summary>
+    [JsonInclude]
+    public bool PerfectPixel = true;
+
+    public void Init(GameApplication app)
     {
         if (FullScreen)
         {
@@ -43,6 +49,7 @@ public class GameSave
         
         SoundManager.SetBusValue(BUS.BGM, BgmVolume);
         SoundManager.SetBusValue(BUS.SFX, SfxVolume);
+        app.SetPerfectPixel(PerfectPixel);
     }
 
     public void Save()

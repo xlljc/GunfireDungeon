@@ -60,8 +60,16 @@ public partial class SettingPanel : Setting
 
         //---------------------- 视频设置 -----------------------------
         //全屏属性
-        S_FullScreen.L_CheckBox.Instance.ButtonPressed = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen;
-        S_FullScreen.L_CheckBox.Instance.Pressed += OnChangeFullScreen;
+        S_FullScreen.Instance.ButtonPressed = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen;
+        S_FullScreen.Instance.Pressed += OnChangeFullScreen;
+        
+        //完美像素
+        S_PerfectPixel.Instance.ButtonPressed = save.PerfectPixel;
+        S_PerfectPixel.Instance.Pressed += () =>
+        {
+            save.PerfectPixel = S_PerfectPixel.Instance.ButtonPressed;
+            GameApplication.Instance.SetPerfectPixel(save.PerfectPixel);
+        };
         //-----------------------------------------------------------
     }
 
@@ -73,7 +81,7 @@ public partial class SettingPanel : Setting
     //切换全屏/非全屏
     private void OnChangeFullScreen()
     {
-        var checkBox = S_FullScreen.L_CheckBox.Instance;
+        var checkBox = S_FullScreen.Instance;
         GameApplication.Instance.GameSave.FullScreen = checkBox.ButtonPressed;
         if (checkBox.ButtonPressed)
         {

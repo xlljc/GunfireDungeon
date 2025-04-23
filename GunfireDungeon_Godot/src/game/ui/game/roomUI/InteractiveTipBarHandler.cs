@@ -90,9 +90,7 @@ public class InteractiveTipBarHandler
     {
         if (_interactiveTarget != null)
         {
-            var pos = GameApplication.Instance.WorldToUiPosition(_interactiveTarget.GlobalPosition);
-            Debug.Log("pos: " + pos);
-            _interactiveTipBar.Instance.GlobalPosition = pos;
+            _interactiveTipBar.Instance.GlobalPosition = GameApplication.Instance.WorldToUiPosition(_interactiveTarget.GlobalPosition);
         }
     }
 }

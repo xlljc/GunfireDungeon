@@ -62,7 +62,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer.Name
     /// </summary>
     public class Name : UiNode<SettingPanel, Godot.Label, Name>
     {
@@ -71,18 +71,18 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer.FullScreen
     /// </summary>
-    public class CheckBox : UiNode<SettingPanel, Godot.CheckBox, CheckBox>
+    public class FullScreen : UiNode<SettingPanel, Godot.CheckBox, FullScreen>
     {
-        public CheckBox(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
-        public override CheckBox Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
+        public FullScreen(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
+        public override FullScreen Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer
     /// </summary>
-    public class FullScreen : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen>
+    public class BoxContainer : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer>
     {
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
@@ -98,24 +98,77 @@ public abstract partial class Setting : UiBase
         private Name _L_Name;
 
         /// <summary>
-        /// 节点路径: Setting.ScrollContainer.SettingMenu.CheckBox
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen
         /// </summary>
-        public CheckBox L_CheckBox
+        public FullScreen L_FullScreen
         {
             get
             {
-                if (_L_CheckBox == null) _L_CheckBox = new CheckBox(UiPanel, Instance.GetNode<Godot.CheckBox>("CheckBox"));
-                return _L_CheckBox;
+                if (_L_FullScreen == null) _L_FullScreen = new FullScreen(UiPanel, Instance.GetNode<Godot.CheckBox>("FullScreen"));
+                return _L_FullScreen;
             }
         }
-        private CheckBox _L_CheckBox;
+        private FullScreen _L_FullScreen;
 
-        public FullScreen(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override FullScreen Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public BoxContainer(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.Label
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.Name
+    /// </summary>
+    public class Name_1 : UiNode<SettingPanel, Godot.Label, Name_1>
+    {
+        public Name_1(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Name_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.PerfectPixel
+    /// </summary>
+    public class PerfectPixel : UiNode<SettingPanel, Godot.CheckBox, PerfectPixel>
+    {
+        public PerfectPixel(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
+        public override PerfectPixel Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2
+    /// </summary>
+    public class BoxContainer2 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer2>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
+        /// </summary>
+        public Name_1 L_Name
+        {
+            get
+            {
+                if (_L_Name == null) _L_Name = new Name_1(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                return _L_Name;
+            }
+        }
+        private Name_1 _L_Name;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.PerfectPixel
+        /// </summary>
+        public PerfectPixel L_PerfectPixel
+        {
+            get
+            {
+                if (_L_PerfectPixel == null) _L_PerfectPixel = new PerfectPixel(UiPanel, Instance.GetNode<Godot.CheckBox>("PerfectPixel"));
+                return _L_PerfectPixel;
+            }
+        }
+        private PerfectPixel _L_PerfectPixel;
+
+        public BoxContainer2(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer3.Label
     /// </summary>
     public class Label : UiNode<SettingPanel, Godot.Label, Label>
     {
@@ -124,7 +177,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer3.BGM
     /// </summary>
     public class BGM : UiNode<SettingPanel, Godot.HSlider, BGM>
     {
@@ -133,9 +186,9 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen2
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer3
     /// </summary>
-    public class FullScreen2 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen2>
+    public class BoxContainer3 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer3>
     {
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
@@ -163,12 +216,12 @@ public abstract partial class Setting : UiBase
         }
         private BGM _L_BGM;
 
-        public FullScreen2(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override FullScreen2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public BoxContainer3(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer3 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.Label
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer4.Label
     /// </summary>
     public class Label_1 : UiNode<SettingPanel, Godot.Label, Label_1>
     {
@@ -177,7 +230,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer4.SFX
     /// </summary>
     public class SFX : UiNode<SettingPanel, Godot.HSlider, SFX>
     {
@@ -186,9 +239,9 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen3
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer4
     /// </summary>
-    public class FullScreen3 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen3>
+    public class BoxContainer4 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer4>
     {
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
@@ -216,12 +269,12 @@ public abstract partial class Setting : UiBase
         }
         private SFX _L_SFX;
 
-        public FullScreen3(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override FullScreen3 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public BoxContainer4(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer4 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4.Label
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer5.Label
     /// </summary>
     public class Label_2 : UiNode<SettingPanel, Godot.Label, Label_2>
     {
@@ -230,7 +283,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4.FollowsMouseAmount
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer5.FollowsMouseAmount
     /// </summary>
     public class FollowsMouseAmount : UiNode<SettingPanel, Godot.HSlider, FollowsMouseAmount>
     {
@@ -239,9 +292,9 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.FullScreen4
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer5
     /// </summary>
-    public class FullScreen4 : UiNode<SettingPanel, Godot.HBoxContainer, FullScreen4>
+    public class BoxContainer5 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer5>
     {
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
@@ -269,8 +322,8 @@ public abstract partial class Setting : UiBase
         }
         private FollowsMouseAmount _L_FollowsMouseAmount;
 
-        public FullScreen4(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override FullScreen4 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public BoxContainer5(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer5 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -301,56 +354,69 @@ public abstract partial class Setting : UiBase
         private Title _L_Title;
 
         /// <summary>
-        /// 节点路径: Setting.ScrollContainer.FullScreen
+        /// 节点路径: Setting.ScrollContainer.BoxContainer
         /// </summary>
-        public FullScreen L_FullScreen
+        public BoxContainer L_BoxContainer
         {
             get
             {
-                if (_L_FullScreen == null) _L_FullScreen = new FullScreen(UiPanel, Instance.GetNode<Godot.HBoxContainer>("FullScreen"));
-                return _L_FullScreen;
+                if (_L_BoxContainer == null) _L_BoxContainer = new BoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer"));
+                return _L_BoxContainer;
             }
         }
-        private FullScreen _L_FullScreen;
+        private BoxContainer _L_BoxContainer;
 
         /// <summary>
-        /// 节点路径: Setting.ScrollContainer.FullScreen2
+        /// 节点路径: Setting.ScrollContainer.BoxContainer2
         /// </summary>
-        public FullScreen2 L_FullScreen2
+        public BoxContainer2 L_BoxContainer2
         {
             get
             {
-                if (_L_FullScreen2 == null) _L_FullScreen2 = new FullScreen2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("FullScreen2"));
-                return _L_FullScreen2;
+                if (_L_BoxContainer2 == null) _L_BoxContainer2 = new BoxContainer2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer2"));
+                return _L_BoxContainer2;
             }
         }
-        private FullScreen2 _L_FullScreen2;
+        private BoxContainer2 _L_BoxContainer2;
 
         /// <summary>
-        /// 节点路径: Setting.ScrollContainer.FullScreen3
+        /// 节点路径: Setting.ScrollContainer.BoxContainer3
         /// </summary>
-        public FullScreen3 L_FullScreen3
+        public BoxContainer3 L_BoxContainer3
         {
             get
             {
-                if (_L_FullScreen3 == null) _L_FullScreen3 = new FullScreen3(UiPanel, Instance.GetNode<Godot.HBoxContainer>("FullScreen3"));
-                return _L_FullScreen3;
+                if (_L_BoxContainer3 == null) _L_BoxContainer3 = new BoxContainer3(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer3"));
+                return _L_BoxContainer3;
             }
         }
-        private FullScreen3 _L_FullScreen3;
+        private BoxContainer3 _L_BoxContainer3;
 
         /// <summary>
-        /// 节点路径: Setting.ScrollContainer.FullScreen4
+        /// 节点路径: Setting.ScrollContainer.BoxContainer4
         /// </summary>
-        public FullScreen4 L_FullScreen4
+        public BoxContainer4 L_BoxContainer4
         {
             get
             {
-                if (_L_FullScreen4 == null) _L_FullScreen4 = new FullScreen4(UiPanel, Instance.GetNode<Godot.HBoxContainer>("FullScreen4"));
-                return _L_FullScreen4;
+                if (_L_BoxContainer4 == null) _L_BoxContainer4 = new BoxContainer4(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer4"));
+                return _L_BoxContainer4;
             }
         }
-        private FullScreen4 _L_FullScreen4;
+        private BoxContainer4 _L_BoxContainer4;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.BoxContainer5
+        /// </summary>
+        public BoxContainer5 L_BoxContainer5
+        {
+            get
+            {
+                if (_L_BoxContainer5 == null) _L_BoxContainer5 = new BoxContainer5(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer5"));
+                return _L_BoxContainer5;
+            }
+        }
+        private BoxContainer5 _L_BoxContainer5;
 
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.Back
@@ -403,49 +469,54 @@ public abstract partial class Setting : UiBase
     public Title S_Title => L_ScrollContainer.L_SettingMenu.L_Title;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.Name
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer.FullScreen
     /// </summary>
-    public Name S_Name => L_ScrollContainer.L_SettingMenu.L_FullScreen.L_Name;
+    public FullScreen S_FullScreen => L_ScrollContainer.L_SettingMenu.L_BoxContainer.L_FullScreen;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen.CheckBox
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer
     /// </summary>
-    public CheckBox S_CheckBox => L_ScrollContainer.L_SettingMenu.L_FullScreen.L_CheckBox;
+    public BoxContainer S_BoxContainer => L_ScrollContainer.L_SettingMenu.L_BoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.PerfectPixel
     /// </summary>
-    public FullScreen S_FullScreen => L_ScrollContainer.L_SettingMenu.L_FullScreen;
+    public PerfectPixel S_PerfectPixel => L_ScrollContainer.L_SettingMenu.L_BoxContainer2.L_PerfectPixel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2.BGM
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer2
     /// </summary>
-    public BGM S_BGM => L_ScrollContainer.L_SettingMenu.L_FullScreen2.L_BGM;
+    public BoxContainer2 S_BoxContainer2 => L_ScrollContainer.L_SettingMenu.L_BoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen2
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer3.BGM
     /// </summary>
-    public FullScreen2 S_FullScreen2 => L_ScrollContainer.L_SettingMenu.L_FullScreen2;
+    public BGM S_BGM => L_ScrollContainer.L_SettingMenu.L_BoxContainer3.L_BGM;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3.SFX
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer3
     /// </summary>
-    public SFX S_SFX => L_ScrollContainer.L_SettingMenu.L_FullScreen3.L_SFX;
+    public BoxContainer3 S_BoxContainer3 => L_ScrollContainer.L_SettingMenu.L_BoxContainer3;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen3
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer4.SFX
     /// </summary>
-    public FullScreen3 S_FullScreen3 => L_ScrollContainer.L_SettingMenu.L_FullScreen3;
+    public SFX S_SFX => L_ScrollContainer.L_SettingMenu.L_BoxContainer4.L_SFX;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen4.FollowsMouseAmount
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer4
     /// </summary>
-    public FollowsMouseAmount S_FollowsMouseAmount => L_ScrollContainer.L_SettingMenu.L_FullScreen4.L_FollowsMouseAmount;
+    public BoxContainer4 S_BoxContainer4 => L_ScrollContainer.L_SettingMenu.L_BoxContainer4;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.FullScreen4
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer5.FollowsMouseAmount
     /// </summary>
-    public FullScreen4 S_FullScreen4 => L_ScrollContainer.L_SettingMenu.L_FullScreen4;
+    public FollowsMouseAmount S_FollowsMouseAmount => L_ScrollContainer.L_SettingMenu.L_BoxContainer5.L_FollowsMouseAmount;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer5
+    /// </summary>
+    public BoxContainer5 S_BoxContainer5 => L_ScrollContainer.L_SettingMenu.L_BoxContainer5;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Back
