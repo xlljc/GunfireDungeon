@@ -58,6 +58,10 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         var minimumSize = rect.CustomMinimumSize;
         minimumSize.X = CellNode.UiPanel.WeaponCellPartPosition.X + _partGrid.GridContainer.Size.X + CellNode.UiPanel.CellOffset.X * 2;
         rect.CustomMinimumSize = minimumSize;
+
+        var cellSize = new Vector2(minimumSize.X, _partGrid.GridContainer.Size.Y + 6f * GameApplication.Instance.PixelScale);
+        CellNode.Instance.CustomMinimumSize = cellSize;
+        CellNode.Instance.Size = cellSize;
     }
     
 }
