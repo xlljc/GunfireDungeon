@@ -35,11 +35,13 @@ public partial class EncyclopediaPanel : Encyclopedia
 
     public override void OnShowUi()
     {
+        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
         GameCamera.Main.LockCamera();
     }
     
     public override void OnHideUi()
     {
+        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
         GameCamera.Main.UnLockCamera();
     }
 

@@ -72,6 +72,16 @@ public partial class SettingPanel : Setting
         };
         //-----------------------------------------------------------
     }
+    
+    public override void OnShowUi()
+    {
+        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+    }
+
+    public override void OnHideUi()
+    {
+        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+    }
 
     public override void OnDestroyUi()
     {

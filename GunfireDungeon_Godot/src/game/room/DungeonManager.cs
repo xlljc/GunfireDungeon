@@ -230,6 +230,7 @@ public partial class DungeonManager : Node2D
             {
                 _prevUi.ShowUi();
             }
+            GameApplication.Instance.Cursor.RefreshCursor();
             if (finish != null)
             {
                 finish();
@@ -252,8 +253,6 @@ public partial class DungeonManager : Node2D
             if (InputManager.Menu)
             {
                 CurrWorld.Pause = true;
-                //鼠标改为Ui鼠标
-                GameApplication.Instance.Cursor.SetGuiMode(true);
                 //打开暂停Ui
                 UiManager.Open_Game_PauseMenu();
             }
@@ -280,8 +279,8 @@ public partial class DungeonManager : Node2D
     private IEnumerator RunLoadHallCoroutine(Action finish)
     {
         yield return 0;
-        
         var hall = (Hall)CreateNewWorld(Utils.Random, ResourcePath.scene_Hall_tscn);
+        IsInDungeon = true;
         yield return 0;
 
         //创建房间数据
@@ -342,11 +341,8 @@ public partial class DungeonManager : Node2D
         yield return 0;
         player.Collision.Disabled = false;
         
-        GameApplication.Instance.Cursor.SetGuiMode(false);
         yield return 0;
-        
-        IsInDungeon = true;
-
+        GameApplication.Instance.Cursor.RefreshCursor();
         if (finish != null)
         {
             finish();
@@ -390,11 +386,7 @@ public partial class DungeonManager : Node2D
         QueueRedraw();
         
         yield return 0;
-
-        //鼠标还原
-        GameApplication.Instance.Cursor.SetGuiMode(true);
-        yield return 0;
-        
+        GameApplication.Instance.Cursor.RefreshCursor();
         if (finish != null)
         {
             finish();
@@ -473,6 +465,7 @@ public partial class DungeonManager : Node2D
         {
             roomInfo.World = dungeon;
         }
+        IsInDungeon = true;
         yield return 0;
         var group = GameApplication.Instance.RoomConfig[CurrConfig.GroupName];
         var tileSetSplit = GameApplication.Instance.TileSetConfig[group.TileSet];
@@ -540,15 +533,14 @@ public partial class DungeonManager : Node2D
         player.Collision.Disabled = false;
         
         GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom;
-        GameApplication.Instance.Cursor.SetGuiMode(false);
         //派发进入地牢事件
         EventManager.EmitEvent(EventEnum.OnEnterDungeon);
         
-        IsInDungeon = true;
         QueueRedraw();
         yield return 0;
         
         CurrWorld.OnLoadSuccess();
+        GameApplication.Instance.Cursor.RefreshCursor();
         if (finish != null)
         {
             finish();
@@ -600,8 +592,6 @@ public partial class DungeonManager : Node2D
         LiquidBrushManager.ClearData();
         BrushImageData.ClearBrushData();
         QueueRedraw();
-        //鼠标还原
-        GameApplication.Instance.Cursor.SetGuiMode(true);
         //派发退出地牢事件
         EventManager.EmitEvent(EventEnum.OnExitDungeon);
         yield return 0;

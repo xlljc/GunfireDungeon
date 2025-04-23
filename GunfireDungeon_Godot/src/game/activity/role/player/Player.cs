@@ -346,7 +346,6 @@ public partial class Player : Role
             //暂停游戏
             World.Current.Pause = true;
             //弹出结算面板
-            GameApplication.Instance.Cursor.SetGuiMode(true);
             UiManager.Open_Game_Settlement();
         });
     }

@@ -19,7 +19,17 @@ public partial class SettlementPanel : Settlement
             S_ToMenu.Instance.Text = "返回编辑器";
         }
     }
-    
+
+    public override void OnShowUi()
+    {
+        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+    }
+
+    public override void OnHideUi()
+    {
+        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+    }
+
     //重新开始
     private void OnRestartClick()
     {

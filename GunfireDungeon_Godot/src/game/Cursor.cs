@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 /// <summary>
@@ -6,9 +7,9 @@ using Godot;
 public partial class Cursor : Node2D
 {
     /// <summary>
-    /// 是否是GUI模式
+    /// 是否是GUI模式，长度大于0表示Ui模式
     /// </summary>
-    private bool _isGuiMode = true;
+    private HashSet<ulong> _isGuiLayerIds = new HashSet<ulong>();
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -33,12 +34,12 @@ public partial class Cursor : Node2D
         lb = GetNode<Sprite2D>("LB");
         rt = GetNode<Sprite2D>("RT");
         rb = GetNode<Sprite2D>("RB");
-        SetGuiMode(true);
+        RefreshCursor();
     }
 
     public override void _Process(double delta)
     {
-        if (!_isGuiMode)
+        if (_isGuiLayerIds.Count <= 0)
         {
             var targetGun = _mountRole?.WeaponPack.ActiveItem;
             if (targetGun != null)
@@ -53,13 +54,29 @@ public partial class Cursor : Node2D
         }
     }
 
-    /// <summary>
-    /// 设置是否是Gui模式
-    /// </summary>
-    public void SetGuiMode(bool flag)
+    public void AddUiLayer(ulong id)
     {
-        _isGuiMode = flag;
-        if (flag) //手指
+        if (_isGuiLayerIds.Add(id))
+        {
+            RefreshCursor();
+        }
+    }
+    
+    public void RemoveUiLayer(ulong id)
+    {
+        if (_isGuiLayerIds.Remove(id))
+        {
+            RefreshCursor();
+        }
+    }
+
+    /// <summary>
+    /// 刷新鼠标指针
+    /// </summary>
+    public void RefreshCursor()
+    {
+        var uiFlag = _isGuiLayerIds.Count > 0 || !GameApplication.Instance.DungeonManager.IsInDungeon;
+        if (uiFlag) //手指
         {
             lt.Visible = false;
             lb.Visible = false;
@@ -75,14 +92,6 @@ public partial class Cursor : Node2D
             rb.Visible = true;
             Input.MouseMode = Input.MouseModeEnum.Hidden;
         }
-    }
-    
-    /// <summary>
-    /// 获取是否是Gui模式
-    /// </summary>
-    public bool GetGuiMode()
-    {
-        return _isGuiMode;
     }
     
     /// <summary>

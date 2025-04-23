@@ -1,7 +1,7 @@
 {
   "FullScreen": false,
-  "BgmVolume": 0.5,
-  "SfxVolume": 0.37,
-  "FollowsMouseAmount": 0.11,
-  "PerfectPixel": true
+  "BgmVolume": 0.46,
+  "SfxVolume": 0.53,
+  "FollowsMouseAmount": 0.08,
+  "PerfectPixel": false
 }
