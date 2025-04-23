@@ -183,7 +183,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
 
     //-------------------------------
     private MapEditor.TileMap _editorTileMap;
-    private EventFactory _eventFactory;
+    private EventFactory<EventEnum> _eventFactory;
     private Vector2I _cacheToolSizeData;
     
     public void SetUiNode(IUiNode uiNode)

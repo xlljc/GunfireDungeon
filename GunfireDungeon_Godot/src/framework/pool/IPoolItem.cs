@@ -1,4 +1,6 @@
 ﻿
+using DsUi;
+
 /// <summary>
 /// 可被对象池池回收的实例对象接口
 /// </summary>

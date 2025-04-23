@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dekdtxo18rhp0" path="res://src/game/ui/game/partPackUI/PartPackUIPanel.cs" id="1_req0c"]
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="2_oywjh"]
-[ext_resource type="PackedScene" uid="uid://lo71pmoaul0j" path="res://prefab/ui/component/game/PartPackItem.tscn" id="3_v4de6"]
+[ext_resource type="PackedScene" uid="uid://lo71pmoaul0j" path="res://prefab/ui/component/game/PartPackSlot.tscn" id="3_v4de6"]
 [ext_resource type="Shader" uid="uid://bukuvnjyi8ggb" path="res://resource/shader/Outline.gdshader" id="4_3klww"]
 [ext_resource type="Texture2D" uid="uid://7g1k5v212i6j" path="res://resource/sprite/weapon/weapon0005/Weapon0005.png" id="4_861nw"]
 [ext_resource type="FontFile" uid="uid://dd5aeidrx6qvu" path="res://resource/font/VonwaonBitmap-16px.ttf" id="5_pne8q"]

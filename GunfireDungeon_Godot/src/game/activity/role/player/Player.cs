@@ -67,6 +67,10 @@ public partial class Player : Role
         this.CallDelay(0.5f, () =>
         {
             PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
+            
+            PartProp.CreatePropActivity("0001").PutDown(Position, RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0001").PutDown(Position + new Vector2(20, 20), RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0002").PutDown(Position + new Vector2(40, 40), RoomLayerEnum.NormalLayer);
         });
     }
 

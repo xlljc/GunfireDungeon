@@ -79,6 +79,12 @@ public static partial class ExcelConfig
         public int Mana;
 
         /// <summary>
+        /// 配置参数
+        /// </summary>
+        [JsonInclude]
+        public Dictionary<string, string> Param;
+
+        /// <summary>
         /// 备注
         /// </summary>
         [JsonInclude]
@@ -100,6 +106,7 @@ public static partial class ExcelConfig
             inst.Icon = Icon;
             inst.Type = Type;
             inst.Mana = Mana;
+            inst.Param = Param;
             inst.Remark = Remark;
             return inst;
         }

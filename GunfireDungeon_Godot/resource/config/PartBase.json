@@ -10,6 +10,9 @@
     "Icon": "res://resource/sprite/prop/part/PartProp0001.png",
     "Type": 0,
     "Mana": 20,
+    "Param": {
+      "bullet": "0001"
+    },
     "Remark": ""
   },
   {
@@ -23,6 +26,9 @@
     "Icon": "res://resource/sprite/prop/part/PartProp0002.png",
     "Type": 0,
     "Mana": 30,
+    "Param": {
+      "bullet": "0007"
+    },
     "Remark": ""
   }
 ]

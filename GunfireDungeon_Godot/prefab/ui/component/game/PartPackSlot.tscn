@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="1_6v3ft"]
 [ext_resource type="Texture2D" uid="uid://bck7myadgwmuy" path="res://resource/sprite/prop/part/PartProp0001.png" id="2_vpdwa"]
 
-[node name="PartPackItem" type="NinePatchRect"]
+[node name="PartPackSlot" type="NinePatchRect"]
 custom_minimum_size = Vector2(80, 80)
 size_flags_horizontal = 0
+mouse_filter = 0
 texture = ExtResource("1_6v3ft")
 patch_margin_left = 4
 patch_margin_top = 4

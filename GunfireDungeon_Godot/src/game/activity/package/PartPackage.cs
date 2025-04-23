@@ -80,9 +80,11 @@ public class PartPackage : Component<Role>, IEnumerable
         var prev = _partPropPack[index];
         if (prev != null)
         {
-            prev.OnPickUpItem();
+            prev.OnRemoveItem();
             prev.Master = null;
         }
+
+        Remove(partProp);
 
         _partPropPack[index] = partProp;
         partProp.Master = Master;
@@ -112,6 +114,8 @@ public class PartPackage : Component<Role>, IEnumerable
         {
             return false;
         }
+
+        _partPropPack[index] = null;
         partProp.OnRemoveItem();
         partProp.Master = null;
         return true;

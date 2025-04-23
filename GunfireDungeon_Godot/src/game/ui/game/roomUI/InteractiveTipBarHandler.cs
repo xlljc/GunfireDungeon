@@ -10,7 +10,7 @@ namespace UI.game.RoomUI;
 public class InteractiveTipBarHandler
 {
     private RoomUI.InteractiveTipBar _interactiveTipBar;
-    private EventBinder _binder;
+    private EventBinder<EventEnum> _binder;
     private ActivityObject _interactiveTarget;
     
     public InteractiveTipBarHandler(RoomUI.InteractiveTipBar interactiveTipBar)

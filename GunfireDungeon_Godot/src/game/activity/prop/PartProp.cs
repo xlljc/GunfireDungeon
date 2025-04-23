@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using Godot;
 
@@ -25,6 +26,8 @@ public partial class PartProp : PropActivity
     //前置id
     private const string _prefixId = "partProp";
     private static bool _isInit = false;
+    
+    private static Dictionary<string, ExcelConfig.PartBase> _partBaseMap = new Dictionary<string, ExcelConfig.PartBase>();
     
     /// <summary>
     /// 初始化零件属性，并注册零件
@@ -55,6 +58,8 @@ public partial class PartProp : PropActivity
             
             ExcelConfig.ActivityBase_Map.Add(id, activityBase);
             ExcelConfig.ActivityBase_List.Add(activityBase);
+            
+            _partBaseMap.Add(id, partBase);
         }
     }
 
@@ -74,12 +79,18 @@ public partial class PartProp : PropActivity
         Icon = ResourceManager.LoadTexture2D(ActivityBase.Icon);
         spriteFrames.SetFrame(AnimatorNames.Default, 0, Icon);
 
-        PartBase = new BulletPart(this)
+        var partConfig = _partBaseMap[ActivityBase.Id];
+
+        if (partConfig.Type == PartType.Bullet)
         {
-            Mana = 12,
-            ScatteringAngle = 10,
-            Bullet = ExcelConfig.BulletBase_Map["0001"]
-        };
+            PartBase = new BulletPart(this)
+            {
+                Mana = partConfig.Mana,
+                ScatteringAngle = 10,
+                Bullet = ExcelConfig.BulletBase_Map[partConfig.Param["bullet"]]
+            };
+        }
+
     }
 
     public override void Interactive(ActivityObject master)

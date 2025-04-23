@@ -10,7 +10,7 @@ public class LifeBarHandler
 
     private RoomUI.LifeBar _bar;
     private UiGrid<RoomUI.Life, LifeIconEnum> _grid;
-    private EventFactory _eventFactory;
+    private EventFactory<EventEnum> _eventFactory;
     private bool _refreshHpFlag = false;
     private bool _refreshGoldFlag = false;
 

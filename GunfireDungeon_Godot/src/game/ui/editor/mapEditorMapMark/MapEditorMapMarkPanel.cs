@@ -56,7 +56,7 @@ public partial class MapEditorMapMarkPanel : MapEditorMapMark, IEditorTab
     
     //波数网格组件
     private UiGrid<WaveItem, List<MarkInfo>> _grid;
-    private EventFactory _eventFactory;
+    private EventFactory<EventEnum> _eventFactory;
 
     public override void OnCreateUi()
     {

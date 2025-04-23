@@ -13,7 +13,7 @@ namespace DsUi
     /// </summary>
     /// <typeparam name="TUiCellNode">Ui节点类型</typeparam>
     /// <typeparam name="TData">传给Cell的数据类型</typeparam>
-    public class UiGrid<TUiCellNode, TData> : IUiGrid where TUiCellNode : IUiCellNode
+    public partial class UiGrid<TUiCellNode, TData> : IUiGrid where TUiCellNode : IUiCellNode
     {
         /// <summary>
         /// 选中Cell的时的回调, 参数为 Cell 索引
@@ -83,6 +83,8 @@ namespace DsUi
         /// Godot 原生网格容器
         /// </summary>
         public GridContainer GridContainer { get; private set; }
+        
+        private List<IDestroy> _destroyList;
 
         //模板对象
         private TUiCellNode _template;
@@ -541,6 +543,16 @@ namespace DsUi
 
             IsDestroyed = true;
 
+            if (_destroyList != null)
+            {
+                foreach (var destroy in _destroyList)
+                {
+                    destroy.Destroy();
+                }
+
+                _destroyList = null;
+            }
+            
             for (var i = 0; i < _cellList.Count; i++)
             {
                 _cellList[i].Destroy();
@@ -555,6 +567,19 @@ namespace DsUi
             _cellPool = null;
             _template.GetUiInstance().QueueFree();
             GridContainer.QueueFree();
+        }
+
+        /// <summary>
+        /// 添加一个需要在 UiGrid 销毁时自动销毁的物体
+        /// </summary>
+        public void AddDestroyObject(IDestroy obj)
+        {
+            if (_destroyList == null)
+            {
+                _destroyList = new List<IDestroy>();
+            }
+            
+            _destroyList.Add(obj);
         }
 
         private void OnReady()

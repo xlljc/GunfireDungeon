@@ -1,4 +1,6 @@
 ﻿
+using DsUi;
+
 /// <summary>
 /// 可互动物体接口
 /// </summary>

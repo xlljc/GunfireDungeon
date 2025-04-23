@@ -21,7 +21,7 @@ public partial class MapEditorProjectPanel : MapEditorProject
     /// </summary>
     public UiGrid<RoomButton, DungeonRoomSplit> RoomGrid { get; private set; }
 
-    private EventFactory _eventFactory;
+    private EventFactory<EventEnum> _eventFactory;
 
     public override void OnCreateUi()
     {

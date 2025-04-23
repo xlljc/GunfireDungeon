@@ -1,6 +1,7 @@
 ﻿
 using System.Text.Json.Serialization;
 using Config;
+using DsUi;
 
 /// <summary>
 /// 房间中的自定义物体

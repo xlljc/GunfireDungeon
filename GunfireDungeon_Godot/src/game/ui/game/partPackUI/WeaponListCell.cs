@@ -5,6 +5,9 @@ using Godot;
 
 namespace UI.game.PartPackUI;
 
+/// <summary>
+/// 武器列表Cell
+/// </summary>
 public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
 {
     private UiGrid<PartPackUI.PartListItem, PartListCellData> _partListGrid;

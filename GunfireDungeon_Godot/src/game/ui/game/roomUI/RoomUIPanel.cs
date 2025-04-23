@@ -34,7 +34,7 @@ public partial class RoomUIPanel : RoomUI
     private ActivePropBarHandler _activePropBar;
     private LifeBarHandler _lifeBar;
     
-    private EventFactory _factory;
+    private EventFactory<EventEnum> _factory;
     
     public override void OnCreateUi()
     {

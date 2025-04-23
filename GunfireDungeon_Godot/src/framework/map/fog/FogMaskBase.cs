@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections;
+using DsUi;
 using Godot;
 
 public partial class FogMaskBase : PointLight2D, IDestroy

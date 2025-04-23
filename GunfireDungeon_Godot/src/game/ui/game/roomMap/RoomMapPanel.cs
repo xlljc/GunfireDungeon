@@ -12,7 +12,7 @@ namespace UI.game.RoomMap;
 /// </summary>
 public partial class RoomMapPanel : RoomMap
 {
-    private EventFactory _factory = EventManager.CreateEventFactory();
+    private EventFactory<EventEnum> _factory = EventManager.CreateEventFactory();
     //需要刷新的问号的房间队列
     private List<RoomDoorInfo> _needRefresh = new List<RoomDoorInfo>();
     //正在使用的敌人标记列表

@@ -5,6 +5,9 @@ using Godot;
 
 namespace UI.game.PartPackUI;
 
+/// <summary>
+/// 武器中可编辑零件列表Cell
+/// </summary>
 public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 {
     private UiGrid<PartPackUI.PartPackItem, PartProp> _partGrid;
@@ -16,6 +19,8 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         _partGrid.SetColumns(15);
         _partGrid.SetCellOffset(CellNode.UiPanel.CellOffset);
         _partGrid.GridContainer.Resized += OnResized;
+
+        _partGrid.EventPackage.AddEventListener(PartPackUIPanel.OnDropPartEventName, OnDropPart);
     }
 
     public override void Process(float delta)
@@ -30,7 +35,7 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
             }
             else //内容变化
             {
-                for (int i = 0; i < count; i++)
+                for (var i = 0; i < count; i++)
                 {
                     if (Data.PartList.GetLogicBlock(i) != _partGrid.GetData(i))
                     {
@@ -45,13 +50,8 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
     public void RefreshPartPack(PartList list)
     {
         var temp = new List<PartProp>();
-        var i = 0;
         foreach (PartProp o in list)
         {
-            if (i++>=1)
-            {
-                break;
-            }
             temp.Add(o);
         }
     
@@ -71,4 +71,20 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         CellNode.Instance.Size = cellSize;
     }
     
+    private void OnDropPart(object obj)
+    {
+        if (Data == null)
+        {
+            return;
+        }
+        var param = (DropPartData)obj;
+        if (param.Data == null)
+        {
+            Data.PartList.RemoveLogicBlock(param.Index);
+        }
+        else
+        {
+            Data.PartList.SetLogicBlock(param.Index, param.Data);
+        }
+    }
 }
