@@ -1,7 +1,7 @@
 [
   {
     "Id": "0001",
-    "Name": "\u5B50\u5F391",
+    "Name": "\u6B65\u67AA\u5B50\u5F39",
     "__ActivityTemplate": "part_comm0001",
     "Intro": "\u5B50\u5F391\u7B80\u4ECB",
     "Details": "\u5B50\u5F391\u8BE6\u60C5",
@@ -9,7 +9,7 @@
     "Price": 50,
     "Icon": "res://resource/sprite/prop/part/PartProp0001.png",
     "Type": 0,
-    "Mana": 20,
+    "BaseMana": 20,
     "Param": {
       "bullet": "0001"
     },
@@ -17,7 +17,7 @@
   },
   {
     "Id": "0002",
-    "Name": "\u5B50\u5F392",
+    "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "__ActivityTemplate": "part_comm0001",
     "Intro": "\u5B50\u5F392\u7B80\u4ECB",
     "Details": "\u5B50\u5F392\u8BE6\u60C5",
@@ -25,9 +25,41 @@
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp0002.png",
     "Type": 0,
-    "Mana": 30,
+    "BaseMana": 30,
     "Param": {
       "bullet": "0007"
+    },
+    "Remark": ""
+  },
+  {
+    "Id": "0003",
+    "Name": "\u6700\u7EC8\u91CA\u653E",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": "\u6700\u7EC8\u91CA\u653E\u7B80\u4ECB",
+    "Details": "\u6700\u7EC8\u91CA\u653E\u8BE6\u60C5",
+    "Quality": 1,
+    "Price": 60,
+    "Icon": "res://resource/sprite/prop/part/PartProp0003.png",
+    "Type": 1,
+    "BaseMana": 10,
+    "Param": {
+      "type": "FinishPlayBuffPart"
+    },
+    "Remark": ""
+  },
+  {
+    "Id": "0004",
+    "Name": "\u6700\u7EC8\u91CA\u653E",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": "\u53CC\u91CD\u65BD\u653E",
+    "Details": "\u53CC\u91CD\u65BD\u653E\u8BE6\u60C5",
+    "Quality": 1,
+    "Price": 60,
+    "Icon": "res://resource/sprite/prop/part/PartProp0004.png",
+    "Type": 1,
+    "BaseMana": 10,
+    "Param": {
+      "type": "MergePlayBuffPart"
     },
     "Remark": ""
   }

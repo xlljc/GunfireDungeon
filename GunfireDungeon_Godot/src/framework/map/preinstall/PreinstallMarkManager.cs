@@ -63,11 +63,16 @@ public static class PreinstallMarkManager
         _init = true;
         foreach (var activityBase in ExcelConfig.ActivityBase_List)
         {
-            var type = (ActivityType)activityBase.Type;
+            var type = activityBase.Type;
             if (!_cache.TryGetValue(type, out var list))
             {
                 list = new List<ExcelConfig.ActivityBase>();
                 _cache.Add(type, list);
+            }
+
+            if (activityBase.NotInRandomPool)
+            {
+                continue;
             }
             list.Add(activityBase);
         }

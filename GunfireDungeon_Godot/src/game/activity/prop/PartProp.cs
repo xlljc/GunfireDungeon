@@ -83,14 +83,44 @@ public partial class PartProp : PropActivity
 
         if (partConfig.Type == PartType.Bullet)
         {
-            PartBase = new BulletPart(this)
-            {
-                Mana = partConfig.Mana,
-                ScatteringAngle = 10,
-                Bullet = ExcelConfig.BulletBase_Map[partConfig.Param["bullet"]]
-            };
+            PartBase = OnInitBullet(partConfig);
+        }
+        else if (partConfig.Type == PartType.Buff)
+        {
+            PartBase = OnInitBuff(partConfig);
+        }
+    }
+    
+    public PartBase OnInitBullet(ExcelConfig.PartBase partConfig)
+    {
+        var bulletId = partConfig.Param["bullet"].GetString();
+        var bullet = new BulletPart(this);
+        bullet.Mana = partConfig.BaseMana;
+        bullet.ScatteringAngle = 10;
+        bullet.Bullet = ExcelConfig.BulletBase_Map[bulletId];
+        return bullet;
+    }
+
+    public PartBase OnInitBuff(ExcelConfig.PartBase partConfig)
+    {
+        var type = partConfig.Param["type"].GetString();
+        if (type == "FinishPlayBuffPart")
+        {
+            var part = new FinishPlayBuffPart(this);
+            part.Mana = partConfig.BaseMana;
+            part.BehindMaxMana = 60;
+            part.Occupancy = 2;
+            return part;
+        }
+        else if (type == "MergePlayBuffPart")
+        {
+            var part = new MergePlayBuffPart(this);
+            part.Mana = partConfig.BaseMana;
+            part.Occupancy = 2;
+            return part;
         }
 
+        return null;
     }
 
     public override void Interactive(ActivityObject master)
@@ -116,7 +146,7 @@ public partial class PartProp : PropActivity
     /// </summary>
     public void OnOverflowItem()
     {
-        
+        Master.ThrowPartProp(this);
     }
 
     public override void OnPickUpItem()

@@ -71,6 +71,10 @@ public partial class Player : Role
             PartProp.CreatePropActivity("0001").PutDown(Position, RoomLayerEnum.NormalLayer);
             PartProp.CreatePropActivity("0001").PutDown(Position + new Vector2(20, 20), RoomLayerEnum.NormalLayer);
             PartProp.CreatePropActivity("0002").PutDown(Position + new Vector2(40, 40), RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0003").PutDown(Position + new Vector2(60, 60), RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0003").PutDown(Position + new Vector2(70, 70), RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0004").PutDown(Position + new Vector2(80, 80), RoomLayerEnum.NormalLayer);
+            PartProp.CreatePropActivity("0004").PutDown(Position + new Vector2(90, 90), RoomLayerEnum.NormalLayer);
         });
     }
 

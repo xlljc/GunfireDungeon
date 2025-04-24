@@ -73,16 +73,16 @@ public static partial class ExcelConfig
         public PartType Type;
 
         /// <summary>
-        /// 消耗法力值
+        /// 基础消耗法力值
         /// </summary>
         [JsonInclude]
-        public int Mana;
+        public int BaseMana;
 
         /// <summary>
         /// 配置参数
         /// </summary>
         [JsonInclude]
-        public Dictionary<string, string> Param;
+        public Dictionary<string, System.Text.Json.JsonElement> Param;
 
         /// <summary>
         /// 备注
@@ -105,7 +105,7 @@ public static partial class ExcelConfig
             inst.Price = Price;
             inst.Icon = Icon;
             inst.Type = Type;
-            inst.Mana = Mana;
+            inst.BaseMana = BaseMana;
             inst.Param = Param;
             inst.Remark = Remark;
             return inst;

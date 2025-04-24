@@ -51,6 +51,7 @@ public class ResourcePath
     public const string prefab_map_RoomDoor_N_tscn = "res://prefab/map/RoomDoor_N.tscn";
     public const string prefab_map_RoomDoor_S_tscn = "res://prefab/map/RoomDoor_S.tscn";
     public const string prefab_map_RoomDoor_W_tscn = "res://prefab/map/RoomDoor_W.tscn";
+    public const string prefab_part_PartProp_tscn = "res://prefab/part/PartProp.tscn";
     public const string prefab_prop_ActiveProp_tscn = "res://prefab/prop/ActiveProp.tscn";
     public const string prefab_prop_BuffProp_tscn = "res://prefab/prop/BuffProp.tscn";
     public const string prefab_prop_PropTemplate_tscn = "res://prefab/prop/PropTemplate.tscn";
@@ -66,6 +67,7 @@ public class ResourcePath
     public const string prefab_shell_Shell0002_tscn = "res://prefab/shell/Shell0002.tscn";
     public const string prefab_shell_Shell0003_tscn = "res://prefab/shell/Shell0003.tscn";
     public const string prefab_shell_Shell0004_tscn = "res://prefab/shell/Shell0004.tscn";
+    public const string prefab_ui_component_game_PartPackSlot_tscn = "res://prefab/ui/component/game/PartPackSlot.tscn";
     public const string prefab_ui_component_game_ProgressBar_tscn = "res://prefab/ui/component/game/ProgressBar.tscn";
     public const string prefab_ui_debug_Debugger_tscn = "res://prefab/ui/debug/Debugger.tscn";
     public const string prefab_ui_develop_EditorTools_tscn = "res://prefab/ui/develop/EditorTools.tscn";
@@ -100,6 +102,7 @@ public class ResourcePath
     public const string prefab_ui_game_Encyclopedia_tscn = "res://prefab/ui/game/Encyclopedia.tscn";
     public const string prefab_ui_game_Loading_tscn = "res://prefab/ui/game/Loading.tscn";
     public const string prefab_ui_game_Main_tscn = "res://prefab/ui/game/Main.tscn";
+    public const string prefab_ui_game_PartPackUI_tscn = "res://prefab/ui/game/PartPackUI.tscn";
     public const string prefab_ui_game_PauseMenu_tscn = "res://prefab/ui/game/PauseMenu.tscn";
     public const string prefab_ui_game_RoomMap_tscn = "res://prefab/ui/game/RoomMap.tscn";
     public const string prefab_ui_game_RoomUI_tscn = "res://prefab/ui/game/RoomUI.tscn";
@@ -131,6 +134,7 @@ public class ResourcePath
     public const string resource_config_EditorObject_json = "res://resource/config/EditorObject.json";
     public const string resource_config_EnemyBase_json = "res://resource/config/EnemyBase.json";
     public const string resource_config_LiquidMaterial_json = "res://resource/config/LiquidMaterial.json";
+    public const string resource_config_PartBase_json = "res://resource/config/PartBase.json";
     public const string resource_config_Sound_json = "res://resource/config/Sound.json";
     public const string resource_config_WeaponBase_json = "res://resource/config/WeaponBase.json";
     public const string resource_curve_Curve1_tres = "res://resource/curve/Curve1.tres";
@@ -307,6 +311,10 @@ public class ResourcePath
     public const string resource_sprite_prop_buff_BuffProp0012_png = "res://resource/sprite/prop/buff/BuffProp0012.png";
     public const string resource_sprite_prop_buff_BuffProp0013_png = "res://resource/sprite/prop/buff/BuffProp0013.png";
     public const string resource_sprite_prop_buff_BuffProp0014_png = "res://resource/sprite/prop/buff/BuffProp0014.png";
+    public const string resource_sprite_prop_part_PartProp0001_png = "res://resource/sprite/prop/part/PartProp0001.png";
+    public const string resource_sprite_prop_part_PartProp0002_png = "res://resource/sprite/prop/part/PartProp0002.png";
+    public const string resource_sprite_prop_part_PartProp0003_png = "res://resource/sprite/prop/part/PartProp0003.png";
+    public const string resource_sprite_prop_part_PartProp0004_png = "res://resource/sprite/prop/part/PartProp0004.png";
     public const string resource_sprite_role_role10_png = "res://resource/sprite/role/role10.png";
     public const string resource_sprite_role_role7_png = "res://resource/sprite/role/role7.png";
     public const string resource_sprite_role_role8_png = "res://resource/sprite/role/role8.png";

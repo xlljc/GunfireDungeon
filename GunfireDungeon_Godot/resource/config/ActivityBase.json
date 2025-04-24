@@ -11,6 +11,7 @@
     "__Material": "",
     "Prefab": "res://prefab/role/Role0001.tscn",
     "Icon": "res://resource/sprite/role/role0001/Role0001_Icon.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -25,6 +26,7 @@
     "__Material": "",
     "Prefab": "res://prefab/role/enemy/Enemy0001.tscn",
     "Icon": "res://resource/sprite/role/enemy0001/enemy0001_Icon.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": true
   },
   {
@@ -39,6 +41,7 @@
     "__Material": "",
     "Prefab": "res://prefab/role/boss/Boss0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": true
   },
   {
@@ -53,6 +56,7 @@
     "__Material": "",
     "Prefab": "res://prefab/role/shopBoss/ShopBoss0001.tscn",
     "Icon": "res://resource/sprite/role/shopBoss0001/ShopBoss0001.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": true
   },
   {
@@ -67,6 +71,7 @@
     "__Material": "",
     "Prefab": "res://prefab/weapon/Weapon0003.tscn",
     "Icon": "res://resource/sprite/weapon/weapon0003/Weapon0003.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": true
   },
   {
@@ -81,6 +86,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -95,6 +101,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0002.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -109,6 +116,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0003.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -123,6 +131,7 @@
     "__Material": "0005",
     "Prefab": "res://prefab/bullet/normal/Bullet0004.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -137,6 +146,7 @@
     "__Material": "0004",
     "Prefab": "res://prefab/bullet/normal/Bullet0005.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -151,6 +161,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0006.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -165,6 +176,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0007.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -179,6 +191,7 @@
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0008.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -193,6 +206,7 @@
     "__Material": "",
     "Prefab": "res://prefab/bullet/normal/Bullet0009.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -207,6 +221,7 @@
     "__Material": "",
     "Prefab": "res://prefab/bullet/summons/Summons0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -221,6 +236,7 @@
     "__Material": "",
     "Prefab": "res://prefab/bullet/special/SpecialBullet0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -235,6 +251,7 @@
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -249,6 +266,7 @@
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0002.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -263,6 +281,7 @@
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0003.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -277,6 +296,7 @@
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0004.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -291,6 +311,7 @@
     "__Material": "",
     "Prefab": "res://prefab/effect/enemy/EnemyDead0001.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -305,6 +326,7 @@
     "__Material": "",
     "Prefab": "res://prefab/effect/enemy/EnemyDead0002.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -319,6 +341,7 @@
     "__Material": "",
     "Prefab": "res://prefab/part/PartProp.tscn",
     "Icon": "",
+    "NotInRandomPool": true,
     "ShowInMapEditor": false
   },
   {
@@ -333,6 +356,7 @@
     "__Material": "",
     "Prefab": "res://prefab/box/TreasureBox0001.tscn",
     "Icon": "res://resource/sprite/box/TreasureBox0001.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": true
   },
   {
@@ -347,6 +371,7 @@
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_E.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -361,6 +386,7 @@
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_W.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -375,6 +401,7 @@
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_S.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -389,6 +416,7 @@
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_N.tscn",
     "Icon": "",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -403,6 +431,7 @@
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold10.tscn",
     "Icon": "res://resource/sprite/ui/commonIcon/Gold_10.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -417,6 +446,7 @@
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold5.tscn",
     "Icon": "res://resource/sprite/ui/commonIcon/Gold_5.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   },
   {
@@ -431,6 +461,7 @@
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold1.tscn",
     "Icon": "res://resource/sprite/ui/commonIcon/Gold_1.png",
+    "NotInRandomPool": false,
     "ShowInMapEditor": false
   }
 ]

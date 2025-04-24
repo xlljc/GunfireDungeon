@@ -371,7 +371,7 @@ public partial class Bullet : ActivityObject, IBullet
 
     public Vector2 GetEndPosition()
     {
-        return Position;
+        return AnimatedSprite.GlobalPosition;
     }
 
     public virtual void OnReclaim()

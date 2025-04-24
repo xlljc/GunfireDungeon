@@ -27,10 +27,14 @@ public class PartList : IEnumerable
     }
 
     /// <summary>
-    /// 为指定索引设置零件
+    /// 为指定索引设置零件，并返回原位置零件
     /// </summary>
     public PartProp SetLogicBlock(int index, PartProp part)
     {
+        if (part == null)
+        {
+            return null;
+        }
         if (index >= 0 && index < _logicBlocks.Length)
         {
             part.PartBase.PartList = this;
@@ -66,13 +70,17 @@ public class PartList : IEnumerable
     }
 
     /// <summary>
-    /// 移除指定位置零件
+    /// 移除指定位置零件并返回
     /// </summary>
     public PartProp RemoveLogicBlock(int index)
     {
         if (index >= 0 && index < _logicBlocks.Length)
         {
             var logicBlock = _logicBlocks[index];
+            if (logicBlock == null)
+            {
+                return null;
+            }
             logicBlock.PartBase.Index = -1;
             logicBlock.Weapon = null;
             _logicBlocks[index] = null;
@@ -137,6 +145,12 @@ public class PartList : IEnumerable
         if (logicBlock != null)
         {
             EachTree(logicBlock);
+        }
+
+        var block = GetFirstLogicBlock();
+        if (block != null && block.PartBase != null)
+        {
+            Debug.Log("刷新零件逻辑树：\n" + block.PartBase.GetTreeString());
         }
     }
 

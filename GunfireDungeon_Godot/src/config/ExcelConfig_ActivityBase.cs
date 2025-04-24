@@ -96,6 +96,12 @@ public static partial class ExcelConfig
         public string Icon;
 
         /// <summary>
+        /// 不在随机池中出现，仅对敌人，武器，道具生效
+        /// </summary>
+        [JsonInclude]
+        public bool NotInRandomPool;
+
+        /// <summary>
         /// 是否在地图编辑器中显示该物体 <br/>
         /// 仅对角色, 武器, 道具, 敌人和Boss类型对物体有效
         /// </summary>
@@ -119,6 +125,7 @@ public static partial class ExcelConfig
             inst.Material = Material;
             inst.Prefab = Prefab;
             inst.Icon = Icon;
+            inst.NotInRandomPool = NotInRandomPool;
             inst.ShowInMapEditor = ShowInMapEditor;
             return inst;
         }

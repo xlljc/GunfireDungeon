@@ -11,9 +11,14 @@ namespace UI.game.PartPackUI;
 public partial class PartPackUIPanel : PartPackUI
 {
     /// <summary>
-    /// 拖拽零件事件，参数类型：<see cref="DropPartData"/>
+    /// 放置零件事件，参数类型：<see cref="DropPartData"/>
     /// </summary>
-    public const string OnDropPartEventName = "OnDropPart";
+    public const string OnPutPartEventName = "OnPutPart";
+    
+    /// <summary>
+    /// 移除零件事件，参数类型：<see cref="int"/>
+    /// </summary>
+    public const string OnRemovePartEventName = "OnRemovePart";
     
     public RoomUIPanel RoomUiPanel;
     
@@ -47,14 +52,15 @@ public partial class PartPackUIPanel : PartPackUI
         PartPackGrid = CreateUiGrid<PartPackItem, PartProp, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
         PartPackGrid.SetCellOffset(CellOffset);
-        PartPackGrid.EventPackage.AddEventListener(OnDropPartEventName, OnDropPart);
+        PartPackGrid.EventPackage.AddEventListener(OnPutPartEventName, OnPutPart);
+        PartPackGrid.EventPackage.AddEventListener(OnRemovePartEventName, OnRemovePart);
 
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
         WeaponListGrid.SetCellOffset(new Vector2I(0, 16));
     }
 
-    private void OnDropPart(object obj)
+    private void OnPutPart(object obj)
     {
         var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
         if (player == null)
@@ -63,14 +69,18 @@ public partial class PartPackUIPanel : PartPackUI
         }
 
         var param = (DropPartData)obj;
-        if (param.Data == null)
+        player.PartPropPack.Set(param.Index, param.Data);
+    }
+    
+    private void OnRemovePart(object obj)
+    {
+        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        if (player == null)
         {
-            player.PartPropPack.Remove(param.Index);
+            return;
         }
-        else
-        {
-            player.PartPropPack.Set(param.Index, param.Data);
-        }
+        
+        player.PartPropPack.Remove((int)obj);
     }
 
     public override void OnShowUi()

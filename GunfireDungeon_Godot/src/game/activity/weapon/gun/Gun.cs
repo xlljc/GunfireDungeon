@@ -11,7 +11,9 @@ public partial class Gun : Weapon
     {
         base.OnInit();
 
-        FirePartList.SetLogicBlock(0, PartProp.CreatePropActivity("0001"));
+        FirePartList.SetLogicBlock(0, PartProp.CreatePropActivity("0003"));
+        FirePartList.SetLogicBlock(1, PartProp.CreatePropActivity("0001"));
+        FirePartList.SetLogicBlock(2, PartProp.CreatePropActivity("0002"));
         // FirePartList.SetLogicBlock(0, new FinishPlayBuffPart()
         // {
         //     Mana = 50,

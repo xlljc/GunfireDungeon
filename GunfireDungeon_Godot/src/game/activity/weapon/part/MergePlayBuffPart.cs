@@ -6,7 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class MergePlayBuffPart : BuffPart
 {
-    
     public MergePlayBuffPart(PartProp prop) : base(prop)
     {
     }

@@ -77,9 +77,19 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
         var targetIndex = dic["Index"].AsInt32();
         var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dic["UiGrid"].As<GodotRefValue>().Value;
         var targetData = targetGrid.GetData(targetIndex);
-        
-        Grid.EventPackage.EmitEvent(PartPackUIPanel.OnDropPartEventName, new DropPartData(Index, targetData));
-        targetGrid.EventPackage.EmitEvent(PartPackUIPanel.OnDropPartEventName, new DropPartData(targetIndex, Data));
+
+        Grid.EventPackage.EmitEvent(PartPackUIPanel.OnRemovePartEventName, Index);
+        targetGrid.EventPackage.EmitEvent(PartPackUIPanel.OnRemovePartEventName, targetIndex);
+
+        if (targetData != null)
+        {
+            Grid.EventPackage.EmitEvent(PartPackUIPanel.OnPutPartEventName, new DropPartData(Index, targetData));
+        }
+
+        if (Data != null)
+        {
+            targetGrid.EventPackage.EmitEvent(PartPackUIPanel.OnPutPartEventName, new DropPartData(targetIndex, Data));
+        }
     }
-    
+
 }
