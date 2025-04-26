@@ -21,7 +21,7 @@ public partial class PartProp : PropActivity
     /// <summary>
     /// 零件处理逻辑
     /// </summary>
-    public PartBase PartBase { get; private set; }
+    public PartLogicBase PartLogicBase { get; private set; }
     
     //前置id
     private const string _prefixId = "partProp";
@@ -83,15 +83,15 @@ public partial class PartProp : PropActivity
 
         if (partConfig.Type == PartType.Bullet)
         {
-            PartBase = OnInitBullet(partConfig);
+            PartLogicBase = OnInitBullet(partConfig);
         }
         else if (partConfig.Type == PartType.Buff)
         {
-            PartBase = OnInitBuff(partConfig);
+            PartLogicBase = OnInitBuff(partConfig);
         }
     }
     
-    public PartBase OnInitBullet(ExcelConfig.PartBase partConfig)
+    public PartLogicBase OnInitBullet(ExcelConfig.PartBase partConfig)
     {
         var bulletId = partConfig.Param["bullet"].GetString();
         var bullet = new BulletPart(this);
@@ -101,7 +101,7 @@ public partial class PartProp : PropActivity
         return bullet;
     }
 
-    public PartBase OnInitBuff(ExcelConfig.PartBase partConfig)
+    public PartLogicBase OnInitBuff(ExcelConfig.PartBase partConfig)
     {
         var type = partConfig.Param["type"].GetString();
         if (type == "FinishPlayBuffPart")

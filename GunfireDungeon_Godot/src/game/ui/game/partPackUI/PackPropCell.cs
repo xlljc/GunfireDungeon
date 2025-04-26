@@ -18,6 +18,9 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
             Callable.From(new Func<Vector2, Variant, bool>(_CanDropData)),
             Callable.From(new Action<Vector2, Variant>(_DropData))
         );
+
+        CellNode.Instance.MouseEntered += OnFocusEntered;
+        CellNode.Instance.MouseExited += OnFocusExited;
     }
     
     public override void OnSetData(PartProp data)
@@ -31,6 +34,24 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
         {
             CellNode.L_PartIcon.Instance.Visible = false;
         }
+    }
+
+    public void OnFocusEntered()
+    {
+        if (Data == null)
+        {
+            return;
+        }
+        CommonUiManager.ShowPartTips(Data);
+    }
+
+    public void OnFocusExited()
+    {
+        if (Data == null)
+        {
+            return;
+        }
+        CommonUiManager.HidePartTips();
     }
     
     private Variant _GetDragData(Vector2 atPosition)

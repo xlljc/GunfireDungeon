@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg7bir6i0n7l"]
+[gd_scene load_steps=4 format=3 uid="uid://dg7bir6i0n7l"]
 
 [ext_resource type="Script" uid="uid://xoepr45cf6ns" path="res://src/game/ui/game/partTips/PartTipsPanel.cs" id="1_ifm13"]
+[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="2_ybf2x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybf2x"]
+texture = ExtResource("2_ybf2x")
 
 [node name="PartTips" type="Control"]
 layout_mode = 3
@@ -12,3 +16,27 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ifm13")
 Layer = 3
+
+[node name="PanelRoot" type="PanelContainer" parent="."]
+self_modulate = Color(0.188696, 0.188696, 0.188696, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ybf2x")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelRoot"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Text" type="RichTextLabel" parent="PanelRoot/MarginContainer"]
+modulate = Color(0.771304, 0.771304, 0.771304, 1)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0

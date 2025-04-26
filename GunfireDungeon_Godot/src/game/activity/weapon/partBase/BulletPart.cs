@@ -5,7 +5,7 @@ using Godot;
 /// <summary>
 /// 子弹零件
 /// </summary>
-public class BulletPart : PartBase
+public class BulletPart : PartLogicBase
 {
     /// <summary>
     /// 逻辑块消耗法力值

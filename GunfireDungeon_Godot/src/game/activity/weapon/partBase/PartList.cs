@@ -37,14 +37,14 @@ public class PartList : IEnumerable
         }
         if (index >= 0 && index < _logicBlocks.Length)
         {
-            part.PartBase.PartList = this;
+            part.PartLogicBase.PartList = this;
             part.Weapon = Weapon;
-            part.PartBase.Index = index;
+            part.PartLogicBase.Index = index;
 
             var prev = _logicBlocks[index];
             if (prev != null)
             {
-                part.PartBase.Index = -1;
+                part.PartLogicBase.Index = -1;
                 part.Weapon = null;
             }
 
@@ -81,7 +81,7 @@ public class PartList : IEnumerable
             {
                 return null;
             }
-            logicBlock.PartBase.Index = -1;
+            logicBlock.PartLogicBase.Index = -1;
             logicBlock.Weapon = null;
             _logicBlocks[index] = null;
             _dirty = true;
@@ -121,7 +121,7 @@ public class PartList : IEnumerable
         var first = GetFirstLogicBlock();
         if (first != null)
         {
-            first.PartBase.Execute(result);
+            first.PartLogicBase.Execute(result);
         }
 
         return result;
@@ -136,8 +136,8 @@ public class PartList : IEnumerable
         {
             if (logic != null)
             {
-                logic.PartBase.Children = new PartBase[logic.PartBase.Occupancy];
-                logic.PartBase.Parent = null;
+                logic.PartLogicBase.Children = new PartLogicBase[logic.PartLogicBase.Occupancy];
+                logic.PartLogicBase.Parent = null;
             }
         }
 
@@ -148,32 +148,32 @@ public class PartList : IEnumerable
         }
 
         var block = GetFirstLogicBlock();
-        if (block != null && block.PartBase != null)
+        if (block != null && block.PartLogicBase != null)
         {
-            Debug.Log("刷新零件逻辑树：\n" + block.PartBase.GetTreeString());
+            Debug.Log("刷新零件逻辑树：\n" + block.PartLogicBase.GetTreeString());
         }
     }
 
     private int EachTree(PartProp part)
     {
-        if (part.PartBase.Occupancy <= 0)
+        if (part.PartLogicBase.Occupancy <= 0)
         {
             return 0;
         }
 
         var v = 0;
-        for (var i = 1; i <= part.PartBase.Occupancy; i++)
+        for (var i = 1; i <= part.PartLogicBase.Occupancy; i++)
         {
-            var next = GetLogicBlock(part.PartBase.Index + i + v);
+            var next = GetLogicBlock(part.PartLogicBase.Index + i + v);
             if (next != null)
             {
                 v += EachTree(next);
-                next.PartBase.Parent = part.PartBase;
-                part.PartBase.Children[i - 1] = next.PartBase;
+                next.PartLogicBase.Parent = part.PartLogicBase;
+                part.PartLogicBase.Children[i - 1] = next.PartLogicBase;
             }
         }
 
-        return part.PartBase.Occupancy;
+        return part.PartLogicBase.Occupancy;
     }
 
     public IEnumerator GetEnumerator()

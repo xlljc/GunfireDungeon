@@ -2,7 +2,7 @@
 /// <summary>
 /// 子弹增益零件
 /// </summary>
-public abstract class BuffPart : PartBase
+public abstract class BuffPart : PartLogicBase
 {
     /// <summary>
     /// 零件消耗法力值

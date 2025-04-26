@@ -4,7 +4,7 @@ using System.Collections.Generic;
 /// <summary>
 /// 武器零件基类
 /// </summary>
-public abstract class PartBase
+public abstract class PartLogicBase
 {
     /// <summary>
     /// 零件类型
@@ -21,6 +21,9 @@ public abstract class PartBase
     /// </summary>
     public Weapon Weapon => PartProp?.Weapon;
     
+    /// <summary>
+    /// 所属零件对象
+    /// </summary>
     public PartProp PartProp { get; }
 
     /// <summary>
@@ -36,14 +39,14 @@ public abstract class PartBase
     /// <summary>
     /// 父零件，这个是由 PartList 控制的
     /// </summary>
-    public PartBase Parent { get; set; }
+    public PartLogicBase Parent { get; set; }
     
     /// <summary>
     /// 子零件列表，这个是由 PartList 控制的，长度与 Occupancy 一致
     /// </summary>
-    public PartBase[] Children { get; set; }
+    public PartLogicBase[] Children { get; set; }
 
-    public PartBase(PartProp prop, PartType partType)
+    public PartLogicBase(PartProp prop, PartType partType)
     {
         PartProp = prop;
         PartType = partType;
