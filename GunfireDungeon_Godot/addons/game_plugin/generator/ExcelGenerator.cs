@@ -130,7 +130,7 @@ public static class ExcelGenerator
     private static void GeneratorActivityObjectInit()
     {
         var text = File.ReadAllText($"resource/config/{nameof(ExcelConfig.ActivityBase)}.json");
-        var array = JsonSerializer.Deserialize<System.Collections.Generic.Dictionary<string, object>[]>(text);
+        var array = JsonSerializer.Deserialize<System.Collections.Generic.Dictionary<string, JsonElement>[]>(text);
         
         var code1 = "";
 
@@ -138,10 +138,8 @@ public static class ExcelGenerator
         {
             var id = item["Id"];
             var name = item["Name"] + "";
-            var intro = item["Intro"] + "";
             code1 += $"        /// <summary>\n";
             code1 += $"        /// 名称: {name} <br/>\n";
-            code1 += $"        /// 简介: {intro.Replace("\n", " <br/>\n        /// ")}\n";
             code1 += $"        /// </summary>\n";
             code1 += $"        public const string Id_{id} = \"{id}\";\n";
         }

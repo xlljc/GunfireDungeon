@@ -3,8 +3,12 @@
     "Id": "0001",
     "Name": "\u6B65\u67AA\u5B50\u5F39",
     "__ActivityTemplate": "part_comm0001",
-    "Intro": "\u666E\u901A\u5B50\u5F39",
-    "Details": "\u5B50\u5F391\u8BE6\u60C5",
+    "Intro": {
+      "Code": "\u666E\u901A[color=#7bc1d5]\u5B50\u5F39[/color]"
+    },
+    "Details": {
+      "Code": "\u5B50\u5F391\u8BE6\u60C5"
+    },
     "Quality": 1,
     "Price": 50,
     "Icon": "res://resource/sprite/prop/part/PartProp0001.png",
@@ -19,8 +23,12 @@
     "Id": "0002",
     "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "__ActivityTemplate": "part_comm0001",
-    "Intro": "\u7A7F\u900F\u5B50\u5F39",
-    "Details": "\u5B50\u5F392\u8BE6\u60C5",
+    "Intro": {
+      "Code": "\u7A7F\u900F[color=#7bc1d5]\u5B50\u5F39[/color]"
+    },
+    "Details": {
+      "Code": "\u5B50\u5F392\u8BE6\u60C5"
+    },
     "Quality": 2,
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp0002.png",
@@ -35,8 +43,12 @@
     "Id": "0003",
     "Name": "\u9500\u6BC1\u65BD\u653E",
     "__ActivityTemplate": "part_comm0001",
-    "Intro": "\u5728[color=#9fc366]\u5F39\u4E38A[/color]\u9500\u6BC1\u65F6\u6267\u884C[color=#9fc366]\u5F39\u4E38B[/color]",
-    "Details": "\u6700\u7EC8\u91CA\u653E\u8BE6\u60C5",
+    "Intro": {
+      "Code": "\u5728[color=#9fc366]\u5F39\u4E38A[/color]\u9500\u6BC1\u65F6\u6267\u884C[color=#9fc366]\u5F39\u4E38B[/color]"
+    },
+    "Details": {
+      "Code": "\u6700\u7EC8\u91CA\u653E\u8BE6\u60C5"
+    },
     "Quality": 1,
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp0003.png",
@@ -51,8 +63,12 @@
     "Id": "0004",
     "Name": "\u53CC\u91CD\u65BD\u653E",
     "__ActivityTemplate": "part_comm0001",
-    "Intro": "\u540C\u65F6\u6267\u884C\u540E\u9762\u7684\u4E24\u4E2A\u96F6\u4EF6",
-    "Details": "\u53CC\u91CD\u65BD\u653E\u8BE6\u60C5",
+    "Intro": {
+      "Code": "\u540C\u65F6\u6267\u884C\u540E\u9762\u7684\u4E24\u4E2A[color=#ecb464]\u96F6\u4EF6[/color]"
+    },
+    "Details": {
+      "Code": "\u53CC\u91CD\u65BD\u653E\u8BE6\u60C5"
+    },
     "Quality": 1,
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp0004.png",

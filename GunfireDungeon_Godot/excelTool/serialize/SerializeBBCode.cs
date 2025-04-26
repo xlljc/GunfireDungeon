@@ -6,7 +6,8 @@ using Aspose.Cells;
 /// <summary>
 /// 富文本类型
 /// </summary>
-public class BBCode : ICustomFormat
+[CustomName("BBCode")]
+public class SerializeBBCode : ICustomFormat
 {
     [JsonInclude]
     public string Code { get; private set; }

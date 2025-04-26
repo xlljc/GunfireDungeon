@@ -6,6 +6,9 @@ using DsUi;
 
 namespace UI.game.Encyclopedia;
 
+/// <summary>
+/// 图鉴
+/// </summary>
 public partial class EncyclopediaPanel : Encyclopedia
 {
     //tab网格
@@ -85,7 +88,7 @@ public partial class EncyclopediaPanel : Encyclopedia
             S_ItemInfoBg.Instance.Visible = true;
             S_ItemName.Instance.Text = config.Name;
             S_ItemTexture.Instance.Texture = ResourceManager.LoadTexture2D(config.Icon);
-            S_ItemDes.Instance.Text = config.Intro;
+            S_ItemDes.Instance.Text = config.Intro.Code;
             //S_ItemDes.Instance.Text = config.Details;
         }
         else

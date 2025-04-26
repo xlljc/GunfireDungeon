@@ -61,14 +61,14 @@ public static partial class ExcelConfig
         /// 一句对物体简短的介绍, 比如拾起物体时弹出的描述
         /// </summary>
         [JsonInclude]
-        public string Intro;
+        public SerializeBBCode Intro;
 
         /// <summary>
         /// 物体详情 <br/>
         /// 在图鉴中的描述
         /// </summary>
         [JsonInclude]
-        public string Details;
+        public SerializeBBCode Details;
 
         /// <summary>
         /// 是否是静态物体

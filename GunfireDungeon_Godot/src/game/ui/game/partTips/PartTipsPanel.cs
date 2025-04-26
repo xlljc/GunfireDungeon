@@ -12,16 +12,10 @@ public partial class PartTipsPanel : PartTips
 
     public void SetPartProp(PartProp partProp)
     {
-        /*
-         Name
-         描述
-         Type
-         */
         var sb = new StringBuilder();
-        sb.AppendLine(partProp.PartBase.Name);
+        sb.AppendLine(partProp.PartBase.Name + "\t（" + partProp.PartBase.Type.ToRichText() + "）");
         sb.AppendLine();
-        sb.AppendLine(partProp.PartBase.Intro);
-        sb.AppendLine(partProp.PartBase.Type.ToRichText());
+        sb.AppendLine(partProp.PartBase.Intro.Code);
         S_Text.Instance.Text = sb.ToString();
         
         S_PanelRoot.Instance.ResetSize();

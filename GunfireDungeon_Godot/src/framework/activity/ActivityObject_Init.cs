@@ -10,157 +10,126 @@ public partial class ActivityObject
     {
         /// <summary>
         /// 名称: 玩家 <br/>
-        /// 简介: 玩家
         /// </summary>
         public const string Id_role0001 = "role0001";
         /// <summary>
         /// 名称: 敌人 <br/>
-        /// 简介: 敌人
         /// </summary>
         public const string Id_enemy0001 = "enemy0001";
         /// <summary>
         /// 名称: Boss <br/>
-        /// 简介: Boss
         /// </summary>
         public const string Id_boss0001 = "boss0001";
         /// <summary>
         /// 名称: 商店老板 <br/>
-        /// 简介: 商店老板
         /// </summary>
         public const string Id_shopBoss0001 = "shopBoss0001";
         /// <summary>
         /// 名称: 手枪 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_weapon0003 = "weapon0003";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0001 = "bullet0001";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0002 = "bullet0002";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0003 = "bullet0003";
         /// <summary>
         /// 名称: 榴弹炮 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0004 = "bullet0004";
         /// <summary>
         /// 名称: 抛物线粘液子弹 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0005 = "bullet0005";
         /// <summary>
         /// 名称: 拖尾子弹 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0006 = "bullet0006";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0007 = "bullet0007";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0008 = "bullet0008";
         /// <summary>
         /// 名称: 弓箭 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_bullet0009 = "bullet0009";
         /// <summary>
         /// 名称: boss召唤物子弹 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_summons0001 = "summons0001";
         /// <summary>
         /// 名称: boss特殊子弹 <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_special0001 = "special0001";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_shell0001 = "shell0001";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_shell0002 = "shell0002";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_shell0003 = "shell0003";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 
         /// </summary>
         public const string Id_shell0004 = "shell0004";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 敌人1死亡碎片
         /// </summary>
         public const string Id_enemy_dead0001 = "enemy_dead0001";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 敌人2死亡
         /// </summary>
         public const string Id_enemy_dead0002 = "enemy_dead0002";
         /// <summary>
         /// 名称: 通用零件物体 <br/>
-        /// 简介: 通用零件物体
         /// </summary>
         public const string Id_part_comm0001 = "part_comm0001";
         /// <summary>
         /// 名称: 木质宝箱 <br/>
-        /// 简介: 木质宝箱
         /// </summary>
         public const string Id_treasure_box0001 = "treasure_box0001";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 地牢房间的门(东侧)
         /// </summary>
         public const string Id_other_door_e = "other_door_e";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 地牢房间的门(西侧)
         /// </summary>
         public const string Id_other_door_w = "other_door_w";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 地牢房间的门(南侧)
         /// </summary>
         public const string Id_other_door_s = "other_door_s";
         /// <summary>
         /// 名称:  <br/>
-        /// 简介: 地牢房间的门(北侧)
         /// </summary>
         public const string Id_other_door_n = "other_door_n";
         /// <summary>
         /// 名称: 金币 <br/>
-        /// 简介: 获得10金币
         /// </summary>
         public const string Id_gold_10 = "gold_10";
         /// <summary>
         /// 名称: 银币 <br/>
-        /// 简介: 获得5金币
         /// </summary>
         public const string Id_gold_5 = "gold_5";
         /// <summary>
         /// 名称: 铜币 <br/>
-        /// 简介: 获得1金币
         /// </summary>
         public const string Id_gold_1 = "gold_1";
     }

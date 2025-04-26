@@ -5,8 +5,12 @@
     "Type": 3,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u73A9\u5BB6",
-    "Details": "",
+    "Intro": {
+      "Code": "\u73A9\u5BB6"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/role/Role0001.tscn",
@@ -20,8 +24,12 @@
     "Type": 4,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u654C\u4EBA",
-    "Details": "",
+    "Intro": {
+      "Code": "\u654C\u4EBA"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/role/enemy/Enemy0001.tscn",
@@ -35,8 +43,12 @@
     "Type": 12,
     "Quality": 0,
     "Price": 0,
-    "Intro": "Boss",
-    "Details": "Boss",
+    "Intro": {
+      "Code": "Boss"
+    },
+    "Details": {
+      "Code": "Boss"
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/role/boss/Boss0001.tscn",
@@ -50,8 +62,12 @@
     "Type": 11,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u5546\u5E97\u8001\u677F",
-    "Details": "",
+    "Intro": {
+      "Code": "\u5546\u5E97\u8001\u677F"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/role/shopBoss/ShopBoss0001.tscn",
@@ -65,8 +81,12 @@
     "Type": 5,
     "Quality": 2,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/weapon/Weapon0003.tscn",
@@ -80,8 +100,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0001.tscn",
@@ -95,8 +119,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0002.tscn",
@@ -110,8 +138,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0003.tscn",
@@ -125,8 +157,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0005",
     "Prefab": "res://prefab/bullet/normal/Bullet0004.tscn",
@@ -140,8 +176,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0004",
     "Prefab": "res://prefab/bullet/normal/Bullet0005.tscn",
@@ -155,8 +195,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0006.tscn",
@@ -170,8 +214,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0007.tscn",
@@ -185,8 +233,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0003",
     "Prefab": "res://prefab/bullet/normal/Bullet0008.tscn",
@@ -200,8 +252,12 @@
     "Type": 6,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/bullet/normal/Bullet0009.tscn",
@@ -215,8 +271,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/bullet/summons/Summons0001.tscn",
@@ -230,8 +290,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/bullet/special/SpecialBullet0001.tscn",
@@ -245,8 +309,12 @@
     "Type": 7,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0001.tscn",
@@ -260,8 +328,12 @@
     "Type": 7,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0002.tscn",
@@ -275,8 +347,12 @@
     "Type": 7,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0003.tscn",
@@ -290,8 +366,12 @@
     "Type": 7,
     "Quality": 0,
     "Price": 0,
-    "Intro": "",
-    "Details": "",
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "0006",
     "Prefab": "res://prefab/shell/Shell0004.tscn",
@@ -305,8 +385,12 @@
     "Type": 8,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u654C\u4EBA1\u6B7B\u4EA1\u788E\u7247",
-    "Details": "",
+    "Intro": {
+      "Code": "\u654C\u4EBA1\u6B7B\u4EA1\u788E\u7247"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/effect/enemy/EnemyDead0001.tscn",
@@ -320,8 +404,12 @@
     "Type": 8,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u654C\u4EBA2\u6B7B\u4EA1",
-    "Details": "",
+    "Intro": {
+      "Code": "\u654C\u4EBA2\u6B7B\u4EA1"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/effect/enemy/EnemyDead0002.tscn",
@@ -335,8 +423,12 @@
     "Type": 9,
     "Quality": 1,
     "Price": 0,
-    "Intro": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53",
-    "Details": "",
+    "Intro": {
+      "Code": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/part/PartProp.tscn",
@@ -350,8 +442,12 @@
     "Type": 10,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u6728\u8D28\u5B9D\u7BB1",
-    "Details": "",
+    "Intro": {
+      "Code": "\u6728\u8D28\u5B9D\u7BB1"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/box/TreasureBox0001.tscn",
@@ -365,8 +461,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u4E1C\u4FA7)",
-    "Details": "",
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u4E1C\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_E.tscn",
@@ -380,8 +480,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u897F\u4FA7)",
-    "Details": "",
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u897F\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_W.tscn",
@@ -395,8 +499,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5357\u4FA7)",
-    "Details": "",
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5357\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_S.tscn",
@@ -410,8 +518,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5317\u4FA7)",
-    "Details": "",
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5317\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": true,
     "__Material": "",
     "Prefab": "res://prefab/map/RoomDoor_N.tscn",
@@ -425,8 +537,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u83B7\u5F9710\u91D1\u5E01",
-    "Details": "",
+    "Intro": {
+      "Code": "\u83B7\u5F9710\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold10.tscn",
@@ -440,8 +556,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u83B7\u5F975\u91D1\u5E01",
-    "Details": "",
+    "Intro": {
+      "Code": "\u83B7\u5F975\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold5.tscn",
@@ -455,8 +575,12 @@
     "Type": 99,
     "Quality": 0,
     "Price": 0,
-    "Intro": "\u83B7\u5F971\u91D1\u5E01",
-    "Details": "",
+    "Intro": {
+      "Code": "\u83B7\u5F971\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
     "IsStatic": false,
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold1.tscn",
