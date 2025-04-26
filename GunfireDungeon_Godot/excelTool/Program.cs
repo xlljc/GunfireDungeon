@@ -1,9 +1,10 @@
 ﻿
+using System.Text.Json;
+
 public class Program
 {
     public static int Main(string[] args)
     {
-        Console.WriteLine("准备导出excel表...");
         bool success;
         if (args.Length >= 3)
         {

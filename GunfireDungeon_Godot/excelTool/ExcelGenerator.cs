@@ -1,4 +1,5 @@
 ﻿
+using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Aspose.Cells;
@@ -7,6 +8,7 @@ using Environment = System.Environment;
 public static class ExcelGenerator
 {
     private static HashSet<string> _excelNames = new HashSet<string>();
+    private static Dictionary<string, Type?> _customTypes = new Dictionary<string, Type?>();
     
     private enum CollectionsType
     {
@@ -538,42 +540,51 @@ public static class ExcelGenerator
                             default:
                             {
                                 var cellStringValue = GetCellStringValue(cell);
-                                if (cellStringValue.Length == 0)
+                                var returnType = excelData.ColumnType[fieldName];
+                                if (returnType.IsAssignableTo(typeof(ICustomFormat)))
                                 {
-                                    if (mappingData.TypeStr == nameof(ActivityQuality))
-                                    {
-                                        ActivityQuality v = default;
-                                        data.Add(field, v);
-                                    }
-                                    else if (mappingData.TypeStr == nameof(ActivityType))
-                                    {
-                                        ActivityType v = default;
-                                        data.Add(field, v);
-                                    }
-                                    else if (mappingData.TypeStr == nameof(PartType))
-                                    {
-                                        PartType v = default;
-                                        data.Add(field, v);
-                                    }
-                                    else
-                                    {
-                                        data.Add(field, null);
-                                    }
+                                    var customFormat = (ICustomFormat)Activator.CreateInstance(returnType);
+                                    data.Add(field, customFormat.DoFormat(cellStringValue, cell));
                                 }
                                 else
                                 {
-                                    if (mappingData.AutoParentheses)
+                                    if (cellStringValue.Length == 0)
                                     {
-                                        if (mappingData.CollectionsType == CollectionsType.Array)
+                                        var customType = GetCustomType(mappingData.TypeStr);
+                                        if (customType != null && customType.IsEnum)
                                         {
-                                            cellStringValue = "[" + cellStringValue.TrimEnd(',') + "]";
+                                            var values = customType.GetEnumValues();
+                                            if (values.Length > 0)
+                                            {
+                                                data.Add(field, Enum.ToObject(customType, values.GetValue(0)));
+                                            }
+                                            else
+                                            {
+                                                data.Add(field, null);
+                                            }
                                         }
-                                        if (mappingData.CollectionsType == CollectionsType.Map)
+                                        else
                                         {
-                                            cellStringValue = "{" + cellStringValue.TrimEnd(',') + "}";
+                                            data.Add(field, null);
                                         }
                                     }
-                                    data.Add(field, JsonSerializer.Deserialize(cellStringValue, excelData.ColumnType[fieldName]));
+                                    else
+                                    {
+                                        if (mappingData.AutoParentheses)
+                                        {
+                                            if (mappingData.CollectionsType == CollectionsType.Array)
+                                            {
+                                                cellStringValue = "[" + cellStringValue.TrimEnd(',') + "]";
+                                            }
+
+                                            if (mappingData.CollectionsType == CollectionsType.Map)
+                                            {
+                                                cellStringValue = "{" + cellStringValue.TrimEnd(',') + "}";
+                                            }
+                                        }
+
+                                        data.Add(field, JsonSerializer.Deserialize(cellStringValue, returnType));
+                                    }
                                 }
                             }
                                 break;
@@ -715,16 +726,7 @@ public static class ExcelGenerator
             var tempStr = str.Substring(1, str.Length - 2);
             var typeData = ConvertToType(tempStr, depth + 1);
             var typeStr = typeData.TypeStr + "[]";
-            string typeName;
-            var index = typeData.TypeName.IndexOf(',');
-            if (index < 0)
-            {
-                typeName = typeData.TypeName + "[]";
-            }
-            else
-            {
-                typeName = typeData.TypeName.Substring(0, index) + "[]" + typeData.TypeName.Substring(index);
-            }
+            var typeName = Type.GetType(typeData.TypeName).MakeArrayType().AssemblyQualifiedName;
 
             if (typeData.IsRefExcel) //引用过其他表
             {
@@ -743,12 +745,15 @@ public static class ExcelGenerator
         {
             case "object": return  typeof(JsonElement).FullName;
             case "boolean": return "bool";
-            case "vector2": return typeof(SerializeVector2).FullName;
-            case "vector3": return typeof(SerializeVector3).FullName;
-            case "color": return typeof(SerializeColor).FullName;
-            case "activityType": return typeof(ActivityType).FullName;
-            case "activityQuality": return typeof(ActivityQuality).FullName;
-            case "partType": return typeof(PartType).FullName;
+            default:
+            {
+                var type = GetCustomType(typeName);
+                if (type != null)
+                {
+                    return type.FullName;
+                }
+            }
+                break;
         }
 
         return typeName;
@@ -772,12 +777,15 @@ public static class ExcelGenerator
             case "string": return typeof(string).AssemblyQualifiedName;
             case "float": return typeof(float).AssemblyQualifiedName;
             case "double": return typeof(double).AssemblyQualifiedName;
-            case "vector2": return typeof(SerializeVector2).AssemblyQualifiedName;
-            case "vector3": return typeof(SerializeVector3).AssemblyQualifiedName;
-            case "color": return typeof(SerializeColor).AssemblyQualifiedName;
-            case "activityType": return typeof(ActivityType).AssemblyQualifiedName;
-            case "activityQuality": return typeof(ActivityQuality).AssemblyQualifiedName;
-            case "partType": return typeof(PartType).AssemblyQualifiedName;
+            default:
+            {
+                var type = GetCustomType(typeName);
+                if (type != null)
+                {
+                    return type.AssemblyQualifiedName;
+                }
+            }
+                break;
         }
 
         return typeName;
@@ -804,6 +812,28 @@ public static class ExcelGenerator
         }
 
         return false;
+    }
+
+    static ExcelGenerator()
+    {
+        var types = typeof(ExcelGenerator).Assembly.GetTypes();
+        foreach (var type in types)
+        {
+            var attribute = type.GetCustomAttribute<CustomNameAttribute>();
+            if (attribute != null)
+            {
+                _customTypes.Add(attribute.Name, type);
+            }
+            else
+            {
+                _customTypes.Add(type.FullName, type);
+            }
+        }
+    }
+    
+    private static Type GetCustomType(string typeName)
+    {
+        return _customTypes.GetValueOrDefault(typeName);
     }
     
     private static void PrintError(string message)

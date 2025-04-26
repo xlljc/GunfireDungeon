@@ -7,7 +7,7 @@
 /buffTable
 /excelTool/bin
 /excelTool/obj
-/excelTool/excel
+/excelTool/**/*.uid
 /excelTool/.idea
 /excelTool/.vs
 /excelTool/.vscode
