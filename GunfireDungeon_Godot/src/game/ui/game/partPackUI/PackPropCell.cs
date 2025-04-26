@@ -19,7 +19,7 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
             Callable.From(new Action<Vector2, Variant>(_DropData))
         );
     }
-
+    
     public override void OnSetData(PartProp data)
     {
         if (data != null)

@@ -60,28 +60,6 @@ public partial class PartPackUIPanel : PartPackUI
         WeaponListGrid.SetCellOffset(new Vector2I(0, 16));
     }
 
-    private void OnPutPart(object obj)
-    {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-        if (player == null)
-        {
-            return;
-        }
-
-        var param = (DropPartData)obj;
-        player.PartPropPack.Set(param.Index, param.Data);
-    }
-    
-    private void OnRemovePart(object obj)
-    {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-        if (player == null)
-        {
-            return;
-        }
-        
-        player.PartPropPack.Remove((int)obj);
-    }
 
     public override void OnShowUi()
     {
@@ -101,6 +79,49 @@ public partial class PartPackUIPanel : PartPackUI
         }
     }
     
+    
+    private void OnPutPart(object obj)
+    {
+        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        if (player == null)
+        {
+            return;
+        }
+
+        var param = (DropPartData)obj;
+        player.PartPropPack.Set(param.Index, param.Data);
+    }
+    
+    private void OnRemovePart(object obj)
+    {
+        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        player?.PartPropPack.Remove((int)obj);
+    }
+
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    {
+        return data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("Index");
+    }
+
+    public override void _DropData(Vector2 atPosition, Variant data)
+    {
+        // 触发丢弃
+        var dic = data.AsGodotDictionary();
+        var targetIndex = dic["Index"].AsInt32();
+        var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dic["UiGrid"].As<GodotRefValue>().Value;
+        Debug.Log("触发丢弃事件");
+        var targetData = targetGrid.GetData(targetIndex);
+        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        if (player != null)
+        {
+            targetData.ThrowProp(player);
+        }
+        else
+        {
+            targetData.Throw(8, 0, Vector2.Zero, 0);
+        }
+    }
+
     public override void Process(float delta)
     {
         var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
