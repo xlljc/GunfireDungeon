@@ -1,15 +1,12 @@
 ﻿
 using System.Collections.Generic;
+using Config;
 
 /// <summary>
 /// 武器零件基类
 /// </summary>
 public abstract class PartLogicBase
 {
-    /// <summary>
-    /// 零件类型
-    /// </summary>
-    public PartType PartType { get; }
     
     /// <summary>
     /// 占用后置零件数量，在调用 PlanningNext() 函数时，这个值就是 occupancy 参数的数组的长度
@@ -19,7 +16,12 @@ public abstract class PartLogicBase
     /// <summary>
     /// 所属武器，没有装备到武器上时该值为 null
     /// </summary>
-    public Weapon Weapon => PartProp?.Weapon;
+    public Weapon Weapon => PartProp.Weapon;
+
+    /// <summary>
+    /// 零件配置
+    /// </summary>
+    public ExcelConfig.PartBase PartBase => PartProp.PartBase;
     
     /// <summary>
     /// 所属零件对象
@@ -46,10 +48,9 @@ public abstract class PartLogicBase
     /// </summary>
     public PartLogicBase[] Children { get; set; }
 
-    public PartLogicBase(PartProp prop, PartType partType)
+    public PartLogicBase(PartProp prop)
     {
         PartProp = prop;
-        PartType = partType;
     }
 
     /// <summary>
@@ -71,7 +72,7 @@ public abstract class PartLogicBase
     
     public override string ToString()
     {
-        return $"({GetType().Name}: Type: {PartType}, Occupancy: {Occupancy})";
+        return $"({GetType().Name}: Type: {PartBase.Type}, Occupancy: {Occupancy})";
     }
 
     public string GetTreeString()

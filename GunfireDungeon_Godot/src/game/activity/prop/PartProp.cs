@@ -19,6 +19,11 @@ public partial class PartProp : PropActivity
     public Weapon Weapon { get; set; }
     
     /// <summary>
+    /// 零件配置
+    /// </summary>
+    public ExcelConfig.PartBase PartBase { get; private set; }
+    
+    /// <summary>
     /// 零件处理逻辑
     /// </summary>
     public PartLogicBase PartLogicBase { get; private set; }
@@ -78,16 +83,16 @@ public partial class PartProp : PropActivity
         var spriteFrames = AnimatedSprite.SpriteFrames;
         Icon = ResourceManager.LoadTexture2D(ActivityBase.Icon);
         spriteFrames.SetFrame(AnimatorNames.Default, 0, Icon);
+        
+        PartBase = _partBaseMap[ActivityBase.Id];
 
-        var partConfig = _partBaseMap[ActivityBase.Id];
-
-        if (partConfig.Type == PartType.Bullet)
+        if (PartBase.Type == PartType.Bullet)
         {
-            PartLogicBase = OnInitBullet(partConfig);
+            PartLogicBase = OnInitBullet(PartBase);
         }
-        else if (partConfig.Type == PartType.Buff)
+        else if (PartBase.Type == PartType.Buff)
         {
-            PartLogicBase = OnInitBuff(partConfig);
+            PartLogicBase = OnInitBuff(PartBase);
         }
     }
     

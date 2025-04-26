@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfwmldb3dpyiy"]
+[gd_scene load_steps=8 format=3 uid="uid://twh7c4pclbas"]
 
 [ext_resource type="Script" uid="uid://ds2guxdb2v06c" path="res://src/game/activity/prop/PartProp.cs" id="1_vwnk8"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_1cv1w"]

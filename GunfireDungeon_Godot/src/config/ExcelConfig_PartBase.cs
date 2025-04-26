@@ -26,7 +26,7 @@ public static partial class ExcelConfig
 
         /// <summary>
         /// 物体简介 <br/>
-        /// 一句对物体简短的介绍, 比如拾起物体时弹出的描述
+        /// 一句对物体简短的介绍, 比如拾起物体时弹出的描述，可以用富文本（BBCode）
         /// </summary>
         [JsonInclude]
         public string Intro;

@@ -18,10 +18,12 @@ public partial class PartTipsPanel : PartTips
          Type
          */
         var sb = new StringBuilder();
-        sb.AppendLine(partProp.ActivityBase.Name);
+        sb.AppendLine(partProp.PartBase.Name);
         sb.AppendLine();
-        sb.AppendLine($"[color=#ff0000]{partProp.ActivityBase.Type}[/color]");
-        sb.AppendLine($"[color=#ff0000]{partProp.PartLogicBase.PartType}[/color]");
+        sb.AppendLine(partProp.PartBase.Intro);
+        sb.AppendLine(partProp.PartBase.Type.ToRichText());
         S_Text.Instance.Text = sb.ToString();
+        
+        S_PanelRoot.Instance.ResetSize();
     }
 }

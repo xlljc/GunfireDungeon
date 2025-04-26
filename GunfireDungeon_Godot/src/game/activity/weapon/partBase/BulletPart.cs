@@ -22,7 +22,7 @@ public class BulletPart : PartLogicBase
     /// </summary>
     public ExcelConfig.BulletBase Bullet { get; set; }
 
-    public BulletPart(PartProp prop) : base(prop, PartType.Bullet)
+    public BulletPart(PartProp prop) : base(prop)
     {
     }
     

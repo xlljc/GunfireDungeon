@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg7bir6i0n7l"]
+[gd_scene load_steps=5 format=3 uid="uid://dg7bir6i0n7l"]
 
 [ext_resource type="Script" uid="uid://xoepr45cf6ns" path="res://src/game/ui/game/partTips/PartTipsPanel.cs" id="1_ifm13"]
 [ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="2_ybf2x"]
+[ext_resource type="FontFile" uid="uid://dd5aeidrx6qvu" path="res://resource/font/VonwaonBitmap-16px.ttf" id="3_ksvyd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybf2x"]
 texture = ExtResource("2_ybf2x")
@@ -21,7 +22,7 @@ Layer = 3
 self_modulate = Color(0.188696, 0.188696, 0.188696, 1)
 layout_mode = 0
 offset_right = 32.0
-offset_bottom = 32.0
+offset_bottom = 40.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ybf2x")
 
@@ -37,6 +38,17 @@ theme_override_constants/margin_bottom = 16
 modulate = Color(0.771304, 0.771304, 0.771304, 1)
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/line_separation = 8
+theme_override_fonts/normal_font = ExtResource("3_ksvyd")
+theme_override_fonts/mono_font = ExtResource("3_ksvyd")
+theme_override_fonts/italics_font = ExtResource("3_ksvyd")
+theme_override_fonts/bold_italics_font = ExtResource("3_ksvyd")
+theme_override_fonts/bold_font = ExtResource("3_ksvyd")
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
