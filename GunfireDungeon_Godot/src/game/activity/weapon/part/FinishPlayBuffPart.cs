@@ -1,13 +1,22 @@
 ﻿
+using Config;
+
 /// <summary>
 /// 在 A 结束时释放 B
 /// </summary>
+[Part("FinishPlayBuff")]
 public class FinishPlayBuffPart : BuffPart
 {
+    /// <summary>
+    /// 执行B最大法力值消耗
+    /// </summary>
     public int BehindMaxMana { get; set; }
     
-    public FinishPlayBuffPart(PartProp prop) : base(prop)
+    public override void InitParam(ExcelConfig.PartBase config)
     {
+        base.InitParam(config);
+        Occupancy = 2;
+        BehindMaxMana = config.GetParam("BehindMaxMana", 60);
     }
     
     public override IBullet[] Execute(PlanningParam param)

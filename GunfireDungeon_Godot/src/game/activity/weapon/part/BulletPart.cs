@@ -5,6 +5,7 @@ using Godot;
 /// <summary>
 /// 子弹零件
 /// </summary>
+[Part("Bullet")]
 public class BulletPart : PartLogicBase
 {
     /// <summary>
@@ -22,15 +23,19 @@ public class BulletPart : PartLogicBase
     /// </summary>
     public ExcelConfig.BulletBase Bullet { get; set; }
 
-    public BulletPart(PartProp prop) : base(prop)
-    {
-    }
-    
     public override int GetMana()
     {
         return Mana;
     }
-    
+
+    public override void InitParam(ExcelConfig.PartBase config)
+    {
+        var bulletId = config.Param["bullet"].GetString();
+        Mana = config.BaseMana;
+        ScatteringAngle = 10;
+        Bullet = ExcelConfig.BulletBase_Map[bulletId];
+    }
+
     public override IBullet[] Execute(PlanningParam param)
     {
         if (!param.UseManaBuff(Mana))

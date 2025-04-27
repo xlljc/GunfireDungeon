@@ -13,7 +13,8 @@
     "Price": 50,
     "Icon": "res://resource/sprite/prop/part/PartProp0001.png",
     "Type": 0,
-    "BaseMana": 20,
+    "BaseMana": 8,
+    "ClassType": "Bullet",
     "Param": {
       "bullet": "0001"
     },
@@ -33,14 +34,15 @@
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp0002.png",
     "Type": 0,
-    "BaseMana": 30,
+    "BaseMana": 15,
+    "ClassType": "Bullet",
     "Param": {
       "bullet": "0007"
     },
     "Remark": ""
   },
   {
-    "Id": "0003",
+    "Id": "3001",
     "Name": "\u9500\u6BC1\u65BD\u653E",
     "__ActivityTemplate": "part_comm0001",
     "Intro": {
@@ -51,16 +53,17 @@
     },
     "Quality": 1,
     "Price": 60,
-    "Icon": "res://resource/sprite/prop/part/PartProp0003.png",
+    "Icon": "res://resource/sprite/prop/part/PartProp3001.png",
     "Type": 1,
-    "BaseMana": 10,
+    "BaseMana": 5,
+    "ClassType": "FinishPlayBuff",
     "Param": {
-      "type": "FinishPlayBuffPart"
+      "BehindMaxMana": 60
     },
     "Remark": ""
   },
   {
-    "Id": "0004",
+    "Id": "3002",
     "Name": "\u53CC\u91CD\u65BD\u653E",
     "__ActivityTemplate": "part_comm0001",
     "Intro": {
@@ -71,12 +74,30 @@
     },
     "Quality": 1,
     "Price": 60,
-    "Icon": "res://resource/sprite/prop/part/PartProp0004.png",
+    "Icon": "res://resource/sprite/prop/part/PartProp3002.png",
     "Type": 1,
-    "BaseMana": 10,
-    "Param": {
-      "type": "MergePlayBuffPart"
+    "BaseMana": 5,
+    "ClassType": "MergePlayBuff",
+    "Param": null,
+    "Remark": ""
+  },
+  {
+    "Id": "3003",
+    "Name": "\u8F6E\u6D41\u91CA\u653E",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": {
+      "Code": "\u8F6E\u6D41\u6267\u884C\u540E\u9762\u7684\u4E24\u4E2A[color=#ecb464]\u96F6\u4EF6[/color]"
     },
+    "Details": {
+      "Code": "\u8F6E\u6D41\u91CA\u653E\u8BE6\u60C5"
+    },
+    "Quality": 1,
+    "Price": 60,
+    "Icon": "res://resource/sprite/prop/part/PartProp3003.png",
+    "Type": 1,
+    "BaseMana": 3,
+    "ClassType": "TakeTurnsBuff",
+    "Param": null,
     "Remark": ""
   }
 ]

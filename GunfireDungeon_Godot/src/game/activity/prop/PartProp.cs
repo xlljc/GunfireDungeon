@@ -1,5 +1,7 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Config;
 using Godot;
 
@@ -33,6 +35,7 @@ public partial class PartProp : PropActivity
     private static bool _isInit = false;
     
     private static Dictionary<string, ExcelConfig.PartBase> _partBaseMap = new Dictionary<string, ExcelConfig.PartBase>();
+    private static Dictionary<string, Type> _parTypes  = new Dictionary<string, Type>();
     
     /// <summary>
     /// 初始化零件属性，并注册零件
@@ -45,6 +48,19 @@ public partial class PartProp : PropActivity
         }
 
         _isInit = true;
+
+        var targetType = typeof(PartLogicBase);
+        foreach (var type in targetType.Assembly.GetTypes())
+        {
+            if (type.IsAssignableTo(targetType))
+            {
+                var pa = type.GetCustomAttribute<PartAttribute>();
+                if (pa != null)
+                {
+                    _parTypes.TryAdd(pa.Name, type);
+                }
+            }
+        }
         
         // 动态创建 ActivityBase
         foreach (var partBase in ExcelConfig.PartBase_List)
@@ -85,47 +101,23 @@ public partial class PartProp : PropActivity
         spriteFrames.SetFrame(AnimatorNames.Default, 0, Icon);
         
         PartBase = _partBaseMap[ActivityBase.Id];
+        
+        if (_parTypes.TryGetValue(PartBase.ClassType, out var type))
+        {
+            var instance = (PartLogicBase)Activator.CreateInstance(type);
+            if (instance == null)
+            {
+                throw new Exception("创建零件对象失败： " + PartBase.ClassType);
+            }
 
-        if (PartBase.Type == PartType.Bullet)
-        {
-            PartLogicBase = OnInitBullet(PartBase);
+            PartLogicBase = instance;
+            instance.PartProp = this;
+            instance.InitParam(PartBase);
         }
-        else if (PartBase.Type == PartType.Buff)
+        else
         {
-            PartLogicBase = OnInitBuff(PartBase);
+            throw new Exception("未知零件类型： " + PartBase.ClassType);
         }
-    }
-    
-    public PartLogicBase OnInitBullet(ExcelConfig.PartBase partConfig)
-    {
-        var bulletId = partConfig.Param["bullet"].GetString();
-        var bullet = new BulletPart(this);
-        bullet.Mana = partConfig.BaseMana;
-        bullet.ScatteringAngle = 10;
-        bullet.Bullet = ExcelConfig.BulletBase_Map[bulletId];
-        return bullet;
-    }
-
-    public PartLogicBase OnInitBuff(ExcelConfig.PartBase partConfig)
-    {
-        var type = partConfig.Param["type"].GetString();
-        if (type == "FinishPlayBuffPart")
-        {
-            var part = new FinishPlayBuffPart(this);
-            part.Mana = partConfig.BaseMana;
-            part.BehindMaxMana = 60;
-            part.Occupancy = 2;
-            return part;
-        }
-        else if (type == "MergePlayBuffPart")
-        {
-            var part = new MergePlayBuffPart(this);
-            part.Mana = partConfig.BaseMana;
-            part.Occupancy = 2;
-            return part;
-        }
-
-        return null;
     }
 
     public override void Interactive(ActivityObject master)

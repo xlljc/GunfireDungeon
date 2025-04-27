@@ -1,13 +1,18 @@
 ﻿
 using System.Collections.Generic;
+using Config;
 
 /// <summary>
 /// 合并执行逻辑
 /// </summary>
+[Part("MergePlayBuff")]
 public class MergePlayBuffPart : BuffPart
 {
-    public MergePlayBuffPart(PartProp prop) : base(prop)
+
+    public override void InitParam(ExcelConfig.PartBase config)
     {
+        base.InitParam(config);
+        Occupancy = 2;
     }
     
     public override IBullet[] Execute(PlanningParam param)
