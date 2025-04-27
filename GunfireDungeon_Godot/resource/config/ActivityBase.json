@@ -76,6 +76,44 @@
     "ShowInMapEditor": true
   },
   {
+    "Id": "weapon0001",
+    "Name": "\u6B65\u67AA",
+    "Type": 5,
+    "Quality": 3,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/weapon/Weapon0001.tscn",
+    "Icon": "res://resource/sprite/weapon/weapon0001/Weapon0001.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "weapon0002",
+    "Name": "\u9730\u5F39\u67AA",
+    "Type": 5,
+    "Quality": 3,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/weapon/Weapon0002.tscn",
+    "Icon": "res://resource/sprite/weapon/weapon0002/Weapon0002.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
     "Id": "weapon0003",
     "Name": "\u624B\u67AA",
     "Type": 5,

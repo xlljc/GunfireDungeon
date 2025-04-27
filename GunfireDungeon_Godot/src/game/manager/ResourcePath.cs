@@ -103,6 +103,7 @@ public class ResourcePath
     public const string prefab_ui_game_Loading_tscn = "res://prefab/ui/game/Loading.tscn";
     public const string prefab_ui_game_Main_tscn = "res://prefab/ui/game/Main.tscn";
     public const string prefab_ui_game_PartPackUI_tscn = "res://prefab/ui/game/PartPackUI.tscn";
+    public const string prefab_ui_game_PartTips_tscn = "res://prefab/ui/game/PartTips.tscn";
     public const string prefab_ui_game_PauseMenu_tscn = "res://prefab/ui/game/PauseMenu.tscn";
     public const string prefab_ui_game_RoomMap_tscn = "res://prefab/ui/game/RoomMap.tscn";
     public const string prefab_ui_game_RoomUI_tscn = "res://prefab/ui/game/RoomUI.tscn";
@@ -244,7 +245,6 @@ public class ResourcePath
     public const string resource_sprite_bullet_normal_bullet0007_png = "res://resource/sprite/bullet/normal/bullet0007.png";
     public const string resource_sprite_bullet_normal_bullet0008_png = "res://resource/sprite/bullet/normal/bullet0008.png";
     public const string resource_sprite_bullet_normal_bullet0009_png = "res://resource/sprite/bullet/normal/bullet0009.png";
-    public const string resource_sprite_bullet_normal_bullet2_png = "res://resource/sprite/bullet/normal/bullet2.png";
     public const string resource_sprite_bullet_special_SpecialBullet0001_png = "res://resource/sprite/bullet/special/SpecialBullet0001.png";
     public const string resource_sprite_bullet_summons_Summons0001_png = "res://resource/sprite/bullet/summons/Summons0001.png";
     public const string resource_sprite_common_Circle_png = "res://resource/sprite/common/Circle.png";
@@ -315,6 +315,9 @@ public class ResourcePath
     public const string resource_sprite_prop_part_PartProp0002_png = "res://resource/sprite/prop/part/PartProp0002.png";
     public const string resource_sprite_prop_part_PartProp0003_png = "res://resource/sprite/prop/part/PartProp0003.png";
     public const string resource_sprite_prop_part_PartProp0004_png = "res://resource/sprite/prop/part/PartProp0004.png";
+    public const string resource_sprite_prop_part_PartProp3001_png = "res://resource/sprite/prop/part/PartProp3001.png";
+    public const string resource_sprite_prop_part_PartProp3002_png = "res://resource/sprite/prop/part/PartProp3002.png";
+    public const string resource_sprite_prop_part_PartProp3003_png = "res://resource/sprite/prop/part/PartProp3003.png";
     public const string resource_sprite_role_role10_png = "res://resource/sprite/role/role10.png";
     public const string resource_sprite_role_role7_png = "res://resource/sprite/role/role7.png";
     public const string resource_sprite_role_role8_png = "res://resource/sprite/role/role8.png";

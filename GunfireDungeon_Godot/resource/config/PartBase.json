@@ -4,7 +4,7 @@
     "Name": "\u6B65\u67AA\u5B50\u5F39",
     "__ActivityTemplate": "part_comm0001",
     "Intro": {
-      "Code": "\u666E\u901A[color=#7bc1d5]\u5B50\u5F39[/color]"
+      "Code": "\u6B65\u67AA[color=#7bc1d5]\u5B50\u5F39[/color]"
     },
     "Details": {
       "Code": "\u5B50\u5F391\u8BE6\u60C5"
@@ -16,7 +16,7 @@
     "BaseMana": 8,
     "ClassType": "Bullet",
     "Param": {
-      "bullet": "0001"
+      "Bullet": "0001"
     },
     "Remark": ""
   },
@@ -37,7 +37,53 @@
     "BaseMana": 15,
     "ClassType": "Bullet",
     "Param": {
-      "bullet": "0007"
+      "Bullet": "0007"
+    },
+    "Remark": ""
+  },
+  {
+    "Id": "0003",
+    "Name": "\u624B\u67AA\u5B50\u5F39",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": {
+      "Code": "\u624B\u67AA[color=#7bc1d5]\u5B50\u5F39[/color]"
+    },
+    "Details": {
+      "Code": "\u5B50\u5F393\u8BE6\u60C5"
+    },
+    "Quality": 1,
+    "Price": 50,
+    "Icon": "res://resource/sprite/prop/part/PartProp0003.png",
+    "Type": 0,
+    "BaseMana": 15,
+    "ClassType": "Bullet",
+    "Param": {
+      "Bullet": "0003"
+    },
+    "Remark": ""
+  },
+  {
+    "Id": "0004",
+    "Name": "\u9730\u5F39\u67AA\u5B50\u5F39",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": {
+      "Code": "\u9730\u5F39\u67AA[color=#7bc1d5]\u5B50\u5F39[/color]"
+    },
+    "Details": {
+      "Code": "\u5B50\u5F394\u8BE6\u60C5"
+    },
+    "Quality": 1,
+    "Price": 50,
+    "Icon": "res://resource/sprite/prop/part/PartProp0004.png",
+    "Type": 0,
+    "BaseMana": 15,
+    "ClassType": "Bullet",
+    "Param": {
+      "Bullet": "0002",
+      "ScatteringAngle": [
+        15
+      ],
+      "Count": 5
     },
     "Remark": ""
   },

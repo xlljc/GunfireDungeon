@@ -25,5 +25,10 @@ public partial class ExcelConfig
         {
             return Param.TryGetValue(key, out var value) ? value.GetBoolean() : defaultValue;
         }
+
+        public T GetParam<T>(string key, T defaultValue)
+        {
+            return Param.TryGetValue(key, out var value) ? value.Deserialize<T>() : defaultValue;
+        }
     }
 }

@@ -1,7 +1,7 @@
 [
   {
     "Id": "0001",
-    "Name": "\u5B50\u5F391",
+    "Name": "\u6B65\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0001",
     "HarmRange": [
@@ -34,11 +34,11 @@
       0
     ],
     "__ShootSound": "shooting0005",
-    "FireEffect": ""
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0002",
-    "Name": "\u5B50\u5F392",
+    "Name": "\u9730\u5F39\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0002",
     "HarmRange": [
@@ -71,12 +71,12 @@
     "Penetration": [
       0
     ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "__ShootSound": "shooting0003",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0003",
-    "Name": "\u5B50\u5F393",
+    "Name": "\u624B\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0003",
     "HarmRange": [
@@ -108,8 +108,45 @@
     "Penetration": [
       0
     ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "__ShootSound": "shooting0004",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
+  },
+  {
+    "Id": "0007",
+    "Name": "\u62D6\u5C3E\u5B50\u5F391",
+    "Type": 1,
+    "Prefab": "bullet0006",
+    "HarmRange": [
+      10
+    ],
+    "RepelRange": [
+      45
+    ],
+    "DeviationAngleRange": [
+      0
+    ],
+    "SpeedRange": [
+      350,
+      350
+    ],
+    "LifeTimeRange": [
+      -1
+    ],
+    "DistanceRange": [
+      600,
+      600
+    ],
+    "VerticalSpeed": [
+      0
+    ],
+    "BounceCount": [
+      3
+    ],
+    "Penetration": [
+      1
+    ],
+    "__ShootSound": "shooting0012",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0004.tscn"
   },
   {
     "Id": "0004",
@@ -183,7 +220,7 @@
       0
     ],
     "__ShootSound": "shooting0011",
-    "FireEffect": ""
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0006",
@@ -220,43 +257,6 @@
       0
     ],
     "__ShootSound": "",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0007",
-    "Name": "\u62D6\u5C3E\u5B50\u5F391",
-    "Type": 1,
-    "Prefab": "bullet0006",
-    "HarmRange": [
-      10
-    ],
-    "RepelRange": [
-      45
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
-      350,
-      350
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      600,
-      600
-    ],
-    "VerticalSpeed": [
-      0
-    ],
-    "BounceCount": [
-      3
-    ],
-    "Penetration": [
-      1
-    ],
-    "__ShootSound": "shooting0012",
     "FireEffect": ""
   },
   {

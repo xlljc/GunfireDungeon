@@ -16,12 +16,17 @@ public class BulletPart : PartLogicBase
     /// <summary>
     /// 散射角度
     /// </summary>
-    public float ScatteringAngle { get; set; } = 5;
+    public int ScatteringAngle { get; set; } = 5;
     
     /// <summary>
     /// 发射的子弹
     /// </summary>
     public ExcelConfig.BulletBase Bullet { get; set; }
+    
+    /// <summary>
+    /// 子弹数量
+    /// </summary>
+    public int Count { get; set; }
 
     public override int GetMana()
     {
@@ -30,10 +35,12 @@ public class BulletPart : PartLogicBase
 
     public override void InitParam(ExcelConfig.PartBase config)
     {
-        var bulletId = config.Param["bullet"].GetString();
         Mana = config.BaseMana;
-        ScatteringAngle = 10;
+        var bulletId = config.Param["Bullet"].GetString();
         Bullet = ExcelConfig.BulletBase_Map[bulletId];
+        ScatteringAngle = Utils.Random.RandomConfigRange(config.GetParam<int[]>("ScatteringAngle", [ScatteringAngle]));
+        Count = config.GetParam("Count", Count);
+        
     }
 
     public override IBullet[] Execute(PlanningParam param)

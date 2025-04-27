@@ -25,6 +25,14 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_shopBoss0001 = "shopBoss0001";
         /// <summary>
+        /// 名称: 步枪 <br/>
+        /// </summary>
+        public const string Id_weapon0001 = "weapon0001";
+        /// <summary>
+        /// 名称: 霰弹枪 <br/>
+        /// </summary>
+        public const string Id_weapon0002 = "weapon0002";
+        /// <summary>
         /// 名称: 手枪 <br/>
         /// </summary>
         public const string Id_weapon0003 = "weapon0003";
