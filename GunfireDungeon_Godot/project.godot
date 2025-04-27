@@ -35,7 +35,7 @@ project/assembly_name="GunfireDungeon"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/game_plugin/plugin.cfg")
+enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/game_plugin/plugin.cfg", "res://addons/node_presetting/plugin.cfg")
 
 [file_customization]
 
