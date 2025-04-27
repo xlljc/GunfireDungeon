@@ -109,7 +109,8 @@ public partial class PartPackUIPanel : PartPackUI
         var dic = data.AsGodotDictionary();
         var targetIndex = dic["Index"].AsInt32();
         var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dic["UiGrid"].As<GodotRefValue>().Value;
-        Debug.Log("触发丢弃事件");
+        targetGrid.EventPackage.EmitEvent(OnRemovePartEventName, targetIndex);
+        
         var targetData = targetGrid.GetData(targetIndex);
         var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
         if (player != null)
