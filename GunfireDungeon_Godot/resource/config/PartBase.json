@@ -55,7 +55,7 @@
     "Price": 50,
     "Icon": "res://resource/sprite/prop/part/PartProp0003.png",
     "Type": 0,
-    "BaseMana": 15,
+    "BaseMana": 8,
     "ClassType": "Bullet",
     "Param": {
       "Bullet": "0003"
@@ -76,7 +76,7 @@
     "Price": 50,
     "Icon": "res://resource/sprite/prop/part/PartProp0004.png",
     "Type": 0,
-    "BaseMana": 15,
+    "BaseMana": 18,
     "ClassType": "Bullet",
     "Param": {
       "Bullet": "0002",
@@ -101,7 +101,7 @@
     "Price": 60,
     "Icon": "res://resource/sprite/prop/part/PartProp3001.png",
     "Type": 1,
-    "BaseMana": 5,
+    "BaseMana": 60,
     "ClassType": "FinishPlayBuff",
     "Param": {
       "BehindMaxMana": 60

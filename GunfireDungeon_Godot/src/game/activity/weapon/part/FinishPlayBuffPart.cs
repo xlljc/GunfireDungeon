@@ -24,7 +24,7 @@ public class FinishPlayBuffPart : BuffPart
         if (!param.UseManaBuff(Mana))
         {
             //没有足够的法力值
-            param.Error = PlanningParam.ErrorType.NoMana;
+            param.SufficientMana = false;
             param.SetValue(PlanningParam.NoManaIndex, Index);
             return null;
         }
@@ -38,25 +38,27 @@ public class FinishPlayBuffPart : BuffPart
             var child2 = Children[1];
             if (child2 != null && bulletArray != null && bulletArray.Length > 0)
             {
-                var bullet = bulletArray[0];
                 var currMana = new RefValue<int>(BehindMaxMana);
-
-                var planningParam = new PlanningParam(bullet.BulletData.Rotation, (mana) =>
+                for (var i = 0; i < bulletArray.Length; i++)
                 {
-                    if (mana > currMana.Value)
+                    var bullet = bulletArray[i];
+                    var planningParam = new PlanningParam(bullet.BulletData.Rotation, (mana) =>
                     {
-                        return false;
-                    }
-                    currMana.Value -= mana;
-                    return true;
-                });
-                planningParam.SetValue(PlanningParam.PrevBullet, bullet);
+                        if (mana > currMana.Value)
+                        {
+                            return false;
+                        }
+                        currMana.Value -= mana;
+                        return true;
+                    });
+                    planningParam.SetValue(PlanningParam.PrevBullet, bullet);
                 
-                //结束后释放
-                bullet.BindSingleLogicalFinishEvent(() =>
-                {
-                    child2.Execute(planningParam);
-                });
+                    //结束后释放
+                    bullet.BindSingleLogicalFinishEvent(() =>
+                    {
+                        child2.Execute(planningParam);
+                    });
+                }
             }
             
             return bulletArray;

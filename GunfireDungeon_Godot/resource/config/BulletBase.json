@@ -21,7 +21,7 @@
       -1
     ],
     "DistanceRange": [
-      200,
+      220,
       250
     ],
     "VerticalSpeed": [
@@ -59,8 +59,8 @@
       -1
     ],
     "DistanceRange": [
-      200,
-      250
+      150,
+      180
     ],
     "VerticalSpeed": [
       0
@@ -96,8 +96,8 @@
       -1
     ],
     "DistanceRange": [
-      300,
-      400
+      180,
+      200
     ],
     "VerticalSpeed": [
       0
@@ -133,8 +133,8 @@
       -1
     ],
     "DistanceRange": [
-      600,
-      600
+      500,
+      500
     ],
     "VerticalSpeed": [
       0

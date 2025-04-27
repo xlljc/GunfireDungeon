@@ -22,11 +22,11 @@ public class BulletPart : PartLogicBase
     /// 发射的子弹
     /// </summary>
     public ExcelConfig.BulletBase Bullet { get; set; }
-    
+
     /// <summary>
     /// 子弹数量
     /// </summary>
-    public int Count { get; set; }
+    public int Count { get; set; } = 1;
 
     public override int GetMana()
     {
@@ -47,29 +47,30 @@ public class BulletPart : PartLogicBase
     {
         if (!param.UseManaBuff(Mana))
         {
-            param.Error = PlanningParam.ErrorType.NoMana;
+            param.SufficientMana = false;
             param.SetValue(PlanningParam.NoManaIndex, Index);
             return null;
         }
         Debug.Log($"射击子弹({Index}), fireRotation:{param.FireRotation}");
         if (Bullet != null)
         {
+            param.HasBullet = true;
             if (!param.HasValue(PlanningParam.FirstBullet))
             {
-                param.Error = PlanningParam.ErrorType.None;
                 param.SetValue(PlanningParam.FirstBullet, Bullet);
             }
             
             var bulletParam = new FireBulletParam(Bullet);
             bulletParam.FireRotation = param.FireRotation;
-            if (param.HasValue(PlanningParam.PrevBullet))
+            
+            if (param.HasValue(PlanningParam.PrevBullet)) // 有上一个子弹
             {
                 var bulletInst = param.GetValue<IBullet>(PlanningParam.PrevBullet);
                 bulletParam.Position = bulletInst.GetEndPosition();
                 bulletParam.Altitude = bulletInst.Altitude;
                 bulletParam.Camp = bulletInst.Camp;
             }
-            else
+            else //没有上一个子弹
             {
                 bulletParam.Position = Weapon.FirePoint.GlobalPosition;
                 if (Weapon.TriggerRole != null && !Weapon.TriggerRole.IsDestroyed)
@@ -84,8 +85,13 @@ public class BulletPart : PartLogicBase
                 }
             }
             
-            var bullet = ShootBullet(bulletParam);
-            return new [] {bullet};
+            var result = new IBullet[Count];
+            for (var i = 0; i < Count; i++)
+            {
+                result[i] = ShootBullet(bulletParam.Clone());
+            }
+            
+            return result;
         }
         
         return null;

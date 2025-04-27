@@ -19,6 +19,9 @@ public class TakeTurnsBuffPart : BuffPart
     {
         if (!param.UseManaBuff(Mana))
         {
+            //没有足够的法力值
+            param.SufficientMana = false;
+            param.SetValue(PlanningParam.NoManaIndex, Index);
             return null;
         }
         if (_index >= Children.Length)

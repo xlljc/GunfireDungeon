@@ -1213,19 +1213,17 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
 
         //执行零件
         var result = FirePartList.Execute(fireRotation);
-        if (result.Error == PlanningParam.ErrorType.NoBullet) //没有子弹零件
+        if (!result.HasBullet) //没有发射子弹零件
         {
-            Debug.Log("没有子弹零件!!!");
+            Debug.Log("没有成功发射子弹零件!!!");
             return;
         }
-        else if (result.Error == PlanningParam.ErrorType.NoMana) //没有足够的法力值
+        if (result.SufficientMana) //没有足够的法力值
         {
             if (result.HasValue(PlanningParam.NoManaIndex))
             {
                 Debug.Log("没有足够的法力值!!! ------ index:" + result.GetValue<int>(PlanningParam.NoManaIndex));
             }
-            
-            return;
         }
         
         _attackFlag = true;
