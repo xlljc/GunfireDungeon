@@ -1,4 +1,4 @@
-[**English**](./README.md) | **中文简体**
+[**English**](./README.md)  | [**中文简体**](./README-zh.md)
 
 主分支长时间不更新？请切换到[develop](https://github.com/xlljc/GunfireDungeon/tree/develop)分支查看最新代码
 
@@ -34,7 +34,7 @@
 
 ##### 游戏中
 
-![gif](GunfireDungeon_Document/文档资源/preview_gif.gif)
+![gif](GunfireDungeon_Document/文档资源/preview0.png)
 ![png](GunfireDungeon_Document/文档资源/preview1.png)
 
 ##### 地图编辑器

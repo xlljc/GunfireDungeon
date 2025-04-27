@@ -1,4 +1,4 @@
-**English** | [**中文简体**](./README-zh.md)
+[**English**](./README.md)  | [**中文简体**](./README-zh.md)
 
 Is the main branch not updated for a long time? Please switch to the [develop](https://github.com/xlljc/GunfireDungeon/tree/develop) branch to view the latest code.
 
@@ -34,7 +34,7 @@ Is the main branch not updated for a long time? Please switch to the [develop](h
 
 ##### In-Game  
 
-![gif](GunfireDungeon_Document/文档资源/preview_gif.gif)  
+![gif](GunfireDungeon_Document/文档资源/preview0.png)  
 ![png](GunfireDungeon_Document/文档资源/preview1.png)  
 
 ##### Map Editor  
