@@ -515,7 +515,7 @@ public static class ExcelGenerator
 
             var tableCellValues = new Dictionary<string, TableCellValue>();
             var rowDictionary = new Dictionary<string, object>();
-            excelData.DataList.Add(rowDictionary);
+            
 
             for (int j = 0; j < columnCount; j++)
             {
@@ -527,8 +527,9 @@ public static class ExcelGenerator
                     {
                         break;
                     }
+                    
+                    excelData.DataList.Add(rowDictionary);
                     //录入id
-
                     //存入tableValue
                     tableValue.Add(strValue, tableCellValues);
 
