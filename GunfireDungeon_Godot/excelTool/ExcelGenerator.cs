@@ -1,5 +1,6 @@
 ﻿
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Aspose.Cells;
@@ -9,12 +10,25 @@ public static class ExcelGenerator
 {
     private static HashSet<string> _excelNames = new HashSet<string>();
     private static Dictionary<string, Type?> _customTypes = new Dictionary<string, Type?>();
+    //第一层key：表名，第二层key：id，第三层key：字段名
+    private static Dictionary<string, Dictionary<string, Dictionary<string, TableCellValue>>> _allExcelData = new Dictionary<string, Dictionary<string, Dictionary<string, TableCellValue>>>();
+    private static List<Workbook> _openWorkbook = new List<Workbook>();
     
     private enum CollectionsType
     {
         None,
         Array,
         Map
+    }
+
+    private class TableCellValue
+    {
+        public int Row;
+        public int Column;
+        public string Text;
+        public Cell Cell;
+        public ExcelData ExcelData;
+        public Dictionary<string, object> RowDictionary;
     }
     
     private class MappingData
@@ -113,8 +127,20 @@ public static class ExcelGenerator
                 foreach (var tempFileInfo in tempFileInfos)
                 {
                     Console.WriteLine("excel表: " + tempFileInfo.FullName);
+                    // 读取数据
                     excelDataList.Add(ReadExcel(tempFileInfo.FullName));
                 }
+                
+                //解析所有数据
+                AnalysisExcelData();
+                
+                //关闭所有打开的excel文件
+                for (var i = 0; i < _openWorkbook.Count; i++)
+                {
+                    _openWorkbook[i].Dispose();
+                }
+                
+                _openWorkbook.Clear();
             }
 
             Console.WriteLine($"一共检测到excel表共{excelDataList.Count}张.");
@@ -313,13 +339,17 @@ public static class ExcelGenerator
         code += $"}}";
         return code;
     }
-    
+
     private static ExcelData ReadExcel(string excelPath)
     {
         var excelData = new ExcelData();
         //文件名称
         var fileName = Path.GetFileNameWithoutExtension(excelPath).FirstToUpper();
         excelData.TableName = fileName;
+
+        var tableValue = new Dictionary<string, Dictionary<string, TableCellValue>>();
+        _allExcelData.Add(fileName, tableValue);
+
         //输出代码
         var outStr = $"using System.Text.Json.Serialization;\n";
         outStr += $"using System.Collections.Generic;\n\n";
@@ -329,218 +359,262 @@ public static class ExcelGenerator
         outStr += $"    {{\n";
         //继承的带有引用其他表的类代码
         var outRefStr = "";
-        
+
         var cloneFuncStr = $"        /// <summary>\n";
         cloneFuncStr += $"        /// 返回浅拷贝出的新对象\n";
         cloneFuncStr += $"        /// </summary>\n";
         cloneFuncStr += $"        public {fileName} Clone()\n";
         cloneFuncStr += $"        {{\n";
         cloneFuncStr += $"            var inst = new {fileName}();\n";
-        
+
         var sourceFile = excelPath;
-        
+
         //列数
         var columnCount = -1;
-        
+
         //加载表数据
         var workbook = new Workbook(sourceFile);
-        using (workbook)
+        _openWorkbook.Add(workbook);
+
+        var sheet1 = workbook.Worksheets[0];
+        var cells = sheet1.Cells;
+        //先解析表中的列名, 注释, 类型
+        var names = cells.Rows[0];
+        var descriptions = cells.Rows[1];
+        var types = cells.Rows[2];
+
+        columnCount = 0;
+        foreach (Cell cell in names)
         {
-            var sheet1 = workbook.Worksheets[0];
-            var cells = sheet1.Cells;
-            //先解析表中的列名, 注释, 类型
-            var names = cells.Rows[0];
-            var descriptions = cells.Rows[1];
-            var types = cells.Rows[2];
-
-            columnCount = 0;
-            foreach (Cell cell in names)
+            //字段名称
+            var field = GetCellStringValue(cell);
+            if (string.IsNullOrEmpty(field))
             {
-                //字段名称
-                var field = GetCellStringValue(cell);
-                if (string.IsNullOrEmpty(field))
+                if (cell.Column == 0)
                 {
-                    if (cell.Column == 0)
-                    {
-                        throw new Exception($"表'{fileName}'的列数为0!");
-                    }
-                    //到达最后一列了
-                    break;
+                    throw new Exception($"表'{fileName}'的列数为0!");
                 }
 
-                columnCount++;
-                field = field.FirstToUpper();
-                excelData.ColumnNames.Add(field);
-                if (field == "Clone")
-                {
-                    throw new Exception($"表'{fileName}'中不允许有'Clone'字段!");
-                }
-
-                var descriptionCell = descriptions[cell.Column];
-                //描述
-                string description;
-                if (descriptionCell != null)
-                {
-                    description = GetCellStringValue(descriptionCell).Replace("\n", " <br/>\n        /// ");
-                }
-                else
-                {
-                    description = "";
-                }
-                //类型
-                var typeString = GetCellStringValue(types[cell.Column]);
-                if (string.IsNullOrEmpty(typeString))
-                {
-                    throw new Exception($"表'{fileName}'中'{field}'这一列类型为空!");
-                }
-                
-                //尝试解析类型
-                MappingData mappingData;
-                try
-                {
-                    var autoParentheses = false;
-                    if (typeString.EndsWith('*'))
-                    {
-                        autoParentheses = true;
-                        typeString = typeString.TrimEnd('*');
-                    }
-
-                    mappingData = ConvertToType(typeString.Replace(" ", ""));
-                    mappingData.AutoParentheses = autoParentheses;
-                }
-                catch (Exception e)
-                {
-                    PrintError(e.ToString());
-                    throw new Exception($"表'{fileName}'中'{field}'这一列类型描述语法错误: {typeString}");
-                }
-                
-                if (!excelData.ColumnMappingData.TryAdd(field, mappingData))
-                {
-                    throw new Exception($"表'{fileName}'中存在相同名称的列: '{field}'!");
-                }
-                outStr += $"        /// <summary>\n";
-                outStr += $"        /// {description}\n";
-                outStr += $"        /// </summary>\n";
-                if (!mappingData.IsRefExcel) //没有引用其他表
-                {
-                    outStr += $"        [JsonInclude]\n";
-                    outStr += $"        public {mappingData.TypeStr} {field};\n\n";
-                }
-                else
-                {
-                    outStr += $"        public {mappingData.RefTypeStr} {field};\n\n";
-                }
-
-                if (mappingData.IsRefExcel) //引用其他表
-                {
-                    if (string.IsNullOrEmpty(outRefStr))
-                    {
-                        outRefStr += $"    private class Ref_{fileName} : {fileName}\n";
-                        outRefStr += $"    {{\n";
-                    }
-                    outRefStr += $"        [JsonInclude]\n";
-                    outRefStr += $"        public {mappingData.TypeStr} __{field};\n\n";
-                }
-                
-                cloneFuncStr += $"            inst.{field} = {field};\n";
-            }
-        
-            cloneFuncStr += "            return inst;\n";
-            cloneFuncStr += "        }\n";
-            outStr += cloneFuncStr;
-            outStr += "    }\n";
-
-            if (!string.IsNullOrEmpty(outRefStr))
-            {
-                outRefStr += "    }\n";
-                outStr += outRefStr;
-            }
-            
-            outStr += "}";
-            
-            //解析字段类型
-            foreach (var kv in excelData.ColumnMappingData)
-            {
-                var typeName = kv.Value.TypeName;
-                var type = Type.GetType(typeName);
-                if (type == null)
-                {
-                    throw new Exception($"表'{fileName}'中'{kv.Key}'这一列类型未知! " + kv.Value.TypeStr);
-                }
-                excelData.ColumnType.Add(kv.Key, type);
+                //到达最后一列了
+                break;
             }
 
-            //解析数据
-            foreach (Row row in cells.Rows)
+            columnCount++;
+            field = field.FirstToUpper();
+            excelData.ColumnNames.Add(field);
+            if (field == "Clone")
             {
-                if (row == null || row.Index < 3)
+                throw new Exception($"表'{fileName}'中不允许有'Clone'字段!");
+            }
+
+            var descriptionCell = descriptions[cell.Column];
+            //描述
+            string description;
+            if (descriptionCell != null)
+            {
+                description = GetCellStringValue(descriptionCell).Replace("\n", " <br/>\n        /// ");
+            }
+            else
+            {
+                description = "";
+            }
+
+            //类型
+            var typeString = GetCellStringValue(types[cell.Column]);
+            if (string.IsNullOrEmpty(typeString))
+            {
+                throw new Exception($"表'{fileName}'中'{field}'这一列类型为空!");
+            }
+
+            //尝试解析类型
+            MappingData mappingData;
+            try
+            {
+                var autoParentheses = false;
+                if (typeString.EndsWith('*'))
                 {
-                    continue;
+                    autoParentheses = true;
+                    typeString = typeString.TrimEnd('*');
                 }
-                Dictionary<string, object> data = null;
-                for (int j = 0; j < columnCount; j++)
+
+                mappingData = ConvertToType(typeString.Replace(" ", ""));
+                mappingData.AutoParentheses = autoParentheses;
+            }
+            catch (Exception e)
+            {
+                PrintError(e.ToString());
+                throw new Exception($"表'{fileName}'中'{field}'这一列类型描述语法错误: {typeString}");
+            }
+
+            if (!excelData.ColumnMappingData.TryAdd(field, mappingData))
+            {
+                throw new Exception($"表'{fileName}'中存在相同名称的列: '{field}'!");
+            }
+
+            outStr += $"        /// <summary>\n";
+            outStr += $"        /// {description}\n";
+            outStr += $"        /// </summary>\n";
+            if (!mappingData.IsRefExcel) //没有引用其他表
+            {
+                outStr += $"        [JsonInclude]\n";
+                outStr += $"        public {mappingData.TypeStr} {field};\n\n";
+            }
+            else
+            {
+                outStr += $"        public {mappingData.RefTypeStr} {field};\n\n";
+            }
+
+            if (mappingData.IsRefExcel) //引用其他表
+            {
+                if (string.IsNullOrEmpty(outRefStr))
                 {
-                    var cell = row[j];
-                    var strValue = GetCellStringValue(cell);
-                    //如果这一行的第一列数据为空, 则跳过这一行
-                    if (j == 0 && string.IsNullOrEmpty(strValue))
+                    outRefStr += $"    private class Ref_{fileName} : {fileName}\n";
+                    outRefStr += $"    {{\n";
+                }
+
+                outRefStr += $"        [JsonInclude]\n";
+                outRefStr += $"        public {mappingData.TypeStr} __{field};\n\n";
+            }
+
+            cloneFuncStr += $"            inst.{field} = {field};\n";
+        }
+
+        cloneFuncStr += "            return inst;\n";
+        cloneFuncStr += "        }\n";
+        outStr += cloneFuncStr;
+        outStr += "    }\n";
+
+        if (!string.IsNullOrEmpty(outRefStr))
+        {
+            outRefStr += "    }\n";
+            outStr += outRefStr;
+        }
+
+        outStr += "}";
+
+        //解析字段类型
+        foreach (var kv in excelData.ColumnMappingData)
+        {
+            var typeName = kv.Value.TypeName;
+            var type = Type.GetType(typeName);
+            if (type == null)
+            {
+                throw new Exception($"表'{fileName}'中'{kv.Key}'这一列类型未知! " + kv.Value.TypeStr);
+            }
+
+            excelData.ColumnType.Add(kv.Key, type);
+        }
+
+        //读取数据
+        foreach (Row row in cells.Rows)
+        {
+            if (row == null || row.Index < 3)
+            {
+                continue;
+            }
+
+            var tableCellValues = new Dictionary<string, TableCellValue>();
+            var rowDictionary = new Dictionary<string, object>();
+            excelData.DataList.Add(rowDictionary);
+
+            for (int j = 0; j < columnCount; j++)
+            {
+                var cell = row[j];
+                var strValue = GetCellStringValue(cell);
+                if (j == 0)
+                {
+                    if (string.IsNullOrEmpty(strValue)) //如果这一行的第一列数据为空, 则跳过这一行
                     {
                         break;
                     }
-                    else if (data == null)
-                    {
-                        data = new Dictionary<string, object>();
-                        excelData.DataList.Add(data);
-                    }
+                    //录入id
 
-                    var fieldName = excelData.ColumnNames[j];
-                    var mappingData = excelData.ColumnMappingData[fieldName];
+                    //存入tableValue
+                    tableValue.Add(strValue, tableCellValues);
+
+                }
+
+                var fieldName = excelData.ColumnNames[j];
+                var tableCellValue = new TableCellValue();
+                tableCellValue.Text = strValue;
+                tableCellValue.Cell = cell;
+                tableCellValue.ExcelData = excelData;
+                tableCellValue.RowDictionary = rowDictionary;
+                tableCellValue.Row = row.Index + 1;
+                tableCellValue.Column = j;
+                tableCellValues.Add(fieldName, tableCellValue);
+            }
+        }
+
+        excelData.OutCode = outStr;
+        return excelData;
+    }
+
+    private static void AnalysisExcelData()
+    {
+        foreach (var keyValuePair in _allExcelData)
+        {
+            // 表名
+            var tableName = keyValuePair.Key;
+            foreach (var valuePair in keyValuePair.Value)
+            {
+                // 数据 id
+                var id = valuePair.Key;
+                foreach (var tableCellValue in valuePair.Value)
+                {
+                    // 列名
+                    var fieldName = tableCellValue.Key;
+                    var cellValue = tableCellValue.Value;
+                    var mappingData = cellValue.ExcelData.ColumnMappingData[fieldName];
+                    var data = cellValue.RowDictionary;
+                    var cell = cellValue.Cell;
                     var field = mappingData.IsRefExcel ? "__" + fieldName : fieldName;
+                    
                     try
                     {
                         switch (mappingData.TypeStr)
                         {
                             case "bool":
                             case "boolean":
-                                data.Add(field, GetCellBooleanValue(cell));
+                                data.Add(field, Convert.ToBoolean(AnalysisCellData(tableName, cellValue.Text, "false")));
                                 break;
                             case "byte":
-                                data.Add(field, Convert.ToByte(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToByte(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "sbyte":
-                                data.Add(field, Convert.ToSByte(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToSByte(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "short":
-                                data.Add(field, Convert.ToInt16(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToInt16(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "ushort":
-                                data.Add(field, Convert.ToUInt16(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToUInt16(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "int":
-                                data.Add(field, Convert.ToInt32(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToInt32(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "uint":
-                                data.Add(field, Convert.ToUInt32(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToUInt32(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "long":
-                                data.Add(field, Convert.ToInt64(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToInt64(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "ulong":
-                                data.Add(field, Convert.ToUInt64(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToUInt64(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "float":
-                                data.Add(field, Convert.ToSingle(GetCellNumberValue(cell)));
+                                data.Add(field, Convert.ToSingle(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "double":
-                                data.Add(field, GetCellNumberValue(cell));
+                                data.Add(field, Convert.ToDouble(AnalysisCellData(tableName, cellValue.Text, "0")));
                                 break;
                             case "string":
-                                data.Add(field, GetCellStringValue(cell));
+                                data.Add(field, AnalysisCellData(tableName, cellValue.Text, ""));
                                 break;
                             default:
                             {
-                                var cellStringValue = GetCellStringValue(cell);
-                                var returnType = excelData.ColumnType[fieldName];
+                                var cellStringValue = AnalysisCellData(tableName, cellValue.Text, "");
+                                var returnType = cellValue.ExcelData.ColumnType[fieldName];
                                 if (returnType.IsAssignableTo(typeof(ICustomFormat)))
                                 {
                                     var customFormat = (ICustomFormat)Activator.CreateInstance(returnType);
@@ -593,16 +667,90 @@ public static class ExcelGenerator
                     catch (Exception e)
                     {
                         PrintError(e.ToString());
-                        throw new Exception($"解析表'{fileName}'第'{row.Index + 1}'行第'{j + 1}'列数据时发生异常");
+                        throw new Exception($"解析表'{tableName}'第'{cellValue.Row}({id})'行第'{cellValue.Column}({fieldName})'列数据时发生异常");
                     }
                 }
             }
         }
-
-        excelData.OutCode = outStr;
-        return excelData;
     }
 
+    // 解析 text 中引用数据
+    private static string AnalysisCellData(string tableName, string text, string defaultValue)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return defaultValue;
+        }
+        
+        // 引用数据格式有两种：
+        // 第一种：${id.字段名称}$，表示获取当前表中指定行的指定列的值
+        // 第二种：${表名.id.字段名}$，表示获取指定表中指定行的指定列的值
+        // 他们可以通过判断中间的'.'数量来确定是哪一种引用
+        // text数据样例：abcd${0001.Id}$efg${table3.0001.Name}$higk
+    
+        int startIndex = 0;
+        while (true)
+        {
+            // 查找引用开始标记
+            int refStart = text.IndexOf("${", startIndex);
+            if (refStart == -1) break;
+        
+            // 查找引用结束标记
+            int refEnd = text.IndexOf("}$", refStart);
+            if (refEnd == -1) break;
+        
+            // 提取引用内容
+            string refContent = text.Substring(refStart + 2, refEnd - refStart - 2);
+            string[] parts = refContent.Split('.');
+        
+            string value = "";
+            if (parts.Length == 2)
+            {
+                // 第一种格式：${id.字段名称}$
+                string id = parts[0];
+                string fieldName = parts[1];
+                value = GetCellValue(tableName, id, fieldName);
+            }
+            else if (parts.Length == 3)
+            {
+                // 第二种格式：${表名.id.字段名}$
+                string refTableName = parts[0];
+                string id = parts[1];
+                string fieldName = parts[2];
+                value = GetCellValue(refTableName, id, fieldName);
+            }
+        
+            // 替换引用为实际值
+            text = text.Substring(0, refStart) + value + text.Substring(refEnd + 2);
+        
+            // 更新搜索起始位置
+            startIndex = refStart + value.Length;
+        }
+
+        return text;
+    }
+
+    // 获取指定单元格数据，tableName：表名，id：行id，fieldName：列名
+    private static string GetCellValue(string tableName, string id, string fieldName)
+    {
+        if (_allExcelData.TryGetValue(tableName, out var tableData))
+        {
+            if (tableData.TryGetValue(id, out var rowData))
+            {
+                if (rowData.TryGetValue(fieldName, out var cellValue))
+                {
+                    return cellValue.Text;
+                }
+                
+                throw new Exception($"解析引用数据没有找到'{tableName}'表行'{id}'的'{fieldName}'列！");
+            }
+            
+            throw new Exception($"解析引用数据没有找到'{tableName}'表行'{id}'！");
+        }
+
+        throw new Exception($"解析引用数据没有找到'{tableName}'表！");
+    }
+    
     private static string GetCellStringValue(Cell cell)
     {
         if (cell == null)
@@ -620,53 +768,6 @@ public static class ExcelGenerator
         }
 
         return "";
-    }
-
-    private static double GetCellNumberValue(Cell cell)
-    {
-        if (cell == null)
-        {
-            return 0;
-        }
-        
-        switch (cell.Type)
-        {
-            case CellValueType.IsNumeric:
-                return cell.DoubleValue;
-            case CellValueType.IsString:
-                return double.Parse(cell.StringValue);
-            case CellValueType.IsBool:
-                return cell.BoolValue ? 1 : 0;
-        }
-        
-        return 0;
-    }
-
-    private static bool GetCellBooleanValue(Cell cell)
-    {
-        if (cell == null)
-        {
-            return false;
-        }
-        
-        switch (cell.Type)
-        {
-            case CellValueType.IsNumeric:
-                return cell.DoubleValue != 0;
-            case CellValueType.IsString:
-            {
-                var value = cell.StringValue;
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return false;
-                }
-                return bool.Parse(value);
-            }
-            case CellValueType.IsBool:
-                return cell.BoolValue;
-        }
-
-        return false;
     }
 
     private static MappingData ConvertToType(string str, int depth = 0)
