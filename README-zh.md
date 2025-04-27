@@ -86,6 +86,9 @@ godot下载地址：[https：//godotengine.org/download](GunfireDungeon_Document
 
 **开发日志：** [开发日志.md](GunfireDungeon_Document/开发日志.md) 
 
-**哔哩哔哩：** [https：//space.bilibili.com/259437820](GunfireDungeon_Document/文档资源/setting.png)
+**哔哩哔哩：** https://space.bilibili.com/259437820
 
-**项目Ui插件：** [https：//github.com/xlljc/Ds_Ui](GunfireDungeon_Document/文档资源/setting.png)
+**项目引用插件：**
+
+* Ds_Ui：https://github.com/xlljc/Ds_Ui
+* godot-node-presetting：https://github.com/DeerLuuu/godot-node-presetting

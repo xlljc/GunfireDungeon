@@ -82,4 +82,7 @@ On first launch, enable these two plugins:
 
 **Bilibili:** [https://space.bilibili.com/259437820](GunfireDungeon_Document/文档资源/setting.png)  
 
-**UI Plugin for the Project:** [https://github.com/xlljc/Ds_Ui](GunfireDungeon_Document/文档资源/setting.png)  
+**Project reference plugin:** 
+
+* Ds_Ui：https://github.com/xlljc/Ds_Ui
+* godot-node-presetting：https://github.com/DeerLuuu/godot-node-presetting
