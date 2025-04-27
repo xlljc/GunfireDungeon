@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://6a4l0o8pmegw"]
+
+[ext_resource type="Script" uid="uid://bop24181w5fi5" path="res://src/game/ui/editor/mapEditorObject/MapEditorObjectPanel.cs" id="1_yphyn"]
+[ext_resource type="Texture2D" uid="uid://dg8pxnmakjf6" path="res://resource/sprite/ui/commonIcon/Search.png" id="2_e3a41"]
+[ext_resource type="Texture2D" uid="uid://qhfo3vw0cg4q" path="res://resource/sprite/ui/commonIcon/MarkCell_placeholder.png" id="3_s35vd"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="4_by2nt"]
+[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="5_caspl"]
+[ext_resource type="Texture2D" uid="uid://dsdfcavvgwy7u" path="res://resource/sprite/ui/commonIcon/Delete.png" id="7_8ld0o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkboy"]
+resource_local_to_scene = true
+shader = ExtResource("4_by2nt")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = false
+shader_parameter/grey = 0.0
+
+[node name="MapEditorObject" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yphyn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="SearchInput" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索"
+
+[node name="SearchButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_e3a41")
+flat = true
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "物体层级："
+
+[node name="LayerOption" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "YSort"
+popup/item_1/id = 1
+
+[node name="ItemRoot" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Item" type="HBoxContainer" parent="VBoxContainer/ItemRoot"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemButton" type="Button" parent="VBoxContainer/ItemRoot/Item"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "名称"
+icon = ExtResource("3_s35vd")
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/ItemRoot/Item/ItemButton"]
+material = SubResource("ShaderMaterial_wkboy")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -25.0
+offset_right = 53.0
+offset_bottom = 25.0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Select" type="NinePatchRect" parent="VBoxContainer/ItemRoot/Item/ItemButton"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_caspl")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="DynamicDeleteButton" type="Button" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 44.0
+offset_bottom = 40.0
+icon = ExtResource("7_8ld0o")
+flat = true
+icon_alignment = 1

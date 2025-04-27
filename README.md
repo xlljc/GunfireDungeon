@@ -1,73 +1,88 @@
+[**English**](./README.md)  | [**中文简体**](./README-zh.md)
 
-## 一款由Godot开发的地牢射击类型的游戏
+Is the main branch not updated for a long time? Please switch to the [develop](https://github.com/xlljc/GunfireDungeon/tree/develop) branch to view the latest code.
 
-**Godot版本:** `4.2.1 mono`  
-**.Net版本:** `8.0`
 
----
-### 游戏定义
 
-**游戏名称:**《枪火地牢》  
-**英文名称:**《Gunfire Dungeon》  
-**美术风格:** 2D像素(完美像素)  
-**游戏标签:** Roguelite, 俯视角, 地牢探索, 双摇杆射击  
-**参考游戏:** 《挺进地牢》, 《元气骑士》, 《废土之王》  
-**核心简介:** 游戏整体流程由数层地牢组成, 每层又由数个房间组成, 每个房间有一堵门隔开, 玩家每进入一个房间, 需要清理房间内所有的敌人, 方可离开和进入下一个房间,
-玩家需要在这些房间中探索, 战斗, 收集掉落的道具和被动, 一步步成长, 击败boss, 进入下一层, 如此往复, 直到击败最后一层boss即可通关.
-但本作与市面上常规地牢射击游戏不同的是, 玩家与敌人共用武器资源, 玩家击败敌人便可拾起敌人的武器, 并且更加注重环境互动要素  
-**游戏背景:** 构思中
+## A Dungeon Shooter Game Developed with Godot  
 
-**游戏内置了一个功能强大的地图编辑器, 方便玩家自己制作地图和分享地图**
+**Godot Version:** `4.4 mono`  
+
+**.Net Version:** `9.0`  
 
 ---
-### 预览图
-##### 游戏中  
-![gif](DungeonShooting_Document/文档资源/preview_gif.gif)  
-![png](DungeonShooting_Document/文档资源/preview1.png)  
-##### 地图编辑器  
-房间管理器  
-![png](DungeonShooting_Document/文档资源/preview2.png)  
-房间地形编辑  
-![png](DungeonShooting_Document/文档资源/preview3_gif.gif)  
-房间装饰编辑  
-![png](DungeonShooting_Document/文档资源/preview2_gif.gif)  
-房间预设编辑
-![png](DungeonShooting_Document/文档资源/preview3.png)
+### Game Definition  
+
+**Game Title:** 《枪火地牢》  
+
+**English Title:** 《Gunfire Dungeon》  
+
+**Art Style:** 2D Pixel  
+
+**Game Tags:** Roguelite, Top-down, Dungeon Exploration, Twin-stick Shooter  
+
+**Reference Games:** 《Enter the Gungeon》, 《Noita》  
+
+**Core Overview:** The game consists of multiple dungeon layers, each composed of several rooms separated by doors. Players must clear all enemies in a room before proceeding to the next. Through exploration, combat, and collecting dropped items and passives, players grow stronger, defeat bosses, and advance to the next layer. This cycle repeats until the final boss is defeated to complete the game.  
+
+**Game Background:** Under development  
+
+**The game includes a powerful built-in map editor, allowing players to create and share their own maps.**  
 
 ---
-### 启动项目
+### Preview Images  
 
-git仓库的目录结构如下
-> ├ DungeonShooting_Document (更新日志相关的目录)  
-> └ DungeonShooting_Godot (Godot工程目录)
+##### In-Game  
 
+![gif](GunfireDungeon_Document/文档资源/preview0.png)  
+![png](GunfireDungeon_Document/文档资源/preview1.png)  
 
+##### Map Editor  
 
-请确保安装了`.net8`和`godot mono4.2.1`
+Room Manager  
 
-godot下载地址: https://godotengine.org/download
+![png](GunfireDungeon_Document/文档资源/preview2.png)  
 
-.net8下载地址: https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0
+Room Terrain Editing  
 
+![png](GunfireDungeon_Document/文档资源/preview3_gif.gif)  
 
+Room Decoration Editing  
 
-使用GodotMono版打开`DungeonShooting_Godot/project.godot`
+![png](GunfireDungeon_Document/文档资源/preview2_gif.gif)  
 
+Room Preset Editing  
 
-
-**注意**: 如果是第一次打开项目会弹出以下提示
-
-![png](DungeonShooting_Document/文档资源/tip.png)
-
-这是因为项目没有编译过, 点击Godot右上角`build`, 然后打`开项目设置`, 在`插件`这一个页签下启用`DungeonShooting_plugin`这个插件
-
-![png](DungeonShooting_Document/文档资源/setting.png)
-
-最后重启编辑器, 项目就可以正常运行了
+![png](GunfireDungeon_Document/文档资源/preview3.png)  
 
 ---
-### 其他
+### Launching the Project  
 
-**开发日志:** [开发日志.md](DungeonShooting_Document/开发日志.md)  
-**哔哩哔哩:** https://space.bilibili.com/259437820  
-**项目Ui插件:** https://github.com/xlljc/Ds_Ui
+The directory structure of the git repository is as follows:  
+> ├ GunfireDungeon_Document (Directory for update logs and related files) 
+>
+> └ GunfireDungeon_Godot (Godot project directory)  
+
+Ensure `.NET 9` and `Godot Mono 4.4` are installed.  
+
+Godot download link: [https://godotengine.org/download](GunfireDungeon_Document/文档资源/setting.png)  
+
+.NET 9 download link: [https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0](GunfireDungeon_Document/文档资源/setting.png)  
+
+Open `GunfireDungeon_Godot/project.godot` using Godot Mono.  
+
+On first launch, enable these two plugins:  
+
+![setting.png](GunfireDungeon_Document/文档资源/setting.png)  
+
+---
+### Other  
+
+**Development Log:** [Development Log.md](GunfireDungeon_Document/开发日志.md)  
+
+**Bilibili:** [https://space.bilibili.com/259437820](GunfireDungeon_Document/文档资源/setting.png)  
+
+**Project reference plugin:** 
+
+* Ds_Ui：https://github.com/xlljc/Ds_Ui
+* godot-node-presetting：https://github.com/DeerLuuu/godot-node-presetting
