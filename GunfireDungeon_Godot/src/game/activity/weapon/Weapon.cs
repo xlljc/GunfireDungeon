@@ -353,12 +353,27 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
         if (attribute.PartPack.TryGetValue("Fire", out var partList))
         {
             FirePartList = new PartList(partList.Length, this);
+            SetPartListItem(FirePartList, partList);
         }
         else
         {
             FirePartList = new PartList(0, this);
         }
         PartListMap.Add("Fire", FirePartList);
+    }
+
+    private void SetPartListItem(PartList list, string[] ids)
+    {
+        for (var i = 0; i < ids.Length; i++)
+        {
+            var id = ids[i];
+            if (string.IsNullOrEmpty(id))
+            {
+                continue;
+            }
+
+            list.SetLogicBlock(i, PartProp.CreatePropActivity(id));
+        }
     }
 
     /// <summary>
@@ -859,8 +874,24 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     /// 扳机函数, 调用即视为按下扳机
     /// </summary>
     /// <param name="triggerRole">按下扳机的角色, 如果传 null, 则视为走火</param>
+    public void Trigger(Role triggerRole)
+    {
+        if (triggerRole == null || !triggerRole.IsAi)
+        {
+            Trigger(triggerRole, true);
+        }
+        else
+        {
+            Trigger(triggerRole, Utils.Random.RandomBoolean(AiUseAttribute.AiAttackAttr.AmmoConsumptionProbability));
+        }
+    }
+    
+    /// <summary>
+    /// 扳机函数, 调用即视为按下扳机
+    /// </summary>
+    /// <param name="triggerRole">按下扳机的角色, 如果传 null, 则视为走火</param>
     /// <param name="calcAmmo">是否计算弹药消耗</param>
-    public void Trigger(Role triggerRole, bool calcAmmo = true)
+    public void Trigger(Role triggerRole, bool calcAmmo)
     {
         //不能触发扳机
         if (!NoMasterCanTrigger && Master == null) return;
@@ -1306,7 +1337,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
     public bool IsTotalAmmoEmpty()
     {
         // 判断法力值和弹丸法术是否消耗殆尽
-        return CurrMana == 0;
+        return CurrBufferMana + CurrMana <= 0;
     }
 
     /// <summary>

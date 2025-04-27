@@ -319,6 +319,8 @@ public partial class GameApplication : Node2D, ICoroutine
         if (PerfectPixel == v) return;
         PerfectPixel = v;
 
+        SceneRoot.Owner = null;
+        GameCamera.Main.Owner = null;
         if (v) //完美像素
         {
             DefaultCameraZoom = Vector2.One;
