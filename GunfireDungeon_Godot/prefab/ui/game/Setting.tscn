@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnwweusrc44xy"]
+
+[ext_resource type="Script" uid="uid://b7nhbvdhafses" path="res://src/game/ui/game/setting/SettingPanel.cs" id="1_ff0oi"]
+[ext_resource type="Theme" uid="uid://ds668te2rph30" path="res://resource/theme/mainTheme.tres" id="4_bwst8"]
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ff0oi")
+Layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.941176)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingMenu" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="ScrollContainer/SettingMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "游戏设置"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "全屏"
+
+[node name="FullScreen" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BoxContainer2" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "完美像素"
+
+[node name="PerfectPixel" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BoxContainer3" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "背景音量"
+vertical_alignment = 1
+
+[node name="BGM" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="BoxContainer4" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "音效音量"
+vertical_alignment = 1
+
+[node name="SFX" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="BoxContainer5" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "鼠标跟随进度"
+vertical_alignment = 1
+
+[node name="FollowsMouseAmount" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Back" type="Button" parent="ScrollContainer/SettingMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_bwst8")
+text = "返回"

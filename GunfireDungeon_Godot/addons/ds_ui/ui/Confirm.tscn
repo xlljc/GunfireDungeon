@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://n3lox2h6t4gu"]
+
+[node name="Confirm" type="ConfirmationDialog"]
+initial_position = 1
+size = Vector2i(350, 180)
+visible = true
+dialog_autowrap = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "请输入UI名称： 
+支持通过‘/’添加文件夹例如：aa/bb/UiName"
+
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2

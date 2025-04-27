@@ -1,0 +1,17 @@
+/.vscode
+/.import
+/.mono
+/.vs
+/.godot
+/build
+/buffTable
+/excelTool/bin
+/excelTool/obj
+/excelTool/**/*.uid
+/excelTool/.idea
+/excelTool/.vs
+/excelTool/.vscode
+/excelTool/publish
+/excelTool/Folder.DotSettings.user
+/GunfireDungeon.csproj.old*
+**/.DS_Store

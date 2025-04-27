@@ -1,0 +1,90 @@
+{
+  "Test1": {
+    "GroupName": "Test1",
+    "TileSet": "TileSet1",
+    "BgColor": {
+      "R8": 0,
+      "G8": 0,
+      "B8": 0,
+      "A8": 0,
+      "H": 0,
+      "S": 0,
+      "V": 0,
+      "OkHslH": 0,
+      "OkHslS": 0,
+      "OkHslL": 0,
+      "Luminance": 0
+    },
+    "SoundId": null,
+    "BattleList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle1"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle2"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle3"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle4"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle5"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/battle/Battle6"
+      }
+    ],
+    "InletList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/inlet/Start"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/inlet/Start2"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/inlet/StartTest"
+      },
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/inlet/Start3"
+      }
+    ],
+    "OutletList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/outlet/End1"
+      }
+    ],
+    "BossList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/boss/Boss1"
+      }
+    ],
+    "RewardList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/reward/Reward1"
+      }
+    ],
+    "ShopList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test1/shop/Shop1"
+      }
+    ],
+    "EventList": [],
+    "Remark": ""
+  }
+}

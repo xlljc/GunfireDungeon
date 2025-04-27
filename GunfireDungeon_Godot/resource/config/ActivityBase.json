@@ -1,0 +1,591 @@
+[
+  {
+    "Id": "role0001",
+    "Name": "\u73A9\u5BB6",
+    "Type": 3,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u73A9\u5BB6"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/role/Role0001.tscn",
+    "Icon": "res://resource/sprite/role/role0001/Role0001_Icon.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "enemy0001",
+    "Name": "\u654C\u4EBA",
+    "Type": 4,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u654C\u4EBA"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/role/enemy/Enemy0001.tscn",
+    "Icon": "res://resource/sprite/role/enemy0001/enemy0001_Icon.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "boss0001",
+    "Name": "Boss",
+    "Type": 12,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "Boss"
+    },
+    "Details": {
+      "Code": "Boss"
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/role/boss/Boss0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "shopBoss0001",
+    "Name": "\u5546\u5E97\u8001\u677F",
+    "Type": 11,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u5546\u5E97\u8001\u677F"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/role/shopBoss/ShopBoss0001.tscn",
+    "Icon": "res://resource/sprite/role/shopBoss0001/ShopBoss0001.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "weapon0003",
+    "Name": "\u624B\u67AA",
+    "Type": 5,
+    "Quality": 2,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/weapon/Weapon0003.tscn",
+    "Icon": "res://resource/sprite/weapon/weapon0003/Weapon0003.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "bullet0001",
+    "Name": "",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0002",
+    "Name": "",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0002.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0003",
+    "Name": "",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0003.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0004",
+    "Name": "\u69B4\u5F39\u70AE",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0005",
+    "Prefab": "res://prefab/bullet/normal/Bullet0004.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0005",
+    "Name": "\u629B\u7269\u7EBF\u7C98\u6DB2\u5B50\u5F39",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0004",
+    "Prefab": "res://prefab/bullet/normal/Bullet0005.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0006",
+    "Name": "\u62D6\u5C3E\u5B50\u5F39",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0006.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0007",
+    "Name": "",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0007.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0008",
+    "Name": "",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0003",
+    "Prefab": "res://prefab/bullet/normal/Bullet0008.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "bullet0009",
+    "Name": "\u5F13\u7BAD",
+    "Type": 6,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/bullet/normal/Bullet0009.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "summons0001",
+    "Name": "boss\u53EC\u5524\u7269\u5B50\u5F39",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/bullet/summons/Summons0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "special0001",
+    "Name": "boss\u7279\u6B8A\u5B50\u5F39",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/bullet/special/SpecialBullet0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "shell0001",
+    "Name": "",
+    "Type": 7,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0006",
+    "Prefab": "res://prefab/shell/Shell0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "shell0002",
+    "Name": "",
+    "Type": 7,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0006",
+    "Prefab": "res://prefab/shell/Shell0002.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "shell0003",
+    "Name": "",
+    "Type": 7,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0006",
+    "Prefab": "res://prefab/shell/Shell0003.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "shell0004",
+    "Name": "",
+    "Type": 7,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "0006",
+    "Prefab": "res://prefab/shell/Shell0004.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "enemy_dead0001",
+    "Name": "",
+    "Type": 8,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u654C\u4EBA1\u6B7B\u4EA1\u788E\u7247"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/effect/enemy/EnemyDead0001.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "enemy_dead0002",
+    "Name": "",
+    "Type": 8,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u654C\u4EBA2\u6B7B\u4EA1"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/effect/enemy/EnemyDead0002.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "part_comm0001",
+    "Name": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53",
+    "Type": 9,
+    "Quality": 1,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u901A\u7528\u96F6\u4EF6\u7269\u4F53"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/part/PartProp.tscn",
+    "Icon": "",
+    "NotInRandomPool": true,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "treasure_box0001",
+    "Name": "\u6728\u8D28\u5B9D\u7BB1",
+    "Type": 10,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u6728\u8D28\u5B9D\u7BB1"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/box/TreasureBox0001.tscn",
+    "Icon": "res://resource/sprite/box/TreasureBox0001.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "other_door_e",
+    "Name": "",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u4E1C\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": true,
+    "__Material": "",
+    "Prefab": "res://prefab/map/RoomDoor_E.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "other_door_w",
+    "Name": "",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u897F\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": true,
+    "__Material": "",
+    "Prefab": "res://prefab/map/RoomDoor_W.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "other_door_s",
+    "Name": "",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5357\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": true,
+    "__Material": "",
+    "Prefab": "res://prefab/map/RoomDoor_S.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "other_door_n",
+    "Name": "",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u5730\u7262\u623F\u95F4\u7684\u95E8(\u5317\u4FA7)"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": true,
+    "__Material": "",
+    "Prefab": "res://prefab/map/RoomDoor_N.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "gold_10",
+    "Name": "\u91D1\u5E01",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u83B7\u5F9710\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/currency/Gold10.tscn",
+    "Icon": "res://resource/sprite/ui/commonIcon/Gold_10.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "gold_5",
+    "Name": "\u94F6\u5E01",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u83B7\u5F975\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/currency/Gold5.tscn",
+    "Icon": "res://resource/sprite/ui/commonIcon/Gold_5.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "gold_1",
+    "Name": "\u94DC\u5E01",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u83B7\u5F971\u91D1\u5E01"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/currency/Gold1.tscn",
+    "Icon": "res://resource/sprite/ui/commonIcon/Gold_1.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  }
+]

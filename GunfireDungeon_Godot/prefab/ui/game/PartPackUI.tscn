@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=3 uid="uid://5yl1fxpychfq"]
+
+[ext_resource type="Script" uid="uid://dekdtxo18rhp0" path="res://src/game/ui/game/partPackUI/PartPackUIPanel.cs" id="1_req0c"]
+[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="2_oywjh"]
+[ext_resource type="PackedScene" uid="uid://lo71pmoaul0j" path="res://prefab/ui/component/game/PartPackSlot.tscn" id="3_v4de6"]
+[ext_resource type="Shader" uid="uid://bukuvnjyi8ggb" path="res://resource/shader/Outline.gdshader" id="4_3klww"]
+[ext_resource type="Texture2D" uid="uid://7g1k5v212i6j" path="res://resource/sprite/weapon/weapon0005/Weapon0005.png" id="4_861nw"]
+[ext_resource type="FontFile" uid="uid://dd5aeidrx6qvu" path="res://resource/font/VonwaonBitmap-16px.ttf" id="5_pne8q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3klww"]
+resource_local_to_scene = true
+shader = ExtResource("4_3klww")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[node name="PartPackUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_req0c")
+Layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartBg" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Border" type="NinePatchRect" parent="VBoxContainer/PartBg"]
+modulate = Color(0, 0.958261, 1, 0.47)
+layout_mode = 2
+texture = ExtResource("2_oywjh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="PartPackItem" parent="VBoxContainer/PartBg" instance=ExtResource("3_v4de6")]
+layout_mode = 2
+
+[node name="WeaponBg" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="ScrollContainer" parent="VBoxContainer/WeaponBg"]
+layout_mode = 2
+
+[node name="WeaponItem" type="NinePatchRect" parent="VBoxContainer/WeaponBg/VBoxContainer"]
+custom_minimum_size = Vector2(560, 124)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_oywjh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Control" type="Control" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 107.0
+offset_top = 65.0
+offset_right = 107.0
+offset_bottom = 65.0
+scale = Vector2(4, 4)
+
+[node name="WeaponIcon" type="TextureRect" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/Control"]
+material = SubResource("ShaderMaterial_3klww")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -9.5
+offset_right = 21.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_861nw")
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 15.0
+offset_right = 500.0
+offset_bottom = 105.0
+theme_override_constants/separation = 10
+
+[node name="WeaponMana" type="Label" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_pne8q")
+theme_override_font_sizes/font_size = 32
+text = "法力值：99/99"
+
+[node name="WeaponBuffMana" type="Label" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_pne8q")
+theme_override_font_sizes/font_size = 32
+text = "缓冲区：99/99"
+
+[node name="PartListItem" type="Control" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 124.0
+offset_bottom = 230.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubLine" type="ColorRect" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+color = Color(1, 1, 1, 0.2)
+
+[node name="ListName" type="Label" parent="VBoxContainer/WeaponBg/VBoxContainer/WeaponItem/PartListItem"]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 31.0
+offset_right = 143.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("5_pne8q")
+theme_override_font_sizes/font_size = 32
+text = "开火"

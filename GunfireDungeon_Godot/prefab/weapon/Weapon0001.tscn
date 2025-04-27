@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6etppq4v63xw"]
+
+[ext_resource type="PackedScene" uid="uid://cxltmhhp4rbyk" path="res://prefab/weapon/WeaponTemplate.tscn" id="1_ykl0r"]
+[ext_resource type="Script" uid="uid://bjxr3woi1wmrq" path="res://src/game/activity/weapon/gun/Gun.cs" id="2_t56pk"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_x1q03"]
+[ext_resource type="SpriteFrames" uid="uid://5m0qs7m4er5u" path="res://resource/spriteFrames/weapon/Weapon0001.tres" id="4_d5c81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bfqf"]
+resource_local_to_scene = true
+shader = ExtResource("3_x1q03")
+shader_parameter/blend = Color(0, 0, 0, 0.470588)
+shader_parameter/schedule = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bj7y3"]
+resource_local_to_scene = true
+shader = ExtResource("3_x1q03")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i6da"]
+size = Vector2(22, 8.25)
+
+[node name="Weapon0001" node_paths=PackedStringArray("FirePoint", "ShellPoint", "AnimationPlayer", "ShadowSprite", "AnimatedSprite", "Collision") instance=ExtResource("1_ykl0r")]
+script = ExtResource("2_t56pk")
+FirePoint = NodePath("AnimatedSprite/FirePoint")
+ShellPoint = NodePath("AnimatedSprite/ShellPoint")
+AnimationPlayer = NodePath("AnimationPlayer")
+ShadowSprite = NodePath("ShadowSprite")
+AnimatedSprite = NodePath("AnimatedSprite")
+Collision = NodePath("Collision")
+
+[node name="ShadowSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_5bfqf")
+
+[node name="AnimatedSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_bj7y3")
+position = Vector2(5, 1)
+sprite_frames = ExtResource("4_d5c81")
+
+[node name="ShellPoint" parent="AnimatedSprite" index="0"]
+position = Vector2(1.5, -3.5)
+
+[node name="FirePoint" parent="AnimatedSprite" index="1"]
+position = Vector2(15, -2)
+
+[node name="Collision" parent="." index="2"]
+visible = true
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_7i6da")

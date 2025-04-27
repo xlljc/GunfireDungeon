@@ -1,0 +1,16 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="android\**" />
+    <Compile Remove="excelTool\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="android\**" />
+    <EmbeddedResource Remove="excelTool\**" />
+  </ItemGroup>
+</Project>

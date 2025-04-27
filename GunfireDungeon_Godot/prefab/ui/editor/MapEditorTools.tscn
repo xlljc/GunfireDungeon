@@ -1,0 +1,226 @@
+[gd_scene load_steps=14 format=3 uid="uid://uova1lj10oxv"]
+
+[ext_resource type="Script" uid="uid://orv2trw8um65" path="res://src/game/ui/editor/mapEditorTools/MapEditorToolsPanel.cs" id="1_mqp1c"]
+[ext_resource type="Script" uid="uid://defdp0d8k7nbm" path="res://src/game/ui/editor/mapEditorTools/DoorHoverArea.cs" id="2_6qfy3"]
+[ext_resource type="Texture2D" uid="uid://n5dn6p2e04d4" path="res://icon.png" id="2_rwvbg"]
+[ext_resource type="Script" uid="uid://dktyaarspy8di" path="res://src/game/ui/editor/mapEditorTools/DoorDragArea.cs" id="3_3w0w6"]
+[ext_resource type="Script" uid="uid://c7pxmapf2dnlb" path="res://src/game/ui/editor/mapEditorTools/DoorDragButton.cs" id="3_45muq"]
+[ext_resource type="Texture2D" uid="uid://ds45pfqxuusdb" path="res://resource/sprite/ui/mapEditorTools/DoorDragButton.png" id="3_trbb5"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="6_krtnu"]
+[ext_resource type="Texture2D" uid="uid://crb13qpeilm0k" path="res://resource/sprite/ui/commonIcon/Mark.png" id="6_n7h3g"]
+[ext_resource type="Script" uid="uid://b7kwfwsomwh72" path="res://src/game/ui/editor/mapEditorTools/MarkTool.cs" id="7_ekxcj"]
+[ext_resource type="Texture2D" uid="uid://clgc7rpknhggw" path="res://resource/sprite/ui/commonIcon/Select.png" id="7_mqmd6"]
+[ext_resource type="Script" uid="uid://dtfxwwgvwu7q" path="res://src/game/ui/editor/mapEditorTools/CustomObject.cs" id="9_mdsqu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxp5t"]
+resource_local_to_scene = true
+shader = ExtResource("6_krtnu")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = false
+shader_parameter/grey = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a2r0"]
+size = Vector2(16, 16)
+
+[node name="MapEditorTools" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_mqp1c")
+metadata/_edit_vertical_guides_ = [1900.0]
+
+[node name="ToolRoot" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="N_HoverRoot" type="Control" parent="ToolRoot"]
+anchors_preset = 0
+
+[node name="N_HoverArea" type="ColorRect" parent="ToolRoot/N_HoverRoot"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 160.0
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_6qfy3")
+
+[node name="E_HoverRoot" type="Control" parent="ToolRoot"]
+anchors_preset = 0
+rotation = 1.5708
+
+[node name="E_HoverArea" type="ColorRect" parent="ToolRoot/E_HoverRoot"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 160.0
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_6qfy3")
+
+[node name="S_HoverRoot" type="Control" parent="ToolRoot"]
+anchors_preset = 0
+rotation = 3.14159
+scale = Vector2(-1, 1)
+
+[node name="S_HoverArea" type="ColorRect" parent="ToolRoot/S_HoverRoot"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -9.12665e-05
+offset_top = -36.0
+offset_right = 160.0
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_6qfy3")
+
+[node name="W_HoverRoot" type="Control" parent="ToolRoot"]
+anchors_preset = 0
+rotation = 4.71239
+scale = Vector2(-1, 1)
+
+[node name="W_HoverArea" type="ColorRect" parent="ToolRoot/W_HoverRoot"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 160.0
+grow_vertical = 0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_6qfy3")
+
+[node name="HoverPreviewRoot" type="Control" parent="ToolRoot"]
+visible = false
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="HoverPreview" type="TextureRect" parent="ToolRoot/HoverPreviewRoot"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -36.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_trbb5")
+
+[node name="DoorToolTemplate" type="Control" parent="ToolRoot"]
+anchors_preset = 0
+script = ExtResource("3_3w0w6")
+
+[node name="DoorArea" type="ColorRect" parent="ToolRoot/DoorToolTemplate"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 64.0
+grow_vertical = 0
+color = Color(0.184314, 1, 0.0392157, 0.188235)
+
+[node name="StartBtn" type="TextureButton" parent="ToolRoot/DoorToolTemplate"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+texture_normal = ExtResource("3_trbb5")
+stretch_mode = 0
+script = ExtResource("3_45muq")
+
+[node name="EndBtn" type="TextureButton" parent="ToolRoot/DoorToolTemplate"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -36.0
+offset_right = 68.0
+grow_vertical = 0
+texture_normal = ExtResource("3_trbb5")
+stretch_mode = 0
+script = ExtResource("3_45muq")
+
+[node name="MarkTemplate" type="TextureRect" parent="ToolRoot"]
+material = SubResource("ShaderMaterial_wxp5t")
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("6_n7h3g")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("7_ekxcj")
+
+[node name="ObjectTemplate" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("9_mdsqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectTemplate"]
+shape = SubResource("RectangleShape2D_0a2r0")
+
+[node name="Bar" type="Node2D" parent="ObjectTemplate"]
+
+[node name="RectBrush" type="Node2D" parent="ObjectTemplate"]
+z_index = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 19.0
+offset_right = -20.0
+offset_bottom = 69.0
+grow_horizontal = 0
+
+[node name="ToolButton" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("2_rwvbg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Select" type="NinePatchRect" parent="HBoxContainer/ToolButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_mqmd6")
+region_rect = Rect2(0, 0, 36, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
