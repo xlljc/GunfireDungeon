@@ -75,12 +75,12 @@ public partial class SettingPanel : Setting
     
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
     }
 
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
     }
 
     public override void OnDestroyUi()

@@ -266,6 +266,17 @@ public static class NodeExtend
         return new UiEventBinder(control, handler);
     }
 
+    /// <summary>
+    /// 返回Ui节点是否在屏幕内
+    /// </summary>
+    public static bool IsInWindowView(this Control control)
+    {
+        var size = GameApplication.Instance.GetWindow().Size;
+        var uiPos = control.GlobalPosition;
+        var uiSize = control.Size;
+        return uiPos.X + uiSize.X > 0 && uiPos.X < size.X && uiPos.Y + uiSize.Y > 0 && uiPos.Y < size.Y;
+    }
+
     private static bool CheckDragButton(MouseButton button, DragButtonEnum triggerButton)
     {
         DragButtonEnum buttonEnum;

@@ -252,11 +252,19 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 每次调用 DrawLiquid() 后都会记录这一次绘制的位置, 记录这个位置用作执行补间操作, 但是一旦停止绘制了, 需要手动清理记录的位置, 也就是将 BrushPrevPosition 置为 null
     /// </summary>
     public Vector2I? BrushPrevPosition { get; set; }
-    
+
     /// <summary>
-    /// 默认所在层级
+    /// 默认所在层级，如果没有用代码设置，则会在第一次调用 PutDown() 函数时设置
     /// </summary>
-    public RoomLayerEnum DefaultLayer { get; set; }
+    public RoomLayerEnum DefaultLayer
+    {
+        set
+        {
+            _initDefaultLayer = true;
+            _defaultLayer = value;
+        }
+        get => _defaultLayer;
+    }
 
     /// <summary>
     /// 投抛状态下的碰撞器层级
@@ -265,6 +273,9 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     
     // --------------------------------------------------------------------------------
 
+    private bool _initDefaultLayer = false;
+    private RoomLayerEnum _defaultLayer;
+    
     //是否正在调用组件 Update 函数
     private bool _updatingComp = false;
     //组件集合
@@ -645,7 +656,11 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// </summary>
     public virtual void PutDown(RoomLayerEnum layer, bool showShadow = true)
     {
-        DefaultLayer = layer;
+        if (!_initDefaultLayer)
+        {
+            DefaultLayer = layer;
+        }
+
         var parent = GetParent();
         var root = World.Current.GetRoomLayer(layer);
         if (parent != root)

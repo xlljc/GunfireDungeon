@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://bswfkjbqe5jsu"]
+
+[ext_resource type="Script" uid="uid://bl63t88dwueu7" path="res://src/game/ui/debug/tools/ToolsPanel.cs" id="1_b5i1j"]
+
+[node name="Tools" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_b5i1j")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+
+[node name="FpsCheck" type="CheckButton" parent="HFlowContainer"]
+layout_mode = 2
+text = "显示帧率"
+
+[node name="DebugDrawCheck" type="CheckButton" parent="HFlowContainer"]
+layout_mode = 2
+text = "调试绘制"
+
+[node name="KellEnemyBtn" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "消灭房间内的敌人"
+
+[node name="KellSelfBtn" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "自杀"
+
+[node name="Control" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HFlowContainer/Control"]
+layout_mode = 2
+text = "相机距离"
+
+[node name="CameraZoomNearly" type="Button" parent="HFlowContainer/Control"]
+layout_mode = 2
+text = "拉近"
+
+[node name="CameraZoomFar" type="Button" parent="HFlowContainer/Control"]
+layout_mode = 2
+text = "拉远"
+
+[node name="CameraZoomResult" type="Button" parent="HFlowContainer/Control"]
+layout_mode = 2
+text = "重置"
+
+[node name="CreateObjectBtn" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "创建物体"

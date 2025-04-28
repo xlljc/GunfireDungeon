@@ -10,6 +10,7 @@ public partial class TreasureBox : ObstacleObject
     public override void OnInit()
     {
         AnimatedSprite.AnimationFinished += OnAnimationFinished;
+        DefaultLayer = RoomLayerEnum.YSortLayer;
     }
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)

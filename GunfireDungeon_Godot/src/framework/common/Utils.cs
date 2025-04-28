@@ -583,4 +583,13 @@ public static class Utils
             EachNode(node.GetChild(i), action);
         }
     }
+    
+    /// <summary>
+    /// 返回矩形1是否包含矩形2
+    /// </summary>
+    public static bool IsRectContain(Vector2 pos1, Vector2 size1, Vector2 pos2, Vector2 size2)
+    {
+        return pos1.X <= pos2.X && pos1.X + size1.X >= pos2.X + size2.X &&
+               pos1.Y <= pos2.Y && pos1.Y + size1.Y >= pos2.Y + size2.Y;
+    }
 }

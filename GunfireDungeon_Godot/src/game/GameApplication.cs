@@ -12,12 +12,6 @@ public partial class GameApplication : Node2D, ICoroutine
     public static GameApplication Instance { get; private set; }
 
     /// <summary>
-    /// 是否启用调试绘制
-    /// </summary>
-    [Export]
-    public bool DebugDraw;
-
-    /// <summary>
     /// 场景根节点
     /// </summary>
     [Export]
@@ -124,7 +118,6 @@ public partial class GameApplication : Node2D, ICoroutine
 
         //初始化配置表
         ExcelConfig.Init();
-        PreinstallMarkManager.Init();
         PropFragmentRegister.Init();
         //初始化房间配置数据
         InitRoomConfig();
@@ -140,6 +133,8 @@ public partial class GameApplication : Node2D, ICoroutine
         ActiveProp.InitActiveAttribute();
         //初始化零件数据
         PartProp.InitPartAttribute();
+        
+        PreinstallMarkManager.Init();
         
         foreach (var dungeonRoomGroup in RoomConfig)
         {
@@ -197,8 +192,6 @@ public partial class GameApplication : Node2D, ICoroutine
         GD.Randomize();
         //固定帧率
         //Engine.MaxFps = TargetFps;
-        //调试绘制开关
-        ActivityObject.IsDebug = DebugDraw;
         //Engine.TimeScale = 0.2f;
         
         //调整窗口分辨率
@@ -237,6 +230,7 @@ public partial class GameApplication : Node2D, ICoroutine
         var newDelta = (float)delta;
         InputManager.Update(newDelta);
         SoundManager.Update(newDelta);
+        GameSave.Tick(newDelta);
         
         //协程更新
         ProxyCoroutineHandler.ProxyUpdateCoroutine(ref _coroutineList, newDelta);

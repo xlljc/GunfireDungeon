@@ -320,7 +320,7 @@ public partial class DungeonManager : Node2D
         roomInfo.LiquidCanvas = liquidCanvas;
         roomInfo.StaticSprite.AddChild(liquidCanvas);
         yield return 0;
-                
+        
         //打开游戏中的ui
         UiManager.Open_Game_RoomUI();
         yield return 0;
@@ -338,8 +338,10 @@ public partial class DungeonManager : Node2D
         CurrWorld.SetCurrentPlayer(player);
         affiliation.InsertItem(player);
         //player.WeaponPack.PickupItem(ActivityObject.Create<Weapon>(ActivityObject.Ids.Id_weapon0001));
+        
         yield return 0;
         player.Collision.Disabled = false;
+        GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom;
         
         yield return 0;
         GameApplication.Instance.Cursor.RefreshCursor();

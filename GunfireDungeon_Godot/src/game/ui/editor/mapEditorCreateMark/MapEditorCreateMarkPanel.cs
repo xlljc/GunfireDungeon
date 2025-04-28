@@ -205,7 +205,7 @@ public partial class MapEditorCreateMarkPanel : MapEditorCreateMark
     //点击添加标记按钮
     private void OnAddMark()
     {
-        EditorWindowManager.ShowSelectObject(ActivityType.None, OnSelectObject, this);
+        EditorWindowManager.ShowSelectObject([ActivityType.Enemy, ActivityType.Weapon, ActivityType.Prop], OnSelectObject, this);
     }
 
     //选中物体回调, 创建标记数据

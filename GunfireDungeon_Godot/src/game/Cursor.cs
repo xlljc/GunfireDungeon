@@ -7,9 +7,11 @@ using Godot;
 public partial class Cursor : Node2D
 {
     /// <summary>
-    /// 是否是GUI模式，长度大于0表示Ui模式
+    /// 打开遮挡Ui的层数
     /// </summary>
-    private HashSet<ulong> _isGuiLayerIds = new HashSet<ulong>();
+    public int BlockageMarkingCount => _blockageMarkingTags.Count;
+    
+    private HashSet<ulong> _blockageMarkingTags = new HashSet<ulong>();
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -39,7 +41,7 @@ public partial class Cursor : Node2D
 
     public override void _Process(double delta)
     {
-        if (_isGuiLayerIds.Count <= 0)
+        if (_blockageMarkingTags.Count <= 0)
         {
             var targetGun = _mountRole?.WeaponPack.ActiveItem;
             if (targetGun != null)
@@ -54,17 +56,17 @@ public partial class Cursor : Node2D
         }
     }
 
-    public void AddUiLayer(ulong id)
+    public void AddBlockageMarking(ulong id)
     {
-        if (_isGuiLayerIds.Add(id))
+        if (_blockageMarkingTags.Add(id))
         {
             RefreshCursor();
         }
     }
     
-    public void RemoveUiLayer(ulong id)
+    public void RemoveBlockageMarking(ulong id)
     {
-        if (_isGuiLayerIds.Remove(id))
+        if (_blockageMarkingTags.Remove(id))
         {
             RefreshCursor();
         }
@@ -75,7 +77,7 @@ public partial class Cursor : Node2D
     /// </summary>
     public void RefreshCursor()
     {
-        var uiFlag = _isGuiLayerIds.Count > 0 || !GameApplication.Instance.DungeonManager.IsInDungeon;
+        var uiFlag = _blockageMarkingTags.Count > 0 || !GameApplication.Instance.DungeonManager.IsInDungeon;
         if (uiFlag) //手指
         {
             lt.Visible = false;

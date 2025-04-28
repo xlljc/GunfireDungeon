@@ -41,7 +41,7 @@ public partial class ObjectAttribute : AttributeBase
     //点击编辑按钮
     private void OnClickEdit()
     {
-        EditorWindowManager.ShowSelectObject(ActivityType.Weapon, OnSelectObject, _objectBar.UiPanel);
+        EditorWindowManager.ShowSelectObject([ActivityType.Weapon], OnSelectObject, _objectBar.UiPanel);
     }
 
     //点击删除按钮

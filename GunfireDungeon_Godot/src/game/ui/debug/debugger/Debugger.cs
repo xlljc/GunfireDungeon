@@ -54,15 +54,127 @@ public abstract partial class Debugger : UiBase
     public sealed override void OnInitNestedUi()
     {
 
+        var inst1 = L_Bg.L_Tab.L_MarginContainer;
+        RecordNestedUi(inst1.L_Log.Instance, inst1, UiManager.RecordType.Open);
+        inst1.L_Log.Instance.OnCreateUi();
+        inst1.L_Log.Instance.OnInitNestedUi();
+
+        var inst2 = L_Bg.L_Tab.L_MarginContainer2;
+        RecordNestedUi(inst2.L_Tools.Instance, inst2, UiManager.RecordType.Open);
+        inst2.L_Tools.Instance.OnCreateUi();
+        inst2.L_Tools.Instance.OnInitNestedUi();
+
     }
 
     /// <summary>
-    /// 路径: Debugger.Bg.Clear
+    /// 路径: Debugger.Bg.Tab.MarginContainer.Log
     /// </summary>
-    public class Clear : UiNode<DebuggerPanel, Godot.Button, Clear>
+    public class Log : UiNode<DebuggerPanel, UI.debug.Log.LogPanel, Log>
     {
-        public Clear(DebuggerPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
-        public override Clear Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+        public Log(DebuggerPanel uiPanel, UI.debug.Log.LogPanel node) : base(uiPanel, node) {  }
+        public override Log Clone()
+        {
+            var uiNode = new Log(UiPanel, (UI.debug.Log.LogPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
+    /// 路径: Debugger.Bg.Tab.MarginContainer
+    /// </summary>
+    public class MarginContainer : UiNode<DebuggerPanel, Godot.MarginContainer, MarginContainer>
+    {
+        /// <summary>
+        /// 节点路径: Debugger.Bg.Tab.Log
+        /// </summary>
+        public Log L_Log
+        {
+            get
+            {
+                if (_L_Log == null) _L_Log = new Log(UiPanel, Instance.GetNode<UI.debug.Log.LogPanel>("Log"));
+                return _L_Log;
+            }
+        }
+        private Log _L_Log;
+
+        public MarginContainer(DebuggerPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Debugger.Bg.Tab.MarginContainer2.Tools
+    /// </summary>
+    public class Tools : UiNode<DebuggerPanel, UI.debug.Tools.ToolsPanel, Tools>
+    {
+        public Tools(DebuggerPanel uiPanel, UI.debug.Tools.ToolsPanel node) : base(uiPanel, node) {  }
+        public override Tools Clone()
+        {
+            var uiNode = new Tools(UiPanel, (UI.debug.Tools.ToolsPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
+    /// 路径: Debugger.Bg.Tab.MarginContainer2
+    /// </summary>
+    public class MarginContainer2 : UiNode<DebuggerPanel, Godot.MarginContainer, MarginContainer2>
+    {
+        /// <summary>
+        /// 节点路径: Debugger.Bg.Tab.Tools
+        /// </summary>
+        public Tools L_Tools
+        {
+            get
+            {
+                if (_L_Tools == null) _L_Tools = new Tools(UiPanel, Instance.GetNode<UI.debug.Tools.ToolsPanel>("Tools"));
+                return _L_Tools;
+            }
+        }
+        private Tools _L_Tools;
+
+        public MarginContainer2(DebuggerPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer2 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Debugger.Bg.Tab
+    /// </summary>
+    public class Tab : UiNode<DebuggerPanel, Godot.TabContainer, Tab>
+    {
+        /// <summary>
+        /// 节点路径: Debugger.Bg.MarginContainer
+        /// </summary>
+        public MarginContainer L_MarginContainer
+        {
+            get
+            {
+                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
+                return _L_MarginContainer;
+            }
+        }
+        private MarginContainer _L_MarginContainer;
+
+        /// <summary>
+        /// 节点路径: Debugger.Bg.MarginContainer2
+        /// </summary>
+        public MarginContainer2 L_MarginContainer2
+        {
+            get
+            {
+                if (_L_MarginContainer2 == null) _L_MarginContainer2 = new MarginContainer2(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer2"));
+                return _L_MarginContainer2;
+            }
+        }
+        private MarginContainer2 _L_MarginContainer2;
+
+        public Tab(DebuggerPanel uiPanel, Godot.TabContainer node) : base(uiPanel, node) {  }
+        public override Tab Clone() => new (UiPanel, (Godot.TabContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -75,53 +187,22 @@ public abstract partial class Debugger : UiBase
     }
 
     /// <summary>
-    /// 路径: Debugger.Bg.ScrollContainer.Label
-    /// </summary>
-    public class Label : UiNode<DebuggerPanel, Godot.Label, Label>
-    {
-        public Label(DebuggerPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: Debugger.Bg.ScrollContainer
-    /// </summary>
-    public class ScrollContainer : UiNode<DebuggerPanel, Godot.ScrollContainer, ScrollContainer>
-    {
-        /// <summary>
-        /// 节点路径: Debugger.Bg.Label
-        /// </summary>
-        public Label L_Label
-        {
-            get
-            {
-                if (_L_Label == null) _L_Label = new Label(UiPanel, Instance.GetNode<Godot.Label>("Label"));
-                return _L_Label;
-            }
-        }
-        private Label _L_Label;
-
-        public ScrollContainer(DebuggerPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
-        public override ScrollContainer Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
     /// 路径: Debugger.Bg
     /// </summary>
     public class Bg : UiNode<DebuggerPanel, Godot.ColorRect, Bg>
     {
         /// <summary>
-        /// 节点路径: Debugger.Clear
+        /// 节点路径: Debugger.Tab
         /// </summary>
-        public Clear L_Clear
+        public Tab L_Tab
         {
             get
             {
-                if (_L_Clear == null) _L_Clear = new Clear(UiPanel, Instance.GetNode<Godot.Button>("Clear"));
-                return _L_Clear;
+                if (_L_Tab == null) _L_Tab = new Tab(UiPanel, Instance.GetNode<Godot.TabContainer>("Tab"));
+                return _L_Tab;
             }
         }
-        private Clear _L_Clear;
+        private Tab _L_Tab;
 
         /// <summary>
         /// 节点路径: Debugger.Close
@@ -135,19 +216,6 @@ public abstract partial class Debugger : UiBase
             }
         }
         private Close _L_Close;
-
-        /// <summary>
-        /// 节点路径: Debugger.ScrollContainer
-        /// </summary>
-        public ScrollContainer L_ScrollContainer
-        {
-            get
-            {
-                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
-                return _L_ScrollContainer;
-            }
-        }
-        private ScrollContainer _L_ScrollContainer;
 
         public Bg(DebuggerPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
         public override Bg Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
@@ -173,24 +241,34 @@ public abstract partial class Debugger : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Clear
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Tab.MarginContainer.Log
     /// </summary>
-    public Clear S_Clear => L_Bg.L_Clear;
+    public Log S_Log => L_Bg.L_Tab.L_MarginContainer.L_Log;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Tab.MarginContainer
+    /// </summary>
+    public MarginContainer S_MarginContainer => L_Bg.L_Tab.L_MarginContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Tab.MarginContainer2.Tools
+    /// </summary>
+    public Tools S_Tools => L_Bg.L_Tab.L_MarginContainer2.L_Tools;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Tab.MarginContainer2
+    /// </summary>
+    public MarginContainer2 S_MarginContainer2 => L_Bg.L_Tab.L_MarginContainer2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Tab
+    /// </summary>
+    public Tab S_Tab => L_Bg.L_Tab;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.Close
     /// </summary>
     public Close S_Close => L_Bg.L_Close;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.ScrollContainer.Label
-    /// </summary>
-    public Label S_Label => L_Bg.L_ScrollContainer.L_Label;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Debugger.Bg.ScrollContainer
-    /// </summary>
-    public ScrollContainer S_ScrollContainer => L_Bg.L_ScrollContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Debugger.Bg

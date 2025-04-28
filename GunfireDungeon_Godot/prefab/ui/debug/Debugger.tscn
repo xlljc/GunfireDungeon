@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://df0dfbrbt3ufg"]
+[gd_scene load_steps=6 format=3 uid="uid://df0dfbrbt3ufg"]
 
 [ext_resource type="Script" uid="uid://blxu8tdti2758" path="res://src/game/ui/debug/debugger/DebuggerPanel.cs" id="1_awck4"]
-[ext_resource type="Texture2D" uid="uid://c82cgux03s27h" path="res://addons/game_plugin/Tool.svg" id="2_acjpv"]
+[ext_resource type="Texture2D" uid="uid://xq1gu2q7w0og" path="res://resource/sprite/ui/commonIcon/Close.png" id="2_8u4rt"]
+[ext_resource type="PackedScene" uid="uid://dyj6yc15sxbfx" path="res://prefab/ui/debug/Log.tscn" id="2_eo1o1"]
+[ext_resource type="PackedScene" uid="uid://bswfkjbqe5jsu" path="res://prefab/ui/debug/Tools.tscn" id="3_621b8"]
+[ext_resource type="Texture2D" uid="uid://c8ei6a3gqfib8" path="res://resource/sprite/ui/commonIcon/Debug.png" id="5_621b8"]
 
 [node name="Debugger" type="Control"]
 layout_mode = 3
@@ -21,61 +24,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.784314)
+color = Color(0.141, 0.141, 0.141, 0.7)
 
-[node name="Clear" type="Button" parent="Bg"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 33.0
-offset_right = 174.0
-offset_bottom = 73.0
-text = "清除日志"
+[node name="Tab" type="TabContainer" parent="Bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Bg/Tab"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="Log" parent="Bg/Tab/MarginContainer" instance=ExtResource("2_eo1o1")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Bg/Tab"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
+
+[node name="Tools" parent="Bg/Tab/MarginContainer2" instance=ExtResource("3_621b8")]
+layout_mode = 2
 
 [node name="Close" type="Button" parent="Bg"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
-offset_top = 33.0
-offset_right = -60.0
-offset_bottom = 73.0
+offset_left = -44.0
+offset_bottom = 40.0
 grow_horizontal = 0
-text = "关闭"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Bg"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 101.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_scroll_mode = 0
-
-[node name="Label" type="Label" parent="Bg/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-autowrap_mode = 3
+icon = ExtResource("2_8u4rt")
+flat = true
 
 [node name="HoverButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1295.0
-offset_top = 10.0
-offset_right = 1323.0
-offset_bottom = 34.0
-scale = Vector2(2, 2)
-icon = ExtResource("2_acjpv")
+offset_left = 477.0
+offset_top = 6.0
+offset_right = 525.0
+offset_bottom = 54.0
+icon = ExtResource("5_621b8")
 flat = true
 icon_alignment = 1
+expand_icon = true
 
 [node name="Fps" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 400.0
-offset_right = 504.0
+offset_left = 399.0
+offset_right = 503.0
 offset_bottom = 40.0
 grow_horizontal = 2
 text = "FPS:60"
+horizontal_alignment = 1

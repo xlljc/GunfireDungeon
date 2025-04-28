@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Godot;
 
-public class GameSave
+public partial class GameSave
 {
     /// <summary>
     /// 是否全屏
@@ -35,6 +35,8 @@ public class GameSave
     /// </summary>
     [JsonInclude]
     public bool PerfectPixel = true;
+    
+    private float _timer;
 
     public void Init(GameApplication app)
     {
@@ -72,7 +74,33 @@ public class GameSave
         {
             save = JsonSerializer.Deserialize<GameSave>(File.ReadAllText(GameConfig.GameSaveFile));
         }
+
+        if (save.Debug == null)
+        {
+            save.Debug = new DebugData();
+            save.Debug.Init();
+        }
         
         return save;
+    }
+
+    /// <summary>
+    /// 延时保存
+    /// </summary>
+    public void LateSave()
+    {
+        _timer = 3f;
+    }
+
+    public void Tick(float delta)
+    {
+        if (_timer > 0)
+        {
+            _timer -= delta;
+            if (_timer <= 0)
+            {
+                Save();
+            }
+        }
     }
 }

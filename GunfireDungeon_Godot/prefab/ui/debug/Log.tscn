@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyj6yc15sxbfx"]
+
+[ext_resource type="Script" uid="uid://b71oyux7ugs16" path="res://src/game/ui/debug/log/LogPanel.cs" id="1_8wnqr"]
+
+[node name="Log" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8wnqr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clear" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "清除日志"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogText" type="Label" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+autowrap_mode = 3

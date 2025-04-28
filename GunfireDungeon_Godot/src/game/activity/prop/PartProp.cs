@@ -76,6 +76,7 @@ public partial class PartProp : PropActivity
             activityBase.Details = partBase.Details;
             activityBase.Icon = partBase.Icon;
             activityBase.ShowInMapEditor = true;
+            activityBase.NotInRandomPool = false;
             
             ExcelConfig.ActivityBase_Map.Add(id, activityBase);
             ExcelConfig.ActivityBase_List.Add(activityBase);

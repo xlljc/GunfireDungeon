@@ -198,25 +198,6 @@ public partial class Player : Role
             {
                 ThrowActiveProp();
             }
-            
-            if (Input.IsKeyPressed(Key.P)) //测试用, 自杀
-            {
-                //Hurt(1000, 0);
-                Hp = 0;
-                HurtHandler(this, 1000, 0);
-            }
-            else if (Input.IsKeyPressed(Key.O)) //测试用, 消灭房间内所有敌人
-            {
-                var enemyList = AffiliationArea.FindIncludeItems(o => o is Role role && role.IsEnemyWithPlayer());
-                foreach (var enemy in enemyList)
-                {
-                    var hurt = ((Enemy)enemy).HurtArea;
-                    if (hurt.CanHurt(Camp))
-                    {
-                        hurt.Hurt(this, 1000, 0);
-                    }
-                }
-            }
         }
 
 
