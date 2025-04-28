@@ -47,6 +47,8 @@ public partial class Player : Role
 
         WeaponPack.SetCapacity(2);
         ActivePropsPack.SetCapacity(1);
+        PartPropPack.SetCapacity(10);
+
         
         // debug用
         // DebugSet();
@@ -61,9 +63,6 @@ public partial class Player : Role
         //InitSubLine();
         
         _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
-        
-        PartPropPack.SetCapacity(10);
-        
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
     }
 

@@ -145,5 +145,24 @@
     "ClassType": "TakeTurnsBuff",
     "Param": null,
     "Remark": ""
+  },
+  {
+    "Id": "3004",
+    "Name": "\u968F\u673A\u91CA\u653E",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": {
+      "Code": "\u968F\u673A\u6267\u884C\u540E\u9762\u7684\u4E24\u4E2A[color=#ecb464]\u96F6\u4EF6[/color]"
+    },
+    "Details": {
+      "Code": "\u968F\u673A\u91CA\u653E\u8BE6\u60C5"
+    },
+    "Quality": 1,
+    "Price": 60,
+    "Icon": "res://resource/sprite/prop/part/PartProp3004.png",
+    "Type": 1,
+    "BaseMana": 3,
+    "ClassType": "RandomPlayBuff",
+    "Param": null,
+    "Remark": ""
   }
 ]
