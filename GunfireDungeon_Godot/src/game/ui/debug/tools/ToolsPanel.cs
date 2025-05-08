@@ -94,6 +94,7 @@ public partial class ToolsPanel : Tools
     {
         S_DebugDrawCheck.Instance.ButtonPressed = _save.Debug.DebugDraw;
         ActivityObject.IsDebug = _save.Debug.DebugDraw;
+        GameApplication.Instance.DungeonManager?.QueueRedraw();
     }
 
     private void KellEnemyBtnClick()
@@ -142,8 +143,11 @@ public partial class ToolsPanel : Tools
             {
                 debugger.OnClose();
                 // 监听右键按下
-                _listeningMouseKey.Add(new KeyValuePair<MouseButton, Action>(MouseButton.Right, () =>
+                var instanceId = GetInstanceId();
+                GameApplication.Instance.Cursor.AddBlockageMarking(instanceId);
+                _listeningMouseKey.Add(new KeyValuePair<MouseButton, Action>(MouseButton.Left, () =>
                 {
+                    this.CallDelayInNode(0.5f, () => GameApplication.Instance.Cursor.RemoveBlockageMarking(instanceId));
                     var o = ActivityObject.Create(item);
                     o.PutDown(InputManager.CursorPosition, o.DefaultLayer);
                 }));

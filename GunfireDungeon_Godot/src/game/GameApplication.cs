@@ -243,10 +243,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return uiPos / PixelScale - ViewportSize / 2 + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
+            return (uiPos / PixelScale - ViewportSize / 2) / GameCamera.Main.Zoom - GameCamera.Main.PixelOffset + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
         }
 
-        return (uiPos - GetWindow().Size / 2) / GameCamera.Main.Zoom + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
+        return (uiPos - GetViewportRect().Size / 2) / GameCamera.Main.Zoom + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
     }
 
     /// <summary>
@@ -256,10 +256,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return (worldPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + ViewportSize / 2) * PixelScale;
+            return ((worldPos + GameCamera.Main.PixelOffset - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + ViewportSize / 2) * PixelScale;
         }
 
-        return (worldPos - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + GetWindow().Size / 2;
+        return (worldPos - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + GetViewportRect().Size / 2;
     }
 
     public long StartCoroutine(IEnumerator able)

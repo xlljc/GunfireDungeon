@@ -7,6 +7,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_b5i1j")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="."]
@@ -21,18 +23,22 @@ theme_override_constants/v_separation = 20
 
 [node name="FpsCheck" type="CheckButton" parent="HFlowContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "显示帧率"
 
 [node name="DebugDrawCheck" type="CheckButton" parent="HFlowContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "调试绘制"
 
 [node name="KellEnemyBtn" type="Button" parent="HFlowContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "消灭房间内的敌人"
 
 [node name="KellSelfBtn" type="Button" parent="HFlowContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "自杀"
 
 [node name="Control" type="HBoxContainer" parent="HFlowContainer"]
@@ -40,20 +46,25 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HFlowContainer/Control"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "相机距离"
 
 [node name="CameraZoomNearly" type="Button" parent="HFlowContainer/Control"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "拉近"
 
 [node name="CameraZoomFar" type="Button" parent="HFlowContainer/Control"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "拉远"
 
 [node name="CameraZoomResult" type="Button" parent="HFlowContainer/Control"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "重置"
 
 [node name="CreateObjectBtn" type="Button" parent="HFlowContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "创建物体"
