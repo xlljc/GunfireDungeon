@@ -64,6 +64,21 @@ text = "全屏"
 layout_mode = 2
 size_flags_horizontal = 10
 
+[node name="BoxContainer6" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "垂直同步"
+
+[node name="VerticalSync" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 10
+
 [node name="BoxContainer2" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2

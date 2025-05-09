@@ -60,8 +60,12 @@ public partial class SettingPanel : Setting
 
         //---------------------- 视频设置 -----------------------------
         //全屏属性
-        S_FullScreen.Instance.ButtonPressed = DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen;
+        S_FullScreen.Instance.ButtonPressed = save.FullScreen;
         S_FullScreen.Instance.Pressed += OnChangeFullScreen;
+        
+        //垂直同步
+        S_VerticalSync.Instance.ButtonPressed = save.VerticalSync;
+        S_VerticalSync.Instance.Pressed += OnChangeVerticalSync;
         
         //完美像素
         S_PerfectPixel.Instance.ButtonPressed = save.PerfectPixel;
@@ -91,16 +95,17 @@ public partial class SettingPanel : Setting
     //切换全屏/非全屏
     private void OnChangeFullScreen()
     {
-        var checkBox = S_FullScreen.Instance;
-        GameApplication.Instance.GameSave.FullScreen = checkBox.ButtonPressed;
-        if (checkBox.ButtonPressed)
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-        }
-        else
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-        }
+        var pressed = S_FullScreen.Instance.ButtonPressed;
+        GameApplication.Instance.GameSave.FullScreen = pressed;
+        DisplayServer.WindowSetMode(pressed ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+    }
+
+    //切换垂直同步
+    private void OnChangeVerticalSync()
+    {
+        var pressed = S_VerticalSync.Instance.ButtonPressed;
+        GameApplication.Instance.GameSave.VerticalSync = pressed;
+        DisplayServer.WindowSetVsyncMode(pressed ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
     }
 
 }

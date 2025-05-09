@@ -18,6 +18,9 @@ public partial class GameSave
         public bool ShoFps;
 
         [JsonInclude]
+        public int Fps = 180;
+
+        [JsonInclude]
         public bool DebugDraw;
 
         public void Init()

@@ -24,6 +24,16 @@ public partial class ToolsPanel : Tools
             _save.LateSave();
         };
         
+        //帧率上限
+        S_FPSInput.Instance.Text = _save.Debug.Fps.ToString();
+        RefreshFps();
+        S_FPSBtn.Instance.Pressed += () =>
+        {
+            _save.Debug.Fps = int.Parse(S_FPSInput.Instance.Text);
+            RefreshFps();
+            _save.LateSave();
+        };
+        
         // 调试绘制
         RefreshDebugDrawVisible();
         S_DebugDrawCheck.Instance.Pressed += () =>
@@ -88,6 +98,11 @@ public partial class ToolsPanel : Tools
         {
             debuggerPanel.S_Fps.Instance.Visible = _save.Debug.ShoFps;
         }
+    }
+
+    private void RefreshFps()
+    {
+        Engine.MaxFps = _save.Debug.Fps;
     }
 
     private void RefreshDebugDrawVisible()

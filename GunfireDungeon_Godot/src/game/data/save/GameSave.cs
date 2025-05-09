@@ -13,6 +13,12 @@ public partial class GameSave
     public bool FullScreen = false;
     
     /// <summary>
+    /// 是否垂直同步
+    /// </summary>
+    [JsonInclude]
+    public bool VerticalSync = true;
+    
+    /// <summary>
     /// 背景音乐音量, (0 - 1)
     /// </summary>
     [JsonInclude]
@@ -40,15 +46,8 @@ public partial class GameSave
 
     public void Init(GameApplication app)
     {
-        if (FullScreen)
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-        }
-        else
-        {
-            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-        }
-        
+        DisplayServer.WindowSetMode(FullScreen ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+        DisplayServer.WindowSetVsyncMode(VerticalSync ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
         SoundManager.SetBusValue(BUS.BGM, BgmVolume);
         SoundManager.SetBusValue(BUS.SFX, SfxVolume);
         app.SetPerfectPixel(PerfectPixel);

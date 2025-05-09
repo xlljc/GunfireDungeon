@@ -18,13 +18,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 20
+theme_override_constants/h_separation = 70
+theme_override_constants/v_separation = 30
 
 [node name="FpsCheck" type="CheckButton" parent="HFlowContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "显示帧率"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="FPSBtn" type="Button" parent="HFlowContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "帧率上限"
+
+[node name="FPSInput" type="LineEdit" parent="HFlowContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "60"
+placeholder_text = "请熟人帧率"
+virtual_keyboard_type = 2
 
 [node name="DebugDrawCheck" type="CheckButton" parent="HFlowContainer"]
 layout_mode = 2
@@ -41,25 +56,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "自杀"
 
-[node name="Control" type="HBoxContainer" parent="HFlowContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HFlowContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HFlowContainer/Control"]
+[node name="Label" type="Label" parent="HFlowContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "相机距离"
 
-[node name="CameraZoomNearly" type="Button" parent="HFlowContainer/Control"]
+[node name="CameraZoomNearly" type="Button" parent="HFlowContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "拉近"
 
-[node name="CameraZoomFar" type="Button" parent="HFlowContainer/Control"]
+[node name="CameraZoomFar" type="Button" parent="HFlowContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "拉远"
 
-[node name="CameraZoomResult" type="Button" parent="HFlowContainer/Control"]
+[node name="CameraZoomResult" type="Button" parent="HFlowContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "重置"

@@ -40,6 +40,59 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer.FPSBtn
+    /// </summary>
+    public class FPSBtn : UiNode<ToolsPanel, Godot.Button, FPSBtn>
+    {
+        public FPSBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override FPSBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer.FPSInput
+    /// </summary>
+    public class FPSInput : UiNode<ToolsPanel, Godot.LineEdit, FPSInput>
+    {
+        public FPSInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override FPSInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.FPSBtn
+        /// </summary>
+        public FPSBtn L_FPSBtn
+        {
+            get
+            {
+                if (_L_FPSBtn == null) _L_FPSBtn = new FPSBtn(UiPanel, Instance.GetNode<Godot.Button>("FPSBtn"));
+                return _L_FPSBtn;
+            }
+        }
+        private FPSBtn _L_FPSBtn;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.FPSInput
+        /// </summary>
+        public FPSInput L_FPSInput
+        {
+            get
+            {
+                if (_L_FPSInput == null) _L_FPSInput = new FPSInput(UiPanel, Instance.GetNode<Godot.LineEdit>("FPSInput"));
+                return _L_FPSInput;
+            }
+        }
+        private FPSInput _L_FPSInput;
+
+        public HBoxContainer(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Tools.HFlowContainer.DebugDrawCheck
     /// </summary>
     public class DebugDrawCheck : UiNode<ToolsPanel, Godot.CheckButton, DebugDrawCheck>
@@ -67,7 +120,7 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
-    /// 路径: Tools.HFlowContainer.Control.Label
+    /// 路径: Tools.HFlowContainer.HBoxContainer2.Label
     /// </summary>
     public class Label : UiNode<ToolsPanel, Godot.Label, Label>
     {
@@ -76,7 +129,7 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
-    /// 路径: Tools.HFlowContainer.Control.CameraZoomNearly
+    /// 路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomNearly
     /// </summary>
     public class CameraZoomNearly : UiNode<ToolsPanel, Godot.Button, CameraZoomNearly>
     {
@@ -85,7 +138,7 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
-    /// 路径: Tools.HFlowContainer.Control.CameraZoomFar
+    /// 路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomFar
     /// </summary>
     public class CameraZoomFar : UiNode<ToolsPanel, Godot.Button, CameraZoomFar>
     {
@@ -94,7 +147,7 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
-    /// 路径: Tools.HFlowContainer.Control.CameraZoomResult
+    /// 路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomResult
     /// </summary>
     public class CameraZoomResult : UiNode<ToolsPanel, Godot.Button, CameraZoomResult>
     {
@@ -103,9 +156,9 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
-    /// 路径: Tools.HFlowContainer.Control
+    /// 路径: Tools.HFlowContainer.HBoxContainer2
     /// </summary>
-    public class Control : UiNode<ToolsPanel, Godot.HBoxContainer, Control>
+    public class HBoxContainer2 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
         /// 节点路径: Tools.HFlowContainer.Label
@@ -159,8 +212,8 @@ public abstract partial class Tools : UiBase
         }
         private CameraZoomResult _L_CameraZoomResult;
 
-        public Control(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override Control Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public HBoxContainer2(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -189,6 +242,19 @@ public abstract partial class Tools : UiBase
             }
         }
         private FpsCheck _L_FpsCheck;
+
+        /// <summary>
+        /// 节点路径: Tools.HBoxContainer
+        /// </summary>
+        public HBoxContainer L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer _L_HBoxContainer;
 
         /// <summary>
         /// 节点路径: Tools.DebugDrawCheck
@@ -230,17 +296,17 @@ public abstract partial class Tools : UiBase
         private KellSelfBtn _L_KellSelfBtn;
 
         /// <summary>
-        /// 节点路径: Tools.Control
+        /// 节点路径: Tools.HBoxContainer2
         /// </summary>
-        public Control L_Control
+        public HBoxContainer2 L_HBoxContainer2
         {
             get
             {
-                if (_L_Control == null) _L_Control = new Control(UiPanel, Instance.GetNode<Godot.HBoxContainer>("Control"));
-                return _L_Control;
+                if (_L_HBoxContainer2 == null) _L_HBoxContainer2 = new HBoxContainer2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer2"));
+                return _L_HBoxContainer2;
             }
         }
-        private Control _L_Control;
+        private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
         /// 节点路径: Tools.CreateObjectBtn
@@ -266,6 +332,21 @@ public abstract partial class Tools : UiBase
     public FpsCheck S_FpsCheck => L_HFlowContainer.L_FpsCheck;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer.FPSBtn
+    /// </summary>
+    public FPSBtn S_FPSBtn => L_HFlowContainer.L_HBoxContainer.L_FPSBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer.FPSInput
+    /// </summary>
+    public FPSInput S_FPSInput => L_HFlowContainer.L_HBoxContainer.L_FPSInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer
+    /// </summary>
+    public HBoxContainer S_HBoxContainer => L_HFlowContainer.L_HBoxContainer;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.DebugDrawCheck
     /// </summary>
     public DebugDrawCheck S_DebugDrawCheck => L_HFlowContainer.L_DebugDrawCheck;
@@ -281,29 +362,29 @@ public abstract partial class Tools : UiBase
     public KellSelfBtn S_KellSelfBtn => L_HFlowContainer.L_KellSelfBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.Control.Label
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.Label
     /// </summary>
-    public Label S_Label => L_HFlowContainer.L_Control.L_Label;
+    public Label S_Label => L_HFlowContainer.L_HBoxContainer2.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.Control.CameraZoomNearly
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomNearly
     /// </summary>
-    public CameraZoomNearly S_CameraZoomNearly => L_HFlowContainer.L_Control.L_CameraZoomNearly;
+    public CameraZoomNearly S_CameraZoomNearly => L_HFlowContainer.L_HBoxContainer2.L_CameraZoomNearly;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.Control.CameraZoomFar
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomFar
     /// </summary>
-    public CameraZoomFar S_CameraZoomFar => L_HFlowContainer.L_Control.L_CameraZoomFar;
+    public CameraZoomFar S_CameraZoomFar => L_HFlowContainer.L_HBoxContainer2.L_CameraZoomFar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.Control.CameraZoomResult
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomResult
     /// </summary>
-    public CameraZoomResult S_CameraZoomResult => L_HFlowContainer.L_Control.L_CameraZoomResult;
+    public CameraZoomResult S_CameraZoomResult => L_HFlowContainer.L_HBoxContainer2.L_CameraZoomResult;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.Control
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2
     /// </summary>
-    public Control S_Control => L_HFlowContainer.L_Control;
+    public HBoxContainer2 S_HBoxContainer2 => L_HFlowContainer.L_HBoxContainer2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.CreateObjectBtn
