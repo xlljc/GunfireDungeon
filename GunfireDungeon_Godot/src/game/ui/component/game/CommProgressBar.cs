@@ -8,16 +8,14 @@ public partial class CommProgressBar : TextureProgressBar
 {
     [Export]
     public Label NumberLabel;
-    
-    private double _value = double.MinValue;
 
-    public override void _Process(double delta)
+    public new double Value
     {
-        var v = Value;
-        if (Math.Abs(_value - v) > 0.001f)
+        set
         {
-            NumberLabel.Text = ((int)v).ToString();
-            _value = v;
+            base.Value = value;
+            NumberLabel.Text = ((int)value).ToString();
         }
+        get => base.Value;
     }
 }

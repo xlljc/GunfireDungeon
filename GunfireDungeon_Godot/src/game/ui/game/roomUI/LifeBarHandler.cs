@@ -9,7 +9,6 @@ public partial class LifeBarHandler : Control, IUiNodeScript
 {
 
     private RoomUI.LifeBar _bar;
-    private UiGrid<RoomUI.Life, LifeIconEnum> _grid;
     private EventFactory<EventEnum> _eventFactory;
     private bool _refreshHpFlag = false;
     private bool _refreshGoldFlag = false;
@@ -19,13 +18,6 @@ public partial class LifeBarHandler : Control, IUiNodeScript
     public void SetUiNode(IUiNode uiNode)
     {
         _bar = (RoomUI.LifeBar)uiNode;
-        var uiNodeLife = _bar.L_Life;
-
-        _grid = _bar.UiPanel.CreateUiGrid<RoomUI.Life, LifeIconEnum, LifeCell>(uiNodeLife);
-        _grid.SetAutoColumns(true);
-        _grid.SetHorizontalExpand(true);
-        _grid.SetCellOffset(new Vector2I(1, 2));
-
         _bar.UiPanel.OnShowUiEvent += OnShow;
         _bar.UiPanel.OnHideUiEvent += OnHide;
     }
@@ -89,42 +81,12 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         {
             return;
         }
-        if (player.MaxHp % 2 != 0)
-        {
-            Debug.LogError("玩家血量不是偶数!");
-        }
-        
-        var list = new List<LifeIconEnum>();
-        for (var i = 0; i < player.MaxHp / 2; i++)
-        {
-            if (player.Hp >= i * 2 + 2)
-            {
-                list.Add(LifeIconEnum.FullHeart);
-            }
-            else if (player.Hp >= i * 2 + 1)
-            {
-                list.Add(LifeIconEnum.HalfHeart);
-            }
-            else
-            {
-                list.Add(LifeIconEnum.EmptyHeart);
-            }
-        }
 
-        for (var i = 0; i < player.MaxShield; i++)
-        {
-            if (player.Shield >= i + 1)
-            {
-                list.Add(LifeIconEnum.FullShield);
-            }
-            else
-            {
-                list.Add(LifeIconEnum.EmptyShield);
-            }
-        }
-        
-        //var maxHp
-        _grid.SetDataList(list.ToArray());
+        var container = _bar.L_Life.L_HBoxContainer;
+        container.L_LifeProgressBar.Instance.MaxValue = player.MaxHp;
+        container.L_LifeProgressBar.Instance.Value = player.Hp;
+        container.L_ShieldProgressBar.Instance.MaxValue = player.MaxShield;
+        container.L_ShieldProgressBar.Instance.Value = player.Shield;
     }
     
     private void HandlerRefreshGold()

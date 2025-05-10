@@ -51,7 +51,7 @@ public class BulletPart : PartLogicBase
             param.SetValue(PlanningParam.NoManaIndex, Index);
             return null;
         }
-        Debug.Log($"射击子弹({Index}), fireRotation:{param.FireRotation}");
+        // Debug.Log($"射击子弹({Index}), fireRotation:{param.FireRotation}");
         if (Bullet != null)
         {
             param.HasBullet = true;
