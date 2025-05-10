@@ -4,7 +4,7 @@ using DsUi;
 
 namespace UI.game.RoomUI;
 
-public class ActivePropBarHandler
+public partial class ActivePropBarHandler : Control, IUiNodeScript
 {
     private RoomUI.ActivePropBar _activePropBar;
     private ShaderMaterial _shaderMaterial;
@@ -14,10 +14,10 @@ public class ActivePropBarHandler
     private Rect2 _startChargeRect;
 
     private bool _initCooldown = false;
-
-    public ActivePropBarHandler(RoomUI.ActivePropBar activePropBar)
+    
+    public void SetUiNode(IUiNode uiNode)
     {
-        _activePropBar = activePropBar;
+        _activePropBar = (RoomUI.ActivePropBar)uiNode;
         _shaderMaterial = (ShaderMaterial)_activePropBar.L_ActivePropSprite.Instance.Material;
         _startCooldownPos = _activePropBar.L_CooldownProgress.Instance.Position;
         _startCooldownSize = _activePropBar.L_CooldownProgress.Instance.Scale;
@@ -27,19 +27,13 @@ public class ActivePropBarHandler
         SetActivePropTexture(null);
         SetChargeProgress(1);
     }
-    
-    public void OnShow()
-    {
-        
-    }
 
-    public void OnHide()
+    public override void _Process(double delta)
     {
-        
-    }
-
-    public void Process(float delta)
-    {
+        if (_activePropBar == null || !_activePropBar.UiPanel.IsOpen)
+        {
+            return;
+        }
         var prop = World.Current.Player?.ActivePropsPack.ActiveItem;
         if (prop != null)
         {
@@ -202,5 +196,9 @@ public class ActivePropBarHandler
 
             sprite.RegionRect = rect;
         }
+    }
+
+    public void OnDestroy()
+    {
     }
 }

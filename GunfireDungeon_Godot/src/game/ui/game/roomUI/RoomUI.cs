@@ -14,7 +14,7 @@ public abstract partial class RoomUI : UiBase
     {
         get
         {
-            if (_L_InteractiveTipBar == null) _L_InteractiveTipBar = new InteractiveTipBar((RoomUIPanel)this, GetNode<Godot.Control>("InteractiveTipBar"));
+            if (_L_InteractiveTipBar == null) _L_InteractiveTipBar = new InteractiveTipBar((RoomUIPanel)this, GetNode<UI.game.RoomUI.InteractiveTipBarHandler>("InteractiveTipBar"));
             return _L_InteractiveTipBar;
         }
     }
@@ -27,7 +27,7 @@ public abstract partial class RoomUI : UiBase
     {
         get
         {
-            if (_L_ReloadBar == null) _L_ReloadBar = new ReloadBar((RoomUIPanel)this, GetNode<Godot.Control>("ReloadBar"));
+            if (_L_ReloadBar == null) _L_ReloadBar = new ReloadBar((RoomUIPanel)this, GetNode<UI.game.RoomUI.ReloadBarHandler>("ReloadBar"));
             return _L_ReloadBar;
         }
     }
@@ -66,6 +66,11 @@ public abstract partial class RoomUI : UiBase
 
     public sealed override void OnInitNestedUi()
     {
+        _ = L_InteractiveTipBar;
+        _ = L_ReloadBar;
+        _ = L_Control.L_LifeBar;
+        _ = L_Control.L_ActivePropBar;
+        _ = L_Control.L_WeaponBar;
 
     }
 
@@ -108,7 +113,7 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.InteractiveTipBar
     /// </summary>
-    public class InteractiveTipBar : UiNode<RoomUIPanel, Godot.Control, InteractiveTipBar>
+    public class InteractiveTipBar : UiNode<RoomUIPanel, UI.game.RoomUI.InteractiveTipBarHandler, InteractiveTipBar>
     {
         /// <summary>
         /// 节点路径: RoomUI.Icon
@@ -162,8 +167,8 @@ public abstract partial class RoomUI : UiBase
         }
         private NameLabel _L_NameLabel;
 
-        public InteractiveTipBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
-        public override InteractiveTipBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+        public InteractiveTipBar(RoomUIPanel uiPanel, UI.game.RoomUI.InteractiveTipBarHandler node) : base(uiPanel, node) {  }
+        public override InteractiveTipBar Clone() => new (UiPanel, (UI.game.RoomUI.InteractiveTipBarHandler)Instance.Duplicate());
     }
 
     /// <summary>
@@ -200,7 +205,7 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.ReloadBar
     /// </summary>
-    public class ReloadBar : UiNode<RoomUIPanel, Godot.Control, ReloadBar>
+    public class ReloadBar : UiNode<RoomUIPanel, UI.game.RoomUI.ReloadBarHandler, ReloadBar>
     {
         /// <summary>
         /// 节点路径: RoomUI.Slot
@@ -215,17 +220,105 @@ public abstract partial class RoomUI : UiBase
         }
         private Slot _L_Slot;
 
-        public ReloadBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
-        public override ReloadBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+        public ReloadBar(RoomUIPanel uiPanel, UI.game.RoomUI.ReloadBarHandler node) : base(uiPanel, node) {  }
+        public override ReloadBar Clone() => new (UiPanel, (UI.game.RoomUI.ReloadBarHandler)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.Life.LifeIcon
+    /// 路径: RoomUI.Control.LifeBar.Life.HBoxContainer.LifeProgressBar.Number
     /// </summary>
-    public class LifeIcon : UiNode<RoomUIPanel, Godot.TextureRect, LifeIcon>
+    public class Number : UiNode<RoomUIPanel, Godot.Label, Number>
     {
-        public LifeIcon(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override LifeIcon Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+        public Number(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.Life.HBoxContainer.LifeProgressBar
+    /// </summary>
+    public class LifeProgressBar : UiNode<RoomUIPanel, CommProgressBar, LifeProgressBar>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.Life.HBoxContainer.Number
+        /// </summary>
+        public Number L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number _L_Number;
+
+        public LifeProgressBar(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override LifeProgressBar Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.Life.HBoxContainer.ShieldProgressBar.Number
+    /// </summary>
+    public class Number_1 : UiNode<RoomUIPanel, Godot.Label, Number_1>
+    {
+        public Number_1(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.Life.HBoxContainer.ShieldProgressBar
+    /// </summary>
+    public class ShieldProgressBar : UiNode<RoomUIPanel, CommProgressBar, ShieldProgressBar>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.Life.HBoxContainer.Number
+        /// </summary>
+        public Number_1 L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number_1(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number_1 _L_Number;
+
+        public ShieldProgressBar(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override ShieldProgressBar Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.Life.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<RoomUIPanel, Godot.HBoxContainer, HBoxContainer>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.Life.LifeProgressBar
+        /// </summary>
+        public LifeProgressBar L_LifeProgressBar
+        {
+            get
+            {
+                if (_L_LifeProgressBar == null) _L_LifeProgressBar = new LifeProgressBar(UiPanel, Instance.GetNode<CommProgressBar>("LifeProgressBar"));
+                return _L_LifeProgressBar;
+            }
+        }
+        private LifeProgressBar _L_LifeProgressBar;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.Life.ShieldProgressBar
+        /// </summary>
+        public ShieldProgressBar L_ShieldProgressBar
+        {
+            get
+            {
+                if (_L_ShieldProgressBar == null) _L_ShieldProgressBar = new ShieldProgressBar(UiPanel, Instance.GetNode<CommProgressBar>("ShieldProgressBar"));
+                return _L_ShieldProgressBar;
+            }
+        }
+        private ShieldProgressBar _L_ShieldProgressBar;
+
+        public HBoxContainer(RoomUIPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -234,17 +327,17 @@ public abstract partial class RoomUI : UiBase
     public class Life : UiNode<RoomUIPanel, Godot.Control, Life>
     {
         /// <summary>
-        /// 节点路径: RoomUI.Control.LifeBar.LifeIcon
+        /// 节点路径: RoomUI.Control.LifeBar.HBoxContainer
         /// </summary>
-        public LifeIcon L_LifeIcon
+        public HBoxContainer L_HBoxContainer
         {
             get
             {
-                if (_L_LifeIcon == null) _L_LifeIcon = new LifeIcon(UiPanel, Instance.GetNode<Godot.TextureRect>("LifeIcon"));
-                return _L_LifeIcon;
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
             }
         }
-        private LifeIcon _L_LifeIcon;
+        private HBoxContainer _L_HBoxContainer;
 
         public Life(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
         public override Life Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
@@ -306,7 +399,7 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.Control.LifeBar
     /// </summary>
-    public class LifeBar : UiNode<RoomUIPanel, Godot.VBoxContainer, LifeBar>
+    public class LifeBar : UiNode<RoomUIPanel, UI.game.RoomUI.LifeBarHandler, LifeBar>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.Life
@@ -334,8 +427,8 @@ public abstract partial class RoomUI : UiBase
         }
         private Gold _L_Gold;
 
-        public LifeBar(RoomUIPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override LifeBar Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public LifeBar(RoomUIPanel uiPanel, UI.game.RoomUI.LifeBarHandler node) : base(uiPanel, node) {  }
+        public override LifeBar Clone() => new (UiPanel, (UI.game.RoomUI.LifeBarHandler)Instance.Duplicate());
     }
 
     /// <summary>
@@ -404,7 +497,7 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.Control.ActivePropBar
     /// </summary>
-    public class ActivePropBar : UiNode<RoomUIPanel, Godot.Control, ActivePropBar>
+    public class ActivePropBar : UiNode<RoomUIPanel, UI.game.RoomUI.ActivePropBarHandler, ActivePropBar>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.ActivePropBg
@@ -497,17 +590,17 @@ public abstract partial class RoomUI : UiBase
         }
         private ChargeProgress _L_ChargeProgress;
 
-        public ActivePropBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
-        public override ActivePropBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+        public ActivePropBar(RoomUIPanel uiPanel, UI.game.RoomUI.ActivePropBarHandler node) : base(uiPanel, node) {  }
+        public override ActivePropBar Clone() => new (UiPanel, (UI.game.RoomUI.ActivePropBarHandler)Instance.Duplicate());
     }
 
     /// <summary>
     /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.Number
     /// </summary>
-    public class Number : UiNode<RoomUIPanel, Godot.Label, Number>
+    public class Number_2 : UiNode<RoomUIPanel, Godot.Label, Number_2>
     {
-        public Number(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Number Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public Number_2(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
@@ -518,15 +611,15 @@ public abstract partial class RoomUI : UiBase
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponBar.Number
         /// </summary>
-        public Number L_Number
+        public Number_2 L_Number
         {
             get
             {
-                if (_L_Number == null) _L_Number = new Number(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                if (_L_Number == null) _L_Number = new Number_2(UiPanel, Instance.GetNode<Godot.Label>("Number"));
                 return _L_Number;
             }
         }
-        private Number _L_Number;
+        private Number_2 _L_Number;
 
         public BufferManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
         public override BufferManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
@@ -566,10 +659,10 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.Control.WeaponBar.ManaProgress.Number
     /// </summary>
-    public class Number_1 : UiNode<RoomUIPanel, Godot.Label, Number_1>
+    public class Number_3 : UiNode<RoomUIPanel, Godot.Label, Number_3>
     {
-        public Number_1(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Number_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public Number_3(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_3 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
@@ -580,15 +673,15 @@ public abstract partial class RoomUI : UiBase
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponBar.Number
         /// </summary>
-        public Number_1 L_Number
+        public Number_3 L_Number
         {
             get
             {
-                if (_L_Number == null) _L_Number = new Number_1(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                if (_L_Number == null) _L_Number = new Number_3(UiPanel, Instance.GetNode<Godot.Label>("Number"));
                 return _L_Number;
             }
         }
-        private Number_1 _L_Number;
+        private Number_3 _L_Number;
 
         public ManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
         public override ManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
@@ -637,7 +730,7 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.Control.WeaponBar
     /// </summary>
-    public class WeaponBar : UiNode<RoomUIPanel, Godot.Control, WeaponBar>
+    public class WeaponBar : UiNode<RoomUIPanel, UI.game.RoomUI.WeaponBarHandler, WeaponBar>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.BufferManaProgress
@@ -704,8 +797,8 @@ public abstract partial class RoomUI : UiBase
         }
         private VBoxContainer _L_VBoxContainer;
 
-        public WeaponBar(RoomUIPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
-        public override WeaponBar Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+        public WeaponBar(RoomUIPanel uiPanel, UI.game.RoomUI.WeaponBarHandler node) : base(uiPanel, node) {  }
+        public override WeaponBar Clone() => new (UiPanel, (UI.game.RoomUI.WeaponBarHandler)Instance.Duplicate());
     }
 
     /// <summary>
@@ -720,7 +813,7 @@ public abstract partial class RoomUI : UiBase
         {
             get
             {
-                if (_L_LifeBar == null) _L_LifeBar = new LifeBar(UiPanel, Instance.GetNode<Godot.VBoxContainer>("LifeBar"));
+                if (_L_LifeBar == null) _L_LifeBar = new LifeBar(UiPanel, Instance.GetNode<UI.game.RoomUI.LifeBarHandler>("LifeBar"));
                 return _L_LifeBar;
             }
         }
@@ -733,7 +826,7 @@ public abstract partial class RoomUI : UiBase
         {
             get
             {
-                if (_L_ActivePropBar == null) _L_ActivePropBar = new ActivePropBar(UiPanel, Instance.GetNode<Godot.Control>("ActivePropBar"));
+                if (_L_ActivePropBar == null) _L_ActivePropBar = new ActivePropBar(UiPanel, Instance.GetNode<UI.game.RoomUI.ActivePropBarHandler>("ActivePropBar"));
                 return _L_ActivePropBar;
             }
         }
@@ -746,7 +839,7 @@ public abstract partial class RoomUI : UiBase
         {
             get
             {
-                if (_L_WeaponBar == null) _L_WeaponBar = new WeaponBar(UiPanel, Instance.GetNode<Godot.Control>("WeaponBar"));
+                if (_L_WeaponBar == null) _L_WeaponBar = new WeaponBar(UiPanel, Instance.GetNode<UI.game.RoomUI.WeaponBarHandler>("WeaponBar"));
                 return _L_WeaponBar;
             }
         }
@@ -807,9 +900,19 @@ public abstract partial class RoomUI : UiBase
     public ReloadBar S_ReloadBar => L_ReloadBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life.LifeIcon
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life.HBoxContainer.LifeProgressBar
     /// </summary>
-    public LifeIcon S_LifeIcon => L_Control.L_LifeBar.L_Life.L_LifeIcon;
+    public LifeProgressBar S_LifeProgressBar => L_Control.L_LifeBar.L_Life.L_HBoxContainer.L_LifeProgressBar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life.HBoxContainer.ShieldProgressBar
+    /// </summary>
+    public ShieldProgressBar S_ShieldProgressBar => L_Control.L_LifeBar.L_Life.L_HBoxContainer.L_ShieldProgressBar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life.HBoxContainer
+    /// </summary>
+    public HBoxContainer S_HBoxContainer => L_Control.L_LifeBar.L_Life.L_HBoxContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.Life

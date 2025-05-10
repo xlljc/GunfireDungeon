@@ -5,7 +5,7 @@ using DsUi;
 
 namespace UI.game.RoomUI;
 
-public class LifeBarHandler
+public partial class LifeBarHandler : Control, IUiNodeScript
 {
 
     private RoomUI.LifeBar _bar;
@@ -15,17 +15,21 @@ public class LifeBarHandler
     private bool _refreshGoldFlag = false;
 
     private Role _player;
-    public LifeBarHandler(RoomUI.LifeBar lifeBar)
-    {
-        _bar = lifeBar;
-        var uiNodeLife = lifeBar.L_Life;
 
-        _grid = lifeBar.UiPanel.CreateUiGrid<RoomUI.Life, LifeIconEnum, LifeCell>(uiNodeLife);
+    public void SetUiNode(IUiNode uiNode)
+    {
+        _bar = (RoomUI.LifeBar)uiNode;
+        var uiNodeLife = _bar.L_Life;
+
+        _grid = _bar.UiPanel.CreateUiGrid<RoomUI.Life, LifeIconEnum, LifeCell>(uiNodeLife);
         _grid.SetAutoColumns(true);
         _grid.SetHorizontalExpand(true);
         _grid.SetCellOffset(new Vector2I(1, 2));
-    }
 
+        _bar.UiPanel.OnShowUiEvent += OnShow;
+        _bar.UiPanel.OnHideUiEvent += OnHide;
+    }
+    
     public void OnShow()
     {
         _eventFactory = EventManager.CreateEventFactory();
@@ -43,8 +47,12 @@ public class LifeBarHandler
         _eventFactory.RemoveAllEventListener();
     }
 
-    public void Process(float delta)
+    public override void _Process(double delta)
     {
+        if (_bar == null || !_bar.UiPanel.IsOpen)
+        {
+            return;
+        }
         if (!_refreshGoldFlag && World.Current != null && _player != World.Current.Player)
         {
             _player = World.Current.Player;
@@ -130,4 +138,8 @@ public class LifeBarHandler
         _bar.L_Gold.L_GoldText.Instance.Text = player.RoleState.Gold.ToString();
     }
 
+    public void OnDestroy()
+    {
+        
+    }
 }
