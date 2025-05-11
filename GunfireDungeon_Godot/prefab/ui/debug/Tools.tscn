@@ -38,7 +38,7 @@ text = "帧率上限"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "60"
-placeholder_text = "请熟人帧率"
+placeholder_text = "请输入帧率"
 virtual_keyboard_type = 2
 
 [node name="DebugDrawCheck" type="CheckButton" parent="HFlowContainer"]
@@ -55,6 +55,66 @@ text = "消灭房间内的敌人"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "自杀"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="MaxHpBtn" type="Button" parent="HFlowContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "血量上限"
+
+[node name="MaxHpInput" type="LineEdit" parent="HFlowContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+placeholder_text = "请输入血量上限"
+virtual_keyboard_type = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="HpBtn" type="Button" parent="HFlowContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "血量"
+
+[node name="HpInput" type="LineEdit" parent="HFlowContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+placeholder_text = "请输入血量"
+virtual_keyboard_type = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="MaxShieldBtn" type="Button" parent="HFlowContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "护盾上限"
+
+[node name="MaxShieldInput" type="LineEdit" parent="HFlowContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+placeholder_text = "请输入血量上限"
+virtual_keyboard_type = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="ShieldBtn" type="Button" parent="HFlowContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "护盾"
+
+[node name="ShieldInput" type="LineEdit" parent="HFlowContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
+placeholder_text = "请输入血量"
+virtual_keyboard_type = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HFlowContainer"]
 layout_mode = 2

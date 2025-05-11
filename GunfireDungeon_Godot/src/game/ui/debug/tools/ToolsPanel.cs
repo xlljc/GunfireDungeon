@@ -49,6 +49,18 @@ public partial class ToolsPanel : Tools
         // 自杀
         S_KellSelfBtn.Instance.Pressed += KellSelfBtnClick;
         
+        // 血量上限
+        S_MaxHpBtn.Instance.Pressed += MaxHpBtnClick;
+        
+        // 血量
+        S_HpBtn.Instance.Pressed += HpBtnClick;
+                
+        // 护盾上限
+        S_MaxShieldBtn.Instance.Pressed += MaxShieldBtnClick;
+        
+        // 护盾
+        S_ShieldBtn.Instance.Pressed += ShieldBtnClick;
+        
         // 创建物体
         S_CreateObjectBtn.Instance.Pressed += CreateObjectBtnClick;
         
@@ -133,7 +145,7 @@ public partial class ToolsPanel : Tools
 
     private void KellSelfBtnClick()
     {
-        var player = GameApplication.Instance.DungeonManager?.CurrWorld?.Player;
+        var player = GetPlayer();
         if (player == null)
         {
             return;
@@ -143,6 +155,51 @@ public partial class ToolsPanel : Tools
         player.HurtHandler(player, 1000, 0);
     }
 
+    private void MaxHpBtnClick()
+    {
+        var player = GetPlayer();
+        if (player == null)
+        {
+            return;
+        }
+
+        player.MaxHp = int.Parse(S_MaxHpInput.Instance.Text);
+    }
+
+    private void HpBtnClick()
+    {
+        var player = GetPlayer();
+        if (player == null)
+        {
+            return;
+        }
+
+        player.Hp = int.Parse(S_HpInput.Instance.Text);
+    }
+
+    
+    private void MaxShieldBtnClick()
+    {
+        var player = GetPlayer();
+        if (player == null)
+        {
+            return;
+        }
+
+        player.MaxShield = int.Parse(S_MaxShieldInput.Instance.Text);
+    }
+
+    private void ShieldBtnClick()
+    {
+        var player = GetPlayer();
+        if (player == null)
+        {
+            return;
+        }
+
+        player.Shield = int.Parse(S_ShieldInput.Instance.Text);
+    }
+    
     private void CreateObjectBtnClick()
     {
         ActivityType[] activityTypes = [ActivityType.Weapon, ActivityType.Prop, ActivityType.Enemy, ActivityType.Boss, ActivityType.Treasure];
@@ -170,4 +227,9 @@ public partial class ToolsPanel : Tools
         }, ParentUi);
     }
 
+
+    private Role GetPlayer()
+    {
+        return GameApplication.Instance.DungeonManager?.CurrWorld?.Player;
+    }
 }

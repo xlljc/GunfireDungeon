@@ -350,6 +350,8 @@ public abstract partial class Role : ActivityObject
     private long _invincibleFlashingId = -1;
     //护盾恢复计时器
     private float _shieldRecoveryTimer = 0;
+    //护盾恢复值小数部分，大于1自动往 Shiel 上加
+    private float _addShieldVal = 0;
 
     /// <summary>
     /// 创建角色的 RoleState 对象
@@ -622,11 +624,18 @@ public abstract partial class Role : ActivityObject
         {
             if (Shield < MaxShield)
             {
-                _shieldRecoveryTimer += delta;
                 if (_shieldRecoveryTimer >= RoleState.ShieldRecoveryTime) //时间到, 恢复
                 {
-                    Shield++;
-                    _shieldRecoveryTimer = 0;
+                    _addShieldVal += RoleState.ShieldRecoverySpeed * delta;
+                    if (_addShieldVal >= 1)
+                    {
+                        Shield += (int)_addShieldVal;
+                        _addShieldVal -= (int)_addShieldVal;
+                    }
+                }
+                else
+                {
+                    _shieldRecoveryTimer += delta;
                 }
             }
             else

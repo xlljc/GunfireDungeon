@@ -33,9 +33,14 @@ public class RoleState
     public float Friction = 900f;
     
     /// <summary>
-    /// 单格护盾恢复时间, 单位: 秒
+    /// 护盾恢复时间, 单位: 秒
     /// </summary>
-    public float ShieldRecoveryTime = 18;
+    public float ShieldRecoveryTime = 10;
+
+    /// <summary>
+    /// 护盾恢复速度，每秒恢复量
+    /// </summary>
+    public float ShieldRecoverySpeed = 2;
 
     /// <summary>
     /// 受伤后的无敌时间, 单位: 秒

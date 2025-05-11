@@ -120,6 +120,218 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer3.MaxHpBtn
+    /// </summary>
+    public class MaxHpBtn : UiNode<ToolsPanel, Godot.Button, MaxHpBtn>
+    {
+        public MaxHpBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override MaxHpBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer3.MaxHpInput
+    /// </summary>
+    public class MaxHpInput : UiNode<ToolsPanel, Godot.LineEdit, MaxHpInput>
+    {
+        public MaxHpInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override MaxHpInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer3
+    /// </summary>
+    public class HBoxContainer3 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer3>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.MaxHpBtn
+        /// </summary>
+        public MaxHpBtn L_MaxHpBtn
+        {
+            get
+            {
+                if (_L_MaxHpBtn == null) _L_MaxHpBtn = new MaxHpBtn(UiPanel, Instance.GetNode<Godot.Button>("MaxHpBtn"));
+                return _L_MaxHpBtn;
+            }
+        }
+        private MaxHpBtn _L_MaxHpBtn;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.MaxHpInput
+        /// </summary>
+        public MaxHpInput L_MaxHpInput
+        {
+            get
+            {
+                if (_L_MaxHpInput == null) _L_MaxHpInput = new MaxHpInput(UiPanel, Instance.GetNode<Godot.LineEdit>("MaxHpInput"));
+                return _L_MaxHpInput;
+            }
+        }
+        private MaxHpInput _L_MaxHpInput;
+
+        public HBoxContainer3(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer3 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer4.HpBtn
+    /// </summary>
+    public class HpBtn : UiNode<ToolsPanel, Godot.Button, HpBtn>
+    {
+        public HpBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override HpBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer4.HpInput
+    /// </summary>
+    public class HpInput : UiNode<ToolsPanel, Godot.LineEdit, HpInput>
+    {
+        public HpInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override HpInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer4
+    /// </summary>
+    public class HBoxContainer4 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer4>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.HpBtn
+        /// </summary>
+        public HpBtn L_HpBtn
+        {
+            get
+            {
+                if (_L_HpBtn == null) _L_HpBtn = new HpBtn(UiPanel, Instance.GetNode<Godot.Button>("HpBtn"));
+                return _L_HpBtn;
+            }
+        }
+        private HpBtn _L_HpBtn;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.HpInput
+        /// </summary>
+        public HpInput L_HpInput
+        {
+            get
+            {
+                if (_L_HpInput == null) _L_HpInput = new HpInput(UiPanel, Instance.GetNode<Godot.LineEdit>("HpInput"));
+                return _L_HpInput;
+            }
+        }
+        private HpInput _L_HpInput;
+
+        public HBoxContainer4(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer4 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer5.MaxShieldBtn
+    /// </summary>
+    public class MaxShieldBtn : UiNode<ToolsPanel, Godot.Button, MaxShieldBtn>
+    {
+        public MaxShieldBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override MaxShieldBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer5.MaxShieldInput
+    /// </summary>
+    public class MaxShieldInput : UiNode<ToolsPanel, Godot.LineEdit, MaxShieldInput>
+    {
+        public MaxShieldInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override MaxShieldInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer5
+    /// </summary>
+    public class HBoxContainer5 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer5>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.MaxShieldBtn
+        /// </summary>
+        public MaxShieldBtn L_MaxShieldBtn
+        {
+            get
+            {
+                if (_L_MaxShieldBtn == null) _L_MaxShieldBtn = new MaxShieldBtn(UiPanel, Instance.GetNode<Godot.Button>("MaxShieldBtn"));
+                return _L_MaxShieldBtn;
+            }
+        }
+        private MaxShieldBtn _L_MaxShieldBtn;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.MaxShieldInput
+        /// </summary>
+        public MaxShieldInput L_MaxShieldInput
+        {
+            get
+            {
+                if (_L_MaxShieldInput == null) _L_MaxShieldInput = new MaxShieldInput(UiPanel, Instance.GetNode<Godot.LineEdit>("MaxShieldInput"));
+                return _L_MaxShieldInput;
+            }
+        }
+        private MaxShieldInput _L_MaxShieldInput;
+
+        public HBoxContainer5(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer5 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer6.ShieldBtn
+    /// </summary>
+    public class ShieldBtn : UiNode<ToolsPanel, Godot.Button, ShieldBtn>
+    {
+        public ShieldBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override ShieldBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer6.ShieldInput
+    /// </summary>
+    public class ShieldInput : UiNode<ToolsPanel, Godot.LineEdit, ShieldInput>
+    {
+        public ShieldInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override ShieldInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer6
+    /// </summary>
+    public class HBoxContainer6 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer6>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.ShieldBtn
+        /// </summary>
+        public ShieldBtn L_ShieldBtn
+        {
+            get
+            {
+                if (_L_ShieldBtn == null) _L_ShieldBtn = new ShieldBtn(UiPanel, Instance.GetNode<Godot.Button>("ShieldBtn"));
+                return _L_ShieldBtn;
+            }
+        }
+        private ShieldBtn _L_ShieldBtn;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.ShieldInput
+        /// </summary>
+        public ShieldInput L_ShieldInput
+        {
+            get
+            {
+                if (_L_ShieldInput == null) _L_ShieldInput = new ShieldInput(UiPanel, Instance.GetNode<Godot.LineEdit>("ShieldInput"));
+                return _L_ShieldInput;
+            }
+        }
+        private ShieldInput _L_ShieldInput;
+
+        public HBoxContainer6(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer6 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Tools.HFlowContainer.HBoxContainer2.Label
     /// </summary>
     public class Label : UiNode<ToolsPanel, Godot.Label, Label>
@@ -296,6 +508,58 @@ public abstract partial class Tools : UiBase
         private KellSelfBtn _L_KellSelfBtn;
 
         /// <summary>
+        /// 节点路径: Tools.HBoxContainer3
+        /// </summary>
+        public HBoxContainer3 L_HBoxContainer3
+        {
+            get
+            {
+                if (_L_HBoxContainer3 == null) _L_HBoxContainer3 = new HBoxContainer3(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer3"));
+                return _L_HBoxContainer3;
+            }
+        }
+        private HBoxContainer3 _L_HBoxContainer3;
+
+        /// <summary>
+        /// 节点路径: Tools.HBoxContainer4
+        /// </summary>
+        public HBoxContainer4 L_HBoxContainer4
+        {
+            get
+            {
+                if (_L_HBoxContainer4 == null) _L_HBoxContainer4 = new HBoxContainer4(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer4"));
+                return _L_HBoxContainer4;
+            }
+        }
+        private HBoxContainer4 _L_HBoxContainer4;
+
+        /// <summary>
+        /// 节点路径: Tools.HBoxContainer5
+        /// </summary>
+        public HBoxContainer5 L_HBoxContainer5
+        {
+            get
+            {
+                if (_L_HBoxContainer5 == null) _L_HBoxContainer5 = new HBoxContainer5(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer5"));
+                return _L_HBoxContainer5;
+            }
+        }
+        private HBoxContainer5 _L_HBoxContainer5;
+
+        /// <summary>
+        /// 节点路径: Tools.HBoxContainer6
+        /// </summary>
+        public HBoxContainer6 L_HBoxContainer6
+        {
+            get
+            {
+                if (_L_HBoxContainer6 == null) _L_HBoxContainer6 = new HBoxContainer6(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer6"));
+                return _L_HBoxContainer6;
+            }
+        }
+        private HBoxContainer6 _L_HBoxContainer6;
+
+        /// <summary>
         /// 节点路径: Tools.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
@@ -360,6 +624,66 @@ public abstract partial class Tools : UiBase
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.KellSelfBtn
     /// </summary>
     public KellSelfBtn S_KellSelfBtn => L_HFlowContainer.L_KellSelfBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer3.MaxHpBtn
+    /// </summary>
+    public MaxHpBtn S_MaxHpBtn => L_HFlowContainer.L_HBoxContainer3.L_MaxHpBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer3.MaxHpInput
+    /// </summary>
+    public MaxHpInput S_MaxHpInput => L_HFlowContainer.L_HBoxContainer3.L_MaxHpInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer3
+    /// </summary>
+    public HBoxContainer3 S_HBoxContainer3 => L_HFlowContainer.L_HBoxContainer3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer4.HpBtn
+    /// </summary>
+    public HpBtn S_HpBtn => L_HFlowContainer.L_HBoxContainer4.L_HpBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer4.HpInput
+    /// </summary>
+    public HpInput S_HpInput => L_HFlowContainer.L_HBoxContainer4.L_HpInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer4
+    /// </summary>
+    public HBoxContainer4 S_HBoxContainer4 => L_HFlowContainer.L_HBoxContainer4;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer5.MaxShieldBtn
+    /// </summary>
+    public MaxShieldBtn S_MaxShieldBtn => L_HFlowContainer.L_HBoxContainer5.L_MaxShieldBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer5.MaxShieldInput
+    /// </summary>
+    public MaxShieldInput S_MaxShieldInput => L_HFlowContainer.L_HBoxContainer5.L_MaxShieldInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer5
+    /// </summary>
+    public HBoxContainer5 S_HBoxContainer5 => L_HFlowContainer.L_HBoxContainer5;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer6.ShieldBtn
+    /// </summary>
+    public ShieldBtn S_ShieldBtn => L_HFlowContainer.L_HBoxContainer6.L_ShieldBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer6.ShieldInput
+    /// </summary>
+    public ShieldInput S_ShieldInput => L_HFlowContainer.L_HBoxContainer6.L_ShieldInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer6
+    /// </summary>
+    public HBoxContainer6 S_HBoxContainer6 => L_HFlowContainer.L_HBoxContainer6;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.Label

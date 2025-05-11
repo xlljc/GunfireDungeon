@@ -40,10 +40,10 @@ public partial class Player : Role
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
         Camp = CampEnum.Camp1;
 
-        MaxHp = 100;
-        Hp = 100;
-        MaxShield = 50;
-        Shield = 50;
+        MaxHp = 30;
+        Hp = 30;
+        MaxShield = 12;
+        Shield = 12;
 
         WeaponPack.SetCapacity(2);
         ActivePropsPack.SetCapacity(1);
