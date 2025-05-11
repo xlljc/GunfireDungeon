@@ -40,10 +40,10 @@ public partial class Player : Role
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
         Camp = CampEnum.Camp1;
 
-        MaxHp = 6;
-        Hp = 6;
-        MaxShield = 0;
-        Shield = 0;
+        MaxHp = 100;
+        Hp = 100;
+        MaxShield = 50;
+        Shield = 50;
 
         WeaponPack.SetCapacity(2);
         ActivePropsPack.SetCapacity(1);
@@ -241,12 +241,6 @@ public partial class Player : Role
     protected override void OnThrowWeapon(Weapon weapon)
     {
         EventManager.EmitEvent(EventEnum.OnPlayerRemoveWeapon, weapon);
-    }
-
-    protected override int OnHandlerHurt(int damage)
-    {
-        //修改受到的伤害, 每次只受到1点伤害
-        return 1;
     }
 
     protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)

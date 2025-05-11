@@ -1,14 +1,21 @@
 using Godot;
 using System;
-using DsUi;
 
+/// <summary>
+/// 自定义进度条
+/// </summary>
 public partial class CommProgressBar : TextureProgressBar
 {
     [Export]
     public Label NumberLabel;
 
-    public override void _Process(double delta)
+    public new double Value
     {
-        NumberLabel.Text = ((int)Value).ToString();
+        set
+        {
+            base.Value = value;
+            NumberLabel.Text = ((int)value).ToString();
+        }
+        get => base.Value;
     }
 }

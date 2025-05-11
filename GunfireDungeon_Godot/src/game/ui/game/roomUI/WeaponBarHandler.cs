@@ -5,7 +5,7 @@ using DsUi;
 
 namespace UI.game.RoomUI;
 
-public class WeaponBarHandler
+public partial class WeaponBarHandler : Control, IUiNodeScript
 {
     private RoomUI.WeaponBar _weaponBar;
 
@@ -16,24 +16,19 @@ public class WeaponBarHandler
     private Weapon _prevWeapon;
     private int _prevBullet;
     
-    public WeaponBarHandler(RoomUI.WeaponBar weaponBar)
+    public void SetUiNode(IUiNode uiNode)
     {
-        _weaponBar = weaponBar;
-        _bulletGrid =
-            weaponBar.UiPanel.CreateUiGrid<RoomUI.BulletItem, bool, GunBulletCell>(weaponBar.UiPanel.S_BulletItem);
+        _weaponBar = (RoomUI.WeaponBar)uiNode;
+        _bulletGrid = _weaponBar.UiPanel.CreateUiGrid<RoomUI.BulletItem, bool, GunBulletCell>(_weaponBar.L_VBoxContainer.L_BulletItem);
         SetWeaponTexture(null);
     }
 
-    public void OnShow()
+    public override void _Process(double delta)
     {
-    }
-
-    public void OnHide()
-    {
-    }
-
-    public void Process(float delta)
-    {
+        if (_weaponBar == null || !_weaponBar.UiPanel.IsOpen)
+        {
+            return;
+        }
         var weapon = World.Current.Player?.WeaponPack.ActiveItem;
         if (weapon != null)
         {
@@ -106,5 +101,9 @@ public class WeaponBarHandler
         _weaponBar.L_ManaProgress.Instance.Value = currMana;
         _weaponBar.L_BufferManaProgress.Instance.MaxValue = maxBufferMana;
         _weaponBar.L_BufferManaProgress.Instance.Value = currBufferMana;
+    }
+
+    public void OnDestroy()
+    {
     }
 }
