@@ -483,13 +483,13 @@ public class DungeonGenerator
     {
         if (roomInfo.Next.Count > 0)
         {
-            Debug.LogError("当前房间还有连接的子房间, 不能回滚!");
+            // Debug.LogError("当前房间还有连接的子房间, 不能回滚!");
             return false;
         }
 
         if (!roomInfo.CanRollback)
         {
-            Debug.LogError("当前房间不能回滚!");
+            // Debug.LogError("当前房间不能回滚!");
             return false;
         }
         var prevRoom = roomInfo.Prev;
