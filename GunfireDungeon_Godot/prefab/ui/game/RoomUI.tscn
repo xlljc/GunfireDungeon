@@ -203,6 +203,7 @@ layout_mode = 2
 size_flags_vertical = 4
 ValueColor = Color(0.0705882, 0.305882, 0.537255, 1)
 TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = 1.0
 metadata/_edit_group_ = true
 
 [node name="TempRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="0"]
@@ -227,6 +228,7 @@ layout_mode = 2
 size_flags_vertical = 4
 ValueColor = Color(0.0216064, 0.460938, 0.16233, 1)
 TempColor = Color(0.988235, 0.780392, 0.415686, 1)
+TempTime = 1.0
 metadata/_edit_group_ = true
 
 [node name="Number" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="2"]
@@ -422,6 +424,7 @@ offset_right = 208.0
 offset_bottom = 36.0
 ValueColor = Color(0, 0.364706, 0.67451, 1)
 TempColor = Color(0.867188, 0.867188, 0.867188, 1)
+TempTime = 1.0
 
 [node name="ManaIcon" type="TextureRect" parent="Control/WeaponBar"]
 layout_mode = 0

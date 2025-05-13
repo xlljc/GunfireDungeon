@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Config;
 using DsUi;
 using Godot;
@@ -31,6 +32,7 @@ public partial class Player : Role
     private float _rollCoolingTimer = 0;
     
     private BrushImageData _brushData2;
+    private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
     
     public override void OnInit()
     {
@@ -120,6 +122,27 @@ public partial class Player : Role
         {
             return;
         }
+        
+        //更新每秒受到的伤害计数
+        if (_hurtList.Count > 0)
+        {
+            var time = DateTime.Now.Ticks - 1000000;
+            for (var i = 0; i < _hurtList.Count; i++)
+            {
+                var temp = _hurtList[i];
+                if (temp.Key < time) // 超过1秒
+                {
+                    // 移除
+                    _hurtList.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
 
         if (_rollCoolingTimer > 0)
         {
@@ -243,16 +266,38 @@ public partial class Player : Role
         EventManager.EmitEvent(EventEnum.OnPlayerRemoveWeapon, weapon);
     }
 
+    protected override void OnShieldDestroy()
+    {
+        //破盾
+        PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
+    }
+
+    protected override int OnHandlerHurt(int damage)
+    {
+        if (Shield > 0)
+        {
+            return damage;
+        }
+
+        var value = Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp);
+        return damage >= value ? //触发保护机制
+            value : damage;
+    }
+    
     protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
     {
         //进入无敌状态
-        if (realHarm) //真实伤害
+        if (realHarm) //真实伤害，不是护盾抵消掉的
         {
-            PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
-        }
-        else //护盾抵消掉的
-        {
-            PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
+            _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damage));
+            if (damage >= Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp)) //触发保护机制的无敌时间
+            {
+                PlayInvincibleFlashing(RoleState.WoundedMaxDamageInvincibleTime);
+            }
+            else if (GetDamageTakenInTheLastSecond() >= Mathf.CeilToInt(RoleState.WoundedInvinciblePercent * MaxHp)) //触发无敌
+            {
+                PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
+            }
         }
 
         //血量为0, 扔掉所有武器
@@ -402,6 +447,20 @@ public partial class Player : Role
     {
         base.UseGold(goldCount);
         EventManager.EmitEvent(EventEnum.OnPlayerGoldChange, RoleState.Gold);
+    }
+
+    /// <summary>
+    /// 获取最近 1 秒内受到的伤害，只算真实伤害，护盾抵消的不算
+    /// </summary>
+    public int GetDamageTakenInTheLastSecond()
+    {
+        var v = 0;
+        for (var i = 0; i < _hurtList.Count; i++)
+        {
+            v += _hurtList[i].Value;
+        }
+
+        return v;
     }
 
     /// <summary>

@@ -217,8 +217,8 @@ public abstract partial class Role : ActivityObject
         get => _maxHp;
         set
         {
-            int temp = _maxHp;
-            _maxHp = value;
+            var temp = _maxHp;
+            _maxHp = Mathf.Max(0, value);
             //最大血量值改变
             if (temp != _maxHp)
             {
@@ -242,7 +242,7 @@ public abstract partial class Role : ActivityObject
         set
         {
             var temp = _shield;
-            _shield = value;
+            _shield = Mathf.Clamp(value, 0, _maxShield);
             //护盾被破坏
             if (temp > 0 && _shield <= 0 && _maxShield > 0)
             {
@@ -618,9 +618,6 @@ public abstract partial class Role : ActivityObject
                     SetBlendModulate(new Color(1, 1, 1, 0));
                 }
             }
-
-            _shieldRecoveryTimer = 0;
-            _addShieldVal = 0;
         }
         else //恢复护盾
         {
@@ -951,11 +948,13 @@ public abstract partial class Role : ActivityObject
         //计算真正受到的伤害
         damage = OnHandlerHurt(damage);
         var flag = Shield > 0;
-        if (flag)
+        if (flag) //有护盾
         {
             Shield -= damage;
+            _shieldRecoveryTimer = 0;
+            _addShieldVal = 0;
         }
-        else
+        else //没有护盾
         {
             damage = RoleState.CalcHurtDamage(damage);
             if (damage > 0)
