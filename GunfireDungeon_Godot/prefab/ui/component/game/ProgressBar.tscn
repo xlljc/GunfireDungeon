@@ -1,27 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://d03w81wvnbpsa"]
+[gd_scene load_steps=3 format=3 uid="uid://d03w81wvnbpsa"]
 
-[ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="1_xj4kd"]
-[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="2_ixry4"]
 [ext_resource type="Script" uid="uid://um2dje5bjgxk" path="res://src/game/ui/component/game/CommProgressBar.cs" id="3_nik3g"]
 [ext_resource type="FontFile" uid="uid://kfgxhsmtolri" path="res://resource/font/VonwaonBitmap-12px.ttf" id="4_nik3g"]
 
-[node name="ProgressBar" type="TextureProgressBar" node_paths=PackedStringArray("NumberLabel")]
+[node name="ProgressBar" type="ColorRect" node_paths=PackedStringArray("NumberLabel", "ValueRect", "TempRect")]
 offset_right = 257.0
 offset_bottom = 20.0
-value = 50.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = ExtResource("2_ixry4")
-texture_over = ExtResource("1_xj4kd")
-texture_progress = ExtResource("2_ixry4")
-tint_under = Color(0.130967, 0.15983, 0.184348, 1)
-tint_over = Color(0.341, 0.341, 0.341, 0)
-tint_progress = Color(0, 0.36544, 0.675652, 1)
+color = Color(0.207031, 0.207031, 0.207031, 1)
 script = ExtResource("3_nik3g")
 NumberLabel = NodePath("Number")
+ValueRect = NodePath("ValueRect")
+TempRect = NodePath("TempRect")
+
+[node name="TempRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 177.0
+grow_vertical = 2
+color = Color(0.503906, 0.503906, 0.503906, 1)
+
+[node name="ValueRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 109.0
+grow_vertical = 2
 
 [node name="Number" type="Label" parent="."]
 layout_mode = 1
@@ -30,8 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_nik3g")
 theme_override_font_sizes/font_size = 24
-text = "999999"
+text = "123"
 horizontal_alignment = 1
 vertical_alignment = 1

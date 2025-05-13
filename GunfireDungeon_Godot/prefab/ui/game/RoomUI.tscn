@@ -183,64 +183,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_b0m6l")
 
-[node name="Life" type="Control" parent="Control/LifeBar"]
-custom_minimum_size = Vector2(48, 84)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/LifeBar"]
 layout_mode = 2
-size_flags_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/LifeBar/Life"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="ShieldContainer" type="HBoxContainer" parent="Control/LifeBar/Life/VBoxContainer"]
+[node name="ShieldContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/Life/VBoxContainer/ShieldContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer"]
 layout_mode = 2
 texture = ExtResource("10_83pvn")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="ShieldProgressBar" parent="Control/LifeBar/Life/VBoxContainer/ShieldContainer" instance=ExtResource("17_3h7xx")]
+[node name="ShieldProgressBar" parent="Control/LifeBar/VBoxContainer/ShieldContainer" instance=ExtResource("17_3h7xx")]
 custom_minimum_size = Vector2(160, 24)
 layout_mode = 2
 size_flags_vertical = 4
+ValueColor = Color(0.0705882, 0.305882, 0.537255, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+metadata/_edit_group_ = true
 
-[node name="Number" parent="Control/LifeBar/Life/VBoxContainer/ShieldContainer/ShieldProgressBar" index="0"]
-offset_top = -4.0
-offset_bottom = 4.0
+[node name="TempRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="0"]
+offset_right = 139.0
+
+[node name="Number" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="2"]
 horizontal_alignment = 0
 
-[node name="LifeContainer" type="HBoxContainer" parent="Control/LifeBar/Life/VBoxContainer"]
+[node name="LifeContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/Life/VBoxContainer/LifeContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/LifeContainer"]
 layout_mode = 2
 texture = ExtResource("12_vyncx")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="LifeProgressBar" parent="Control/LifeBar/Life/VBoxContainer/LifeContainer" instance=ExtResource("17_3h7xx")]
+[node name="LifeProgressBar" parent="Control/LifeBar/VBoxContainer/LifeContainer" instance=ExtResource("17_3h7xx")]
 custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
 size_flags_vertical = 4
-tint_progress = Color(0, 0.527344, 0, 1)
+ValueColor = Color(0.0216064, 0.460938, 0.16233, 1)
+TempColor = Color(0.988235, 0.780392, 0.415686, 1)
+metadata/_edit_group_ = true
 
-[node name="Number" parent="Control/LifeBar/Life/VBoxContainer/LifeContainer/LifeProgressBar" index="0"]
+[node name="Number" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="2"]
 horizontal_alignment = 0
 
-[node name="Gold" type="Control" parent="Control/LifeBar"]
+[node name="Gold" type="Control" parent="Control/LifeBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="GoldIcon" type="TextureRect" parent="Control/LifeBar/Gold"]
+[node name="GoldIcon" type="TextureRect" parent="Control/LifeBar/VBoxContainer/Gold"]
 material = ExtResource("7_iw6pa")
 layout_mode = 1
 offset_right = 8.0
@@ -249,7 +245,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("7_lyxvi")
 stretch_mode = 2
 
-[node name="GoldText" type="Label" parent="Control/LifeBar/Gold"]
+[node name="GoldText" type="Label" parent="Control/LifeBar/VBoxContainer/Gold"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -384,8 +380,11 @@ offset_left = 4.0
 offset_top = 48.0
 offset_right = 208.0
 offset_bottom = 60.0
+ValueColor = Color(0, 0.364706, 0.67451, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = -1.0
 
-[node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="0"]
+[node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="2"]
 visible = false
 
 [node name="WeaponPanel" type="NinePatchRect" parent="Control/WeaponBar"]
@@ -421,6 +420,8 @@ offset_left = 24.0
 offset_top = 16.0
 offset_right = 208.0
 offset_bottom = 36.0
+ValueColor = Color(0, 0.364706, 0.67451, 1)
+TempColor = Color(0.867188, 0.867188, 0.867188, 1)
 
 [node name="ManaIcon" type="TextureRect" parent="Control/WeaponBar"]
 layout_mode = 0
@@ -465,6 +466,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[editable path="Control/LifeBar/Life/VBoxContainer/ShieldContainer/ShieldProgressBar"]
-[editable path="Control/LifeBar/Life/VBoxContainer/LifeContainer/LifeProgressBar"]
+[editable path="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar"]
+[editable path="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar"]
 [editable path="Control/WeaponBar/BufferManaProgress"]

@@ -21,9 +21,9 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         _bar.UiPanel.OnShowUiEvent += OnShow;
         _bar.UiPanel.OnHideUiEvent += OnHide;
         
-        var container = _bar.L_Life.L_VBoxContainer;
-        container.L_LifeContainer.L_LifeProgressBar.Instance.SetAutoLengthRange(40, 1500);
-        container.L_ShieldContainer.L_ShieldProgressBar.Instance.SetAutoLengthRange(40, 1500);
+        var container = _bar.L_VBoxContainer;
+        container.L_LifeContainer.L_LifeProgressBar.Instance.SetAutoLengthRange(60, 1800);
+        container.L_ShieldContainer.L_ShieldProgressBar.Instance.SetAutoLengthRange(60, 1800);
     }
     
     public void OnShow()
@@ -86,11 +86,13 @@ public partial class LifeBarHandler : Control, IUiNodeScript
             return;
         }
 
-        var container = _bar.L_Life.L_VBoxContainer;
+        var container = _bar.L_VBoxContainer;
         container.L_LifeContainer.L_LifeProgressBar.Instance.MaxValue = player.MaxHp;
         container.L_LifeContainer.L_LifeProgressBar.Instance.Value = player.Hp;
         container.L_ShieldContainer.L_ShieldProgressBar.Instance.MaxValue = player.MaxShield;
-        container.L_ShieldContainer.L_ShieldProgressBar.Instance.Value = player.Shield;
+        container.L_ShieldContainer.L_ShieldProgressBar.Instance.Value = player.RealShield;
+        
+        container.L_ShieldContainer.Instance.Visible = player.MaxShield > 0;
     }
     
     private void HandlerRefreshGold()
@@ -101,7 +103,7 @@ public partial class LifeBarHandler : Control, IUiNodeScript
             return;
         }
 
-        _bar.L_Gold.L_GoldText.Instance.Text = player.RoleState.Gold.ToString();
+        _bar.L_VBoxContainer.L_Gold.L_GoldText.Instance.Text = player.RoleState.Gold.ToString();
     }
 
     public void OnDestroy()

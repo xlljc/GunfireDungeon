@@ -241,7 +241,7 @@ public abstract partial class Role : ActivityObject
         get => _shield;
         set
         {
-            int temp = _shield;
+            var temp = _shield;
             _shield = value;
             //护盾被破坏
             if (temp > 0 && _shield <= 0 && _maxShield > 0)
@@ -256,6 +256,11 @@ public abstract partial class Role : ActivityObject
         }
     }
     private int _shield = 0;
+
+    /// <summary>
+    /// 当前真实护盾值，包含小数
+    /// </summary>
+    public float RealShield => _shield + _addShieldVal;
 
     /// <summary>
     /// 最大护盾值
@@ -559,11 +564,7 @@ public abstract partial class Role : ActivityObject
             }
             else
             {
-                var flag = true;
-                if (item is ActivityObject ao && ao.IsThrowing)
-                {
-                    flag = false;
-                }
+                bool flag = !(item is ActivityObject ao && ao.IsThrowing);
                 //找到可互动的物体了
                 if (flag && !findFlag)
                 {
@@ -619,6 +620,7 @@ public abstract partial class Role : ActivityObject
             }
 
             _shieldRecoveryTimer = 0;
+            _addShieldVal = 0;
         }
         else //恢复护盾
         {
@@ -632,6 +634,10 @@ public abstract partial class Role : ActivityObject
                         Shield += (int)_addShieldVal;
                         _addShieldVal -= (int)_addShieldVal;
                     }
+                    else
+                    {
+                        OnChangeShield(_shield);
+                    }
                 }
                 else
                 {
@@ -641,6 +647,7 @@ public abstract partial class Role : ActivityObject
             else
             {
                 _shieldRecoveryTimer = 0;
+                _addShieldVal = 0;
             }
         }
 
