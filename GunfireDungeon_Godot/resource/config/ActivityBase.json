@@ -625,5 +625,24 @@
     "Icon": "res://resource/sprite/ui/commonIcon/Gold_1.png",
     "NotInRandomPool": false,
     "ShowInMapEditor": false
+  },
+  {
+    "Id": "hit_number",
+    "Name": "\u4F24\u5BB3\u6570\u5B57",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u9020\u6210\u6216\u8005\u53D7\u5230\u4F24\u5BB3\u540E\u663E\u793A\u7684\u6570\u5B57"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/effect/common/HitNumber.tscn",
+    "Icon": "",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
   }
 ]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://uig75c23i4nm"]
+
+[ext_resource type="Script" uid="uid://bac6fest8cb1e" path="res://src/game/activity/common/HitNumber.cs" id="1_vfd05"]
+[ext_resource type="Texture2D" uid="uid://db5n8lt3hagqg" path="res://resource/sprite/common/HiiNumberShadow.png" id="2_vfd05"]
+[ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="3_eeon6"]
+[ext_resource type="PackedScene" uid="uid://ck8gvettbrllg" path="res://prefab/effect/common/NumberSprite.tscn" id="3_pdwxf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eeon6"]
+radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdwxf"]
+resource_local_to_scene = true
+shader = ExtResource("3_eeon6")
+shader_parameter/blend = Color(1, 1, 1, 1)
+shader_parameter/schedule = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/show_outline = false
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_rainbow = false
+shader_parameter/outline_use_blend = true
+shader_parameter/grey = 0.0
+
+[node name="HitNumber" type="CharacterBody2D" node_paths=PackedStringArray("NumberSprite", "ShadowSprite", "AnimatedSprite", "Collision")]
+collision_layer = 0
+script = ExtResource("1_vfd05")
+NumberSprite = NodePath("AnimatedSprite/NumberSprite")
+ShadowSprite = NodePath("ShadowSprite")
+AnimatedSprite = NodePath("AnimatedSprite")
+Collision = NodePath("Collision")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eeon6")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_vfd05")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pdwxf")
+position = Vector2(0, -3)
+
+[node name="NumberSprite" parent="AnimatedSprite" instance=ExtResource("3_pdwxf")]

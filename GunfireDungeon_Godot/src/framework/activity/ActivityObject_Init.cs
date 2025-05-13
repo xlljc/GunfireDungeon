@@ -140,5 +140,9 @@ public partial class ActivityObject
         /// 名称: 铜币 <br/>
         /// </summary>
         public const string Id_gold_1 = "gold_1";
+        /// <summary>
+        /// 名称: 伤害数字 <br/>
+        /// </summary>
+        public const string Id_hit_number = "hit_number";
     }
 }

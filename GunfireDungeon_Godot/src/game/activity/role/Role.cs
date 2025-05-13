@@ -968,6 +968,15 @@ public abstract partial class Role : ActivityObject
             // blood.Rotation = angle;
             // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
         }
+        
+        //显示数字
+        if (this is not Player)
+        {
+            var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
+            hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
+            hitNumber.Throw(Position, 8, Utils.Random.RandomRangeFloat(30, 60),
+                new Vector2(45, 0).Rotated(angle), 0);
+        }
 
         PrevHitAngle = angle;
         OnHit(target, damage, angle, !flag);
