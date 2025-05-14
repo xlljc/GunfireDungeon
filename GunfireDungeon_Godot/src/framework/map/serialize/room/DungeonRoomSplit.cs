@@ -179,6 +179,10 @@ public class DungeonRoomSplit
             image.LoadPngFromBuffer(bytes);
             _previewImage = ImageTexture.CreateFromImage(image);
         }
+        else
+        {
+            _previewImage = ResourceLoader.Load<Texture2D>("res://" + PreviewPath);
+        }
     }
 
     public override bool Equals(object obj)

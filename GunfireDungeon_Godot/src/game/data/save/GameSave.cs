@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Godot;
+using FileAccess = Godot.FileAccess;
 
 public partial class GameSave
 {
@@ -58,22 +59,23 @@ public partial class GameSave
         var options = new JsonSerializerOptions();
         options.WriteIndented = true;
         var serialize = JsonSerializer.Serialize(this, options);
-        File.WriteAllText(GameConfig.GameSaveFile, serialize);
+        
+        SaveFile(GameConfig.GameSaveFile, serialize);
     }
 
     public static GameSave Load()
     {
         GameSave save;
-        if (!File.Exists(GameConfig.GameSaveFile))
+        if (!HasFile(GameConfig.GameSaveFile))
         {
             save = new GameSave();
             save.Save();
         }
         else
         {
-            save = JsonSerializer.Deserialize<GameSave>(File.ReadAllText(GameConfig.GameSaveFile));
+            save = JsonSerializer.Deserialize<GameSave>(ReadFile(GameConfig.GameSaveFile));
         }
-
+        
         if (save.Debug == null)
         {
             save.Debug = new DebugData();
@@ -100,6 +102,80 @@ public partial class GameSave
             {
                 Save();
             }
+        }
+    }
+
+    private static void SaveFile(string fileName, string text)
+    {
+        var osName = OS.GetName();
+        if (osName == "Windows")
+        {
+            File.WriteAllText(fileName, text);
+        }
+        else if (osName == "macOS")
+        {
+#if TOOLS
+            File.WriteAllText(fileName, text);
+#else
+            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Write);
+            file.StoreString(text);
+            file.Close();
+#endif
+        }
+        else
+        {
+            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Write);
+            file.StoreString(text);
+            file.Close();
+        }
+    }
+
+    private static bool HasFile(string fileName)
+    {
+        var osName = OS.GetName();
+        if (osName == "Windows")
+        {
+            return File.Exists(fileName);
+        }
+        else if (osName == "macOS")
+        {
+#if TOOLS
+            return File.Exists(fileName);
+#else
+            return FileAccess.FileExists("user://" + fileName);
+#endif
+        }
+        else
+        {
+            return FileAccess.FileExists("user://" + fileName);
+        }
+    }
+
+    private static string ReadFile(string fileName)
+    {
+        var osName = OS.GetName();
+        if (osName == "Windows")
+        {
+            return File.ReadAllText(fileName);
+        }
+        else if (osName == "macOS")
+        {
+#if TOOLS
+            return File.ReadAllText(fileName);
+#else
+            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Write);
+            var save = file.GetAsText();
+            file.Close();
+            return save;
+            
+#endif
+        }
+        else
+        {
+            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Read);
+            var save = file.GetAsText();
+            file.Close();
+            return save;
         }
     }
 }

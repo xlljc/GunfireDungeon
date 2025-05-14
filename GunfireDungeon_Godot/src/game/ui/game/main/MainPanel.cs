@@ -16,6 +16,16 @@ public partial class MainPanel : Main
         S_Exit.Instance.Pressed += OnExitClick;
         S_Tools.Instance.Pressed += OnToolsClick;
         S_Setting.Instance.Pressed += OnSettingClick;
+
+#if !TOOLS
+        S_Tools.Instance.Visible = false;
+#endif
+        
+        // var osName = OS.GetName();
+        // if (osName == "Android")
+        // {
+        //     S_Tools.Instance.Visible = false;
+        // }
     }
     
     //点击开始游戏
