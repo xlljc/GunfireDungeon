@@ -178,10 +178,8 @@ public partial class CommProgressBar : ColorRect
     
         if (MaxValue > 0)
         {
-            // 使用线性函数计算长度：minLength + (maxLength - minLength) * (1 - 1/(1 + scalingFactor*MaxValue))
-            // 这个函数确保当MaxValue趋近于无穷大时，长度趋近于maxLength
-            currentLength = _minLength + (_maxLength - _minLength) *
-                (1 - 1 / (1 + ScalingFactor * MaxValue));
+            // 使用线性函数计算长度
+            currentLength = Utils.LinearApproximation(MaxValue, _minLength, _maxLength, ScalingFactor);
         }
     
         // 确保长度在minLength和maxLength之间

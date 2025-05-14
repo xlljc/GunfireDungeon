@@ -13,10 +13,53 @@ public partial class NumberSprite : Node2D, IDestroy
     private int _value;
     private List<Sprite2D> _useList = new List<Sprite2D>();
     private Stack<Sprite2D> _stackInsts = new Stack<Sprite2D>();
-    
+
+    public override void _Ready()
+    {
+        _stackInsts.Push(Templdate);
+        Templdate.Visible = false;
+    }
+
     public void SetNumber(int value)
     {
         _value = value;
+        //把数字拆成数组
+        var list = new List<int>();
+        while (value > 0)
+        {
+            list.Add(value % 10);
+            value /= 10;
+        }
+
+        if (list.Count > _useList.Count)
+        {
+            var c = _useList.Count;
+            for (var i = 0; i < list.Count - c; i++)
+            {
+                var sprite2D = GetInstance();
+                sprite2D.Visible = true;
+                _useList.Add(sprite2D);
+            }
+        }
+        else if (list.Count < _useList.Count)
+        {
+            var c = _useList.Count;
+            for (var i = 0; i < c - list.Count; i++)
+            {
+                var sprite2D = _useList[i];
+                sprite2D.Visible = false;
+                _stackInsts.Push(sprite2D);
+                _useList.RemoveAt(i);
+            }
+        }
+        
+        for (var i = list.Count - 1; i >= 0; i--)
+        {
+            var index = list.Count - i - 1;
+            var sprite2D = _useList[i];
+            sprite2D.Frame = list[i];
+            sprite2D.Position  = new Vector2(index * 4 - 4 * (list.Count - 1) / 2f, 0);
+        }
     }
     
     public int GetNumber()
@@ -47,6 +90,8 @@ public partial class NumberSprite : Node2D, IDestroy
             return _stackInsts.Pop();
         }
 
-        return (Sprite2D)Templdate.Duplicate();
+        var sprite2D = (Sprite2D)Templdate.Duplicate();
+        AddChild(sprite2D);
+        return sprite2D;
     }
 }

@@ -12,6 +12,12 @@ public partial class HitNumber : ActivityObject, IPoolItem
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 
+    public void SetNumber(int number)
+    {
+        NumberSprite.SetNumber(number);
+    }
+    
+
     public void OnReclaim()
     {
         GetParent().CallDeferred(Node.MethodName.RemoveChild, this);
@@ -19,15 +25,18 @@ public partial class HitNumber : ActivityObject, IPoolItem
 
     public void OnLeavePool()
     {
-        
+        Modulate = new Color(1, 1, 1, 1);
     }
 
     protected override void OnThrowOver()
     {
-        this.CallDelay(1f, () =>
+        var tween = CreateTween();
+        tween.TweenProperty(this, new NodePath(CanvasItem.PropertyName.Modulate), new Color(1, 1, 1, 0), 1);
+        tween.TweenCallback(Callable.From(() =>
         {
             ObjectPool.Reclaim(this);
-        });
+        }));
+        tween.Play();
     }
 
     protected override void OnDestroy()

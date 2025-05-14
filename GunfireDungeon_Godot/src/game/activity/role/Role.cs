@@ -968,15 +968,6 @@ public abstract partial class Role : ActivityObject
             // blood.Rotation = angle;
             // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
         }
-        
-        //显示数字
-        if (this is not Player)
-        {
-            var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
-            hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
-            hitNumber.Throw(Position, 8, Utils.Random.RandomRangeFloat(30, 60),
-                new Vector2(45, 0).Rotated(angle), 0);
-        }
 
         PrevHitAngle = angle;
         OnHit(target, damage, angle, !flag);
@@ -996,6 +987,23 @@ public abstract partial class Role : ActivityObject
         
         //受伤特效
         PlayHitAnimation();
+        
+        //显示数字
+        if (this is not Player)
+        {
+            var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
+            hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
+            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.8f, damage * 1.2f), 20, 50, 0.01f);
+            var speedV = Utils.LinearApproximation(damage, 30, 80, 0.02f);
+            hitNumber.Throw(Position,
+                8,
+                Utils.Random.RandomRangeFloat(speedV * 0.9f, speedV * 1.3f),
+                new Vector2(speedX, 0).Rotated(angle + Mathf.DegToRad(Utils.Random.RandomRangeInt(-20, 20))),
+                0
+            );
+            hitNumber.InheritVelocity(this);
+            hitNumber.SetNumber(damage);
+        }
         
         //死亡判定
         if (Hp <= 0)

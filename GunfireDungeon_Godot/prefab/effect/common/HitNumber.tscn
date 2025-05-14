@@ -37,6 +37,6 @@ texture = ExtResource("2_vfd05")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_pdwxf")
-position = Vector2(0, -3)
 
 [node name="NumberSprite" parent="AnimatedSprite" instance=ExtResource("3_pdwxf")]
+position = Vector2(0, -3)

@@ -592,4 +592,16 @@ public static class Utils
         return pos1.X <= pos2.X && pos1.X + size1.X >= pos2.X + size2.X &&
                pos1.Y <= pos2.Y && pos1.Y + size1.Y >= pos2.Y + size2.Y;
     }
+
+    /// <summary>
+    /// 线性趋近，这个函数确保当 value 趋近于无穷大时，长度趋近于 max
+    /// </summary>
+    /// <param name="value">当前值</param>
+    /// <param name="min">返回最大值</param>
+    /// <param name="max">返回最小值</param>
+    /// <param name="scalingFactor">控制增长速率的因子，值越小增长越慢</param>
+    public static float LinearApproximation(float value, float min, float max, float scalingFactor)
+    {
+        return min + (max - min) * (1 - 1 / (1 + scalingFactor * value));
+    }
 }

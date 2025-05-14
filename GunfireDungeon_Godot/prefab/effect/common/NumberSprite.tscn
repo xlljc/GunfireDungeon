@@ -10,4 +10,3 @@ Templdate = NodePath("SpriteTemplate")
 [node name="SpriteTemplate" type="Sprite2D" parent="."]
 texture = ExtResource("2_dp0jf")
 hframes = 10
-frame = 4
