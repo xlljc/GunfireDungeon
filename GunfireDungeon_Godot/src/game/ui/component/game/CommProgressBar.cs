@@ -127,6 +127,10 @@ public partial class CommProgressBar : ColorRect
 
     public override void _Process(double delta)
     {
+        if (_maxValue <= 0)
+        {
+            return;
+        }
         var d = (float)delta;
         if (_timer >= 0)
         {
