@@ -31,7 +31,7 @@ public partial class Player : Role
     //翻滚冷却计时器
     private float _rollCoolingTimer = 0;
     
-    private BrushImageData _brushData2;
+    private ExcelConfig.LiquidBrush _brushData2;
     private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
     
     public override void OnInit()
@@ -64,7 +64,7 @@ public partial class Player : Role
         
         //InitSubLine();
         
-        _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
+        _brushData2 = ExcelConfig.LiquidBrush_Map["0001"];
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
     }
 
@@ -247,9 +247,16 @@ public partial class Player : Role
         }
 
         //测试刷地
-        //DrawLiquid(_brushData2);
+        _lqTimer += delta;
+        if (_lqTimer >= 0.1f)
+        {
+            _lqTimer %= 0.05f;
+            DrawLiquid(_brushData2);
+        }
     }
 
+    private float _lqTimer;
+    
     protected override void OnAffiliationChange(AffiliationArea prevArea)
     {
         BrushPrevPosition = null;

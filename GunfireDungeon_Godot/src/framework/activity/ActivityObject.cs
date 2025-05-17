@@ -251,7 +251,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 记录绘制液体的笔刷上一次绘制的位置<br/>
     /// 每次调用 DrawLiquid() 后都会记录这一次绘制的位置, 记录这个位置用作执行补间操作, 但是一旦停止绘制了, 需要手动清理记录的位置, 也就是将 BrushPrevPosition 置为 null
     /// </summary>
-    public Vector2I? BrushPrevPosition { get; set; }
+    public LiquidPoint? BrushPrevPosition { get; set; }
 
     /// <summary>
     /// 默认所在层级，如果没有用代码设置，则会在第一次调用 PutDown() 函数时设置
@@ -1891,14 +1891,14 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     }
 
     /// <summary>
-    /// 根据笔刷 id 在该物体位置绘制液体, 该 id 为 LiquidMaterial 表的 id<br/>
+    /// 根据笔刷 id 在该物体位置绘制液体, 该 id 为 LiquidBrush 表的 id<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
     public void DrawLiquid(string brushId)
     {
         if (AffiliationArea != null)
         {
-            DrawLiquid(LiquidBrushManager.GetBrush(brushId));
+            DrawLiquid(ExcelConfig.LiquidBrush_Map[brushId]);
         }
     }
     
@@ -1906,25 +1906,23 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 根据笔刷数据在该物体位置绘制液体<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
-    public void DrawLiquid(BrushImageData brush)
+    public void DrawLiquid(ExcelConfig.LiquidBrush brush)
     {
         if (AffiliationArea != null)
         {
-            var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position);
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
-            BrushPrevPosition = pos;
+            BrushPrevPosition = World.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, Position.AsVector2I(), 0);
         }
     }
     
     /// <summary>
-    /// 根据笔刷 id 在该物体位置绘制液体, 该 id 为 LiquidMaterial 表的 id<br/>
+    /// 根据笔刷 id 在该物体位置绘制液体, 该 id 为 LiquidBrush 表的 id<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
     public void DrawLiquid(string brushId, Vector2I offset)
     {
         if (AffiliationArea != null)
         {
-            DrawLiquid(LiquidBrushManager.GetBrush(brushId), offset);
+            DrawLiquid(ExcelConfig.LiquidBrush_Map[brushId], offset);
         }
     }
     
@@ -1932,13 +1930,11 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 根据笔刷数据在该物体位置绘制液体<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
-    public void DrawLiquid(BrushImageData brush, Vector2I offset)
+    public void DrawLiquid(ExcelConfig.LiquidBrush brush, Vector2I offset)
     {
         if (AffiliationArea != null)
         {
-            var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position) + offset;
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
-            BrushPrevPosition = pos;
+            BrushPrevPosition = World.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, Position.AsVector2I() + offset, 0);
         }
     }
 

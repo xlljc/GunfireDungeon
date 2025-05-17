@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqf2vks5ggnsp"]
+[gd_scene load_steps=4 format=3 uid="uid://bqf2vks5ggnsp"]
 
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
+[ext_resource type="Script" uid="uid://dp720qqggp7u6" path="res://src/framework/map/liquid/LiquidCanvas.cs" id="2_whacp"]
 
 [sub_resource type="Environment" id="Environment_g06jj"]
 background_mode = 3
@@ -29,6 +30,9 @@ z_index = -2
 
 [node name="StaticSpriteRoot" type="Node2D" parent="TileRoot"]
 z_index = -2
+
+[node name="LiquidCanvas" type="Node2D" parent="TileRoot/StaticSpriteRoot"]
+script = ExtResource("2_whacp")
 
 [node name="NormalLayer" type="Node2D" parent="TileRoot"]
 z_index = -1

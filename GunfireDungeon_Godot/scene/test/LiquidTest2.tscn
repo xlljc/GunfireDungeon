@@ -1,26 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bym1bb7jo5b70"]
+[gd_scene load_steps=4 format=3 uid="uid://bym1bb7jo5b70"]
 
-[ext_resource type="Script" uid="uid://5dto6c6inwu0" path="res://src/test/LiquidTest.cs" id="1_t5py8"]
-[ext_resource type="Shader" uid="uid://d3k8a6i1fwmw6" path="res://resource/material/Liquid.gdshader" id="2_ramiu"]
-[ext_resource type="Texture2D" uid="uid://ryt1kpxd0bic" path="res://resource/sprite/brush/Water.png" id="3_gnaas"]
+[ext_resource type="Script" uid="uid://bypca550rfh0n" path="res://src/test/LiquidTest2.cs" id="1_t5py8"]
+[ext_resource type="Material" uid="uid://cca0ka64xmrrd" path="res://resource/material/Sawtooth.tres" id="2_t5py8"]
+[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="3_ramiu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jpan"]
-shader = ExtResource("2_ramiu")
-shader_parameter/hframes = 1
-shader_parameter/frame = 0
-shader_parameter/size = Vector2(40, 28)
-
-[node name="LiquidTest2" type="Node2D" node_paths=PackedStringArray("MaskSprite")]
+[node name="LiquidTest2" type="Node2D"]
 script = ExtResource("1_t5py8")
-MaskSprite = NodePath("MaskSprite")
 
-[node name="MaskSprite" type="Sprite2D" parent="."]
-clip_children = 1
-position = Vector2(960, 540)
-scale = Vector2(4, 4)
-
-[node name="WaterSprite" type="Sprite2D" parent="MaskSprite"]
-material = SubResource("ShaderMaterial_1jpan")
-texture = ExtResource("3_gnaas")
-region_enabled = true
-region_rect = Rect2(0, 0, 480, 270)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_t5py8")
+texture = ExtResource("3_ramiu")

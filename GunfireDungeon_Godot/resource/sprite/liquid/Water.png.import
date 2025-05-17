@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b42m0mkyc6cxy"
-path="res://.godot/imported/Brush5.png-ad7fa73ae4dca0a5e86aca7805550870.ctex"
+uid="uid://ryt1kpxd0bic"
+path="res://.godot/imported/Water.png-47ad146a558c7a41b9547acfbb217068.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/sprite/brush/Brush5.png"
-dest_files=["res://.godot/imported/Brush5.png-ad7fa73ae4dca0a5e86aca7805550870.ctex"]
+source_file="res://resource/sprite/liquid/Water.png"
+dest_files=["res://.godot/imported/Water.png-47ad146a558c7a41b9547acfbb217068.ctex"]
 
 [params]
 

@@ -80,13 +80,22 @@ public static partial class ExcelConfig
     public static Dictionary<string, EnemyBase> EnemyBase_Map { get; private set; }
 
     /// <summary>
-    /// LiquidMaterial.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
+    /// LiquidBrush.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
     /// </summary>
-    public static List<LiquidMaterial> LiquidMaterial_List { get; private set; }
+    public static List<LiquidBrush> LiquidBrush_List { get; private set; }
     /// <summary>
-    /// LiquidMaterial.xlsx表数据集合, 里 Map 形式存储, key 为 Id
+    /// LiquidBrush.xlsx表数据集合, 里 Map 形式存储, key 为 Id
     /// </summary>
-    public static Dictionary<string, LiquidMaterial> LiquidMaterial_Map { get; private set; }
+    public static Dictionary<string, LiquidBrush> LiquidBrush_Map { get; private set; }
+
+    /// <summary>
+    /// LiquidLayer.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
+    /// </summary>
+    public static List<LiquidLayer> LiquidLayer_List { get; private set; }
+    /// <summary>
+    /// LiquidLayer.xlsx表数据集合, 里 Map 形式存储, key 为 Id
+    /// </summary>
+    public static Dictionary<string, LiquidLayer> LiquidLayer_Map { get; private set; }
 
     /// <summary>
     /// PartBase.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
@@ -133,7 +142,8 @@ public static partial class ExcelConfig
         _InitBulletBaseConfig();
         _InitEditorObjectConfig();
         _InitEnemyBaseConfig();
-        _InitLiquidMaterialConfig();
+        _InitLiquidBrushConfig();
+        _InitLiquidLayerConfig();
         _InitPartBaseConfig();
         _InitSoundConfig();
         _InitWeaponBaseConfig();
@@ -143,6 +153,7 @@ public static partial class ExcelConfig
         _InitBuffPropBaseRef();
         _InitBulletBaseRef();
         _InitEnemyBaseRef();
+        _InitLiquidBrushRef();
         _InitPartBaseRef();
         _InitWeaponBaseRef();
     }
@@ -290,22 +301,40 @@ public static partial class ExcelConfig
             throw new Exception("初始化表'EnemyBase'失败!");
         }
     }
-    private static void _InitLiquidMaterialConfig()
+    private static void _InitLiquidBrushConfig()
     {
         try
         {
-            var text = _ReadConfigAsText("res://resource/config/LiquidMaterial.json");
-            LiquidMaterial_List = JsonSerializer.Deserialize<List<LiquidMaterial>>(text);
-            LiquidMaterial_Map = new Dictionary<string, LiquidMaterial>();
-            foreach (var item in LiquidMaterial_List)
+            var text = _ReadConfigAsText("res://resource/config/LiquidBrush.json");
+            LiquidBrush_List = new List<LiquidBrush>(JsonSerializer.Deserialize<List<Ref_LiquidBrush>>(text));
+            LiquidBrush_Map = new Dictionary<string, LiquidBrush>();
+            foreach (var item in LiquidBrush_List)
             {
-                LiquidMaterial_Map.Add(item.Id, item);
+                LiquidBrush_Map.Add(item.Id, item);
             }
         }
         catch (Exception e)
         {
             GD.PrintErr(e.ToString());
-            throw new Exception("初始化表'LiquidMaterial'失败!");
+            throw new Exception("初始化表'LiquidBrush'失败!");
+        }
+    }
+    private static void _InitLiquidLayerConfig()
+    {
+        try
+        {
+            var text = _ReadConfigAsText("res://resource/config/LiquidLayer.json");
+            LiquidLayer_List = JsonSerializer.Deserialize<List<LiquidLayer>>(text);
+            LiquidLayer_Map = new Dictionary<string, LiquidLayer>();
+            foreach (var item in LiquidLayer_List)
+            {
+                LiquidLayer_Map.Add(item.Id, item);
+            }
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr(e.ToString());
+            throw new Exception("初始化表'LiquidLayer'失败!");
         }
     }
     private static void _InitPartBaseConfig()
@@ -460,6 +489,25 @@ public static partial class ExcelConfig
             {
                 GD.PrintErr(e.ToString());
                 throw new Exception("初始化'EnemyBase'引用其他表数据失败, 当前行id: " + item.Id);
+            }
+        }
+    }
+    private static void _InitLiquidBrushRef()
+    {
+        foreach (Ref_LiquidBrush item in LiquidBrush_List)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(item.__Layer))
+                {
+                    item.Layer = LiquidLayer_Map[item.__Layer];
+                }
+
+            }
+            catch (Exception e)
+            {
+                GD.PrintErr(e.ToString());
+                throw new Exception("初始化'LiquidBrush'引用其他表数据失败, 当前行id: " + item.Id);
             }
         }
     }

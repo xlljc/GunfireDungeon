@@ -1,26 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd8sbsj7kytkh"]
+[gd_scene load_steps=9 format=3 uid="uid://bd8sbsj7kytkh"]
 
-[ext_resource type="Script" uid="uid://5dto6c6inwu0" path="res://src/test/LiquidTest.cs" id="1_1jpan"]
-[ext_resource type="Shader" uid="uid://d3k8a6i1fwmw6" path="res://resource/material/Liquid.gdshader" id="2_8yy6r"]
-[ext_resource type="Texture2D" uid="uid://ryt1kpxd0bic" path="res://resource/sprite/brush/Water.png" id="3_1jpan"]
+[ext_resource type="Texture2D" uid="uid://n5dn6p2e04d4" path="res://icon.png" id="3_1jpan"]
+[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="3_7apgu"]
+[ext_resource type="Material" uid="uid://b35fibsqxvvpn" path="res://resource/material/Liquid.tres" id="3_lnju8"]
+[ext_resource type="Texture2D" uid="uid://dj6e0chlxnnl8" path="res://resource/sprite/common/Smoke.png" id="5_bwxk8"]
+[ext_resource type="Texture2D" uid="uid://d2l4m57sxek7b" path="res://resource/sprite/brush/Brush1.png" id="8_4ujxy"]
+[ext_resource type="Texture2D" uid="uid://d2plsc32tjo0k" path="res://resource/sprite/brush/Brush0001.png" id="9_oiqaj"]
+
+[sub_resource type="Shader" id="Shader_4ujxy"]
+code = "shader_type canvas_item;
+
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+
+uniform float brightness = 1.0;
+uniform float contrast = 1.0;
+uniform float saturation = 1.0;
+
+void fragment() {
+    vec3 c = textureLod(screen_texture, SCREEN_UV, 0.0).rgb;
+
+    c.rgb = mix(vec3(0.0), c.rgb, brightness);
+    c.rgb = mix(vec3(0.5), c.rgb, contrast);
+    c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
+
+    COLOR.rgb = c;
+}"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jpan"]
-shader = ExtResource("2_8yy6r")
-shader_parameter/hframes = 1
-shader_parameter/frame = 0
-shader_parameter/size = Vector2(40, 28)
+shader = SubResource("Shader_4ujxy")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 12.63
 
-[node name="LiquidTest" type="Node2D" node_paths=PackedStringArray("MaskSprite")]
-script = ExtResource("1_1jpan")
-MaskSprite = NodePath("MaskSprite")
+[node name="LiquidTest" type="Node2D"]
 
-[node name="MaskSprite" type="Sprite2D" parent="."]
-clip_children = 1
-position = Vector2(960, 540)
-scale = Vector2(4, 4)
-
-[node name="WaterSprite" type="Sprite2D" parent="MaskSprite"]
+[node name="WaterSprite" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_1jpan")
+position = Vector2(442, 246)
+texture = ExtResource("3_7apgu")
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="WaterSprite"]
+z_index = -10
+position = Vector2(-50, -5)
 texture = ExtResource("3_1jpan")
-region_enabled = true
-region_rect = Rect2(0, 0, 480, 270)
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(390, 203)
+texture = ExtResource("3_1jpan")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = ExtResource("3_lnju8")
+
+[node name="Smoke" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(457, 203)
+texture = ExtResource("5_bwxk8")
+
+[node name="Smoke5" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(441, 209)
+texture = ExtResource("8_4ujxy")
+
+[node name="Smoke6" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(468, 221)
+texture = ExtResource("9_oiqaj")
+
+[node name="Smoke2" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(449, 200)
+texture = ExtResource("5_bwxk8")
+
+[node name="Smoke3" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(479, 210)
+texture = ExtResource("5_bwxk8")
+
+[node name="Smoke4" type="Sprite2D" parent="CanvasGroup"]
+modulate = Color(1, 1, 1, 0.45098)
+position = Vector2(468, 196)
+texture = ExtResource("5_bwxk8")

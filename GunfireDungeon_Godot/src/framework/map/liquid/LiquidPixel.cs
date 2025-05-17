@@ -23,7 +23,7 @@ public class LiquidPixel
     /// <summary>
     /// 材质液体材质
     /// </summary>
-    public ExcelConfig.LiquidMaterial Material;
+    public ExcelConfig.LiquidBrush Material;
     /// <summary>
     /// 开始销退像素点的计时器
     /// </summary>

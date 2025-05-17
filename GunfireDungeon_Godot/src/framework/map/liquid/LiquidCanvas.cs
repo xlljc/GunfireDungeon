@@ -1,61 +1,46 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using Config;
 using DsUi;
 using Godot;
 
 /// <summary>
 /// 液体画布
 /// </summary>
-public partial class LiquidCanvas : Sprite2D, IDestroy
+public partial class LiquidCanvas : Node2D, IDestroy
 {
-    /// <summary>
-    /// 程序每帧最多等待执行时间, 超过这个时间的像素点将交到下一帧执行, 单位: 毫秒
-    /// </summary>
-    public static float MaxWaitTime { get; set; } = 4f;
-
-    /// <summary>
-    /// 画布缩放
-    /// </summary>
-    public static int CanvasScale { get; } = 4;
-
-    /// <summary>
-    /// 画布每秒更新频率
-    /// </summary>
-    public static int UpdateFps { get; set; } = 30;
-    
-    public bool IsDestroyed { get; private set; }
-    
-    private Image _image;
-    private ImageTexture _texture;
-    
-    //画布上的像素点
-    private LiquidPixel[,] _imagePixels;
-    //需要执行更新的像素点
-    private List<LiquidPixel> _updateImagePixels = new List<LiquidPixel>();
-    //画布已经运行的时间
-    private float _runTime = 0;
-    private int _executeIndex = -1;
-    //用于记录补间操作下有变动的像素点
-    private List<LiquidPixel> _tempList = new List<LiquidPixel>();
-    //记录是否有像素点发生变动
-    private bool _changeFlag = false;
-    //所属房间
-    private RoomInfo _roomInfo;
-    private double _processTimer;
-
-    public LiquidCanvas(RoomInfo roomInfo, int width, int height)
+    private class LiquidLayer
     {
-        _roomInfo = roomInfo;
-        Centered = false;
-        Material = ResourceManager.Load<Material>(ResourcePath.resource_material_Sawtooth_tres);
-        
-        _image = Image.Create(width, height, false, Image.Format.Rgba8);
-        _texture = ImageTexture.CreateFromImage(_image);
-        Texture = _texture;
-        _imagePixels = new LiquidPixel[width, height];
+        public ExcelConfig.LiquidLayer Config;
+        public CanvasGroup CanvasGroup;
+        public ShaderMaterial Material;
     }
     
+    public bool IsDestroyed { get; private set; }
+
+    private readonly Dictionary<string, LiquidLayer> _canvasGroups = new Dictionary<string, LiquidLayer>();
+    
+    
+    public override void _Ready()
+    {
+        foreach (var item in ExcelConfig.LiquidLayer_List)
+        {
+            var canvasGroup = new CanvasGroup();
+            var layer = new LiquidLayer();
+            layer.CanvasGroup = canvasGroup;
+            layer.Config = item;
+            layer.Material = (ShaderMaterial)ResourceManager.Load<ShaderMaterial>(ResourcePath.resource_material_Liquid_tres).Duplicate();
+            canvasGroup.Material = layer.Material;
+            
+            layer.Material.SetShaderParameter("tex", ResourceManager.LoadTexture2D(item.Texture));
+            layer.Material.SetShaderParameter("hframes", item.Hframes);
+            
+            _canvasGroups.Add(item.Id, layer);
+            AddChild(canvasGroup);
+        }
+    }
+
     public void Destroy()
     {
         if (IsDestroyed)
@@ -64,212 +49,105 @@ public partial class LiquidCanvas : Sprite2D, IDestroy
         }
         
         IsDestroyed = true;
+        _canvasGroups.Clear();
         QueueFree();
-        _texture.Dispose();
-        _image.Dispose();
     }
 
     public override void _Process(double delta)
     {
-        //这里待优化, 应该每次绘制都将像素点放入 _tempList 中, 然后帧结束再统一提交
-
-        _processTimer += delta;
-        if (_processTimer < 1d / UpdateFps)
+        var camera = GameCamera.Main;
+        foreach (var item in _canvasGroups)
         {
-            return;
+            item.Value.Material.SetShaderParameter("scale", camera.Zoom.X);
+            item.Value.Material.SetShaderParameter("offset", camera.Position + camera.Offset);
         }
+    }
 
-        var newDelta = _processTimer;
-        _processTimer %= 1d / UpdateFps;
+    /// <summary>
+    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
+    /// </summary>
+    /// <param name="brush">画笔数据</param>
+    /// <param name="position">绘制坐标, 相对于画布坐标</param>
+    public LiquidPoint DrawBrush(ExcelConfig.LiquidBrush brush, Vector2I position)
+    {
+        return DrawBrush(brush, null, position, 0);
+    }
+    
+    /// <summary>
+    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
+    /// </summary>
+    /// <param name="brush">画笔数据</param>
+    /// <param name="position">绘制坐标, 相对于画布坐标</param>
+    /// <param name="rotation">旋转角度, 弧度制</param>
+    public LiquidPoint DrawBrush(ExcelConfig.LiquidBrush brush, Vector2I position, float rotation)
+    {
+        return DrawBrush(brush, null, position, rotation);
+    }
+
+    /// <summary>
+    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
+    /// </summary>
+    /// <param name="brush">画笔数据</param>
+    /// <param name="prevPoint">上一帧坐标, 相对于画布坐标, 改参数用于两点距离较大时执行补间操作, 如果传 null, 则不会进行补间</param>
+    /// <param name="position">绘制坐标, 相对于画布坐标</param>
+    /// <param name="rotation">旋转角度, 弧度制</param>
+    public LiquidPoint DrawBrush(ExcelConfig.LiquidBrush brush, LiquidPoint? prevPoint, Vector2I position, float rotation)
+    {
+        var prevPosition = prevPoint?.Position;
+
         
-        //更新消除逻辑
-        if (_updateImagePixels.Count > 0)
-        {
-            var startIndex = _executeIndex;
-            if (_executeIndex < 0 || _executeIndex >= _updateImagePixels.Count)
-            {
-                _executeIndex = _updateImagePixels.Count - 1;
-            }
-
-            var startTime = DateTime.UtcNow;
-            var isOver = false;
-            var index = 0;
-            for (; _executeIndex >= 0; _executeIndex--)
-            {
-                index++;
-                var imagePixel = _updateImagePixels[_executeIndex];
-                if (UpdateImagePixel(imagePixel)) //移除
-                {
-                    _updateImagePixels.RemoveAt(_executeIndex);
-                    if (_executeIndex < startIndex)
-                    {
-                        startIndex--;
-                    }
-                }
-
-                if (index > 200)
-                {
-                    index = 0;
-                    if ((DateTime.UtcNow - startTime).TotalMilliseconds > MaxWaitTime) //超过最大执行时间
-                    {
-                        isOver = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!isOver && startIndex >= 0 && _executeIndex < 0)
-            {
-                _executeIndex = _updateImagePixels.Count - 1;
-                for (; _executeIndex >= startIndex; _executeIndex--)
-                {
-                    index++;
-                    var imagePixel = _updateImagePixels[_executeIndex];
-                    if (UpdateImagePixel(imagePixel)) //移除
-                    {
-                        _updateImagePixels.RemoveAt(_executeIndex);
-                    }
-                    
-                    if (index > 200)
-                    {
-                        index = 0;
-                        if ((DateTime.UtcNow - startTime).TotalMilliseconds > MaxWaitTime) //超过最大执行时间
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (_changeFlag)
-        {
-            _texture.Update(_image);
-            _changeFlag = false;
-        }
-
-        _runTime += (float)newDelta;
-    }
-
-    /// <summary>
-    /// 将画布外的坐标转为画布内的坐标
-    /// </summary>
-    public Vector2I ToLiquidCanvasPosition(Vector2 position)
-    {
-        return (_roomInfo.ToCanvasPosition(position) / CanvasScale).AsVector2I();
-    }
-
-    /// <summary>
-    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
-    /// </summary>
-    /// <param name="brush">画笔数据</param>
-    /// <param name="position">绘制坐标, 相对于画布坐标</param>
-    public void DrawBrush(BrushImageData brush, Vector2I position)
-    {
-        DrawBrush(brush, null, position, 0);
-    }
-    
-    /// <summary>
-    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
-    /// </summary>
-    /// <param name="brush">画笔数据</param>
-    /// <param name="position">绘制坐标, 相对于画布坐标</param>
-    /// <param name="rotation">旋转角度, 弧度制</param>
-    public void DrawBrush(BrushImageData brush, Vector2I position, float rotation)
-    {
-        DrawBrush(brush, null, position, rotation);
-    }
-    
-    /// <summary>
-    /// 根据画笔数据在画布上绘制液体, 转换坐标请调用 ToLiquidCanvasPosition() 函数
-    /// </summary>
-    /// <param name="brush">画笔数据</param>
-    /// <param name="prevPosition">上一帧坐标, 相对于画布坐标, 改参数用于两点距离较大时执行补间操作, 如果传 null, 则不会进行补间</param>
-    /// <param name="position">绘制坐标, 相对于画布坐标</param>
-    /// <param name="rotation">旋转角度, 弧度制</param>
-    public void DrawBrush(BrushImageData brush, Vector2I? prevPosition, Vector2I position, float rotation)
-    {
-        var center = new Vector2I(brush.Width, brush.Height) / 2;
-        var pos = position - center;
-        var canvasWidth = _texture.GetWidth();
-        var canvasHeight = _texture.GetHeight();
+        
+        var texture = ResourceManager.LoadTexture2D(brush.BrushTexture);
+        var layer = _canvasGroups[brush.Layer.Id];
+        
+        var tw = texture.GetWidth();
+        var th = texture.GetHeight();
+        
+        
         //存在上一次记录的点
         if (prevPosition != null)
         {
             var offset = new Vector2(position.X - prevPosition.Value.X, position.Y - prevPosition.Value.Y);
-            var maxL = brush.Material.Ffm * Mathf.Lerp(
-                brush.PixelHeight,
-                brush.PixelWidth,
-                Mathf.Abs(Mathf.Sin(offset.Angle() - rotation + Mathf.Pi * 0.5f))
-            );
+            var maxL = brush.Ffm * Mathf.Lerp(tw, th, Mathf.Abs(Mathf.Sin(offset.Angle() - rotation + Mathf.Pi * 0.5f)));
             maxL = Mathf.Max(1, maxL);
             var len = offset.Length();
-            if (len > maxL) //距离太大了, 需要补间
+            if (len > maxL)
             {
                 //Debug.Log($"距离太大了, 启用补间: len: {len}, maxL: {maxL}");
                 var count = Mathf.CeilToInt(len / maxL);
                 var step = new Vector2(offset.X / count, offset.Y / count);
-                var prevPos = prevPosition.Value - center;
-                
-                for (var i = 1; i <= count; i++)
+                var prevPos = prevPosition.Value;
+
+                for (var i = 1; i <= count - 1; i++)
                 {
-                    foreach (var brushPixel in brush.Pixels)
-                    {
-                        var brushPos = RotatePixels(brushPixel.X, brushPixel.Y, center.X, center.Y, rotation);
-                        var x = (int)(prevPos.X + step.X * i + brushPos.X);
-                        var y = (int)(prevPos.Y + step.Y * i + brushPos.Y);
-                        if (x >= 0 && x < canvasWidth && y >= 0 && y < canvasHeight)
-                        {
-                            var temp = SetPixelData(x, y, brushPixel);
-                            if (!temp.TempFlag)
-                            {
-                                temp.TempFlag = true;
-                                _tempList.Add(temp);
-                            }
-                        }
-                    }
-                }
-                
-                foreach (var brushPixel in brush.Pixels)
-                {
-                    var brushPos = RotatePixels(brushPixel.X, brushPixel.Y, center.X, center.Y, rotation);
-                    var x = pos.X + brushPos.X;
-                    var y = pos.Y + brushPos.Y;
-                    if (x >= 0 && x < canvasWidth && y >= 0 && y < canvasHeight)
-                    {
-                        var temp = SetPixelData(x, y, brushPixel);
-                        if (!temp.TempFlag)
-                        {
-                            temp.TempFlag = true;
-                            _tempList.Add(temp);
-                        }
-                    }
+                    var x = (int)(prevPos.X + step.X * i);
+                    var y = (int)(prevPos.Y + step.Y * i);
+
+                    CreateSprite(brush, texture, layer, x, y, rotation);
                 }
 
-                foreach (var imagePixel in _tempList)
-                {
-                    _changeFlag = true;
-                    _image.SetPixel(imagePixel.X, imagePixel.Y, imagePixel.Color);
-                    imagePixel.TempFlag = false;
-                }
-
-                _tempList.Clear();
-                return;
+                
+                return CreateSprite(brush, texture, layer, position.X, position.Y, rotation);
             }
-        }
-        
-        foreach (var brushPixel in brush.Pixels)
-        {
-            var brushPos = RotatePixels(brushPixel.X, brushPixel.Y, center.X, center.Y, rotation);
-            var x = pos.X + brushPos.X;
-            var y = pos.Y + brushPos.Y;
-            if (x >= 0 && x < canvasWidth && y >= 0 && y < canvasHeight)
+            if (Mathf.Abs(prevPoint.Rotation - rotation) <= Mathf.DegToRad(5)) //在补间范围内
             {
-                _changeFlag = true;
-                var temp = SetPixelData(x, y, brushPixel);
-                _image.SetPixel(x, y, temp.Color);
+                prevPoint.Refresh();
+                return prevPoint;
             }
         }
+
+        return CreateSprite(brush, texture, layer, position.X, position.Y, rotation);
+    }
+
+    private LiquidPoint CreateSprite(ExcelConfig.LiquidBrush brush, Texture2D texture, LiquidLayer layer, float x, float y, float rotation)
+    {
+        var sprite = new LiquidPoint();
+        sprite.Texture = texture;
+        sprite.Rotation = rotation;
+        sprite.Position  = new Vector2(x, y);
+        layer.CanvasGroup.AddChild(sprite);
+        sprite.Init(brush);
+        return sprite;
     }
 
     /// <summary>
@@ -277,14 +155,6 @@ public partial class LiquidCanvas : Sprite2D, IDestroy
     /// </summary>
     public bool Collision(int x, int y)
     {
-        if (x >= 0 && x < _imagePixels.GetLength(0) && y >= 0 && y < _imagePixels.GetLength(1))
-        {
-            var result = _imagePixels[x, y];
-            if (result != null && result.IsRun)
-            {
-                return true;
-            }
-        }
         return false;
     }
 
@@ -293,130 +163,6 @@ public partial class LiquidCanvas : Sprite2D, IDestroy
     /// </summary>
     public LiquidPixel GetPixelData(int x, int y)
     {
-        if (x >= 0 && x < _imagePixels.GetLength(0) && y >= 0 && y < _imagePixels.GetLength(1))
-        {
-            var result = _imagePixels[x, y];
-            if (result != null && result.IsRun)
-            {
-                return result;
-            }
-        }
-
         return null;
-    }
-    
-    /// <summary>
-    /// 更新像素点数据逻辑, 返回是否擦除
-    /// </summary>
-    private bool UpdateImagePixel(LiquidPixel imagePixel)
-    {
-        if (imagePixel.Color.A > 0)
-        {
-            if (imagePixel.Timer > 0) //继续等待消散
-            {
-                imagePixel.Timer -= _runTime - imagePixel.TempTime;
-                imagePixel.TempTime = _runTime;
-            }
-            else
-            {
-                var oldA = imagePixel.Color.A;
-                imagePixel.Color.A -= imagePixel.Material.WriteOffSpeed * (_runTime - imagePixel.TempTime);
-                
-                if (imagePixel.Color.A <= 0) //完全透明了
-                {
-                    _changeFlag = true;
-                    _image.SetPixel(imagePixel.X, imagePixel.Y, new Color(0, 0, 0, 0));
-                    imagePixel.IsRun = false;
-                    imagePixel.IsUpdate = false;
-                    return true;
-                }
-                else if (!Utils.IsSameGradient(oldA, imagePixel.Color.A, GameConfig.LiquidGradient)) //同一渐变梯度下才会有颜色变化
-                {
-                    _changeFlag = true;
-                    _image.SetPixel(imagePixel.X, imagePixel.Y, imagePixel.Color);
-                    imagePixel.TempTime = _runTime;
-                }
-            }
-        }
-
-        return false;
-    }
-    
-    //记录像素点数据
-    private LiquidPixel SetPixelData(int x, int y, BrushPixelData pixelData)
-    {
-        var temp = _imagePixels[x, y];
-        if (temp == null)
-        {
-            temp = new LiquidPixel()
-            {
-                X = x,
-                Y = y,
-                Color = pixelData.Color,
-                Material = pixelData.Material,
-                Timer = pixelData.Material.Duration,
-            };
-            _imagePixels[x, y] = temp;
-
-            temp.IsRun = true;
-            temp.IsUpdate = temp.Material.Duration >= 0;
-            if (temp.IsUpdate)
-            {
-                _updateImagePixels.Add(temp);
-            }
-            temp.TempTime = _runTime;
-        }
-        else
-        {
-            if (temp.Material != pixelData.Material)
-            {
-                temp.Color = pixelData.Color;
-                temp.Material = pixelData.Material;
-            }
-            else
-            {
-                var tempColor = pixelData.Color;
-                temp.Color = new Color(tempColor.R, tempColor.G, tempColor.B, Mathf.Max(temp.Color.A, tempColor.A));
-            }
-            
-            temp.Timer = pixelData.Material.Duration;
-            
-            var prevUpdate = temp.IsUpdate;
-            temp.IsUpdate = temp.Material.Duration >= 0;
-            if (!prevUpdate && temp.IsUpdate)
-            {
-                _updateImagePixels.Add(temp);
-            }
-            else if (prevUpdate && !temp.IsUpdate)
-            {
-                _updateImagePixels.Remove(temp);
-            }
-            
-            temp.IsRun = true;
-            temp.TempTime = _runTime;
-        }
-
-        return temp;
-    }
-
-    /// <summary>
-    /// 根据 rotation 旋转像素点坐标, 并返回旋转后的坐标, rotation 为弧度制角度, 旋转中心点为 centerX, centerY
-    /// </summary>
-    private Vector2I RotatePixels(int x, int y, int centerX, int centerY, float rotation)
-    {
-        if (rotation == 0)
-        {
-            return new Vector2I(x, y);
-        }
-
-        x -= centerX;
-        y -= centerY;
-        var sv = Mathf.Sin(rotation);
-        var cv = Mathf.Cos(rotation);
-        var newX = Mathf.RoundToInt(x * cv - y * sv);
-        var newY = Mathf.RoundToInt(x * sv + y * cv);
-        newX += centerX;
-        newY += centerY;
-        return new Vector2I(newX, newY);
     }
 }

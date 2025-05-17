@@ -7,7 +7,7 @@ using Godot;
 /// </summary>
 public partial class NoWeaponEnemy : Enemy
 {
-    private BrushImageData _brushData;
+    private ExcelConfig.LiquidBrush _brushData;
     
     public override void OnInit()
     {
@@ -17,7 +17,7 @@ public partial class NoWeaponEnemy : Enemy
         WeaponPack.SetCapacity(0);
         AnimationPlayer.AnimationFinished += OnAnimationFinished;
         
-        _brushData = LiquidBrushManager.GetBrush("0002");
+        _brushData = ExcelConfig.LiquidBrush_Map["0002"];
     }
 
     protected override void Process(float delta)

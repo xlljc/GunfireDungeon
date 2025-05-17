@@ -1,0 +1,9 @@
+[
+  {
+    "Id": "0001",
+    "Remark": "\u6C34",
+    "Texture": "res://resource/sprite/liquid/Water.png",
+    "Hframes": 1,
+    "AnimSpeed": 1
+  }
+]

@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using Config;
+using Godot;
 
 /// <summary>
 /// 带笔刷的子弹
@@ -17,12 +18,12 @@ public partial class BrushBullet : Bullet
     [Export]
     public float EffectiveAltitude { get; set; } = -1;
 
-    private BrushImageData _brushData;
+    private ExcelConfig.LiquidBrush _brushData;
 
     public override void OnInit()
     {
         base.OnInit();
-        _brushData = LiquidBrushManager.GetBrush(BrushId);
+        _brushData = ExcelConfig.LiquidBrush_Map[BrushId];
     }
 
     protected override void Process(float delta)

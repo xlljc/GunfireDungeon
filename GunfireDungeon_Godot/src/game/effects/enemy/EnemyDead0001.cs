@@ -18,7 +18,7 @@ public partial class EnemyDead0001 : ActivityObject, ICorpsesFragment
     /// 上一帧笔刷坐标
     /// </summary>
     public Vector2I? PrevPosition = null;
-    private BrushImageData _brushData;
+    //private BrushImageData _brushData;
     
     private GpuParticles2D _gpuParticles2D;
     private bool _playOver = false;
@@ -36,12 +36,12 @@ public partial class EnemyDead0001 : ActivityObject, ICorpsesFragment
             Utils.Random.RandomRangeInt(-360, 360)
         );
         
-        _brushData = LiquidBrushManager.GetBrush("0003");
+        //_brushData = LiquidBrushManager.GetBrush("0003");
     }
     
     public void SetBloodColor(Color color)
     {
-        _brushData = _brushData.Modulate(color);
+        //_brushData = _brushData.Modulate(color);
         GPUParticles.Modulate = color;
         StartCoroutine(EmitParticles());
     }
@@ -56,10 +56,10 @@ public partial class EnemyDead0001 : ActivityObject, ICorpsesFragment
         }
         else if (_runBrush && AffiliationArea != null) //测试笔刷
         {
-            var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position);
+            var pos = Position.AsVector2I();
             if (Altitude <= 0.25f)
             {
-                AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(_brushData, PrevPosition, pos, 0);
+                //World.LiquidCanvas.DrawBrush(_brushData, PrevPosition, pos, 0);
             }
 
             PrevPosition = pos;

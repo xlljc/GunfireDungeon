@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public partial class LiquidMaterial
+    public partial class LiquidBrush
     {
         /// <summary>
         /// 表Id
@@ -24,6 +24,11 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public string BrushTexture;
+
+        /// <summary>
+        /// 绘制的层级
+        /// </summary>
+        public LiquidLayer Layer;
 
         /// <summary>
         /// 补帧间距倍率(0-1)
@@ -47,16 +52,23 @@ public static partial class ExcelConfig
         /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
-        public LiquidMaterial Clone()
+        public LiquidBrush Clone()
         {
-            var inst = new LiquidMaterial();
+            var inst = new LiquidBrush();
             inst.Id = Id;
             inst.Remark = Remark;
             inst.BrushTexture = BrushTexture;
+            inst.Layer = Layer;
             inst.Ffm = Ffm;
             inst.Duration = Duration;
             inst.WriteOffSpeed = WriteOffSpeed;
             return inst;
         }
+    }
+    private class Ref_LiquidBrush : LiquidBrush
+    {
+        [JsonInclude]
+        public string __Layer;
+
     }
 }
