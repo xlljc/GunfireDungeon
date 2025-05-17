@@ -33,6 +33,11 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="GunfireDungeon"
 
+[editor]
+
+naming/scene_name_casing=1
+naming/script_name_casing=1
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/game_plugin/plugin.cfg", "res://addons/node_presetting/plugin.cfg")
