@@ -32,6 +32,7 @@ z_index = -2
 z_index = -2
 
 [node name="LiquidCanvas" type="Node2D" parent="TileRoot/StaticSpriteRoot"]
+visible = false
 script = ExtResource("2_whacp")
 
 [node name="NormalLayer" type="Node2D" parent="TileRoot"]

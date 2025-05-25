@@ -247,12 +247,12 @@ public partial class Player : Role
         }
 
         //测试刷地
-        _lqTimer += delta;
-        if (_lqTimer >= 0.1f)
-        {
-            _lqTimer %= 0.05f;
-            DrawLiquid(_brushData2);
-        }
+        // _lqTimer += delta;
+        // if (_lqTimer >= 0.1f)
+        // {
+        //     _lqTimer %= 0.02f;
+        // }
+        // DrawLiquid(_brushData2);
     }
 
     private float _lqTimer;

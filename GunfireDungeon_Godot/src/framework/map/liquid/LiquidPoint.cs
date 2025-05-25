@@ -20,7 +20,7 @@ public partial class LiquidPoint : Sprite2D
     {
         _state = 0;
         _timer = 0;
-        Modulate = Colors.White;
+        Scale = Vector2.One;
     }
 
 
@@ -40,10 +40,10 @@ public partial class LiquidPoint : Sprite2D
         {
             if (_brush.WriteOffSpeed > 0)
             {
-                var modulate = Colors.White.Lerp(new Color(1, 1, 1, 0), _timer * _brush.WriteOffSpeed);
-                Modulate = modulate;
+                var scale = Vector2.One.Lerp(Vector2.Zero, _timer * _brush.WriteOffSpeed);
+                Scale = scale;
 
-                if (modulate.A <= 0)
+                if (scale.X <= 0)
                 {
                     _state = 2;
                 }

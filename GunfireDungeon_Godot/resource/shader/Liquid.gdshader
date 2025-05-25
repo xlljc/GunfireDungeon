@@ -4,16 +4,16 @@ render_mode unshaded;
 // —— 屏幕贴图 ——（不动）
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
-// —— 动画帧参数 ——  
-// hframes: 图集在横向拆分的总帧数  
+// —— 动画帧参数 ——
+// hframes: 图集在横向拆分的总帧数
 uniform int   hframes    : hint_range(1, 16) = 1;
 // frame:   当前要显示的帧索引（0 ~ hframes-1）
 uniform int   frame      : hint_range(0, 15) = 0;
 
-// —— 要平铺的 Sprite 图集 ——  
+// —— 要平铺的 Sprite 图集 ——
 // 最近邻、不做 clamp，这样才能平铺／取边界外像素
 uniform sampler2D tex : filter_nearest, repeat_enable;
-// tex 纹理像素缩放倍率 
+// tex 纹理像素缩放倍率
 uniform float scale = 4.0;
 
 // 偏移，单位像素
