@@ -29,9 +29,37 @@ vec4 get_tex_color(sampler2D tex) {
 }
 
 // 获取遮罩纹理数据
-vec4 get_mask_color() {
+vec4 get_mask_color(vec2 uv, ivec2 uvSize, vec2 delta) {
 	ivec2 pos = ivec2(pixel_pos) / 4;
 	vec4 color = texelFetch(mask, pos, 0);
+	if (color.a > 0.0) {
+		return color;
+	}
+	ivec2 maskSize = textureSize(mask, 0);
+	vec2 a = vec2(float(uvSize.x) / float(maskSize.x), float(uvSize.y) / float(maskSize.y));
+	vec2 b = a / 4.0 * uv;
+	delta *= a;
+	
+	float colorA = 0.0;
+	colorA += texture(mask, b + vec2(delta.x, 0)).a;
+	colorA += texture(mask, b + vec2(delta.x * 2.0, 0)).a;
+	
+	colorA += texture(mask, b + vec2(-delta.x, 0)).a;
+	colorA += texture(mask, b + vec2(-delta.x * 2.0, 0)).a;
+	
+	colorA += texture(mask, b + vec2(0, delta.y)).a;
+	colorA += texture(mask, b + vec2(0, delta.y * 2.0)).a;
+	
+	colorA += texture(mask, b + vec2(0, -delta.y)).a;
+	colorA += texture(mask, b + vec2(0, -delta.y * 2.0)).a;
+	
+	colorA += texture(mask, b + vec2(delta.x, delta.y)).a;
+	colorA += texture(mask, b + vec2(-delta.x, delta.y)).a;
+	colorA += texture(mask, b + vec2(delta.x, -delta.y)).a;
+	colorA += texture(mask, b + vec2(-delta.x, -delta.y)).a;
+	
+
+	color.a = min(1.0, colorA);// / 12.0;
 
 	return color;
 }
@@ -43,7 +71,9 @@ void vertex() {
 void fragment() {
 	vec4 c = get_tex_color(TEXTURE);
 	if (c.a > 0.0) {
-		c.a = get_mask_color().a;
+		// float tempV = TEXTURE_PIXEL_SIZE.x / 4.0;
+		// SCREEN_PIXEL_SIZE
+		c.a = get_mask_color(UV, textureSize(TEXTURE, 0), TEXTURE_PIXEL_SIZE / 4.0).a;
 	}
 	COLOR = c;
 }

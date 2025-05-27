@@ -1,31 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd8sbsj7kytkh"]
+[gd_scene load_steps=7 format=3 uid="uid://bd8sbsj7kytkh"]
 
-[ext_resource type="Texture2D" uid="uid://dr8qts55kvxa6" path="res://resource/sprite/liquid/Test.png" id="1_bwxk8"]
+[ext_resource type="PackedScene" uid="uid://xxakpuvmxt43" path="res://scene/test/WaterSprite.tscn" id="1_bwxk8"]
 [ext_resource type="Texture2D" uid="uid://n5dn6p2e04d4" path="res://icon.png" id="3_1jpan"]
-[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="3_7apgu"]
-[ext_resource type="Material" uid="uid://b35fibsqxvvpn" path="res://resource/material/Liquid.tres" id="3_lnju8"]
-[ext_resource type="Shader" uid="uid://ckuo0l0blm7nx" path="res://resource/shader/Liquid2.gdshader" id="4_l2twp"]
+[ext_resource type="Material" path="res://resource/material/Liquid.tres" id="3_lnju8"]
 [ext_resource type="Texture2D" uid="uid://dj6e0chlxnnl8" path="res://resource/sprite/common/Smoke.png" id="5_bwxk8"]
 [ext_resource type="Texture2D" uid="uid://d2l4m57sxek7b" path="res://resource/sprite/brush/Brush1.png" id="8_4ujxy"]
 [ext_resource type="Texture2D" uid="uid://d2plsc32tjo0k" path="res://resource/sprite/brush/Brush0001.png" id="9_oiqaj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jpan"]
-shader = ExtResource("4_l2twp")
-shader_parameter/hframes = 5
-shader_parameter/frame = 4
-shader_parameter/origin_size = Vector2(64, 16)
-shader_parameter/mask = ExtResource("3_7apgu")
-
 [node name="LiquidTest" type="Node2D"]
-metadata/_edit_vertical_guides_ = [24.0]
-metadata/_edit_horizontal_guides_ = [16.0]
+metadata/_edit_vertical_guides_ = [24.0, 25.0, 26.0, 27.0, 28.0]
+metadata/_edit_horizontal_guides_ = [16.0, 17.0, 18.0, 19.0, 20.0]
 
-[node name="WaterSprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_1jpan")
-texture = ExtResource("1_bwxk8")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 480, 270)
+[node name="WaterSprite" parent="." instance=ExtResource("1_bwxk8")]
+position = Vector2(0, 0)
 
 [node name="Icon" type="Sprite2D" parent="."]
 z_index = -2

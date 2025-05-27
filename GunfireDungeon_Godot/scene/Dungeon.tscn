@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqf2vks5ggnsp"]
+[gd_scene load_steps=5 format=3 uid="uid://bqf2vks5ggnsp"]
 
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
 [ext_resource type="Script" uid="uid://dp720qqggp7u6" path="res://src/framework/map/liquid/LiquidCanvas.cs" id="2_whacp"]
+[ext_resource type="PackedScene" uid="uid://xxakpuvmxt43" path="res://scene/test/WaterSprite.tscn" id="3_dgiq6"]
 
 [sub_resource type="Environment" id="Environment_g06jj"]
 background_mode = 3
@@ -16,7 +17,8 @@ glow_blend_mode = 1
 
 [node name="Dungeon" type="CanvasModulate"]
 script = ExtResource("1_txiyv")
-metadata/_edit_vertical_guides_ = []
+metadata/_edit_vertical_guides_ = [28.0]
+metadata/_edit_horizontal_guides_ = [20.0]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g06jj")
@@ -34,6 +36,8 @@ z_index = -2
 [node name="LiquidCanvas" type="Node2D" parent="TileRoot/StaticSpriteRoot"]
 visible = false
 script = ExtResource("2_whacp")
+
+[node name="WaterSprite" parent="TileRoot/StaticSpriteRoot" instance=ExtResource("3_dgiq6")]
 
 [node name="NormalLayer" type="Node2D" parent="TileRoot"]
 z_index = -1
