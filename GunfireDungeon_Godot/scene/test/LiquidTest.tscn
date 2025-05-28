@@ -10,11 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://d2plsc32tjo0k" path="res://resource/sprite/brush/Brush0001.png" id="9_oiqaj"]
 
 [node name="LiquidTest" type="Node2D"]
-metadata/_edit_vertical_guides_ = [24.0, 25.0, 26.0, 27.0, 28.0]
-metadata/_edit_horizontal_guides_ = [16.0, 17.0, 18.0, 19.0, 20.0]
 
 [node name="WaterSprite" parent="." instance=ExtResource("1_bwxk8")]
-visible = false
 position = Vector2(0, 0)
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -24,6 +21,7 @@ position = Vector2(390, 203)
 texture = ExtResource("3_1jpan")
 
 [node name="Icon2" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 material = ExtResource("3_4ujxy")
 position = Vector2(78, 45.5)

@@ -2,19 +2,21 @@
 
 [ext_resource type="Shader" uid="uid://ckuo0l0blm7nx" path="res://resource/shader/Liquid2.gdshader" id="1_14amq"]
 [ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="2_6gwux"]
-[ext_resource type="Texture2D" uid="uid://ryt1kpxd0bic" path="res://resource/sprite/liquid/Water.png" id="3_14amq"]
+[ext_resource type="Texture2D" uid="uid://dr8qts55kvxa6" path="res://resource/sprite/liquid/Test.png" id="3_14amq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jpan"]
 shader = ExtResource("1_14amq")
 shader_parameter/hframes = 5
-shader_parameter/frame = 4
+shader_parameter/frame = 3
 shader_parameter/origin_size = Vector2(64, 16)
 shader_parameter/mask = ExtResource("2_6gwux")
+shader_parameter/alpha = 1.0
 
 [node name="WaterSprite" type="Sprite2D"]
 material = SubResource("ShaderMaterial_1jpan")
-position = Vector2(-11, -8)
 texture = ExtResource("3_14amq")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 270)
+metadata/_edit_horizontal_guides_ = [48.0, 49.0]
+metadata/_edit_vertical_guides_ = [38.0, 39.0]
