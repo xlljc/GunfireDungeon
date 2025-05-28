@@ -1,20 +1,20 @@
 shader_type canvas_item;
 
-bool checkLB(float len, sampler2D tex, vec2 uv) {
+bool checkLB(vec2 len, sampler2D tex, vec2 uv) {
 	int c = 0;
 	int c2 = 0;
-	if (texture(tex, uv + vec2(-len, 0.0)).a > 0.0) {
+	if (texture(tex, uv + vec2(-len.x, 0.0)).a > 0.0) {
 		c++;
 		c2 += 1;
-	} else if (texture(tex, uv + vec2(-len * 2.0, 0.0)).a > 0.0) {
+	} else if (texture(tex, uv + vec2(-len.x * 2.0, 0.0)).a > 0.0) {
 		c++;
 		c2 += 2;
 	}
 	if (c > 0) {
-		if (texture(tex, uv + vec2(0.0, -len)).a > 0.0) {
+		if (texture(tex, uv + vec2(0.0, -len.y)).a > 0.0) {
 			c++;
 			c2 += 1;
-		} else if (texture(tex, uv + vec2(0.0, -len * 2.0)).a > 0.0) {
+		} else if (texture(tex, uv + vec2(0.0, -len.y * 2.0)).a > 0.0) {
 			c++;
 			c2 += 2;
 		}
@@ -22,21 +22,21 @@ bool checkLB(float len, sampler2D tex, vec2 uv) {
 	return c >= 2 && c2 <= 3;
 }
 
-bool checkLT(float len, sampler2D tex, vec2 uv) {
+bool checkLT(vec2 len, sampler2D tex, vec2 uv) {
 	int c = 0;
 	int c2 = 0;
-	if (texture(tex, uv + vec2(-len, 0.0)).a > 0.0) {
+	if (texture(tex, uv + vec2(-len.x, 0.0)).a > 0.0) {
 		c++;
 		c2 += 1;
-	} else if (texture(tex, uv + vec2(-len * 2.0, 0.0)).a > 0.0) {
+	} else if (texture(tex, uv + vec2(-len.x * 2.0, 0.0)).a > 0.0) {
 		c++;
 		c2 += 2;
 	}
 	if (c > 0) {
-		if (texture(tex, uv + vec2(0.0, len)).a > 0.0) {
+		if (texture(tex, uv + vec2(0.0, len.y)).a > 0.0) {
 			c++;
 			c2 += 1;
-		} else if (texture(tex, uv + vec2(0.0, len * 2.0)).a > 0.0) {
+		} else if (texture(tex, uv + vec2(0.0, len.y * 2.0)).a > 0.0) {
 			c++;
 			c2 += 2;
 		}
@@ -44,21 +44,21 @@ bool checkLT(float len, sampler2D tex, vec2 uv) {
 	return c >= 2 && c2 <= 3;
 }
 
-bool checkRB(float len, sampler2D tex, vec2 uv) {
+bool checkRB(vec2 len, sampler2D tex, vec2 uv) {
 	int c = 0;
 	int c2 = 0;
-	if (texture(tex, uv + vec2(len, 0.0)).a > 0.0) {
+	if (texture(tex, uv + vec2(len.x, 0.0)).a > 0.0) {
 		c++;
 		c2 += 1;
-	} else if (texture(tex, uv + vec2(len * 2.0, 0.0)).a > 0.0) {
+	} else if (texture(tex, uv + vec2(len.x * 2.0, 0.0)).a > 0.0) {
 		c++;
 		c2 += 2;
 	}
 	if (c > 0) {
-		if (texture(tex, uv + vec2(0.0, -len)).a > 0.0) {
+		if (texture(tex, uv + vec2(0.0, -len.y)).a > 0.0) {
 			c++;
 			c2 += 1;
-		} else if (texture(tex, uv + vec2(0.0, -len * 2.0)).a > 0.0) {
+		} else if (texture(tex, uv + vec2(0.0, -len.y * 2.0)).a > 0.0) {
 			c++;
 			c2 += 2;
 		}
@@ -66,21 +66,21 @@ bool checkRB(float len, sampler2D tex, vec2 uv) {
 	return c >= 2 && c2 <= 3;
 }
 
-bool checkRT(float len, sampler2D tex, vec2 uv) {
+bool checkRT(vec2 len, sampler2D tex, vec2 uv) {
 	int c = 0;
 	int c2 = 0;
-	if (texture(tex, uv + vec2(len, 0.0)).a > 0.0) {
+	if (texture(tex, uv + vec2(len.x, 0.0)).a > 0.0) {
 		c++;
 		c2 += 1;
-	} else if (texture(tex, uv + vec2(len * 2.0, 0.0)).a > 0.0) {
+	} else if (texture(tex, uv + vec2(len.x * 2.0, 0.0)).a > 0.0) {
 		c++;
 		c2 += 2;
 	}
 	if (c > 0) {
-		if (texture(tex, uv + vec2(0.0, len)).a > 0.0) {
+		if (texture(tex, uv + vec2(0.0, len.y)).a > 0.0) {
 			c++;
 			c2 += 1;
-		} else if (texture(tex, uv + vec2(0.0, len * 2.0)).a > 0.0) {
+		} else if (texture(tex, uv + vec2(0.0, len.y * 2.0)).a > 0.0) {
 			c++;
 			c2 += 2;
 		}
@@ -89,11 +89,12 @@ bool checkRT(float len, sampler2D tex, vec2 uv) {
 }
 
 
-void vertex() {
-	VERTEX = VERTEX * vec2(4.0);
-}
+//void vertex() {
+	//VERTEX = VERTEX * vec2(4.0);
+//}
 
 void fragment() {
+	
 	if (COLOR.a <= 0.0) {
 		int c = 0;
 		vec4 cf = vec4(0.0, 0.0, 0.0, 0.0);
@@ -119,26 +120,26 @@ void fragment() {
 		}
 		if (c >= 2) {
 			if (cb.a > 0.0 && cL.a > 0.0) {
-				if (checkLB(TEXTURE_PIXEL_SIZE.y / 4.0, TEXTURE, UV)) {
+				if (checkLB(TEXTURE_PIXEL_SIZE / 4.0, TEXTURE, UV)) {
 					cf /= float(c);
 					COLOR = cf;
 				}
 			}
 			if (ct.a > 0.0 && cL.a > 0.0) {
-				if (checkLT(TEXTURE_PIXEL_SIZE.y / 4.0, TEXTURE, UV)) {
+				if (checkLT(TEXTURE_PIXEL_SIZE / 4.0, TEXTURE, UV)) {
 					cf /= float(c);
 					COLOR = cf;
 				}
 			}
 
 			if (cb.a > 0.0 && cr.a > 0.0) {
-				if (checkRB(TEXTURE_PIXEL_SIZE.y / 4.0, TEXTURE, UV)) {
+				if (checkRB(TEXTURE_PIXEL_SIZE / 4.0, TEXTURE, UV)) {
 					cf /= float(c);
 					COLOR = cf;
 				}
 			}
 			if (ct.a > 0.0 && cr.a > 0.0) {
-				if (checkRT(TEXTURE_PIXEL_SIZE.y / 4.0, TEXTURE, UV)) {
+				if (checkRT(TEXTURE_PIXEL_SIZE / 4.0, TEXTURE, UV)) {
 					cf /= float(c);
 					COLOR = cf;
 				}
@@ -146,13 +147,13 @@ void fragment() {
 		}
 	} else {
 		int c = 0;
-		float tempV = TEXTURE_PIXEL_SIZE.x / 4.0;
+		vec2 tempV = TEXTURE_PIXEL_SIZE / 4.0;
 		vec4 cf = vec4(0.0, 0.0, 0.0, 0.0);
-		vec4 clt = texture(TEXTURE, UV + vec2(-tempV, tempV));
-		vec4 crt = texture(TEXTURE, UV + vec2(tempV, tempV));
-		vec4 clb = texture(TEXTURE, UV + vec2(-tempV, -tempV));
-		vec4 crb = texture(TEXTURE, UV + vec2(tempV, -tempV));
-
+		vec4 clt = texture(TEXTURE, UV + vec2(-tempV.x, tempV.y));
+		vec4 crt = texture(TEXTURE, UV + vec2(tempV.x, tempV.y));
+		vec4 clb = texture(TEXTURE, UV + vec2(-tempV.x, -tempV.y));
+		vec4 crb = texture(TEXTURE, UV + vec2(tempV.x, -tempV.y));
+		
 		if (clt.a > 0.0) {
 			c++;
 			cf += clt;

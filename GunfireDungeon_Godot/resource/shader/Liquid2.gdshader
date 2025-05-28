@@ -39,25 +39,25 @@ vec4 get_mask_color(vec2 uv, ivec2 uvSize, vec2 delta) {
 	vec2 a = vec2(float(uvSize.x) / float(maskSize.x), float(uvSize.y) / float(maskSize.y));
 	vec2 b = a / 4.0 * uv;
 	delta *= a;
-	
+
 	float colorA = 0.0;
 	colorA += texture(mask, b + vec2(delta.x, 0)).a;
 	colorA += texture(mask, b + vec2(delta.x * 2.0, 0)).a;
-	
+
 	colorA += texture(mask, b + vec2(-delta.x, 0)).a;
 	colorA += texture(mask, b + vec2(-delta.x * 2.0, 0)).a;
-	
+
 	colorA += texture(mask, b + vec2(0, delta.y)).a;
 	colorA += texture(mask, b + vec2(0, delta.y * 2.0)).a;
-	
+
 	colorA += texture(mask, b + vec2(0, -delta.y)).a;
 	colorA += texture(mask, b + vec2(0, -delta.y * 2.0)).a;
-	
+
 	colorA += texture(mask, b + vec2(delta.x, delta.y)).a;
 	colorA += texture(mask, b + vec2(-delta.x, delta.y)).a;
 	colorA += texture(mask, b + vec2(delta.x, -delta.y)).a;
 	colorA += texture(mask, b + vec2(-delta.x, -delta.y)).a;
-	
+
 
 	color.a = min(1.0, colorA);// / 12.0;
 

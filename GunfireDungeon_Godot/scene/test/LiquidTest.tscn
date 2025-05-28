@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd8sbsj7kytkh"]
+[gd_scene load_steps=9 format=3 uid="uid://bd8sbsj7kytkh"]
 
 [ext_resource type="PackedScene" uid="uid://xxakpuvmxt43" path="res://scene/test/WaterSprite.tscn" id="1_bwxk8"]
 [ext_resource type="Texture2D" uid="uid://n5dn6p2e04d4" path="res://icon.png" id="3_1jpan"]
-[ext_resource type="Material" path="res://resource/material/Liquid.tres" id="3_lnju8"]
+[ext_resource type="Material" uid="uid://cca0ka64xmrrd" path="res://resource/material/Sawtooth.tres" id="3_4ujxy"]
+[ext_resource type="Material" uid="uid://b35fibsqxvvpn" path="res://resource/material/Liquid.tres" id="3_lnju8"]
+[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="4_oiqaj"]
 [ext_resource type="Texture2D" uid="uid://dj6e0chlxnnl8" path="res://resource/sprite/common/Smoke.png" id="5_bwxk8"]
 [ext_resource type="Texture2D" uid="uid://d2l4m57sxek7b" path="res://resource/sprite/brush/Brush1.png" id="8_4ujxy"]
 [ext_resource type="Texture2D" uid="uid://d2plsc32tjo0k" path="res://resource/sprite/brush/Brush0001.png" id="9_oiqaj"]
@@ -12,15 +14,29 @@ metadata/_edit_vertical_guides_ = [24.0, 25.0, 26.0, 27.0, 28.0]
 metadata/_edit_horizontal_guides_ = [16.0, 17.0, 18.0, 19.0, 20.0]
 
 [node name="WaterSprite" parent="." instance=ExtResource("1_bwxk8")]
+visible = false
 position = Vector2(0, 0)
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 z_index = -2
 position = Vector2(390, 203)
 texture = ExtResource("3_1jpan")
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Icon2" type="Sprite2D" parent="."]
+z_index = -2
+material = ExtResource("3_4ujxy")
+position = Vector2(78, 45.5)
+texture = ExtResource("4_oiqaj")
+
+[node name="Icon3" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1, 0, 0, 0.356863)
+z_index = -2
+position = Vector2(78, 45.5)
+texture = ExtResource("4_oiqaj")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = ExtResource("3_lnju8")
 
 [node name="Smoke" type="Sprite2D" parent="CanvasGroup"]
