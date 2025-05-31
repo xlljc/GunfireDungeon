@@ -251,7 +251,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 记录绘制液体的笔刷上一次绘制的位置<br/>
     /// 每次调用 DrawLiquid() 后都会记录这一次绘制的位置, 记录这个位置用作执行补间操作, 但是一旦停止绘制了, 需要手动清理记录的位置, 也就是将 BrushPrevPosition 置为 null
     /// </summary>
-    public LiquidPoint? BrushPrevPosition { get; set; }
+    public Vector2I? BrushPrevPosition { get; set; }
 
     /// <summary>
     /// 默认所在层级，如果没有用代码设置，则会在第一次调用 PutDown() 函数时设置
@@ -1910,7 +1910,9 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     {
         if (AffiliationArea != null)
         {
-            BrushPrevPosition = World.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, Position.AsVector2I(), 0);
+            var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position);
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
+            BrushPrevPosition = pos;
         }
     }
     
@@ -1934,7 +1936,9 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     {
         if (AffiliationArea != null)
         {
-            BrushPrevPosition = World.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, Position.AsVector2I() + offset, 0);
+            var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position) + offset;
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
+            BrushPrevPosition = pos;
         }
     }
 

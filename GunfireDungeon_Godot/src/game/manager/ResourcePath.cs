@@ -274,6 +274,7 @@ public class ResourcePath
     public const string resource_sprite_explode_Explode_pit0001_png = "res://resource/sprite/explode/Explode_pit0001.png";
     public const string resource_sprite_item_Items_png = "res://resource/sprite/item/Items.png";
     public const string resource_sprite_itemIcon_item0002_icon_png = "res://resource/sprite/itemIcon/item0002_icon.png";
+    public const string resource_sprite_liquid_Test_png = "res://resource/sprite/liquid/Test.png";
     public const string resource_sprite_liquid_Water_png = "res://resource/sprite/liquid/Water.png";
     public const string resource_sprite_map_door_close_png = "res://resource/sprite/map/door_close.png";
     public const string resource_sprite_map_door_open_png = "res://resource/sprite/map/door_open.png";

@@ -314,6 +314,13 @@ public partial class DungeonManager : Node2D
         roomInfo.StaticSprite.AddChild(canvasSprite);
         yield return 0;
         
+        //液体画布
+        var liquidCanvas = new LiquidCanvas(roomInfo, roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
+        liquidCanvas.Position = roomInfo.Position;
+        roomInfo.LiquidCanvas = liquidCanvas;
+        roomInfo.StaticSprite.AddChild(liquidCanvas);
+        yield return 0;
+        
         //打开游戏中的ui
         UiManager.Open_Game_RoomUI();
         yield return 0;
@@ -648,6 +655,8 @@ public partial class DungeonManager : Node2D
         CreateRoomStaticSprite(roomInfo);
         //创建静态精灵画布
         CreateRoomStaticImageCanvas(roomInfo);
+        //创建液体区域
+        CreateRoomLiquidCanvas(roomInfo);
         //创建迷雾遮罩
         CreateRoomFogMask(roomInfo);
         //创建房间/过道预览sprite
@@ -719,6 +728,18 @@ public partial class DungeonManager : Node2D
         canvasSprite.Position = rect.Position;
         roomInfo.StaticImageCanvas = canvasSprite;
         roomInfo.StaticSprite.AddChild(canvasSprite);
+    }
+    
+        
+    //创建液体画布
+    private void CreateRoomLiquidCanvas(RoomInfo roomInfo)
+    {
+        var rect = roomInfo.CanvasRect;
+
+        var liquidCanvas = new LiquidCanvas(roomInfo, rect.Size.X, rect.Size.Y);
+        liquidCanvas.Position = rect.Position;
+        roomInfo.LiquidCanvas = liquidCanvas;
+        roomInfo.StaticSprite.AddChild(liquidCanvas);
     }
 
     //创建迷雾遮罩

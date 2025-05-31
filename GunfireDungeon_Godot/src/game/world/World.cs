@@ -99,11 +99,6 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     public RandomPool RandomPool { get; private set; }
 
     /// <summary>
-    /// 液体画布
-    /// </summary>
-    public LiquidCanvas LiquidCanvas { get; private set; }
-    
-    /// <summary>
     /// 角色死亡事件
     /// </summary>
     public event Action<Role> OnRoleDieEvent; 
@@ -121,7 +116,6 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
         FogMaskRoot = GetNode<Node2D>("TileRoot/FogMaskRoot");
         NavigationRoot = GetNode<Node2D>("TileRoot/NavigationRoot");
         AffiliationAreaRoot = GetNode<Node2D>("TileRoot/AffiliationAreaRoot");
-        LiquidCanvas = GetNode<LiquidCanvas>("TileRoot/StaticSpriteRoot/LiquidCanvas");
     }
 
     public override void _Process(double delta)

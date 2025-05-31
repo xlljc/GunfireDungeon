@@ -153,7 +153,6 @@ public static partial class ExcelConfig
         _InitBuffPropBaseRef();
         _InitBulletBaseRef();
         _InitEnemyBaseRef();
-        _InitLiquidBrushRef();
         _InitPartBaseRef();
         _InitWeaponBaseRef();
     }
@@ -306,7 +305,7 @@ public static partial class ExcelConfig
         try
         {
             var text = _ReadConfigAsText("res://resource/config/LiquidBrush.json");
-            LiquidBrush_List = new List<LiquidBrush>(JsonSerializer.Deserialize<List<Ref_LiquidBrush>>(text));
+            LiquidBrush_List = JsonSerializer.Deserialize<List<LiquidBrush>>(text);
             LiquidBrush_Map = new Dictionary<string, LiquidBrush>();
             foreach (var item in LiquidBrush_List)
             {
@@ -489,25 +488,6 @@ public static partial class ExcelConfig
             {
                 GD.PrintErr(e.ToString());
                 throw new Exception("初始化'EnemyBase'引用其他表数据失败, 当前行id: " + item.Id);
-            }
-        }
-    }
-    private static void _InitLiquidBrushRef()
-    {
-        foreach (Ref_LiquidBrush item in LiquidBrush_List)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(item.__Layer))
-                {
-                    item.Layer = LiquidLayer_Map[item.__Layer];
-                }
-
-            }
-            catch (Exception e)
-            {
-                GD.PrintErr(e.ToString());
-                throw new Exception("初始化'LiquidBrush'引用其他表数据失败, 当前行id: " + item.Id);
             }
         }
     }

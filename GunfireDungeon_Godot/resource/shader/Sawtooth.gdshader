@@ -94,7 +94,7 @@ bool checkRT(vec2 len, sampler2D tex, vec2 uv) {
 //}
 
 void fragment() {
-	
+
 	if (COLOR.a <= 0.0) {
 		int c = 0;
 		vec4 cf = vec4(0.0, 0.0, 0.0, 0.0);
@@ -153,7 +153,7 @@ void fragment() {
 		vec4 crt = texture(TEXTURE, UV + vec2(tempV.x, tempV.y));
 		vec4 clb = texture(TEXTURE, UV + vec2(-tempV.x, -tempV.y));
 		vec4 crb = texture(TEXTURE, UV + vec2(tempV.x, -tempV.y));
-		
+
 		if (clt.a > 0.0) {
 			c++;
 			cf += clt;

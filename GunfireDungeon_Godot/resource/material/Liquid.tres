@@ -1,13 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b35fibsqxvvpn"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b35fibsqxvvpn"]
 
-[ext_resource type="Shader" uid="uid://bsuhxyctk32b" path="res://resource/shader/Liquid.gdshader" id="1_nogby"]
-[ext_resource type="Texture2D" uid="uid://ryt1kpxd0bic" path="res://resource/sprite/liquid/Water.png" id="2_gmwpk"]
+[ext_resource type="Shader" uid="uid://ckuo0l0blm7nx" path="res://resource/shader/Liquid.gdshader" id="1_nogby"]
 
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_nogby")
 shader_parameter/hframes = 1
 shader_parameter/frame = 0
-shader_parameter/tex = ExtResource("2_gmwpk")
-shader_parameter/scale = 4.0
-shader_parameter/offset = Vector2(0, 0)
+shader_parameter/origin_size = Vector2(256, 256)
+shader_parameter/alpha = 1.0

@@ -1,11 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqf2vks5ggnsp"]
+[gd_scene load_steps=3 format=3 uid="uid://bqf2vks5ggnsp"]
 
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
-[ext_resource type="Script" uid="uid://dp720qqggp7u6" path="res://src/framework/map/liquid/LiquidCanvas.cs" id="2_whacp"]
-[ext_resource type="PackedScene" uid="uid://xxakpuvmxt43" path="res://scene/test/WaterSprite.tscn" id="3_dgiq6"]
-[ext_resource type="Shader" uid="uid://ckuo0l0blm7nx" path="res://resource/shader/Liquid2.gdshader" id="4_5fsbq"]
-[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="5_6tnic"]
-[ext_resource type="Texture2D" uid="uid://dr8qts55kvxa6" path="res://resource/sprite/liquid/Test.png" id="6_6tnic"]
 
 [sub_resource type="Environment" id="Environment_g06jj"]
 background_mode = 3
@@ -17,14 +12,6 @@ glow_levels/5 = 0.0
 glow_normalized = true
 glow_strength = 1.06
 glow_blend_mode = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a06ep"]
-shader = ExtResource("4_5fsbq")
-shader_parameter/hframes = 5
-shader_parameter/frame = 3
-shader_parameter/origin_size = Vector2(64, 16)
-shader_parameter/mask = ExtResource("5_6tnic")
-shader_parameter/alpha = 1.0
 
 [node name="Dungeon" type="CanvasModulate"]
 script = ExtResource("1_txiyv")
@@ -41,14 +28,6 @@ z_index = -2
 
 [node name="StaticSpriteRoot" type="Node2D" parent="TileRoot"]
 z_index = -2
-
-[node name="LiquidCanvas" type="Node2D" parent="TileRoot/StaticSpriteRoot"]
-visible = false
-script = ExtResource("2_whacp")
-
-[node name="WaterSprite" parent="TileRoot/StaticSpriteRoot" instance=ExtResource("3_dgiq6")]
-material = SubResource("ShaderMaterial_a06ep")
-texture = ExtResource("6_6tnic")
 
 [node name="NormalLayer" type="Node2D" parent="TileRoot"]
 z_index = -1

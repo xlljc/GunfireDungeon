@@ -1,11 +1,8 @@
 [
   {
     "Id": "0001",
-    "Remark": "\u6BD2\u6C34",
+    "Remark": "\u6C34",
     "BrushTexture": "res://resource/sprite/brush/Brush0001.png",
-    "__Layer": "0001",
-    "Ffm": 0.5,
-    "Duration": 5,
-    "WriteOffSpeed": 0.2
+    "Ffm": 0.5
   }
 ]

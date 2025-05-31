@@ -38,6 +38,19 @@ public static partial class ExcelConfig
         public float AnimSpeed;
 
         /// <summary>
+        /// 开始消退时间,单位秒 <br/>
+        /// 小于0则永远不会消退
+        /// </summary>
+        [JsonInclude]
+        public float Duration;
+
+        /// <summary>
+        /// 消退速度, 也就是 Alpha 值每秒变化的速度
+        /// </summary>
+        [JsonInclude]
+        public float WriteOffSpeed;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public LiquidLayer Clone()
@@ -48,6 +61,8 @@ public static partial class ExcelConfig
             inst.Texture = Texture;
             inst.Hframes = Hframes;
             inst.AnimSpeed = AnimSpeed;
+            inst.Duration = Duration;
+            inst.WriteOffSpeed = WriteOffSpeed;
             return inst;
         }
     }

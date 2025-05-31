@@ -98,6 +98,11 @@ public class RoomInfo : IDestroy
     public ImageCanvas StaticImageCanvas;
 
     /// <summary>
+    /// 液体画布
+    /// </summary>
+    public LiquidCanvas LiquidCanvas;
+    
+    /// <summary>
     /// 房间迷雾
     /// </summary>
     public FogMask RoomFogMask;
@@ -408,6 +413,12 @@ public class RoomInfo : IDestroy
         if (StaticImageCanvas != null)
         {
             StaticImageCanvas.Destroy();
+        }
+        
+        //销毁液体画布
+        if (LiquidCanvas != null)
+        {
+            LiquidCanvas.Destroy();
         }
         
         //销毁静态精灵节点
