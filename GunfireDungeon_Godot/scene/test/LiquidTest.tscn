@@ -1,22 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd8sbsj7kytkh"]
+[gd_scene load_steps=6 format=3 uid="uid://bd8sbsj7kytkh"]
 
 [ext_resource type="Shader" uid="uid://ckuo0l0blm7nx" path="res://resource/shader/Liquid.gdshader" id="1_oiqaj"]
+[ext_resource type="Texture2D" uid="uid://cb1u2tfl5rrep" path="res://resource/sprite/liquid/Test2.png" id="2_7apgu"]
 [ext_resource type="Texture2D" uid="uid://dr8qts55kvxa6" path="res://resource/sprite/liquid/Test.png" id="3_3vq1h"]
-[ext_resource type="Texture2D" uid="uid://xbjn1hlpcoes" path="res://resource/sprite/brush/TestMask.png" id="4_oiqaj"]
+[ext_resource type="Texture2D" uid="uid://ryt1kpxd0bic" path="res://resource/sprite/liquid/Water.png" id="4_l2twp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jpan"]
 shader = ExtResource("1_oiqaj")
-shader_parameter/hframes = 5
-shader_parameter/frame = 3
+shader_parameter/hframes = 1
+shader_parameter/frame = 0
 shader_parameter/origin_size = Vector2(80, 16)
-shader_parameter/mask = ExtResource("4_oiqaj")
+shader_parameter/mask = ExtResource("2_7apgu")
 shader_parameter/alpha = 1.0
 
 [node name="LiquidTest" type="Node2D"]
 
 [node name="WaterSprite" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_1jpan")
 texture = ExtResource("3_3vq1h")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 480, 270)
+region_rect = Rect2(0, 0, 480, 268)
+
+[node name="WaterSprite2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1jpan")
+texture = ExtResource("4_l2twp")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 288, 304)

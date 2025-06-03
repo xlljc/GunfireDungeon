@@ -18,12 +18,12 @@ public partial class BrushBullet : Bullet
     [Export]
     public float EffectiveAltitude { get; set; } = -1;
 
-    private ExcelConfig.LiquidBrush _brushData;
+    private BrushImageData _brushData;
 
     public override void OnInit()
     {
         base.OnInit();
-        _brushData = ExcelConfig.LiquidBrush_Map[BrushId];
+        _brushData = LiquidBrushManager.GetBrush(BrushId);
     }
 
     protected override void Process(float delta)

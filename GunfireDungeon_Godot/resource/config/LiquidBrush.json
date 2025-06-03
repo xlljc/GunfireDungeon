@@ -4,5 +4,11 @@
     "Remark": "\u6C34",
     "BrushTexture": "res://resource/sprite/brush/Brush0001.png",
     "Ffm": 0.5
+  },
+  {
+    "Id": "0002",
+    "Remark": "\u6C34",
+    "BrushTexture": "res://resource/sprite/brush/Brush0002.png",
+    "Ffm": 0.5
   }
 ]

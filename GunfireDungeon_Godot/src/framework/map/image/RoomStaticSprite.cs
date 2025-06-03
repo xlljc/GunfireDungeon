@@ -26,6 +26,7 @@ public partial class RoomStaticSprite : Node2D, IDestroy
 
     public RoomStaticSprite(RoomInfo roomInfo)
     {
+        Name = "SpriteRoot" + roomInfo.Id;
         _roomInfo = roomInfo;
         _step = new Vector2I(30, 30);
     }

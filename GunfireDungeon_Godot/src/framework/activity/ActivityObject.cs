@@ -1898,7 +1898,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     {
         if (AffiliationArea != null)
         {
-            DrawLiquid(ExcelConfig.LiquidBrush_Map[brushId]);
+            DrawLiquid(LiquidBrushManager.GetBrush(brushId));
         }
     }
     
@@ -1906,12 +1906,12 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 根据笔刷数据在该物体位置绘制液体<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
-    public void DrawLiquid(ExcelConfig.LiquidBrush brush)
+    public void DrawLiquid(BrushImageData brush)
     {
         if (AffiliationArea != null)
         {
             var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position);
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, ExcelConfig.LiquidLayer_List[0], BrushPrevPosition, pos, 0);
             BrushPrevPosition = pos;
         }
     }
@@ -1924,7 +1924,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     {
         if (AffiliationArea != null)
         {
-            DrawLiquid(ExcelConfig.LiquidBrush_Map[brushId], offset);
+            DrawLiquid(LiquidBrushManager.GetBrush(brushId), offset);
         }
     }
     
@@ -1932,12 +1932,12 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// 根据笔刷数据在该物体位置绘制液体<br/>
     /// 需要清除记录的点就请将 BrushPrevPosition 置为 null
     /// </summary>
-    public void DrawLiquid(ExcelConfig.LiquidBrush brush, Vector2I offset)
+    public void DrawLiquid(BrushImageData brush, Vector2I offset)
     {
         if (AffiliationArea != null)
         {
             var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position) + offset;
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, BrushPrevPosition, pos, 0);
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, ExcelConfig.LiquidLayer_List[0], BrushPrevPosition, pos, 0);
             BrushPrevPosition = pos;
         }
     }

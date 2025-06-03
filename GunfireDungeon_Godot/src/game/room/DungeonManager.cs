@@ -302,21 +302,20 @@ public partial class DungeonManager : Node2D
         
         //静态渲染精灵根节点, 用于放置sprite
         var spriteRoot = new RoomStaticSprite(roomInfo);
-        spriteRoot.Name = "SpriteRoot";
         roomInfo.StaticSprite = spriteRoot;
         hall.StaticSpriteRoot.AddChild(spriteRoot);
         yield return 0;
         
         //静态精灵画布
         var canvasSprite = new ImageCanvas(roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
-        canvasSprite.Position = roomInfo.Position;
+        canvasSprite.Position = roomInfo.Position - (roomInfo.Size - new Vector2(canvasSprite.Width, canvasSprite.Height)) / 2;
         roomInfo.StaticImageCanvas = canvasSprite;
         roomInfo.StaticSprite.AddChild(canvasSprite);
         yield return 0;
         
         //液体画布
         var liquidCanvas = new LiquidCanvas(roomInfo, roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
-        liquidCanvas.Position = roomInfo.Position;
+        liquidCanvas.Position = roomInfo.Position - (roomInfo.Size - new Vector2(liquidCanvas.Width, liquidCanvas.Height)) / 2;
         roomInfo.LiquidCanvas = liquidCanvas;
         roomInfo.StaticSprite.AddChild(liquidCanvas);
         yield return 0;
@@ -713,7 +712,6 @@ public partial class DungeonManager : Node2D
     private void CreateRoomStaticSprite(RoomInfo roomInfo)
     {
         var spriteRoot = new RoomStaticSprite(roomInfo);
-        spriteRoot.Name = "SpriteRoot";
         World.Current.StaticSpriteRoot.AddChild(spriteRoot);
         roomInfo.StaticSprite = spriteRoot;
     }
