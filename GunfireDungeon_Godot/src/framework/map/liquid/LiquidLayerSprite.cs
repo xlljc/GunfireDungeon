@@ -163,16 +163,26 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
         }
 
         _runTime += (float)newDelta;
+        Visible = _updateImagePixels.Count > 0;
     }
     
     public List<LiquidPixel> DrawBrush(BrushImageData brush, Vector2I? prevPosition, Vector2I position, float rotation)
     {
-        Debug.Log("DrawBrush: " + position);
-        _tempList.Clear();
         var center = new Vector2I(brush.Width, brush.Height) / 2;
         var pos = position - center;
         var canvasWidth = _maskTexture.GetWidth();
         var canvasHeight = _maskTexture.GetHeight();
+        
+        _tempList.Clear();
+        // 判断是否超出区域
+        if (pos.X - center.X < -GameConfig.LiquidMargin ||
+            pos.Y - center.Y < -GameConfig.LiquidMargin ||
+            pos.X + center.X > canvasWidth - GameConfig.LiquidMargin ||
+            pos.Y + center.Y > canvasHeight - GameConfig.LiquidMargin)
+        {
+            return _tempList;
+        }
+
         //存在上一次记录的点
         if (prevPosition != null)
         {
@@ -230,7 +240,6 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
                 {
                     _changeFlag = true;
                     _maskImage.SetPixel(imagePixel.X, imagePixel.Y, imagePixel.Color);
-                    Debug.Log("setPixel: " + imagePixel.X + ", " + imagePixel.Y);
                     imagePixel.TempFlag = false;
                 }
 
@@ -250,7 +259,6 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
                 _changeFlag = true;
                 var temp = SetPixelData(x, y, brushPixel, _layerConfig);
                 _maskImage.SetPixel(x, y, temp.Color);
-                Debug.Log("setPixel: " + x + ", " + y);
                 _tempList.Add(temp);
             }
         }
@@ -317,7 +325,6 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
             if (temp.IsUpdate)
             {
                 _updateImagePixels.Add(temp);
-                Debug.Log("添加点: " + temp.X + ", " + temp.Y);
             }
             temp.TempTime = _runTime;
         }
@@ -342,7 +349,6 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
             if (!prevUpdate && temp.IsUpdate)
             {
                 _updateImagePixels.Add(temp);
-                Debug.Log("添加点: " + temp.X + ", " + temp.Y);
             }
             else if (prevUpdate && !temp.IsUpdate)
             {

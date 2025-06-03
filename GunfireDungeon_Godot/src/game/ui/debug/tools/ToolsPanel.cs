@@ -77,6 +77,9 @@ public partial class ToolsPanel : Tools
         {
             GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom;
         };
+        
+        // 关闭房间迷雾
+        S_CloseRoomFog.Instance.Pressed += CloseRoomFogClick;
     }
 
     public override void OnDestroyUi()
@@ -231,5 +234,25 @@ public partial class ToolsPanel : Tools
     private Role GetPlayer()
     {
         return GameApplication.Instance.DungeonManager?.CurrWorld?.Player;
+    }
+
+    private void CloseRoomFogClick()
+    {
+        var dungeonManager = GameApplication.Instance.DungeonManager;
+        if (dungeonManager.CurrWorld != null)
+        {
+            dungeonManager.CurrWorld.Color = new Color(1, 1, 1, 1); //关闭迷雾
+            this.CallDelay(1, () =>
+            {
+                dungeonManager.StartRoomInfo?.EachRoom(info =>
+                {
+                    info.PreviewSprite.Visible = true;
+                    foreach (var roomDoorInfo in info.Doors)
+                    {
+                        roomDoorInfo.AislePreviewSprite.Visible = true;
+                    }
+                });
+            });
+        }
     }
 }

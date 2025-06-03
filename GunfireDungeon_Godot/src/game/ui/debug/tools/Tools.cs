@@ -429,6 +429,59 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer7.Label
+    /// </summary>
+    public class Label_1 : UiNode<ToolsPanel, Godot.Label, Label_1>
+    {
+        public Label_1(ToolsPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer7.CloseRoomFog
+    /// </summary>
+    public class CloseRoomFog : UiNode<ToolsPanel, Godot.Button, CloseRoomFog>
+    {
+        public CloseRoomFog(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override CloseRoomFog Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer7
+    /// </summary>
+    public class HBoxContainer7 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer7>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.Label
+        /// </summary>
+        public Label_1 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_1(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_1 _L_Label;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.CloseRoomFog
+        /// </summary>
+        public CloseRoomFog L_CloseRoomFog
+        {
+            get
+            {
+                if (_L_CloseRoomFog == null) _L_CloseRoomFog = new CloseRoomFog(UiPanel, Instance.GetNode<Godot.Button>("CloseRoomFog"));
+                return _L_CloseRoomFog;
+            }
+        }
+        private CloseRoomFog _L_CloseRoomFog;
+
+        public HBoxContainer7(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer7 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Tools.HFlowContainer.CreateObjectBtn
     /// </summary>
     public class CreateObjectBtn : UiNode<ToolsPanel, Godot.Button, CreateObjectBtn>
@@ -573,6 +626,19 @@ public abstract partial class Tools : UiBase
         private HBoxContainer2 _L_HBoxContainer2;
 
         /// <summary>
+        /// 节点路径: Tools.HBoxContainer7
+        /// </summary>
+        public HBoxContainer7 L_HBoxContainer7
+        {
+            get
+            {
+                if (_L_HBoxContainer7 == null) _L_HBoxContainer7 = new HBoxContainer7(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer7"));
+                return _L_HBoxContainer7;
+            }
+        }
+        private HBoxContainer7 _L_HBoxContainer7;
+
+        /// <summary>
         /// 节点路径: Tools.CreateObjectBtn
         /// </summary>
         public CreateObjectBtn L_CreateObjectBtn
@@ -686,11 +752,6 @@ public abstract partial class Tools : UiBase
     public HBoxContainer6 S_HBoxContainer6 => L_HFlowContainer.L_HBoxContainer6;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.Label
-    /// </summary>
-    public Label S_Label => L_HFlowContainer.L_HBoxContainer2.L_Label;
-
-    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomNearly
     /// </summary>
     public CameraZoomNearly S_CameraZoomNearly => L_HFlowContainer.L_HBoxContainer2.L_CameraZoomNearly;
@@ -709,6 +770,16 @@ public abstract partial class Tools : UiBase
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2
     /// </summary>
     public HBoxContainer2 S_HBoxContainer2 => L_HFlowContainer.L_HBoxContainer2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer7.CloseRoomFog
+    /// </summary>
+    public CloseRoomFog S_CloseRoomFog => L_HFlowContainer.L_HBoxContainer7.L_CloseRoomFog;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer7
+    /// </summary>
+    public HBoxContainer7 S_HBoxContainer7 => L_HFlowContainer.L_HBoxContainer7;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.CreateObjectBtn

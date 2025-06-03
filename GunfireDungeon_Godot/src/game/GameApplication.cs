@@ -165,6 +165,13 @@ public partial class GameApplication : Node2D, ICoroutine
         config.ShopRoomCount = 1;
         config.EnableLimitRange = false;
         config.AllowedCornerAisles = false;
+
+        // config.RoomMaxInterval = 30;
+        // config.RoomMinInterval = 10;
+        // config.RoomHorizontalMaxDispersion = 2f;
+        // config.RoomHorizontalMinDispersion = -2f;
+        // config.RoomVerticalMaxDispersion = 2f;
+        // config.RoomVerticalMinDispersion = -2f;
         return config;
     }
 

@@ -139,6 +139,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "重置"
 
+[node name="HBoxContainer7" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HFlowContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "迷雾"
+
+[node name="CloseRoomFog" type="Button" parent="HFlowContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "关闭迷雾"
+
 [node name="CreateObjectBtn" type="Button" parent="HFlowContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32

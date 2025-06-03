@@ -286,9 +286,9 @@ public partial class DungeonManager : Node2D
         //创建房间数据
         var roomInfo = new RoomInfo(0, DungeonRoomType.None, null);
         roomInfo.World = CurrWorld;
-        var rect = hall.TileRoot.GetUsedRect();
-        roomInfo.Size = rect.Size + new Vector2I(10, 10);
-        roomInfo.Position = (roomInfo.Position - new Vector2I(5, 5)) * GameConfig.TileCellSize;
+        var usedRect = hall.TileRoot.GetUsedRect();
+        roomInfo.Size = usedRect.Size;
+        roomInfo.Position = usedRect.Position;
         hall.RoomInfo = roomInfo;
         yield return 0;
         
@@ -314,8 +314,7 @@ public partial class DungeonManager : Node2D
         yield return 0;
         
         //液体画布
-        var liquidCanvas = new LiquidCanvas(roomInfo, roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
-        liquidCanvas.Position = roomInfo.Position - (roomInfo.Size - new Vector2(liquidCanvas.Width, liquidCanvas.Height)) / 2;
+        var liquidCanvas = new LiquidCanvas(roomInfo);
         roomInfo.LiquidCanvas = liquidCanvas;
         roomInfo.StaticSprite.AddChild(liquidCanvas);
         yield return 0;
@@ -732,10 +731,11 @@ public partial class DungeonManager : Node2D
     //创建液体画布
     private void CreateRoomLiquidCanvas(RoomInfo roomInfo)
     {
-        var rect = roomInfo.CanvasRect;
-
-        var liquidCanvas = new LiquidCanvas(roomInfo, rect.Size.X, rect.Size.Y);
-        liquidCanvas.Position = rect.Position;
+        // var rect = roomInfo.CanvasRect;
+        // var liquidCanvas = new LiquidCanvas(roomInfo, rect.Size.X, rect.Size.Y);
+        // liquidCanvas.Position = rect.Position;
+        
+        var liquidCanvas = new LiquidCanvas(roomInfo);
         roomInfo.LiquidCanvas = liquidCanvas;
         roomInfo.StaticSprite.AddChild(liquidCanvas);
     }

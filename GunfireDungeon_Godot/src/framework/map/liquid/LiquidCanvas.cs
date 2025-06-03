@@ -29,7 +29,7 @@ public partial class LiquidCanvas : Node2D, IDestroy
     /// <summary>
     /// 画布每秒更新频率
     /// </summary>
-    public static int UpdateFps { get; set; } = 30;
+    public static int UpdateFps { get; set; } = 20;
     
     /// <summary>
     /// 画布宽度
@@ -52,14 +52,15 @@ public partial class LiquidCanvas : Node2D, IDestroy
     //画布上的像素点，这里代表所有层级的像素点
     private SummaryPixel[,] _imageUsePixels;
     
-    public LiquidCanvas(RoomInfo roomInfo, int width, int height)
+    public LiquidCanvas(RoomInfo roomInfo)
     {
         Name = "LiquidCanvas" + roomInfo.Id;
         _roomInfo = roomInfo;
-        Width = width;
-        Height = height;
-        
-        _imageUsePixels = new SummaryPixel[width, height];
+        var size = (roomInfo.Size + new Vector2I(2, 2)) * GameConfig.TileCellSize;
+        Width = size.X;
+        Height = size.Y;
+        Position = roomInfo.GetWorldPosition() - GameConfig.TileCellSizeVector2I;
+        _imageUsePixels = new SummaryPixel[Width, Height];
     }
     
     public void Destroy()
@@ -84,7 +85,7 @@ public partial class LiquidCanvas : Node2D, IDestroy
     /// </summary>
     public Vector2I ToLiquidCanvasPosition(Vector2 position)
     {
-        return (_roomInfo.ToCanvasPosition(position) / CanvasScale).AsVector2I();
+        return ((position - Position) / CanvasScale).AsVector2I();
     }
 
     /// <summary>
@@ -118,8 +119,7 @@ public partial class LiquidCanvas : Node2D, IDestroy
     /// <param name="prevPosition">上一帧坐标, 相对于画布坐标, 改参数用于两点距离较大时执行补间操作, 如果传 null, 则不会进行补间</param>
     /// <param name="position">绘制坐标, 相对于画布坐标</param>
     /// <param name="rotation">旋转角度, 弧度制</param>
-    public void DrawBrush(BrushImageData brush, ExcelConfig.LiquidLayer layer, Vector2I? prevPosition,
-        Vector2I position, float rotation)
+    public void DrawBrush(BrushImageData brush, ExcelConfig.LiquidLayer layer, Vector2I? prevPosition, Vector2I position, float rotation)
     {
         LiquidLayerSprite liquidLayer;
         if (!_liquidLayer.TryGetValue(layer.Id, out liquidLayer))
