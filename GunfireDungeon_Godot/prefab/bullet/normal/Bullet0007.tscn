@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cybey66bhe4ro"]
 
-[ext_resource type="Script" uid="uid://dca4oid2hvhmp" path="res://src/game/activity/bullet/normal/Bullet.cs" id="1_h4tn7"]
+[ext_resource type="Script" uid="uid://cy0m7sl0fuiqd" path="res://src/game/activity/bullet/normal/BrushBullet.cs" id="1_brapk"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="2_fgeyt"]
 [ext_resource type="SpriteFrames" uid="uid://bkwoy70bnm74k" path="res://resource/spriteFrames/bullet/Bullet0007.tres" id="3_c1ec6"]
 
@@ -37,7 +37,9 @@ radius = 2.0
 [node name="Bullet0007" type="CharacterBody2D" node_paths=PackedStringArray("CollisionArea", "CollisionShape2D", "Particles2D", "ShadowSprite", "AnimatedSprite", "Collision")]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_h4tn7")
+script = ExtResource("1_brapk")
+BrushId = "0003"
+LayerId = "0002"
 CollisionArea = NodePath("AnimatedSprite/CollisionArea")
 CollisionShape2D = NodePath("AnimatedSprite/CollisionArea/CollisionShape2D")
 Particles2D = []

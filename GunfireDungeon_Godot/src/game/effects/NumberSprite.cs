@@ -3,14 +3,20 @@ using System;
 using System.Collections.Generic;
 using DsUi;
 
+/// <summary>
+/// 用于显示纹理数字
+/// </summary>
 public partial class NumberSprite : Node2D, IDestroy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Export]
     public Sprite2D Templdate;
 
     public bool IsDestroyed { get; private set; }
     
-    private int _value;
+    private uint _value;
     private List<Sprite2D> _useList = new List<Sprite2D>();
     private Stack<Sprite2D> _stackInsts = new Stack<Sprite2D>();
 
@@ -20,11 +26,14 @@ public partial class NumberSprite : Node2D, IDestroy
         Templdate.Visible = false;
     }
 
-    public void SetNumber(int value)
+    /// <summary>
+    /// 设置显示的值
+    /// </summary>
+    public void SetNumber(uint value)
     {
         _value = value;
         //把数字拆成数组
-        var list = new List<int>();
+        var list = new List<uint>();
         while (value > 0)
         {
             list.Add(value % 10);
@@ -57,12 +66,15 @@ public partial class NumberSprite : Node2D, IDestroy
         {
             var index = list.Count - i - 1;
             var sprite2D = _useList[i];
-            sprite2D.Frame = list[i];
+            sprite2D.Frame = (int)list[i];
             sprite2D.Position  = new Vector2(index * 4 - 4 * (list.Count - 1) / 2f, 0);
         }
     }
     
-    public int GetNumber()
+    /// <summary>
+    /// 获取当前显示的数字值
+    /// </summary>
+    public uint GetNumber()
     {
         return _value;
     }

@@ -113,7 +113,7 @@
   },
   {
     "Id": "0007",
-    "Name": "\u62D6\u5C3E\u5B50\u5F391",
+    "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0006",
     "HarmRange": [
@@ -147,6 +147,43 @@
     ],
     "__ShootSound": "shooting0012",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0004.tscn"
+  },
+  {
+    "Id": "0008",
+    "Name": "\u6BD2\u6DB2\u5B50\u5F39",
+    "Type": 1,
+    "Prefab": "bullet0007",
+    "HarmRange": [
+      4
+    ],
+    "RepelRange": [
+      15
+    ],
+    "DeviationAngleRange": [
+      0
+    ],
+    "SpeedRange": [
+      350,
+      380
+    ],
+    "LifeTimeRange": [
+      -1
+    ],
+    "DistanceRange": [
+      400,
+      450
+    ],
+    "VerticalSpeed": [
+      0
+    ],
+    "BounceCount": [
+      0
+    ],
+    "Penetration": [
+      0
+    ],
+    "__ShootSound": "shooting0012",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0004",
@@ -249,43 +286,6 @@
     ],
     "VerticalSpeed": [
       170
-    ],
-    "BounceCount": [
-      0
-    ],
-    "Penetration": [
-      0
-    ],
-    "__ShootSound": "",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0008",
-    "Name": "\u5B50\u5F394",
-    "Type": 1,
-    "Prefab": "bullet0007",
-    "HarmRange": [
-      4
-    ],
-    "RepelRange": [
-      15
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
-      350,
-      380
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      400,
-      450
-    ],
-    "VerticalSpeed": [
-      0
     ],
     "BounceCount": [
       0

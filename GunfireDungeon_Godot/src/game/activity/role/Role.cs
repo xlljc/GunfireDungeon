@@ -1002,7 +1002,7 @@ public abstract partial class Role : ActivityObject
                 0
             );
             hitNumber.InheritVelocity(this);
-            hitNumber.SetNumber(damage);
+            hitNumber.SetNumber((uint)damage);
         }
         
         //死亡判定

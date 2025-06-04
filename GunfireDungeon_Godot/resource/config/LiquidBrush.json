@@ -1,14 +1,20 @@
 [
   {
     "Id": "0001",
-    "Remark": "\u6C34",
+    "Remark": "\u4E2D\u7B49\u5927\u5C0F4*4",
     "BrushTexture": "res://resource/sprite/brush/Brush0001.png",
     "Ffm": 0.5
   },
   {
     "Id": "0002",
-    "Remark": "\u6C34",
+    "Remark": "\u5355\u4E2A\u50CF\u7D20",
     "BrushTexture": "res://resource/sprite/brush/Brush0002.png",
     "Ffm": 0.5
+  },
+  {
+    "Id": "0003",
+    "Remark": "\u5C0F2*2",
+    "BrushTexture": "res://resource/sprite/brush/Brush0003.png",
+    "Ffm": 1
   }
 ]

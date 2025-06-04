@@ -88,6 +88,27 @@
     "Remark": ""
   },
   {
+    "Id": "0005",
+    "Name": "\u6BD2\u6DB2\u5B50\u5F39",
+    "__ActivityTemplate": "part_comm0001",
+    "Intro": {
+      "Code": "\u6BD2\u6DB2[color=#7bc1d5]\u5B50\u5F39[/color]"
+    },
+    "Details": {
+      "Code": "\u5B50\u5F395\u8BE6\u60C5"
+    },
+    "Quality": 1,
+    "Price": 50,
+    "Icon": "res://resource/sprite/prop/part/PartProp0005.png",
+    "Type": 0,
+    "BaseMana": 8,
+    "ClassType": "Bullet",
+    "Param": {
+      "Bullet": "0008"
+    },
+    "Remark": ""
+  },
+  {
     "Id": "3001",
     "Name": "\u9500\u6BC1\u65BD\u653E",
     "__ActivityTemplate": "part_comm0001",

@@ -11,7 +11,6 @@ using Godot.Collections;
 /// </summary>
 public partial class Bullet : ActivityObject, IBullet
 {
-    
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 

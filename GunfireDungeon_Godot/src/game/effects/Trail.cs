@@ -20,7 +20,7 @@ public partial class Trail : Line2D, IPoolItem
     public Node2D Target { get; private set; }
 
     public bool IsDestroyed { get; private set; }
-    
+
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 

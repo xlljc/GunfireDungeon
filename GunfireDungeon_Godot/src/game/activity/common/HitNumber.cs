@@ -2,17 +2,20 @@
 using Godot;
 
 /// <summary>
-/// 伤害数字
+/// 用于显示伤害数字
 /// </summary>
 public partial class HitNumber : ActivityObject, IPoolItem
 {
+    /// <summary>
+    /// 绑定的纹理数字组件
+    /// </summary>
     [Export]
     public NumberSprite NumberSprite;
-    
+
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 
-    public void SetNumber(int number)
+    public void SetNumber(uint number)
     {
         NumberSprite.SetNumber(number);
     }

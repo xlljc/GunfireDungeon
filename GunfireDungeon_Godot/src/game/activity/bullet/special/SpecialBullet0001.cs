@@ -11,8 +11,8 @@ public partial class SpecialBullet0001 : ActivityObject, IPoolItem
     /// <summary>
     /// 创建子分裂子弹时的回调
     /// </summary>
-    public event Action<IBullet> OnCreateSplitBulletEvent; 
-    
+    public event Action<IBullet> OnCreateSplitBulletEvent;
+
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
     

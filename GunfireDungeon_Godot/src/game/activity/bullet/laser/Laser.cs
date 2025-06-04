@@ -27,7 +27,7 @@ public partial class Laser : Area2D, IBullet
 
     public event Action OnLogicalFinishEvent;
     public CampEnum Camp { get; set; }
-    
+
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 
