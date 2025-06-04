@@ -126,6 +126,8 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
                 {
                     OnAffiliationChange(prev);
                 }
+
+                BrushPrevPosition = null;
             }
         }
     }
@@ -1911,7 +1913,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
         if (AffiliationArea != null)
         {
             var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position);
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, layer, BrushPrevPosition, pos, 0);
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, layer, BrushPrevPosition, pos, Rotation);
             BrushPrevPosition = pos;
         }
     }
@@ -1937,7 +1939,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
         if (AffiliationArea != null)
         {
             var pos = AffiliationArea.RoomInfo.LiquidCanvas.ToLiquidCanvasPosition(Position) + offset;
-            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, layer, BrushPrevPosition, pos, 0);
+            AffiliationArea.RoomInfo.LiquidCanvas.DrawBrush(brush, layer, BrushPrevPosition, pos, Rotation);
             BrushPrevPosition = pos;
         }
     }

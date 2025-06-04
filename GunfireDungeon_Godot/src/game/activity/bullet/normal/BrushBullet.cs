@@ -81,12 +81,6 @@ public partial class BrushBullet : Bullet
         PlayCollisionEffect(collision, ResourcePath.prefab_effect_bullet_BulletSmoke0002_tscn);
     }
 
-    public override void OnReclaim()
-    {
-        base.OnReclaim();
-        BrushPrevPosition = null;
-    }
-
     public override void OnLeavePool()
     {
         base.OnLeavePool();

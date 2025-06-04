@@ -172,13 +172,15 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
         var pos = position - center;
         var canvasWidth = _maskTexture.GetWidth();
         var canvasHeight = _maskTexture.GetHeight();
+
+        var t1 = (center.X + center.Y) / 2f;
         
         _tempList.Clear();
         // 判断是否超出区域
-        if (pos.X - center.X < -GameConfig.LiquidMargin ||
-            pos.Y - center.Y < -GameConfig.LiquidMargin ||
-            pos.X + center.X > canvasWidth - GameConfig.LiquidMargin ||
-            pos.Y + center.Y > canvasHeight - GameConfig.LiquidMargin)
+        if (position.X - t1 < GameConfig.LiquidMargin ||
+            position.Y - t1 < GameConfig.LiquidMargin ||
+            position.X + t1 > canvasWidth - GameConfig.LiquidMargin ||
+            position.Y + t1 > canvasHeight - GameConfig.LiquidMargin)
         {
             return _tempList;
         }
@@ -187,11 +189,7 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
         if (prevPosition != null)
         {
             var offset = new Vector2(position.X - prevPosition.Value.X, position.Y - prevPosition.Value.Y);
-            var maxL = brush.Brush.Ffm * Mathf.Lerp(
-                brush.PixelHeight,
-                brush.PixelWidth,
-                Mathf.Abs(Mathf.Sin(offset.Angle() - rotation + Mathf.Pi * 0.5f))
-            );
+            var maxL = brush.Brush.Ffm * brush.PixelWidth;
             maxL = Mathf.Max(1, maxL);
             var len = offset.Length();
             if (len > maxL) //距离太大了, 需要补间
@@ -368,6 +366,7 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
             temp.TempTime = _runTime;
         }
 
+        temp.ForceClear = false;
         return temp;
     }
     

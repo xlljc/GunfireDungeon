@@ -19,8 +19,6 @@ public partial class Enemy : AiRole
     private static Dictionary<string, ExcelConfig.EnemyBase> _enemyAttributeMap =
         new Dictionary<string, ExcelConfig.EnemyBase>();
     
-    private BrushImageData _brushData;
-    
     /// <summary>
     /// 初始化敌人属性数据
     /// </summary>
@@ -65,8 +63,6 @@ public partial class Enemy : AiRole
     {
         base.OnInit();
         Camp = CampEnum.Camp2;
-        
-        _brushData = LiquidBrushManager.GetBrush("0001");
     }
 
     protected override RoleState OnCreateRoleState()
@@ -190,8 +186,6 @@ public partial class Enemy : AiRole
             //拾起武器操作
             DoPickUpWeapon();
         }
-        
-        DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[1]);
     }
 
     public override bool IsAllWeaponTotalAmmoEmpty()

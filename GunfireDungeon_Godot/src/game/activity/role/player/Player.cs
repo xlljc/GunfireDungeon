@@ -251,7 +251,7 @@ public partial class Player : Role
             TipRoot.Scale = new Vector2(-1, 1);
         }
         
-        DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
+        // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
     }
 
     private float _lqTimer;

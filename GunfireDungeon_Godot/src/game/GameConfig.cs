@@ -28,7 +28,7 @@ public static class GameConfig
     /// <summary>
     /// 液体画布可绘制区域边距
     /// </summary>
-    public const int LiquidMargin = 2;
+    public const int LiquidMargin = 1;
     
     /// <summary>
     /// 连接房间的过道宽度
