@@ -121,8 +121,7 @@ public partial class LiquidCanvas : Node2D, IDestroy
     /// <param name="rotation">旋转角度, 弧度制</param>
     public void DrawBrush(BrushImageData brush, ExcelConfig.LiquidLayer layer, Vector2I? prevPosition, Vector2I position, float rotation)
     {
-        LiquidLayerSprite liquidLayer;
-        if (!_liquidLayer.TryGetValue(layer.Id, out liquidLayer))
+        if (!_liquidLayer.TryGetValue(layer.Id, out var liquidLayer))
         {
             liquidLayer = new LiquidLayerSprite();
             liquidLayer.Init(_roomInfo, layer, this, ResourceManager.LoadTexture2D(layer.Texture), (int)layer.Hframes);
@@ -146,7 +145,7 @@ public partial class LiquidCanvas : Node2D, IDestroy
             temp.Layer = liquidLayer;
             if (temp.Pixel != null)
             {
-                temp.Pixel.Color.A = 0;
+                temp.Pixel.ForceClear = true;
             }
 
             temp.Pixel = item;

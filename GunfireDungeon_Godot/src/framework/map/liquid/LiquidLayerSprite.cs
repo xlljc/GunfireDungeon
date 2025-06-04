@@ -55,7 +55,7 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
         _material.SetShaderParameter("hframes", hFrames);
         _material.SetShaderParameter("origin_size", texture.GetSize());
         _material.SetShaderParameter("mask", _maskTexture);
-        SetMaskAlpha(0.2f);
+        SetMaskAlpha(0.35f);
     }
 
     public void SetMaskFrame(int frame)
@@ -271,7 +271,16 @@ public partial class LiquidLayerSprite : Sprite2D, IDestroy
     /// </summary>
     private bool UpdateImagePixel(LiquidPixel imagePixel)
     {
-        if (imagePixel.Color.A > 0)
+        if (imagePixel.ForceClear)
+        {
+            _changeFlag = true;
+            _maskImage.SetPixel(imagePixel.X, imagePixel.Y, new Color(0, 0, 0, 0));
+            imagePixel.IsRun = false;
+            imagePixel.IsUpdate = false;
+            imagePixel.ForceClear = false;
+            return true;
+        }
+        else if (imagePixel.Color.A > 0)
         {
             if (imagePixel.Timer > 0) //继续等待消散
             {

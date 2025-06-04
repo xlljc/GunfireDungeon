@@ -32,7 +32,7 @@ public partial class BrushBullet : Bullet
         //测试笔刷
         if (EffectiveAltitude < 0 || Altitude <= EffectiveAltitude)
         {
-            DrawLiquid(_brushData);
+            DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
         }
         else
         {
@@ -48,7 +48,7 @@ public partial class BrushBullet : Bullet
     public override void OnPlayCollisionEffect(KinematicCollision2D collision)
     {
         //测试笔刷
-        DrawLiquid(_brushData);
+        DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
         PlayCollisionEffect(collision, ResourcePath.prefab_effect_bullet_BulletSmoke0002_tscn);
     }
 

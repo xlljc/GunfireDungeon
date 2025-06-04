@@ -48,4 +48,8 @@ public class LiquidPixel
     /// 用于补间操作记录该像素点是否已经被绘制过, 以便于优化性能
     /// </summary>
     public bool TempFlag;
+    /// <summary>
+    /// 如果为true，则在下一次刷新中强制清除当前像素点
+    /// </summary>
+    public bool ForceClear;
 }

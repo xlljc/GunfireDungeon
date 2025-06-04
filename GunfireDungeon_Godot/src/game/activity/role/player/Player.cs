@@ -31,7 +31,7 @@ public partial class Player : Role
     //翻滚冷却计时器
     private float _rollCoolingTimer = 0;
     
-    private BrushImageData _brushData2;
+    private BrushImageData _brushData;
     private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
     
     public override void OnInit()
@@ -64,7 +64,7 @@ public partial class Player : Role
         
         //InitSubLine();
         
-        _brushData2 = LiquidBrushManager.GetBrush("0001");
+        _brushData = LiquidBrushManager.GetBrush("0001");
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
         
         // this.CallDelay(1f, () =>
@@ -251,7 +251,7 @@ public partial class Player : Role
             TipRoot.Scale = new Vector2(-1, 1);
         }
         
-        DrawLiquid(_brushData2);
+        DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
     }
 
     private float _lqTimer;
