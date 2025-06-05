@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Config;
+using Godot;
 
 /// <summary>
 /// 角色属性类
@@ -96,7 +97,73 @@ public class RoleState
     /// 翻滚冷却时间
     /// </summary>
     public float RollCoolingTime = 0.2f;
+    
+    /// <summary>
+    /// 物理属性伤害抗性
+    /// </summary>
+    public float PhysicalResist;
 
+    /// <summary>
+    /// 魔法属性伤害抗性
+    /// </summary>
+    public float MagicResist;
+
+    /// <summary>
+    /// 火焰属性伤害抗性
+    /// </summary>
+    public float FireResist;
+
+    /// <summary>
+    /// 冰霜属性伤害抗性
+    /// </summary>
+    public float IceResist;
+
+    /// <summary>
+    /// 雷电属性伤害抗性
+    /// </summary>
+    public float ThunderResist;
+
+    /// <summary>
+    /// 光明属性伤害抗性
+    /// </summary>
+    public float LightResist;
+
+    /// <summary>
+    /// 暗影属性伤害抗性
+    /// </summary>
+    public float DarkResist;
+
+    /// <summary>
+    /// 魔法属性伤害抗性
+    /// </summary>
+    public float RealResist;
+
+    /// <summary>
+    /// 计算抗性伤害
+    /// </summary>
+    public int CalcResistDamage(int damage, DamageType damageType)
+    {
+        switch (damageType)
+        {
+            case DamageType.Physical:
+                return Mathf.CeilToInt(damage * PhysicalResist);
+            case DamageType.Magic:
+                return Mathf.CeilToInt(damage * MagicResist);
+            case DamageType.Fire:
+                return Mathf.CeilToInt(damage * FireResist);
+            case DamageType.Ice:
+                return Mathf.CeilToInt(damage * IceResist);
+            case DamageType.Thunder:
+                return Mathf.CeilToInt(damage * ThunderResist);
+            case DamageType.Light:
+                return Mathf.CeilToInt(damage * LightResist);
+            case DamageType.Dark:
+                return Mathf.CeilToInt(damage * DarkResist);
+        }
+
+        return damage;
+    }
+    
     /// <summary>
     /// 攻击/发射后计算伤害
     /// </summary>

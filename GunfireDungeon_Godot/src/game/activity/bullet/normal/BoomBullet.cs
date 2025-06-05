@@ -61,7 +61,7 @@ public partial class BoomBullet : Bullet
         explode.Position = pos;
         explode.RotationDegrees = Utils.Random.RandomRangeInt(0, 360);
         explode.AddToActivityRootDeferred(RoomLayerEnum.YSortLayer);
-        explode.Init(BulletData, Camp, 25, BulletData.Harm, 50, BulletData.Repel);
+        explode.Init(BulletData, Camp, 25, BulletData.Harm, BulletData.DamageType, 50, BulletData.Repel);
         explode.RunPlay(BulletData.TriggerRole);
         if (AffiliationArea != null)
         {

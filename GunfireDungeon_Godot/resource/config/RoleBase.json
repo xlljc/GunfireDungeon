@@ -17,7 +17,15 @@
     "ActivePropsCapacity": 1,
     "PartPropCapacity": 10,
     "Camp": 2,
-    "__AiAttr": ""
+    "__AiAttr": "",
+    "PhysicalResist": 1,
+    "MagicResist": 1,
+    "FireResist": 1,
+    "IceResist": 1,
+    "ThunderResist": 1,
+    "LightResist": 1,
+    "DarkResist": 1,
+    "RealResist": 1
   },
   {
     "Id": "shopBoss0001",
@@ -33,7 +41,15 @@
     "ActivePropsCapacity": 0,
     "PartPropCapacity": 0,
     "Camp": 1,
-    "__AiAttr": ""
+    "__AiAttr": "",
+    "PhysicalResist": 1,
+    "MagicResist": 1,
+    "FireResist": 1,
+    "IceResist": 1,
+    "ThunderResist": 1,
+    "LightResist": 1,
+    "DarkResist": 1,
+    "RealResist": 1
   },
   {
     "Id": "enemy0001",
@@ -49,6 +65,14 @@
     "ActivePropsCapacity": 1,
     "PartPropCapacity": 0,
     "Camp": 3,
-    "__AiAttr": "enemy0001"
+    "__AiAttr": "enemy0001",
+    "PhysicalResist": 2,
+    "MagicResist": 1,
+    "FireResist": 1,
+    "IceResist": 1,
+    "ThunderResist": 1,
+    "LightResist": 1,
+    "DarkResist": 1,
+    "RealResist": 1
   }
 ]

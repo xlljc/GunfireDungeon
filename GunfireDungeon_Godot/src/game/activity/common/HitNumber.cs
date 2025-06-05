@@ -15,7 +15,10 @@ public partial class HitNumber : ActivityObject, IPoolItem
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 
-    public void SetNumber(uint number)
+    /// <summary>
+    /// 设置显示的伤害数字
+    /// </summary>
+    public void SetNumber(uint number, DamageType damageType)
     {
         NumberSprite.SetNumber(number);
     }

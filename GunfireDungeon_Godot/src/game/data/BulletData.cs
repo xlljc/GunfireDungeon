@@ -34,6 +34,11 @@ public class BulletData : IClone<BulletData>
     public int Harm;
 
     /// <summary>
+    /// 伤害类型
+    /// </summary>
+    public DamageType DamageType;
+
+    /// <summary>
     /// 击退值
     /// </summary>
     public float Repel;
@@ -96,6 +101,7 @@ public class BulletData : IClone<BulletData>
             BulletBase = BulletBase,
             TriggerRole = TriggerRole,
             Harm = Harm,
+            DamageType = DamageType,
             Repel = Repel,
             MaxDistance = MaxDistance,
             FlySpeed = FlySpeed,

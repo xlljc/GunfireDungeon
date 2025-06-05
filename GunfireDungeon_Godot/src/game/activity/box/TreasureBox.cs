@@ -35,7 +35,7 @@ public partial class TreasureBox : ObstacleObject
         weapon.Throw(Position, 2, 95, new Vector2(0, 11), 0);
     }
 
-    public override void Hurt(ActivityObject target, int damage, float angle)
+    public override void Hurt(ActivityObject target, int damage, DamageType damageType, float angle)
     {
         PlayHitAnimation();
     }

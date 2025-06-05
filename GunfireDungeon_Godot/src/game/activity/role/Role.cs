@@ -433,6 +433,15 @@ public abstract partial class Role : ActivityObject
         roleState.Acceleration = roleBase.Acceleration;
         roleState.Friction = roleBase.Friction;
 
+        roleState.PhysicalResist = roleBase.PhysicalResist;
+        roleState.MagicResist = roleBase.MagicResist;
+        roleState.FireResist = roleBase.FireResist;
+        roleState.IceResist = roleBase.IceResist;
+        roleState.ThunderResist = roleBase.ThunderResist;
+        roleState.LightResist = roleBase.LightResist;
+        roleState.DarkResist = roleBase.DarkResist;
+        roleState.RealResist = roleBase.RealResist;
+        
         var extraAttr = roleBase.ExtraAttr;
         if (extraAttr != null)
         {
@@ -1011,20 +1020,24 @@ public abstract partial class Role : ActivityObject
             activeItem.Use();
         }
     }
-    
+
     /// <summary>
     /// 受到伤害, 如果是在碰撞信号处理函数中调用该函数, 请使用 CallDeferred 来延时调用, 否则很有可能导致报错
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
     /// <param name="damage">伤害的量</param>
+    /// <param name="damageType">伤害类型</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    public virtual void HurtHandler(ActivityObject target, int damage, float angle)
+    public virtual void HurtHandler(ActivityObject target, int damage, DamageType damageType, float angle)
     {
         //受伤闪烁, 无敌状态, 或者已经死亡
         if (Invincible || IsDie)
         {
             return;
         }
+
+        //计算角色抗性后受到的伤害
+        damage = RoleState.CalcResistDamage(damage, damageType);
         
         //计算真正受到的伤害
         damage = OnHandlerHurt(damage);
@@ -1083,7 +1096,7 @@ public abstract partial class Role : ActivityObject
                 0
             );
             hitNumber.InheritVelocity(this);
-            hitNumber.SetNumber((uint)damage);
+            hitNumber.SetNumber((uint)damage, damageType);
         }
         
         //死亡判定
@@ -1749,7 +1762,7 @@ public abstract partial class Role : ActivityObject
                 o.AddRepelForce(v2);
             }
             
-            hurt.Hurt(this, damage, (pos - GlobalPosition).Angle());
+            hurt.Hurt(this, damage, DamageType.Physical, (pos - GlobalPosition).Angle());
         }
     }
 

@@ -11,7 +11,7 @@ public partial class ObstacleObject : ActivityObject, IHurt
         return true;
     }
 
-    public virtual void Hurt(ActivityObject target, int damage, float angle)
+    public virtual void Hurt(ActivityObject target, int damage, DamageType damageType, float angle)
     {
     }
 }

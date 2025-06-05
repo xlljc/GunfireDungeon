@@ -7,6 +7,7 @@
     "HarmRange": [
       4
     ],
+    "DamageType": 0,
     "RepelRange": [
       20
     ],
@@ -44,6 +45,7 @@
     "HarmRange": [
       4
     ],
+    "DamageType": 0,
     "RepelRange": [
       15
     ],
@@ -82,6 +84,7 @@
     "HarmRange": [
       3
     ],
+    "DamageType": 0,
     "RepelRange": [
       15
     ],
@@ -119,6 +122,7 @@
     "HarmRange": [
       10
     ],
+    "DamageType": 1,
     "RepelRange": [
       45
     ],
@@ -156,6 +160,7 @@
     "HarmRange": [
       4
     ],
+    "DamageType": 7,
     "RepelRange": [
       15
     ],
@@ -193,6 +198,7 @@
     "HarmRange": [
       20
     ],
+    "DamageType": 0,
     "RepelRange": [
       75
     ],
@@ -230,6 +236,7 @@
     "HarmRange": [
       30
     ],
+    "DamageType": 0,
     "RepelRange": [
       85
     ],
@@ -267,6 +274,7 @@
     "HarmRange": [
       5
     ],
+    "DamageType": 0,
     "RepelRange": [
       30
     ],
@@ -304,6 +312,7 @@
     "HarmRange": [
       4
     ],
+    "DamageType": 0,
     "RepelRange": [
       15
     ],
@@ -341,6 +350,7 @@
     "HarmRange": [
       15
     ],
+    "DamageType": 0,
     "RepelRange": [
       55
     ],
@@ -378,6 +388,7 @@
     "HarmRange": [
       7
     ],
+    "DamageType": 0,
     "RepelRange": [
       35
     ],
@@ -411,6 +422,7 @@
     "HarmRange": [
       25
     ],
+    "DamageType": 0,
     "RepelRange": [
       70
     ],

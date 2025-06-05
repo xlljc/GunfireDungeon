@@ -45,6 +45,20 @@ public static partial class ExcelConfig
         public int[] HarmRange;
 
         /// <summary>
+        /// 伤害类型 <br/>
+        /// Physical(0):物理伤害 <br/>
+        /// Magic(1):魔法伤害 <br/>
+        /// Fire(2):火焰伤害 <br/>
+        /// Ice(3):冰霜伤害 <br/>
+        /// Thunder(4):雷电伤害 <br/>
+        /// Light(5):光明伤害 <br/>
+        /// Dark(6):暗影伤害 <br/>
+        /// Real(7):真实伤害
+        /// </summary>
+        [JsonInclude]
+        public DamageType DamageType;
+
+        /// <summary>
         /// 造成伤害后击退值区间 <br/>
         /// 如果发射子弹,则按每发子弹算击退 <br/>
         /// 格式为[value]或者[min,max]
@@ -129,6 +143,7 @@ public static partial class ExcelConfig
             inst.Type = Type;
             inst.Prefab = Prefab;
             inst.HarmRange = HarmRange;
+            inst.DamageType = DamageType;
             inst.RepelRange = RepelRange;
             inst.DeviationAngleRange = DeviationAngleRange;
             inst.SpeedRange = SpeedRange;

@@ -96,6 +96,57 @@ public static partial class ExcelConfig
         public AiRoleAttr AiAttr;
 
         /// <summary>
+        /// 物理属性伤害抗性 <br/>
+        /// 如果为1，也就是受到的伤害为100%。 <br/>
+        /// 如果为0.5，就是受到的伤害为50% <br/>
+        /// 后面几个属性抗性意义相同
+        /// </summary>
+        [JsonInclude]
+        public float PhysicalResist;
+
+        /// <summary>
+        /// 魔法属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float MagicResist;
+
+        /// <summary>
+        /// 火焰属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float FireResist;
+
+        /// <summary>
+        /// 冰霜属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float IceResist;
+
+        /// <summary>
+        /// 雷电属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float ThunderResist;
+
+        /// <summary>
+        /// 光明属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float LightResist;
+
+        /// <summary>
+        /// 暗影属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float DarkResist;
+
+        /// <summary>
+        /// 魔法属性伤害抗性
+        /// </summary>
+        [JsonInclude]
+        public float RealResist;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public RoleBase Clone()
@@ -115,6 +166,14 @@ public static partial class ExcelConfig
             inst.PartPropCapacity = PartPropCapacity;
             inst.Camp = Camp;
             inst.AiAttr = AiAttr;
+            inst.PhysicalResist = PhysicalResist;
+            inst.MagicResist = MagicResist;
+            inst.FireResist = FireResist;
+            inst.IceResist = IceResist;
+            inst.ThunderResist = ThunderResist;
+            inst.LightResist = LightResist;
+            inst.DarkResist = DarkResist;
+            inst.RealResist = RealResist;
             return inst;
         }
     }

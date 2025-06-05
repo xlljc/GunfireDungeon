@@ -37,7 +37,6 @@ public partial class Player : Role
         base.OnInit();
 
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
-
         
         // debug用
         // DebugSet();
