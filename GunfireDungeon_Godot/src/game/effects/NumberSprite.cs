@@ -70,6 +70,17 @@ public partial class NumberSprite : Node2D, IDestroy
             sprite2D.Position  = new Vector2(index * 4 - 4 * (list.Count - 1) / 2f, 0);
         }
     }
+
+    /// <summary>
+    /// 设置显示颜色
+    /// </summary>
+    public void SetColor(Color color)
+    {
+        foreach (var sprite in _useList)
+        {
+            sprite.Modulate = color;
+        }
+    }
     
     /// <summary>
     /// 获取当前显示的数字值

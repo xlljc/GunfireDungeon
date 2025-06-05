@@ -66,7 +66,7 @@
     "PartPropCapacity": 0,
     "Camp": 3,
     "__AiAttr": "enemy0001",
-    "PhysicalResist": 2,
+    "PhysicalResist": 1,
     "MagicResist": 1,
     "FireResist": 1,
     "IceResist": 1,

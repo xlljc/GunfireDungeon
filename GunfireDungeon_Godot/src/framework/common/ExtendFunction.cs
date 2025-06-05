@@ -4,9 +4,9 @@ using DsUi;
 using Godot;
 
 /// <summary>
-/// 该类为 node 节点通用扩展函数类
+/// 该类为通用扩展函数类
 /// </summary>
-public static class NodeExtend
+public static class ExtendFunction
 {
     /// <summary>
     /// 获取 IHurt 绑定的 ActivityObject, 没有则返回 null

@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck8gvettbrllg"]
+[gd_scene load_steps=4 format=3 uid="uid://ck8gvettbrllg"]
 
 [ext_resource type="Script" uid="uid://b53x0md4b4ebj" path="res://src/game/effects/NumberSprite.cs" id="1_uexho"]
 [ext_resource type="Texture2D" uid="uid://co5el54075ifi" path="res://resource/sprite/common/Number.png" id="2_dp0jf"]
+[ext_resource type="Material" uid="uid://j8t31iuumvhr" path="res://resource/material/Outline.tres" id="2_iokuh"]
 
 [node name="NumberSprite" type="Node2D" node_paths=PackedStringArray("Templdate")]
 script = ExtResource("1_uexho")
 Templdate = NodePath("SpriteTemplate")
 
 [node name="SpriteTemplate" type="Sprite2D" parent="."]
+material = ExtResource("2_iokuh")
 texture = ExtResource("2_dp0jf")
 hframes = 10

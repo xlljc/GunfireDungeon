@@ -1087,8 +1087,8 @@ public abstract partial class Role : ActivityObject
         {
             var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
             hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
-            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.8f, damage * 1.2f), 20, 50, 0.01f);
-            var speedV = Utils.LinearApproximation(damage, 30, 80, 0.02f);
+            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.8f, damage * 1.2f), 25, 60, 0.01f);
+            var speedV = Utils.LinearApproximation(damage, 50, 120, 0.02f);
             hitNumber.Throw(Position,
                 8,
                 Utils.Random.RandomRangeFloat(speedV * 0.9f, speedV * 1.3f),

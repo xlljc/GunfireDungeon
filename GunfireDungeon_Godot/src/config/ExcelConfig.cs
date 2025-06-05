@@ -71,6 +71,15 @@ public static partial class ExcelConfig
     public static Dictionary<string, BulletBase> BulletBase_Map { get; private set; }
 
     /// <summary>
+    /// DamageConfig.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
+    /// </summary>
+    public static List<DamageConfig> DamageConfig_List { get; private set; }
+    /// <summary>
+    /// DamageConfig.xlsx表数据集合, 里 Map 形式存储, key 为 Id
+    /// </summary>
+    public static Dictionary<string, DamageConfig> DamageConfig_Map { get; private set; }
+
+    /// <summary>
     /// EditorObject.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
     /// </summary>
     public static List<EditorObject> EditorObject_List { get; private set; }
@@ -150,6 +159,7 @@ public static partial class ExcelConfig
         _InitAiRoleAttrConfig();
         _InitBuffPropBaseConfig();
         _InitBulletBaseConfig();
+        _InitDamageConfigConfig();
         _InitEditorObjectConfig();
         _InitLiquidBrushConfig();
         _InitLiquidLayerConfig();
@@ -291,6 +301,24 @@ public static partial class ExcelConfig
         {
             GD.PrintErr(e.ToString());
             throw new Exception("初始化表'BulletBase'失败!");
+        }
+    }
+    private static void _InitDamageConfigConfig()
+    {
+        try
+        {
+            var text = _ReadConfigAsText("res://resource/config/DamageConfig.json");
+            DamageConfig_List = JsonSerializer.Deserialize<List<DamageConfig>>(text);
+            DamageConfig_Map = new Dictionary<string, DamageConfig>();
+            foreach (var item in DamageConfig_List)
+            {
+                DamageConfig_Map.Add(item.Id, item);
+            }
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr(e.ToString());
+            throw new Exception("初始化表'DamageConfig'失败!");
         }
     }
     private static void _InitEditorObjectConfig()
