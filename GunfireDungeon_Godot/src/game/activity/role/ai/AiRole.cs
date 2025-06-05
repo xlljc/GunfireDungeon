@@ -112,7 +112,6 @@ public abstract partial class AiRole : Role
     public override void OnInit()
     {
         base.OnInit();
-        IsAi = true;
         
         StateController = AddComponent<StateController<AiRole, AIStateEnum>>();
         

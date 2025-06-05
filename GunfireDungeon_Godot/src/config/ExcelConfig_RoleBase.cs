@@ -5,7 +5,7 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
-    public partial class EnemyBase
+    public partial class RoleBase
     {
         /// <summary>
         /// 表Id
@@ -31,6 +31,13 @@ public static partial class ExcelConfig
         public int Hp;
 
         /// <summary>
+        /// 护盾值 <br/>
+        /// 敌人可以不用填写
+        /// </summary>
+        [JsonInclude]
+        public int Shield;
+
+        /// <summary>
         /// 移动速度
         /// </summary>
         [JsonInclude]
@@ -49,87 +56,75 @@ public static partial class ExcelConfig
         public float Friction;
 
         /// <summary>
-        /// 单次攻击间隔时间, 秒 <br/>
-        /// 注意, 敌人攻击后计算间隔时间会使用当前字段值与武器上的TriggerInterval叠加
+        /// 额外属性 <br/>
+        /// 根据不同类型角色拥有的不同的扩展属性
         /// </summary>
         [JsonInclude]
-        public float AttackInterval;
+        public Dictionary<string, System.Text.Json.JsonElement> ExtraAttr;
 
         /// <summary>
-        /// 是否可以拾起武器
+        /// 武器袋初始容量 <br/>
+        /// 可用于区分角色是否可以拾起武器
         /// </summary>
         [JsonInclude]
-        public bool CanPickUpWeapon;
+        public int WeaponCapacity;
 
         /// <summary>
-        /// 视野半径, 单位像素, 发现玩家后改视野范围可以穿墙
+        /// 主动道具袋初始容量
         /// </summary>
         [JsonInclude]
-        public float ViewRange;
+        public int ActivePropsCapacity;
 
         /// <summary>
-        /// 发现玩家后跟随玩家的视野半径
+        /// 零件道具袋初始容量
         /// </summary>
         [JsonInclude]
-        public float TailAfterViewRange;
+        public int PartPropCapacity;
 
         /// <summary>
-        /// 视野角度范围, 角度制
+        /// 默认所属阵营 <br/>
+        /// None（无阵营, 所有角色都视为敌人）：0 <br/>
+        /// Peace（和平阵营, 不会被攻击）：1 <br/>
+        /// Camp1~5（阵营1, 玩家，其他都是敌人）：2~6
         /// </summary>
         [JsonInclude]
-        public float ViewAngleRange;
+        public CampEnum Camp;
 
         /// <summary>
-        /// 掉落金币数量区间, 如果为负数或者0则不会掉落金币 <br/>
-        /// 格式为[value]或者[min,max]
+        /// 绑定的Ai属性
         /// </summary>
-        [JsonInclude]
-        public int[] Gold;
-
-        /// <summary>
-        /// 敌人死亡爆浆血液颜色, 填十六进制字符串(小写),  <br/>
-        /// 例如: ff0000 <br/>
-        /// 不填默认白色
-        /// </summary>
-        [JsonInclude]
-        public string BloodColor;
-
-        /// <summary>
-        /// 死亡时的尸体碎片
-        /// </summary>
-        public ActivityBase BodyFragment;
+        public AiRoleAttr AiAttr;
 
         /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
-        public EnemyBase Clone()
+        public RoleBase Clone()
         {
-            var inst = new EnemyBase();
+            var inst = new RoleBase();
             inst.Id = Id;
             inst.Activity = Activity;
             inst.Remark = Remark;
             inst.Hp = Hp;
+            inst.Shield = Shield;
             inst.MoveSpeed = MoveSpeed;
             inst.Acceleration = Acceleration;
             inst.Friction = Friction;
-            inst.AttackInterval = AttackInterval;
-            inst.CanPickUpWeapon = CanPickUpWeapon;
-            inst.ViewRange = ViewRange;
-            inst.TailAfterViewRange = TailAfterViewRange;
-            inst.ViewAngleRange = ViewAngleRange;
-            inst.Gold = Gold;
-            inst.BloodColor = BloodColor;
-            inst.BodyFragment = BodyFragment;
+            inst.ExtraAttr = ExtraAttr;
+            inst.WeaponCapacity = WeaponCapacity;
+            inst.ActivePropsCapacity = ActivePropsCapacity;
+            inst.PartPropCapacity = PartPropCapacity;
+            inst.Camp = Camp;
+            inst.AiAttr = AiAttr;
             return inst;
         }
     }
-    private class Ref_EnemyBase : EnemyBase
+    private class Ref_RoleBase : RoleBase
     {
         [JsonInclude]
         public string __Activity;
 
         [JsonInclude]
-        public string __BodyFragment;
+        public string __AiAttr;
 
     }
 }

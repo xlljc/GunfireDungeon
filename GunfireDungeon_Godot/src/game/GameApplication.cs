@@ -126,7 +126,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //初始化武器数据
         Weapon.InitWeaponAttribute();
         //初始化敌人数据
-        Enemy.InitEnemyAttribute();
+        Enemy.InitRoleAttribute();
         //初始化buff数据
         BuffProp.InitBuffAttribute();
         //初始化主动道具数据

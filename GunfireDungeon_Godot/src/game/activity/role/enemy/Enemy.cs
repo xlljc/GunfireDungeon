@@ -1,8 +1,5 @@
 
 using System;
-using System.Collections.Generic;
-using Config;
-using AiState;
 using Godot;
 
 /// <summary>
@@ -10,55 +7,6 @@ using Godot;
 /// </summary>
 public partial class Enemy : AiRole
 {
-    /// <summary>
-    /// 敌人属性
-    /// </summary>
-    private ExcelConfig.EnemyBase _enemyAttribute;
-
-    private static bool _init = false;
-    private static Dictionary<string, ExcelConfig.EnemyBase> _enemyAttributeMap =
-        new Dictionary<string, ExcelConfig.EnemyBase>();
-    
-    /// <summary>
-    /// 初始化敌人属性数据
-    /// </summary>
-    public static void InitEnemyAttribute()
-    {
-        if (_init)
-        {
-            return;
-        }
-
-        _init = true;
-        foreach (var enemyAttr in ExcelConfig.EnemyBase_List)
-        {
-            if (enemyAttr.Activity != null)
-            {
-                if (!_enemyAttributeMap.TryAdd(enemyAttr.Activity.Id, enemyAttr))
-                {
-                    Debug.LogError("发现重复注册的敌人属性: " + enemyAttr.Id);
-                }
-            }
-        }
-    }
-
-    /// <summary>
-    /// 根据 ActivityBase.Id 获取对应敌人的属性数据
-    /// </summary>
-    public static ExcelConfig.EnemyBase GetEnemyAttribute(string itemId)
-    {
-        if (itemId == null)
-        {
-            return null;
-        }
-        if (_enemyAttributeMap.TryGetValue(itemId, out var attr))
-        {
-            return attr;
-        }
-
-        throw new Exception($"敌人'{itemId}'没有在 EnemyBase 表中配置属性数据!");
-    }
-    
     public override void OnInit()
     {
         base.OnInit();
@@ -67,23 +15,21 @@ public partial class Enemy : AiRole
 
     protected override RoleState OnCreateRoleState()
     {
-        var roleState = new RoleState();
-        var enemyBase = GetEnemyAttribute(ActivityBase.Id).Clone();
-        _enemyAttribute = enemyBase;
+        var roleState = base.OnCreateRoleState();
 
-        MaxHp = enemyBase.Hp;
-        Hp = enemyBase.Hp;
-        roleState.CanPickUpWeapon = enemyBase.CanPickUpWeapon;
-        roleState.MoveSpeed = enemyBase.MoveSpeed;
-        roleState.Acceleration = enemyBase.Acceleration;
-        roleState.Friction = enemyBase.Friction;
-        ViewRange = enemyBase.ViewRange;
-        DefaultViewRange = enemyBase.ViewRange;
-        TailAfterViewRange = enemyBase.TailAfterViewRange;
-        AttackInterval = enemyBase.AttackInterval;
-        ViewAngleRange = enemyBase.ViewAngleRange;
+        var aiRoleAttr = roleState.RoleBase.AiAttr;
+        if (aiRoleAttr == null)
+        {
+            throw new Exception("敌人 " + roleState.RoleBase.Id + " 未配置AI属性");
+        }
+
+        ViewRange = aiRoleAttr.ViewRange;
+        DefaultViewRange = aiRoleAttr.ViewRange;
+        TailAfterViewRange = aiRoleAttr.TailAfterViewRange;
+        AttackInterval = aiRoleAttr.AttackInterval;
+        ViewAngleRange = aiRoleAttr.ViewAngleRange;
         
-        roleState.Gold = Mathf.Max(0, Utils.Random.RandomConfigRange(enemyBase.Gold));
+        roleState.Gold = Mathf.Max(0, Utils.Random.RandomConfigRange(aiRoleAttr.Gold));
         return roleState;
     }
 
@@ -104,9 +50,9 @@ public partial class Enemy : AiRole
     protected override void OnDie()
     {
         Color color;
-        if (!string.IsNullOrEmpty(_enemyAttribute.BloodColor))
+        if (!string.IsNullOrEmpty(RoleState.RoleBase.AiAttr.BloodColor))
         {
-            color = Color.FromHtml(_enemyAttribute.BloodColor);
+            color = Color.FromHtml(RoleState.RoleBase.AiAttr.BloodColor);
         }
         else
         {
@@ -123,12 +69,12 @@ public partial class Enemy : AiRole
         var realVelocity = GetRealVelocity();
         var velocity = (realVelocity * 1.5f).LimitLength(80);
         //创建敌人碎片
-        if (_enemyAttribute.BodyFragment != null)
+        if (RoleState.RoleBase.AiAttr.BodyFragment != null)
         {
             var count = Utils.Random.RandomRangeInt(3, 6);
             for (var i = 0; i < count; i++)
             {
-                var debris = Create(_enemyAttribute.BodyFragment);
+                var debris = Create(RoleState.RoleBase.AiAttr.BodyFragment);
                 debris.PutDown(effPos, RoomLayerEnum.NormalLayer);
                 debris.MoveController.AddForce(velocity);
                 
@@ -190,7 +136,7 @@ public partial class Enemy : AiRole
 
     public override bool IsAllWeaponTotalAmmoEmpty()
     {
-        if (!_enemyAttribute.CanPickUpWeapon)
+        if (!RoleState.CanPickUpWeapon)
         {
             return false;
         }

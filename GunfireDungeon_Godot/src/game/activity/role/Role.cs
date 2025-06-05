@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.Json;
 using Config;
 using DsUi;
 using Godot;
@@ -359,11 +360,97 @@ public abstract partial class Role : ActivityObject
     private float _addShieldVal = 0;
 
     /// <summary>
+    /// 角色属性
+    /// </summary>
+    private ExcelConfig.RoleBase _roleAttribute;
+
+    private static bool _init = false;
+    private static Dictionary<string, ExcelConfig.RoleBase> _roleAttributeMap = new Dictionary<string, ExcelConfig.RoleBase>();
+    
+    /// <summary>
+    /// 初始化角色属性数据
+    /// </summary>
+    public static void InitRoleAttribute()
+    {
+        if (_init)
+        {
+            return;
+        }
+
+        _init = true;
+        foreach (var roleAttr in ExcelConfig.RoleBase_List)
+        {
+            if (roleAttr.Activity != null)
+            {
+                if (!_roleAttributeMap.TryAdd(roleAttr.Activity.Id, roleAttr))
+                {
+                    Debug.LogError("发现重复注册的角色属性: " + roleAttr.Id);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 根据 ActivityBase.Id 获取对应角色的属性数据
+    /// </summary>
+    public static ExcelConfig.RoleBase GetRoleAttribute(string itemId)
+    {
+        if (itemId == null)
+        {
+            return null;
+        }
+        if (_roleAttributeMap.TryGetValue(itemId, out var attr))
+        {
+            return attr;
+        }
+
+        throw new Exception($"角色'{itemId}'没有在 RoleBase 表中配置属性数据!");
+    }
+    
+    /// <summary>
     /// 创建角色的 RoleState 对象
     /// </summary>
     protected virtual RoleState OnCreateRoleState()
     {
-        return new RoleState();
+        var roleBase = GetRoleAttribute(ActivityBase.Id).Clone();
+        var roleState = new RoleState(roleBase);
+        
+        MaxHp = roleBase.Hp;
+        Hp = roleBase.Hp;
+        
+        MaxShield = roleBase.Shield;
+        Shield = roleBase.Shield;
+        
+        Camp = roleBase.Camp;
+        IsAi = roleBase.AiAttr != null;
+        
+        WeaponPack.SetCapacity(roleBase.WeaponCapacity);
+        ActivePropsPack.SetCapacity(roleBase.ActivePropsCapacity);
+        PartPropPack.SetCapacity(roleBase.PartPropCapacity);
+        
+        roleState.CanPickUpWeapon = roleBase.WeaponCapacity > 0;
+        roleState.MoveSpeed = roleBase.MoveSpeed;
+        roleState.Acceleration = roleBase.Acceleration;
+        roleState.Friction = roleBase.Friction;
+
+        var extraAttr = roleBase.ExtraAttr;
+        if (extraAttr != null)
+        {
+            if (extraAttr.TryGetValue("RollSpeed", out var rollSpeed))
+            {
+                roleState.RollSpeed = rollSpeed.GetSingle();
+            }
+            if (extraAttr.TryGetValue("RollTime", out var rollTime))
+            {
+                roleState.RollTime = rollTime.GetSingle();
+            }
+            if (extraAttr.TryGetValue("RollCoolingTime", out var rollCoolingTime))
+            {
+                roleState.RollCoolingTime = rollCoolingTime.GetSingle();
+            }
+        }
+        
+        return roleState;
     }
     
     /// <summary>
@@ -503,16 +590,14 @@ public abstract partial class Role : ActivityObject
     
     public override void OnInit()
     {
-        RoleState = OnCreateRoleState();
-        ActivePropsPack = AddComponent<Package<ActiveProp, Role>>();
-        ActivePropsPack.SetCapacity(RoleState.CanPickUpWeapon ? 1 : 0);
         PartPropPack = AddComponent<PartPackage>();
-        PartPropPack.SetCapacity(25);
+        WeaponPack = AddComponent<Package<Weapon, Role>>();
+        ActivePropsPack = AddComponent<Package<ActiveProp, Role>>();
+        
+        RoleState = OnCreateRoleState();
         
         _startScale = Scale;
-        
         HurtArea.InitRole(this);
-        
         Face = FaceDirection.Right;
         
         //连接互动物体信号
@@ -522,10 +607,6 @@ public abstract partial class Role : ActivityObject
         InteractiveArea.AreaExited += _OnAreaExit;
         
         //------------------------
-        
-        WeaponPack = AddComponent<Package<Weapon, Role>>();
-        WeaponPack.SetCapacity(2);
-        
         MountPoint.Master = this;
         
         MeleeAttackCollision.Disabled = true;

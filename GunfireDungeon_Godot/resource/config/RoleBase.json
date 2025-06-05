@@ -1,0 +1,54 @@
+[
+  {
+    "Id": "role0001",
+    "__Activity": "role0001",
+    "Remark": "\u73A9\u5BB6",
+    "Hp": 30,
+    "Shield": 12,
+    "MoveSpeed": 120,
+    "Acceleration": 1500,
+    "Friction": 900,
+    "ExtraAttr": {
+      "RollSpeed": 170,
+      "RollTime": 0.015,
+      "RollCoolingTime": 0.2
+    },
+    "WeaponCapacity": 2,
+    "ActivePropsCapacity": 1,
+    "PartPropCapacity": 10,
+    "Camp": 2,
+    "__AiAttr": ""
+  },
+  {
+    "Id": "shopBoss0001",
+    "__Activity": "shopBoss0001",
+    "Remark": "\u5546\u5E97\u8001\u677F",
+    "Hp": 1000,
+    "Shield": 0,
+    "MoveSpeed": 0,
+    "Acceleration": 0,
+    "Friction": 0,
+    "ExtraAttr": null,
+    "WeaponCapacity": 0,
+    "ActivePropsCapacity": 0,
+    "PartPropCapacity": 0,
+    "Camp": 1,
+    "__AiAttr": ""
+  },
+  {
+    "Id": "enemy0001",
+    "__Activity": "enemy0001",
+    "Remark": "\u654C\u4EBA1",
+    "Hp": 20,
+    "Shield": 0,
+    "MoveSpeed": 20,
+    "Acceleration": 1500,
+    "Friction": 900,
+    "ExtraAttr": null,
+    "WeaponCapacity": 2,
+    "ActivePropsCapacity": 1,
+    "PartPropCapacity": 0,
+    "Camp": 3,
+    "__AiAttr": "enemy0001"
+  }
+]

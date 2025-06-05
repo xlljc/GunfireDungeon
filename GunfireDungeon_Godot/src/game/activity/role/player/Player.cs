@@ -20,8 +20,6 @@ public partial class Player : Role
     /// 玩家身上的状态机控制器
     /// </summary>
     public StateController<Player, PlayerStateEnum> StateController { get; private set; }
-
-    public PlayerRoleState PlayerRoleState { get; private set; }
     
     /// <summary>
     /// 是否可以翻滚
@@ -38,18 +36,7 @@ public partial class Player : Role
     {
         base.OnInit();
 
-        IsAi = false;
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
-        Camp = CampEnum.Camp1;
-
-        MaxHp = 30;
-        Hp = 30;
-        MaxShield = 12;
-        Shield = 12;
-
-        WeaponPack.SetCapacity(2);
-        ActivePropsPack.SetCapacity(1);
-        PartPropPack.SetCapacity(10);
 
         
         // debug用
@@ -111,13 +98,6 @@ public partial class Player : Role
             });
         });
 
-    }
-
-    protected override RoleState OnCreateRoleState()
-    {
-        var roleState = new PlayerRoleState();
-        PlayerRoleState = roleState;
-        return roleState;
     }
 
     protected override void Process(float delta)
@@ -434,7 +414,7 @@ public partial class Player : Role
     /// </summary>
     public void OverRoll()
     {
-        _rollCoolingTimer = PlayerRoleState.RollCoolingTime;
+        _rollCoolingTimer = RoleState.RollCoolingTime;
     }
 
     // protected override void DebugDraw()

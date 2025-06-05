@@ -7,6 +7,16 @@ using Config;
 /// </summary>
 public class RoleState
 {
+    public RoleState(ExcelConfig.RoleBase roleBase)
+    {
+        RoleBase = roleBase;
+    }
+    
+    /// <summary>
+    /// 角色原始配置数据
+    /// </summary>
+    public readonly ExcelConfig.RoleBase RoleBase;
+    
     /// <summary>
     /// 金币数量
     /// </summary>
@@ -71,6 +81,21 @@ public class RoleState
     /// 近战攻击间隔时间
     /// </summary>
     public float MeleeAttackTime = 0.5f;
+    
+    /// <summary>
+    /// 翻滚速度
+    /// </summary>
+    public float RollSpeed = 170f;
+
+    /// <summary>
+    /// 翻滚持续时间
+    /// </summary>
+    public float RollTime = 0.15f;
+    
+    /// <summary>
+    /// 翻滚冷却时间
+    /// </summary>
+    public float RollCoolingTime = 0.2f;
 
     /// <summary>
     /// 攻击/发射后计算伤害
