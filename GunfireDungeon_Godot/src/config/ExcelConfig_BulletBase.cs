@@ -38,14 +38,14 @@ public static partial class ExcelConfig
         public string Prefab;
 
         /// <summary>
-        /// 造成的伤害区间 <br/>
+        /// 造成的伤害区间，可填多段伤害，多段伤害可造成不同属性的伤害，伤害类型在'DamageType'字段配置 <br/>
         /// 格式为[value]或者[min,max]
         /// </summary>
         [JsonInclude]
-        public int[] HarmRange;
+        public int[][] HarmRange;
 
         /// <summary>
-        /// 伤害类型 <br/>
+        /// 伤害类型，对应'HarmRange'中的配置，一对一配置 <br/>
         /// Physical(0):物理伤害 <br/>
         /// Magic(1):魔法伤害 <br/>
         /// Fire(2):火焰伤害 <br/>
@@ -56,7 +56,7 @@ public static partial class ExcelConfig
         /// Real(7):真实伤害
         /// </summary>
         [JsonInclude]
-        public DamageType DamageType;
+        public DamageType[] DamageType;
 
         /// <summary>
         /// 造成伤害后击退值区间 <br/>

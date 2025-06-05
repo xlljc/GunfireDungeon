@@ -178,8 +178,8 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            Harm = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
-            DamageType = param.Bullet.DamageType,
+            HarmArr = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
+            DamageTypeArr = param.Bullet.DamageType,
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             FlySpeed = Utils.Random.RandomConfigRange(param.Bullet.SpeedRange),
@@ -194,7 +194,12 @@ public static class FireManager
         {
             //data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
             var roleState = weapon.TriggerRole.RoleState;
-            data.Harm = roleState.CalcDamage(data.Harm);
+            
+            for (var i = 0; i < data.HarmArr.Length; i++)
+            {
+                data.HarmArr[i] = roleState.CalcDamage(data.HarmArr[i], data.DamageTypeArr[i]);
+            }
+            
             data.Repel = roleState.CalcBulletRepel(data.Repel);
             data.FlySpeed = roleState.CalcBulletSpeed(data.FlySpeed);
             data.MaxDistance = roleState.CalcBulletDistance(data.MaxDistance);
@@ -220,8 +225,8 @@ public static class FireManager
             Weapon = null,
             BulletBase = param.Bullet,
             TriggerRole = role,
-            Harm = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
-            DamageType = param.Bullet.DamageType,
+            HarmArr = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
+            DamageTypeArr = param.Bullet.DamageType,
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             FlySpeed = Utils.Random.RandomConfigRange(param.Bullet.SpeedRange),
@@ -244,7 +249,10 @@ public static class FireManager
         var deviationAngle = Utils.Random.RandomConfigRange(param.Bullet.DeviationAngleRange);
         data.Altitude = role.GetFirePointAltitude();
         var roleState = role.RoleState;
-        data.Harm = roleState.CalcDamage(data.Harm);
+        for (var i = 0; i < data.HarmArr.Length; i++)
+        {
+            data.HarmArr[i] = roleState.CalcDamage(data.HarmArr[i], data.DamageTypeArr[i]);
+        }
         data.Repel = roleState.CalcBulletRepel(data.Repel);
         data.FlySpeed = roleState.CalcBulletSpeed(data.FlySpeed);
         data.MaxDistance = roleState.CalcBulletDistance(data.MaxDistance);
@@ -269,8 +277,8 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            Harm = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
-            DamageType = param.Bullet.DamageType,
+            HarmArr = Utils.Random.RandomConfigRange(param.Bullet.HarmRange),
+            DamageTypeArr = param.Bullet.DamageType,
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             BounceCount = Utils.Random.RandomConfigRange(param.Bullet.BounceCount),
@@ -283,7 +291,10 @@ public static class FireManager
         if (weapon.TriggerRole != null)
         {
             var roleState = weapon.TriggerRole.RoleState;
-            data.Harm = roleState.CalcDamage(data.Harm);
+            for (var i = 0; i < data.HarmArr.Length; i++)
+            {
+                data.HarmArr[i] = roleState.CalcDamage(data.HarmArr[i], data.DamageTypeArr[i]);
+            }
             data.Repel = roleState.CalcBulletRepel(data.Repel);
             data.BounceCount = roleState.CalcBulletBounceCount(data.BounceCount);
             deviationAngle = roleState.CalcBulletDeviationAngle(deviationAngle);

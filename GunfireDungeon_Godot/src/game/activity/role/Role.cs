@@ -1050,7 +1050,11 @@ public abstract partial class Role : ActivityObject
         }
         else //没有护盾
         {
-            damage = RoleState.CalcHurtDamage(damage);
+            if (damageType != DamageType.Real) //不为真实伤时才能计算伤害
+            {
+                damage = RoleState.CalcHurtDamage(damage, damageType);
+            }
+            
             if (damage > 0)
             {
                 Hp -= damage;
@@ -1087,8 +1091,8 @@ public abstract partial class Role : ActivityObject
         {
             var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
             hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
-            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.8f, damage * 1.2f), 25, 60, 0.01f);
-            var speedV = Utils.LinearApproximation(damage, 50, 120, 0.02f);
+            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.7f, damage * 1.3f), 25, 60, 0.005f);
+            var speedV = Utils.LinearApproximation(damage, 50, 120, 0.01f);
             hitNumber.Throw(Position,
                 8,
                 Utils.Random.RandomRangeFloat(speedV * 0.9f, speedV * 1.3f),
@@ -1749,7 +1753,7 @@ public abstract partial class Role : ActivityObject
         if (hurt.CanHurt(Camp))
         {
             var damage = Utils.Random.RandomConfigRange(activeWeapon.Attribute.MeleeAttackHarmRange);
-            damage = RoleState.CalcDamage(damage);
+            damage = RoleState.CalcDamage(damage, DamageType.Physical);
 
             var o = hurt.GetActivityObject();
             var pos = hurt.GetPosition();
@@ -1762,7 +1766,7 @@ public abstract partial class Role : ActivityObject
                 o.AddRepelForce(v2);
             }
             
-            hurt.Hurt(this, damage, DamageType.Physical, (pos - GlobalPosition).Angle());
+            hurt.Hurt(this, [damage], [DamageType.Physical], (pos - GlobalPosition).Angle());
         }
     }
 

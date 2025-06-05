@@ -37,8 +37,8 @@ public partial class Explode : Area2D, IPoolItem
 
     private bool _init = false;
     private float _hitRadius;
-    private int _harm;
-    private DamageType _damageType;
+    private int[] _harm;
+    private DamageType[] _damageType;
     private float _repelledRadius;
     private float _maxRepelled;
 
@@ -68,7 +68,7 @@ public partial class Explode : Area2D, IPoolItem
     /// <param name="damageType">伤害类型</param>
     /// <param name="repelledRadius">击退半径</param>
     /// <param name="maxRepelled">最大击退速度</param>
-    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, int harm, DamageType damageType, float repelledRadius, float maxRepelled)
+    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, int[] harm, DamageType[] damageType, float repelledRadius, float maxRepelled)
     {
         if (!_init)
         {

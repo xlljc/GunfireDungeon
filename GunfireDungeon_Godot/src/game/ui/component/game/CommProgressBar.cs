@@ -9,7 +9,7 @@ public partial class CommProgressBar : ColorRect
     /// <summary>
     /// 控制增长速率的因子，值越小增长越慢
     /// </summary>
-    private const float ScalingFactor = 0.002f;
+    private const float ScalingFactor = 0.0015f;
 
     /// <summary>
     /// 显示数字的标签

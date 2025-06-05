@@ -29,14 +29,14 @@ public class BulletData : IClone<BulletData>
     public Role TriggerRole;
     
     /// <summary>
-    /// 造成的伤害
+    /// 造成的伤害列表
     /// </summary>
-    public int Harm;
+    public int[] HarmArr;
 
     /// <summary>
-    /// 伤害类型
+    /// 伤害类型列表
     /// </summary>
-    public DamageType DamageType;
+    public DamageType[] DamageTypeArr;
 
     /// <summary>
     /// 击退值
@@ -100,8 +100,8 @@ public class BulletData : IClone<BulletData>
             Weapon = Weapon,
             BulletBase = BulletBase,
             TriggerRole = TriggerRole,
-            Harm = Harm,
-            DamageType = DamageType,
+            HarmArr = HarmArr,
+            DamageTypeArr = DamageTypeArr,
             Repel = Repel,
             MaxDistance = MaxDistance,
             FlySpeed = FlySpeed,

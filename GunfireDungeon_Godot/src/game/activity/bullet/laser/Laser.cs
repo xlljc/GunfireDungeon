@@ -234,7 +234,7 @@ public partial class Laser : Area2D, IBullet
             
             //造成伤害
             var target = BulletData.TriggerRole.IsDestroyed ? null : BulletData.TriggerRole;
-            hurt.Hurt(target, BulletData.Harm, BulletData.DamageType, Rotation);
+            hurt.Hurt(target, BulletData.HarmArr, BulletData.DamageTypeArr, Rotation);
         }
     }
 

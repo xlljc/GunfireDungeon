@@ -31,8 +31,11 @@ public partial class HurtArea : Area2D, IHurt
         return Master.IsEnemy(targetCamp);
     }
 
-    public void Hurt(ActivityObject target, int damage, DamageType damageType, float angle)
+    public void Hurt(ActivityObject target, int[] damage, DamageType[] damageType, float angle)
     {
-        Master.CallDeferred(nameof(Master.HurtHandler), target, damage, (int)damageType, angle);
+        for (var i = 0; i < damage.Length; i++)
+        {
+            Master.CallDeferred(nameof(Master.HurtHandler), target, damage[i], (int)damageType[i], angle);
+        }
     }
 }

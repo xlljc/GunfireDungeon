@@ -141,7 +141,7 @@ public partial class ToolsPanel : Tools
             var hurt = ((Enemy)enemy).HurtArea;
             if (hurt.CanHurt(player.Camp))
             {
-                hurt.Hurt(player, 10000, DamageType.Real, 0);
+                hurt.Hurt(player, [10000], [DamageType.Real], 0);
             }
         }
     }

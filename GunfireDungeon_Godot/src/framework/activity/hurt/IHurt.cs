@@ -16,5 +16,5 @@ public interface IHurt
     /// <param name="damage">伤害的量</param>
     /// <param name="damageType">伤害类型</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    void Hurt(ActivityObject target, int damage, DamageType damageType, float angle);
+    void Hurt(ActivityObject target, int[] damage, DamageType[] damageType, float angle);
 }

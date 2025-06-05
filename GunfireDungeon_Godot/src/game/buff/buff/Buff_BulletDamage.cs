@@ -43,7 +43,7 @@ public class Buff_BulletDamage : BuffFragment
         }
     }
 
-    private void CalcDamage1(int originDamage, RefValue<int> refValue)
+    private void CalcDamage1(int originDamage, DamageType damageType, RefValue<int> refValue)
     {
         if (Role.WeaponPack.ActiveItem != null && Role.WeaponPack.ActiveItem.Attribute.IsMelee)
         {
@@ -52,7 +52,7 @@ public class Buff_BulletDamage : BuffFragment
         refValue.Value += Mathf.CeilToInt(_value);
     }
     
-    private void CalcDamage2(int originDamage, RefValue<int> refValue)
+    private void CalcDamage2(int originDamage, DamageType damageType, RefValue<int> refValue)
     {
         if (Role.WeaponPack.ActiveItem != null && Role.WeaponPack.ActiveItem.Attribute.IsMelee)
         {
