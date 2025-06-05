@@ -233,29 +233,10 @@ public static partial class ExcelConfig
         public float ScatteringRangeBackDelayTime;
 
         /// <summary>
-        /// 开火后相机抖动强度,只有玩家拾起武器开火才会抖动相机
-        /// </summary>
-        [JsonInclude]
-        public float CameraShake;
-
-        /// <summary>
-        /// 后坐力区间 (仅用于开火后武器身抖动) <br/>
-        /// 格式为[value]或者[min,max]
-        /// </summary>
-        [JsonInclude]
-        public float[] BacklashRange;
-
-        /// <summary>
         /// 后坐力偏移回归回归速度
         /// </summary>
         [JsonInclude]
         public float BacklashRegressionSpeed;
-
-        /// <summary>
-        /// 开火后武器口上抬角度
-        /// </summary>
-        [JsonInclude]
-        public float UpliftAngle;
 
         /// <summary>
         /// 武器默认上抬角度
@@ -411,10 +392,7 @@ public static partial class ExcelConfig
             inst.ScatteringRangeAddValue = ScatteringRangeAddValue;
             inst.ScatteringRangeBackSpeed = ScatteringRangeBackSpeed;
             inst.ScatteringRangeBackDelayTime = ScatteringRangeBackDelayTime;
-            inst.CameraShake = CameraShake;
-            inst.BacklashRange = BacklashRange;
             inst.BacklashRegressionSpeed = BacklashRegressionSpeed;
-            inst.UpliftAngle = UpliftAngle;
             inst.DefaultAngle = DefaultAngle;
             inst.UpliftAngleRestore = UpliftAngleRestore;
             inst.Shell = Shell;

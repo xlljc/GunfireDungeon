@@ -122,6 +122,25 @@ public static partial class ExcelConfig
         public int[] Penetration;
 
         /// <summary>
+        /// 开火后相机抖动强度,只有玩家拾起武器开火才会抖动相机
+        /// </summary>
+        [JsonInclude]
+        public float CameraShake;
+
+        /// <summary>
+        /// 后坐力区间 (仅用于开火后武器身抖动) <br/>
+        /// 格式为[value]或者[min,max]
+        /// </summary>
+        [JsonInclude]
+        public float[] BacklashRange;
+
+        /// <summary>
+        /// 开火后武器口上抬角度
+        /// </summary>
+        [JsonInclude]
+        public float UpliftAngle;
+
+        /// <summary>
         /// 射击音效
         /// </summary>
         public Sound ShootSound;
@@ -152,6 +171,9 @@ public static partial class ExcelConfig
             inst.VerticalSpeed = VerticalSpeed;
             inst.BounceCount = BounceCount;
             inst.Penetration = Penetration;
+            inst.CameraShake = CameraShake;
+            inst.BacklashRange = BacklashRange;
+            inst.UpliftAngle = UpliftAngle;
             inst.ShootSound = ShootSound;
             inst.FireEffect = FireEffect;
             return inst;

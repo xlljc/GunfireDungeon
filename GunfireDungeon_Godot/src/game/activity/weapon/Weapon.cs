@@ -1245,13 +1245,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                 PlaySpriteAnimation(AnimatorNames.Fire);
             }
         }
-
-        if (result.HasValue(PlanningParam.FirstBullet))
-        {
-            //播放射击音效
-            PlayShootSound(result.GetValue<ExcelConfig.BulletBase>(PlanningParam.FirstBullet).ShootSound);
-        }
-       
+        
         //抛弹
         if (!Attribute.ReloadThrowShell && (Attribute.ContinuousShoot || !Attribute.ManualBeLoaded))
         {
@@ -1260,33 +1254,57 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
 
         //触发开火函数
         OnFire();
-        
-        //开火添加散射值
-        ScatteringRangeAddHandler();
-        
-        //武器的旋转角度
-        tempAngle -= Attribute.UpliftAngle;
-        _fireAngle = tempAngle;
-        
-        if (Master != null) //被拾起
-        {
-            //武器身位置
-            var max = Mathf.Abs(Mathf.Max(Utils.GetConfigRangeStart(Attribute.BacklashRange), Utils.GetConfigRangeEnd(Attribute.BacklashRange)));
-            _currBacklashLength = Mathf.Clamp(
-                _currBacklashLength - Utils.Random.RandomConfigRange(Attribute.BacklashRange),
-                -max, max
-            );
-            Position = new Vector2(_currBacklashLength, 0).Rotated(Rotation);
-            RotationDegrees = tempAngle;
-        }
-        else //在地上
-        {
-            var v = Utils.Random.RandomConfigRange(Attribute.BacklashRange) * 15;
-            var externalForce = MoveController.AddForce(new Vector2(-v, 0).Rotated(Rotation));
-            externalForce.RotationSpeed = -Mathf.DegToRad(50);
-            externalForce.RotationResistance = Mathf.DegToRad(80);
-        }
 
+        //这里判断是否发射出去子弹
+        if (result.HasValue(PlanningParam.FirstBullet))
+        {
+            var bulletBase = result.GetValue<ExcelConfig.BulletBase>(PlanningParam.FirstBullet);
+            //播放射击音效
+            PlayShootSound(bulletBase.ShootSound);
+            //开火特效
+            if (!string.IsNullOrEmpty(bulletBase.FireEffect))
+            {
+                var effect = ObjectManager.GetPoolItem<IEffect>(bulletBase.FireEffect);
+                var sprite = (Node2D)effect;
+                sprite.Position = GetLocalFirePosition();
+                AddChild(sprite);
+                effect.PlayEffect();
+            }
+            
+            //开火添加散射值
+            ScatteringRangeAddHandler();
+        
+            //武器的旋转角度
+            tempAngle -= bulletBase.UpliftAngle;
+            _fireAngle = tempAngle;
+            
+            if (Master == World.Player)
+            {
+                //创建抖动
+                GameCamera.Main.DirectionalShake(Vector2.Right.Rotated(GlobalRotation) * bulletBase.CameraShake);
+            }
+        
+            if (Master != null) //被拾起
+            {
+                //武器身位置
+                var max = Mathf.Abs(Mathf.Max(Utils.GetConfigRangeStart(bulletBase.BacklashRange), Utils.GetConfigRangeEnd(bulletBase.BacklashRange)));
+                _currBacklashLength = Mathf.Clamp(
+                    _currBacklashLength - Utils.Random.RandomConfigRange(bulletBase.BacklashRange),
+                    -max, max
+                );
+                Position = new Vector2(_currBacklashLength, 0).Rotated(Rotation);
+                RotationDegrees = tempAngle;
+            }
+            else //在地上
+            {
+                var v = Utils.Random.RandomConfigRange(bulletBase.BacklashRange) * 15;
+                var externalForce = MoveController.AddForce(new Vector2(-v, 0).Rotated(Rotation));
+                externalForce.RotationSpeed = -Mathf.DegToRad(50);
+                externalForce.RotationResistance = Mathf.DegToRad(80);
+            }
+        }
+       
+        
         if (IsInGround())
         {
             //在地上弹药打光

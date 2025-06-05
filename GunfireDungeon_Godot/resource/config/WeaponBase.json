@@ -47,13 +47,7 @@
     "ScatteringRangeAddValue": 4,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 4,
-    "BacklashRange": [
-      3,
-      5
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 20,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0001",
@@ -118,13 +112,7 @@
     "ScatteringRangeAddValue": 4,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 4,
-    "BacklashRange": [
-      3,
-      5
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 20,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0001",
@@ -196,13 +184,7 @@
     "ScatteringRangeAddValue": 3,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 2,
-    "BacklashRange": [
-      2,
-      4
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 10,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0001",
@@ -267,13 +249,7 @@
     "ScatteringRangeAddValue": 3,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 2,
-    "BacklashRange": [
-      2,
-      4
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 10,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0001",
@@ -345,13 +321,7 @@
     "ScatteringRangeAddValue": 20,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 4,
-    "BacklashRange": [
-      5,
-      6
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 15,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0002",
@@ -416,13 +386,7 @@
     "ScatteringRangeAddValue": 20,
     "ScatteringRangeBackSpeed": 40,
     "ScatteringRangeBackDelayTime": 0.5,
-    "CameraShake": 4,
-    "BacklashRange": [
-      5,
-      6
-    ],
     "BacklashRegressionSpeed": 35,
-    "UpliftAngle": 15,
     "DefaultAngle": 0,
     "UpliftAngleRestore": 1,
     "__Shell": "shell0002",

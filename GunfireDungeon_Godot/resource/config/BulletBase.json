@@ -38,6 +38,12 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
+    ],
+    "UpliftAngle": 10,
     "__ShootSound": "shooting0005",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
@@ -69,8 +75,8 @@
       -1
     ],
     "DistanceRange": [
-      150,
-      180
+      180,
+      230
     ],
     "VerticalSpeed": [
       0
@@ -81,6 +87,12 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      5,
+      6
+    ],
+    "UpliftAngle": 15,
     "__ShootSound": "shooting0003",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
@@ -91,16 +103,11 @@
     "Prefab": "bullet0003",
     "HarmRange": [
       [
-        7
-      ],
-      [
-        2,
-        5
+        15
       ]
     ],
     "DamageType": [
-      0,
-      2
+      0
     ],
     "RepelRange": [
       15
@@ -128,6 +135,12 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 4,
+    "BacklashRange": [
+      3,
+      5
+    ],
+    "UpliftAngle": 20,
     "__ShootSound": "shooting0004",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
@@ -138,7 +151,7 @@
     "Prefab": "bullet0006",
     "HarmRange": [
       [
-        35
+        30
       ]
     ],
     "DamageType": [
@@ -170,6 +183,12 @@
     "Penetration": [
       1
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      3
+    ],
+    "UpliftAngle": 16,
     "__ShootSound": "shooting0012",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0004.tscn"
   },
@@ -212,6 +231,12 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
+    ],
+    "UpliftAngle": 15,
     "__ShootSound": "shooting0012",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
@@ -254,6 +279,12 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
+    ],
+    "UpliftAngle": 15,
     "__ShootSound": "shooting0012",
     "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
@@ -290,6 +321,9 @@
       0
     ],
     "Penetration": null,
+    "CameraShake": 0,
+    "BacklashRange": null,
+    "UpliftAngle": 0,
     "__ShootSound": "",
     "FireEffect": ""
   },
@@ -322,6 +356,9 @@
     "VerticalSpeed": null,
     "BounceCount": null,
     "Penetration": null,
+    "CameraShake": 0,
+    "BacklashRange": null,
+    "UpliftAngle": 0,
     "__ShootSound": "",
     "FireEffect": ""
   }
