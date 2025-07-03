@@ -1,0 +1,33 @@
+[
+  {
+    "Id": "0",
+    "Name": "\u71C3\u70E7",
+    "Gradient": [
+      1
+    ],
+    "LostSpeed": 30,
+    "Config": null,
+    "Details": "\u6BCF\u79D2\u6263\u9664\uFF083%\u6700\u5927\u751F\u547D\u503C\u002B5\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6301\u7EED10\u79D2",
+    "Icon": "res://resource/sprite/tip/Fire.png"
+  },
+  {
+    "Id": "1",
+    "Name": "\u4E2D\u6BD2",
+    "Gradient": [
+      1,
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5,
+      1.6,
+      1.7,
+      1.8,
+      1.9
+    ],
+    "LostSpeed": 20,
+    "Config": null,
+    "Details": "\u7D2F\u8BA1\u4E2D\u6BD2\u53EF\u4EE5\u53E0\u52A0\u5C42\u6570\uFF0C\u6BCF\u5C42\u6BCF\u79D2\u53D7\u5230\uFF082%\u6700\u5927\u751F\u547D\u503C\u002B2\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6BCF\u5C42\u6301\u7EED8\u79D2",
+    "Icon": "res://resource/sprite/tip/Poison.png"
+  }
+]

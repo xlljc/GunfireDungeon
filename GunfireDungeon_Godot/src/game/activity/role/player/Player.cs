@@ -10,9 +10,9 @@ using UI.game.RoomUI;
 /// 玩家角色基类, 所有角色都必须继承该类
 /// </summary>
 public partial class Player : Role
-{
+{ 
     /// <summary>
-    /// 当玩家第一次进入房间时调用
+    /// 当玩家第一次进入房间时调用l;'lo;l.,
     /// </summary>
     public event Action<RoomInfo> OnFirstEnterRoomEvent;
     
@@ -221,16 +221,9 @@ public partial class Player : Role
         //     }
         // }
         
-        if (Face == FaceDirection.Right)
-        {
-            TipRoot.Scale = Vector2.One;
-        }
-        else
-        {
-            TipRoot.Scale = new Vector2(-1, 1);
-        }
-        
         // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
+        
+        AddAbnormalStateValue(AbnormalStateType.Burning, 1);
     }
 
     private float _lqTimer;

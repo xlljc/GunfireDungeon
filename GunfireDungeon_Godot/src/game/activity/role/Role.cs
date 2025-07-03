@@ -97,13 +97,7 @@ public abstract partial class Role : ActivityObject
     /// 用于提示状态的根节点
     /// </summary>
     [Export, ExportFillNode]
-    public Node2D TipRoot { get; set; }
-    
-    /// <summary>
-    /// 用于提示当前敌人状态
-    /// </summary>
-    [Export, ExportFillNode]
-    public AnimatedSprite2D TipSprite { get; set; }
+    public RoleTip TipRoot { get; set; }
     
     /// <summary>
     /// 动画播放器
@@ -358,6 +352,8 @@ public abstract partial class Role : ActivityObject
     private float _shieldRecoveryTimer = 0;
     //护盾恢复值小数部分，大于1自动往 Shiel 上加
     private float _addShieldVal = 0;
+    //异常状态表
+    private Dictionary<string, TipState> _abnormalStateDir;
 
     /// <summary>
     /// 角色属性
@@ -605,6 +601,7 @@ public abstract partial class Role : ActivityObject
         
         RoleState = OnCreateRoleState();
         
+        TipRoot.Role = this;
         _startScale = Scale;
         HurtArea.InitRole(this);
         Face = FaceDirection.Right;
@@ -768,15 +765,6 @@ public abstract partial class Role : ActivityObject
                     prop.UpdateCoroutine(delta);
                 }
             }
-        }
-        
-        if (Face == FaceDirection.Right)
-        {
-            TipRoot.Scale = Vector2.One;
-        }
-        else
-        {
-            TipRoot.Scale = new Vector2(-1, 1);
         }
     }
 
@@ -1207,11 +1195,15 @@ public abstract partial class Role : ActivityObject
             {
                 RotationDegrees = 0;
                 Scale = _startScale;
+                
+                TipRoot.Scale = Vector2.One;
             }
             else
             {
                 RotationDegrees = 180;
                 Scale = new Vector2(_startScale.X, -_startScale.Y);
+                
+                TipRoot.Scale = new Vector2(-1, 1);
             }
         }
     }
@@ -1796,5 +1788,28 @@ public abstract partial class Role : ActivityObject
             OnShootBulletEvent(this, weapon, fireRotation, bullet);
         }
         //throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// 添加异常状态累计量值
+    /// </summary>
+    public void AddAbnormalStateValue(AbnormalStateType type, float value)
+    {
+        if (_abnormalStateDir == null)
+        {
+            _abnormalStateDir = new Dictionary<string, TipState>();
+        }
+        
+        var id = ((int)type).ToString();
+        if (!_abnormalStateDir.TryGetValue(id, out var tipState))
+        {
+            var config = ExcelConfig.AbnormalStateConfig_Map[id];
+            var state = TipRoot.CreateTipState(config);
+            tipState = state;
+            _abnormalStateDir.Add(id, tipState);
+            TipRoot.RefreshTipSpritePosition();
+        }
+        
+        tipState.AddAbnormalStateValue(value);
     }
 }

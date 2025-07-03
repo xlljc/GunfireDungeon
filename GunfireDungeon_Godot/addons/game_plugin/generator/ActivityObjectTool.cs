@@ -56,17 +56,6 @@ public static class ActivityObjectTool
             {
 
             }
-                break;
-            //
-            case nameof(Role.TipSprite):
-            {
-                if (type.IsAssignableTo(typeof(Role)))
-                {
-                    var sprite = (AnimatedSprite2D)node;
-                    sprite.SpriteFrames =
-                        ResourceManager.Load<SpriteFrames>(ResourcePath.resource_spriteFrames_role_Role_tip_tres);
-                }
-            }
 
                 break;
         }

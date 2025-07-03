@@ -56,6 +56,13 @@ public static partial class ExcelConfig
         public float Friction;
 
         /// <summary>
+        /// 身高 <br/>
+        /// 用于显示头顶状态属性的位置
+        /// </summary>
+        [JsonInclude]
+        public int Height;
+
+        /// <summary>
         /// 额外属性 <br/>
         /// 根据不同类型角色拥有的不同的扩展属性
         /// </summary>
@@ -160,6 +167,7 @@ public static partial class ExcelConfig
             inst.MoveSpeed = MoveSpeed;
             inst.Acceleration = Acceleration;
             inst.Friction = Friction;
+            inst.Height = Height;
             inst.ExtraAttr = ExtraAttr;
             inst.WeaponCapacity = WeaponCapacity;
             inst.ActivePropsCapacity = ActivePropsCapacity;

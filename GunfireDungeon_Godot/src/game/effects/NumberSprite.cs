@@ -8,11 +8,25 @@ using DsUi;
 /// </summary>
 public partial class NumberSprite : Node2D, IDestroy
 {
+    
+    public enum SpriteDirection
+    {
+        Left,
+        Right,
+        Center
+    }
+    
     /// <summary>
-    /// 
+    /// 用于显示精灵的模板实例
     /// </summary>
     [Export]
     public Sprite2D Templdate;
+    
+    /// <summary>
+    /// 精灵纹理方向
+    /// </summary>
+    [Export]
+    public SpriteDirection Direction;
 
     public bool IsDestroyed { get; private set; }
     
@@ -67,7 +81,18 @@ public partial class NumberSprite : Node2D, IDestroy
             var index = list.Count - i - 1;
             var sprite2D = _useList[i];
             sprite2D.Frame = (int)list[i];
-            sprite2D.Position  = new Vector2(index * 4 - 4 * (list.Count - 1) / 2f, 0);
+            switch (Direction)
+            {
+                case SpriteDirection.Center:
+                    sprite2D.Position = new Vector2(index * 4 - 4 * (list.Count - 1) / 2f, 0);
+                    break;
+                case SpriteDirection.Left:
+                    sprite2D.Position = new Vector2(index * 4, 0);
+                    break;
+                default:
+                    sprite2D.Position = new Vector2(index * 4 - 4 * (list.Count - 1), 0);
+                    break;
+            }
         }
     }
 

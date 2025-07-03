@@ -40,3 +40,4 @@ material = SubResource("ShaderMaterial_pdwxf")
 
 [node name="NumberSprite" parent="AnimatedSprite" instance=ExtResource("3_pdwxf")]
 position = Vector2(0, -3)
+Direction = 2

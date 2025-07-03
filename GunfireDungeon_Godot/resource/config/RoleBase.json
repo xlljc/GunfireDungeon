@@ -8,6 +8,7 @@
     "MoveSpeed": 120,
     "Acceleration": 1500,
     "Friction": 900,
+    "Height": 27,
     "ExtraAttr": {
       "RollSpeed": 170,
       "RollTime": 0.015,
@@ -36,6 +37,7 @@
     "MoveSpeed": 0,
     "Acceleration": 0,
     "Friction": 0,
+    "Height": 30,
     "ExtraAttr": null,
     "WeaponCapacity": 0,
     "ActivePropsCapacity": 0,
@@ -60,6 +62,7 @@
     "MoveSpeed": 20,
     "Acceleration": 1500,
     "Friction": 900,
+    "Height": 20,
     "ExtraAttr": null,
     "WeaponCapacity": 2,
     "ActivePropsCapacity": 1,

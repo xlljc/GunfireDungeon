@@ -8,6 +8,15 @@ namespace Config;
 public static partial class ExcelConfig
 {
     /// <summary>
+    /// AbnormalStateConfig.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
+    /// </summary>
+    public static List<AbnormalStateConfig> AbnormalStateConfig_List { get; private set; }
+    /// <summary>
+    /// AbnormalStateConfig.xlsx表数据集合, 里 Map 形式存储, key 为 Id
+    /// </summary>
+    public static Dictionary<string, AbnormalStateConfig> AbnormalStateConfig_Map { get; private set; }
+
+    /// <summary>
     /// ActivePropBase.xlsx表数据集合, 以 List 形式存储, 数据顺序与 Excel 表相同
     /// </summary>
     public static List<ActivePropBase> ActivePropBase_List { get; private set; }
@@ -152,6 +161,7 @@ public static partial class ExcelConfig
         if (_init) return;
         _init = true;
 
+        _InitAbnormalStateConfigConfig();
         _InitActivePropBaseConfig();
         _InitActivityBaseConfig();
         _InitActivityMaterialConfig();
@@ -176,6 +186,24 @@ public static partial class ExcelConfig
         _InitPartBaseRef();
         _InitRoleBaseRef();
         _InitWeaponBaseRef();
+    }
+    private static void _InitAbnormalStateConfigConfig()
+    {
+        try
+        {
+            var text = _ReadConfigAsText("res://resource/config/AbnormalStateConfig.json");
+            AbnormalStateConfig_List = JsonSerializer.Deserialize<List<AbnormalStateConfig>>(text);
+            AbnormalStateConfig_Map = new Dictionary<string, AbnormalStateConfig>();
+            foreach (var item in AbnormalStateConfig_List)
+            {
+                AbnormalStateConfig_Map.Add(item.Id, item);
+            }
+        }
+        catch (Exception e)
+        {
+            GD.PrintErr(e.ToString());
+            throw new Exception("初始化表'AbnormalStateConfig'失败!");
+        }
     }
     private static void _InitActivePropBaseConfig()
     {
