@@ -804,9 +804,20 @@ public static class ExcelGenerator
             }
 
             var keyStr = tempStr.Substring(0, index);
-            if (!IsBaseType(keyStr))
+            var flag = IsBaseType(keyStr);
+            
+            if (!flag)
             {
-                throw new Exception($"字典key类型必须是基础类型!");
+                var targetType = typeof(ExcelGenerator).Assembly.GetType(keyStr);
+                if (targetType != null && targetType.IsEnum)
+                {
+                    flag = true;
+                }
+            }
+
+            if (!flag)
+            {
+                throw new Exception($"字典key类型必须是基础类型或者枚举!");
             }
 
             var type1 = ConvertToType(keyStr, depth + 1);
