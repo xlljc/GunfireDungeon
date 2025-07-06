@@ -658,7 +658,14 @@ public static class ExcelGenerator
                                             }
                                         }
 
-                                        data.Add(field, JsonSerializer.Deserialize(cellStringValue, returnType));
+                                        if (returnType.IsEnum)
+                                        {
+                                            data.Add(field, Enum.Parse(returnType, cellStringValue));
+                                        }
+                                        else
+                                        {
+                                            data.Add(field, JsonSerializer.Deserialize(cellStringValue, returnType));
+                                        }
                                     }
                                 }
                             }
