@@ -110,11 +110,20 @@ public static class ExcelGenerator
                     //记录文件
                     if (fileInfo.Extension == ".xlsx")
                     {
-                        var fileName = Path.GetFileNameWithoutExtension(fileInfo.Name).FirstToUpper();
+                        var originFileName = Path.GetFileNameWithoutExtension(fileInfo.Name).FirstToUpper();
+                        string fileName;
+                        if (originFileName.Contains('@'))
+                        {
+                            fileName = originFileName.Split('@')[0];
+                        }
+                        else
+                        {
+                            fileName = originFileName;
+                        }
                         //判断是否是以字母开头
                         if (!Regex.IsMatch(fileName, "^[a-zA-Z]"))
                         {
-                            Console.WriteLine($"未被导出的表: {fileName}, excel表文件名称必须以字母开头!");
+                            Console.WriteLine($"未被导出的表: {originFileName}, excel表文件名称必须以字母开头，且表名不能包含特殊字符（@符合前面的部分）!");
                             continue;
                         }
                         
@@ -345,6 +354,18 @@ public static class ExcelGenerator
         var excelData = new ExcelData();
         //文件名称
         var fileName = Path.GetFileNameWithoutExtension(excelPath).FirstToUpper();
+        //文件注释
+        string fileComment;
+        if (fileName.Contains("@"))
+        {
+            var temp = fileName.Split("@");
+            fileName = temp[0];
+            fileComment = temp[1];
+        }
+        else
+        {
+            fileComment = null;
+        }
         excelData.TableName = fileName;
 
         var tableValue = new Dictionary<string, Dictionary<string, TableCellValue>>();
@@ -355,6 +376,12 @@ public static class ExcelGenerator
         outStr += $"using System.Collections.Generic;\n\n";
         outStr += $"namespace Config;\n\n";
         outStr += $"public static partial class ExcelConfig\n{{\n";
+        if (fileComment != null)
+        {
+            outStr += $"    /// <summary>\n";
+            outStr += $"    /// {fileComment}\n";
+            outStr += $"    /// </summary>\n";
+        }
         outStr += $"    public partial class {fileName}\n";
         outStr += $"    {{\n";
         //继承的带有引用其他表的类代码
