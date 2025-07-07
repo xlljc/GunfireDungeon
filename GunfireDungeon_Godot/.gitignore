@@ -18,3 +18,4 @@
 GameSave.json
 GameConfig.json
 /android
+/src/config/*.uid

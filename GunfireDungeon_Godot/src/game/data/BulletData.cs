@@ -1,8 +1,8 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using DsUi;
 using Godot;
-using Godot.Collections;
 
 /// <summary>
 /// 子弹数据

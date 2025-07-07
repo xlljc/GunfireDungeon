@@ -203,11 +203,8 @@ public partial class Bullet : ActivityObject, IBullet
             
             //造成伤害
             var target = BulletData.TriggerRole.IsDestroyed ? null : BulletData.TriggerRole;
-            hurt.Hurt(target, BulletData.HarmArr, BulletData.DamageTypeArr, Rotation);
-
-            var stateDict = BulletData.AbnormalStateDict;
+            hurt.Hurt(target, BulletData.HarmDic, BulletData.AbnormalStateDict, Rotation);
             
-
             //穿透次数
             CurrentPenetration++;
             if (CurrentPenetration > BulletData.Penetration)

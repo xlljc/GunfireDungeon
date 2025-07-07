@@ -1,7 +1,7 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using Godot;
-using Godot.Collections;
 
 public static class FireManager
 {

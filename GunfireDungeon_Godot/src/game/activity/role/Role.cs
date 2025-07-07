@@ -1123,6 +1123,16 @@ public abstract partial class Role : ActivityObject
         }
     }
 
+    /// <summary>
+    /// 状态效果处理
+    /// </summary>
+    /// <param name="abnormalStateType">状态类型</param>
+    /// <param name="value">状态值</param>
+    public virtual void AbnormalStateHandler(AbnormalStateType abnormalStateType, int  value)
+    {
+        AddAbnormalStateValue(abnormalStateType, value);
+    }
+
     private IEnumerator DoDieWithAnimationPlayer()
     {
         AnimationPlayer.Play(AnimatorNames.Die);
@@ -1758,7 +1768,8 @@ public abstract partial class Role : ActivityObject
                 o.AddRepelForce(v2);
             }
             
-            hurt.Hurt(this, [damage], [DamageType.Physical], (pos - GlobalPosition).Angle());
+            var damageDict = new Dictionary<DamageType, int>() { [DamageType.Physical] = damage };
+            hurt.Hurt(this, damageDict, null, (pos - GlobalPosition).Angle());
         }
     }
 

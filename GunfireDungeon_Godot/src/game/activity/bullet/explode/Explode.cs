@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using Godot;
 
@@ -37,8 +38,8 @@ public partial class Explode : Area2D, IPoolItem
 
     private bool _init = false;
     private float _hitRadius;
-    private int[] _harm;
-    private DamageType[] _damageType;
+    private Dictionary<DamageType, int> _harm;
+    private Dictionary<AbnormalStateType, int> _abnormalState;
     private float _repelledRadius;
     private float _maxRepelled;
 
@@ -65,10 +66,10 @@ public partial class Explode : Area2D, IPoolItem
     /// <param name="camp">所属阵营</param>
     /// <param name="hitRadius">伤害半径</param>
     /// <param name="harm">造成的伤害</param>
-    /// <param name="damageType">伤害类型</param>
+    /// <param name="abnormalState">异常状态累计值</param>
     /// <param name="repelledRadius">击退半径</param>
     /// <param name="maxRepelled">最大击退速度</param>
-    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, int[] harm, DamageType[] damageType, float repelledRadius, float maxRepelled)
+    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, Dictionary<DamageType, int> harm, Dictionary<AbnormalStateType, int> abnormalState, float repelledRadius, float maxRepelled)
     {
         if (!_init)
         {
@@ -85,7 +86,7 @@ public partial class Explode : Area2D, IPoolItem
         BulletData = bulletData;
         _hitRadius = hitRadius;
         _harm = harm;
-        _damageType = damageType;
+        _abnormalState = abnormalState;
         _repelledRadius = repelledRadius;
         _maxRepelled = maxRepelled;
         CircleShape.Radius = Mathf.Max(hitRadius, maxRepelled);
@@ -174,7 +175,7 @@ public partial class Explode : Area2D, IPoolItem
             var target = (BulletData.TriggerRole == null || BulletData.TriggerRole.IsDestroyed) ? null : BulletData.TriggerRole;
             if (len <= _hitRadius) //在伤害半径内
             {
-                hurt.Hurt(target, _harm, _damageType, angle);
+                hurt.Hurt(target, _harm, _abnormalState, angle);
             }
         
             if (len <= _repelledRadius) //击退半径内
