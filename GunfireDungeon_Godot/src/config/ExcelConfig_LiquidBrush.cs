@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 液体笔刷
+    /// </summary>
     public partial class LiquidBrush
     {
         /// <summary>

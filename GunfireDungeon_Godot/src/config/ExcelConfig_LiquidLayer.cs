@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 液体画布层
+    /// </summary>
     public partial class LiquidLayer
     {
         /// <summary>

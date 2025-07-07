@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// Ai角色属性
+    /// </summary>
     public partial class AiRoleAttr
     {
         /// <summary>

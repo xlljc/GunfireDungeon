@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// Ai攻击属性
+    /// </summary>
     public partial class AiAttackAttr
     {
         /// <summary>

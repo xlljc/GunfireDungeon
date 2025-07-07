@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 零件属性
+    /// </summary>
     public partial class PartBase
     {
         /// <summary>

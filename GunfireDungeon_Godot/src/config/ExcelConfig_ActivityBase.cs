@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 游戏物体注册表
+    /// </summary>
     public partial class ActivityBase
     {
         /// <summary>

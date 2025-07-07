@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 伤害类型属性
+    /// </summary>
     public partial class DamageConfig
     {
         /// <summary>

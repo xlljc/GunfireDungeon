@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 子弹属性
+    /// </summary>
     public partial class BulletBase
     {
         /// <summary>

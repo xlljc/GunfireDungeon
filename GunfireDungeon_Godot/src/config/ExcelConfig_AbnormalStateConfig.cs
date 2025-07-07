@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 异常状态
+    /// </summary>
     public partial class AbnormalStateConfig
     {
         /// <summary>
