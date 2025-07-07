@@ -38,14 +38,8 @@ public static partial class ExcelConfig
         public string Prefab;
 
         /// <summary>
-        /// 造成的伤害区间，可填多段伤害，多段伤害可造成不同属性的伤害，伤害类型在'DamageType'字段配置 <br/>
-        /// 格式为[value]或者[min,max]
-        /// </summary>
-        [JsonInclude]
-        public int[][] HarmRange;
-
-        /// <summary>
-        /// 伤害类型，对应'HarmRange'中的配置，一对一配置 <br/>
+        /// 造成伤害的类型和值区间，多个key-value可以做多类型伤害 <br/>
+        /// key为伤害类型，值如下 <br/>
         /// Physical(0):物理伤害 <br/>
         /// Magic(1):魔法伤害 <br/>
         /// Fire(2):火焰伤害 <br/>
@@ -53,10 +47,19 @@ public static partial class ExcelConfig
         /// Thunder(4):雷电伤害 <br/>
         /// Light(5):光明伤害 <br/>
         /// Dark(6):暗影伤害 <br/>
-        /// Real(7):真实伤害
+        /// Real(7):真实伤害 <br/>
+        /// value为伤害值，格式为[value]或者[min,max]
         /// </summary>
         [JsonInclude]
-        public DamageType[] DamageType;
+        public Dictionary<DamageType, int[]> Harm;
+
+        /// <summary>
+        /// 累计异常状态数据 <br/>
+        /// Burning(0):燃烧 <br/>
+        /// Poisoning(1):中毒
+        /// </summary>
+        [JsonInclude]
+        public Dictionary<AbnormalStateType, int> AbnormalState;
 
         /// <summary>
         /// 造成伤害后击退值区间 <br/>
@@ -161,8 +164,8 @@ public static partial class ExcelConfig
             inst.Name = Name;
             inst.Type = Type;
             inst.Prefab = Prefab;
-            inst.HarmRange = HarmRange;
-            inst.DamageType = DamageType;
+            inst.Harm = Harm;
+            inst.AbnormalState = AbnormalState;
             inst.RepelRange = RepelRange;
             inst.DeviationAngleRange = DeviationAngleRange;
             inst.SpeedRange = SpeedRange;

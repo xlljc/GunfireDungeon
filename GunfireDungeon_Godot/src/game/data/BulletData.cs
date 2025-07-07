@@ -2,6 +2,7 @@
 using Config;
 using DsUi;
 using Godot;
+using Godot.Collections;
 
 /// <summary>
 /// 子弹数据
@@ -29,15 +30,15 @@ public class BulletData : IClone<BulletData>
     public Role TriggerRole;
     
     /// <summary>
-    /// 造成的伤害列表
+    /// 造成的伤害数据，键为伤害类型，值为伤害数值，
     /// </summary>
-    public int[] HarmArr;
+    public Dictionary<DamageType, int> HarmDic;
 
     /// <summary>
-    /// 伤害类型列表
+    /// 累加异常状态数据，键为异常状态类型，值为异常状态累计值，如果没有异常状态，则返回null
     /// </summary>
-    public DamageType[] DamageTypeArr;
-
+    public Dictionary<AbnormalStateType, int> AbnormalStateDict;
+    
     /// <summary>
     /// 击退值
     /// </summary>
@@ -100,8 +101,7 @@ public class BulletData : IClone<BulletData>
             Weapon = Weapon,
             BulletBase = BulletBase,
             TriggerRole = TriggerRole,
-            HarmArr = HarmArr,
-            DamageTypeArr = DamageTypeArr,
+            HarmDic = HarmDic,
             Repel = Repel,
             MaxDistance = MaxDistance,
             FlySpeed = FlySpeed,

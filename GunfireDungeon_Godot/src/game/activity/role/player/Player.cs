@@ -224,6 +224,7 @@ public partial class Player : Role
         // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
         
         AddAbnormalStateValue(AbnormalStateType.Burning, 1);
+        AddAbnormalStateValue(AbnormalStateType.Poisoning, 2);
     }
 
     private float _lqTimer;

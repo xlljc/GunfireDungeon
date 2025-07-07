@@ -4,14 +4,12 @@
     "Name": "\u6B65\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0001",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Physical": [
         15
       ]
-    ],
-    "DamageType": [
-      0
-    ],
+    },
+    "AbnormalState": null,
     "RepelRange": [
       20
     ],
@@ -52,14 +50,12 @@
     "Name": "\u9730\u5F39\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0002",
-    "HarmRange": [
-      [
-        12
+    "Harm": {
+      "Physical": [
+        15
       ]
-    ],
-    "DamageType": [
-      0
-    ],
+    },
+    "AbnormalState": null,
     "RepelRange": [
       15
     ],
@@ -101,14 +97,12 @@
     "Name": "\u624B\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0003",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Physical": [
         15
       ]
-    ],
-    "DamageType": [
-      0
-    ],
+    },
+    "AbnormalState": null,
     "RepelRange": [
       15
     ],
@@ -149,14 +143,14 @@
     "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0006",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Magic": [
         30
       ]
-    ],
-    "DamageType": [
-      1
-    ],
+    },
+    "AbnormalState": {
+      "Burning": 15
+    },
     "RepelRange": [
       45
     ],
@@ -197,14 +191,14 @@
     "Name": "\u6BD2\u6DB2\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0007",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Real": [
         20
       ]
-    ],
-    "DamageType": [
-      7
-    ],
+    },
+    "AbnormalState": {
+      "Poisoning": 10
+    },
     "RepelRange": [
       15
     ],
@@ -245,14 +239,12 @@
     "Name": "\u6C34\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0008",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Real": [
         20
       ]
-    ],
-    "DamageType": [
-      7
-    ],
+    },
+    "AbnormalState": null,
     "RepelRange": [
       15
     ],
@@ -293,12 +285,12 @@
     "Name": "\u6FC0\u51491",
     "Type": 2,
     "Prefab": "res://prefab/bullet/laser/Laser0001.tscn",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Physical": [
         7
       ]
-    ],
-    "DamageType": null,
+    },
+    "AbnormalState": null,
     "RepelRange": [
       35
     ],
@@ -332,12 +324,12 @@
     "Name": "\u5200\u4F24\u5BB3",
     "Type": 3,
     "Prefab": "",
-    "HarmRange": [
-      [
+    "Harm": {
+      "Physical": [
         25
       ]
-    ],
-    "DamageType": null,
+    },
+    "AbnormalState": null,
     "RepelRange": [
       70
     ],

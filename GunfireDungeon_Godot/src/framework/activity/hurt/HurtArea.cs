@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 
 /// <summary>
 /// 可被子弹击中的区域
@@ -31,11 +32,16 @@ public partial class HurtArea : Area2D, IHurt
         return Master.IsEnemy(targetCamp);
     }
 
-    public void Hurt(ActivityObject target, int[] damage, DamageType[] damageType, float angle)
+    public void Hurt(ActivityObject target, Godot.Collections.Dictionary<DamageType, int> damage, Godot.Collections.Dictionary<AbnormalStateType, int> abnormalState, float angle)
     {
-        for (var i = 0; i < damage.Length; i++)
+        throw new System.NotImplementedException();
+    }
+
+    public void Hurt(ActivityObject target, Dictionary<DamageType, int> damage, Dictionary<AbnormalStateType, int> abnormalState, float angle)
+    {
+        foreach (var item in damage)
         {
-            Master.CallDeferred(nameof(Master.HurtHandler), target, damage[i], (int)damageType[i], angle);
+            Master.CallDeferred(nameof(Master.HurtHandler), target, item.Value, (int)item.Key, angle);
         }
     }
 }
