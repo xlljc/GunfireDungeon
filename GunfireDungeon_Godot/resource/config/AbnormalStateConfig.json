@@ -7,6 +7,11 @@
     ],
     "LostTime": 3,
     "LostSpeed": 8,
+    "ActiveLostTime": 0,
+    "ActiveLostSpeed": [
+      0.1,
+      1
+    ],
     "Config": null,
     "Details": "\u6BCF\u79D2\u6263\u9664\uFF083%\u6700\u5927\u751F\u547D\u503C\u002B5\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6301\u7EED10\u79D2",
     "Icon": "res://resource/sprite/tip/Fire.png"
@@ -28,6 +33,11 @@
     ],
     "LostTime": 3,
     "LostSpeed": 8,
+    "ActiveLostTime": 0,
+    "ActiveLostSpeed": [
+      0.125,
+      1
+    ],
     "Config": null,
     "Details": "\u7D2F\u8BA1\u4E2D\u6BD2\u53EF\u4EE5\u53E0\u52A0\u5C42\u6570\uFF0C\u6BCF\u5C42\u6BCF\u79D2\u53D7\u5230\uFF082%\u6700\u5927\u751F\u547D\u503C\u002B2\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6BCF\u5C42\u6301\u7EED8\u79D2",
     "Icon": "res://resource/sprite/tip/Poison.png"

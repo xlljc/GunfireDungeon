@@ -31,7 +31,8 @@ public static partial class ExcelConfig
 
         /// <summary>
         /// 异常状态开始消退延时，单位：秒 <br/>
-        /// 注意：这个值只用于未进入该异常状态时的消退时间
+        /// 注意：这个值只用于未进入该异常状态时的消退时间 <br/>
+        /// 如果为负数，则不会消退
         /// </summary>
         [JsonInclude]
         public float LostTime;
@@ -43,6 +44,21 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public float LostSpeed;
+
+        /// <summary>
+        /// 触发异常状态效果后开始消退延时，单位秒 <br/>
+        /// 如果为负数，则不会消退
+        /// </summary>
+        [JsonInclude]
+        public float ActiveLostTime;
+
+        /// <summary>
+        /// 触发异常状态后每秒消退值 <br/>
+        /// 参数：[消退值，是否是百分比] <br/>
+        /// 0：不是百分比，1：是百分比
+        /// </summary>
+        [JsonInclude]
+        public float[] ActiveLostSpeed;
 
         /// <summary>
         /// 额外配置属性
@@ -73,6 +89,8 @@ public static partial class ExcelConfig
             inst.Gradient = Gradient;
             inst.LostTime = LostTime;
             inst.LostSpeed = LostSpeed;
+            inst.ActiveLostTime = ActiveLostTime;
+            inst.ActiveLostSpeed = ActiveLostSpeed;
             inst.Config = Config;
             inst.Details = Details;
             inst.Icon = Icon;

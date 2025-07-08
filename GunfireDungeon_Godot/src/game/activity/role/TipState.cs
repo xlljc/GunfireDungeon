@@ -40,6 +40,10 @@ public partial class TipState : TextureProgressBar
         NumberSprite.Visible = false;
         RoleTip = roleTip;
         Config = config;
+        if (config.ActiveLostSpeed.Length != 2)
+        {
+            throw new Exception("AbnormalStateConfig.ActiveLostSpeed 置错误: " + config.Id + "，正确格式为[消退值，是否是百分比]");
+        }
         AbnormalStateType = stateType;
         TextureUnder = ResourceManager.LoadTexture2D(config.Icon);
         AbnormalResistance  = roleTip.Role.RoleState.RoleBase.GetAbnormalStateResist(stateType);
@@ -55,17 +59,43 @@ public partial class TipState : TextureProgressBar
 
     public override void _Process(double delta)
     {
-        if (!_activateFlag)
+        var newDelta = (float)delta;
+        if (!_activateFlag) //未激活
         {
-            var newDelta = (float)delta;
-            if (_lostTimer >= Config.LostTime)
+            if (Config.LostTime >= 0) //存在消失时间
             {
-                _value -= Config.LostSpeed * newDelta;
-                RefreshValue();
+                if (_lostTimer >= Config.LostTime)
+                {
+                    _value -= Config.LostSpeed * newDelta;
+                    RefreshValue();
+                }
+                else
+                {
+                    _lostTimer += newDelta;
+                }
             }
-            else
+        }
+        else //已经激活
+        {
+            if (Config.ActiveLostTime >= 0) //存在消失时间
             {
-                _lostTimer += newDelta;
+                if (_lostTimer >= Config.ActiveLostTime)
+                {
+                    if (Config.ActiveLostSpeed[1] == 1f) //百分比消退
+                    {
+                        _value -= Config.ActiveLostSpeed[0] * newDelta;
+                    }
+                    else //数值消退
+                    {
+                        _value -= Config.ActiveLostSpeed[0] * newDelta;
+                    }
+                    
+                    RefreshValue();
+                }
+                else
+                {
+                    _lostTimer += newDelta;
+                }
             }
         }
     }
