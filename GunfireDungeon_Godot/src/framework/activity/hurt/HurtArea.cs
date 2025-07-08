@@ -40,7 +40,6 @@ public partial class HurtArea : Area2D, IHurt
             {
                 Master.CallDeferred(nameof(Master.HurtHandler), target, item.Value, (int)item.Key, angle);
             }
-
         }
        
         if (abnormalState != null)

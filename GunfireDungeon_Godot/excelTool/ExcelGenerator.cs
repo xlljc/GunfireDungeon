@@ -123,7 +123,7 @@ public static class ExcelGenerator
                         //判断是否是以字母开头
                         if (!Regex.IsMatch(fileName, "^[a-zA-Z]"))
                         {
-                            Console.WriteLine($"未被导出的表: {originFileName}, excel表文件名称必须以字母开头，且表名不能包含特殊字符（@符合前面的部分）!");
+                            Console.WriteLine($"未被导出的表: {originFileName}, excel表文件名称必须以字母开头，且表名不能包含特殊字符（@符号前面的部分）!");
                             continue;
                         }
                         

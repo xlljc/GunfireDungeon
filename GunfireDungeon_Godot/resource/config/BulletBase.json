@@ -145,11 +145,11 @@
     "Prefab": "bullet0006",
     "Harm": {
       "Magic": [
-        30
+        3
       ]
     },
     "AbnormalState": {
-      "Burning": 15
+      "Burning": 5
     },
     "RepelRange": [
       45
@@ -193,11 +193,11 @@
     "Prefab": "bullet0007",
     "Harm": {
       "Real": [
-        20
+        2
       ]
     },
     "AbnormalState": {
-      "Poisoning": 10
+      "Poisoning": 8
     },
     "RepelRange": [
       15

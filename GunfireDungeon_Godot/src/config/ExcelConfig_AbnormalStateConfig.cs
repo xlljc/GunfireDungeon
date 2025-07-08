@@ -11,7 +11,7 @@ public static partial class ExcelConfig
     public partial class AbnormalStateConfig
     {
         /// <summary>
-        /// 异常状态类型id
+        /// 异常状态类型id，和AbnormalStateType枚举索引对应
         /// </summary>
         [JsonInclude]
         public string Id;
@@ -30,9 +30,16 @@ public static partial class ExcelConfig
         public float[] Gradient;
 
         /// <summary>
+        /// 异常状态开始消退延时，单位：秒 <br/>
+        /// 注意：这个值只用于未进入该异常状态时的消退时间
+        /// </summary>
+        [JsonInclude]
+        public float LostTime;
+
+        /// <summary>
         /// 异常属性消退速度 <br/>
         /// 每秒消退量 <br/>
-        /// 这个值只用于未进入该异常状态时的消退速度
+        /// 注意：这个值只用于未进入该异常状态时的消退速度
         /// </summary>
         [JsonInclude]
         public float LostSpeed;
@@ -64,6 +71,7 @@ public static partial class ExcelConfig
             inst.Id = Id;
             inst.Name = Name;
             inst.Gradient = Gradient;
+            inst.LostTime = LostTime;
             inst.LostSpeed = LostSpeed;
             inst.Config = Config;
             inst.Details = Details;

@@ -32,6 +32,5 @@ Direction = 1
 
 [node name="SpriteTemplate" parent="NumberSprite" index="0"]
 modulate = Color(0.671875, 0.671875, 0.671875, 1)
-material = null
 
 [editable path="NumberSprite"]

@@ -157,6 +157,18 @@ public static partial class ExcelConfig
         public float RealResist;
 
         /// <summary>
+        /// 燃烧异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsBurningResist;
+
+        /// <summary>
+        /// 中毒异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsPoisoningResist;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public RoleBase Clone()
@@ -185,6 +197,8 @@ public static partial class ExcelConfig
             inst.LightResist = LightResist;
             inst.DarkResist = DarkResist;
             inst.RealResist = RealResist;
+            inst.AsBurningResist = AsBurningResist;
+            inst.AsPoisoningResist = AsPoisoningResist;
             return inst;
         }
     }

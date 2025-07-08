@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using Config;
 
+/// <summary>
+/// 角色头顶状态显示组件
+/// </summary>
 public partial class RoleTip : Node2D
 {
     /// <summary>
@@ -18,10 +21,10 @@ public partial class RoleTip : Node2D
     private List<TipState> _useStateDir = new List<TipState>();
 
 
-    public TipState CreateTipState(ExcelConfig.AbnormalStateConfig config)
+    public TipState CreateTipState(AbnormalStateType stateType, ExcelConfig.AbnormalStateConfig config)
     {
         var tipState = TipStateScene.Instantiate<TipState>();
-        tipState.Init(this, config);
+        tipState.Init(this, stateType, config);
         _useStateDir.Add(tipState);
         AddChild(tipState);
         return tipState;

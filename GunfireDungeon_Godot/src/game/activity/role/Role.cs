@@ -1128,7 +1128,7 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     /// <param name="abnormalStateType">状态类型</param>
     /// <param name="value">状态值</param>
-    public virtual void AbnormalStateHandler(AbnormalStateType abnormalStateType, int  value)
+    public virtual void AbnormalStateHandler(AbnormalStateType abnormalStateType, float value)
     {
         AddAbnormalStateValue(abnormalStateType, value);
     }
@@ -1802,7 +1802,7 @@ public abstract partial class Role : ActivityObject
     }
 
     /// <summary>
-    /// 添加异常状态累计量值
+    /// 异常状态累计量值变化，如果值为负数，则表示减去状态值
     /// </summary>
     public void AddAbnormalStateValue(AbnormalStateType type, float value)
     {
@@ -1815,7 +1815,7 @@ public abstract partial class Role : ActivityObject
         if (!_abnormalStateDir.TryGetValue(id, out var tipState))
         {
             var config = ExcelConfig.AbnormalStateConfig_Map[id];
-            var state = TipRoot.CreateTipState(config);
+            var state = TipRoot.CreateTipState(type, config);
             tipState = state;
             _abnormalStateDir.Add(id, tipState);
             TipRoot.RefreshTipSpritePosition();
