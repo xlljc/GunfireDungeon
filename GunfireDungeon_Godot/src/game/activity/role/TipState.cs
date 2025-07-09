@@ -124,9 +124,17 @@ public partial class TipState : TextureProgressBar
     /// </summary>
     public void AddAbnormalStateValue(float value)
     {
-        // _value = Mathf.Clamp(value, 0, _levelArr[_levelArr.Length - 1]);
-
         _value += value;
+        _lostTimer = 0;
+        RefreshValue();
+    }
+
+    /// <summary>
+    /// 移除当前状态
+    /// </summary>
+    public void DoRemoveAbnormalState()
+    {
+        _value = 0;
         _lostTimer = 0;
         RefreshValue();
     }
@@ -140,7 +148,6 @@ public partial class TipState : TextureProgressBar
             _value = 0;
             _levelIndex = 0;
             
-            SetProgress(0);
             RefreshNumber();
             
             if (_activateFlag)
@@ -149,6 +156,7 @@ public partial class TipState : TextureProgressBar
                 CurrLevel = 0;
                 OnDeactivate();
             }
+            SetProgress(0);
             return GetLevelCompIndex(prevLevel, _levelIndex);
         }
         
@@ -173,8 +181,8 @@ public partial class TipState : TextureProgressBar
                 _activateFlag = true;
             }
             
-            SetProgress(1);
             RefreshNumber();
+            SetProgress(1);
             return GetLevelCompIndex(prevLevel, _levelIndex);
         }
         
@@ -183,6 +191,7 @@ public partial class TipState : TextureProgressBar
         // 当前等级值
         var currLevelValue = newLevel == 0 ? _value : (_value - _levelArr[newLevel - 1]);
 
+        RefreshNumber();
         if (newLevel > 0 && currLevelValue == 0)
         {
             SetProgress(1);
@@ -191,8 +200,6 @@ public partial class TipState : TextureProgressBar
         {
             SetProgress(currLevelValue / currLevelMaxValue);
         }
-
-        RefreshNumber();
         
         if (refreshActivateFlag)
         {
@@ -219,7 +226,7 @@ public partial class TipState : TextureProgressBar
 
         _prevLevelIndex = _levelIndex;
 
-        var prevCL = CurrLevel;
+        var prevCl = CurrLevel;
         if (_levelIndex > prevLevel) //升级
         {
             FillMode = (int)FillModeEnum.CounterClockwise;
@@ -230,7 +237,7 @@ public partial class TipState : TextureProgressBar
                 TintUnder = new Color(1, 1, 1, 1f);
                 OnActivate();
             }
-            else if (prevCL != CurrLevel)
+            else if (prevCl != CurrLevel)
             {
                 OnLevelUp();
             }
@@ -240,7 +247,7 @@ public partial class TipState : TextureProgressBar
             FillMode = (int)FillModeEnum.Clockwise;
             NumberSprite.SetNumber((uint)_levelIndex + 1);
             CurrLevel = _levelIndex + 1;
-            if (prevCL != CurrLevel)
+            if (prevCl != CurrLevel)
             {
                 OnLevelDown();
             }

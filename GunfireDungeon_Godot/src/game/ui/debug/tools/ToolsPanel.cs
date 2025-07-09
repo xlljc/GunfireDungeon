@@ -61,6 +61,9 @@ public partial class ToolsPanel : Tools
         // 护盾
         S_ShieldBtn.Instance.Pressed += ShieldBtnClick;
         
+        // 移除异常状态
+        S_AsBtn.Instance.Pressed += AsBtnClick;
+        
         // 创建物体
         S_CreateObjectBtn.Instance.Pressed += CreateObjectBtnClick;
         
@@ -203,6 +206,21 @@ public partial class ToolsPanel : Tools
         }
 
         player.Shield = int.Parse(S_ShieldInput.Instance.Text);
+    }
+
+    private void AsBtnClick()
+    {
+        var player = GetPlayer();
+        if (player == null)
+        {
+            return;
+        }
+
+        var tipStates = player.TipRoot.UseStateList.ToArray();
+        foreach (var tipState in tipStates)
+        {
+            tipState.DoRemoveAbnormalState();
+        }
     }
     
     private void CreateObjectBtnClick()

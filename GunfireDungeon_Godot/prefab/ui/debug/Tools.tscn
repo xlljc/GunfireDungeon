@@ -116,6 +116,14 @@ text = "100"
 placeholder_text = "请输入血量"
 virtual_keyboard_type = 2
 
+[node name="HBoxContainer8" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="AsBtn" type="Button" parent="HFlowContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "移除异常状态"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="HFlowContainer"]
 layout_mode = 2
 

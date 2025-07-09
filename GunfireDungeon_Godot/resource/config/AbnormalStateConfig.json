@@ -6,7 +6,7 @@
       1
     ],
     "LostTime": 3,
-    "LostSpeed": 8,
+    "LostSpeed": 5,
     "ActiveLostTime": 1,
     "ActiveLostSpeed": [
       0.0714,
@@ -39,7 +39,7 @@
       1.9
     ],
     "LostTime": 3,
-    "LostSpeed": 8,
+    "LostSpeed": 6,
     "ActiveLostTime": 1,
     "ActiveLostSpeed": [
       0.142857,

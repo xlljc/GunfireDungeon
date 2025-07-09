@@ -332,6 +332,37 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer8.AsBtn
+    /// </summary>
+    public class AsBtn : UiNode<ToolsPanel, Godot.Button, AsBtn>
+    {
+        public AsBtn(ToolsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override AsBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer8
+    /// </summary>
+    public class HBoxContainer8 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer8>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.AsBtn
+        /// </summary>
+        public AsBtn L_AsBtn
+        {
+            get
+            {
+                if (_L_AsBtn == null) _L_AsBtn = new AsBtn(UiPanel, Instance.GetNode<Godot.Button>("AsBtn"));
+                return _L_AsBtn;
+            }
+        }
+        private AsBtn _L_AsBtn;
+
+        public HBoxContainer8(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer8 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Tools.HFlowContainer.HBoxContainer2.Label
     /// </summary>
     public class Label : UiNode<ToolsPanel, Godot.Label, Label>
@@ -613,6 +644,19 @@ public abstract partial class Tools : UiBase
         private HBoxContainer6 _L_HBoxContainer6;
 
         /// <summary>
+        /// 节点路径: Tools.HBoxContainer8
+        /// </summary>
+        public HBoxContainer8 L_HBoxContainer8
+        {
+            get
+            {
+                if (_L_HBoxContainer8 == null) _L_HBoxContainer8 = new HBoxContainer8(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer8"));
+                return _L_HBoxContainer8;
+            }
+        }
+        private HBoxContainer8 _L_HBoxContainer8;
+
+        /// <summary>
         /// 节点路径: Tools.HBoxContainer2
         /// </summary>
         public HBoxContainer2 L_HBoxContainer2
@@ -750,6 +794,16 @@ public abstract partial class Tools : UiBase
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer6
     /// </summary>
     public HBoxContainer6 S_HBoxContainer6 => L_HFlowContainer.L_HBoxContainer6;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer8.AsBtn
+    /// </summary>
+    public AsBtn S_AsBtn => L_HFlowContainer.L_HBoxContainer8.L_AsBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer8
+    /// </summary>
+    public HBoxContainer8 S_HBoxContainer8 => L_HFlowContainer.L_HBoxContainer8;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer2.CameraZoomNearly

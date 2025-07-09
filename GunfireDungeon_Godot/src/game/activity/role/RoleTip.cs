@@ -18,7 +18,10 @@ public partial class RoleTip : Node2D
     /// </summary>
     public Role Role { get; set; }
 
-    private List<TipState> _useStateDir = new List<TipState>();
+    /// <summary>
+    /// 正在使用的状态
+    /// </summary>
+    public List<TipState> UseStateList { get; } = new List<TipState>();
 
     //异常状态表
     private Dictionary<AbnormalStateType, TipState> _abnormalStateDir;
@@ -45,9 +48,12 @@ public partial class RoleTip : Node2D
         tipState.AddAbnormalStateValue(value);
     }
 
+    /// <summary>
+    /// 移除状态
+    /// </summary>
     public void RemoveTipState(TipState tipState)
     {
-        _useStateDir.Remove(tipState);
+        UseStateList.Remove(tipState);
         _abnormalStateDir.Remove(tipState.AbnormalStateType);
         tipState.QueueFree();
 
@@ -58,7 +64,7 @@ public partial class RoleTip : Node2D
     {
         var tipState = TipStateScene.Instantiate<TipState>();
         tipState.Init(this, stateType, config);
-        _useStateDir.Add(tipState);
+        UseStateList.Add(tipState);
         AddChild(tipState);
         return tipState;
     }
@@ -68,10 +74,10 @@ public partial class RoleTip : Node2D
         var originPosition = new Vector2(0, -Role.RoleState.RoleBase.Height - 16);
 
         //刷新位置，居中排列，每个 TipState 宽度 12， 间距 2
-        var width = 12 * _useStateDir.Count + 2 * (_useStateDir.Count - 1);
-        for (var i = 0; i < _useStateDir.Count; i++)
+        var width = 12 * UseStateList.Count + 2 * (UseStateList.Count - 1);
+        for (var i = 0; i < UseStateList.Count; i++)
         {
-            var item = _useStateDir[i];
+            var item = UseStateList[i];
             item.Position = originPosition + new Vector2(i * 14 - width / 2f, 0);
         }
 
