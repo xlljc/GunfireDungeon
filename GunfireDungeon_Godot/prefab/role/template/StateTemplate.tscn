@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dis2c13rcf2af"]
+[gd_scene load_steps=7 format=3 uid="uid://dis2c13rcf2af"]
 
 [ext_resource type="Texture2D" uid="uid://de825sq2hlr1r" path="res://resource/sprite/tip/Fire.png" id="1_tfjyc"]
-[ext_resource type="Texture2D" uid="uid://b25hlypgk6dfr" path="res://resource/sprite/tip/Mask.png" id="2_hnm54"]
+[ext_resource type="Texture2D" uid="uid://wxeab2ttyji7" path="res://resource/sprite/tip/FireMask.png" id="2_txm82"]
 [ext_resource type="Script" uid="uid://dhx7l4sg8esg1" path="res://src/game/activity/role/TipState.cs" id="3_hnm54"]
 [ext_resource type="PackedScene" uid="uid://ck8gvettbrllg" path="res://prefab/effect/common/NumberSprite.tscn" id="3_tfjyc"]
+[ext_resource type="Shader" uid="uid://bukuvnjyi8ggb" path="res://resource/shader/Outline.gdshader" id="5_txm82"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mth3c"]
+resource_local_to_scene = true
+shader = ExtResource("5_txm82")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [node name="StateTemplate" type="TextureProgressBar" node_paths=PackedStringArray("NumberSprite")]
 anchors_preset = 8
@@ -19,10 +25,10 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 step = 0.001
-value = 1.0
+value = 0.41
 fill_mode = 5
 texture_under = ExtResource("1_tfjyc")
-texture_progress = ExtResource("2_hnm54")
+texture_progress = ExtResource("2_txm82")
 script = ExtResource("3_hnm54")
 NumberSprite = NodePath("NumberSprite")
 
@@ -32,5 +38,6 @@ Direction = 1
 
 [node name="SpriteTemplate" parent="NumberSprite" index="0"]
 modulate = Color(0.671875, 0.671875, 0.671875, 1)
+material = SubResource("ShaderMaterial_mth3c")
 
 [editable path="NumberSprite"]

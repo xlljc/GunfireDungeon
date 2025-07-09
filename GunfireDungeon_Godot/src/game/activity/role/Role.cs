@@ -352,8 +352,6 @@ public abstract partial class Role : ActivityObject
     private float _shieldRecoveryTimer = 0;
     //护盾恢复值小数部分，大于1自动往 Shiel 上加
     private float _addShieldVal = 0;
-    //异常状态表
-    private Dictionary<string, TipState> _abnormalStateDir;
 
     /// <summary>
     /// 角色属性
@@ -1806,21 +1804,6 @@ public abstract partial class Role : ActivityObject
     /// </summary>
     public void AddAbnormalStateValue(AbnormalStateType type, float value)
     {
-        if (_abnormalStateDir == null)
-        {
-            _abnormalStateDir = new Dictionary<string, TipState>();
-        }
-        
-        var id = ((int)type).ToString();
-        if (!_abnormalStateDir.TryGetValue(id, out var tipState))
-        {
-            var config = ExcelConfig.AbnormalStateConfig_Map[id];
-            var state = TipRoot.CreateTipState(type, config);
-            tipState = state;
-            _abnormalStateDir.Add(id, tipState);
-            TipRoot.RefreshTipSpritePosition();
-        }
-        
-        tipState.AddAbnormalStateValue(value);
+        TipRoot.AddAbnormalStateValue(type, value);
     }
 }

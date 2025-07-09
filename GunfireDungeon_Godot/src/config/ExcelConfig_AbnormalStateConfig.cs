@@ -79,6 +79,12 @@ public static partial class ExcelConfig
         public string Icon;
 
         /// <summary>
+        /// 图标遮挡
+        /// </summary>
+        [JsonInclude]
+        public string IconMask;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public AbnormalStateConfig Clone()
@@ -94,6 +100,7 @@ public static partial class ExcelConfig
             inst.Config = Config;
             inst.Details = Details;
             inst.Icon = Icon;
+            inst.IconMask = IconMask;
             return inst;
         }
     }

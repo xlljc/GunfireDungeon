@@ -20,8 +20,41 @@ public partial class RoleTip : Node2D
 
     private List<TipState> _useStateDir = new List<TipState>();
 
+    //异常状态表
+    private Dictionary<AbnormalStateType, TipState> _abnormalStateDir;
 
-    public TipState CreateTipState(AbnormalStateType stateType, ExcelConfig.AbnormalStateConfig config)
+    /// <summary>
+    /// 异常状态累计量值变化，如果值为负数，则表示减去状态值
+    /// </summary>
+    public void AddAbnormalStateValue(AbnormalStateType type, float value)
+    {
+        if (_abnormalStateDir == null)
+        {
+            _abnormalStateDir = new Dictionary<AbnormalStateType, TipState>();
+        }
+        
+        if (!_abnormalStateDir.TryGetValue(type, out var tipState))
+        {
+            var config = ExcelConfig.AbnormalStateConfig_Map[((int)type).ToString()];
+            var state = CreateTipState(type, config);
+            tipState = state;
+            _abnormalStateDir.Add(type, tipState);
+            RefreshTipSpritePosition();
+        }
+
+        tipState.AddAbnormalStateValue(value);
+    }
+
+    public void RemoveTipState(TipState tipState)
+    {
+        _useStateDir.Remove(tipState);
+        _abnormalStateDir.Remove(tipState.AbnormalStateType);
+        tipState.QueueFree();
+
+        RefreshTipSpritePosition();
+    }
+    
+    private TipState CreateTipState(AbnormalStateType stateType, ExcelConfig.AbnormalStateConfig config)
     {
         var tipState = TipStateScene.Instantiate<TipState>();
         tipState.Init(this, stateType, config);
@@ -29,8 +62,8 @@ public partial class RoleTip : Node2D
         AddChild(tipState);
         return tipState;
     }
-
-    public void RefreshTipSpritePosition()
+    
+    private void RefreshTipSpritePosition()
     {
         var originPosition = new Vector2(0, -Role.RoleState.RoleBase.Height - 16);
 

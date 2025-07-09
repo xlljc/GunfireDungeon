@@ -167,6 +167,7 @@ public partial class Player : Role
                 TriggerInteractive();
                 
                 AbnormalStateHandler(AbnormalStateType.Poisoning, 2.5f);
+                AbnormalStateHandler(AbnormalStateType.Burning, 2.5f);
             }
             else if (InputManager.Reload) //换弹
             {

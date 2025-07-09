@@ -406,8 +406,10 @@ public class ResourcePath
     public const string resource_sprite_shootFire_ShotFire0003_png = "res://resource/sprite/shootFire/ShotFire0003.png";
     public const string resource_sprite_tile_Hall_png = "res://resource/sprite/tile/Hall.png";
     public const string resource_sprite_tip_Fire_png = "res://resource/sprite/tip/Fire.png";
+    public const string resource_sprite_tip_FireMask_png = "res://resource/sprite/tip/FireMask.png";
     public const string resource_sprite_tip_Mask_png = "res://resource/sprite/tip/Mask.png";
     public const string resource_sprite_tip_Poison_png = "res://resource/sprite/tip/Poison.png";
+    public const string resource_sprite_tip_PoisonMask_png = "res://resource/sprite/tip/PoisonMask.png";
     public const string resource_sprite_ui_font_bg_png = "res://resource/sprite/ui/font_bg.png";
     public const string resource_sprite_ui_GUI_png = "res://resource/sprite/ui/GUI.png";
     public const string resource_sprite_ui_commonIcon_Add_png = "res://resource/sprite/ui/commonIcon/Add.png";
