@@ -166,9 +166,6 @@ public partial class Player : Role
             else if (InputManager.Interactive) //互动物体
             {
                 TriggerInteractive();
-                
-                AbnormalStateHandler(AbnormalStateType.Poisoning, 50f);
-                // AbnormalStateHandler(AbnormalStateType.Burning, 50f);
             }
             else if (InputManager.Reload) //换弹
             {

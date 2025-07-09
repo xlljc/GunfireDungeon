@@ -297,15 +297,19 @@ public partial class TipState : TextureProgressBar
     {
         foreach (var kv in Config.AsComp)
         {
-            Type type = null;
+            Type type;
             switch (kv.Key)
             {
-                case "AsContinuousDamage":
+                case nameof(AsContinuousDamage):
                     type = typeof(AsContinuousDamage);
                     break;
+                case nameof(AsMoveSpeed):
+                    type = typeof(AsMoveSpeed);
+                    break;
+                default:
+                    throw new Exception($"未知异常状态组件: {kv.Key}");
             }
-
-            if (type == null) return;
+            
             var comp = RoleTip.Role.AddComponent(type);
             var ac = (IAbnormalStateComp)comp;
             ac.InitConfig(Config, kv.Value);
