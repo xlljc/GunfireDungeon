@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Config;
 using Godot;
 
@@ -41,6 +42,9 @@ public partial class TipState : TextureProgressBar
 
     private bool _activateFlag;
     private float _lostTimer;
+
+    //异常状态处理组件
+    private List<IAbnormalStateComp> _asComponentList = new List<IAbnormalStateComp>();
     
     public void Init(RoleTip roleTip, AbnormalStateType stateType, ExcelConfig.AbnormalStateConfig config)
     {
@@ -282,25 +286,66 @@ public partial class TipState : TextureProgressBar
         }
     }
 
+    private void DoInitAsComp()
+    {
+        foreach (var kv in Config.AsComp)
+        {
+            Type type = null;
+            switch (kv.Key)
+            {
+                case "AsContinuousDamage":
+                    type = typeof(AsContinuousDamage);
+                    break;
+            }
+
+            if (type == null) return;
+            var comp = RoleTip.Role.AddComponent(type);
+            var ac = (IAbnormalStateComp)comp;
+            ac.InitConfig(Config, kv.Value);
+            _asComponentList.Add(ac);
+        }
+    }
+
     // 当前状态被激活
     private void OnActivate()
     {
-        Debug.Log("激活: " + CurrLevel);
+        // Debug.Log("激活: " + CurrLevel);
+        if (_asComponentList.Count == 0)
+        {
+            DoInitAsComp();
+        }
+
+        foreach (var item in _asComponentList)
+        {
+            item.OnActivate(CurrLevel);
+        }
     }
     
     // 当前状态被取消激活
     private void OnDeactivate()
     {
-        Debug.Log("取消激活：" + CurrLevel);
+        // Debug.Log("取消激活：" + CurrLevel);
+        foreach (var item in _asComponentList)
+        {
+            item.OnDeactivate(CurrLevel);
+        }
     }
 
     private void OnLevelUp()
     {
-        Debug.Log("升级: " + CurrLevel);
+        // Debug.Log("升级: " + CurrLevel);
+        foreach (var item in _asComponentList)
+        {
+            item.OnLevelUp(CurrLevel);
+        }
     }
     
     private void OnLevelDown()
     {
-        Debug.Log("降级: " + CurrLevel);
+        // Debug.Log("降级: " + CurrLevel);
+        foreach (var item in _asComponentList)
+        {
+            item.OnLevelDown(CurrLevel);
+        }
     }
 }

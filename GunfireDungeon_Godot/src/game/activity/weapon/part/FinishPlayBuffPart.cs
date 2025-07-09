@@ -16,7 +16,7 @@ public class FinishPlayBuffPart : BuffPart
     {
         base.InitParam(config);
         Occupancy = 2;
-        BehindMaxMana = config.GetParam("BehindMaxMana", 60);
+        BehindMaxMana = config.Param.GetParam("BehindMaxMana", 60);
     }
     
     public override IBullet[] Execute(PlanningParam param)

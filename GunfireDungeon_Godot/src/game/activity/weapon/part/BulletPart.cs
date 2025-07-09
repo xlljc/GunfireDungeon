@@ -38,9 +38,8 @@ public class BulletPart : PartLogicBase
         Mana = config.BaseMana;
         var bulletId = config.Param["Bullet"].GetString();
         Bullet = ExcelConfig.BulletBase_Map[bulletId];
-        ScatteringAngle = Utils.Random.RandomConfigRange(config.GetParam<int[]>("ScatteringAngle", [ScatteringAngle]));
-        Count = config.GetParam("Count", Count);
-        
+        ScatteringAngle = Utils.Random.RandomConfigRange(config.Param.GetParam<int[]>("ScatteringAngle", [ScatteringAngle]));
+        Count = config.Param.GetParam("Count", Count);
     }
 
     public override IBullet[] Execute(PlanningParam param)

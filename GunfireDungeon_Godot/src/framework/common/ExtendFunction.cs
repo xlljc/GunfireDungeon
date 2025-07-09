@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text.Json;
 using DsUi;
 using Godot;
 
@@ -322,5 +324,45 @@ public static class ExtendFunction
         };
         control.GuiInput += handler;
         return new UiEventBinder(control, handler);
+    }
+    
+    /// <summary>
+    /// 获取配置的参数
+    /// </summary>
+    public static int GetParam(this Dictionary<string, JsonElement> dictionary, string key, int defaultValue)
+    {
+        return dictionary.TryGetValue(key, out var value) ? value.GetInt32() : defaultValue;
+    }
+        
+    /// <summary>
+    /// 获取配置的参数
+    /// </summary>
+    public static float GetParam(this Dictionary<string, JsonElement> dictionary, string key, float defaultValue)
+    {
+        return dictionary.TryGetValue(key, out var value) ? value.GetSingle() : defaultValue;
+    }
+        
+    /// <summary>
+    /// 获取配置的参数
+    /// </summary>
+    public static string GetParam(this Dictionary<string, JsonElement> dictionary, string key, string defaultValue)
+    {
+        return dictionary.TryGetValue(key, out var value) ? value.GetString() : defaultValue;
+    }
+        
+    /// <summary>
+    /// 获取配置的参数
+    /// </summary>
+    public static bool GetParam(this Dictionary<string, JsonElement> dictionary, string key, bool defaultValue)
+    {
+        return dictionary.TryGetValue(key, out var value) ? value.GetBoolean() : defaultValue;
+    }
+    
+    /// <summary>
+    /// 获取配置的参数
+    /// </summary>
+    public static T GetParam<T>(this Dictionary<string, JsonElement> dictionary, string key, T defaultValue)
+    {
+        return dictionary.TryGetValue(key, out var value) ? value.Deserialize<T>() : defaultValue;
     }
 }

@@ -61,10 +61,10 @@ public static partial class ExcelConfig
         public float[] ActiveLostSpeed;
 
         /// <summary>
-        /// 额外配置属性
+        /// 异常状态绑定的处理组件，参数描述参考Sheet2
         /// </summary>
         [JsonInclude]
-        public Dictionary<string, System.Text.Json.JsonElement> Config;
+        public Dictionary<string, System.Text.Json.JsonElement[]> AsComp;
 
         /// <summary>
         /// 描述
@@ -97,7 +97,7 @@ public static partial class ExcelConfig
             inst.LostSpeed = LostSpeed;
             inst.ActiveLostTime = ActiveLostTime;
             inst.ActiveLostSpeed = ActiveLostSpeed;
-            inst.Config = Config;
+            inst.AsComp = AsComp;
             inst.Details = Details;
             inst.Icon = Icon;
             inst.IconMask = IconMask;

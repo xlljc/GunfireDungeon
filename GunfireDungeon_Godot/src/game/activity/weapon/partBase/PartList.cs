@@ -147,11 +147,11 @@ public class PartList : IEnumerable
             EachTree(logicBlock);
         }
 
-        var block = GetFirstLogicBlock();
-        if (block != null && block.PartLogicBase != null)
-        {
-            Debug.Log("刷新零件逻辑树：\n" + block.PartLogicBase.GetTreeString());
-        }
+        // var block = GetFirstLogicBlock();
+        // if (block != null && block.PartLogicBase != null)
+        // {
+        //     Debug.Log("刷新零件逻辑树：\n" + block.PartLogicBase.GetTreeString());
+        // }
     }
 
     private int EachTree(PartProp part)
