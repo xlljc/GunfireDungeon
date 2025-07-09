@@ -16,6 +16,8 @@ public partial class ExcelConfig
                     return AsBurningResist;
                 case AbnormalStateType.Poisoning:
                     return AsPoisoningResist;
+                case AbnormalStateType.Bleeding:
+                    return AsBleedingResist;
             }
             return 0;
         }

@@ -306,13 +306,16 @@ public partial class TipState : TextureProgressBar
                 case nameof(AsMoveSpeed):
                     type = typeof(AsMoveSpeed);
                     break;
+                case nameof(AsDamage):
+                    type = typeof(AsDamage);
+                    break;
                 default:
                     throw new Exception($"未知异常状态组件: {kv.Key}");
             }
             
             var comp = RoleTip.Role.AddComponent(type);
             var ac = (IAbnormalStateComp)comp;
-            ac.InitConfig(Config, kv.Value);
+            ac.InitConfig(this, kv.Value);
             _asComponentList.Add(ac);
         }
     }

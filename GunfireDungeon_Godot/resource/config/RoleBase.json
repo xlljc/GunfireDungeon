@@ -28,7 +28,8 @@
     "DarkResist": 1,
     "RealResist": 1,
     "AsBurningResist": 30,
-    "AsPoisoningResist": 30
+    "AsPoisoningResist": 30,
+    "AsBleedingResist": 40
   },
   {
     "Id": "shopBoss0001",
@@ -55,7 +56,8 @@
     "DarkResist": 1,
     "RealResist": 1,
     "AsBurningResist": 0,
-    "AsPoisoningResist": 0
+    "AsPoisoningResist": 0,
+    "AsBleedingResist": 0
   },
   {
     "Id": "enemy0001",
@@ -82,6 +84,7 @@
     "DarkResist": 1,
     "RealResist": 1,
     "AsBurningResist": 30,
-    "AsPoisoningResist": 30
+    "AsPoisoningResist": 30,
+    "AsBleedingResist": 30
   }
 ]

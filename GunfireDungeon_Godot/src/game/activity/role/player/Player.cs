@@ -117,7 +117,7 @@ public partial class Player : Role
                 if (temp.Key <= time) // 超过1秒
                 {
                     // 移除
-                    Debug.Log("移除伤害：" + _hurtList[i]);
+                    // Debug.Log("移除伤害：" + _hurtList[i]);
                     _hurtList.RemoveAt(i);
                     i--;
                 }

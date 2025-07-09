@@ -99,10 +99,12 @@
     "Prefab": "bullet0003",
     "Harm": {
       "Physical": [
-        15
+        2
       ]
     },
-    "AbnormalState": null,
+    "AbnormalState": {
+      "Bleeding": 5
+    },
     "RepelRange": [
       15
     ],

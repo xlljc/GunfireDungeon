@@ -169,6 +169,12 @@ public static partial class ExcelConfig
         public int AsPoisoningResist;
 
         /// <summary>
+        /// 出血异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsBleedingResist;
+
+        /// <summary>
         /// 返回浅拷贝出的新对象
         /// </summary>
         public RoleBase Clone()
@@ -199,6 +205,7 @@ public static partial class ExcelConfig
             inst.RealResist = RealResist;
             inst.AsBurningResist = AsBurningResist;
             inst.AsPoisoningResist = AsPoisoningResist;
+            inst.AsBleedingResist = AsBleedingResist;
             return inst;
         }
     }

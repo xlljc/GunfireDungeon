@@ -10,7 +10,7 @@ public interface IAbnormalStateComp
     /// <summary>
     /// 初始化参数
     /// </summary>
-    void InitConfig(ExcelConfig.AbnormalStateConfig config, JsonElement[] param);
+    void InitConfig(TipState tipState, JsonElement[] param);
 
     /// <summary>
     /// 激活异常状态

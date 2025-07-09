@@ -2,6 +2,9 @@
 using System.Text.Json;
 using Config;
 
+/// <summary>
+/// 异常状态，移动速度
+/// </summary>
 public class AsMoveSpeed : Component<Role>, IAbnormalStateComp
 {
     private int _currLevel;
@@ -10,7 +13,7 @@ public class AsMoveSpeed : Component<Role>, IAbnormalStateComp
 
     private float _speedDelta;
     
-    public void InitConfig(ExcelConfig.AbnormalStateConfig config, JsonElement[] param)
+    public void InitConfig(TipState tipState, JsonElement[] param)
     {
         var value = param[0].GetSingle();
         _isPercentage = param[1].GetBoolean();
