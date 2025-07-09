@@ -15,11 +15,11 @@
     "AsComp": {
       "AsContinuousDamage": [
         1,
-        0.03,
-        3
+        0.01,
+        2
       ]
     },
-    "Details": "\u6BCF\u79D2\u6263\u9664\uFF083%\u6700\u5927\u751F\u547D\u503C\u002B3\uFF09\u7684\u751F\u547D\u503C\uFF0C\u79FB\u52A8\u901F\u5EA6\u002B20%\uFF0C\u6301\u7EED15\u79D2",
+    "Details": "\u6BCF\u79D2\u6263\u9664\uFF081%\u6700\u5927\u751F\u547D\u503C\u002B2\uFF09\u7684\u751F\u547D\u503C\uFF0C\u79FB\u52A8\u901F\u5EA6\u002B20%\uFF0C\u6301\u7EED15\u79D2",
     "Icon": "res://resource/sprite/tip/Fire.png",
     "IconMask": "res://resource/sprite/tip/FireMask.png"
   },
@@ -48,11 +48,11 @@
     "AsComp": {
       "AsContinuousDamage": [
         1,
-        0.01,
+        0.005,
         1
       ]
     },
-    "Details": "\u7D2F\u8BA1\u4E2D\u6BD2\u53EF\u4EE5\u53E0\u52A0\u5C42\u6570\uFF0C\u6BCF\u5C42\u6BCF\u79D2\u53D7\u5230\uFF081%\u6700\u5927\u751F\u547D\u503C\u002B1\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6BCF\u5C42\u6301\u7EED8\u79D2",
+    "Details": "\u7D2F\u8BA1\u4E2D\u6BD2\u53EF\u4EE5\u53E0\u52A0\u5C42\u6570\uFF0C\u6BCF\u5C42\u6BCF\u79D2\u53D7\u5230\uFF080.5%\u6700\u5927\u751F\u547D\u503C\u002B1\uFF09\u7684\u751F\u547D\u503C\uFF0C\u6BCF\u5C42\u6301\u7EED8\u79D2",
     "Icon": "res://resource/sprite/tip/Poison.png",
     "IconMask": "res://resource/sprite/tip/PoisonMask.png"
   }

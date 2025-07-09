@@ -114,9 +114,10 @@ public partial class Player : Role
             for (var i = 0; i < _hurtList.Count; i++)
             {
                 var temp = _hurtList[i];
-                if (temp.Key < time) // 超过1秒
+                if (temp.Key <= time) // 超过1秒
                 {
                     // 移除
+                    Debug.Log("移除伤害：" + _hurtList[i]);
                     _hurtList.RemoveAt(i);
                     i--;
                 }
@@ -166,8 +167,8 @@ public partial class Player : Role
             {
                 TriggerInteractive();
                 
-                AbnormalStateHandler(AbnormalStateType.Poisoning, 2.5f);
-                AbnormalStateHandler(AbnormalStateType.Burning, 2.5f);
+                AbnormalStateHandler(AbnormalStateType.Poisoning, 50f);
+                // AbnormalStateHandler(AbnormalStateType.Burning, 50f);
             }
             else if (InputManager.Reload) //换弹
             {

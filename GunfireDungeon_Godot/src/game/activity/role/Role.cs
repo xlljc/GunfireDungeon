@@ -1027,11 +1027,12 @@ public abstract partial class Role : ActivityObject
         
         //计算真正受到的伤害
         damage = OnHandlerHurt(damage);
+        _shieldRecoveryTimer = 0;
+
         var flag = Shield > 0;
         if (flag) //有护盾
         {
             Shield -= damage;
-            _shieldRecoveryTimer = 0;
             _addShieldVal = 0;
         }
         else //没有护盾
