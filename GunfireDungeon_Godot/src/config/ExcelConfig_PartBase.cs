@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 零件属性
+    /// </summary>
     public partial class PartBase
     {
         /// <summary>
@@ -79,6 +82,12 @@ public static partial class ExcelConfig
         public int BaseMana;
 
         /// <summary>
+        /// 绑定的逻辑类
+        /// </summary>
+        [JsonInclude]
+        public string ClassType;
+
+        /// <summary>
         /// 配置参数
         /// </summary>
         [JsonInclude]
@@ -106,6 +115,7 @@ public static partial class ExcelConfig
             inst.Icon = Icon;
             inst.Type = Type;
             inst.BaseMana = BaseMana;
+            inst.ClassType = ClassType;
             inst.Param = Param;
             inst.Remark = Remark;
             return inst;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 /// <summary>
@@ -10,6 +11,7 @@ public partial class TreasureBox : ObstacleObject
     public override void OnInit()
     {
         AnimatedSprite.AnimationFinished += OnAnimationFinished;
+        DefaultLayer = RoomLayerEnum.YSortLayer;
     }
 
     public override CheckInteractiveResult CheckInteractive(ActivityObject master)
@@ -34,7 +36,7 @@ public partial class TreasureBox : ObstacleObject
         weapon.Throw(Position, 2, 95, new Vector2(0, 11), 0);
     }
 
-    public override void Hurt(ActivityObject target, int damage, float angle)
+    public override void Hurt(ActivityObject target, Dictionary<DamageType, int> damage, Dictionary<AbnormalStateType, int> abnormalState, float angle)
     {
         PlayHitAnimation();
     }

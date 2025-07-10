@@ -25,7 +25,7 @@ public class Buff_OffsetInjury : BuffFragment
         Role.RoleState.CalcHurtDamageEvent -= CalcHurtDamageEvent;
     }
 
-    private void CalcHurtDamageEvent(int originDamage, RefValue<int> refValue)
+    private void CalcHurtDamageEvent(int originDamage, DamageType damageType, RefValue<int> refValue)
     {
         if (refValue.Value > 0 && Utils.Random.RandomBoolean(_value))
         {

@@ -15,7 +15,6 @@ glow_blend_mode = 1
 
 [node name="Dungeon" type="CanvasModulate"]
 script = ExtResource("1_txiyv")
-metadata/_edit_vertical_guides_ = []
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g06jj")

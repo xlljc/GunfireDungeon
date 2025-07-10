@@ -69,9 +69,9 @@ public partial class Boss : AiRole
         AnimatedSprite.RotationDegrees = Mathf.MoveToward(AnimatedSprite.RotationDegrees, _targetRotation, 25 * delta);
     }
 
-    public override void HurtHandler(ActivityObject target, int damage, float angle)
+    public override void HurtHandler(ActivityObject target, int damage, DamageType damageType, float angle)
     {
-        base.HurtHandler(target, damage, angle);
+        base.HurtHandler(target, damage, damageType, angle);
 
         if (Hp <= 0) //死亡
         {

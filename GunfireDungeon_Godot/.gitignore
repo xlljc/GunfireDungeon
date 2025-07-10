@@ -15,3 +15,7 @@
 /excelTool/Folder.DotSettings.user
 /GunfireDungeon.csproj.old*
 **/.DS_Store
+GameSave.json
+GameConfig.json
+/android
+/src/config/*.uid

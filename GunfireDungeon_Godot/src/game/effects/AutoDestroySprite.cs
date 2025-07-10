@@ -23,7 +23,7 @@ public partial class AutoDestroySprite : AnimatedSprite2D, IEffect
     /// </summary>
     [Export]
     public Array<GpuParticles2D> Particles2D { get; set; }
-    
+
     public bool IsDestroyed { get; private set; }
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }

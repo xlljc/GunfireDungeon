@@ -49,9 +49,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Border" type="NinePatchRect" parent="VBoxContainer/PartBg"]
-modulate = Color(0, 0.958261, 1, 0.47)
 layout_mode = 2
-texture = ExtResource("2_oywjh")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4

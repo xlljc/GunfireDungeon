@@ -31,13 +31,13 @@ public partial class PauseMenuPanel : PauseMenu
     
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
         GameCamera.Main.LockCamera();
     }
     
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
         GameCamera.Main.UnLockCamera();
     }
 

@@ -101,7 +101,7 @@ public class RoomInfo : IDestroy
     /// 液体画布
     /// </summary>
     public LiquidCanvas LiquidCanvas;
-
+    
     /// <summary>
     /// 房间迷雾
     /// </summary>
@@ -414,7 +414,7 @@ public class RoomInfo : IDestroy
         {
             StaticImageCanvas.Destroy();
         }
-
+        
         //销毁液体画布
         if (LiquidCanvas != null)
         {

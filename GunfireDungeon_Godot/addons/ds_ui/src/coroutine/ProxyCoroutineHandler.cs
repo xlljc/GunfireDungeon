@@ -27,8 +27,10 @@ namespace DsUi
             for (var i = 0; i < pairs.Length; i++)
             {
                 var item = pairs[i];
+#if CATCH_COROUTINE_ERROR
                 try
                 {
+#endif
                     var canNext = true;
 
                     if (item.WaitState == CoroutineData.WaitTypeEnum.WaitForSeconds) //等待秒数
@@ -134,12 +136,14 @@ namespace DsUi
                             }
                         }
                     }
+#if CATCH_COROUTINE_ERROR
                 }
                 catch (Exception e)
                 {
                     GD.PrintErr("执行协程发生异常: \n" + e);
                     ProxyStopCoroutine(ref coroutineList, item.Id);
                 }
+#endif
             }
         }
 

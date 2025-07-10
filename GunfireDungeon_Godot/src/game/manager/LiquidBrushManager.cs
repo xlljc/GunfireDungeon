@@ -16,7 +16,7 @@ public static class LiquidBrushManager
     {
         if (!_dictionary.TryGetValue(id, out var brush))
         {
-            brush = new BrushImageData(ExcelConfig.LiquidMaterial_Map[id]);
+            brush = new BrushImageData(ExcelConfig.LiquidBrush_Map[id]);
             _dictionary.Add(id, brush);
         }
 

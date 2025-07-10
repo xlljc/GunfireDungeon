@@ -27,6 +27,7 @@ public partial class ImageCanvas : Sprite2D, IDestroy
 
     public ImageCanvas(int width, int height)
     {
+        Name = "ImageCanvas";
         Width = width;
         Height = height;
 

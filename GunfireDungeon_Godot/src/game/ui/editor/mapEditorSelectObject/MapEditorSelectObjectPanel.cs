@@ -38,7 +38,7 @@ public partial class MapEditorSelectObjectPanel : MapEditorSelectObject
     //物体网格组件
     private UiGrid<ObjectButton, ExcelConfig.ActivityBase> _objectGrid;
     //允许出现在该面板中的物体类型
-    private ActivityType[] _typeArray = new[] { ActivityType.Enemy, ActivityType.Weapon, ActivityType.Prop };
+    private List<ActivityType> _typeList = new List<ActivityType>();
     
     public override void OnCreateUi()
     {
@@ -64,20 +64,29 @@ public partial class MapEditorSelectObjectPanel : MapEditorSelectObject
     /// <summary>
     /// 设置显示的物体类型
     /// </summary>
-    public void SetShowType(ActivityType activityType)
+    public void SetShowType(params ActivityType[] activityTypes)
     {
         _typeGrid.RemoveAll();
-        if (activityType == ActivityType.None)
+
+        var list = new List<ActivityType>();
+        for (var i = 0; i < activityTypes.Length; i++)
         {
-            _typeGrid.Add(new TypeButtonData("所有", ActivityType.None));
-            _typeGrid.Add(new TypeButtonData(ActivityId.GetTypeName(ActivityType.Weapon), ActivityType.Weapon));
-            _typeGrid.Add(new TypeButtonData(ActivityId.GetTypeName(ActivityType.Prop), ActivityType.Prop));
-            _typeGrid.Add(new TypeButtonData(ActivityId.GetTypeName(ActivityType.Enemy), ActivityType.Enemy));
+            var item = activityTypes[i];
+            if (item != ActivityType.None)
+            {
+                list.Add(item);
+            }
         }
-        else
+
+        _typeList.AddRange(list.Distinct());
+        
+        _typeGrid.Add(new TypeButtonData("所有", ActivityType.None));
+        foreach (var activityType in _typeList)
         {
             _typeGrid.Add(new TypeButtonData(ActivityId.GetTypeName(activityType), activityType));
         }
+
+        
         _typeGrid.SelectIndex = 0;
     }
 
@@ -102,32 +111,43 @@ public partial class MapEditorSelectObjectPanel : MapEditorSelectObject
 
         //搜索结果
         var arr = new List<ExcelConfig.ActivityBase>();
-        switch (type)
+        if (type == ActivityType.None)
         {
-            //全部类型
-            case ActivityType.None:
-                arr.Add(PreinstallMarkManager.RandomEnemy);
-                arr.Add(PreinstallMarkManager.RandomProp);
+            if (_typeList.Contains(ActivityType.Weapon)) //随机武器
+            {
                 arr.Add(PreinstallMarkManager.RandomWeapon);
-                break;
-            //随机武器
-            case ActivityType.Weapon:
-                arr.Add(PreinstallMarkManager.RandomWeapon);
-                break;
-            //随机道具
-            case ActivityType.Prop:
+            }
+            if (_typeList.Contains(ActivityType.Prop)) //随机道具
+            {
                 arr.Add(PreinstallMarkManager.RandomProp);
-                break;
-            //随机敌人
-            case ActivityType.Enemy:
+            }
+            if (_typeList.Contains(ActivityType.Enemy)) //随机敌人
+            {
                 arr.Add(PreinstallMarkManager.RandomEnemy);
-                break;
+            }
         }
+        else if (type == ActivityType.Weapon)
+        {
+            arr.Add(PreinstallMarkManager.RandomWeapon);
+        }
+        else if (type == ActivityType.Prop)
+        {
+            arr.Add(PreinstallMarkManager.RandomProp);
+        }
+        else if (type == ActivityType.Enemy)
+        {
+            arr.Add(PreinstallMarkManager.RandomEnemy);
+        }
+        
         foreach (var o in ExcelConfig.ActivityBase_List)
         {
-            if (o.ShowInMapEditor &&
+            if (//在编辑器中显示
+                o.ShowInMapEditor &&
+                // 模糊匹配
                 (string.IsNullOrEmpty(name) || o.Name.Contains(name) || o.Id.Contains(name)) &&
-                (type == ActivityType.None ? _typeArray.Contains(o.Type) : o.Type == type))
+                // 类型匹配
+                (type == ActivityType.None ? _typeList.Contains(o.Type) : o.Type == type)
+               )
             {
                 arr.Add(o);
             }

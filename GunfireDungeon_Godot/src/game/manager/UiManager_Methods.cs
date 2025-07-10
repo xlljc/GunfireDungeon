@@ -7,6 +7,8 @@ public static partial class UiManager
     public static class UiName
     {
         public const string Debug_Debugger = "debug/Debugger";
+        public const string Debug_Log = "debug/Log";
+        public const string Debug_Tools = "debug/Tools";
         public const string Develop_EditorTools = "develop/EditorTools";
         public const string Editor_EditorColorPicker = "editor/EditorColorPicker";
         public const string Editor_EditorDungeonGroup = "editor/EditorDungeonGroup";
@@ -64,6 +66,46 @@ public static partial class UiManager
     public static void Destroy_Debug_Debugger()
     {
         var uiInstance = GetUiInstance<UI.debug.Debugger.DebuggerPanel>(UiName.Debug_Debugger);
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 打开 debug/Log, 并返回UI实例
+    /// </summary>
+    public static UI.debug.Log.LogPanel Open_Debug_Log()
+    {
+        return OpenUi<UI.debug.Log.LogPanel>(UiName.Debug_Log);
+    }
+
+    /// <summary>
+    /// 销毁 debug/Log 的所有实例
+    /// </summary>
+    public static void Destroy_Debug_Log()
+    {
+        var uiInstance = GetUiInstance<UI.debug.Log.LogPanel>(UiName.Debug_Log);
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 打开 debug/Tools, 并返回UI实例
+    /// </summary>
+    public static UI.debug.Tools.ToolsPanel Open_Debug_Tools()
+    {
+        return OpenUi<UI.debug.Tools.ToolsPanel>(UiName.Debug_Tools);
+    }
+
+    /// <summary>
+    /// 销毁 debug/Tools 的所有实例
+    /// </summary>
+    public static void Destroy_Debug_Tools()
+    {
+        var uiInstance = GetUiInstance<UI.debug.Tools.ToolsPanel>(UiName.Debug_Tools);
         foreach (var uiPanel in uiInstance)
         {
             uiPanel.Destroy();

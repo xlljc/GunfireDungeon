@@ -18,16 +18,8 @@ public partial class ShopBoss : AiRole
     public override void OnInit()
     {
         base.OnInit();
-        Camp = CampEnum.Peace;
         SetAttackDesire(false); //默认不攻击
         SetMoveDesire(false); //默认不攻击
-    }
-
-    protected override RoleState OnCreateRoleState()
-    {
-        var roleState = new RoleState();
-        roleState.MoveSpeed = 50;
-        return roleState;
     }
 
     public override void OnCreateWithMark(RoomPreinstall roomPreinstall, ActivityMark activityMark)

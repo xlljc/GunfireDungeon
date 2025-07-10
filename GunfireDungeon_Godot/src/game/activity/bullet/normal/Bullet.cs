@@ -11,7 +11,6 @@ using Godot.Collections;
 /// </summary>
 public partial class Bullet : ActivityObject, IBullet
 {
-    
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
 
@@ -204,7 +203,7 @@ public partial class Bullet : ActivityObject, IBullet
             
             //造成伤害
             var target = BulletData.TriggerRole.IsDestroyed ? null : BulletData.TriggerRole;
-            hurt.Hurt(target, BulletData.Harm, Rotation);
+            hurt.Hurt(target, BulletData.HarmDic, BulletData.AbnormalStateDict, Rotation);
             
             //穿透次数
             CurrentPenetration++;

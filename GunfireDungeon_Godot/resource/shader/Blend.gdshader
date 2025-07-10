@@ -48,7 +48,7 @@ void fragment() {
 				a = outline_color.a;
 			}
 		}
-		
+
 		if (outline_use_blend) {
 			COLOR = mix(COLOR, blend, schedule);
 		}

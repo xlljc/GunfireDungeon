@@ -26,7 +26,7 @@ public abstract class PartLogicBase
     /// <summary>
     /// 所属零件对象
     /// </summary>
-    public PartProp PartProp { get; }
+    public PartProp PartProp { get; set; }
 
     /// <summary>
     /// 零件在武器逻辑槽中的索引，如果为 -1 则代表零件未加入到逻辑槽中
@@ -48,10 +48,10 @@ public abstract class PartLogicBase
     /// </summary>
     public PartLogicBase[] Children { get; set; }
 
-    public PartLogicBase(PartProp prop)
-    {
-        PartProp = prop;
-    }
+    /// <summary>
+    /// 初始化零件参数
+    /// </summary>
+    public abstract void InitParam(ExcelConfig.PartBase config);
 
     /// <summary>
     /// 执行零件，返回这一步产生的子弹对象，允许返回null

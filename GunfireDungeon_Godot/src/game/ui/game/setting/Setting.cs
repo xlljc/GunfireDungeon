@@ -115,12 +115,65 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.Name
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.Name
     /// </summary>
     public class Name_1 : UiNode<SettingPanel, Godot.Label, Name_1>
     {
         public Name_1(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
         public override Name_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.VerticalSync
+    /// </summary>
+    public class VerticalSync : UiNode<SettingPanel, Godot.CheckBox, VerticalSync>
+    {
+        public VerticalSync(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
+        public override VerticalSync Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6
+    /// </summary>
+    public class BoxContainer6 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer6>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
+        /// </summary>
+        public Name_1 L_Name
+        {
+            get
+            {
+                if (_L_Name == null) _L_Name = new Name_1(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                return _L_Name;
+            }
+        }
+        private Name_1 _L_Name;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.VerticalSync
+        /// </summary>
+        public VerticalSync L_VerticalSync
+        {
+            get
+            {
+                if (_L_VerticalSync == null) _L_VerticalSync = new VerticalSync(UiPanel, Instance.GetNode<Godot.CheckBox>("VerticalSync"));
+                return _L_VerticalSync;
+            }
+        }
+        private VerticalSync _L_VerticalSync;
+
+        public BoxContainer6(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer6 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.Name
+    /// </summary>
+    public class Name_2 : UiNode<SettingPanel, Godot.Label, Name_2>
+    {
+        public Name_2(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Name_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
@@ -140,15 +193,15 @@ public abstract partial class Setting : UiBase
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
         /// </summary>
-        public Name_1 L_Name
+        public Name_2 L_Name
         {
             get
             {
-                if (_L_Name == null) _L_Name = new Name_1(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                if (_L_Name == null) _L_Name = new Name_2(UiPanel, Instance.GetNode<Godot.Label>("Name"));
                 return _L_Name;
             }
         }
-        private Name_1 _L_Name;
+        private Name_2 _L_Name;
 
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.PerfectPixel
@@ -367,6 +420,19 @@ public abstract partial class Setting : UiBase
         private BoxContainer _L_BoxContainer;
 
         /// <summary>
+        /// 节点路径: Setting.ScrollContainer.BoxContainer6
+        /// </summary>
+        public BoxContainer6 L_BoxContainer6
+        {
+            get
+            {
+                if (_L_BoxContainer6 == null) _L_BoxContainer6 = new BoxContainer6(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer6"));
+                return _L_BoxContainer6;
+            }
+        }
+        private BoxContainer6 _L_BoxContainer6;
+
+        /// <summary>
         /// 节点路径: Setting.ScrollContainer.BoxContainer2
         /// </summary>
         public BoxContainer2 L_BoxContainer2
@@ -477,6 +543,16 @@ public abstract partial class Setting : UiBase
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer
     /// </summary>
     public BoxContainer S_BoxContainer => L_ScrollContainer.L_SettingMenu.L_BoxContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.VerticalSync
+    /// </summary>
+    public VerticalSync S_VerticalSync => L_ScrollContainer.L_SettingMenu.L_BoxContainer6.L_VerticalSync;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer6
+    /// </summary>
+    public BoxContainer6 S_BoxContainer6 => L_ScrollContainer.L_SettingMenu.L_BoxContainer6;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.PerfectPixel

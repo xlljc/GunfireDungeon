@@ -76,6 +76,44 @@
     "ShowInMapEditor": true
   },
   {
+    "Id": "weapon0001",
+    "Name": "\u6B65\u67AA",
+    "Type": 5,
+    "Quality": 3,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/weapon/Weapon0001.tscn",
+    "Icon": "res://resource/sprite/weapon/weapon0001/Weapon0001.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
+    "Id": "weapon0002",
+    "Name": "\u9730\u5F39\u67AA",
+    "Type": 5,
+    "Quality": 3,
+    "Price": 0,
+    "Intro": {
+      "Code": ""
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/weapon/Weapon0002.tscn",
+    "Icon": "res://resource/sprite/weapon/weapon0002/Weapon0002.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": true
+  },
+  {
     "Id": "weapon0003",
     "Name": "\u624B\u67AA",
     "Type": 5,
@@ -585,6 +623,25 @@
     "__Material": "",
     "Prefab": "res://prefab/currency/Gold1.tscn",
     "Icon": "res://resource/sprite/ui/commonIcon/Gold_1.png",
+    "NotInRandomPool": false,
+    "ShowInMapEditor": false
+  },
+  {
+    "Id": "hit_number",
+    "Name": "\u4F24\u5BB3\u6570\u5B57",
+    "Type": 99,
+    "Quality": 0,
+    "Price": 0,
+    "Intro": {
+      "Code": "\u9020\u6210\u6216\u8005\u53D7\u5230\u4F24\u5BB3\u540E\u663E\u793A\u7684\u6570\u5B57"
+    },
+    "Details": {
+      "Code": ""
+    },
+    "IsStatic": false,
+    "__Material": "",
+    "Prefab": "res://prefab/effect/common/HitNumber.tscn",
+    "Icon": "",
     "NotInRandomPool": false,
     "ShowInMapEditor": false
   }

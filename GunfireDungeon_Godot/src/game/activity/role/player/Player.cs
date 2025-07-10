@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Config;
 using DsUi;
 using Godot;
@@ -9,9 +10,9 @@ using UI.game.RoomUI;
 /// 玩家角色基类, 所有角色都必须继承该类
 /// </summary>
 public partial class Player : Role
-{
+{ 
     /// <summary>
-    /// 当玩家第一次进入房间时调用
+    /// 当玩家第一次进入房间时调用l;'lo;l.,
     /// </summary>
     public event Action<RoomInfo> OnFirstEnterRoomEvent;
     
@@ -19,8 +20,6 @@ public partial class Player : Role
     /// 玩家身上的状态机控制器
     /// </summary>
     public StateController<Player, PlayerStateEnum> StateController { get; private set; }
-
-    public PlayerRoleState PlayerRoleState { get; private set; }
     
     /// <summary>
     /// 是否可以翻滚
@@ -30,23 +29,14 @@ public partial class Player : Role
     //翻滚冷却计时器
     private float _rollCoolingTimer = 0;
     
-    private BrushImageData _brushData2;
+    private BrushImageData _brushData;
+    private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
     
     public override void OnInit()
     {
         base.OnInit();
 
-        IsAi = false;
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
-        Camp = CampEnum.Camp1;
-
-        MaxHp = 6;
-        Hp = 6;
-        MaxShield = 0;
-        Shield = 0;
-
-        WeaponPack.SetCapacity(2);
-        ActivePropsPack.SetCapacity(1);
         
         // debug用
         // DebugSet();
@@ -60,11 +50,13 @@ public partial class Player : Role
         
         //InitSubLine();
         
-        _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
-        
-        PartPropPack.SetCapacity(10);
-        
+        _brushData = LiquidBrushManager.GetBrush("0001");
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
+        
+        // this.CallDelay(1f, () =>
+        // {
+        //     DrawLiquid(_brushData2);
+        // });
     }
 
     private void DebugSet()
@@ -107,13 +99,6 @@ public partial class Player : Role
 
     }
 
-    protected override RoleState OnCreateRoleState()
-    {
-        var roleState = new PlayerRoleState();
-        PlayerRoleState = roleState;
-        return roleState;
-    }
-
     protected override void Process(float delta)
     {
         base.Process(delta);
@@ -121,6 +106,28 @@ public partial class Player : Role
         {
             return;
         }
+        
+        //更新每秒受到的伤害计数
+        if (_hurtList.Count > 0)
+        {
+            var time = DateTime.Now.Ticks - 1000000;
+            for (var i = 0; i < _hurtList.Count; i++)
+            {
+                var temp = _hurtList[i];
+                if (temp.Key <= time) // 超过1秒
+                {
+                    // 移除
+                    // Debug.Log("移除伤害：" + _hurtList[i]);
+                    _hurtList.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
 
         if (_rollCoolingTimer > 0)
         {
@@ -198,25 +205,6 @@ public partial class Player : Role
             {
                 ThrowActiveProp();
             }
-            
-            if (Input.IsKeyPressed(Key.P)) //测试用, 自杀
-            {
-                //Hurt(1000, 0);
-                Hp = 0;
-                HurtHandler(this, 1000, 0);
-            }
-            else if (Input.IsKeyPressed(Key.O)) //测试用, 消灭房间内所有敌人
-            {
-                var enemyList = AffiliationArea.FindIncludeItems(o => o is Role role && role.IsEnemyWithPlayer());
-                foreach (var enemy in enemyList)
-                {
-                    var hurt = ((Enemy)enemy).HurtArea;
-                    if (hurt.CanHurt(Camp))
-                    {
-                        hurt.Hurt(this, 1000, 0);
-                    }
-                }
-            }
         }
 
 
@@ -234,19 +222,11 @@ public partial class Player : Role
         //     }
         // }
         
-        if (Face == FaceDirection.Right)
-        {
-            TipRoot.Scale = Vector2.One;
-        }
-        else
-        {
-            TipRoot.Scale = new Vector2(-1, 1);
-        }
-
-        //测试刷地
-        //DrawLiquid(_brushData2);
+        // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
     }
 
+    private float _lqTimer;
+    
     protected override void OnAffiliationChange(AffiliationArea prevArea)
     {
         BrushPrevPosition = null;
@@ -263,22 +243,38 @@ public partial class Player : Role
         EventManager.EmitEvent(EventEnum.OnPlayerRemoveWeapon, weapon);
     }
 
-    protected override int OnHandlerHurt(int damage)
+    protected override void OnShieldDestroy()
     {
-        //修改受到的伤害, 每次只受到1点伤害
-        return 1;
+        //破盾
+        PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
     }
 
+    protected override int OnHandlerHurt(int damage)
+    {
+        if (Shield > 0)
+        {
+            return damage;
+        }
+
+        var value = Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp);
+        return damage >= value ? //触发保护机制
+            value : damage;
+    }
+    
     protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
     {
         //进入无敌状态
-        if (realHarm) //真实伤害
+        if (realHarm) //真实伤害，不是护盾抵消掉的
         {
-            PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
-        }
-        else //护盾抵消掉的
-        {
-            PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
+            _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damage));
+            if (damage >= Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp)) //触发保护机制的无敌时间
+            {
+                PlayInvincibleFlashing(RoleState.WoundedMaxDamageInvincibleTime);
+            }
+            else if (GetDamageTakenInTheLastSecond() >= Mathf.CeilToInt(RoleState.WoundedInvinciblePercent * MaxHp)) //触发无敌
+            {
+                PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
+            }
         }
 
         //血量为0, 扔掉所有武器
@@ -409,7 +405,7 @@ public partial class Player : Role
     /// </summary>
     public void OverRoll()
     {
-        _rollCoolingTimer = PlayerRoleState.RollCoolingTime;
+        _rollCoolingTimer = RoleState.RollCoolingTime;
     }
 
     // protected override void DebugDraw()
@@ -428,6 +424,20 @@ public partial class Player : Role
     {
         base.UseGold(goldCount);
         EventManager.EmitEvent(EventEnum.OnPlayerGoldChange, RoleState.Gold);
+    }
+
+    /// <summary>
+    /// 获取最近 1 秒内受到的伤害，只算真实伤害，护盾抵消的不算
+    /// </summary>
+    public int GetDamageTakenInTheLastSecond()
+    {
+        var v = 0;
+        for (var i = 0; i < _hurtList.Count; i++)
+        {
+            v += _hurtList[i].Value;
+        }
+
+        return v;
     }
 
     /// <summary>

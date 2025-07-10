@@ -98,7 +98,7 @@ public static class InputManager
         ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
         Interactive = Input.IsActionJustPressed(InputAction.Interactive);
         Reload = Input.IsActionJustPressed(InputAction.Reload);
-        Fire = Input.IsActionPressed(InputAction.Fire);
+        Fire = Input.IsActionPressed(InputAction.Fire) && GameApplication.Instance.Cursor.BlockageMarkingCount <= 0;
         MeleeAttack = Input.IsActionJustPressed(InputAction.MeleeAttack);
         Roll = Input.IsActionJustPressed(InputAction.Roll);
         UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);

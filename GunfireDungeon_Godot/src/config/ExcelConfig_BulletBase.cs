@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 子弹属性
+    /// </summary>
     public partial class BulletBase
     {
         /// <summary>
@@ -38,11 +41,29 @@ public static partial class ExcelConfig
         public string Prefab;
 
         /// <summary>
-        /// 造成的伤害区间 <br/>
-        /// 格式为[value]或者[min,max]
+        /// 造成伤害的类型和值区间，多个key-value可以做多类型伤害 <br/>
+        /// key为伤害类型，值如下 <br/>
+        /// Physical(0):物理伤害 <br/>
+        /// Magic(1):魔法伤害 <br/>
+        /// Fire(2):火焰伤害 <br/>
+        /// Ice(3):冰霜伤害 <br/>
+        /// Thunder(4):雷电伤害 <br/>
+        /// Light(5):光明伤害 <br/>
+        /// Dark(6):暗影伤害 <br/>
+        /// Real(7):真实伤害 <br/>
+        /// value为伤害值，格式为[value]或者[min,max]
         /// </summary>
         [JsonInclude]
-        public int[] HarmRange;
+        public Dictionary<DamageType, int[]> Harm;
+
+        /// <summary>
+        /// 累计异常状态数据 <br/>
+        /// Burning(0):燃烧 <br/>
+        /// Poisoning(1):中毒 <br/>
+        /// Bleeding(2):出血
+        /// </summary>
+        [JsonInclude]
+        public Dictionary<AbnormalStateType, int> AbnormalState;
 
         /// <summary>
         /// 造成伤害后击退值区间 <br/>
@@ -108,6 +129,25 @@ public static partial class ExcelConfig
         public int[] Penetration;
 
         /// <summary>
+        /// 开火后相机抖动强度,只有玩家拾起武器开火才会抖动相机
+        /// </summary>
+        [JsonInclude]
+        public float CameraShake;
+
+        /// <summary>
+        /// 后坐力区间 (仅用于开火后武器身抖动) <br/>
+        /// 格式为[value]或者[min,max]
+        /// </summary>
+        [JsonInclude]
+        public float[] BacklashRange;
+
+        /// <summary>
+        /// 开火后武器口上抬角度
+        /// </summary>
+        [JsonInclude]
+        public float UpliftAngle;
+
+        /// <summary>
         /// 射击音效
         /// </summary>
         public Sound ShootSound;
@@ -128,7 +168,8 @@ public static partial class ExcelConfig
             inst.Name = Name;
             inst.Type = Type;
             inst.Prefab = Prefab;
-            inst.HarmRange = HarmRange;
+            inst.Harm = Harm;
+            inst.AbnormalState = AbnormalState;
             inst.RepelRange = RepelRange;
             inst.DeviationAngleRange = DeviationAngleRange;
             inst.SpeedRange = SpeedRange;
@@ -137,6 +178,9 @@ public static partial class ExcelConfig
             inst.VerticalSpeed = VerticalSpeed;
             inst.BounceCount = BounceCount;
             inst.Penetration = Penetration;
+            inst.CameraShake = CameraShake;
+            inst.BacklashRange = BacklashRange;
+            inst.UpliftAngle = UpliftAngle;
             inst.ShootSound = ShootSound;
             inst.FireEffect = FireEffect;
             return inst;

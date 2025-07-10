@@ -12,7 +12,7 @@ public partial class Gold : ActivityObject, IPoolItem
     /// </summary>
     [Export]
     public int GoldCount { get; set; } = 1;
-    
+
     public bool IsRecycled { get; set; }
     public string Logotype { get; set; }
     

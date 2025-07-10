@@ -6,23 +6,26 @@ namespace UI.debug.Debugger;
 
 public partial class DebuggerPanel : Debugger
 {
-    private bool _showPanel = false;
-    private int _len = 0;
-    private bool _isDown = false;
-    private Vector2 _offset;
-    private Vector2 _prevPos;
-    private bool _moveFlag;
+    /// <summary>
+    /// 是否打开了Ui
+    /// </summary>
+    public bool ShowPanel = false;
+    
+    private bool _moveFalg = false;
+    private GameSave _save;
     
     public override void OnCreateUi()
     {
         S_Bg.Instance.Visible = false;
+
+        _save = GameApplication.Instance.GameSave;
+        S_HoverButton.Instance.Position = new Vector2(_save.Debug.X, _save.Debug.Y);
+        S_HoverButton.Instance.AddDragListener(OnDragHoverButton);
         
-        S_HoverButton.Instance.Pressed += OnClickHoverButton;
-        S_HoverButton.Instance.ButtonDown += OnMouseDown;
-        S_HoverButton.Instance.ButtonUp += OnMouseUp;
-        
-        S_Clear.Instance.Pressed += OnClear;
         S_Close.Instance.Pressed += OnClose;
+        
+        S_Tab.Instance.SetTabTitle(0, "日志");
+        S_Tab.Instance.SetTabTitle(1, "工具");
     }
 
     public override void OnDestroyUi()
@@ -32,66 +35,66 @@ public partial class DebuggerPanel : Debugger
 
     public override void Process(float delta)
     {
-        if (_showPanel)
-        {
-            if (Debug.AllLogMessage.Length != _len)
-            {
-                S_Label.Instance.Text = Debug.AllLogMessage;
-                _len = Debug.AllLogMessage.Length;
-            }
-        }
-        else
-        {
-            if (_isDown)
-            {
-                var temp = GetGlobalMousePosition() - _offset;
-                if (temp != _prevPos)
-                {
-                    _moveFlag = true;
-                    _prevPos = temp;
-                    S_HoverButton.Instance.GlobalPosition = temp;
-                }
-            }
-        }
-
         S_Fps.Instance.Text = "FPS:" + Mathf.RoundToInt(Engine.GetFramesPerSecond());
     }
-
-    private void OnMouseDown()
-    {
-        _isDown = true;
-        _moveFlag = false;
-        _prevPos = S_HoverButton.Instance.GlobalPosition;
-        _offset = GetGlobalMousePosition() - _prevPos;
-    }
     
-    private void OnMouseUp()
+    private void OnDragHoverButton(DragState state, Vector2 pos)
     {
-        _isDown = false;
+        if (state == DragState.DragStart)
+        {
+            GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
+            _moveFalg = false;
+        }
+        else if (state == DragState.DragMove)
+        {
+            _moveFalg = true;
+            var button = S_HoverButton.Instance;
+            var position = button.Position;
+            position += pos;
+
+            if (Utils.IsRectContain(Vector2.Zero, GameApplication.Instance.GetWindow().Size, position, button.Size))
+            {
+                button.Position = position;
+            }
+        }
+        else if (state == DragState.DragEnd)
+        {
+            if (_moveFalg)
+            {
+                var position = S_HoverButton.Instance.Position;
+                _save.Debug.X = position.X;
+                _save.Debug.Y = position.Y;
+                _save.LateSave();
+                GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
+            }
+            else
+            {
+                OnClickHoverButton();
+            }
+
+            _moveFalg = false;
+        }
     }
     
     private void OnClickHoverButton()
     {
-        if (_moveFlag)
-        {
-            return;
-        }
-        _showPanel = true;
-        S_Bg.Instance.Visible = _showPanel;
+        ShowPanel = true;
+        S_Bg.Instance.Visible = ShowPanel;
         S_HoverButton.Instance.Visible = false;
     }
 
-    private void OnClear()
+    /// <summary>
+    /// 关闭面板
+    /// </summary>
+    public void OnClose()
     {
-        Debug.Clear();
-        S_Label.Instance.Text = "";
-        _len = 0;
-    }
-
-    private void OnClose()
-    {
-        _showPanel = false;
-        S_Bg.Instance.Visible = _showPanel;
+        if (!ShowPanel)
+        {
+            return;
+        }
+        ShowPanel = false;
+        S_Bg.Instance.Visible = ShowPanel;
         S_HoverButton.Instance.Visible = true;
+        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
     }
 }

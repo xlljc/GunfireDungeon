@@ -12,12 +12,6 @@ public partial class GameApplication : Node2D, ICoroutine
     public static GameApplication Instance { get; private set; }
 
     /// <summary>
-    /// 是否启用调试绘制
-    /// </summary>
-    [Export]
-    public bool DebugDraw;
-
-    /// <summary>
     /// 场景根节点
     /// </summary>
     [Export]
@@ -124,7 +118,6 @@ public partial class GameApplication : Node2D, ICoroutine
 
         //初始化配置表
         ExcelConfig.Init();
-        PreinstallMarkManager.Init();
         PropFragmentRegister.Init();
         //初始化房间配置数据
         InitRoomConfig();
@@ -133,13 +126,15 @@ public partial class GameApplication : Node2D, ICoroutine
         //初始化武器数据
         Weapon.InitWeaponAttribute();
         //初始化敌人数据
-        Enemy.InitEnemyAttribute();
+        Enemy.InitRoleAttribute();
         //初始化buff数据
         BuffProp.InitBuffAttribute();
         //初始化主动道具数据
         ActiveProp.InitActiveAttribute();
         //初始化零件数据
         PartProp.InitPartAttribute();
+        
+        PreinstallMarkManager.Init();
         
         foreach (var dungeonRoomGroup in RoomConfig)
         {
@@ -170,6 +165,13 @@ public partial class GameApplication : Node2D, ICoroutine
         config.ShopRoomCount = 1;
         config.EnableLimitRange = false;
         config.AllowedCornerAisles = false;
+
+        // config.RoomMaxInterval = 30;
+        // config.RoomMinInterval = 10;
+        // config.RoomHorizontalMaxDispersion = 2f;
+        // config.RoomHorizontalMinDispersion = -2f;
+        // config.RoomVerticalMaxDispersion = 2f;
+        // config.RoomVerticalMinDispersion = -2f;
         return config;
     }
 
@@ -197,8 +199,6 @@ public partial class GameApplication : Node2D, ICoroutine
         GD.Randomize();
         //固定帧率
         //Engine.MaxFps = TargetFps;
-        //调试绘制开关
-        ActivityObject.IsDebug = DebugDraw;
         //Engine.TimeScale = 0.2f;
         
         //调整窗口分辨率
@@ -237,6 +237,7 @@ public partial class GameApplication : Node2D, ICoroutine
         var newDelta = (float)delta;
         InputManager.Update(newDelta);
         SoundManager.Update(newDelta);
+        GameSave.Tick(newDelta);
         
         //协程更新
         ProxyCoroutineHandler.ProxyUpdateCoroutine(ref _coroutineList, newDelta);
@@ -249,10 +250,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return uiPos / PixelScale - ViewportSize / 2 + GameCamera.Main.GlobalPosition - GameCamera.Main.PixelOffset;
+            return (uiPos / PixelScale - ViewportSize / 2) / GameCamera.Main.Zoom - GameCamera.Main.PixelOffset + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
         }
 
-        return (uiPos - GetWindow().Size / 2) / GameCamera.Main.Zoom + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
+        return (uiPos - GetViewportRect().Size / 2) / GameCamera.Main.Zoom + GameCamera.Main.GlobalPosition + GameCamera.Main.Offset;
     }
 
     /// <summary>
@@ -262,10 +263,10 @@ public partial class GameApplication : Node2D, ICoroutine
     {
         if (PerfectPixel)
         {
-            return (worldPos + GameCamera.Main.PixelOffset - (GameCamera.Main.GlobalPosition + GameCamera.Main.Offset) + ViewportSize / 2) * PixelScale;
+            return ((worldPos + GameCamera.Main.PixelOffset - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + ViewportSize / 2) * PixelScale;
         }
 
-        return (worldPos - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + GetWindow().Size / 2;
+        return (worldPos - GameCamera.Main.GlobalPosition - GameCamera.Main.Offset) * GameCamera.Main.Zoom + GetViewportRect().Size / 2;
     }
 
     public long StartCoroutine(IEnumerator able)

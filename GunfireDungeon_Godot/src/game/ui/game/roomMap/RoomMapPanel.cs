@@ -204,7 +204,7 @@ public partial class RoomMapPanel : RoomMap
     //放大小地图
     private void MagnifyMap()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
         S_DrawContainer.Reparent(S_MagnifyMapBar);
         S_DrawContainer.Instance.Position = new Vector2(1, 1);
         S_Bg.Instance.Visible = true;
@@ -224,7 +224,7 @@ public partial class RoomMapPanel : RoomMap
     //还原小地图
     private void ResetMap()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
         S_DrawContainer.Reparent(S_MapBar);
         S_DrawContainer.Instance.Position = new Vector2(1, 1);
         S_Bg.Instance.Visible = false;

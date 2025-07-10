@@ -63,7 +63,7 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
             RoomUiPanel.OcclusionCount++;
@@ -72,7 +72,7 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
             RoomUiPanel.OcclusionCount--;

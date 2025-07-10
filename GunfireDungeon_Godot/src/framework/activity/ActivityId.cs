@@ -30,6 +30,8 @@ public static class ActivityId
                 return "特效";
             case ActivityType.Prop:
                 return "道具";
+            case ActivityType.Boss:
+                return "Boss";
             case ActivityType.Treasure:
                 return "宝箱";
             case ActivityType.Other:
