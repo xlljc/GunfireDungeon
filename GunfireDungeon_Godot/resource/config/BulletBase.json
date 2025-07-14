@@ -99,7 +99,7 @@
     "Prefab": "bullet0003",
     "Harm": {
       "Physical": [
-        2
+        10
       ]
     },
     "AbnormalState": {

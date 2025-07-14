@@ -109,6 +109,90 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_part_comm0001 = "part_comm0001";
         /// <summary>
+        /// 名称: 鞋子 <br/>
+        /// </summary>
+        public const string Id_prop0001 = "prop0001";
+        /// <summary>
+        /// 名称: 心之容器 <br/>
+        /// </summary>
+        public const string Id_prop0002 = "prop0002";
+        /// <summary>
+        /// 名称: 护盾 <br/>
+        /// </summary>
+        public const string Id_prop0003 = "prop0003";
+        /// <summary>
+        /// 名称: 护盾计时器 <br/>
+        /// </summary>
+        public const string Id_prop0004 = "prop0004";
+        /// <summary>
+        /// 名称: 杀伤弹 <br/>
+        /// </summary>
+        public const string Id_prop0005 = "prop0005";
+        /// <summary>
+        /// 名称: 红宝石戒指 <br/>
+        /// </summary>
+        public const string Id_prop0006 = "prop0006";
+        /// <summary>
+        /// 名称: 备用护盾 <br/>
+        /// </summary>
+        public const string Id_prop0007 = "prop0007";
+        /// <summary>
+        /// 名称: 眼镜 <br/>
+        /// </summary>
+        public const string Id_prop0008 = "prop0008";
+        /// <summary>
+        /// 名称: 高速子弹 <br/>
+        /// </summary>
+        public const string Id_prop0009 = "prop0009";
+        /// <summary>
+        /// 名称: 分裂子弹 <br/>
+        /// </summary>
+        public const string Id_prop0010 = "prop0010";
+        /// <summary>
+        /// 名称: 弹射子弹 <br/>
+        /// </summary>
+        public const string Id_prop0011 = "prop0011";
+        /// <summary>
+        /// 名称: 穿透子弹 <br/>
+        /// </summary>
+        public const string Id_prop0012 = "prop0012";
+        /// <summary>
+        /// 名称: 武器背包 <br/>
+        /// </summary>
+        public const string Id_prop0013 = "prop0013";
+        /// <summary>
+        /// 名称: 道具背包 <br/>
+        /// </summary>
+        public const string Id_prop0014 = "prop0014";
+        /// <summary>
+        /// 名称: 医药箱-prop5000 <br/>
+        /// </summary>
+        public const string Id_prop5000 = "prop5000";
+        /// <summary>
+        /// 名称: 弹药箱 <br/>
+        /// </summary>
+        public const string Id_prop5001 = "prop5001";
+        /// <summary>
+        /// 名称: 猪猪存钱罐 <br/>
+        /// </summary>
+        public const string Id_prop5002 = "prop5002";
+        /// <summary>
+        /// 名称: 红外遥控器 <br/>
+        /// </summary>
+        public const string Id_prop5003 = "prop5003";
+        /// <summary>
+        /// 名称: 魔术棒 <br/>
+        /// </summary>
+        public const string Id_prop5004 = "prop5004";
+        /// <summary>
+        /// 名称: 便携式供血器 <br/>
+        /// </summary>
+        public const string Id_prop5005 = "prop5005";
+        /// <summary>
+        /// 名称: 便携式献血器 <br/>
+        /// </summary>
+        public const string Id_prop5006 = "prop5006";
+        /// <summary>
         /// 名称: 木质宝箱 <br/>
         /// </summary>
         public const string Id_treasure_box0001 = "treasure_box0001";
