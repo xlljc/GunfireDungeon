@@ -43,6 +43,10 @@ public static class UiGeneratorUtils
     /// </summary>
     public static string FirstToLower(string str)
     {
+        if (string.IsNullOrEmpty(str))
+        {
+            return str;
+        }
         return str.Substring(0, 1).ToLower() + str.Substring(1);
     }
         
@@ -51,6 +55,10 @@ public static class UiGeneratorUtils
     /// </summary>
     public static string FirstToUpper(string str)
     {
+        if (string.IsNullOrEmpty(str))
+        {
+            return str;
+        }
         return str.Substring(0, 1).ToUpper() + str.Substring(1);
     }
 
