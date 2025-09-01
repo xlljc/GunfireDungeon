@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://yjjndhaxkb5f"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/FloatAttr.gd" id="1_tujyl"]
+
+[node name="FloatAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "line_edit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_tujyl")
+label = NodePath("Name")
+line_edit = NodePath("LineEdit")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2

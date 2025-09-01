@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv1jqsp5hy0wm"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/Vector3IAttr.gd" id="1_pqxxa"]
+
+[node name="Vector3IAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "x_line_edit", "y_line_edit", "z_line_edit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_pqxxa")
+label = NodePath("Name")
+x_line_edit = NodePath("HBoxContainer/XLineEdit")
+y_line_edit = NodePath("HBoxContainer/YLineEdit")
+z_line_edit = NodePath("HBoxContainer/ZLineEdit")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "X:"
+
+[node name="XLineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Y:"
+
+[node name="YLineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Z:"
+
+[node name="ZLineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2

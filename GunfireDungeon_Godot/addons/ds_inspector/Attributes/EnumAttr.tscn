@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://chl0he68icv03"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/EnumAttr.gd" id="1_ur83t"]
+
+[node name="EnumAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "option_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_ur83t")
+label = NodePath("Name")
+option_button = NodePath("OptionButton")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="OptionButton" type="OptionButton" parent="."]
+z_index = 10
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0

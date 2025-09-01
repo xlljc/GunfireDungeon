@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca4x6j5l2ytuu"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/TextureAttr.gd" id="2"]
+
+[node name="TextureAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "texture_node")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2")
+label = NodePath("Name")
+texture_node = NodePath("Texture")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="Texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+expand_mode = 1
+stretch_mode = 5
