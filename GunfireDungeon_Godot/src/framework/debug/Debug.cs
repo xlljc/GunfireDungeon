@@ -55,7 +55,7 @@ public static class Debug
             }
         }
 
-        GD.PrintErr(str);
+        GD.PushError(str);
         AllLogMessage = str + "\n" + AllLogMessage;
         if (AllLogMessage.Length > 10000)
         {
