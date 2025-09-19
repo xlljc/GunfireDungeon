@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b34tddsmqnj8s"]
 
-[ext_resource type="Texture2D" uid="uid://gf8wefrp284o" path="res://resource/sprite/map/door_up.png" id="1_vlsx2"]
+[ext_resource type="Texture2D" uid="uid://bgowl8a6fsnx4" path="res://resource/sprite/map/door_up.png" id="1_vlsx2"]
 
 [resource]
 animations = [{
