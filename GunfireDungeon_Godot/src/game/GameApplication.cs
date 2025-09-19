@@ -112,7 +112,7 @@ public partial class GameApplication : Node2D, ICoroutine
     public GameApplication()
     {
         Instance = this;
-        TargetFps = Mathf.RoundToInt(DisplayServer.ScreenGetRefreshRate());
+        // TargetFps = Mathf.RoundToInt(DisplayServer.ScreenGetRefreshRate());
         
         Utils.InitRandom();
 
@@ -202,7 +202,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //Engine.TimeScale = 0.2f;
         
         //调整窗口分辨率
-        OnWindowSizeChanged();
+        CallDeferred(nameof(OnWindowSizeChanged));
         //窗体大小改变
         //GetWindow().SizeChanged += OnWindowSizeChanged;
 
@@ -406,7 +406,8 @@ public partial class GameApplication : Node2D, ICoroutine
         s.Y = s.Y / 2 * 2 + 2;
         SubViewport.Size = s;
         SubViewportContainer.Scale = new Vector2(PixelScale, PixelScale);
-        SubViewportContainer.Size = s;
+        SubViewportContainer.SetDeferred(Control.PropertyName.Size, s);
+        // SubViewportContainer.Size = s;
         SubViewportContainer.Position = new Vector2(-PixelScale, -PixelScale);
     }
 
