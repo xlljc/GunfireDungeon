@@ -163,11 +163,10 @@ public partial class GameSave
 #if TOOLS
             return File.ReadAllText(fileName);
 #else
-            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Write);
+            var file = FileAccess.Open("user://" + fileName, FileAccess.ModeFlags.Read);
             var save = file.GetAsText();
             file.Close();
             return save;
-            
 #endif
         }
         else
