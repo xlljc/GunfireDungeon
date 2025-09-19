@@ -5,9 +5,9 @@
 
 [node name="Blood" type="CPUParticles2D"]
 z_index = -5
+texture = ExtResource("1")
 lifetime = 0.2
 explosiveness = 0.9
-texture = ExtResource("1")
 gravity = Vector2(0, 0)
 color = Color(0.627451, 0.0705882, 0.0705882, 0.705882)
 script = ExtResource("2")

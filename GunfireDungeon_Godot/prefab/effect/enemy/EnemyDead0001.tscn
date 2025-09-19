@@ -203,6 +203,6 @@ shape = SubResource("CircleShape2D_0xl2q")
 [node name="GPUParticles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_p3lv8")
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_ku1mm")
 texture = ExtResource("4_t55wd")
 fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_ku1mm")

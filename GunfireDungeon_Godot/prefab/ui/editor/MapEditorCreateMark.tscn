@@ -327,7 +327,7 @@ flat = true
 icon_alignment = 1
 
 [node name="ExpandPanel" type="MarginContainer" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_top = -423.0
 offset_right = 667.0
 offset_bottom = -353.0
@@ -340,7 +340,6 @@ columns = 2
 
 [node name="NumberBar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
 anchors_preset = 0
 offset_top = -320.0
 offset_right = 700.0
@@ -378,7 +377,6 @@ size_flags_stretch_ratio = 60.0
 
 [node name="OptionBar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
 anchors_preset = 0
 offset_top = -405.0
 offset_right = 700.0
@@ -416,7 +414,6 @@ size_flags_stretch_ratio = 60.0
 
 [node name="ObjectBar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
 anchors_preset = 0
 offset_top = -234.0
 offset_right = 700.0

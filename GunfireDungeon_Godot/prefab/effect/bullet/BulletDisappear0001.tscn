@@ -82,9 +82,9 @@ Particles2D = [NodePath("GPUParticles2D")]
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_4bd3q")
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_r1yeu")
 texture = ExtResource("3_2w51u")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.9
 fixed_fps = 20
+process_material = SubResource("ParticleProcessMaterial_r1yeu")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://n3lox2h6t4gu"]
 
 [node name="Confirm" type="ConfirmationDialog"]
+oversampling_override = 1.0
 initial_position = 1
 size = Vector2i(350, 180)
 visible = true

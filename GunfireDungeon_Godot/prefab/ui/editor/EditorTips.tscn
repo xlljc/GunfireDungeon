@@ -1,12 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://bed63wcgyl08u"]
 
-[ext_resource type="Script" uid="uid://bnigyhwxdkahw" path="res://src/game/ui/editorTips/EditorTipsPanel.cs" id="1_3mdex"]
+[ext_resource type="Script" uid="uid://bnigyhwxdkahw" path="res://src/game/ui/editor/editorTips/EditorTipsPanel.cs" id="1_3mdex"]
 
 [node name="EditorTips" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3mdex")
 
 [node name="Label" type="Label" parent="."]

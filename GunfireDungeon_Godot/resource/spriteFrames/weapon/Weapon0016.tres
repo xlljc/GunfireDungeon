@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://ccrflh6pjmq7r"]
 
-[ext_resource type="Texture2D" uid="uid://5yvr8ylxhqtf" path="res://resource/sprite/weapon/weapon0016/weapon0016.png" id="1_tbusc"]
-[ext_resource type="Texture2D" uid="uid://3nqcx8tshjpd" path="res://resource/sprite/weapon/weapon0016/weapon0016_pull.png" id="2_a4jp6"]
+[ext_resource type="Texture2D" uid="uid://c4fivhays72le" path="res://resource/sprite/weapon/weapon0016/weapon0016.png" id="1_tbusc"]
+[ext_resource type="Texture2D" uid="uid://wl7e842ojowc" path="res://resource/sprite/weapon/weapon0016/weapon0016_pull.png" id="2_a4jp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_355pd"]
 atlas = ExtResource("2_a4jp6")

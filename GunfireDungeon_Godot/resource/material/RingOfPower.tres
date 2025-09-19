@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://civgek3sgwh82"]
 
-[ext_resource type="Shader" path="res://resource/shader/RingOfPower.gdshader" id="1_skd47"]
+[ext_resource type="Shader" uid="uid://dnd2e5eeski4y" path="res://resource/shader/RingOfPower.gdshader" id="1_skd47"]
 
 [resource]
 shader = ExtResource("1_skd47")

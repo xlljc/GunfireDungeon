@@ -89,9 +89,9 @@ sprite_frames = SubResource("SpriteFrames_h38jn")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite"]
 material = SubResource("CanvasItemMaterial_1jwtk")
 amount = 11
-process_material = SubResource("ParticleProcessMaterial_1ylf6")
 texture = ExtResource("4_m8coj")
 lifetime = 0.65
+process_material = SubResource("ParticleProcessMaterial_1ylf6")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_woqud")
