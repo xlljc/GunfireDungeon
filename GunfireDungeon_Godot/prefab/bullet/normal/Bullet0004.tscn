@@ -93,9 +93,9 @@ shape = SubResource("RectangleShape2D_c0onq")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite"]
 material = SubResource("CanvasItemMaterial_chi2i")
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_kelfq")
 texture = ExtResource("3_ofn8c")
 lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_kelfq")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c0onq")

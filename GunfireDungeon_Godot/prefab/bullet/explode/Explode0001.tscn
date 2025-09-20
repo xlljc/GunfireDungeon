@@ -314,31 +314,31 @@ script = ExtResource("1_qn5pu")
 [node name="ParticlesSmoke" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_sk5lv")
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_8sxfm")
 texture = ExtResource("3_xt36q")
 one_shot = true
 explosiveness = 0.6
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8sxfm")
 
 [node name="ParticlesSmoke2" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_sk5lv")
 emitting = false
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_h3c43")
 texture = ExtResource("1_ctx3v")
 one_shot = true
 explosiveness = 0.6
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h3c43")
 
 [node name="ParticlesFire" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_sk5lv")
 emitting = false
 amount = 25
-process_material = SubResource("ParticleProcessMaterial_j41d3")
 texture = ExtResource("1_ctx3v")
 one_shot = true
 explosiveness = 0.7
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_j41d3")
 
 [node name="Circle" type="Sprite2D" parent="."]
 texture = ExtResource("2_bpdnr")
@@ -353,5 +353,5 @@ shape = SubResource("CircleShape2D_isein")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p6l6x")
+&"": SubResource("AnimationLibrary_p6l6x")
 }

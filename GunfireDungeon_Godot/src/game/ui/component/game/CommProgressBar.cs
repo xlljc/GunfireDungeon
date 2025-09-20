@@ -156,9 +156,9 @@ public partial class CommProgressBar : ColorRect
         {
             v = Value / _maxValue * Size.X;
         }
-
-        ValueRect.Size = new Vector2(v, ValueRect.Size.Y);
-        TempRect.Size = new Vector2(v, TempRect.Size.Y);
+        
+        ValueRect.SetDeferred(Control.PropertyName.Size, new Vector2(v, ValueRect.Size.Y));
+        TempRect.SetDeferred(Control.PropertyName.Size, new Vector2(v, TempRect.Size.Y));
         _timer = 0;
     }
 

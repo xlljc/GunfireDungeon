@@ -107,7 +107,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Back" type="Button" parent="Bg/VBoxContainer/Head"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 62.0
@@ -119,7 +119,7 @@ flat = true
 icon_alignment = 1
 
 [node name="Save" type="Button" parent="Bg/VBoxContainer/Head"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 64.0
 offset_top = 2.0
 offset_right = 124.0

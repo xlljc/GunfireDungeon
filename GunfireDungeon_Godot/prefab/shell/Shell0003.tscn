@@ -38,7 +38,6 @@ ShadowSprite = NodePath("ShadowSprite")
 AnimatedSprite = NodePath("AnimatedSprite")
 Collision = NodePath("Collision")
 ShadowOffset = Vector2(0, 1)
-ThrowCollisionSize = Vector2(5, 5)
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 z_index = -1
