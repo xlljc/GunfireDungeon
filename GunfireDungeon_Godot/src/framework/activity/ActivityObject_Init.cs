@@ -165,7 +165,7 @@ public partial class ActivityObject
         /// </summary>
         public const string Id_prop0014 = "prop0014";
         /// <summary>
-        /// 名称: 医药箱-prop5000 <br/>
+        /// 名称: 医药箱 <br/>
         /// </summary>
         public const string Id_prop5000 = "prop5000";
         /// <summary>

@@ -26,7 +26,7 @@ public class DungeonRoomGroup : IClone<DungeonRoomGroup>
     /// 背景颜色
     /// </summary>
     [JsonInclude]
-    public Color BgColor;
+    public SerializeColor BgColor;
 
     /// <summary>
     /// 音乐ID

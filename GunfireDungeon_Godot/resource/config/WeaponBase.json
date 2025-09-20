@@ -16,6 +16,7 @@
         null,
         null,
         null,
+        null,
         null
       ]
     },
@@ -153,6 +154,8 @@
         "0001",
         null,
         null,
+        null,
+        null,
         null
       ]
     },
@@ -288,6 +291,10 @@
     "PartPack": {
       "Fire": [
         "0004",
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null

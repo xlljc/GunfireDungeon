@@ -28,6 +28,7 @@ settings/fps/force_fps=60
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0
 
 [dotnet]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqf2vks5ggnsp"]
+[gd_scene load_steps=3 format=3 uid="uid://bqf2vks5ggnsp"]
 
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
+[ext_resource type="Environment" uid="uid://01vyssfconqr" path="res://resource/DungeonEnv.tres" id="2_whacp"]
 
 [node name="Dungeon" type="CanvasModulate"]
 script = ExtResource("1_txiyv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_whacp")
 
 [node name="TileRoot" type="TileMap" parent="." groups=["navigation"]]
 y_sort_enabled = true

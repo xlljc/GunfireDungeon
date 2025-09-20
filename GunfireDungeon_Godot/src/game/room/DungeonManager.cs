@@ -485,7 +485,7 @@ public partial class DungeonManager : Node2D
         //CurrWorld.FogMaskRoot.Visible = false;
 
         //房间背景颜色
-        RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor);
+        RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor.AsColor());
         
         //播放bgm
         if (!string.IsNullOrEmpty(_dungeonGenerator.RoomGroup.SoundId) && ExcelConfig.Sound_Map.ContainsKey(_dungeonGenerator.RoomGroup.SoundId))
