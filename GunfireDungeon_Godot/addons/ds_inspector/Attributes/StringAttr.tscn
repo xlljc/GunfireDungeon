@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqt6umuvtxj3s"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/StringAttr.gd" id="2"]
+[ext_resource type="Script" uid="uid://dqn3sexmommf" path="res://addons/ds_inspector/Attributes/StringAttr.gd" id="2"]
 
 [node name="StringAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "line_edit")]
 anchors_preset = 15

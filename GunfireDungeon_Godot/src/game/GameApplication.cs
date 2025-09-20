@@ -198,7 +198,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //随机化种子
         GD.Randomize();
         //固定帧率
-        //Engine.MaxFps = TargetFps;
+        Engine.MaxFps = TargetFps;
         //Engine.TimeScale = 0.2f;
         
         //调整窗口分辨率

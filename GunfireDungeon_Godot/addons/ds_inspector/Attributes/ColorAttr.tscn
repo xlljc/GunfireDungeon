@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cttqaefxj1boo"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/ColorAttr.gd" id="2"]
+[ext_resource type="Script" uid="uid://cm82hlennvlua" path="res://addons/ds_inspector/Attributes/ColorAttr.gd" id="2"]
 
 [node name="ColorAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "r_line_edit", "g_line_edit", "b_line_edit", "a_line_edit")]
 anchors_preset = 15

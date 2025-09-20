@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tgrqqplfgobx"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/IntAttr.gd" id="1_f3jth"]
+[ext_resource type="Script" uid="uid://hjiqjip1we3" path="res://addons/ds_inspector/Attributes/IntAttr.gd" id="1_f3jth"]
 
 [node name="IntAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "line_edit")]
 anchors_preset = 15

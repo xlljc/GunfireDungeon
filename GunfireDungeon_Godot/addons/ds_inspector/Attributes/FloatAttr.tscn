@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://yjjndhaxkb5f"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/FloatAttr.gd" id="1_tujyl"]
+[ext_resource type="Script" uid="uid://p81rnhmwy14y" path="res://addons/ds_inspector/Attributes/FloatAttr.gd" id="1_tujyl"]
 
 [node name="FloatAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "line_edit")]
 anchors_preset = 15

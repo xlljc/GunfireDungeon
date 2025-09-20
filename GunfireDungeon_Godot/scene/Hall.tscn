@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://llhqgi6j5kae" path="res://src/game/hall/DungeonEntrance.cs" id="3_t3my6"]
 [ext_resource type="TileSet" uid="uid://db76iwmblenk8" path="res://resource/tileset/HallTileset.tres" id="6_xwnih"]
 [ext_resource type="Shader" uid="uid://cbrfh1sth26v8" path="res://resource/shader/GodRays.gdshader" id="14_8vfgi"]
-[ext_resource type="Texture2D" uid="uid://cfkxicefppjgw" path="res://icon.png" id="15_1xqxd"]
+[ext_resource type="Texture2D" uid="uid://dmnnfyq78k5ns" path="res://icon.png" id="15_1xqxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7git"]
 shader = ExtResource("14_8vfgi")
