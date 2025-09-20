@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://cttqaefxj1boo"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/ColorAttr.gd" id="2"]
+
+[node name="ColorAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "r_line_edit", "g_line_edit", "b_line_edit", "a_line_edit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2")
+label = NodePath("Name")
+r_line_edit = NodePath("VBoxContainer/HBoxContainer/RLineEdit")
+g_line_edit = NodePath("VBoxContainer/HBoxContainer/GLineEdit")
+b_line_edit = NodePath("VBoxContainer/HBoxContainer2/BLineEdit")
+a_line_edit = NodePath("VBoxContainer/HBoxContainer2/ALineEdit")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "R:"
+
+[node name="RLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "G:"
+
+[node name="GLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "B:"
+
+[node name="BLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "A:"
+
+[node name="ALineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2

@@ -1,0 +1,73 @@
+extends BaseAttr
+class_name Vector3IAttr
+
+@export
+var label: Label
+@export
+var x_line_edit: LineEdit
+@export
+var y_line_edit: LineEdit
+@export
+var z_line_edit: LineEdit
+
+var _attr: String
+var _node: Node
+
+var _focus_flag: bool = false
+var _temp_value: Vector3i
+
+func _ready():
+	x_line_edit.text_changed.connect(_on_x_text_changed)
+	y_line_edit.text_changed.connect(_on_y_text_changed)
+	z_line_edit.text_changed.connect(_on_z_text_changed)
+
+	x_line_edit.focus_entered.connect(_on_focus_entered)
+	y_line_edit.focus_entered.connect(_on_focus_entered)
+	z_line_edit.focus_entered.connect(_on_focus_entered)
+
+	x_line_edit.focus_exited.connect(_on_focus_exited)
+	y_line_edit.focus_exited.connect(_on_focus_exited)
+	z_line_edit.focus_exited.connect(_on_focus_exited)
+	pass
+
+func set_node(node: Node):
+	_node = node
+
+func set_title(name: String):
+	_attr = name
+	label.text = name
+
+func set_value(value):
+	if not value is Vector3i:
+		return
+	if _focus_flag:
+		_temp_value = value
+		return
+	x_line_edit.text = str(value.x)
+	y_line_edit.text = str(value.y)
+	z_line_edit.text = str(value.z)
+
+func _on_x_text_changed(new_str: String):
+	_temp_value.x = int(new_str)
+	if is_instance_valid(_node):
+		_node.set(_attr, _temp_value)
+
+func _on_y_text_changed(new_str: String):
+	_temp_value.y = int(new_str)
+	if is_instance_valid(_node):
+		_node.set(_attr, _temp_value)
+
+func _on_z_text_changed(new_str: String):
+	_temp_value.z = int(new_str)
+	if is_instance_valid(_node):
+		_node.set(_attr, _temp_value)
+
+func _on_focus_entered():
+	_focus_flag = true
+	pass
+
+func _on_focus_exited():
+	_focus_flag = false
+	if is_instance_valid(_node):
+		_node.set(_attr, _temp_value)
+	pass
