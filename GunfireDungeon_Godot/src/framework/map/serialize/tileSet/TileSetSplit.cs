@@ -149,7 +149,7 @@ public class TileSetSplit : IDestroy
                     }
                     else //2x2地形
                     {
-                        _tileSet.SetTerrainSetMode(terrainSetIndex, TileSet.TerrainMode.Corners);
+                        _tileSet.SetTerrainSetMode(terrainSetIndex, TileSet.TerrainMode.Sides);
                     }
                 
                     //初始化地形

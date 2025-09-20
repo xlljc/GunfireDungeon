@@ -7,6 +7,7 @@ var update_time: float = 0.2 # 更新时间
 var filtr_input: LineEdit # 过滤属性输入框
 
 var _curr_node: Node
+var _has_node: bool = false
 var _timer: float = 0
 
 const flag: int = PROPERTY_USAGE_SCRIPT_VARIABLE | PROPERTY_USAGE_EDITOR
@@ -16,6 +17,8 @@ var _attr_list: Array = [] # value: AttrItem
 var line: PackedScene = preload("res://addons/ds_inspector/Attributes/Line.tscn")
 @onready
 var label_attr: PackedScene = preload("res://addons/ds_inspector/Attributes/LabelAttr.tscn")
+@onready
+var rich_text_attr: PackedScene = preload("res://addons/ds_inspector/Attributes/RichTextAttr.tscn")
 @onready
 var bool_attr: PackedScene = preload("res://addons/ds_inspector/Attributes/BoolAttr.tscn")
 @onready
@@ -66,8 +69,8 @@ func _ready():
 	pass
 
 func _process(delta):
-	if _curr_node:
-		if !is_instance_valid(_curr_node):
+	if _has_node:
+		if _curr_node == null || !is_instance_valid(_curr_node):
 			_clear_node_attr()
 			pass
 		_timer += delta
@@ -81,6 +84,7 @@ func set_view_node(node: Node):
 	if node == null or !is_instance_valid(node):
 		return
 	_curr_node = node
+	_has_node = true
 	_init_node_attr()
 	_update_node_attr()
 	
@@ -158,7 +162,7 @@ func _create_node_attr(prop: Dictionary) -> AttrItem:
 
 	if attr == null:
 		if v == null:
-			attr = label_attr.instantiate()
+			attr = rich_text_attr.instantiate()
 		else:
 			match typeof(v):
 				TYPE_BOOL:
@@ -190,9 +194,9 @@ func _create_node_attr(prop: Dictionary) -> AttrItem:
 					if v is Texture2D:
 						attr = texture_attr.instantiate()
 					else:
-						attr = label_attr.instantiate()
+						attr = rich_text_attr.instantiate()
 				_:
-					attr = label_attr.instantiate()
+					attr = rich_text_attr.instantiate()
 	add_child(attr)
 
 	attr.set_node(_curr_node)
@@ -206,7 +210,7 @@ func _create_node_attr(prop: Dictionary) -> AttrItem:
 	return AttrItem.new(attr, prop.name, prop.usage, prop.type, prop.name)
 
 func _create_label_attr(node: Node, title: String, value: String) -> void:
-	var attr: LabelAttr = label_attr.instantiate()
+	var attr: RichTextAttr = rich_text_attr.instantiate()
 	add_child(attr)
 	attr.set_node(node)
 	attr.set_title(title)
@@ -219,6 +223,7 @@ func _update_node_attr():
 
 func _clear_node_attr():
 	_curr_node = null
+	_has_node = false
 	_attr_list.clear()
 	for child in get_children():
 			child.queue_free()

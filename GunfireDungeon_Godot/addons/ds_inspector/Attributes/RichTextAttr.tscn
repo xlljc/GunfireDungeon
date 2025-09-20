@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmipw8ukgq8ns"]
+[gd_scene load_steps=2 format=3 uid="uid://bk1p4w5ldsuc"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/LabelAttr.gd" id="1"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/RichTextAttr.gd" id="1_50n02"]
 
 [node name="LabelAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "text")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1")
+script = ExtResource("1_50n02")
 label = NodePath("Name")
 text = NodePath("Text")
 
@@ -16,11 +16,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 4.0
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 6.0
+focus_mode = 2
 autowrap_mode = 2
+selection_enabled = true
 visible_characters = 300

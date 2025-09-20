@@ -41,7 +41,7 @@ func add_excludeL_path(s: String) -> void:
 
 func _on_add_click():
 	if debug_tool:
-		var node: Node = debug_tool.brush._draw_node
+		var node: Node = debug_tool.brush.get_draw_node()
 		if node != null and is_instance_valid(node):
 			var s: String = debug_tool.get_node_path(node)
 			add_excludeL_path(s)

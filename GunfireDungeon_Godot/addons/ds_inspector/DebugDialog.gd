@@ -55,7 +55,7 @@ func do_show():
 		debug_tool._is_open_check_ui = false
 		debug_tool.find_current_camera()
 		popup()
-		tree.show_tree(debug_tool.brush._draw_node)
+		tree.show_tree(debug_tool.brush.get_draw_node())
 		debug_tool.brush.set_show_text(false)
 	pass
 
@@ -93,7 +93,7 @@ func play_btn_click():
 	pass
 
 func save_btn_click():
-	if debug_tool and debug_tool.brush._draw_node != null:
+	if debug_tool and debug_tool.brush.get_draw_node() != null:
 		do_hide()
 		file_window.call_deferred("popup", Rect2i(position, size))
 	pass
@@ -101,7 +101,7 @@ func save_btn_click():
 func on_file_selected(path: String):
 	# print("选择文件" + path)
 	if debug_tool:
-		var node: Node = debug_tool.brush._draw_node
+		var node: Node = debug_tool.brush.get_draw_node()
 		if node != null and is_instance_valid(node):
 			save_node_as_scene(node, path)
 	pass

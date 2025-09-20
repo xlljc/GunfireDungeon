@@ -70,8 +70,9 @@ func _process(delta: float) -> void:
 					var node = get_check_node();
 					if node != null:
 						# print("选中节点: ", node.get_path())
-						if brush._draw_node != null and is_instance_valid(brush._draw_node):
-							_selected_list.append(brush._draw_node)
+						var draw_node = brush.get_draw_node()
+						if draw_node != null:
+							_selected_list.append(draw_node)
 						brush.set_draw_node(node)
 						brush.set_show_text(true)
 						return

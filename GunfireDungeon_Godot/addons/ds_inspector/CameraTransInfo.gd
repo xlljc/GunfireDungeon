@@ -12,8 +12,8 @@ var offset: Vector2
 var is_center: bool
 
 func _init(_position: Vector2, _zoom: Vector2, _rotation: float, _offset: Vector2, _is_center: bool):
-    position = _position
-    zoom = _zoom
-    rotation = _rotation
-    offset = _offset
-    is_center = _is_center
+	position = _position
+	zoom = _zoom
+	rotation = _rotation
+	offset = _offset
+	is_center = _is_center

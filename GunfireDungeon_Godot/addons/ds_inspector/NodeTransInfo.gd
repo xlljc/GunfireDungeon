@@ -12,6 +12,6 @@ var size: Vector2
 var rotation: float
 
 func _init(_position: Vector2, _size: Vector2, _rotation: float):
-    position = _position
-    size = _size
-    rotation = _rotation
+	position = _position
+	size = _size
+	rotation = _rotation
