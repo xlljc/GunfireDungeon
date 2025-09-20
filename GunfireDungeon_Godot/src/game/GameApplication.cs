@@ -200,6 +200,7 @@ public partial class GameApplication : Node2D, ICoroutine
         //固定帧率
         //Engine.MaxFps = TargetFps;
         //Engine.TimeScale = 0.2f;
+        Engine.MaxFps = 300;
         
         //调整窗口分辨率
         CallDeferred(nameof(OnWindowSizeChanged));
