@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://buwt32tymoarv"]
+
+[ext_resource type="Script" uid="uid://b2xk8ovg8jw4u" path="res://scene/test/testScene/TestScene.cs" id="1_y8xfc"]
+[ext_resource type="Texture2D" uid="uid://dmnnfyq78k5ns" path="res://icon.png" id="2_psvpm"]
+[ext_resource type="Material" uid="uid://cces3bhds7jyi" path="res://resource/material/Blend.tres" id="2_ruab8"]
+
+[sub_resource type="Environment" id="Environment_m44jn"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/5 = 0.0
+glow_normalized = true
+glow_strength = 1.06
+glow_blend_mode = 1
+
+[node name="TestScene" type="Node2D" node_paths=PackedStringArray("Template")]
+script = ExtResource("1_y8xfc")
+Template = NodePath("Sprite2D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m44jn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_ruab8")
+texture = ExtResource("2_psvpm")

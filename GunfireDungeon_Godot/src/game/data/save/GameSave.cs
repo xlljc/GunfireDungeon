@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -73,7 +74,25 @@ public partial class GameSave
         }
         else
         {
-            save = JsonSerializer.Deserialize<GameSave>(ReadFile(GameConfig.GameSaveFile));
+            var readFile = ReadFile(GameConfig.GameSaveFile);
+            if (string.IsNullOrEmpty(readFile))
+            {
+                save = new GameSave();
+                save.Save();
+            }
+            else
+            {
+                try
+                {
+                    save = JsonSerializer.Deserialize<GameSave>(readFile);
+                }
+                catch (Exception e)
+                {
+                    global::Debug.LogError("读取存档失败, 重新生成存档: " + e);
+                    save = new GameSave();
+                    save.Save();
+                }
+            }
         }
         
         if (save.Debug == null)

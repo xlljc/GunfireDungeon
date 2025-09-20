@@ -120,7 +120,7 @@ public partial class ToolsPanel : Tools
 
     private void RefreshFps()
     {
-        Engine.MaxFps = _save.Debug.Fps;
+        // Engine.MaxFps = _save.Debug.Fps;
     }
 
     private void RefreshDebugDrawVisible()
