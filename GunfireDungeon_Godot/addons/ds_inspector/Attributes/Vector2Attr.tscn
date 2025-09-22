@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://boq2er4x6sik6"]
 
-[ext_resource type="Script" uid="uid://dq4t12ruhd7xt" path="res://addons/ds_inspector/Attributes/Vector2Attr.gd" id="2"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/Vector2Attr.gd" id="2"]
 
 [node name="Vector2Attr" type="HBoxContainer" node_paths=PackedStringArray("label", "x_line_edit", "y_line_edit")]
 anchors_preset = 15

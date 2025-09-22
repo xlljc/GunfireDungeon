@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3q8rv5xt6bxv"]
 
-[ext_resource type="Script" uid="uid://camdre4b2546k" path="res://addons/ds_inspector/Attributes/Line.gd" id="1_k8jxx"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/Line.gd" id="1_k8jxx"]
 
 [node name="Line" type="MarginContainer" node_paths=PackedStringArray("_title")]
 anchors_preset = 10

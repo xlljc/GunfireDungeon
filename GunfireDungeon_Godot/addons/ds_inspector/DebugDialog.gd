@@ -17,6 +17,8 @@ var hide_border_btn: Button
 @export
 var play_btn: Button
 @export
+var next_frame_btn: Button
+@export
 var file_window: FileDialog
 @export
 var put_away: Button
@@ -29,6 +31,16 @@ var _cached_window_state: Dictionary = {}
 @onready
 var debug_tool = get_node("/root/DsInspector")
 
+@onready
+var play_icon: Texture2D = preload("res://addons/ds_inspector/icon/Play.svg")
+@onready
+var pause_icon: Texture2D = preload("res://addons/ds_inspector/icon/Pause.svg")
+
+# 记录的坐标
+var _pre_pos: Vector2
+
+var _next_frame_paused_index: int = 0
+
 func _ready():
 	_load_window_state()
 	select_btn.pressed.connect(select_btn_click)
@@ -36,6 +48,7 @@ func _ready():
 	delete_btn.pressed.connect(_on_delete_btn_pressed)
 	hide_border_btn.pressed.connect(hide_border_btn_click)
 	play_btn.pressed.connect(play_btn_click)
+	next_frame_btn.pressed.connect(next_frame_btn_click)
 	save_btn.pressed.connect(save_btn_click)
 	close_requested.connect(do_hide)
 	size_changed.connect(_on_window_resized)
@@ -43,6 +56,13 @@ func _ready():
 	put_away.pressed.connect(do_put_away)
 	# focus_exited.connect(_on_focus_exited)
 	confirmation.confirmed.connect(_on_delete_confirmed) # 连接确认事件
+
+func _process(delta):
+	if _next_frame_paused_index > 0:
+		_next_frame_paused_index -= 1
+		if _next_frame_paused_index == 0:
+			get_tree().paused = true
+	pass
 
 # 当窗口失去焦点时关闭窗口
 func _on_focus_exited():
@@ -57,6 +77,7 @@ func do_show():
 		popup()
 		tree.show_tree(debug_tool.brush.get_draw_node())
 		debug_tool.brush.set_show_text(false)
+		refresh_icon()
 	pass
 
 # 隐藏弹窗
@@ -89,7 +110,24 @@ func hide_border_btn_click():
 func play_btn_click():
 	var p: bool = !get_tree().paused
 	get_tree().paused = p
-	play_btn.text = "继续游戏" if p else "暂停游戏"
+	refresh_icon()
+
+func refresh_icon():
+	var p: bool = get_tree().paused
+	if p:
+		play_btn.icon = play_icon
+		next_frame_btn.disabled = false
+	else:
+		play_btn.icon = pause_icon
+		next_frame_btn.disabled = true
+	pass
+
+func next_frame_btn_click():
+	if !get_tree().paused:
+		print("当前未暂停，无法单步")
+		return
+	get_tree().paused = false
+	_next_frame_paused_index = 2
 	pass
 
 func save_btn_click():
@@ -147,7 +185,8 @@ func _on_window_resized():
 # 保存窗口状态（位置和大小）
 func _save_window_state():
 	var data := {
-		"size": size
+		"size": size,
+		"position": position
 	}
 	_cached_window_state = data
 	
@@ -166,7 +205,9 @@ func _load_window_state():
 			var content := file.get_as_text()
 			file.close()
 			var data := str_to_var(content)
-			if data is Dictionary and data.has("size"):
+			if data is Dictionary:
 				_cached_window_state = data
-				var dataSize: Vector2 = _cached_window_state.size
-				size = dataSize
+				if data.has("size"):
+					size = _cached_window_state.size
+				if data.has("position"):
+					position = _cached_window_state.position

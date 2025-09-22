@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ca4x6j5l2ytuu"]
 
-[ext_resource type="Script" uid="uid://dpt44byyaqw8v" path="res://addons/ds_inspector/Attributes/TextureAttr.gd" id="2"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/TextureAttr.gd" id="2"]
 
 [node name="TextureAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "texture_node")]
 anchors_preset = 15

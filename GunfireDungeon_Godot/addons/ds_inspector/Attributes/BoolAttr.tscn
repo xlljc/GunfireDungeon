@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4g5wiktenb63"]
 
-[ext_resource type="Script" uid="uid://nbh0h4ft80vb" path="res://addons/ds_inspector/Attributes/BoolAttr.gd" id="1"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/BoolAttr.gd" id="1"]
 
 [node name="BoolAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "check_box")]
 anchors_preset = 15

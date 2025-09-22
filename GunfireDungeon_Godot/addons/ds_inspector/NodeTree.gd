@@ -8,6 +8,7 @@ class NodeData:
 	var script_icon_index: int = -1
 	var scene_icon_index: int = -1
 	var visible: bool = false
+	var slot_item: TreeItem = null
 	func _init(_node: Node):
 		name = _node.name
 		node = _node
@@ -21,6 +22,7 @@ class TreeItemData:
 		pass
 class IconMapping:
 	var mapping: Dictionary = {
+		"Node": "res://addons/ds_inspector/node_icon/Node.svg",
 		"AnimationPlayer": "res://addons/ds_inspector/node_icon/AnimationPlayer.svg",
 		"AnimationTree": "res://addons/ds_inspector/node_icon/AnimationTree.svg",
 		"CodeEdit": "res://addons/ds_inspector/node_icon/CodeEdit.svg",
@@ -54,6 +56,7 @@ class IconMapping:
 		"CharacterBody2D": "res://addons/ds_inspector/node_icon/CharacterBody2D.svg",
 		"CheckBox": "res://addons/ds_inspector/node_icon/CheckBox.svg",
 		"CheckButton": "res://addons/ds_inspector/node_icon/CheckButton.svg",
+		"CollisionObject2D": "res://addons/ds_inspector/node_icon/CollisionObject2D.svg",
 		"CollisionPolygon2D": "res://addons/ds_inspector/node_icon/CollisionPolygon2D.svg",
 		"CollisionShape2D": "res://addons/ds_inspector/node_icon/CollisionShape2D.svg",
 		"ColorPicker": "res://addons/ds_inspector/node_icon/ColorPicker.svg",
@@ -66,6 +69,7 @@ class IconMapping:
 		"DirectionalLight2D": "res://addons/ds_inspector/node_icon/DirectionalLight2D.svg",
 		"FileDialog": "res://addons/ds_inspector/node_icon/FileDialog.svg",
 		"FlowContainer": "res://addons/ds_inspector/node_icon/FlowContainer.svg",
+		"FoldableContainer": "res://addons/ds_inspector/node_icon/FoldableContainer.svg",
 		"GpuParticles2D": "res://addons/ds_inspector/node_icon/GpuParticles2D.svg",
 		"GraphElement": "res://addons/ds_inspector/node_icon/GraphElement.svg",
 		"GraphFrame": "res://addons/ds_inspector/node_icon/GraphFrame.svg",
@@ -100,7 +104,6 @@ class IconMapping:
 		"NavigationRegion2D": "res://addons/ds_inspector/node_icon/NavigationRegion2D.svg",
 		"NinePatchRect": "res://addons/ds_inspector/node_icon/NinePatchRect.svg",
 		"Node2D": "res://addons/ds_inspector/node_icon/Node2D.svg",
-		"Node": "res://addons/ds_inspector/node_icon/Node.svg",
 		"OptionButton": "res://addons/ds_inspector/node_icon/OptionButton.svg",
 		"Panel": "res://addons/ds_inspector/node_icon/Panel.svg",
 		"PanelContainer": "res://addons/ds_inspector/node_icon/PanelContainer.svg",
@@ -110,6 +113,7 @@ class IconMapping:
 		"Path2D": "res://addons/ds_inspector/node_icon/Path2D.svg",
 		"PathFollow2D": "res://addons/ds_inspector/node_icon/PathFollow2D.svg",
 		"PhysicalBone2D": "res://addons/ds_inspector/node_icon/PhysicalBone2D.svg",
+		"PhysicsBody2D": "res://addons/ds_inspector/node_icon/PhysicsBody2D.svg",
 		"PinJoint2D": "res://addons/ds_inspector/node_icon/PinJoint2D.svg",
 		"PointLight2D": "res://addons/ds_inspector/node_icon/PointLight2D.svg",
 		"Polygon2D": "res://addons/ds_inspector/node_icon/Polygon2D.svg",
@@ -160,7 +164,7 @@ class IconMapping:
 		if mapping.has(cls_name):
 			return mapping[cls_name]
 #		print("未知节点：", cls_name)
-		return "res://addons/ds_inspector/icon/icon_error_sign.svg";
+		return "res://addons/ds_inspector/icon/icon_error_sign.png";
 		pass
 pass
 
@@ -205,6 +209,7 @@ func _process(delta):
 		if _next_frame_index <= 0:
 			_next_frame_select.select(0)
 			_next_frame_select = null
+			ensure_cursor_is_visible()
 	pass
 
 # 初始化树
@@ -226,7 +231,7 @@ func init_tree():
 	for child in root.get_children(true):
 		if debug_tool and child == debug_tool:
 			continue  # 跳过 DsInspector 节点
-		create_node_item(child, root_item)
+		create_node_item(child, root_item, true)
 
 # 显示场景树
 func show_tree(select_node: Node = null):
@@ -275,7 +280,8 @@ func delete_selected():
 		var data: NodeData = item.get_metadata(0)
 		if data:
 			var parent: TreeItem = item.get_parent()
-			data.node.queue_free()
+			if data.node:
+				data.node.queue_free()
 			item.free()
 
 			# 刷新场景树
@@ -315,13 +321,12 @@ func locate_selected(select_node: Node):
 					return
 				if node_data.node == node:
 					flag = true
-					if i < count: # 展开节点
+					if i < count: # 下面还有节点，展开节点
 						child_item.collapsed = false
 					curr_item = child_item
 					break
 			
-			if !flag: # 找不到，就创建
-				curr_item = create_node_item(node, curr_item, false)
+			if !flag: # 找不到，不要再继续往下找了
 				break
 	
 	if curr_item == null:
@@ -339,8 +344,20 @@ func locate_selected(select_node: Node):
 
 # 更新子节点
 func _update_children(parent_item: TreeItem, parent_data: NodeData):
-	# 没展开就不要更新了
 	if parent_item.collapsed:
+		# 没展开需要判断是否有子节点，并生成占位符
+		if parent_data.slot_item == null:
+			if parent_data.node.get_child_count() > 0:
+				parent_data.slot_item = create_item(parent_item)  # 创建一个子节点项以便展开
+			elif parent_item.get_child_count() > 0:
+				# 没有子节点了，移除所有子节点
+				for item in parent_item.get_children():
+					item.free()
+		elif parent_data.node.get_child_count() == 0:
+			# 没有子节点了，移除所有子节点
+			for item in parent_item.get_children():
+				item.free()
+			parent_data.slot_item = null
 		return
 
 	var existing_node: Dictionary = {}
@@ -370,7 +387,7 @@ func _update_children(parent_item: TreeItem, parent_data: NodeData):
 			continue
 		else:
 			# 节点不存在，添加到 TreeItem
-			create_node_item(child_node, parent_item)
+			create_node_item(child_node, parent_item, true)
 	# 最后剩下的就是已删除的节点
 	for item in existing_node.values():
 		item.tree_item.free()  # 删除 TreeItem
@@ -378,12 +395,14 @@ func _update_children(parent_item: TreeItem, parent_data: NodeData):
 
 
 # 创建一个新的 TreeItem
-func create_node_item(node: Node, parent: TreeItem, add_slot: bool = true) -> TreeItem:
+func create_node_item(node: Node, parent: TreeItem, add_slot: bool) -> TreeItem:
 	var item: TreeItem = create_item(parent)
 	item.collapsed = true
 	var node_data = NodeData.new(node)
 	item.set_metadata(0, node_data)  # 存储节点引用
 	item.set_text(0, node.name)
+	if node.name == "PauseMenu":
+		print("create: " + node.name)
 	# item.set_icon(0, get_icon("Node", "EditorIcons"))
 	item.set_icon(0, load(icon_mapping.get_icon(node.get_class())))
 
@@ -402,7 +421,8 @@ func create_node_item(node: Node, parent: TreeItem, add_slot: bool = true) -> Tr
 		item.add_button(0, get_visible_icon(node_data.visible))  # 添加显示/隐藏按钮
 		btn_index += 1
 	if add_slot and node.get_child_count(true) > 0:
-		create_item(item)  # 创建一个子节点项以便展开
+		var slot = create_item(item)  # 创建一个子节点项以便展开
+		node_data.slot_item = slot  # 记录占位符
 	return item
 
 ## 选中节点
@@ -456,28 +476,33 @@ func _open_file(res_path: String):
 func _on_item_collapsed(item: TreeItem):
 	if item.collapsed:
 		return
+	var data: NodeData = item.get_metadata(0)
+	if data != null and data.slot_item != null: # 移除占位符
+		item.remove_child(data.slot_item)
+		data.slot_item = null
+	
 	var children := item.get_children()
 	if children.size() == 0: # 没有子节点
-		var data: NodeData = item.get_metadata(0)
 		if data and data.node.get_child_count(true) > 0: # 加载子节点
-			call_deferred("_load_children_item", item, null, true)
+			if _is_in_select_func:
+				_load_children_item(item)
+			else:
+				call_deferred("_load_children_item", item)
 		return
 	var item1 = children[0]
-	var data: NodeData = item1.get_metadata(0)
-	if !data: # 没有data，说明没有初始化数据，这里也有加载子节点
+	var child_data: NodeData = item1.get_metadata(0)
+	if !child_data: # 没有data，说明没有初始化数据，这里也有加载子节点
 		if _is_in_select_func:
-			_load_children_item(item, item1)
+			_load_children_item(item)
 		else:
-			call_deferred("_load_children_item", item, item1, true)
+			call_deferred("_load_children_item", item)
 	else: # 执行更新子节点
 		if _is_in_select_func:
 			_update_children(item, item.get_metadata(0))
 		else:
 			call_deferred("_update_children", item, item.get_metadata(0))
 
-func _load_children_item(item: TreeItem, slot: TreeItem, add_slot: bool = true):
-	if slot:
-		item.remove_child(slot)
+func _load_children_item(item: TreeItem, add_slot: bool = true):
 	var data: NodeData = item.get_metadata(0)  # 获取存储的节点引用
 	if data:
 		if !is_instance_valid(data.node): # 节点可能已被删除

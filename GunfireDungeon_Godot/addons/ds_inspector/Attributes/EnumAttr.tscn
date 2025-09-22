@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chl0he68icv03"]
 
-[ext_resource type="Script" uid="uid://dut38uhdeu1tg" path="res://addons/ds_inspector/Attributes/EnumAttr.gd" id="1_ur83t"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/EnumAttr.gd" id="1_ur83t"]
 
 [node name="EnumAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "option_button")]
 anchors_preset = 15

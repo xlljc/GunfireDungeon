@@ -53,13 +53,11 @@ class AttrItem:
 	var name: String
 	var usage: int
 	var type: int
-	var title: String
-	func _init(_attr: BaseAttr, _name: String, _usage: int, _type: int, _title: String = ""):
+	func _init(_attr: BaseAttr, _name: String, _usage: int, _type: int):
 		attr = _attr
 		name = _name
 		usage = _usage
 		type = _type
-		title = _title if _title != "" else _name
 		pass
 	pass
 
@@ -100,6 +98,10 @@ func _init_node_attr():
 
 	# 节点名称
 	_create_label_attr(_curr_node, "名称：", _curr_node.name)
+	
+	# 节点类型
+	_create_label_attr(_curr_node, "类型：", _curr_node.get_class())
+	
 	# _curr_node.name
 	var path: String = ""
 	var curr: Node = _curr_node
@@ -207,7 +209,7 @@ func _create_node_attr(prop: Dictionary) -> AttrItem:
 	
 	attr.set_value(v)
 	# print(prop.name, "   ", typeof(v))
-	return AttrItem.new(attr, prop.name, prop.usage, prop.type, prop.name)
+	return AttrItem.new(attr, prop.name, prop.usage, prop.type)
 
 func _create_label_attr(node: Node, title: String, value: String) -> void:
 	var attr: RichTextAttr = rich_text_attr.instantiate()
@@ -242,7 +244,7 @@ func _filter_attributes(filter_text: String):
 		# 过滤属性（不区分大小写，忽略下划线）
 		var filter_lower = filter_text.to_lower().replace("_", "")
 		for item in _attr_list:
-			var title_lower = item.title.to_lower().replace("_", "")
+			var title_lower = item.name.to_lower().replace("_", "")
 			var name_lower = item.name.to_lower().replace("_", "")
 			var matches = title_lower.contains(filter_lower) or name_lower.contains(filter_lower)
 			item.attr.visible = matches

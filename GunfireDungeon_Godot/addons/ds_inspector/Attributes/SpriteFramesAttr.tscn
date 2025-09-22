@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdlvnbvv2oefd"]
 
-[ext_resource type="Script" uid="uid://bdvegoc4phu2c" path="res://addons/ds_inspector/Attributes/SpriteFramesAttr.gd" id="2"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/SpriteFramesAttr.gd" id="2"]
 
 [node name="SpriteFramesAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "texture_node")]
 anchors_preset = 15

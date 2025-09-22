@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 							brush.set_show_text(true)
 							return
 				else:
-					var node = get_check_node();
+					var node := get_check_node();
 					if node != null:
 						# print("选中节点: ", node.get_path())
 						var draw_node = brush.get_draw_node()
@@ -258,11 +258,19 @@ func calc_node_rect(node: Node) -> NodeTransInfo:
 		var pos: Vector2 = node.global_position
 		var rot: float = node.global_rotation
 		if node is Sprite2D:
-			var texture: Texture = node.texture
+			var texture: Texture2D = node.texture
 			if texture:
 				var scale: Vector2 = node.global_scale
 				var offset: Vector2 = node.offset * scale
-				var size: Vector2 = texture.get_size() * scale
+				var size: Vector2 = Vector2.ZERO
+				var h := max(1, node.hframes)
+				var v := max(1, node.vframes)
+				if node.region_enabled:
+					size = node.region_rect.size
+				else:
+					size = texture.get_size()
+				size = size / Vector2(h, v) * scale
+				# 根据 hframes，vframes，region_rect 计算 size
 				if node.centered:
 					pos -= (size * 0.5).rotated(rot)
 				pos += offset.rotated(rot)
@@ -280,14 +288,14 @@ func calc_node_rect(node: Node) -> NodeTransInfo:
 					pos += offset.rotated(rot)
 					return NodeTransInfo.new(pos, size, rot)
 		elif node is PointLight2D:
-			var texture: Texture = node.texture;
+			var texture: Texture2D = node.texture;
 			if texture:
 				var scale: Vector2 = node.global_scale
 				var size: Vector2 = texture.get_size() * scale;
 				var offset: Vector2 = node.offset * scale
 				pos += (offset - size * 0.5).rotated(rot)
 				return NodeTransInfo.new(pos, size, rot)
-		elif node is TileMap:
+		elif node is TileMap or node.get_class() == "TileMapLayer":
 			var ts: TileSet = node.tile_set;
 			if ts != null:
 				var scale: Vector2 = node.global_scale;

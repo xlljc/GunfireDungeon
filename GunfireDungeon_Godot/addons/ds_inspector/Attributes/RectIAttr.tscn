@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bv48nfe5kqkn7"]
 
-[ext_resource type="Script" uid="uid://b1o0fnrk3sunt" path="res://addons/ds_inspector/Attributes/RectIAttr.gd" id="1_tjinf"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/RectIAttr.gd" id="1_tjinf"]
 
 [node name="RectIAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "x_line_edit", "y_line_edit", "w_line_edit", "h_line_edit")]
 anchors_preset = 15

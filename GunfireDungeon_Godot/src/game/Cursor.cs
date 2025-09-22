@@ -84,7 +84,7 @@ public partial class Cursor : Node2D
             lb.Visible = false;
             rt.Visible = false;
             rb.Visible = false;
-            Input.MouseMode = Input.MouseModeEnum.Visible;
+            // Input.MouseMode = Input.MouseModeEnum.Visible;
         }
         else //准心
         {
@@ -92,7 +92,7 @@ public partial class Cursor : Node2D
             lb.Visible = true;
             rt.Visible = true;
             rb.Visible = true;
-            Input.MouseMode = Input.MouseModeEnum.Hidden;
+            // Input.MouseMode = Input.MouseModeEnum.Hidden;
         }
     }
     
