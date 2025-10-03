@@ -12,7 +12,7 @@ public static class UiGeneratorUtils
     public static bool CheckIsUi(Node node)
     {
         var cSharpScript = node.GetCsShartScript();
-        if (cSharpScript.ResourcePath != null)
+        if (cSharpScript != null && cSharpScript.ResourcePath != null)
         {
             var resourcePath = cSharpScript.ResourcePath;
             var temp = "res://" + DsUiConfig.UiCodeDir;
