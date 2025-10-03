@@ -1,3 +1,4 @@
+@tool
 extends Tree
 
 @export
@@ -8,9 +9,9 @@ var _script_icon: Texture = preload("res://addons/ds_inspector/icon/icon_script.
 @onready
 var _scene_icon: Texture = preload("res://addons/ds_inspector/icon/icon_play_scene.svg")
 @onready
-var _visible_icon: Texture = preload("res://addons/ds_inspector/Icon/Visible.png")
+var _visible_icon: Texture = preload("res://addons/ds_inspector/icon/Visible.png")
 @onready
-var _hide_icon: Texture = preload("res://addons/ds_inspector/Icon/Hide.png")
+var _hide_icon: Texture = preload("res://addons/ds_inspector/icon/Hide.png")
 
 @onready
 var node_tree: NodeTree = get_node(node_tree_path)
@@ -46,7 +47,7 @@ func _create_node_item(node: Node):
 	var node_data := node_tree.create_node_data(node)
 	item.set_metadata(0, node_data)  # 存储节点引用
 	item.set_text(0, node.name)
-	item.set_icon(0, load(node_tree.icon_mapping.get_icon(node.get_class())))
+	item.set_icon(0, load(node_tree.icon_mapping.get_icon(node)))
 	
 	var btn_index: int = 0
 	if node.scene_file_path != "":

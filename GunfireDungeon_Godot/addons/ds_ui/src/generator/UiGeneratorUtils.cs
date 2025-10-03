@@ -11,8 +11,8 @@ public static class UiGeneratorUtils
     /// </summary>
     public static bool CheckIsUi(Node node)
     {
-        var variant = node.GetScript().Obj;
-        if (variant != null && variant is CSharpScript cSharpScript && cSharpScript.ResourcePath != null)
+        var cSharpScript = node.GetCsShartScript();
+        if (cSharpScript.ResourcePath != null)
         {
             var resourcePath = cSharpScript.ResourcePath;
             var temp = "res://" + DsUiConfig.UiCodeDir;
@@ -61,6 +61,20 @@ public static class UiGeneratorUtils
             return str;
         }
         return str.Substring(0, 1).ToUpper() + str.Substring(1);
+    }
+
+    /// <summary>
+    /// 获取节点的CSharpScript脚本
+    /// </summary>
+    public static CSharpScript GetCsShartScript(this Node node)
+    {
+        var variant = node.GetScript().Obj;
+        if (variant != null && variant is CSharpScript cSharpScript)
+        {
+            return cSharpScript;
+        }
+        
+        return null;
     }
 
 }

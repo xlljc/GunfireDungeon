@@ -146,7 +146,7 @@ namespace DsUi.Generator
         
         private SceneNode ParseNodeTree(Node node)
         {
-            var script = node.GetScript().As<CSharpScript>();
+            var script = node.GetCsShartScript();
             string scriptPath;
             if (script == null)
             {

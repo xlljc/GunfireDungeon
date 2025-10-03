@@ -1,3 +1,4 @@
+@tool
 extends Window
 
 const SAVE_PATH := "user://ds_inspector_window.txt"
@@ -24,12 +25,15 @@ var file_window: FileDialog
 var put_away: Button
 @export
 var confirmation: ConfirmationDialog
+@export
+var debug_tool_path: NodePath
+
 
 # 缓存的窗口状态
 var _cached_window_state: Dictionary = {}
 
 @onready
-var debug_tool = get_node("/root/DsInspector")
+var debug_tool = get_node(debug_tool_path)
 
 @onready
 var play_icon: Texture2D = preload("res://addons/ds_inspector/icon/Play.svg")

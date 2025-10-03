@@ -1,3 +1,4 @@
+@tool
 extends TextureButton
 
 var is_dragging: bool = false
@@ -7,13 +8,13 @@ var drag_move_flag: bool = false
 
 const SAVE_PATH := "user://ds_inspector_icon.txt"
 
+@export
+var debug_tool_path: NodePath
+
 @onready
-var debug_tool = get_node("/root/DsInspector")
+var debug_tool = get_node(debug_tool_path)
 
 func _ready():
-	#if OS.has_feature("standalone"): # 判断是否是导出模式
-		#get_parent().call_deferred("queue_free")
-		#pass
 	_load_pos()
 	pressed.connect(_on_HoverIcon_pressed)
 	mouse_entered.connect(_on_mouse_entered)

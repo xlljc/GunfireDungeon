@@ -1,13 +1,17 @@
+@tool
 extends Tree
 class_name ExcludeList
 
 @export
 var add_btn_path: NodePath
 
+@export
+var debug_tool_path: NodePath
+
 @onready
 var add_btn: Button = get_node(add_btn_path)
 @onready
-var debug_tool: CanvasLayer = get_node("/root/DsInspector")
+var debug_tool = get_node(debug_tool_path)
 var _list: Array = []
 var _root_item: TreeItem
 @onready

@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name Brush
 
@@ -14,18 +15,22 @@ var node_path_tips: Control# = $"../Control"
 var icon_tex_rect: TextureRect# = $"../Control/ColorRect/Icon"
 @export
 var path_label: Label# = $"../Control/Path"
+@export
+var debug_tool_path: NodePath
+
 @onready
-var debug_tool = get_node("/root/DsInspector")
+var debug_tool = get_node(debug_tool_path)
 
 var _icon: Texture
 var _show_text: bool = false
+var _in_viewport: bool = false
 
 func _ready():
 	node_path_tips.visible = false
 	pass
 
 func _process(_delta):
-	if _has_draw_node and (_draw_node == null or !is_instance_valid(_draw_node)):
+	if _has_draw_node and (_draw_node == null or !is_instance_valid(_draw_node) or !_draw_node.is_inside_tree()):
 		_draw_node = null
 		_has_draw_node = false
 	queue_redraw()
@@ -37,6 +42,7 @@ func get_draw_node() -> Node:
 	if !is_instance_valid(_draw_node):
 		_draw_node = null
 		_has_draw_node = false
+		_in_viewport = false
 		return null
 	return _draw_node
 
@@ -49,7 +55,11 @@ func set_draw_node(node: Node) -> void:
 	_draw_node = node
 	_has_draw_node = true
 	_in_canvaslayer = debug_tool.is_in_canvaslayer(node)
-	var icon_path = node_tree.icon_mapping.get_icon(_draw_node.get_class())
+	
+	# 递归检查 node 是否在 Viewport 下
+	_in_viewport = debug_tool.is_under_inner_viewport(node)
+	
+	var icon_path = node_tree.icon_mapping.get_icon(_draw_node)
 	_icon = load(icon_path)
 	icon_tex_rect.texture = _icon
 	
@@ -64,7 +74,7 @@ func set_show_text(flag: bool):
 	pass
 
 func _draw():
-	if !_has_draw_node:
+	if !_has_draw_node or _in_viewport:
 		return
 	if _draw_node == null or !is_instance_valid(_draw_node):
 		_draw_node = null
@@ -105,7 +115,7 @@ func _draw():
 		var label_size: Vector2 = path_label.size
 		var tips_size: Vector2 = node_path_tips.size
 		var text_size: Vector2 = Vector2(max(label_size.x, tips_size.x), max(label_size.y, tips_size.y))
-		var text_pos: Vector2 = pos + Vector2(0, 5)
+		var text_pos: Vector2 = pos + Vector2(-50, 50)
 		# 限制在屏幕内，结合 path_label 的大小
 		if text_pos.x + text_size.x > view_size.x:
 			text_pos.x = view_size.x - text_size.x

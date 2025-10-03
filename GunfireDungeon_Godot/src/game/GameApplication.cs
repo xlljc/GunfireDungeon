@@ -318,7 +318,7 @@ public partial class GameApplication : Node2D, ICoroutine
     /// </summary>
     public void SetPerfectPixel(bool v)
     {
-        ViewCanvas.Visible = !v;
+        ViewCanvas.Visible = v;
         if (PerfectPixel == v) return;
         PerfectPixel = v;
 

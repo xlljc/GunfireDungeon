@@ -133,7 +133,7 @@ namespace DsUi.Generator
                 _nodeNameMap.Clear();
                 _nestedIndex = 1;
                 
-                var resourcePath = control.GetScript().As<CSharpScript>().ResourcePath;
+                var resourcePath = control.GetCsShartScript().ResourcePath;
                 var index = resourcePath.LastIndexOf("/", StringComparison.Ordinal);
                 var uiName = resourcePath.Substring(index + 1, resourcePath.Length - index - 8 - 1);
 
@@ -426,7 +426,7 @@ namespace DsUi.Generator
                 _nodeNameMap.Add(originName, 1);
             }
 
-            var script = node.GetScript().As<CSharpScript>();
+            var script = node.GetCsShartScript();
             if (script == null) //无脚本, 说明是内置节点
             {
                 uiNode = new UiNodeInfo(uiNameFiledName, uiRootName, fieldName, originName, className, node.GetType().FullName, false);
@@ -489,6 +489,10 @@ namespace DsUi.Generator
                     var children = node.GetChild(i);
                     if (children != null)
                     {
+                        if (children.Owner == null)
+                        {
+                            continue;
+                        }
                         if (uiNode.Children == null)
                         {
                             uiNode.Children = new List<UiNodeInfo>();

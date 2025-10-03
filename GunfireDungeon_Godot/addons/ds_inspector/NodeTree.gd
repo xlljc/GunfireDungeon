@@ -1,3 +1,4 @@
+@tool
 extends Tree
 class_name NodeTree
 
@@ -28,49 +29,80 @@ class IconMapping:
 		"CodeEdit": "res://addons/ds_inspector/node_icon/CodeEdit.svg",
 		"GraphEdit": "res://addons/ds_inspector/node_icon/GraphEdit.svg",
 		"GraphNode": "res://addons/ds_inspector/node_icon/GraphNode.svg",
+		"MeshInstance3D": "res://addons/ds_inspector/node_icon/MeshInstance3D.svg",
 		"Node3D": "res://addons/ds_inspector/node_icon/Node3D.svg",
 		"RichTextLabel": "res://addons/ds_inspector/node_icon/RichTextLabel.svg",
 		"TileMap": "res://addons/ds_inspector/node_icon/TileMap.svg",
 		"Tree": "res://addons/ds_inspector/node_icon/Tree.svg",
 		"AcceptDialog": "res://addons/ds_inspector/node_icon/AcceptDialog.svg",
+		"AimModifier3D": "res://addons/ds_inspector/node_icon/AimModifier3D.svg",
 		"AnimatableBody2D": "res://addons/ds_inspector/node_icon/AnimatableBody2D.svg",
+		"AnimatableBody3D": "res://addons/ds_inspector/node_icon/AnimatableBody3D.svg",
 		"AnimatedSprite2D": "res://addons/ds_inspector/node_icon/AnimatedSprite2D.svg",
+		"AnimatedSprite3D": "res://addons/ds_inspector/node_icon/AnimatedSprite3D.svg",
 		"AnimationMixer": "res://addons/ds_inspector/node_icon/AnimationMixer.svg",
 		"Area2D": "res://addons/ds_inspector/node_icon/Area2D.svg",
+		"Area3D": "res://addons/ds_inspector/node_icon/Area3D.svg",
 		"AspectRatioContainer": "res://addons/ds_inspector/node_icon/AspectRatioContainer.svg",
 		"AudioListener2D": "res://addons/ds_inspector/node_icon/AudioListener2D.svg",
+		"AudioListener3D": "res://addons/ds_inspector/node_icon/AudioListener3D.svg",
 		"AudioStreamPlayer": "res://addons/ds_inspector/node_icon/AudioStreamPlayer.svg",
 		"AudioStreamPlayer2D": "res://addons/ds_inspector/node_icon/AudioStreamPlayer2D.svg",
+		"AudioStreamPlayer3D": "res://addons/ds_inspector/node_icon/AudioStreamPlayer3D.svg",
 		"BackBufferCopy": "res://addons/ds_inspector/node_icon/BackBufferCopy.svg",
 		"BaseButton": "res://addons/ds_inspector/node_icon/BaseButton.svg",
 		"Bone2D": "res://addons/ds_inspector/node_icon/Bone2D.svg",
+		"BoneAttachment3D": "res://addons/ds_inspector/node_icon/BoneAttachment3D.svg",
+		"BoneConstraint3D": "res://addons/ds_inspector/node_icon/BoneConstraint3D.svg",
 		"BoxContainer": "res://addons/ds_inspector/node_icon/BoxContainer.svg",
 		"Button": "res://addons/ds_inspector/node_icon/Button.svg",
 		"CpuParticles2D": "res://addons/ds_inspector/node_icon/CpuParticles2D.svg",
+		"CpuParticles3D": "res://addons/ds_inspector/node_icon/CpuParticles3D.svg",
 		"Camera2D": "res://addons/ds_inspector/node_icon/Camera2D.svg",
+		"Camera3D": "res://addons/ds_inspector/node_icon/Camera3D.svg",
 		"CanvasGroup": "res://addons/ds_inspector/node_icon/CanvasGroup.svg",
 		"CanvasItem": "res://addons/ds_inspector/node_icon/CanvasItem.svg",
 		"CanvasLayer": "res://addons/ds_inspector/node_icon/CanvasLayer.svg",
 		"CanvasModulate": "res://addons/ds_inspector/node_icon/CanvasModulate.svg",
 		"CenterContainer": "res://addons/ds_inspector/node_icon/CenterContainer.svg",
 		"CharacterBody2D": "res://addons/ds_inspector/node_icon/CharacterBody2D.svg",
+		"CharacterBody3D": "res://addons/ds_inspector/node_icon/CharacterBody3D.svg",
 		"CheckBox": "res://addons/ds_inspector/node_icon/CheckBox.svg",
 		"CheckButton": "res://addons/ds_inspector/node_icon/CheckButton.svg",
 		"CollisionObject2D": "res://addons/ds_inspector/node_icon/CollisionObject2D.svg",
+		"CollisionObject3D": "res://addons/ds_inspector/node_icon/CollisionObject3D.svg",
 		"CollisionPolygon2D": "res://addons/ds_inspector/node_icon/CollisionPolygon2D.svg",
+		"CollisionPolygon3D": "res://addons/ds_inspector/node_icon/CollisionPolygon3D.svg",
 		"CollisionShape2D": "res://addons/ds_inspector/node_icon/CollisionShape2D.svg",
+		"CollisionShape3D": "res://addons/ds_inspector/node_icon/CollisionShape3D.svg",
 		"ColorPicker": "res://addons/ds_inspector/node_icon/ColorPicker.svg",
 		"ColorPickerButton": "res://addons/ds_inspector/node_icon/ColorPickerButton.svg",
 		"ColorRect": "res://addons/ds_inspector/node_icon/ColorRect.svg",
+		"ConeTwistJoint3D": "res://addons/ds_inspector/node_icon/ConeTwistJoint3D.svg",
 		"ConfirmationDialog": "res://addons/ds_inspector/node_icon/ConfirmationDialog.svg",
 		"Container": "res://addons/ds_inspector/node_icon/Container.svg",
 		"Control": "res://addons/ds_inspector/node_icon/Control.svg",
+		"ConvertTransformModifier3D": "res://addons/ds_inspector/node_icon/ConvertTransformModifier3D.svg",
+		"CopyTransformModifier3D": "res://addons/ds_inspector/node_icon/CopyTransformModifier3D.svg",
 		"DampedSpringJoint2D": "res://addons/ds_inspector/node_icon/DampedSpringJoint2D.svg",
+		"Decal": "res://addons/ds_inspector/node_icon/Decal.svg",
 		"DirectionalLight2D": "res://addons/ds_inspector/node_icon/DirectionalLight2D.svg",
+		"DirectionalLight3D": "res://addons/ds_inspector/node_icon/DirectionalLight3D.svg",
 		"FileDialog": "res://addons/ds_inspector/node_icon/FileDialog.svg",
 		"FlowContainer": "res://addons/ds_inspector/node_icon/FlowContainer.svg",
+		"FogVolume": "res://addons/ds_inspector/node_icon/FogVolume.svg",
 		"FoldableContainer": "res://addons/ds_inspector/node_icon/FoldableContainer.svg",
 		"GpuParticles2D": "res://addons/ds_inspector/node_icon/GpuParticles2D.svg",
+		"GpuParticles3D": "res://addons/ds_inspector/node_icon/GpuParticles3D.svg",
+		"GpuParticlesAttractorBox3D": "res://addons/ds_inspector/node_icon/GpuParticlesAttractorBox3D.svg",
+		"GpuParticlesAttractorSphere3D": "res://addons/ds_inspector/node_icon/GpuParticlesAttractorSphere3D.svg",
+		"GpuParticlesAttractorVectorField3D": "res://addons/ds_inspector/node_icon/GpuParticlesAttractorVectorField3D.svg",
+		"GpuParticlesCollisionBox3D": "res://addons/ds_inspector/node_icon/GpuParticlesCollisionBox3D.svg",
+		"GpuParticlesCollisionHeightField3D": "res://addons/ds_inspector/node_icon/GpuParticlesCollisionHeightField3D.svg",
+		"GpuParticlesCollisionSdf3D": "res://addons/ds_inspector/node_icon/GpuParticlesCollisionSdf3D.svg",
+		"GpuParticlesCollisionSphere3D": "res://addons/ds_inspector/node_icon/GpuParticlesCollisionSphere3D.svg",
+		"Generic6DofJoint3D": "res://addons/ds_inspector/node_icon/Generic6DofJoint3D.svg",
+		"GeometryInstance3D": "res://addons/ds_inspector/node_icon/GeometryInstance3D.svg",
 		"GraphElement": "res://addons/ds_inspector/node_icon/GraphElement.svg",
 		"GraphFrame": "res://addons/ds_inspector/node_icon/GraphFrame.svg",
 		"GridContainer": "res://addons/ds_inspector/node_icon/GridContainer.svg",
@@ -82,28 +114,42 @@ class IconMapping:
 		"HSlider": "res://addons/ds_inspector/node_icon/HSlider.svg",
 		"HSplitContainer": "res://addons/ds_inspector/node_icon/HSplitContainer.svg",
 		"HttpRequest": "res://addons/ds_inspector/node_icon/HttpRequest.svg",
+		"HingeJoint3D": "res://addons/ds_inspector/node_icon/HingeJoint3D.svg",
+		"ImporterMeshInstance3D": "res://addons/ds_inspector/node_icon/ImporterMeshInstance3D.svg",
 		"ItemList": "res://addons/ds_inspector/node_icon/ItemList.svg",
 		"Label": "res://addons/ds_inspector/node_icon/Label.svg",
+		"Label3D": "res://addons/ds_inspector/node_icon/Label3D.svg",
 		"LightOccluder2D": "res://addons/ds_inspector/node_icon/LightOccluder2D.svg",
+		"LightmapGI": "res://addons/ds_inspector/node_icon/LightmapGI.svg",
+		"LightmapProbe": "res://addons/ds_inspector/node_icon/LightmapProbe.svg",
 		"Line2D": "res://addons/ds_inspector/node_icon/Line2D.svg",
 		"LineEdit": "res://addons/ds_inspector/node_icon/LineEdit.svg",
 		"LinkButton": "res://addons/ds_inspector/node_icon/LinkButton.svg",
+		"LookAtModifier3D": "res://addons/ds_inspector/node_icon/LookAtModifier3D.svg",
 		"MarginContainer": "res://addons/ds_inspector/node_icon/MarginContainer.svg",
 		"Marker2D": "res://addons/ds_inspector/node_icon/Marker2D.svg",
+		"Marker3D": "res://addons/ds_inspector/node_icon/Marker3D.svg",
 		"MenuBar": "res://addons/ds_inspector/node_icon/MenuBar.svg",
 		"MenuButton": "res://addons/ds_inspector/node_icon/MenuButton.svg",
 		"MeshInstance2D": "res://addons/ds_inspector/node_icon/MeshInstance2D.svg",
 		"MissingNode": "res://addons/ds_inspector/node_icon/MissingNode.svg",
+		"ModifierBoneTarget3D": "res://addons/ds_inspector/node_icon/ModifierBoneTarget3D.svg",
 		"MultiMeshInstance2D": "res://addons/ds_inspector/node_icon/MultiMeshInstance2D.svg",
+		"MultiMeshInstance3D": "res://addons/ds_inspector/node_icon/MultiMeshInstance3D.svg",
 		"MultiplayerSpawner": "res://addons/ds_inspector/node_icon/MultiplayerSpawner.svg",
 		"MultiplayerSynchronizer": "res://addons/ds_inspector/node_icon/MultiplayerSynchronizer.svg",
 		"NavigationAgent2D": "res://addons/ds_inspector/node_icon/NavigationAgent2D.svg",
 		"NavigationAgent3D": "res://addons/ds_inspector/node_icon/NavigationAgent3D.svg",
 		"NavigationLink2D": "res://addons/ds_inspector/node_icon/NavigationLink2D.svg",
+		"NavigationLink3D": "res://addons/ds_inspector/node_icon/NavigationLink3D.svg",
 		"NavigationObstacle2D": "res://addons/ds_inspector/node_icon/NavigationObstacle2D.svg",
+		"NavigationObstacle3D": "res://addons/ds_inspector/node_icon/NavigationObstacle3D.svg",
 		"NavigationRegion2D": "res://addons/ds_inspector/node_icon/NavigationRegion2D.svg",
+		"NavigationRegion3D": "res://addons/ds_inspector/node_icon/NavigationRegion3D.svg",
 		"NinePatchRect": "res://addons/ds_inspector/node_icon/NinePatchRect.svg",
 		"Node2D": "res://addons/ds_inspector/node_icon/Node2D.svg",
+		"OccluderInstance3D": "res://addons/ds_inspector/node_icon/OccluderInstance3D.svg",
+		"OmniLight3D": "res://addons/ds_inspector/node_icon/OmniLight3D.svg",
 		"OptionButton": "res://addons/ds_inspector/node_icon/OptionButton.svg",
 		"Panel": "res://addons/ds_inspector/node_icon/Panel.svg",
 		"PanelContainer": "res://addons/ds_inspector/node_icon/PanelContainer.svg",
@@ -111,10 +157,16 @@ class IconMapping:
 		"ParallaxBackground": "res://addons/ds_inspector/node_icon/ParallaxBackground.svg",
 		"ParallaxLayer": "res://addons/ds_inspector/node_icon/ParallaxLayer.svg",
 		"Path2D": "res://addons/ds_inspector/node_icon/Path2D.svg",
+		"Path3D": "res://addons/ds_inspector/node_icon/Path3D.svg",
 		"PathFollow2D": "res://addons/ds_inspector/node_icon/PathFollow2D.svg",
+		"PathFollow3D": "res://addons/ds_inspector/node_icon/PathFollow3D.svg",
 		"PhysicalBone2D": "res://addons/ds_inspector/node_icon/PhysicalBone2D.svg",
+		"PhysicalBone3D": "res://addons/ds_inspector/node_icon/PhysicalBone3D.svg",
+		"PhysicalBoneSimulator3D": "res://addons/ds_inspector/node_icon/PhysicalBoneSimulator3D.svg",
 		"PhysicsBody2D": "res://addons/ds_inspector/node_icon/PhysicsBody2D.svg",
+		"PhysicsBody3D": "res://addons/ds_inspector/node_icon/PhysicsBody3D.svg",
 		"PinJoint2D": "res://addons/ds_inspector/node_icon/PinJoint2D.svg",
+		"PinJoint3D": "res://addons/ds_inspector/node_icon/PinJoint3D.svg",
 		"PointLight2D": "res://addons/ds_inspector/node_icon/PointLight2D.svg",
 		"Polygon2D": "res://addons/ds_inspector/node_icon/Polygon2D.svg",
 		"Popup": "res://addons/ds_inspector/node_icon/Popup.svg",
@@ -123,18 +175,39 @@ class IconMapping:
 		"ProgressBar": "res://addons/ds_inspector/node_icon/ProgressBar.svg",
 		"Range": "res://addons/ds_inspector/node_icon/Range.svg",
 		"RayCast2D": "res://addons/ds_inspector/node_icon/RayCast2D.svg",
+		"RayCast3D": "res://addons/ds_inspector/node_icon/RayCast3D.svg",
 		"ReferenceRect": "res://addons/ds_inspector/node_icon/ReferenceRect.svg",
+		"ReflectionProbe": "res://addons/ds_inspector/node_icon/ReflectionProbe.svg",
 		"RemoteTransform2D": "res://addons/ds_inspector/node_icon/RemoteTransform2D.svg",
+		"RemoteTransform3D": "res://addons/ds_inspector/node_icon/RemoteTransform3D.svg",
 		"ResourcePreloader": "res://addons/ds_inspector/node_icon/ResourcePreloader.svg",
+		"RetargetModifier3D": "res://addons/ds_inspector/node_icon/RetargetModifier3D.svg",
 		"RigidBody2D": "res://addons/ds_inspector/node_icon/RigidBody2D.svg",
+		"RigidBody3D": "res://addons/ds_inspector/node_icon/RigidBody3D.svg",
+		"RootMotionView": "res://addons/ds_inspector/node_icon/RootMotionView.svg",
 		"ScrollContainer": "res://addons/ds_inspector/node_icon/ScrollContainer.svg",
 		"ShaderGlobalsOverride": "res://addons/ds_inspector/node_icon/ShaderGlobalsOverride.svg",
 		"ShapeCast2D": "res://addons/ds_inspector/node_icon/ShapeCast2D.svg",
+		"ShapeCast3D": "res://addons/ds_inspector/node_icon/ShapeCast3D.svg",
 		"Skeleton2D": "res://addons/ds_inspector/node_icon/Skeleton2D.svg",
+		"Skeleton3D": "res://addons/ds_inspector/node_icon/Skeleton3D.svg",
+		"SkeletonIK3D": "res://addons/ds_inspector/node_icon/SkeletonIK3D.svg",
+		"SkeletonModifier3D": "res://addons/ds_inspector/node_icon/SkeletonModifier3D.svg",
+		"SliderJoint3D": "res://addons/ds_inspector/node_icon/SliderJoint3D.svg",
+		"SoftBody3D": "res://addons/ds_inspector/node_icon/SoftBody3D.svg",
 		"SpinBox": "res://addons/ds_inspector/node_icon/SpinBox.svg",
 		"SplitContainer": "res://addons/ds_inspector/node_icon/SplitContainer.svg",
+		"SpotLight3D": "res://addons/ds_inspector/node_icon/SpotLight3D.svg",
+		"SpringArm3D": "res://addons/ds_inspector/node_icon/SpringArm3D.svg",
+		"SpringBoneCollision3D": "res://addons/ds_inspector/node_icon/SpringBoneCollision3D.svg",
+		"SpringBoneCollisionCapsule3D": "res://addons/ds_inspector/node_icon/SpringBoneCollisionCapsule3D.svg",
+		"SpringBoneCollisionPlane3D": "res://addons/ds_inspector/node_icon/SpringBoneCollisionPlane3D.svg",
+		"SpringBoneCollisionSphere3D": "res://addons/ds_inspector/node_icon/SpringBoneCollisionSphere3D.svg",
+		"SpringBoneSimulator3D": "res://addons/ds_inspector/node_icon/SpringBoneSimulator3D.svg",
 		"Sprite2D": "res://addons/ds_inspector/node_icon/Sprite2D.svg",
+		"Sprite3D": "res://addons/ds_inspector/node_icon/Sprite3D.svg",
 		"StaticBody2D": "res://addons/ds_inspector/node_icon/StaticBody2D.svg",
+		"StaticBody3D": "res://addons/ds_inspector/node_icon/StaticBody3D.svg",
 		"StatusIndicator": "res://addons/ds_inspector/node_icon/StatusIndicator.svg",
 		"SubViewport": "res://addons/ds_inspector/node_icon/SubViewport.svg",
 		"SubViewportContainer": "res://addons/ds_inspector/node_icon/SubViewportContainer.svg",
@@ -153,20 +226,45 @@ class IconMapping:
 		"VSeparator": "res://addons/ds_inspector/node_icon/VSeparator.svg",
 		"VSlider": "res://addons/ds_inspector/node_icon/VSlider.svg",
 		"VSplitContainer": "res://addons/ds_inspector/node_icon/VSplitContainer.svg",
+		"VehicleBody3D": "res://addons/ds_inspector/node_icon/VehicleBody3D.svg",
+		"VehicleWheel3D": "res://addons/ds_inspector/node_icon/VehicleWheel3D.svg",
 		"VideoStreamPlayer": "res://addons/ds_inspector/node_icon/VideoStreamPlayer.svg",
 		"Viewport": "res://addons/ds_inspector/node_icon/Viewport.svg",
 		"VisibleOnScreenEnabler2D": "res://addons/ds_inspector/node_icon/VisibleOnScreenEnabler2D.svg",
+		"VisibleOnScreenEnabler3D": "res://addons/ds_inspector/node_icon/VisibleOnScreenEnabler3D.svg",
 		"VisibleOnScreenNotifier2D": "res://addons/ds_inspector/node_icon/VisibleOnScreenNotifier2D.svg",
+		"VisibleOnScreenNotifier3D": "res://addons/ds_inspector/node_icon/VisibleOnScreenNotifier3D.svg",
+		"VisualInstance3D": "res://addons/ds_inspector/node_icon/VisualInstance3D.svg",
+		"VoxelGI": "res://addons/ds_inspector/node_icon/VoxelGI.svg",
 		"Window": "res://addons/ds_inspector/node_icon/Window.svg",
-		"WorldEnvironment": "res://addons/ds_inspector/node_icon/WorldEnvironment.svg"
+		"WorldEnvironment": "res://addons/ds_inspector/node_icon/WorldEnvironment.svg",
+		"XRAnchor3D": "res://addons/ds_inspector/node_icon/XRAnchor3D.svg",
+		"XRBodyModifier3D": "res://addons/ds_inspector/node_icon/XRBodyModifier3D.svg",
+		"XRCamera3D": "res://addons/ds_inspector/node_icon/XRCamera3D.svg",
+		"XRController3D": "res://addons/ds_inspector/node_icon/XRController3D.svg",
+		"XRFaceModifier3D": "res://addons/ds_inspector/node_icon/XRFaceModifier3D.svg",
+		"XRHandModifier3D": "res://addons/ds_inspector/node_icon/XRHandModifier3D.svg",
+		"XRNode3D": "res://addons/ds_inspector/node_icon/XRNode3D.svg",
+		"XROrigin3D": "res://addons/ds_inspector/node_icon/XROrigin3D.svg"
 	}
-	func get_icon(cls_name: String) -> String:
+	func get_icon(node: Node) -> String:
+		var cls_name: String = node.get_class()
 		if mapping.has(cls_name):
 			return mapping[cls_name]
 #		print("未知节点：", cls_name)
-		return "res://addons/ds_inspector/icon/icon_error_sign.png";
+		if node is Node2D:
+			return mapping["Node2D"]
+		if node is Control:
+			return mapping["Control"]
+		if node is Node3D:
+			return mapping["Node3D"]
+		return mapping["Node"]
+		# return "res://addons/ds_inspector/icon/icon_error_sign.png";
 		pass
 pass
+
+@export
+var debug_tool_path: NodePath
 
 @export
 var update_time: float = 1  # 更新间隔时间
@@ -180,15 +278,15 @@ var _next_frame_select: TreeItem = null # 下一帧要选中的item
 @onready
 var icon_mapping: IconMapping = IconMapping.new()
 @onready
-var debug_tool: CanvasLayer = get_node("/root/DsInspector")
+var debug_tool = get_node(debug_tool_path)
 @onready
 var _script_icon: Texture = preload("res://addons/ds_inspector/icon/icon_script.svg")
 @onready
 var _scene_icon: Texture = preload("res://addons/ds_inspector/icon/icon_play_scene.svg")
 @onready
-var _visible_icon: Texture = preload("res://addons/ds_inspector/Icon/Visible.png")
+var _visible_icon: Texture = preload("res://addons/ds_inspector/icon/Visible.png")
 @onready
-var _hide_icon: Texture = preload("res://addons/ds_inspector/Icon/Hide.png")
+var _hide_icon: Texture = preload("res://addons/ds_inspector/icon/Hide.png")
 
 func _ready():
 	# 选中item信号
@@ -229,8 +327,8 @@ func init_tree():
 	
 	# 递归添加子节点
 	for child in root.get_children(true):
-		if debug_tool and child == debug_tool:
-			continue  # 跳过 DsInspector 节点
+		if debug_tool and child == debug_tool and !Engine.is_editor_hint():
+			continue  # 跳过 DsInspectorTool 节点
 		create_node_item(child, root_item, true)
 
 # 显示场景树
@@ -369,7 +467,7 @@ func _update_children(parent_item: TreeItem, parent_data: NodeData):
 
 	# 遍历场景树的子节点
 	for child_node in parent_data.node.get_children(true):
-		if debug_tool and child_node == debug_tool:
+		if debug_tool and child_node == debug_tool and !Engine.is_editor_hint():
 			continue
 		
 		var child_data: TreeItemData = existing_node.get(child_node, null)
@@ -404,7 +502,7 @@ func create_node_item(node: Node, parent: TreeItem, add_slot: bool) -> TreeItem:
 	if node.name == "PauseMenu":
 		print("create: " + node.name)
 	# item.set_icon(0, get_icon("Node", "EditorIcons"))
-	item.set_icon(0, load(icon_mapping.get_icon(node.get_class())))
+	item.set_icon(0, load(icon_mapping.get_icon(node)))
 
 	var btn_index: int = 0
 	if node.scene_file_path != "":

@@ -1,3 +1,4 @@
+@tool
 extends BaseAttr
 class_name TextureAttr
 
