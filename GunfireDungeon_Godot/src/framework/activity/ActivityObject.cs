@@ -826,7 +826,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// <param name="component">组件对象</param>
     public void RemoveComponent(Component component)
     {
-        if (component.IsDestroyed)
+        if (IsDestroyed)
         {
             return;
         }

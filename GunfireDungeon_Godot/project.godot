@@ -17,8 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-DsInspector="*res://addons/ds_inspector/DsInspector.gd"
 InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
+DsInspector="*res://addons/ds_inspector/DsInspector.gd"
 
 [debug]
 

@@ -222,7 +222,6 @@ public abstract class Component : IProcess, IDestroy, ICoroutine
 
         IsDestroyed = true;
         Master.RemoveComponent(this);
-        OnDestroy();
     }
 
     public T AddComponent<T>() where T : Component, new()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/ds_inspector/DsInspectorTool.gd" id="1_t800c"]
 [ext_resource type="Theme" uid="uid://bi3tgesxwq7lg" path="res://addons/ds_inspector/DsInspectorTheme.tres" id="2_rwegl"]
-[ext_resource type="Script" path="res://addons/ds_inspector/DebugDialog.gd" id="3_d06wy"]
+[ext_resource type="Script" uid="uid://caqmmjpsvac0n" path="res://addons/ds_inspector/DebugDialog.gd" id="3_d06wy"]
 [ext_resource type="Texture2D" uid="uid://b6assniwtdgwy" path="res://addons/ds_inspector/icon/Pause.svg" id="4_qjgja"]
 [ext_resource type="Texture2D" uid="uid://kw66syn63sma" path="res://addons/ds_inspector/icon/NextFrame.svg" id="5_albym"]
 [ext_resource type="Texture2D" uid="uid://c51tcljdwj1kr" path="res://addons/ds_inspector/icon/Save.svg" id="6_trprb"]
@@ -10,20 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://drmwgwciyvoxq" path="res://addons/ds_inspector/icon/Select.svg" id="8_vxxi0"]
 [ext_resource type="Texture2D" uid="uid://v37l63676w4b" path="res://addons/ds_inspector/icon/HideBorder.svg" id="9_n43st"]
 [ext_resource type="Texture2D" uid="uid://cp56o3eykphff" path="res://addons/ds_inspector/icon/PutAway.svg" id="10_h81ki"]
-[ext_resource type="Script" path="res://addons/ds_inspector/TreeContainer.gd" id="11_gi7kt"]
-[ext_resource type="Script" path="res://addons/ds_inspector/NodeTree.gd" id="12_n858a"]
-[ext_resource type="Script" path="res://addons/ds_inspector/SerachTree.gd" id="13_n5350"]
-[ext_resource type="Script" path="res://addons/ds_inspector/DebugTab.gd" id="14_x52hf"]
-[ext_resource type="Script" path="res://addons/ds_inspector/InspectorContainer.gd" id="15_teqd0"]
-[ext_resource type="Script" path="res://addons/ds_inspector/ExcludeList.gd" id="16_lfkxp"]
-[ext_resource type="Script" path="res://addons/ds_inspector/Cheat/Cheat.gd" id="17_i1g1n"]
+[ext_resource type="Script" uid="uid://djxn36jq7tf1t" path="res://addons/ds_inspector/TreeContainer.gd" id="11_gi7kt"]
+[ext_resource type="Script" uid="uid://d3sjdvg117uky" path="res://addons/ds_inspector/NodeTree.gd" id="12_n858a"]
+[ext_resource type="Script" uid="uid://bdtqq3qd6xha5" path="res://addons/ds_inspector/SerachTree.gd" id="13_n5350"]
+[ext_resource type="Script" uid="uid://cd3a7wpv8mcib" path="res://addons/ds_inspector/DebugTab.gd" id="14_x52hf"]
+[ext_resource type="Script" uid="uid://bvgmb06k5m808" path="res://addons/ds_inspector/InspectorContainer.gd" id="15_teqd0"]
+[ext_resource type="Script" uid="uid://cuhbwqt6kum78" path="res://addons/ds_inspector/ExcludeList.gd" id="16_lfkxp"]
+[ext_resource type="Script" uid="uid://0ae771uo7twc" path="res://addons/ds_inspector/Cheat/Cheat.gd" id="17_i1g1n"]
 [ext_resource type="PackedScene" uid="uid://d2qnsha516yor" path="res://addons/ds_inspector/Cheat/CheatItem.tscn" id="18_req58"]
-[ext_resource type="Script" path="res://addons/ds_inspector/Brush.gd" id="19_1ycqc"]
+[ext_resource type="Script" uid="uid://bskg7mtjjcjd3" path="res://addons/ds_inspector/Brush.gd" id="19_1ycqc"]
 [ext_resource type="Texture2D" uid="uid://k6nfbn6oroyw" path="res://addons/ds_inspector/node_icon/AnimatedSprite2D.svg" id="20_bgw6s"]
 [ext_resource type="Texture2D" uid="uid://cltttr2pcd537" path="res://addons/ds_inspector/icon/Icon.png" id="21_pv2ua"]
 [ext_resource type="Texture2D" uid="uid://cpfmuxcanm03r" path="res://addons/ds_inspector/icon/Icon_Pressed.png" id="22_0afkq"]
 [ext_resource type="Texture2D" uid="uid://df6spnjut8st4" path="res://addons/ds_inspector/icon/Icon_Hover.png" id="23_qya0n"]
-[ext_resource type="Script" path="res://addons/ds_inspector/HoverIcon.gd" id="24_c6x5m"]
+[ext_resource type="Script" uid="uid://bk6vfeffuosh2" path="res://addons/ds_inspector/HoverIcon.gd" id="24_c6x5m"]
 
 [sub_resource type="Animation" id="3"]
 length = 0.001
@@ -106,8 +106,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qg7va"]
 _data = {
-"RESET": SubResource("3"),
-"show": SubResource("2")
+&"RESET": SubResource("3"),
+&"show": SubResource("2")
 }
 
 [node name="DsInspectorTool" type="CanvasLayer" node_paths=PackedStringArray("window", "brush", "mask", "inspector", "tips", "tips_anim", "cheat")]
@@ -132,9 +132,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WindowDialog" type="Window" parent="." node_paths=PackedStringArray("tree", "exclude_list", "select_btn", "save_btn", "delete_btn", "hide_border_btn", "play_btn", "next_frame_btn", "file_window", "put_away", "confirmation")]
+oversampling_override = 1.0
 title = "DsInspector"
-position = Vector2i(1058, 232)
-size = Vector2i(1402, 1124)
+position = Vector2i(502, 390)
+size = Vector2i(1728, 1446)
 visible = false
 theme = ExtResource("2_rwegl")
 script = ExtResource("3_d06wy")
@@ -306,7 +307,6 @@ text = "清除"
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
-theme_override_font_sizes/font_size = 14
 hide_root = true
 script = ExtResource("12_n858a")
 debug_tool_path = NodePath("../../../../../../../..")
@@ -315,7 +315,6 @@ debug_tool_path = NodePath("../../../../../../../..")
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 14
 hide_root = true
 script = ExtResource("13_n5350")
 node_tree_path = NodePath("../NodeTree")
@@ -324,6 +323,7 @@ node_tree_path = NodePath("../NodeTree")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+current_tab = 0
 script = ExtResource("14_x52hf")
 tab_names = ["检查器", "排除路径", "作弊"]
 
@@ -527,14 +527,14 @@ vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tips"]
 libraries = {
-"": SubResource("AnimationLibrary_qg7va")
+&"": SubResource("AnimationLibrary_qg7va")
 }
 
 [node name="HoverIcon" type="TextureButton" parent="."]
-offset_left = 733.0
-offset_top = 4.0
-offset_right = 781.0
-offset_bottom = 52.0
+offset_left = 1142.0
+offset_top = 52.0
+offset_right = 1190.0
+offset_bottom = 100.0
 texture_normal = ExtResource("21_pv2ua")
 texture_pressed = ExtResource("22_0afkq")
 texture_hover = ExtResource("23_qya0n")
