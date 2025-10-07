@@ -15,6 +15,7 @@ public partial class NoWeaponEnemy : Enemy
         NoWeaponAttack = true;
         FiringStand = true;
         WeaponPack.SetCapacity(0);
+        RoleState.CanPickUpWeapon = false;
         AnimationPlayer.AnimationFinished += OnAnimationFinished;
 
         _brushData = LiquidBrushManager.GetBrush("0001");
