@@ -151,7 +151,7 @@ public static partial class ExcelConfig
         public float DarkResist;
 
         /// <summary>
-        /// 魔法属性伤害抗性
+        /// 真实伤害属性伤害抗性，真实伤害指的是异常状态下受到的各种伤害，比如烧伤、中毒、出血等
         /// </summary>
         [JsonInclude]
         public float RealResist;

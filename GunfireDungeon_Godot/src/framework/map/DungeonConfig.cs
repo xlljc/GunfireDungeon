@@ -64,7 +64,7 @@ public class DungeonConfig
     /// <summary>
     /// 房间最大间隔
     /// </summary>
-    public int RoomMaxInterval = 2;
+    public int RoomMaxInterval = 5;
     
     /// <summary>
     /// 房间横轴最小分散程度
