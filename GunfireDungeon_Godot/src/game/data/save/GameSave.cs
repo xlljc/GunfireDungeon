@@ -48,8 +48,11 @@ public partial class GameSave
 
     public void Init(GameApplication app)
     {
-        DisplayServer.WindowSetMode(FullScreen ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
-        DisplayServer.WindowSetVsyncMode(VerticalSync ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
+        GameApplication.Instance.CallDelay(0, () =>
+        {
+            DisplayServer.WindowSetMode(FullScreen ? DisplayServer.WindowMode.Fullscreen : DisplayServer.WindowMode.Windowed);
+            DisplayServer.WindowSetVsyncMode(VerticalSync ? DisplayServer.VSyncMode.Enabled : DisplayServer.VSyncMode.Disabled);
+        });
         SoundManager.SetBusValue(BUS.BGM, BgmVolume);
         SoundManager.SetBusValue(BUS.SFX, SfxVolume);
         app.SetPerfectPixel(PerfectPixel);

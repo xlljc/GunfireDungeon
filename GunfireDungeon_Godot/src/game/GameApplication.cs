@@ -395,8 +395,8 @@ public partial class GameApplication : Node2D, ICoroutine
     //窗体大小改变
     private void OnWindowSizeChanged()
     {
-        var size = GetWindow().Size;
-        ViewportSize = size / PixelScale;
+        // var size = GetWindow().Size;
+        // ViewportSize = size / PixelScale;
         RefreshSubViewportSize();
     }
     
