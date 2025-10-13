@@ -13,9 +13,9 @@ public partial class MainPanel : Main
     public override void OnCreateUi()
     {
         S_Start.Instance.Pressed += OnStartGameClick;
-        S_Exit.Instance.Pressed += OnExitClick;
         S_Tools.Instance.Pressed += OnToolsClick;
         S_Setting.Instance.Pressed += OnSettingClick;
+        S_Exit.Instance.Pressed += OnExitClick;
 
 #if !TOOLS
         S_Tools.Instance.Visible = false;
@@ -27,7 +27,12 @@ public partial class MainPanel : Main
         //     S_Tools.Instance.Visible = false;
         // }
     }
-    
+
+    public override void OnShowUi()
+    {
+        Utils.HandlerFocusList(S_ButtonList.Instance);
+    }
+
     //点击开始游戏
     private void OnStartGameClick()
     {

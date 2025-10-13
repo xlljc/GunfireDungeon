@@ -244,6 +244,11 @@ public partial class GameApplication : Node2D, ICoroutine
         ProxyCoroutineHandler.ProxyUpdateCoroutine(ref _coroutineList, newDelta);
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        InputManager.InputHandler(@event);
+    }
+
     /// <summary>
     /// 将Ui坐标转换为游戏中的世界坐标
     /// </summary>

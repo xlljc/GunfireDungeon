@@ -33,6 +33,8 @@ public partial class PauseMenuPanel : PauseMenu
     {
         GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
         GameCamera.Main.LockCamera();
+        
+        Utils.HandlerFocusList(S_VBoxContainer.Instance);
     }
     
     public override void OnHideUi()

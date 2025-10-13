@@ -604,4 +604,33 @@ public static class Utils
     {
         return min + (max - min) * (1 - 1 / (1 + scalingFactor * value));
     }
+
+    /// <summary>
+    /// 处理 control 子节点列表焦点问题
+    /// </summary>
+    public static void HandlerFocusList(Control control)
+    {
+        var children = control.GetChildren();
+        Control prev = null;
+        foreach (var child in children)
+        {
+            if (child is Control c)
+            {
+                if (!c.Visible)
+                {
+                    c.FocusNext = null;
+                }
+                else if (prev == null)
+                {
+                    prev = c;
+                    c.GrabFocus();
+                }
+                else
+                {
+                    prev.FocusNext = prev.GetPathTo(c);
+                    prev = c;
+                }
+            }
+        }
+    }
 }
