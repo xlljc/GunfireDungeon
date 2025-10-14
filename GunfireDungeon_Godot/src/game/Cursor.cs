@@ -138,6 +138,8 @@ public partial class Cursor : Node2D
 
     private void SetCursorPos()
     {
-        GlobalPosition = GetGlobalMousePosition();
+        // GlobalPosition = GetGlobalMousePosition();
+        
+        GlobalPosition = InputManager.CursorPosition;
     }
 }

@@ -10,7 +10,7 @@ public partial class Gun : Weapon
     {
         base.OnFire();
         
-        if (TriggerRole != null && TriggerRole.IsPlayer())
+        if (InputManager.IsJoystickInput && TriggerRole != null && TriggerRole.IsPlayer())
         {
             Input.StartJoyVibration(0, 0, 0.9f, 0.2f);
         }

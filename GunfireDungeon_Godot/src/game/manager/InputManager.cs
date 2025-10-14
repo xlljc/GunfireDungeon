@@ -1,4 +1,3 @@
-
 using Godot;
 
 /// <summary>
@@ -101,11 +100,34 @@ public static class InputManager
     public static void Update(float delta)
     {
         MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
-        var application = GameApplication.Instance;
-        if (application != null)
+
+        if (IsJoystickInput)
         {
-            CursorPosition = application.SceneRoot.GetGlobalMousePosition();
-            //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
+            var joyRAxis = Input.GetVector(InputAction.JoyRLeft, InputAction.JoyRRight, InputAction.JoyRUp, InputAction.JoyRDown);
+            var application = GameApplication.Instance;
+            if (application != null)
+            {
+                var center = application.UiToWorldPosition(application.GetViewportRect().Size / 2);
+                if (joyRAxis.LengthSquared() > 0.001f)
+                {
+                    var direction = joyRAxis.Normalized();
+                    var strength = Mathf.Min(joyRAxis.Length(), 1.0f);
+                    CursorPosition = center + direction * strength * 500.0f;
+                }
+                else
+                {
+                    CursorPosition = center;
+                }
+            }
+        }
+        else
+        {
+            var application = GameApplication.Instance;
+            if (application != null)
+            {
+                CursorPosition = application.SceneRoot.GetGlobalMousePosition();
+                //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
+            }
         }
 
         ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
