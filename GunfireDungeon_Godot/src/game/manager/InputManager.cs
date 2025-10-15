@@ -14,10 +14,9 @@ public static class InputManager
     /// </summary>
     public const float JOYPAD_DEADZONE = 0.1f;
     
-    /// <summary>
-    /// 是否是手柄输入
-    /// </summary>
-    public static bool IsJoystickInput { get; private set; } = false;
+    
+    //--------------------------------
+    
     
     /// <summary>
     /// 移动方向, 已经归一化, 键鼠: 键盘WASD，手柄：左摇杆
@@ -94,47 +93,64 @@ public static class InputManager
     /// </summary>
     public static bool Menu { get; private set; }
 
+    // --------------------------------
+    
+    /// <summary>
+    /// 是否是手柄输入
+    /// </summary>
+    public static bool IsJoystickInput { get; private set; } = false;
+
+    /// <summary>
+    /// 右摇杆是否有输入
+    /// </summary>
+    public static bool IsJoystickRInput { get; private set; } = false;
+    
+    /// <summary>
+    /// 手柄右摇杆方向，仅在IsJoystickInput为true时有效
+    /// </summary>
+    private static Vector2 _joyRAxis;
+    
     /// <summary>
     /// 更新输入管理器
     /// </summary>
     public static void Update(float delta)
     {
+        var app = GameApplication.Instance;
         MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
 
         if (IsJoystickInput)
         {
-            var joyRAxis = Input.GetVector(InputAction.JoyRLeft, InputAction.JoyRRight, InputAction.JoyRUp, InputAction.JoyRDown);
-            var application = GameApplication.Instance;
-            if (application != null)
+            var tempJoyRAxis = Input.GetVector(InputAction.JoyRLeft, InputAction.JoyRRight, InputAction.JoyRUp, InputAction.JoyRDown);
+            IsJoystickRInput = tempJoyRAxis.LengthSquared() >= 0.2f * 0.2f;
+            if (IsJoystickRInput)
             {
-                var center = application.UiToWorldPosition(application.GetViewportRect().Size / 2);
-                if (joyRAxis.LengthSquared() > 0.001f)
-                {
-                    var direction = joyRAxis.Normalized();
-                    var strength = Mathf.Min(joyRAxis.Length(), 1.0f);
-                    CursorPosition = center + direction * strength * 500.0f;
-                }
-                else
-                {
-                    CursorPosition = center;
-                }
+                _joyRAxis = tempJoyRAxis;
+            }
+            var center = app.UiToWorldPosition(app.GetViewportRect().Size / 2);
+            if (_joyRAxis.LengthSquared() > 0.001f)
+            {
+                var direction = _joyRAxis.Normalized();
+                var strength = Mathf.Min(_joyRAxis.Length(), 1.0f);
+                CursorPosition = center + direction * strength * 120.0f;
+            }
+            else
+            {
+                CursorPosition = center;
             }
         }
         else
         {
-            var application = GameApplication.Instance;
-            if (application != null)
-            {
-                CursorPosition = application.SceneRoot.GetGlobalMousePosition();
-                //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
-            }
+            IsJoystickRInput = false;
+            _joyRAxis = Vector2.Zero;
+            CursorPosition = app.SceneRoot.GetGlobalMousePosition();
+            //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
         }
 
         ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
         ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
         Interactive = Input.IsActionJustPressed(InputAction.Interactive);
         Reload = Input.IsActionJustPressed(InputAction.Reload);
-        Fire = Input.IsActionPressed(InputAction.Fire) && GameApplication.Instance.Cursor.BlockageMarkingCount <= 0;
+        Fire = Input.IsActionPressed(InputAction.Fire) && app.Cursor.BlockageMarkingCount <= 0;
         MeleeAttack = Input.IsActionJustPressed(InputAction.MeleeAttack);
         Roll = Input.IsActionJustPressed(InputAction.Roll);
         UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);

@@ -52,7 +52,7 @@ public partial class Cursor : Node2D
             {
                 SetScope(0, null);
             }
-            SetCursorPos();
+            DoUpdateCursor();
         }
     }
 
@@ -128,7 +128,6 @@ public partial class Cursor : Node2D
             scope = len / GameConfig.ScatteringDistance * scope;
         }
         scope = Mathf.Clamp(scope, 0, 192);
-        center.Visible = scope > 64;
 
         lt.Position = new Vector2(-scope, -scope);
         lb.Position = new Vector2(-scope, scope);
@@ -136,10 +135,10 @@ public partial class Cursor : Node2D
         rb.Position = new Vector2(scope, scope);
     }
 
-    private void SetCursorPos()
+    private void DoUpdateCursor()
     {
         // GlobalPosition = GetGlobalMousePosition();
-        
-        GlobalPosition = InputManager.CursorPosition;
+        Visible = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
+        Position = GameApplication.Instance.WorldToUiPosition(InputManager.CursorPosition);
     }
 }
