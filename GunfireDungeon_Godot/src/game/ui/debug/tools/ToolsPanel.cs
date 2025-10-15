@@ -239,10 +239,10 @@ public partial class ToolsPanel : Tools
                 debugger.OnClose();
                 // 监听右键按下
                 var instanceId = GetInstanceId();
-                GameApplication.Instance.Cursor.AddBlockageMarking(instanceId);
+                InputManager.AddBlockageMarking(instanceId);
                 _listeningMouseKey.Add(new KeyValuePair<MouseButton, Action>(MouseButton.Left, () =>
                 {
-                    this.CallDelayInNode(0.5f, () => GameApplication.Instance.Cursor.RemoveBlockageMarking(instanceId));
+                    this.CallDelayInNode(0.5f, () => InputManager.RemoveBlockageMarking(instanceId));
                     var o = ActivityObject.Create(item);
                     o.PutDown(InputManager.CursorPosition, o.DefaultLayer);
                 }));

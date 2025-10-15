@@ -94,13 +94,14 @@ public partial class GameCamera : Camera2D
         {
             var mousePosition = InputManager.CursorPosition;
             var targetPosition = _followTarget.GlobalPosition;
-            if (targetPosition.DistanceSquaredTo(mousePosition) >= (60 / FollowsMouseAmount) * (60 / FollowsMouseAmount))
+            var fmav = Mathf.Lerp(0, 0.25f, FollowsMouseAmount);
+            if (targetPosition.DistanceSquaredTo(mousePosition) >= (60 / fmav) * (60 / fmav))
             {
                 _camPos = targetPosition.MoveToward(mousePosition, 60);
             }
             else
             {
-                _camPos = targetPosition.Lerp(mousePosition, FollowsMouseAmount);
+                _camPos = targetPosition.Lerp(mousePosition, fmav);
             }
 
             if (GameApplication.Instance.PerfectPixel)

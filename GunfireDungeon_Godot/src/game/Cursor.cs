@@ -6,12 +6,6 @@ using Godot;
 /// </summary>
 public partial class Cursor : Node2D
 {
-    /// <summary>
-    /// 打开遮挡Ui的层数
-    /// </summary>
-    public int BlockageMarkingCount => _blockageMarkingTags.Count;
-    
-    private HashSet<ulong> _blockageMarkingTags = new HashSet<ulong>();
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -41,7 +35,7 @@ public partial class Cursor : Node2D
 
     public override void _Process(double delta)
     {
-        if (_blockageMarkingTags.Count <= 0)
+        if (!InputManager.HasUiBlockage)
         {
             var targetGun = _mountRole?.WeaponPack.ActiveItem;
             if (targetGun != null)
@@ -56,35 +50,42 @@ public partial class Cursor : Node2D
         }
     }
 
-    public void AddBlockageMarking(ulong id)
-    {
-        if (_blockageMarkingTags.Add(id))
-        {
-            RefreshCursor();
-        }
-    }
-    
-    public void RemoveBlockageMarking(ulong id)
-    {
-        if (_blockageMarkingTags.Remove(id))
-        {
-            RefreshCursor();
-        }
-    }
-
     /// <summary>
     /// 刷新鼠标指针
     /// </summary>
     public void RefreshCursor()
     {
-        var uiFlag = _blockageMarkingTags.Count > 0 || !GameApplication.Instance.DungeonManager.IsInDungeon;
-        if (uiFlag) //手指
+        bool uiFlag = false;
+        if (InputManager.HasUiBlockage || !GameApplication.Instance.DungeonManager.IsInDungeon)
+        {
+            uiFlag = true;
+        }
+        else if (InputManager.IsJoystickInput) // 摇杆
+        {
+            
+        }
+        else // 键鼠
+        {
+            if (InputManager.HasMouseUiBlockage)
+            {
+                uiFlag = true;
+            }
+        }
+        
+        if (uiFlag) //默认指针
         {
             lt.Visible = false;
             lb.Visible = false;
             rt.Visible = false;
             rb.Visible = false;
-            // Input.MouseMode = Input.MouseModeEnum.Visible;
+            if (InputManager.IsJoystickInput)
+            {
+                Input.MouseMode = Input.MouseModeEnum.Hidden;
+            }
+            else
+            {
+                Input.MouseMode = Input.MouseModeEnum.Visible;
+            }
         }
         else //准心
         {
@@ -92,7 +93,7 @@ public partial class Cursor : Node2D
             lb.Visible = true;
             rt.Visible = true;
             rb.Visible = true;
-            // Input.MouseMode = Input.MouseModeEnum.Hidden;
+            Input.MouseMode = Input.MouseModeEnum.Hidden;
         }
     }
     

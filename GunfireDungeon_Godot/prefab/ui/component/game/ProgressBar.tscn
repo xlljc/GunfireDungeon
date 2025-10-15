@@ -6,6 +6,7 @@
 [node name="ProgressBar" type="ColorRect" node_paths=PackedStringArray("NumberLabel", "ValueRect", "TempRect")]
 offset_right = 257.0
 offset_bottom = 20.0
+mouse_filter = 2
 color = Color(0.207031, 0.207031, 0.207031, 1)
 script = ExtResource("3_nik3g")
 NumberLabel = NodePath("Number")
@@ -18,6 +19,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 177.0
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.503906, 0.503906, 0.503906, 1)
 
 [node name="ValueRect" type="ColorRect" parent="."]
@@ -26,6 +28,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 109.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Number" type="Label" parent="."]
 layout_mode = 1

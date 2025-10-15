@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 /// <summary>
@@ -93,6 +94,15 @@ public static class InputManager
     /// </summary>
     public static bool Menu { get; private set; }
 
+    //-------------------------------
+    
+    /// <summary>
+    /// 鼠标是否有Ui遮挡
+    /// </summary>
+    public static bool HasMouseUiBlockage => !IsJoystickInput && _hasMouseUiBlockage;
+    
+    private static bool _hasMouseUiBlockage = false;
+    
     // --------------------------------
     
     /// <summary>
@@ -109,6 +119,15 @@ public static class InputManager
     /// 手柄右摇杆方向，仅在IsJoystickInput为true时有效
     /// </summary>
     private static Vector2 _joyRAxis;
+    
+    //------------------------------------------------
+    
+    /// <summary>
+    /// 是否有 Ui 遮挡
+    /// </summary>
+    public static bool HasUiBlockage => _blockageMarkingTags.Count > 0;
+    
+    private static HashSet<ulong> _blockageMarkingTags = new HashSet<ulong>();
     
     /// <summary>
     /// 更新输入管理器
@@ -137,6 +156,8 @@ public static class InputManager
             {
                 CursorPosition = center;
             }
+            
+            Fire = !HasUiBlockage && Input.IsActionPressed(InputAction.Fire);
         }
         else
         {
@@ -150,7 +171,6 @@ public static class InputManager
         ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
         Interactive = Input.IsActionJustPressed(InputAction.Interactive);
         Reload = Input.IsActionJustPressed(InputAction.Reload);
-        Fire = Input.IsActionPressed(InputAction.Fire) && app.Cursor.BlockageMarkingCount <= 0;
         MeleeAttack = Input.IsActionJustPressed(InputAction.MeleeAttack);
         Roll = Input.IsActionJustPressed(InputAction.Roll);
         UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);
@@ -164,29 +184,71 @@ public static class InputManager
     /// <summary>
     /// 输入事件处理
     /// </summary>
-    public static void InputHandler(InputEvent @event)
+    public static void GlobalInputHandler(InputEvent @event)
     {
         if (@event is InputEventMouseMotion mouseMotion)
         {
             // 只有当相对移动超过阈值才认为是鼠标输入
             if (mouseMotion.Relative.Length() > MOUSE_MOVE_THRESHOLD)
-                IsJoystickInput = false;
+                SetJsoystickInput(false);
         }
         else if (@event is InputEventMouseButton)
         {
             // 鼠标按键明确认为是鼠标输入
-            IsJoystickInput = false;
+            SetJsoystickInput(false);
         }
         else if (@event is InputEventJoypadMotion joyMotion)
         {
             // 只有当轴值绝对值超过死区才认为是手柄输入
             if (Mathf.Abs(joyMotion.AxisValue) > JOYPAD_DEADZONE)
-                IsJoystickInput = true;
+                SetJsoystickInput(true);
         }
         else if (@event is InputEventJoypadButton)
         {
             // 手柄按键明确认为是手柄输入
-            IsJoystickInput = true;
+            SetJsoystickInput(true);
+        }
+    }
+
+    private static void SetJsoystickInput(bool flag)
+    {
+        if (IsJoystickInput != flag)
+        {
+            IsJoystickInput = flag;
+            GameApplication.Instance.Cursor.RefreshCursor();
+        }
+    }
+    
+    public static void RoomInputHandler(InputEvent @event)
+    {
+        if (!IsJoystickInput && @event is InputEventMouseButton)
+        {
+            Fire = !HasUiBlockage && Input.IsActionPressed(InputAction.Fire);
+        }
+    }
+    
+    public static void SetMouseUiBlockage(bool flag)
+    {
+        if (HasMouseUiBlockage != flag)
+        {
+            _hasMouseUiBlockage = flag;
+            GameApplication.Instance.Cursor.RefreshCursor();
+        }
+    }
+    
+    public static void AddBlockageMarking(ulong id)
+    {
+        if (_blockageMarkingTags.Add(id))
+        {
+            GameApplication.Instance.Cursor.RefreshCursor();
+        }
+    }
+    
+    public static void RemoveBlockageMarking(ulong id)
+    {
+        if (_blockageMarkingTags.Remove(id))
+        {
+            GameApplication.Instance.Cursor.RefreshCursor();
         }
     }
 }

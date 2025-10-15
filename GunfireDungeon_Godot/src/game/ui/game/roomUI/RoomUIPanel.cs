@@ -1,6 +1,7 @@
 
 
 using DsUi;
+using Godot;
 using UI.game.BottomTips;
 using UI.game.PartPackUI;
 using UI.game.RoomMap;
@@ -35,6 +36,9 @@ public partial class RoomUIPanel : RoomUI
         RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
         PartPack = OpenNestedUi<PartPackUIPanel>(UiManager.UiName.Game_PartPackUI);
         PartPack.HideUi();
+        
+        MouseEntered += () => InputManager.SetMouseUiBlockage(false);
+        MouseExited += () => InputManager.SetMouseUiBlockage(true);
     }
 
     public override void OnShowUi()
@@ -72,6 +76,11 @@ public partial class RoomUIPanel : RoomUI
                 PartPack.ShowUi();
             }
         }
+    }
+
+    public override void _GuiInput(InputEvent @event)
+    {
+        InputManager.RoomInputHandler(@event);
     }
 
     //玩家拾起道具, 弹出提示

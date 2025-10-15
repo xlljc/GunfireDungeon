@@ -246,7 +246,7 @@ public partial class GameApplication : Node2D, ICoroutine
 
     public override void _Input(InputEvent @event)
     {
-        InputManager.InputHandler(@event);
+        InputManager.GlobalInputHandler(@event);
     }
 
     /// <summary>

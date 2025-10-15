@@ -564,7 +564,7 @@ func _open_file(res_path: String):
 	var file_path: String = res_path.replace("res://", project_root).replace("/", "\\")
 	if OS.get_name() == "Windows":
 		OS.execute("cmd.exe", ["/c", "explorer.exe /select,\"" + file_path + "\""], [], false)
-	elif OS.get_name() == "OSX":
+	elif OS.get_name() == "OSX" or OS.get_name() == "macOS":
 		# 打开指定文件夹
 		var mac_path = res_path.replace("res://", project_root)
 		# Finder 选中文件

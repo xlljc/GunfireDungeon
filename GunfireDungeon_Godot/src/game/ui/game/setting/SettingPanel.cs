@@ -79,12 +79,12 @@ public partial class SettingPanel : Setting
     
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
     }
 
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
     }
 
     public override void OnDestroyUi()

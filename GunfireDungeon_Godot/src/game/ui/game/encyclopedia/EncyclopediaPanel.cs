@@ -38,13 +38,13 @@ public partial class EncyclopediaPanel : Encyclopedia
 
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
         GameCamera.Main.LockCamera();
     }
     
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
         GameCamera.Main.UnLockCamera();
     }
 

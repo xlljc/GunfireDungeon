@@ -42,7 +42,6 @@ public partial class DebuggerPanel : Debugger
     {
         if (state == DragState.DragStart)
         {
-            GameApplication.Instance.Cursor.AddBlockageMarking(GetInstanceId());
             _moveFalg = false;
         }
         else if (state == DragState.DragMove)
@@ -65,7 +64,6 @@ public partial class DebuggerPanel : Debugger
                 _save.Debug.X = position.X;
                 _save.Debug.Y = position.Y;
                 _save.LateSave();
-                GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
             }
             else
             {
@@ -95,6 +93,6 @@ public partial class DebuggerPanel : Debugger
         ShowPanel = false;
         S_Bg.Instance.Visible = ShowPanel;
         S_HoverButton.Instance.Visible = true;
-        GameApplication.Instance.Cursor.RemoveBlockageMarking(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
     }
 }
