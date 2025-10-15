@@ -31,6 +31,9 @@ public partial class RoomMapPanel : RoomMap
     //是否展开地图
     private bool _pressMapFlag = false;
     private Tween _transmissionTween;
+
+    private bool _isMousePressed = false;
+    private bool _isMoveDragFlag = false;
     
     public override void OnCreateUi()
     {
@@ -159,18 +162,44 @@ public partial class RoomMapPanel : RoomMap
                 S_Root.Instance.Position = CalcRootPosition(playPosition) + _mapOffset;
                 S_Mark.Instance.Position = S_DrawContainer.Instance.Size / 2 + _mapOffset;
             }
-
+            
             var area = player.AffiliationArea;
             //传送
             if (_pressMapFlag && _mouseHoverRoom != null &&
-                area != null && !area.RoomInfo.IsSeclusion &&
-                Input.IsMouseButtonPressed(MouseButton.Right))
+                area != null && !area.RoomInfo.IsSeclusion)
             {
-                //执行传送操作
-                DoTransmission((_mouseHoverRoom.Waypoints + new Vector2(0.5f, 0.5f)) * GameConfig.TileCellSize);
-                ResetMap();
-                _isMagnifyMap = false;
-                World.Current.Pause = false;
+                if (InputManager.IsJoystickInput) // 手柄操作
+                {
+                    
+                }
+                else
+                {
+                    var pressed = Input.IsMouseButtonPressed(MouseButton.Left);
+                    GD.Print("pressed:", pressed, " _isMousePressed:", _isMousePressed, " _isMoveDragFlag:", _isMoveDragFlag);
+                    if (!_isMousePressed && pressed)
+                    {
+                        _isMousePressed = true;
+                        _isMoveDragFlag = false;
+                    }
+                    else if (!pressed) // 松开手
+                    {
+                        if (_isMousePressed && !_isMoveDragFlag)
+                        {
+                            //执行传送操作
+                            DoTransmission((_mouseHoverRoom.Waypoints + new Vector2(0.5f, 0.5f)) * GameConfig.TileCellSize);
+                            ResetMap();
+                            _isMagnifyMap = false;
+                            World.Current.Pause = false;
+                        }
+                        _isMousePressed = false;
+                        _isMoveDragFlag = false;
+                    }
+                }
+            }
+            else
+            {
+                _isMousePressed = false;
+                _isMoveDragFlag = false;
             }
         }
     }
@@ -206,19 +235,23 @@ public partial class RoomMapPanel : RoomMap
     {
         InputManager.AddBlockageMarking(GetInstanceId());
         S_DrawContainer.Reparent(S_MagnifyMapBar);
+        S_DrawContainer.Instance.MouseFilter = MouseFilterEnum.Stop;
         S_DrawContainer.Instance.Position = new Vector2(1, 1);
         S_Bg.Instance.Visible = true;
         S_MagnifyMapBar.Instance.Visible = true;
         S_MapBar.Instance.Visible = false;
         _mapOffset = Vector2.Zero;
 
-        _dragBinder = S_DrawContainer.Instance.AddDragListener((state, delta) =>
+        _dragBinder = S_DrawContainer.Instance.AddDragListener(OnDragMap);
+    }
+
+    private void OnDragMap(DragState state, Vector2 delta)
+    {
+        if (state == DragState.DragMove)
         {
-            if (state == DragState.DragMove)
-            {
-                _mapOffset += delta;
-            }
-        });
+            _mapOffset += delta;
+            _isMoveDragFlag = true;
+        }
     }
 
     //还原小地图
@@ -226,6 +259,7 @@ public partial class RoomMapPanel : RoomMap
     {
         InputManager.RemoveBlockageMarking(GetInstanceId());
         S_DrawContainer.Reparent(S_MapBar);
+        S_DrawContainer.Instance.MouseFilter = MouseFilterEnum.Ignore;
         S_DrawContainer.Instance.Position = new Vector2(1, 1);
         S_Bg.Instance.Visible = false;
         S_MagnifyMapBar.Instance.Visible = false;
@@ -409,17 +443,17 @@ public partial class RoomMapPanel : RoomMap
     
     private void DoTransmission(Vector2 position)
     {
-        var roomUI = (RoomUIPanel)ParentUi;
-        roomUI.S_Mask.Instance.Visible = true;
-        roomUI.S_Mask.Instance.Color = new Color(0, 0, 0, 0);
+        var roomUi = (RoomUIPanel)ParentUi;
+        roomUi.S_Mask.Instance.Visible = true;
+        roomUi.S_Mask.Instance.Color = new Color(0, 0, 0, 0);
         _transmissionTween = CreateTween();
-        _transmissionTween.TweenProperty(roomUI.S_Mask.Instance, "color", new Color(0, 0, 0), 0.3f);
+        _transmissionTween.TweenProperty(roomUi.S_Mask.Instance, "color", new Color(0, 0, 0), 0.3f);
         _transmissionTween.TweenCallback(Callable.From(() =>
         {
             World.Current.Player.Position = position;
         }));
         _transmissionTween.TweenInterval(0.2f);
-        _transmissionTween.TweenProperty(roomUI.S_Mask.Instance, "color", new Color(0, 0, 0, 0), 0.3f);
+        _transmissionTween.TweenProperty(roomUi.S_Mask.Instance, "color", new Color(0, 0, 0, 0), 0.3f);
         _transmissionTween.TweenCallback(Callable.From(() =>
         {
             _transmissionTween = null;

@@ -216,6 +216,7 @@ public static class InputManager
         {
             IsJoystickInput = flag;
             GameApplication.Instance.Cursor.RefreshCursor();
+            EventManager.EmitEvent(EventEnum.OnChangeJoypadInputMode, flag);
         }
     }
     

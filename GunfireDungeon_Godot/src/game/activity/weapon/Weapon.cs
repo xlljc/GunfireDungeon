@@ -1638,7 +1638,7 @@ public abstract partial class Weapon : ActivityObject, IPackageItem<Role>
                 PlaySpriteAnimation(AnimatorNames.Reloading);
             }
         }
-            
+
         //播放换弹音效
         PlayReloadSound();
         

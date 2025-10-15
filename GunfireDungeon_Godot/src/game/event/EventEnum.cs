@@ -7,6 +7,11 @@ using System.Collections.Generic;
 public enum EventEnum
 {
     /// <summary>
+    /// 切换输入手柄输入模式，参数为<bool/>, true表示手柄输入，false表示键鼠输入
+    /// </summary>
+    OnChangeJoypadInputMode,
+    
+    /// <summary>
     /// 切换玩家角色, 参数为<see cref="Role"/>
     /// </summary>
     OnChangePlayerRole,
