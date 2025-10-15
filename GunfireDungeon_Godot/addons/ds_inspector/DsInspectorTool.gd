@@ -17,6 +17,8 @@ var tips_anim: AnimationPlayer
 @export
 var cheat: VBoxContainer
 
+var save_config: SaveConfig = null
+
 var main_camera: Camera2D = null
 var prev_click: bool = false
 var _check_camer_timer: float = 0.0
@@ -31,6 +33,11 @@ var _prev_mouse_position: Vector2 = Vector2.ZERO
 # 是否开启拣选Ui
 var _is_open_check_ui: bool = false
 var _mouse_in_hover_btn: bool = false
+
+func _enter_tree():
+	if save_config == null:
+		save_config = SaveConfig.new()
+		call_deferred("add_child", save_config)
 
 func _ready():
 	brush.node_tree = window.tree

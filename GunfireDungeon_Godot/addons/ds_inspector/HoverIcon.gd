@@ -5,9 +5,6 @@ var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var drag_move_flag: bool = false
 
-
-const SAVE_PATH := "user://ds_inspector_icon.txt"
-
 @export
 var debug_tool_path: NodePath
 
@@ -60,13 +57,8 @@ func _on_HoverIcon_pressed():
 
 
 func _save_pos():
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		var pos := global_position
-		file.store_string(str(pos.x) + "," + str(pos.y))
-		file.close()
-	else:
-		print("无法保存文件到 ", SAVE_PATH)
+	if debug_tool.save_config:
+		debug_tool.save_config.save_hover_icon_position(global_position)
 	pass
 
 func _clamp_to_screen(pos: Vector2) -> Vector2:
@@ -79,17 +71,11 @@ func _clamp_to_screen(pos: Vector2) -> Vector2:
 	return pos
 
 func _load_pos():
-	if FileAccess.file_exists(SAVE_PATH):
-		var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-		if file:
-			var content := file.get_as_text()
-			file.close()
-			var parr := content.split(",")
-			if parr.size() >= 2:
-				var raw_pos := Vector2(float(parr[0]), float(parr[1]))
-				var clamped := _clamp_to_screen(raw_pos)
-				global_position = clamped
-				# 如果位置被修正，保存回配置文件以持久化
-				if clamped != raw_pos:
-					_save_pos()
+	if debug_tool.save_config:
+		var raw_pos = debug_tool.save_config.get_hover_icon_position()
+		var clamped = _clamp_to_screen(raw_pos)
+		global_position = clamped
+		# 如果位置被修正，保存回配置文件以持久化
+		if clamped != raw_pos:
+			_save_pos()
 	pass

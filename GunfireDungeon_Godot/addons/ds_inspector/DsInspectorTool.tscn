@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://8irge7oa55sv"]
 
-[ext_resource type="Script" path="res://addons/ds_inspector/DsInspectorTool.gd" id="1_t800c"]
+[ext_resource type="Script" uid="uid://chobrx1g78q8f" path="res://addons/ds_inspector/DsInspectorTool.gd" id="1_t800c"]
 [ext_resource type="Theme" uid="uid://bi3tgesxwq7lg" path="res://addons/ds_inspector/DsInspectorTheme.tres" id="2_rwegl"]
-[ext_resource type="Script" uid="uid://caqmmjpsvac0n" path="res://addons/ds_inspector/DebugDialog.gd" id="3_d06wy"]
+[ext_resource type="Script" uid="uid://b21ic8v4qfqvm" path="res://addons/ds_inspector/DebugDialog.gd" id="3_d06wy"]
 [ext_resource type="Texture2D" uid="uid://b6assniwtdgwy" path="res://addons/ds_inspector/icon/Pause.svg" id="4_qjgja"]
 [ext_resource type="Texture2D" uid="uid://kw66syn63sma" path="res://addons/ds_inspector/icon/NextFrame.svg" id="5_albym"]
 [ext_resource type="Texture2D" uid="uid://c51tcljdwj1kr" path="res://addons/ds_inspector/icon/Save.svg" id="6_trprb"]
@@ -13,17 +13,17 @@
 [ext_resource type="Script" uid="uid://djxn36jq7tf1t" path="res://addons/ds_inspector/TreeContainer.gd" id="11_gi7kt"]
 [ext_resource type="Script" uid="uid://d3sjdvg117uky" path="res://addons/ds_inspector/NodeTree.gd" id="12_n858a"]
 [ext_resource type="Script" uid="uid://bdtqq3qd6xha5" path="res://addons/ds_inspector/SerachTree.gd" id="13_n5350"]
-[ext_resource type="Script" uid="uid://cd3a7wpv8mcib" path="res://addons/ds_inspector/DebugTab.gd" id="14_x52hf"]
+[ext_resource type="Script" uid="uid://dh25xc43bth0r" path="res://addons/ds_inspector/DebugTab.gd" id="14_x52hf"]
 [ext_resource type="Script" uid="uid://bvgmb06k5m808" path="res://addons/ds_inspector/InspectorContainer.gd" id="15_teqd0"]
-[ext_resource type="Script" uid="uid://cuhbwqt6kum78" path="res://addons/ds_inspector/ExcludeList.gd" id="16_lfkxp"]
-[ext_resource type="Script" uid="uid://0ae771uo7twc" path="res://addons/ds_inspector/Cheat/Cheat.gd" id="17_i1g1n"]
+[ext_resource type="Script" uid="uid://dd2qxuktejxeh" path="res://addons/ds_inspector/ExcludeList.gd" id="16_lfkxp"]
+[ext_resource type="Script" uid="uid://b68x0ilje8rb3" path="res://addons/ds_inspector/Cheat/Cheat.gd" id="17_i1g1n"]
 [ext_resource type="PackedScene" uid="uid://d2qnsha516yor" path="res://addons/ds_inspector/Cheat/CheatItem.tscn" id="18_req58"]
 [ext_resource type="Script" uid="uid://bskg7mtjjcjd3" path="res://addons/ds_inspector/Brush.gd" id="19_1ycqc"]
 [ext_resource type="Texture2D" uid="uid://k6nfbn6oroyw" path="res://addons/ds_inspector/node_icon/AnimatedSprite2D.svg" id="20_bgw6s"]
 [ext_resource type="Texture2D" uid="uid://cltttr2pcd537" path="res://addons/ds_inspector/icon/Icon.png" id="21_pv2ua"]
 [ext_resource type="Texture2D" uid="uid://cpfmuxcanm03r" path="res://addons/ds_inspector/icon/Icon_Pressed.png" id="22_0afkq"]
 [ext_resource type="Texture2D" uid="uid://df6spnjut8st4" path="res://addons/ds_inspector/icon/Icon_Hover.png" id="23_qya0n"]
-[ext_resource type="Script" uid="uid://bk6vfeffuosh2" path="res://addons/ds_inspector/HoverIcon.gd" id="24_c6x5m"]
+[ext_resource type="Script" uid="uid://beiawtogvnnam" path="res://addons/ds_inspector/HoverIcon.gd" id="24_c6x5m"]
 
 [sub_resource type="Animation" id="3"]
 length = 0.001
@@ -132,10 +132,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WindowDialog" type="Window" parent="." node_paths=PackedStringArray("tree", "exclude_list", "select_btn", "save_btn", "delete_btn", "hide_border_btn", "play_btn", "next_frame_btn", "file_window", "put_away", "confirmation")]
-oversampling_override = 1.0
 title = "DsInspector"
-position = Vector2i(502, 390)
-size = Vector2i(1728, 1446)
+position = Vector2i(3820, 778)
+size = Vector2i(1850, 1574)
 visible = false
 theme = ExtResource("2_rwegl")
 script = ExtResource("3_d06wy")
@@ -531,10 +530,10 @@ libraries = {
 }
 
 [node name="HoverIcon" type="TextureButton" parent="."]
-offset_left = 1142.0
-offset_top = 52.0
-offset_right = 1190.0
-offset_bottom = 100.0
+offset_left = 2486.0
+offset_top = 42.0
+offset_right = 2534.0
+offset_bottom = 90.0
 texture_normal = ExtResource("21_pv2ua")
 texture_pressed = ExtResource("22_0afkq")
 texture_hover = ExtResource("23_qya0n")
