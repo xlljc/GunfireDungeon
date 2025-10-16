@@ -288,6 +288,7 @@ public partial class RoomMapPanel : RoomMap
         S_MagnifyMapBar.Instance.Visible = true;
         S_MapBar.Instance.Visible = false;
         _mapOffset = Vector2.Zero;
+        GameCamera.Main.LockCamera();
 
         _dragBinder = S_DrawContainer.Instance.AddDragListener(OnDragMap);
     }
@@ -312,6 +313,8 @@ public partial class RoomMapPanel : RoomMap
         S_MagnifyMapBar.Instance.Visible = false;
         S_MapBar.Instance.Visible = true;
         ResetOutlineColor();
+        
+        GameCamera.Main.UnLockCamera();
 
         if (_dragBinder != null)
         {

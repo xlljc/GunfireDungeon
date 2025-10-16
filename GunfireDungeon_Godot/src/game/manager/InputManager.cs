@@ -135,8 +135,6 @@ public static class InputManager
     public static void Update(float delta)
     {
         var app = GameApplication.Instance;
-        MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
-
         if (IsJoystickInput)
         {
             var tempJoyRAxis = Input.GetVector(InputAction.JoyRLeft, InputAction.JoyRRight, InputAction.JoyRUp, InputAction.JoyRDown);
@@ -166,7 +164,8 @@ public static class InputManager
             CursorPosition = app.SceneRoot.GetGlobalMousePosition();
             //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
         }
-
+        
+        MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
         ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
         ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
         Interactive = Input.IsActionJustPressed(InputAction.Interactive);
@@ -176,6 +175,7 @@ public static class InputManager
         UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);
         RemoveProp = Input.IsActionJustPressed(InputAction.RemoveProp);
         ExchangeProp = Input.IsActionJustPressed(InputAction.ExchangeProp);
+
         Map = Input.IsActionPressed(InputAction.Map);
         Menu = Input.IsActionJustPressed(InputAction.Menu);
         PartPackage = Input.IsActionJustPressed(InputAction.PartPackage);

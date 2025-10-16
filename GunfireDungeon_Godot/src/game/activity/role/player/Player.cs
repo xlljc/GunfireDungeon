@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Config;
 using DsUi;
 using Godot;
@@ -156,9 +157,9 @@ public partial class Player : Role
             //枪口跟随鼠标
             MountPoint.SetLookAt(mousePos);
         }
-
-        var uiPanels = UiManager.GetUiInstance<RoomUIPanel>(UiManager.UiName.Game_RoomUI);
-        if (uiPanels.Length > 0 && uiPanels[0].OcclusionCount <= 0) // 没有其他遮挡Ui打开
+        
+        var roomUiPanel = GameApplication.Instance.RoomUIPanel;
+        if (roomUiPanel != null && roomUiPanel.OcclusionCount <= 0) // 没有其他遮挡Ui打开
         {
             if (InputManager.ExchangeWeapon) //切换武器
             {
@@ -211,7 +212,6 @@ public partial class Player : Role
                 ThrowActiveProp();
             }
         }
-
 
         // //测试用
         // if (InputManager.Roll) //鼠标处触发互动物体

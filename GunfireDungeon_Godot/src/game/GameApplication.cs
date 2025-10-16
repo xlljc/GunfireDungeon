@@ -6,6 +6,7 @@ using Config;
 using DsUi;
 using Godot;
 using UI.game.BottomTips;
+using UI.game.RoomUI;
 
 public partial class GameApplication : Node2D, ICoroutine
 {
@@ -105,6 +106,11 @@ public partial class GameApplication : Node2D, ICoroutine
     /// 默认相机缩放
     /// </summary>
     public Vector2 DefaultCameraZoom { get; private set; } = Vector2.One;
+    
+    /// <summary>
+    /// 游戏中房间Ui
+    /// </summary>
+    public RoomUIPanel RoomUIPanel { get; set; }
     
     //开启的协程
     private List<CoroutineData> _coroutineList;

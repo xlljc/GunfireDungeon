@@ -33,6 +33,7 @@ public partial class RoomUIPanel : RoomUI
     
     public override void OnCreateUi()
     {
+        GameApplication.Instance.RoomUIPanel = this;
         RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
         PartPack = OpenNestedUi<PartPackUIPanel>(UiManager.UiName.Game_PartPackUI);
         PartPack.HideUi();
@@ -61,6 +62,11 @@ public partial class RoomUIPanel : RoomUI
     {
         _factory.RemoveAllEventListener();
         _factory = null;
+    }
+
+    public override void OnDestroyUi()
+    {
+        GameApplication.Instance.RoomUIPanel = null;
     }
 
     public override void Process(float delta)
