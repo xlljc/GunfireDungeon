@@ -53,7 +53,11 @@ public partial class Player : Role
         _brushData = LiquidBrushManager.GetBrush("0001");
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0002));
-        
+
+        PickUpPartProp(PartProp.CreatePropActivity("3001"));
+        PickUpPartProp(PartProp.CreatePropActivity("0001"));
+        PickUpPartProp(PartProp.CreatePropActivity("0002"));
+
         // this.CallDelay(1f, () =>
         // {
         //     DrawLiquid(_brushData2);

@@ -19,6 +19,12 @@ public partial class PartPackUIPanel : PartPackUI
     /// 移除零件事件，参数类型：<see cref="int"/>
     /// </summary>
     public const string OnRemovePartEventName = "OnRemovePart";
+
+    private class PartPropData
+    {
+        public PartPackSlot Slot;
+        public PartProp Data;
+    }
     
     public RoomUIPanel RoomUiPanel;
     
@@ -38,6 +44,13 @@ public partial class PartPackUIPanel : PartPackUI
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
+    
+    // -------- 手柄操作相关 --------
+
+    private PartPropData _prevSelectPart;
+    private PartPropData _currSelectPart;
+    
+    // ----------------------------
 
     public override void OnCreateUi()
     {
@@ -58,6 +71,9 @@ public partial class PartPackUIPanel : PartPackUI
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
         WeaponListGrid.SetCellOffset(new Vector2I(0, 16));
+        
+        AddEventListener(EventEnum.OnChangeJoypadInputMode, (data) => OnChangeJoypadInputMode(data is bool flag && flag));
+        OnChangeJoypadInputMode(InputManager.IsJoystickInput);
     }
 
 
@@ -79,6 +95,22 @@ public partial class PartPackUIPanel : PartPackUI
         }
     }
     
+    
+    // 切换手柄输入模式
+    private void OnChangeJoypadInputMode(bool flag)
+    {
+        if (flag) // 切换到手柄
+        {
+            FindFirstSelectPart();
+        }
+        else // 取消手柄
+        {
+            _prevSelectPart?.Slot.SetSelect(false);
+            _currSelectPart?.Slot.SetSelect(false);
+            _prevSelectPart = null;
+            _currSelectPart = null;
+        }
+    }
     
     private void OnPutPart(object obj)
     {
@@ -172,9 +204,29 @@ public partial class PartPackUIPanel : PartPackUI
                     }
                 }
             }
+
+            if (InputManager.IsJoystickInput) //手柄操作处理
+            {
+                if (Input.IsActionJustPressed(InputAction.UiLeft))
+                {
+                    DoJoypadLeft();
+                }
+                else if (Input.IsActionJustPressed(InputAction.UiRight))
+                {
+                    DoJoypadRight();
+                }
+                else if (Input.IsActionJustPressed(InputAction.UiUp))
+                {
+                    DoJoypadUp();
+                }
+                else if (Input.IsActionJustPressed(InputAction.UiDown))
+                {
+                    DoJoypadDown();
+                }
+            }
         }
     }
-
+    
     private void RefreshWeaponList(List<Weapon> list)
     {
         WeaponListGrid.SetDataList(list);
@@ -183,5 +235,45 @@ public partial class PartPackUIPanel : PartPackUI
     public void RefreshPartPack(PartPackage package)
     {
         PartPackGrid.SetDataList(package.ToList());
+    }
+
+    private void FindFirstSelectPart()
+    {
+        // 先找 PartPackGrid
+        var uiCell = PartPackGrid.Find(cell => cell.Data != null);
+        if (uiCell == null)
+        {
+            // 再遍历寻找武器上的插槽
+            var weapons = WeaponListGrid.GetAllCell();
+            foreach (var weapon in weapons)
+            {
+                var partListCell = weapon as WeaponListCell;
+                if (partListCell != null)
+                {
+                    // var temp = partListCell.PartListGrid.get
+                    
+                }
+            }
+        }
+    }
+    
+    private void DoJoypadLeft()
+    {
+        
+    }
+    
+    private void DoJoypadRight()
+    {
+        
+    }
+    
+    private void DoJoypadUp()
+    {
+        
+    }
+    
+    private void DoJoypadDown()
+    {
+        
     }
 }

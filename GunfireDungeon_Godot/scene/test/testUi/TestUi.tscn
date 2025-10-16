@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c3ytj7qnd1kgc"]
+
+[node name="TestUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 163.0
+offset_right = 1325.0
+offset_bottom = 719.0
+columns = 3
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button3" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button4" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button5" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button6" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button7" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button8" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button9" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button10" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button11" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button12" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button13" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button14" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button15" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button16" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button17" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"
+
+[node name="Button18" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "按钮"

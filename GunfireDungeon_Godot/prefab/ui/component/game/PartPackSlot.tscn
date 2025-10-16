@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://lo71pmoaul0j"]
+[gd_scene load_steps=4 format=3 uid="uid://lo71pmoaul0j"]
 
 [ext_resource type="Texture2D" uid="uid://cbec6la3k1q81" path="res://resource/sprite/ui/commonIcon/Select2.png" id="1_6v3ft"]
+[ext_resource type="Script" uid="uid://o1mjbnnd4kus" path="res://src/game/ui/component/game/PartPackSlot.cs" id="2_tal8b"]
 [ext_resource type="Texture2D" uid="uid://bck7myadgwmuy" path="res://resource/sprite/prop/part/PartProp0001.png" id="2_vpdwa"]
 
-[node name="PartPackSlot" type="NinePatchRect"]
+[node name="PartPackSlot" type="NinePatchRect" node_paths=PackedStringArray("SelectTex")]
+self_modulate = Color(0.58147323, 0.58147323, 0.58147323, 1)
 custom_minimum_size = Vector2(80, 80)
 size_flags_horizontal = 0
 mouse_filter = 0
@@ -12,6 +14,8 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+script = ExtResource("2_tal8b")
+SelectTex = NodePath("SelectTex")
 
 [node name="PartIcon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -28,3 +32,18 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
 texture = ExtResource("2_vpdwa")
+
+[node name="SelectTex" type="NinePatchRect" parent="."]
+self_modulate = Color(0.091517806, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6v3ft")
+region_rect = Rect2(0, 0, 36, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12

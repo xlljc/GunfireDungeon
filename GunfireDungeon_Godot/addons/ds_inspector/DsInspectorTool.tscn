@@ -133,8 +133,8 @@ grow_vertical = 2
 
 [node name="WindowDialog" type="Window" parent="." node_paths=PackedStringArray("tree", "exclude_list", "select_btn", "save_btn", "delete_btn", "hide_border_btn", "play_btn", "next_frame_btn", "file_window", "put_away", "confirmation")]
 title = "DsInspector"
-position = Vector2i(3820, 778)
-size = Vector2i(1850, 1574)
+position = Vector2i(3094, 168)
+size = Vector2i(2604, 2082)
 visible = false
 theme = ExtResource("2_rwegl")
 script = ExtResource("3_d06wy")
@@ -530,10 +530,10 @@ libraries = {
 }
 
 [node name="HoverIcon" type="TextureButton" parent="."]
-offset_left = 2486.0
-offset_top = 42.0
-offset_right = 2534.0
-offset_bottom = 90.0
+offset_left = 1703.0
+offset_top = 36.0
+offset_right = 1751.0
+offset_bottom = 84.0
 texture_normal = ExtResource("21_pv2ua")
 texture_pressed = ExtResource("22_0afkq")
 texture_hover = ExtResource("23_qya0n")

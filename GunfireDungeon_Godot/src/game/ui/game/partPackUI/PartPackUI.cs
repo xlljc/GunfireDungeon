@@ -71,9 +71,18 @@ public abstract partial class PartPackUI : UiBase
     }
 
     /// <summary>
+    /// 路径: PartPackUI.VBoxContainer.PartBg.PartPackItem.SelectTex
+    /// </summary>
+    public class SelectTex : UiNode<PartPackUIPanel, Godot.NinePatchRect, SelectTex>
+    {
+        public SelectTex(PartPackUIPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
+        public override SelectTex Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: PartPackUI.VBoxContainer.PartBg.PartPackItem
     /// </summary>
-    public class PartPackItem : UiNode<PartPackUIPanel, Godot.NinePatchRect, PartPackItem>
+    public class PartPackItem : UiNode<PartPackUIPanel, PartPackSlot, PartPackItem>
     {
         /// <summary>
         /// 节点路径: PartPackUI.VBoxContainer.PartBg.PartIcon
@@ -88,8 +97,21 @@ public abstract partial class PartPackUI : UiBase
         }
         private PartIcon _L_PartIcon;
 
-        public PartPackItem(PartPackUIPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
-        public override PartPackItem Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
+        /// <summary>
+        /// 节点路径: PartPackUI.VBoxContainer.PartBg.SelectTex
+        /// </summary>
+        public SelectTex L_SelectTex
+        {
+            get
+            {
+                if (_L_SelectTex == null) _L_SelectTex = new SelectTex(UiPanel, Instance.GetNode<Godot.NinePatchRect>("SelectTex"));
+                return _L_SelectTex;
+            }
+        }
+        private SelectTex _L_SelectTex;
+
+        public PartPackItem(PartPackUIPanel uiPanel, PartPackSlot node) : base(uiPanel, node) {  }
+        public override PartPackItem Clone() => new (UiPanel, (PartPackSlot)Instance.Duplicate());
     }
 
     /// <summary>
@@ -117,7 +139,7 @@ public abstract partial class PartPackUI : UiBase
         {
             get
             {
-                if (_L_PartPackItem == null) _L_PartPackItem = new PartPackItem(UiPanel, Instance.GetNode<Godot.NinePatchRect>("PartPackItem"));
+                if (_L_PartPackItem == null) _L_PartPackItem = new PartPackItem(UiPanel, Instance.GetNode<PartPackSlot>("PartPackItem"));
                 return _L_PartPackItem;
             }
         }
@@ -406,6 +428,11 @@ public abstract partial class PartPackUI : UiBase
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.PartBg.PartPackItem.PartIcon
     /// </summary>
     public PartIcon S_PartIcon => L_VBoxContainer.L_PartBg.L_PartPackItem.L_PartIcon;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.PartBg.PartPackItem.SelectTex
+    /// </summary>
+    public SelectTex S_SelectTex => L_VBoxContainer.L_PartBg.L_PartPackItem.L_SelectTex;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: PartPackUI.VBoxContainer.PartBg.PartPackItem
