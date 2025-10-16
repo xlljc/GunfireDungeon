@@ -92,33 +92,36 @@ public partial class GameCamera : Camera2D
         var world = World.Current;
         if (world != null && _followTarget != null && lockIndex <= 0)
         {
-            var mousePosition = InputManager.CursorPosition;
-            var targetPosition = _followTarget.GlobalPosition;
-            var fmav = Mathf.Lerp(0, 0.25f, FollowsMouseAmount);
-            if (targetPosition.DistanceSquaredTo(mousePosition) >= (60 / fmav) * (60 / fmav))
+            if (!InputManager.HasUiBlockage)
             {
-                _camPos = targetPosition.MoveToward(mousePosition, 60);
-            }
-            else
-            {
-                _camPos = targetPosition.Lerp(mousePosition, fmav);
+                var mousePosition = InputManager.CursorPosition;
+                var targetPosition = _followTarget.GlobalPosition;
+                var fmav = Mathf.Lerp(0, 0.25f, FollowsMouseAmount);
+                if (targetPosition.DistanceSquaredTo(mousePosition) >= (60 / fmav) * (60 / fmav))
+                {
+                    _camPos = targetPosition.MoveToward(mousePosition, 60);
+                }
+                else
+                {
+                    _camPos = targetPosition.Lerp(mousePosition, fmav);
+                }
+
+                if (GameApplication.Instance.PerfectPixel)
+                {
+                    var cameraPosition = _camPos;
+                    var roundPos = cameraPosition.Round();
+                    PixelOffset = roundPos - cameraPosition;
+                    _offsetShader?.SetShaderParameter("offset", PixelOffset);
+                    GlobalPosition = roundPos;
+                }
+                else
+                {
+                    GlobalPosition = _camPos;
+                }
+
+                Offset = _shakeOffset.Round();
             }
 
-            if (GameApplication.Instance.PerfectPixel)
-            {
-                var cameraPosition = _camPos;
-                var roundPos = cameraPosition.Round();
-                PixelOffset = roundPos - cameraPosition;
-                _offsetShader?.SetShaderParameter("offset", PixelOffset);
-                GlobalPosition = roundPos;
-            }
-            else
-            {
-                GlobalPosition = _camPos;
-            }
-            
-            Offset = _shakeOffset.Round();
-            
             //调用相机更新事件
             if (OnPositionUpdateEvent != null)
             {

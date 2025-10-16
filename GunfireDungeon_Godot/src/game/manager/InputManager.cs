@@ -118,7 +118,7 @@ public static class InputManager
     /// <summary>
     /// 手柄右摇杆方向，仅在IsJoystickInput为true时有效
     /// </summary>
-    private static Vector2 _joyRAxis;
+    public static Vector2 JoystickRAxis;
     
     //------------------------------------------------
     
@@ -143,13 +143,13 @@ public static class InputManager
             IsJoystickRInput = tempJoyRAxis.LengthSquared() >= 0.2f * 0.2f;
             if (IsJoystickRInput)
             {
-                _joyRAxis = tempJoyRAxis;
+                JoystickRAxis = tempJoyRAxis;
             }
             var center = app.UiToWorldPosition(app.GetViewportRect().Size / 2);
-            if (_joyRAxis.LengthSquared() > 0.001f)
+            if (JoystickRAxis.LengthSquared() > 0.001f)
             {
-                var direction = _joyRAxis.Normalized();
-                var strength = Mathf.Min(_joyRAxis.Length(), 1.0f);
+                var direction = JoystickRAxis.Normalized();
+                var strength = Mathf.Min(JoystickRAxis.Length(), 1.0f);
                 CursorPosition = center + direction * strength * 120.0f;
             }
             else
@@ -162,7 +162,7 @@ public static class InputManager
         else
         {
             IsJoystickRInput = false;
-            _joyRAxis = Vector2.Zero;
+            JoystickRAxis = Vector2.Zero;
             CursorPosition = app.SceneRoot.GetGlobalMousePosition();
             //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
         }

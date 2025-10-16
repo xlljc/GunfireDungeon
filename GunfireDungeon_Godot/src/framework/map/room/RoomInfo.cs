@@ -586,4 +586,24 @@ public class RoomInfo : IDestroy
             }
         }
     }
+    
+    /// <summary>
+    /// 查找符合条件的房间, 包括当前房间和后续房间
+    /// </summary>
+    public RoomInfo FindRoom(Func<RoomInfo, bool> callback)
+    {
+        if (callback(this)) return this;
+        if (Next != null)
+        {
+            foreach (var room in Next)
+            {
+                var result = room.FindRoom(callback);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+        }
+        return null;
+    }
 }

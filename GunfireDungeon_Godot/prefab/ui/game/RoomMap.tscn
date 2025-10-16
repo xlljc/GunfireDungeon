@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmj3p25gwpqpn"]
+[gd_scene load_steps=6 format=3 uid="uid://bmj3p25gwpqpn"]
 
 [ext_resource type="Script" uid="uid://cadecvqd7wxap" path="res://src/game/ui/game/roomMap/RoomMapPanel.cs" id="1_ng7b3"]
 [ext_resource type="Texture2D" uid="uid://cb31ethhkxi3e" path="res://resource/sprite/ui/roomMap/MapBar.png" id="2_m52os"]
 [ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="3_el2ne"]
 [ext_resource type="Texture2D" uid="uid://ceoduo62gww5y" path="res://resource/sprite/role/role0001/Role0001_head.png" id="4_6wquw"]
+[ext_resource type="Texture2D" uid="uid://cgtnodnlmwe6p" path="res://resource/sprite/ui/sursors/Cursors.png" id="5_o7u68"]
 
 [node name="RoomMap" type="Control"]
 layout_mode = 3
@@ -80,3 +81,24 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="JoystickMark" type="Control" parent="MagnifyMapBar"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -0.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarkSprite" type="Sprite2D" parent="MagnifyMapBar/JoystickMark"]
+scale = Vector2(4, 4)
+texture = ExtResource("5_o7u68")
+region_enabled = true
+region_rect = Rect2(34, 83, 11, 11)

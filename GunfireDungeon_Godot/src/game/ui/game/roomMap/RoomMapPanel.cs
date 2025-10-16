@@ -12,7 +12,6 @@ namespace UI.game.RoomMap;
 /// </summary>
 public partial class RoomMapPanel : RoomMap
 {
-    private EventFactory<EventEnum> _factory = EventManager.CreateEventFactory();
     //需要刷新的问号的房间队列
     private List<RoomDoorInfo> _needRefresh = new List<RoomDoorInfo>();
     //正在使用的敌人标记列表
@@ -25,8 +24,8 @@ public partial class RoomMapPanel : RoomMap
     private UiEventBinder _dragBinder;
     //放大地图后拖拽的偏移
     private Vector2 _mapOffset;
-    //放大地图后鼠标悬停的房间
-    private RoomInfo _mouseHoverRoom;
+    //放大地图后悬停的房间
+    private RoomInfo _hoverRoom;
     private Color _originOutlineColor;
     //是否展开地图
     private bool _pressMapFlag = false;
@@ -41,16 +40,16 @@ public partial class RoomMapPanel : RoomMap
         S_Bg.Instance.Visible = false;
         S_MagnifyMapBar.Instance.Visible = false;
         InitMap();
-        _factory.AddEventListener(EventEnum.OnPlayerFirstEnterRoom, OnPlayerFirstEnterRoom);
-        _factory.AddEventListener(EventEnum.OnPlayerFirstEnterAisle, OnPlayerFirstEnterAisle);
+        AddEventListener(EventEnum.OnPlayerFirstEnterRoom, OnPlayerFirstEnterRoom);
+        AddEventListener(EventEnum.OnPlayerFirstEnterAisle, OnPlayerFirstEnterAisle);
+        AddEventListener(EventEnum.OnChangeJoypadInputMode, OnChangeJoypadInputMode);
 
+        S_JoystickMark.Instance.Visible = InputManager.IsJoystickInput;
         S_DrawContainer.Instance.Resized += OnDrawContainerResized;
     }
 
     public override void OnDestroyUi()
     {
-        _factory.RemoveAllEventListener();
-
         if (_transmissionTween != null)
         {
             _transmissionTween.Dispose();
@@ -73,6 +72,10 @@ public partial class RoomMapPanel : RoomMap
                 if (UiManager.GetUiInstanceCount(UiManager.UiName.Game_PauseMenu) == 0 && !InputManager.PartPackage)
                 {
                     ExpandMap();
+                    if (InputManager.IsJoystickInput)
+                    {
+                        this.CallDelay(0f, DoCheckMarkPosInRoom);
+                    }
                 }
             }
             else if (!InputManager.Map && _isMagnifyMap) //还原小地图
@@ -148,6 +151,19 @@ public partial class RoomMapPanel : RoomMap
             }
             _needRefresh.Clear();
         }
+        
+        //手柄模式下移动/传送小地图
+        if (InputManager.IsJoystickInput && _isMagnifyMap)
+        {
+            if (InputManager.IsJoystickRInput) // 移动地图
+            {
+                _mapOffset -= InputManager.JoystickRAxis.Normalized() * 400 * delta;
+                _isMoveDragFlag = true;
+                
+                // 检测中心点是否在房间内
+                DoCheckMarkPosInRoom();
+            }
+        }
 
         if (player != null)
         {
@@ -165,17 +181,23 @@ public partial class RoomMapPanel : RoomMap
             
             var area = player.AffiliationArea;
             //传送
-            if (_pressMapFlag && _mouseHoverRoom != null &&
+            if (_pressMapFlag && _hoverRoom != null &&
                 area != null && !area.RoomInfo.IsSeclusion)
             {
                 if (InputManager.IsJoystickInput) // 手柄操作
                 {
-                    
+                    if (InputManager.Interactive) // 传送
+                    {
+                        DoTransmission(_hoverRoom);
+                        ResetMap();
+                        _isMagnifyMap = false;
+                        World.Current.Pause = false;
+                    }
                 }
                 else
                 {
                     var pressed = Input.IsMouseButtonPressed(MouseButton.Left);
-                    GD.Print("pressed:", pressed, " _isMousePressed:", _isMousePressed, " _isMoveDragFlag:", _isMoveDragFlag);
+                    // GD.Print("pressed:", pressed, " _isMousePressed:", _isMousePressed, " _isMoveDragFlag:", _isMoveDragFlag);
                     if (!_isMousePressed && pressed)
                     {
                         _isMousePressed = true;
@@ -186,7 +208,7 @@ public partial class RoomMapPanel : RoomMap
                         if (_isMousePressed && !_isMoveDragFlag)
                         {
                             //执行传送操作
-                            DoTransmission((_mouseHoverRoom.Waypoints + new Vector2(0.5f, 0.5f)) * GameConfig.TileCellSize);
+                            DoTransmission(_hoverRoom);
                             ResetMap();
                             _isMagnifyMap = false;
                             World.Current.Pause = false;
@@ -202,6 +224,31 @@ public partial class RoomMapPanel : RoomMap
                 _isMoveDragFlag = false;
             }
         }
+    }
+
+    private void DoCheckMarkPosInRoom()
+    {
+        var startRoom = GameApplication.Instance.DungeonManager.StartRoomInfo;
+        var result = startRoom.FindRoom(FindMarkPosRoom);
+        if (result == null)
+        {
+            ResetOutlineColor();
+        }
+    }
+
+    private bool FindMarkPosRoom(RoomInfo info)
+    {
+        var mark = S_JoystickMark.Instance;
+        var sprite = info.PreviewSprite;
+        
+        // 判断mark的坐标是否在sprite内
+        if (sprite.GetGlobalRect().HasPoint(mark.GetGlobalRect().Position))
+        {
+            SetHoverRoom(info);
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -275,10 +322,10 @@ public partial class RoomMapPanel : RoomMap
 
     private void ResetOutlineColor()
     {
-        if (_mouseHoverRoom != null)
+        if (_hoverRoom != null)
         {
-            ((ShaderMaterial)_mouseHoverRoom.PreviewSprite.Material).SetShaderParameter("outline_color", _originOutlineColor);
-            _mouseHoverRoom = null;
+            ((ShaderMaterial)_hoverRoom.PreviewSprite.Material).SetShaderParameter("outline_color", _originOutlineColor);
+            _hoverRoom = null;
         }
     }
     
@@ -303,24 +350,7 @@ public partial class RoomMapPanel : RoomMap
                 {
                     return;
                 }
-                ResetOutlineColor();
-                _mouseHoverRoom = roomInfo;
-                var shaderMaterial = (ShaderMaterial)roomInfo.PreviewSprite.Material;
-                _originOutlineColor = shaderMaterial.GetShaderParameter("outline_color").AsColor();
-                //玩家所在的房间门是否打开
-                var area = World.Current.Player.AffiliationArea;
-                if (area != null)
-                {
-                    var isOpen = !area.RoomInfo.IsSeclusion;
-                    if (isOpen)
-                    {
-                        shaderMaterial.SetShaderParameter("outline_color", new Color(0, 1, 0, 0.9f));
-                    }
-                    else
-                    {
-                        shaderMaterial.SetShaderParameter("outline_color", new Color(1, 0, 0, 0.9f));
-                    }
-                }
+                SetHoverRoom(roomInfo);
             };
             roomInfo.PreviewSprite.MouseExited += () =>
             {
@@ -344,6 +374,32 @@ public partial class RoomMapPanel : RoomMap
                 }
             }
         });
+    }
+
+    private void SetHoverRoom(RoomInfo roomInfo)
+    {
+        if (_hoverRoom == roomInfo)
+        {
+            return;
+        }
+        ResetOutlineColor();
+        _hoverRoom = roomInfo;
+        var shaderMaterial = (ShaderMaterial)roomInfo.PreviewSprite.Material;
+        _originOutlineColor = shaderMaterial.GetShaderParameter("outline_color").AsColor();
+        //玩家所在的房间门是否打开
+        var area = World.Current.Player.AffiliationArea;
+        if (area != null)
+        {
+            var isOpen = !area.RoomInfo.IsSeclusion;
+            if (isOpen)
+            {
+                shaderMaterial.SetShaderParameter("outline_color", new Color(0, 1, 0, 0.9f));
+            }
+            else
+            {
+                shaderMaterial.SetShaderParameter("outline_color", new Color(1, 0, 0, 0.9f));
+            }
+        }
     }
     
     private void OnPlayerFirstEnterRoom(object data)
@@ -370,6 +426,11 @@ public partial class RoomMapPanel : RoomMap
 
         RefreshUnknownSprite(roomDoorInfo);
         RefreshUnknownSprite(roomDoorInfo.ConnectDoor);
+    }
+
+    private void OnChangeJoypadInputMode(object data)
+    {
+        S_JoystickMark.Instance.Visible = data is bool flag && flag;
     }
 
     //进入刷新问号队列
@@ -441,8 +502,11 @@ public partial class RoomMapPanel : RoomMap
         return S_DrawContainer.Instance.Size / 2 - pos / 16 * S_Root.Instance.Scale;
     }
     
-    private void DoTransmission(Vector2 position)
+    // 传送
+    private void DoTransmission(RoomInfo roomInfo)
     {
+        var position = (roomInfo.Waypoints + new Vector2(0.5f, 0.5f)) * GameConfig.TileCellSize;
+        
         var roomUi = (RoomUIPanel)ParentUi;
         roomUi.S_Mask.Instance.Visible = true;
         roomUi.S_Mask.Instance.Color = new Color(0, 0, 0, 0);
