@@ -14,9 +14,9 @@ public class DropPartData
     /// <summary>
     /// 修改的后的数据
     /// </summary>
-    public PartProp Data;
+    public PartItemData Data;
     
-    public DropPartData(int index, PartProp data)
+    public DropPartData(int index, PartItemData data)
     {
         Index = index;
         Data = data;

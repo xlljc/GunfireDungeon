@@ -10,18 +10,15 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 {
-    private UiGrid<PartPackUI.PartPackItem, PartProp> _partGrid;
+    private UiGrid<PartPackUI.PartPackItem, PartItemData> _partGrid;
 
     public override void OnInit()
     {
-        _partGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartProp, PartPackCell>(
+        _partGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartItemData, PartPackCell>(
             CellNode.UiPanel.S_PartPackItem, CellNode.Instance, CellNode.UiPanel.WeaponCellPartPosition);
         _partGrid.SetColumns(15);
         _partGrid.SetCellOffset(CellNode.UiPanel.CellOffset);
         _partGrid.GridContainer.Resized += OnResized;
-
-        _partGrid.EventPackage.AddEventListener(PartPackUIPanel.OnPutPartEventName, OnPutPart);
-        _partGrid.EventPackage.AddEventListener(PartPackUIPanel.OnRemovePartEventName, OnDropPart);
     }
 
     public override void Process(float delta)
@@ -38,7 +35,8 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
             {
                 for (var i = 0; i < count; i++)
                 {
-                    if (Data.PartList.GetLogicBlock(i) != _partGrid.GetData(i))
+                    var temp = _partGrid.GetData(i);
+                    if (temp != null && Data.PartList.GetLogicBlock(i) != temp.PartProp)
                     {
                         RefreshPartPack(Data.PartList);
                         break;
@@ -50,10 +48,10 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 
     public void RefreshPartPack(PartList list)
     {
-        var temp = new List<PartProp>();
+        var temp = new List<PartItemData>();
         foreach (PartProp o in list)
         {
-            temp.Add(o);
+            temp.Add(new PartItemData(o, list));
         }
 
         _partGrid.SetDataList(temp);
@@ -74,24 +72,24 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         CellNode.Instance.Size = cellSize;
     }
 
-    private void OnPutPart(object obj)
-    {
-        if (Data == null)
-        {
-            return;
-        }
-
-        var param = (DropPartData)obj;
-        Data.PartList.SetLogicBlock(param.Index, param.Data);
-    }
-
-    private void OnDropPart(object obj)
-    {
-        if (Data == null)
-        {
-            return;
-        }
-
-        Data.PartList.RemoveLogicBlock((int)obj);
-    }
+    // private void OnPutPart(object obj)
+    // {
+    //     if (Data == null)
+    //     {
+    //         return;
+    //     }
+    //
+    //     var param = (DropPartData)obj;
+    //     Data.PartList.SetLogicBlock(param.Index, param.Data);
+    // }
+    //
+    // private void OnDropPart(object obj)
+    // {
+    //     if (Data == null)
+    //     {
+    //         return;
+    //     }
+    //
+    //     Data.PartList.RemoveLogicBlock((int)obj);
+    // }
 }
