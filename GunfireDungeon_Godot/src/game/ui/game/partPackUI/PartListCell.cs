@@ -10,11 +10,11 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 {
-    private UiGrid<PartPackUI.PartPackItem, PartItemData> _partGrid;
+    private UiGrid<PartPackUI.PartPackItem, PartPropCellData> _partGrid;
 
     public override void OnInit()
     {
-        _partGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartItemData, PartPackCell>(
+        _partGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartPropCellData, PartPackCell>(
             CellNode.UiPanel.S_PartPackItem, CellNode.Instance, CellNode.UiPanel.WeaponCellPartPosition);
         _partGrid.SetColumns(15);
         _partGrid.SetCellOffset(CellNode.UiPanel.CellOffset);
@@ -36,7 +36,7 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
                 for (var i = 0; i < count; i++)
                 {
                     var temp = _partGrid.GetData(i);
-                    if (temp != null && Data.PartList.GetLogicBlock(i) != temp.PartProp)
+                    if (temp != null && Data.PartList.GetLogicBlock(i) != temp.OriginPartProp)
                     {
                         RefreshPartPack(Data.PartList);
                         break;
@@ -48,10 +48,11 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 
     public void RefreshPartPack(PartList list)
     {
-        var temp = new List<PartItemData>();
-        foreach (PartProp o in list)
+        var temp = new List<PartPropCellData>();
+        var i = 0;
+        foreach (var o in list)
         {
-            temp.Add(new PartItemData(o, list));
+            temp.Add(new PartPropCellData(new PartPropSlot(i++, list), (PartProp)o));
         }
 
         _partGrid.SetDataList(temp);

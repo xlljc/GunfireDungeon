@@ -21,7 +21,7 @@ public partial class PartPackUIPanel : PartPackUI
     /// <summary>
     /// 上方零件背包网格
     /// </summary>
-    public UiGrid<PartPackItem, PartItemData> PartPackGrid;
+    public UiGrid<PartPackItem, PartPropCellData> PartPackGrid;
     
     /// <summary>
     /// 武器列表
@@ -52,7 +52,7 @@ public partial class PartPackUIPanel : PartPackUI
         WeaponCellOriginSize = S_WeaponItem.Instance.CustomMinimumSize;
         PartListCellHeight = S_PartListItem.Instance.CustomMinimumSize.Y;
         
-        PartPackGrid = CreateUiGrid<PartPackItem, PartItemData, PartPackCell>(S_PartPackItem);
+        PartPackGrid = CreateUiGrid<PartPackItem, PartPropCellData, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
         PartPackGrid.SetCellOffset(CellOffset);
         // PartPackGrid.EventPackage.AddEventListener(OnPutPartEventName, OnPutPart);
@@ -101,53 +101,47 @@ public partial class PartPackUIPanel : PartPackUI
             _currSelectPart = null;
         }
     }
+    
+    public override bool _CanDropData(Vector2 atPosition, Variant data)
+    {
+        if (data.Obj == null)
+        {
+            return false;
+        }
+        // 判断是否可以放置
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)
+        {
+            return dropDataValue.Value.OriginPartProp != null;
+            // return dropData.Slot.Index != Index || dropData != Data;
+        }
 
-    // public void OnPutPart(PartItemData data)
-    // {
-    //     // var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-    //     // if (player == null)
-    //     // {
-    //     //     return;
-    //     // }
-    //     //
-    //     // player.PartPropPack.Set(param.Index, param.Data);
-    //     
-    //     data.DoPut();
-    // }
-    //
-    // public void OnRemovePart(PartItemData data)
-    // {
-    //     // var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-    //     // player?.PartPropPack.Remove(index);
-    //     
-    //     data.DoRemove();
-    // }
-    //
-    // public override bool _CanDropData(Vector2 atPosition, Variant data)
-    // {
-    //     // 判断是否可以丢弃
-    //     return data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("Index");
-    // }
-    //
-    // public override void _DropData(Vector2 atPosition, Variant data)
-    // {
-    //     // 触发丢弃
-    //     var dic = data.AsGodotDictionary();
-    //     var targetIndex = dic["Index"].AsInt32();
-    //     var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartItemData>)dic["UiGrid"].As<GodotRefValue>().Value;
-    //     targetGrid.EventPackage.EmitEvent(OnRemovePartEventName, targetIndex);
-    //     
-    //     var targetData = targetGrid.GetData(targetIndex).PartProp;
-    //     var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-    //     if (player != null)
-    //     {
-    //         targetData.ThrowProp(player);
-    //     }
-    //     else
-    //     {
-    //         targetData.Throw(8, 0, Vector2.Zero, 0);
-    //     }
-    // }
+        return false;
+    }
+    
+    public override void _DropData(Vector2 atPosition, Variant data)
+    {
+        if (data.Obj == null)
+        {
+            return;
+        }
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)
+        {
+            // 被拖拽的对象从原位置移除
+            var fromPropData = dropDataValue.Value;
+            var fromSlot = fromPropData.Slot;
+            fromSlot.Remove();
+            
+            var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+            if (player != null)
+            {
+                fromPropData.OriginPartProp.ThrowProp(player);
+            }
+            else
+            {
+                fromPropData.OriginPartProp.Throw(8, 0, Vector2.Zero, 0);
+            }
+        }
+    }
 
     public override void Process(float delta)
     {
@@ -164,7 +158,7 @@ public partial class PartPackUIPanel : PartPackUI
             {
                 for (int i = 0; i < count; i++)
                 {
-                    if (player.PartPropPack.Get(i) != PartPackGrid.GetData(i).PartProp)
+                    if (player.PartPropPack.Get(i) != PartPackGrid.GetData(i).OriginPartProp)
                     {
                         RefreshPartPack(player.PartPropPack);
                         break;
@@ -228,10 +222,11 @@ public partial class PartPackUIPanel : PartPackUI
 
     public void RefreshPartPack(PartPackage package)
     {
-        var temp = new List<PartItemData>();
+        var temp = new List<PartPropCellData>();
+        var i = 0;
         foreach (var o in package)
         {
-            temp.Add(new PartItemData((PartProp)o, package));
+            temp.Add(new PartPropCellData(new PartPropSlot(i++, package), (PartProp)o));
         }
 
         PartPackGrid.SetDataList(temp);
