@@ -28,7 +28,6 @@ public partial class PartPackUIPanel : PartPackUI
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
-    private EventBinder<EventEnum> _binder;
     
     // -------- 手柄操作相关 --------
 
@@ -61,13 +60,6 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnShowUi()
     {
-        if (_binder != null)
-        {
-            _binder.RemoveEventListener();
-        }
-        _binder = EventManager.AddEventListener(EventEnum.OnChangeJoypadInputMode, (data) => OnChangeJoypadInputMode(data is bool flag && flag));
-        OnChangeJoypadInputMode(InputManager.IsJoystickInput);
-        
         InputManager.AddBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
@@ -77,11 +69,6 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnHideUi()
     {
-        if (_binder != null)
-        {
-            _binder.RemoveEventListener();
-            _binder = null;
-        }
         InputManager.RemoveBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
@@ -90,14 +77,14 @@ public partial class PartPackUIPanel : PartPackUI
     }
     
     
-    // 切换手柄输入模式
-    private void OnChangeJoypadInputMode(bool flag)
+    // 切换鼠标输入模式
+    private void OnChangeMouseInputMode(bool flag)
     {
-        if (flag) // 切换到手柄
+        if (flag) // 切换到手柄/键盘
         {
             DoFindFirstSelectPart();
         }
-        else // 取消手柄
+        else // 切换到鼠标
         {
             _prevSelectPart?.CellNode.Instance.SetSelect(false);
             _currSelectPart?.CellNode.Instance.SetSelect(false);
@@ -151,7 +138,13 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void Process(float delta)
     {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        var application = GameApplication.Instance;
+        if (application.DungeonManager.CurrWorld.Pause)
+        {
+            return;
+        }
+
+        var player = application.DungeonManager.CurrWorld?.Player;
         if (player != null)
         {
             //检测零件是否变化
@@ -198,26 +191,24 @@ public partial class PartPackUIPanel : PartPackUI
                     }
                 }
             }
-
-            if (InputManager.IsJoystickInput) //手柄操作处理
+            
+            if (Input.IsActionJustPressed(InputAction.UiLeft))
             {
-                if (Input.IsActionJustPressed(InputAction.UiLeft))
-                {
-                    DoJoypadLeft();
-                }
-                else if (Input.IsActionJustPressed(InputAction.UiRight))
-                {
-                    DoJoypadRight();
-                }
-                else if (Input.IsActionJustPressed(InputAction.UiUp))
-                {
-                    DoJoypadUp();
-                }
-                else if (Input.IsActionJustPressed(InputAction.UiDown))
-                {
-                    DoJoypadDown();
-                }
+                DoJoypadLeft();
             }
+            else if (Input.IsActionJustPressed(InputAction.UiRight))
+            {
+                DoJoypadRight();
+            }
+            else if (Input.IsActionJustPressed(InputAction.UiUp))
+            {
+                DoJoypadUp();
+            }
+            else if (Input.IsActionJustPressed(InputAction.UiDown))
+            {
+                DoJoypadDown();
+            }
+            
         }
     }
     
@@ -237,8 +228,8 @@ public partial class PartPackUIPanel : PartPackUI
 
         PartPackGrid.SetDataList(temp);
 
-        // 手柄操作，重新选中第一个零件
-        if (InputManager.IsJoystickInput && _currSelectPart == null)
+        // 重新选中第一个零件
+        if (_currSelectPart == null)
         {
             DoFindFirstSelectPart();
         }
