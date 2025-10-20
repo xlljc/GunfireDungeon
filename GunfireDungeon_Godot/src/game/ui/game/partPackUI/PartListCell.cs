@@ -10,15 +10,15 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
 {
-    private UiGrid<PartPackUI.PartPackItem, PartPropCellData> _partGrid;
+    public UiGrid<PartPackUI.PartPackItem, PartPropCellData> PartGrid;
 
     public override void OnInit()
     {
-        _partGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartPropCellData, PartPackCell>(
+        PartGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartPackItem, PartPropCellData, PartPackCell>(
             CellNode.UiPanel.S_PartPackItem, CellNode.Instance, CellNode.UiPanel.WeaponCellPartPosition);
-        _partGrid.SetColumns(15);
-        _partGrid.SetCellOffset(CellNode.UiPanel.CellOffset);
-        _partGrid.GridContainer.Resized += OnResized;
+        PartGrid.SetColumns(15);
+        PartGrid.SetCellOffset(CellNode.UiPanel.CellOffset);
+        PartGrid.GridContainer.Resized += OnResized;
     }
 
     public override void Process(float delta)
@@ -27,7 +27,7 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         {
             //检测零件是否变化
             var count = Data.PartList.Length;
-            if (count != _partGrid.Count) //长度变化
+            if (count != PartGrid.Count) //长度变化
             {
                 RefreshPartPack(Data.PartList);
             }
@@ -35,7 +35,7 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
             {
                 for (var i = 0; i < count; i++)
                 {
-                    var temp = _partGrid.GetData(i);
+                    var temp = PartGrid.GetData(i);
                     if (temp != null && Data.PartList.GetLogicBlock(i) != temp.OriginPartProp)
                     {
                         RefreshPartPack(Data.PartList);
@@ -55,20 +55,20 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
             temp.Add(new PartPropCellData(new PartPropSlot(i++, list), (PartProp)o));
         }
 
-        _partGrid.SetDataList(temp);
+        PartGrid.SetDataList(temp);
     }
 
     private void OnResized()
     {
         var rect = Data.WeaponListCell.CellNode.Instance;
         var minimumSize = rect.CustomMinimumSize;
-        minimumSize.X = CellNode.UiPanel.WeaponCellPartPosition.X + _partGrid.GridContainer.Size.X +
+        minimumSize.X = CellNode.UiPanel.WeaponCellPartPosition.X + PartGrid.GridContainer.Size.X +
                         CellNode.UiPanel.CellOffset.X * 2;
         minimumSize.X = Math.Max(minimumSize.X, CellNode.UiPanel.WeaponCellOriginSize.X);
         rect.CustomMinimumSize = minimumSize;
 
         var cellSize = new Vector2(minimumSize.X,
-            _partGrid.GridContainer.Size.Y + 6f * GameApplication.Instance.PixelScale);
+            PartGrid.GridContainer.Size.Y + 6f * GameApplication.Instance.PixelScale);
         CellNode.Instance.CustomMinimumSize = cellSize;
         CellNode.Instance.Size = cellSize;
     }

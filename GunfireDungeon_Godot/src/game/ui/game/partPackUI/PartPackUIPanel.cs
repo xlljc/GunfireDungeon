@@ -10,12 +10,6 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public partial class PartPackUIPanel : PartPackUI
 {
-    private class PartPropData
-    {
-        public PartPackSlot Slot;
-        public PartProp Data;
-    }
-    
     public RoomUIPanel RoomUiPanel;
     
     /// <summary>
@@ -34,11 +28,12 @@ public partial class PartPackUIPanel : PartPackUI
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
+    private EventBinder<EventEnum> _binder;
     
     // -------- 手柄操作相关 --------
 
-    private PartPropData _prevSelectPart;
-    private PartPropData _currSelectPart;
+    private PartPackCell _prevSelectPart;
+    private PartPackCell _currSelectPart;
     
     // ----------------------------
 
@@ -61,14 +56,18 @@ public partial class PartPackUIPanel : PartPackUI
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
         WeaponListGrid.SetCellOffset(new Vector2I(0, 16));
-        
-        AddEventListener(EventEnum.OnChangeJoypadInputMode, (data) => OnChangeJoypadInputMode(data is bool flag && flag));
-        OnChangeJoypadInputMode(InputManager.IsJoystickInput);
     }
 
 
     public override void OnShowUi()
     {
+        if (_binder != null)
+        {
+            _binder.RemoveEventListener();
+        }
+        _binder = EventManager.AddEventListener(EventEnum.OnChangeJoypadInputMode, (data) => OnChangeJoypadInputMode(data is bool flag && flag));
+        OnChangeJoypadInputMode(InputManager.IsJoystickInput);
+        
         InputManager.AddBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
@@ -78,6 +77,11 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnHideUi()
     {
+        if (_binder != null)
+        {
+            _binder.RemoveEventListener();
+            _binder = null;
+        }
         InputManager.RemoveBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
@@ -91,16 +95,18 @@ public partial class PartPackUIPanel : PartPackUI
     {
         if (flag) // 切换到手柄
         {
-            FindFirstSelectPart();
+            DoFindFirstSelectPart();
         }
         else // 取消手柄
         {
-            _prevSelectPart?.Slot.SetSelect(false);
-            _currSelectPart?.Slot.SetSelect(false);
+            _prevSelectPart?.CellNode.Instance.SetSelect(false);
+            _currSelectPart?.CellNode.Instance.SetSelect(false);
             _prevSelectPart = null;
             _currSelectPart = null;
         }
     }
+    
+    
     
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
@@ -230,36 +236,107 @@ public partial class PartPackUIPanel : PartPackUI
         }
 
         PartPackGrid.SetDataList(temp);
+
+        // 手柄操作，重新选中第一个零件
+        if (InputManager.IsJoystickInput && _currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
     }
 
-    private void FindFirstSelectPart()
+    private void DoFindFirstSelectPart()
     {
-        // 先找 PartPackGrid
-        var uiCell = PartPackGrid.Find(cell => cell.Data != null);
-        if (uiCell == null)
+        if (_currSelectPart != null)
         {
-            // 再遍历寻找武器上的插槽
-            var weapons = WeaponListGrid.GetAllCell();
-            foreach (var weapon in weapons)
+            _currSelectPart.CellNode.Instance.SetSelect(false);
+        }
+
+        _currSelectPart = FindFirstSelectPart();
+        if (_currSelectPart != null)
+        {
+            _currSelectPart.CellNode.Instance.SetSelect(true);
+        }
+    }
+    
+    private PartPackCell FindFirstSelectPart()
+    {
+        var uiCell = PartPackGrid.Find(cell => cell.Data != null);
+        if (uiCell != null)
+        {
+            return (PartPackCell)uiCell;
+        }
+        
+        // 再遍历寻找武器上的插槽
+        var weapons = WeaponListGrid.GetAllCell();
+        foreach (var item1 in weapons) //遍历装备的武器
+        {
+            var weaponListCells = item1 as WeaponListCell;
+            if (weaponListCells != null && weaponListCells.Data != null)
             {
-                var partListCell = weapon as WeaponListCell;
-                if (partListCell != null)
+                var partListcells = weaponListCells.PartListGrid.GetAllCell();
+                foreach (var item2 in partListcells) // 遍历武器上的零件列表
                 {
-                    // var temp = partListCell.PartListGrid.get
-                    
+                    var partList = item2 as PartListCell;
+                    if (partList != null && partList.Data != null)
+                    {
+                        var partCells = partList.PartGrid.GetAllCell();
+                        foreach (var partCell in partCells)
+                        {
+                            if (partCell != null && partCell.Data != null)
+                            {
+                                return (PartPackCell)partCell;
+                            }
+                        }
+                    }
                 }
             }
         }
+
+        return null;
     }
     
     private void DoJoypadLeft()
     {
-        
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var uiGrid = _currSelectPart.Grid;
+            int startIndex = _currSelectPart.Index - 1;
+            var nextCell = FindValidCell(uiGrid, startIndex, false);
+            if (nextCell != null)
+            {
+                _prevSelectPart = _currSelectPart;
+                _currSelectPart.CellNode.Instance.SetSelect(false);
+                _currSelectPart = nextCell;
+                _currSelectPart.CellNode.Instance.SetSelect(true);
+            }
+            // 如果没找到，保持当前（什么都不做）
+        }
     }
     
     private void DoJoypadRight()
     {
-        
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var uiGrid = _currSelectPart.Grid;
+            int startIndex = _currSelectPart.Index + 1;
+            var nextCell = FindValidCell(uiGrid, startIndex, true);
+            if (nextCell != null)
+            {
+                _prevSelectPart = _currSelectPart;
+                _currSelectPart.CellNode.Instance.SetSelect(false);
+                _currSelectPart = nextCell;
+                _currSelectPart.CellNode.Instance.SetSelect(true);
+            }
+            // 如果没找到，保持当前（什么都不做）
+        }
     }
     
     private void DoJoypadUp()
@@ -270,5 +347,64 @@ public partial class PartPackUIPanel : PartPackUI
     private void DoJoypadDown()
     {
         
+    }
+
+    private PartPackCell FindValidCell(UiGrid<PartPackItem, PartPropCellData> uiGrid, int startIndex, bool forward)
+    {
+        int count = uiGrid.Count;
+        PartPackCell result = null;
+        if (forward)
+        {
+            // 从 startIndex 开始往后查找
+            for (int i = startIndex; i < count; i++)
+            {
+                var cell = uiGrid.GetCell(i);
+                if (cell.Data != null && cell.Data.OriginPartProp != null)
+                {
+                    result = (PartPackCell)cell;
+                    break;
+                }
+            }
+            // 如果没找到，从 0 开始查找
+            if (result == null)
+            {
+                for (int i = 0; i < startIndex; i++)
+                {
+                    var cell = uiGrid.GetCell(i);
+                    if (cell.Data != null && cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            // 从 startIndex 开始往前查找
+            for (int i = startIndex; i >= 0; i--)
+            {
+                var cell = uiGrid.GetCell(i);
+                if (cell.Data != null && cell.Data.OriginPartProp != null)
+                {
+                    result = (PartPackCell)cell;
+                    break;
+                }
+            }
+            // 如果没找到，从末尾开始查找
+            if (result == null)
+            {
+                for (int i = count - 1; i > startIndex; i--)
+                {
+                    var cell = uiGrid.GetCell(i);
+                    if (cell.Data != null && cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
