@@ -144,7 +144,7 @@ public partial class Player : Role
         {
             //脸的朝向
             var gPos = Position;
-            Vector2 mousePos = InputManager.CursorPosition;
+            Vector2 mousePos = InputManager.AimingPosition;
             if (mousePos.X > gPos.X && Face == FaceDirection.Left)
             {
                 Face = FaceDirection.Right;

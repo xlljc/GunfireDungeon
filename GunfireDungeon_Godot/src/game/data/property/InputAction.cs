@@ -43,7 +43,7 @@ public static class InputAction
     public static readonly StringName JoyRUp = "joy_r_up";
     public static readonly StringName JoyRDown = "joy_r_down";
     
-    
+    public static readonly StringName UiAccept = "ui_accept";
     public static readonly StringName UiLeft = "ui_left";
     public static readonly StringName UiRight = "ui_right";
     public static readonly StringName UiUp = "ui_up";

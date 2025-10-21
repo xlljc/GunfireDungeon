@@ -49,8 +49,6 @@ public partial class PartPackUIPanel : PartPackUI
         PartPackGrid = CreateUiGrid<PartPackItem, PartPropCellData, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
         PartPackGrid.SetCellOffset(CellOffset);
-        // PartPackGrid.EventPackage.AddEventListener(OnPutPartEventName, OnPutPart);
-        // PartPackGrid.EventPackage.AddEventListener(OnRemovePartEventName, OnRemovePart);
 
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
@@ -75,26 +73,7 @@ public partial class PartPackUIPanel : PartPackUI
             RoomUiPanel.OcclusionCount--;
         }
     }
-    
-    
-    // 切换鼠标输入模式
-    private void OnChangeMouseInputMode(bool flag)
-    {
-        if (flag) // 切换到手柄/键盘
-        {
-            DoFindFirstSelectPart();
-        }
-        else // 切换到鼠标
-        {
-            _prevSelectPart?.CellNode.Instance.SetSelect(false);
-            _currSelectPart?.CellNode.Instance.SetSelect(false);
-            _prevSelectPart = null;
-            _currSelectPart = null;
-        }
-    }
-    
-    
-    
+
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
         if (data.Obj == null)
@@ -192,6 +171,20 @@ public partial class PartPackUIPanel : PartPackUI
                 }
             }
             
+            
+            DoSelectItem();
+        }
+    }
+
+    private void DoSelectItem()
+    {
+        // 移动选中逻辑
+        if (Input.IsActionJustPressed(InputAction.UiAccept)) // 点击选择/放置
+        {
+
+        }
+        else //点击移动
+        {
             if (Input.IsActionJustPressed(InputAction.UiLeft))
             {
                 DoJoypadLeft();
@@ -208,7 +201,6 @@ public partial class PartPackUIPanel : PartPackUI
             {
                 DoJoypadDown();
             }
-            
         }
     }
     
@@ -299,7 +291,6 @@ public partial class PartPackUIPanel : PartPackUI
             var nextCell = FindValidCell(uiGrid, startIndex, false);
             if (nextCell != null)
             {
-                _prevSelectPart = _currSelectPart;
                 _currSelectPart.CellNode.Instance.SetSelect(false);
                 _currSelectPart = nextCell;
                 _currSelectPart.CellNode.Instance.SetSelect(true);
@@ -321,7 +312,6 @@ public partial class PartPackUIPanel : PartPackUI
             var nextCell = FindValidCell(uiGrid, startIndex, true);
             if (nextCell != null)
             {
-                _prevSelectPart = _currSelectPart;
                 _currSelectPart.CellNode.Instance.SetSelect(false);
                 _currSelectPart = nextCell;
                 _currSelectPart.CellNode.Instance.SetSelect(true);
@@ -349,7 +339,6 @@ public partial class PartPackUIPanel : PartPackUI
                 var nextCell = FindValidCellInGrid(nextGrid, _currSelectPart.Index, true); // 往后查找
                 if (nextCell != null)
                 {
-                    _prevSelectPart = _currSelectPart;
                     _currSelectPart.CellNode.Instance.SetSelect(false);
                     _currSelectPart = nextCell;
                     _currSelectPart.CellNode.Instance.SetSelect(true);
@@ -379,7 +368,6 @@ public partial class PartPackUIPanel : PartPackUI
                 var nextCell = FindValidCellInGrid(nextGrid, _currSelectPart.Index, false); // 往前查找
                 if (nextCell != null)
                 {
-                    _prevSelectPart = _currSelectPart;
                     _currSelectPart.CellNode.Instance.SetSelect(false);
                     _currSelectPart = nextCell;
                     _currSelectPart.CellNode.Instance.SetSelect(true);

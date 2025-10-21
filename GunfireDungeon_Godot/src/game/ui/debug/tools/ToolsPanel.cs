@@ -244,7 +244,7 @@ public partial class ToolsPanel : Tools
                 {
                     this.CallDelayInNode(0.5f, () => InputManager.RemoveBlockageMarking(instanceId));
                     var o = ActivityObject.Create(item);
-                    o.PutDown(InputManager.CursorPosition, o.DefaultLayer);
+                    o.PutDown(InputManager.AimingPosition, o.DefaultLayer);
                 }));
             }
         }, ParentUi);

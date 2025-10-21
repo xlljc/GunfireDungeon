@@ -140,6 +140,6 @@ public partial class Cursor : Node2D
     {
         // GlobalPosition = GetGlobalMousePosition();
         Visible = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
-        Position = GameApplication.Instance.WorldToUiPosition(InputManager.CursorPosition);
+        Position = GameApplication.Instance.WorldToUiPosition(InputManager.AimingPosition);
     }
 }

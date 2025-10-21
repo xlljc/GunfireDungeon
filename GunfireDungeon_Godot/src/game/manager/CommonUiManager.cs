@@ -11,6 +11,17 @@ public static class CommonUiManager
     private static PartTipsPanel _partTipsPanel;
     
     /// <summary>
+    /// 设置道具提示Ui位置
+    /// </summary>
+    public static void SetPartTipsPosition(Vector2 position)
+    {
+        if (_partTipsPanel != null)
+        {
+            _partTipsPanel.SetPosition(position);
+        }
+    }
+    
+    /// <summary>
     /// 显示道具提示Ui
     /// </summary>
     public static void ShowPartTips(PartProp partProp)

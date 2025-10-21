@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DsUi;
 using Godot;
 
 /// <summary>
@@ -25,9 +26,9 @@ public static class InputManager
     public static Vector2 MoveAxis { get; private set; }
     
     /// <summary>
-    /// 鼠标在SubViewport节点下的坐标, 键鼠: 鼠标移动，手柄：右摇杆
+    /// 射击瞄准坐标，在SubViewport节点下的坐标, 键鼠: 鼠标移动，手柄：右摇杆
     /// </summary>
-    public static Vector2 CursorPosition { get; private set; }
+    public static Vector2 AimingPosition { get; private set; }
     
     /// <summary>
     /// 是否按下打开零件背包按钮, 键鼠: 键盘Tab，手柄：View键
@@ -94,7 +95,18 @@ public static class InputManager
     /// </summary>
     public static bool Menu { get; private set; }
 
-    //-------------------------------
+    //------------------------------- 鼠标相关
+
+    /// <summary>
+    /// 鼠标是否在移动
+    /// </summary>
+    public static bool MouseIsMoving { get; set; } = false;
+    private static Vector2 _lastMousePosition = Vector2.Zero;
+    
+    /// <summary>
+    /// Ui下的鼠标位置
+    /// </summary>
+    public static Vector2 UiMousePosition { get; private set; }
     
     /// <summary>
     /// 鼠标是否有Ui遮挡
@@ -103,7 +115,7 @@ public static class InputManager
     
     private static bool _hasMouseUiBlockage = false;
     
-    // --------------------------------
+    // -------------------------------- 手柄相关
     
     /// <summary>
     /// 是否是手柄输入
@@ -148,11 +160,11 @@ public static class InputManager
             {
                 var direction = JoystickRAxis.Normalized();
                 var strength = Mathf.Min(JoystickRAxis.Length(), 1.0f);
-                CursorPosition = center + direction * strength * 120.0f;
+                AimingPosition = center + direction * strength * 120.0f;
             }
             else
             {
-                CursorPosition = center;
+                AimingPosition = center;
             }
             
             Fire = !HasUiBlockage && Input.IsActionPressed(InputAction.Fire);
@@ -161,9 +173,11 @@ public static class InputManager
         {
             IsJoystickRInput = false;
             JoystickRAxis = Vector2.Zero;
-            CursorPosition = app.SceneRoot.GetGlobalMousePosition();
+            AimingPosition = app.SceneRoot.GetGlobalMousePosition();
             //CursorPosition = application.UiToWorldPosition(application.GetGlobalMousePosition());
         }
+
+        UiMousePosition = app.GetViewport().GetMousePosition();
         
         MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
         ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
@@ -179,6 +193,11 @@ public static class InputManager
         Map = Input.IsActionPressed(InputAction.Map);
         Menu = Input.IsActionJustPressed(InputAction.Menu);
         PartPackage = Input.IsActionJustPressed(InputAction.PartPackage);
+        
+        // 更新鼠标移动状态
+        var currentMousePosition = UiMousePosition;
+        MouseIsMoving = (currentMousePosition - _lastMousePosition).Length() > MOUSE_MOVE_THRESHOLD;
+        _lastMousePosition = currentMousePosition;
     }
 
     /// <summary>

@@ -94,7 +94,7 @@ public partial class GameCamera : Camera2D
         {
             if (!InputManager.HasUiBlockage)
             {
-                var mousePosition = InputManager.CursorPosition;
+                var mousePosition = InputManager.AimingPosition;
                 var targetPosition = _followTarget.GlobalPosition;
                 var fmav = Mathf.Lerp(0, 0.25f, FollowsMouseAmount);
                 if (targetPosition.DistanceSquaredTo(mousePosition) >= (60 / fmav) * (60 / fmav))
