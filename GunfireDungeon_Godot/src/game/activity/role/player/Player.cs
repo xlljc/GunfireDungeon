@@ -32,6 +32,9 @@ public partial class Player : Role
     
     private BrushImageData _brushData;
     private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
+
+    // 记录摇杆瞄准位置
+    private Vector2 _recordJoystickMousePos = new Vector2(100, 0);
     
     public override void OnInit()
     {
@@ -144,7 +147,25 @@ public partial class Player : Role
         {
             //脸的朝向
             var gPos = Position;
-            Vector2 mousePos = InputManager.AimingPosition;
+            Vector2 mousePos;
+
+            if (InputManager.IsJoystickInput && !InputManager.IsJoystickRInput)
+            {
+                if (InputManager.MoveAxis.LengthSquared() > 0.001f)
+                {
+                    _recordJoystickMousePos = InputManager.MoveAxis.Normalized() * 120f;
+                    mousePos = gPos + _recordJoystickMousePos;
+                }
+                else
+                {
+                    mousePos = gPos + _recordJoystickMousePos;
+                }
+            }
+            else
+            {
+                mousePos = InputManager.AimingPosition;
+            }
+            
             if (mousePos.X > gPos.X && Face == FaceDirection.Left)
             {
                 Face = FaceDirection.Right;

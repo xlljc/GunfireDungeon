@@ -56,6 +56,8 @@ public class PartListCell : UiCell<PartPackUI.PartListItem, PartListCellData>
         }
 
         PartGrid.SetDataList(temp);
+
+        CellNode.UiPanel.RefreshPartTips();
     }
 
     private void OnResized()
