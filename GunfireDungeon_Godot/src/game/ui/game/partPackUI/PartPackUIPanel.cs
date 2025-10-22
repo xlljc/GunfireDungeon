@@ -28,6 +28,8 @@ public partial class PartPackUIPanel : PartPackUI
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
+    private bool _isMouseHandler = false;
+    private bool _needRefreshPartTips = false;
     
     // -------- 手柄操作相关 --------
 
@@ -63,6 +65,11 @@ public partial class PartPackUIPanel : PartPackUI
         {
             RoomUiPanel.OcclusionCount++;
         }
+        
+        if (IsValidSelectPart(_currSelectPart))
+        {
+            CommonUiManager.ShowPartTips(_currSelectPart.Data.OriginPartProp);
+        }
     }
 
     public override void OnHideUi()
@@ -71,6 +78,11 @@ public partial class PartPackUIPanel : PartPackUI
         if (RoomUiPanel != null)
         {
             RoomUiPanel.OcclusionCount--;
+        }
+
+        if (_currSelectPart != null)
+        {
+            CommonUiManager.HidePartTips();
         }
     }
 
@@ -171,8 +183,59 @@ public partial class PartPackUIPanel : PartPackUI
                 }
             }
             
-            
+            // 处理零件选中逻辑
             DoSelectItem();
+
+            if (InputManager.MouseIsMoving && !_isMouseHandler)
+            {
+                _isMouseHandler = true;
+                SetCurrentSelectPart(null);
+                _prevSelectPart = null;
+            }
+
+            if (_isMouseHandler)
+            {
+                CommonUiManager.SetPartTipsPosition(InputManager.UiMousePosition);
+            }
+            else if (_currSelectPart != null)
+            {
+                var nodeInstance = _currSelectPart.CellNode.Instance;
+                CommonUiManager.SetPartTipsPosition(nodeInstance.GlobalPosition + nodeInstance.Size);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 设置当前选中的零件格子
+    /// </summary>
+    public void SetCurrentSelectPart(PartPackCell partCell)
+    {
+        if (_currSelectPart != null)
+        {
+            _currSelectPart.CellNode.Instance.SetSelect(false);
+        }
+
+        _currSelectPart = partCell;
+        if (_currSelectPart != null)
+        {
+            _currSelectPart.CellNode.Instance.SetSelect(true);
+        }
+
+        RefreshPartTips();
+    }
+
+    /// <summary>
+    /// 刷新零件提示Ui
+    /// </summary>
+    public void RefreshPartTips()
+    {
+        if (!IsValidSelectPart(_currSelectPart))
+        {
+            CommonUiManager.HidePartTips();
+        }
+        else
+        {
+            CommonUiManager.ShowPartTips(_currSelectPart.Data.OriginPartProp);
         }
     }
 
@@ -181,27 +244,69 @@ public partial class PartPackUIPanel : PartPackUI
         // 移动选中逻辑
         if (Input.IsActionJustPressed(InputAction.UiAccept)) // 点击选择/放置
         {
-
+            if (_prevSelectPart == null) // 点击选择
+            {
+                if (IsValidSelectPart(_currSelectPart))
+                {
+                    _prevSelectPart = _currSelectPart;
+                    _prevSelectPart.CellNode.Instance.SetSelect(false);
+                }
+            }
+            else if (_currSelectPart != null && _currSelectPart.Data != null) // 点击放置
+            {
+                //调换位置
+                if (_currSelectPart.Data.OriginPartProp != null) // 当前选中有零件，交换位置
+                {
+                    var fromData = _prevSelectPart.Data.OriginPartProp;
+                    var toData = _currSelectPart.Data.OriginPartProp;
+                    _currSelectPart.Data.Slot.Remove();
+                    _prevSelectPart.Data.Slot.Remove();
+                    _currSelectPart.Data.Slot.Set(fromData);
+                    _prevSelectPart.Data.Slot.Set(toData);
+                }
+                else
+                {
+                    // 当前选中无零件，直接放置
+                    var fromData = _prevSelectPart.Data.OriginPartProp;
+                    _prevSelectPart.Data.Slot.Remove();
+                    _currSelectPart.Data.Slot.Set(fromData);
+                }
+                
+                _prevSelectPart = null;
+                _needRefreshPartTips = true;
+            }
         }
         else //点击移动
         {
             if (Input.IsActionJustPressed(InputAction.UiLeft))
             {
                 DoJoypadLeft();
+                _isMouseHandler = false;
             }
             else if (Input.IsActionJustPressed(InputAction.UiRight))
             {
                 DoJoypadRight();
+                _isMouseHandler = false;
             }
             else if (Input.IsActionJustPressed(InputAction.UiUp))
             {
                 DoJoypadUp();
+                _isMouseHandler = false;
             }
             else if (Input.IsActionJustPressed(InputAction.UiDown))
             {
                 DoJoypadDown();
+                _isMouseHandler = false;
             }
         }
+    }
+    
+    /// <summary>
+    /// 指定的零件格子是否有效
+    /// </summary>
+    public bool IsValidSelectPart(PartPackCell cell)
+    {
+        return cell != null && cell.Data != null && cell.Data.OriginPartProp != null;
     }
     
     private void RefreshWeaponList(List<Weapon> list)
@@ -220,6 +325,12 @@ public partial class PartPackUIPanel : PartPackUI
 
         PartPackGrid.SetDataList(temp);
 
+        if (_needRefreshPartTips)
+        {
+            _needRefreshPartTips = false;
+            RefreshPartTips();
+        }
+        
         // 重新选中第一个零件
         if (_currSelectPart == null)
         {
@@ -229,16 +340,7 @@ public partial class PartPackUIPanel : PartPackUI
 
     private void DoFindFirstSelectPart()
     {
-        if (_currSelectPart != null)
-        {
-            _currSelectPart.CellNode.Instance.SetSelect(false);
-        }
-
-        _currSelectPart = FindFirstSelectPart();
-        if (_currSelectPart != null)
-        {
-            _currSelectPart.CellNode.Instance.SetSelect(true);
-        }
+        SetCurrentSelectPart(FindFirstSelectPart());
     }
     
     private PartPackCell FindFirstSelectPart()
@@ -288,12 +390,10 @@ public partial class PartPackUIPanel : PartPackUI
         {
             var uiGrid = _currSelectPart.Grid;
             int startIndex = _currSelectPart.Index - 1;
-            var nextCell = FindValidCell(uiGrid, startIndex, false);
+            var nextCell = FindCell(uiGrid, startIndex, false, _prevSelectPart == null);
             if (nextCell != null)
             {
-                _currSelectPart.CellNode.Instance.SetSelect(false);
-                _currSelectPart = nextCell;
-                _currSelectPart.CellNode.Instance.SetSelect(true);
+                SetCurrentSelectPart(nextCell);
             }
             // 如果没找到，保持当前（什么都不做）
         }
@@ -309,12 +409,10 @@ public partial class PartPackUIPanel : PartPackUI
         {
             var uiGrid = _currSelectPart.Grid;
             int startIndex = _currSelectPart.Index + 1;
-            var nextCell = FindValidCell(uiGrid, startIndex, true);
+            var nextCell = FindCell(uiGrid, startIndex, true, _prevSelectPart == null);
             if (nextCell != null)
             {
-                _currSelectPart.CellNode.Instance.SetSelect(false);
-                _currSelectPart = nextCell;
-                _currSelectPart.CellNode.Instance.SetSelect(true);
+                SetCurrentSelectPart(nextCell);
             }
             // 如果没找到，保持当前（什么都不做）
         }
@@ -336,12 +434,10 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = currentGridIndex - 1; i >= 0; i--)
             {
                 var nextGrid = grids[i];
-                var nextCell = FindValidCellInGrid(nextGrid, _currSelectPart.Index, true); // 往后查找
+                var nextCell = FindCellInGrid(nextGrid, _currSelectPart.Index, true, _prevSelectPart == null); // 往后查找
                 if (nextCell != null)
                 {
-                    _currSelectPart.CellNode.Instance.SetSelect(false);
-                    _currSelectPart = nextCell;
-                    _currSelectPart.CellNode.Instance.SetSelect(true);
+                    SetCurrentSelectPart(nextCell);
                     return;
                 }
             }
@@ -365,12 +461,10 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = currentGridIndex + 1; i < grids.Count; i++)
             {
                 var nextGrid = grids[i];
-                var nextCell = FindValidCellInGrid(nextGrid, _currSelectPart.Index, false); // 往前查找
+                var nextCell = FindCellInGrid(nextGrid, _currSelectPart.Index, false, _prevSelectPart == null); // 往前查找
                 if (nextCell != null)
                 {
-                    _currSelectPart.CellNode.Instance.SetSelect(false);
-                    _currSelectPart = nextCell;
-                    _currSelectPart.CellNode.Instance.SetSelect(true);
+                    SetCurrentSelectPart(nextCell);
                     return;
                 }
             }
@@ -378,7 +472,7 @@ public partial class PartPackUIPanel : PartPackUI
         }
     }
 
-    private PartPackCell FindValidCell(UiGrid<PartPackItem, PartPropCellData> uiGrid, int startIndex, bool forward)
+    private PartPackCell FindCell(UiGrid<PartPackItem, PartPropCellData> uiGrid, int startIndex, bool forward, bool valid)
     {
         int count = uiGrid.Count;
         PartPackCell result = null;
@@ -388,10 +482,13 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = startIndex; i < count; i++)
             {
                 var cell = uiGrid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    result = (PartPackCell)cell;
-                    break;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
                 }
             }
             // 如果没找到，从 0 开始查找
@@ -400,10 +497,13 @@ public partial class PartPackUIPanel : PartPackUI
                 for (int i = 0; i < startIndex; i++)
                 {
                     var cell = uiGrid.GetCell(i);
-                    if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                    if (cell != null && cell.Data != null)
                     {
-                        result = (PartPackCell)cell;
-                        break;
+                        if (!valid || cell.Data.OriginPartProp != null)
+                        {
+                            result = (PartPackCell)cell;
+                            break;
+                        }
                     }
                 }
             }
@@ -414,10 +514,13 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = startIndex; i >= 0; i--)
             {
                 var cell = uiGrid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    result = (PartPackCell)cell;
-                    break;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
                 }
             }
             // 如果没找到，从末尾开始查找
@@ -426,10 +529,13 @@ public partial class PartPackUIPanel : PartPackUI
                 for (int i = count - 1; i > startIndex; i--)
                 {
                     var cell = uiGrid.GetCell(i);
-                    if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                    if (cell != null && cell.Data != null)
                     {
-                        result = (PartPackCell)cell;
-                        break;
+                        if (!valid || cell.Data.OriginPartProp != null)
+                        {
+                            result = (PartPackCell)cell;
+                            break;
+                        }
                     }
                 }
             }
@@ -459,7 +565,7 @@ public partial class PartPackUIPanel : PartPackUI
         return grids;
     }
 
-    private PartPackCell FindValidCellInGrid(UiGrid<PartPackItem, PartPropCellData> grid, int startIndex, bool forward)
+    private PartPackCell FindCellInGrid(UiGrid<PartPackItem, PartPropCellData> grid, int startIndex, bool forward, bool valid)
     {
         if (forward)
         {
@@ -467,18 +573,24 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = startIndex; i < grid.Count; i++)
             {
                 var cell = grid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    return (PartPackCell)cell;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
                 }
             }
             // 从 0 到 startIndex-1
             for (int i = 0; i < startIndex; i++)
             {
                 var cell = grid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    return (PartPackCell)cell;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
                 }
             }
         }
@@ -488,18 +600,24 @@ public partial class PartPackUIPanel : PartPackUI
             for (int i = startIndex; i >= 0; i--)
             {
                 var cell = grid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    return (PartPackCell)cell;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
                 }
             }
             // 从末尾到 startIndex+1
             for (int i = grid.Count - 1; i > startIndex; i--)
             {
                 var cell = grid.GetCell(i);
-                if (cell != null && cell.Data != null && cell.Data.OriginPartProp != null)
+                if (cell != null && cell.Data != null)
                 {
-                    return (PartPackCell)cell;
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
                 }
             }
         }

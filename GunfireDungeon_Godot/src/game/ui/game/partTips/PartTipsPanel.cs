@@ -5,6 +5,14 @@ namespace UI.game.PartTips;
 
 public partial class PartTipsPanel : PartTips
 {
+    public override void Process(float delta)
+    {
+        if (Input.IsActionJustPressed(InputAction.UiCancel))
+        {
+            HideUi();
+        }
+    }
+
     /// <summary>
     /// 设置位置
     /// </summary>

@@ -40,18 +40,17 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartPropCellData>
     {
         if (Data == null || Data.OriginPartProp == null)
         {
-            return;
+            CellNode.UiPanel.SetCurrentSelectPart(null);
         }
-        CommonUiManager.ShowPartTips(Data.OriginPartProp);
+        else
+        {
+            CellNode.UiPanel.SetCurrentSelectPart(this);
+        }
     }
 
     public void OnFocusExited()
     {
-        if (Data == null || Data.OriginPartProp == null)
-        {
-            return;
-        }
-        CommonUiManager.HidePartTips();
+        CellNode.UiPanel.SetCurrentSelectPart(null);
     }
     
     private Variant _GetDragData(Vector2 atPosition)

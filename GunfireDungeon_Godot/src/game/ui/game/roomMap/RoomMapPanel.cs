@@ -186,7 +186,7 @@ public partial class RoomMapPanel : RoomMap
             {
                 if (InputManager.IsJoystickInput) // 手柄操作
                 {
-                    if (InputManager.Interactive) // 传送
+                    if (Input.IsActionJustPressed(InputAction.UiAccept)) // 传送
                     {
                         DoTransmission(_hoverRoom);
                         ResetMap();

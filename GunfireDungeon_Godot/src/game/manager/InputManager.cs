@@ -179,16 +179,36 @@ public static class InputManager
 
         UiMousePosition = app.GetViewport().GetMousePosition();
         
-        MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp, InputAction.MoveDown);
-        ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
-        ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
-        Interactive = Input.IsActionJustPressed(InputAction.Interactive);
-        Reload = Input.IsActionJustPressed(InputAction.Reload);
-        MeleeAttack = Input.IsActionJustPressed(InputAction.MeleeAttack);
-        Roll = Input.IsActionJustPressed(InputAction.Roll);
-        UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);
-        RemoveProp = Input.IsActionJustPressed(InputAction.RemoveProp);
-        ExchangeProp = Input.IsActionJustPressed(InputAction.ExchangeProp);
+        //var roomUiPanel = GameApplication.Instance.RoomUIPanel;
+        //if (roomUiPanel != null && roomUiPanel.OcclusionCount <= 0) // 没有其他遮挡Ui打开
+        
+        if (!HasUiBlockage) // 没有其他遮挡Ui打开
+        {
+            MoveAxis = Input.GetVector(InputAction.MoveLeft, InputAction.MoveRight, InputAction.MoveUp,
+                InputAction.MoveDown);
+            ExchangeWeapon = Input.IsActionJustPressed(InputAction.ExchangeWeapon);
+            ThrowWeapon = Input.IsActionJustPressed(InputAction.ThrowWeapon);
+            Interactive = Input.IsActionJustPressed(InputAction.Interactive);
+            Reload = Input.IsActionJustPressed(InputAction.Reload);
+            MeleeAttack = Input.IsActionJustPressed(InputAction.MeleeAttack);
+            Roll = Input.IsActionJustPressed(InputAction.Roll);
+            UseActiveProp = Input.IsActionJustPressed(InputAction.UseActiveProp);
+            RemoveProp = Input.IsActionJustPressed(InputAction.RemoveProp);
+            ExchangeProp = Input.IsActionJustPressed(InputAction.ExchangeProp);
+        }
+        else
+        {
+            MoveAxis = Vector2.Zero;
+            ExchangeWeapon = false;
+            ThrowWeapon = false;
+            Interactive = false;
+            Reload = false;
+            MeleeAttack = false;
+            Roll = false;
+            UseActiveProp = false;
+            RemoveProp = false;
+            ExchangeProp = false;
+        }
 
         Map = Input.IsActionPressed(InputAction.Map);
         Menu = Input.IsActionJustPressed(InputAction.Menu);

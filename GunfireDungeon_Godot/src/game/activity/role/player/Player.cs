@@ -158,59 +158,56 @@ public partial class Player : Role
             MountPoint.SetLookAt(mousePos);
         }
         
-        var roomUiPanel = GameApplication.Instance.RoomUIPanel;
-        if (roomUiPanel != null && roomUiPanel.OcclusionCount <= 0) // 没有其他遮挡Ui打开
+
+        if (InputManager.ExchangeWeapon) //切换武器
         {
-            if (InputManager.ExchangeWeapon) //切换武器
-            {
-                ExchangeNextWeapon();
-            }
-            else if (InputManager.ThrowWeapon) //扔掉武器
-            {
-                ThrowWeapon();
-            }
-            else if (InputManager.Interactive) //互动物体
-            {
-                TriggerInteractive();
-            }
-            else if (InputManager.Reload) //换弹
-            {
-                Reload();
-            }
+            ExchangeNextWeapon();
+        }
+        else if (InputManager.ThrowWeapon) //扔掉武器
+        {
+            ThrowWeapon();
+        }
+        else if (InputManager.Interactive) //互动物体
+        {
+            TriggerInteractive();
+        }
+        else if (InputManager.Reload) //换弹
+        {
+            Reload();
+        }
 
-            var meleeAttackFlag = false;
-            if (InputManager.MeleeAttack) //近战攻击
+        var meleeAttackFlag = false;
+        if (InputManager.MeleeAttack) //近战攻击
+        {
+            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
             {
-                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
+                if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
                 {
-                    if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
-                    {
-                        meleeAttackFlag = true;
-                        MeleeAttack();
-                    }
+                    meleeAttackFlag = true;
+                    MeleeAttack();
                 }
             }
+        }
 
-            if (!meleeAttackFlag && InputManager.Fire) //正常开火
+        if (!meleeAttackFlag && InputManager.Fire) //正常开火
+        {
+            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
             {
-                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
-                {
-                    Attack();
-                }
+                Attack();
             }
+        }
 
-            if (InputManager.UseActiveProp) //使用道具
-            {
-                UseActiveProp();
-            }
-            else if (InputManager.ExchangeProp) //切换道具
-            {
-                ExchangeNextActiveProp();
-            }
-            else if (InputManager.RemoveProp) //扔掉道具
-            {
-                ThrowActiveProp();
-            }
+        if (InputManager.UseActiveProp) //使用道具
+        {
+            UseActiveProp();
+        }
+        else if (InputManager.ExchangeProp) //切换道具
+        {
+            ExchangeNextActiveProp();
+        }
+        else if (InputManager.RemoveProp) //扔掉道具
+        {
+            ThrowActiveProp();
         }
 
         // //测试用

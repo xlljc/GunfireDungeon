@@ -92,7 +92,7 @@ public partial class GameCamera : Camera2D
         var world = World.Current;
         if (world != null && _followTarget != null && lockIndex <= 0)
         {
-            if (!InputManager.HasUiBlockage)
+            // if (!InputManager.HasUiBlockage)
             {
                 var mousePosition = InputManager.AimingPosition;
                 var targetPosition = _followTarget.GlobalPosition;
