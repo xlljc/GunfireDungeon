@@ -26,7 +26,7 @@ public static class InputManager
     public static Vector2 MoveAxis { get; private set; }
     
     /// <summary>
-    /// 射击瞄准坐标，在SubViewport节点下的坐标, 键鼠: 鼠标移动，手柄：右摇杆
+    /// 射击瞄准坐标，2D 世界坐标, 键鼠: 鼠标移动，手柄：右摇杆
     /// </summary>
     public static Vector2 AimingPosition { get; private set; }
     

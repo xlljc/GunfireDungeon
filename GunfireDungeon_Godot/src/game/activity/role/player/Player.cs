@@ -265,7 +265,7 @@ public partial class Player : Role
 
                     if (_aimLockRole != null) // 有锁定瞄准目标
                     {
-                        mousePos = _aimLockRole.Position;
+                        mousePos = _aimLockRole.GetCenterPosition();
                     }
                     else // 没有锁定瞄准目标
                     {
@@ -279,7 +279,22 @@ public partial class Player : Role
             }
             else // 摇杆有输入
             {
-                mousePos = InputManager.AimingPosition;
+                if (app.GameSave.JoystickAimAssistStrength > 0.01f) // 有辅助瞄准
+                {
+                    _aimLockRole = GetAimAssistEnemy(gPos, InputManager.AimingPosition, app.GameSave.JoystickAimAssistStrength);
+                    if (_aimLockRole != null)
+                    {
+                        mousePos = _aimLockRole.GetCenterPosition();
+                    }
+                    else
+                    {
+                        mousePos = InputManager.AimingPosition;
+                    }
+                }
+                else // 没有辅助瞄准
+                {
+                    mousePos = InputManager.AimingPosition;
+                }
             }
         }
         else // 鼠标瞄准
@@ -289,12 +304,13 @@ public partial class Player : Role
 
         if (InputManager.IsJoystickInput && _aimLockRole != null)
         {
-            app.Cursor.CustomVisibleFlag = true;
-            app.Cursor.Position = app.WorldToUiPosition(_aimLockRole.GetCenterPosition());
+            app.Cursor.CustomHandlerFlag = true;
+            app.Cursor.Position = app.WorldToUiPosition(mousePos);
+            // app.Cursor.Position = app.WorldToUiPosition(_aimLockRole.GetCenterPosition());
         }
         else
         {
-            app.Cursor.CustomVisibleFlag = false;
+            app.Cursor.CustomHandlerFlag = false;
         }
         return mousePos;
     }
@@ -357,6 +373,42 @@ public partial class Player : Role
             }
         }
         return closerRole;
+    }
+    
+    
+    /// <summary>
+    /// 获取辅助瞄准的敌人
+    /// </summary>
+    private Role GetAimAssistEnemy(Vector2 gPos, Vector2 aimPos, float assistStrength)
+    {
+        var fireDir = (aimPos - gPos).Normalized();
+        var assistAngle = Mathf.DegToRad(90f * assistStrength);
+        var minDist = float.MaxValue;
+        Role nearestEnemy = null;
+        // var nearestEnemyPos = Vector2.Zero;
+
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed)
+                continue;
+            var toEnemy = role.GetCenterPosition() - gPos;
+            var angle = fireDir.AngleTo(toEnemy.Normalized());
+            if (Mathf.Abs(angle) <= assistAngle)
+            {
+                float dist = toEnemy.Length();
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    nearestEnemy = role;
+                    // nearestEnemyPos = role.GetCenterPosition();
+                }
+            }
+        }
+        // if (nearestEnemy != null)
+        // {
+        //     return gPos.Lerp(nearestEnemyPos, assistStrength);
+        // }
+        return nearestEnemy;
     }
     
     protected override void OnAffiliationChange(AffiliationArea prevArea)
@@ -583,4 +635,3 @@ public partial class Player : Role
         }
     }
 }
-

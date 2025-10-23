@@ -7,9 +7,9 @@ using Godot;
 public partial class Cursor : Node2D
 {
     /// <summary>
-    /// 自定义可见标记（用于手柄辅助瞄准等特殊情况）
+    /// 自己处理鼠标指针显示与位置
     /// </summary>
-    public bool CustomVisibleFlag { get; set; } = false;
+    public bool CustomHandlerFlag { get; set; } = false;
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -144,8 +144,8 @@ public partial class Cursor : Node2D
     {
         // GlobalPosition = GetGlobalMousePosition();
         var flag = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
-        Visible = flag || CustomVisibleFlag;
-        if (flag)
+        Visible = flag || CustomHandlerFlag;
+        if (flag && !CustomHandlerFlag)
         {
             Position = GameApplication.Instance.WorldToUiPosition(InputManager.AimingPosition);
         }
