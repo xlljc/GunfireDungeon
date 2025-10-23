@@ -44,6 +44,18 @@ public partial class GameSave
     [JsonInclude]
     public bool PerfectPixel = true;
     
+    /// <summary>
+    /// 手柄锁定瞄准
+    /// </summary>
+    [JsonInclude]
+    public bool JoystickAimAssist = true;
+    
+    /// <summary>
+    /// 手柄辅助瞄准强度
+    /// </summary>
+    [JsonInclude]
+    public float JoystickAimAssistStrength = 0.5f;
+    
     private float _timer;
 
     public void Init(GameApplication app)

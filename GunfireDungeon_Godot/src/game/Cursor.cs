@@ -6,6 +6,10 @@ using Godot;
 /// </summary>
 public partial class Cursor : Node2D
 {
+    /// <summary>
+    /// 自定义可见标记（用于手柄辅助瞄准等特殊情况）
+    /// </summary>
+    public bool CustomVisibleFlag { get; set; } = false;
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -139,7 +143,11 @@ public partial class Cursor : Node2D
     private void DoUpdateCursor()
     {
         // GlobalPosition = GetGlobalMousePosition();
-        Visible = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
-        Position = GameApplication.Instance.WorldToUiPosition(InputManager.AimingPosition);
+        var flag = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
+        Visible = flag || CustomVisibleFlag;
+        if (flag)
+        {
+            Position = GameApplication.Instance.WorldToUiPosition(InputManager.AimingPosition);
+        }
     }
 }

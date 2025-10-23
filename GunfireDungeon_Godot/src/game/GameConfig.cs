@@ -18,6 +18,11 @@ public static class GameConfig
     /// </summary>
     public static float AiAttackDistance = 300;
     
+    /// <summary>
+    /// 摇杆锁定瞄准最大距离
+    /// </summary>
+    public static int MaxJoystickLockingDistance = 300;
+    
     // ----------------------- 常量 -----------------------
 
     /// <summary>

@@ -440,4 +440,20 @@ public partial class GameApplication : Node2D, ICoroutine
         GameSave = GameSave.Load();
         GameSave.Init(app);
     }
+
+    /// <summary>
+    /// 设置手柄是否锁定瞄准
+    /// </summary>
+    public void SetJoystickAimAssist(bool flag)
+    {
+        
+    }
+
+    /// <summary>
+    /// 设置手柄辅助瞄准强度
+    /// </summary>
+    public void SetJoystickAimAssistStrength(float value)
+    {
+        
+    }
 }

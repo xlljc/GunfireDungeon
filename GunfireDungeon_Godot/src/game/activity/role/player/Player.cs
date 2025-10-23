@@ -1,19 +1,16 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Config;
 using DsUi;
 using Godot;
-using UI.game.RoomUI;
 
 
 /// <summary>
 /// 玩家角色基类, 所有角色都必须继承该类
 /// </summary>
 public partial class Player : Role
-{ 
+{
     /// <summary>
-    /// 当玩家第一次进入房间时调用l;'lo;l.,
+    /// 当玩家第一次进入房间时调用
     /// </summary>
     public event Action<RoomInfo> OnFirstEnterRoomEvent;
     
@@ -35,6 +32,8 @@ public partial class Player : Role
 
     // 记录摇杆瞄准位置
     private Vector2 _recordJoystickMousePos = new Vector2(100, 0);
+    
+    private Role _aimLockRole;
     
     public override void OnInit()
     {
@@ -145,40 +144,8 @@ public partial class Player : Role
         
         if (MountLookTarget) //看向目标
         {
-            //脸的朝向
-            var gPos = Position;
-            Vector2 mousePos;
-
-            if (InputManager.IsJoystickInput && !InputManager.IsJoystickRInput)
-            {
-                if (InputManager.MoveAxis.LengthSquared() > 0.001f)
-                {
-                    _recordJoystickMousePos = InputManager.MoveAxis.Normalized() * 120f;
-                    mousePos = gPos + _recordJoystickMousePos;
-                }
-                else
-                {
-                    mousePos = gPos + _recordJoystickMousePos;
-                }
-            }
-            else
-            {
-                mousePos = InputManager.AimingPosition;
-            }
-            
-            if (mousePos.X > gPos.X && Face == FaceDirection.Left)
-            {
-                Face = FaceDirection.Right;
-            }
-            else if (mousePos.X < gPos.X && Face == FaceDirection.Right)
-            {
-                Face = FaceDirection.Left;
-            }
-            
-            //枪口跟随鼠标
-            MountPoint.SetLookAt(mousePos);
+            HandlerAiming();
         }
-        
 
         if (InputManager.ExchangeWeapon) //切换武器
         {
@@ -247,8 +214,150 @@ public partial class Player : Role
         
         // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
     }
+    
+    private void HandlerAiming()
+    {
+        //脸的朝向
+        var gPos = Position;
+        Vector2 mousePos = CalcMousePosition(gPos);
+            
+        if (mousePos.X > gPos.X && Face == FaceDirection.Left)
+        {
+            Face = FaceDirection.Right;
+        }
+        else if (mousePos.X < gPos.X && Face == FaceDirection.Right)
+        {
+            Face = FaceDirection.Left;
+        }
+            
+        //枪口跟随鼠标
+        MountPoint.SetLookAt(mousePos);
+    }
+    
+    private Vector2 CalcMousePosition(Vector2 gPos)
+    {
+        var app = GameApplication.Instance;
+        Vector2 mousePos;
+        if (_aimLockRole != null && (!app.GameSave.JoystickAimAssist || _aimLockRole.IsDie || _aimLockRole.IsDestroyed))
+        {
+            _aimLockRole = null;
+        }
+        if (InputManager.IsJoystickInput) // 摇杆瞄准
+        {
+            if (!InputManager.IsJoystickRInput) // 摇杆没有输入
+            {
+                if (app.GameSave.JoystickAimAssist && World != null) // 锁定瞄准
+                {
+                    if (_aimLockRole == null ||
+                        Position.DistanceTo(_aimLockRole.Position) > GameConfig.MaxJoystickLockingDistance) // 之前帧没有记录 或者 锁定目标超出最大距离
+                    {
+                        _aimLockRole = GetNearestEnemy(GameConfig.MaxJoystickLockingDistance);
+                    }
+                    else // 之前帧有记录
+                    {
+                        // 需要更新，看看有没有更近的敌人 （比之前的敌人近50px）
+                        var closerRole = TryFindCloserEnemy(_aimLockRole, 50f);
+                        if (closerRole != null)
+                        {
+                            _aimLockRole = closerRole;
+                        }
+                    }
 
-    private float _lqTimer;
+                    if (_aimLockRole != null) // 有锁定瞄准目标
+                    {
+                        mousePos = _aimLockRole.Position;
+                    }
+                    else // 没有锁定瞄准目标
+                    {
+                        mousePos = GetRecordJoystickMousePos(gPos);
+                    }
+                }
+                else // 没有锁定瞄准
+                {
+                    mousePos = GetRecordJoystickMousePos(gPos);
+                }
+            }
+            else // 摇杆有输入
+            {
+                mousePos = InputManager.AimingPosition;
+            }
+        }
+        else // 鼠标瞄准
+        {
+            mousePos = InputManager.AimingPosition;
+        }
+
+        if (InputManager.IsJoystickInput && _aimLockRole != null)
+        {
+            app.Cursor.CustomVisibleFlag = true;
+            app.Cursor.Position = app.WorldToUiPosition(_aimLockRole.GetCenterPosition());
+        }
+        else
+        {
+            app.Cursor.CustomVisibleFlag = false;
+        }
+        return mousePos;
+    }
+
+    // 获取记录摇杆瞄准位置
+    private Vector2 GetRecordJoystickMousePos(Vector2 gPos)
+    {
+        if (InputManager.MoveAxis.LengthSquared() > 0.001f)
+        {
+            _recordJoystickMousePos = InputManager.MoveAxis.Normalized() * 120f;
+        }
+        return gPos + _recordJoystickMousePos;
+    }
+    
+    /// <summary>
+    /// 获取最近的敌人
+    /// </summary>
+    public Role GetNearestEnemy(float maxDistance)
+    {
+        Role nearestRole = null;
+        float nearestDistanceSquared = maxDistance * maxDistance;
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed)
+            {
+                continue;
+            }
+
+            var distanceSquared = Position.DistanceSquaredTo(role.Position);
+            if (distanceSquared < nearestDistanceSquared)
+            {
+                nearestDistanceSquared = distanceSquared;
+                nearestRole = role;
+            }
+        }
+
+        return nearestRole;
+    }
+
+    /// <summary>
+    /// 尝试找到比当前敌人更近的敌人（至少近指定距离）
+    /// </summary>
+    private Role TryFindCloserEnemy(Role currentRole, float minCloserDistance)
+    {
+        var currentDistSq = Position.DistanceSquaredTo(currentRole.Position);
+        var threshold = currentDistSq - minCloserDistance * minCloserDistance;
+        Role closerRole = null;
+        float minDistSq = float.MaxValue;
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed || role == currentRole)
+            {
+                continue;
+            }
+            var distSq = Position.DistanceSquaredTo(role.Position);
+            if (distSq < threshold && distSq < minDistSq)
+            {
+                minDistSq = distSq;
+                closerRole = role;
+            }
+        }
+        return closerRole;
+    }
     
     protected override void OnAffiliationChange(AffiliationArea prevArea)
     {
@@ -474,3 +583,4 @@ public partial class Player : Role
         }
     }
 }
+

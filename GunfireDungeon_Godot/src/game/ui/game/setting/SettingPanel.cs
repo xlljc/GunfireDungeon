@@ -74,12 +74,28 @@ public partial class SettingPanel : Setting
             save.PerfectPixel = S_PerfectPixel.Instance.ButtonPressed;
             GameApplication.Instance.SetPerfectPixel(save.PerfectPixel);
         };
-        //-----------------------------------------------------------
+        
+        //----------------------- 手柄设置 -----------------------------
+
+        S_LockAiming.Instance.ButtonPressed = save.JoystickAimAssist;
+        S_LockAiming.Instance.Pressed += () =>
+        {
+            save.JoystickAimAssist = S_LockAiming.Instance.ButtonPressed;
+            GameApplication.Instance.SetJoystickAimAssist(save.JoystickAimAssist);
+        };
+        
+        S_AimStrength.Instance.Value = save.JoystickAimAssistStrength;
+        S_AimStrength.Instance.ValueChanged += (double v) =>
+        {
+            save.JoystickAimAssistStrength = (float)v;
+            GameApplication.Instance.SetJoystickAimAssistStrength(save.JoystickAimAssistStrength);
+        };
     }
     
     public override void OnShowUi()
     {
         InputManager.AddBlockageMarking(GetInstanceId());
+        HandlerFocusList();
     }
 
     public override void OnHideUi()
@@ -90,6 +106,62 @@ public partial class SettingPanel : Setting
     public override void OnDestroyUi()
     {
         GameApplication.Instance.GameSave.Save();
+    }
+
+    public override void Process(float delta)
+    {
+        if (Input.IsActionJustPressed(InputAction.UiCancel))
+        {
+            if (PrevUi != null)
+            {
+                OpenPrevUi();
+            }
+            else
+            {
+                Destroy();
+            }
+        }
+    }
+
+    private void HandlerFocusList()
+    {
+        Control prev = null;
+        foreach (var child in S_SettingMenu.Instance.GetChildren())
+        {
+            if (child is HBoxContainer box && box.Visible)
+            {
+                foreach (var node in child.GetChildren())
+                {
+                    if (node is Control temp && (temp is CheckBox || temp is HSlider))
+                    {
+                        if (prev == null)
+                        {
+                            prev = temp;
+                            temp.GrabFocus();
+                        }
+                        else
+                        {
+                            prev.FocusNext = prev.GetPathTo(temp);
+                            prev = temp;
+                        }
+                        break;
+                    }
+                }
+            }
+            else if (child is Button btn && btn.Visible)
+            {
+                if (prev == null)
+                {
+                    prev = btn;
+                    btn.GrabFocus();
+                }
+                else
+                {
+                    prev.FocusNext = prev.GetPathTo(btn);
+                    prev = btn;
+                }
+            }
+        }
     }
 
     //切换全屏/非全屏

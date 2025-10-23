@@ -45,7 +45,7 @@ public partial class PauseMenuPanel : PauseMenu
 
     public override void Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_cancel")) //返回游戏
+        if (Input.IsActionJustPressed(InputAction.UiCancel)) //返回游戏
         {
             OnContinueClick();
         }

@@ -55,7 +55,7 @@ public partial class EncyclopediaPanel : Encyclopedia
     
     public override void Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_cancel"))
+        if (Input.IsActionJustPressed(InputAction.UiCancel))
         {
             OnCloseClick();
         }

@@ -13,6 +13,7 @@ public partial class Gun : Weapon
         if (InputManager.IsJoystickInput && TriggerRole != null && TriggerRole.IsPlayer())
         {
             Input.StartJoyVibration(0, 0, 0.9f, 0.2f);
+            // Input.StartJoyVibration(0, 1f, 1f, 0.3f);
         }
     }
 }

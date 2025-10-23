@@ -1807,4 +1807,9 @@ public abstract partial class Role : ActivityObject
     {
         TipRoot.AddAbnormalStateValue(type, value);
     }
+
+    public override Vector2 GetCenterPosition()
+    {
+        return AnimatedSprite.Position + Position + new Vector2(0, MountPoint.Position.Y);
+    }
 }

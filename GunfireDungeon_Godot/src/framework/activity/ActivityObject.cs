@@ -1841,7 +1841,7 @@ public partial class ActivityObject : CharacterBody2D, ICoroutine, IInteractive,
     /// <summary>
     /// 获取中心点坐标
     /// </summary>
-    public Vector2 GetCenterPosition()
+    public virtual Vector2 GetCenterPosition()
     {
         return AnimatedSprite.Position + Position;
     }
