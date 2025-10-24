@@ -382,7 +382,7 @@ public partial class Player : Role
     private Role GetAimAssistEnemy(Vector2 gPos, Vector2 aimPos, float assistStrength)
     {
         var fireDir = (aimPos - gPos).Normalized();
-        var assistAngle = Mathf.DegToRad(90f * assistStrength);
+        var assistAngle = Mathf.DegToRad(60f * assistStrength);
         var minDist = float.MaxValue;
         Role nearestEnemy = null;
         // var nearestEnemyPos = Vector2.Zero;
