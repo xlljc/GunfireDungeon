@@ -1,6 +1,5 @@
 ﻿
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Aspose.Cells;
@@ -9,66 +8,13 @@ using Environment = System.Environment;
 public static class ExcelGenerator
 {
     private static HashSet<string> _excelNames = new HashSet<string>();
-    private static Dictionary<string, Type?> _customTypes = new Dictionary<string, Type?>();
     //第一层key：表名，第二层key：id，第三层key：字段名
     private static Dictionary<string, Dictionary<string, Dictionary<string, TableCellValue>>> _allExcelData = new Dictionary<string, Dictionary<string, Dictionary<string, TableCellValue>>>();
     private static List<Workbook> _openWorkbook = new List<Workbook>();
     
-    private enum CollectionsType
+    static ExcelGenerator()
     {
-        None,
-        Array,
-        Map
-    }
-
-    private class TableCellValue
-    {
-        public int Row;
-        public int Column;
-        public string Text;
-        public Cell Cell;
-        public ExcelData ExcelData;
-        public Dictionary<string, object> RowDictionary;
-    }
-    
-    private class MappingData
-    {
-        public string TypeStr;
-        public string TypeName;
-        public CollectionsType CollectionsType;
-        public bool AutoParentheses = false;
-        
-        public bool IsRefExcel;
-        public string RefTypeStr;
-        public string RefTypeName;
-
-        public MappingData(string typeStr, string typeName, CollectionsType collectionsType)
-        {
-            TypeStr = typeStr;
-            TypeName = typeName;
-            CollectionsType = collectionsType;
-            IsRefExcel = false;
-        }
-        
-        public MappingData(string typeStr, string typeName, CollectionsType collectionsType, string refTypeStr, string refTypeName)
-        {
-            TypeStr = typeStr;
-            TypeName = typeName;
-            CollectionsType = collectionsType;
-            IsRefExcel = true;
-            RefTypeStr = refTypeStr;
-            RefTypeName = refTypeName;
-        }
-    }
-
-    private class ExcelData
-    {
-        public string TableName;
-        public string OutCode;
-        public List<string> ColumnNames = new List<string>();
-        public Dictionary<string, MappingData> ColumnMappingData = new Dictionary<string, MappingData>();
-        public Dictionary<string, Type> ColumnType = new Dictionary<string, Type>();
-        public List<Dictionary<string, object>> DataList = new List<Dictionary<string, object>>();
+        Utils.InitCustomTypes();
     }
     
     /// <summary>
@@ -184,7 +130,7 @@ public static class ExcelGenerator
         }
         catch (Exception e)
         {
-            PrintError(e.ToString());
+            Utils.PrintError(e.ToString());
             return false;
         }
 
@@ -414,7 +360,7 @@ public static class ExcelGenerator
         foreach (Cell cell in names)
         {
             //字段名称
-            var field = GetCellStringValue(cell);
+            var field = Utils.GetCellStringValue(cell);
             if (string.IsNullOrEmpty(field))
             {
                 if (cell.Column == 0)
@@ -439,7 +385,7 @@ public static class ExcelGenerator
             string description;
             if (descriptionCell != null)
             {
-                description = GetCellStringValue(descriptionCell).Replace("\n", " <br/>\n        /// ");
+                description = Utils.GetCellStringValue(descriptionCell).Replace("\n", " <br/>\n        /// ");
             }
             else
             {
@@ -447,7 +393,7 @@ public static class ExcelGenerator
             }
 
             //类型
-            var typeString = GetCellStringValue(types[cell.Column]);
+            var typeString = Utils.GetCellStringValue(types[cell.Column]);
             if (string.IsNullOrEmpty(typeString))
             {
                 throw new Exception($"表'{fileName}'中'{field}'这一列类型为空!");
@@ -469,7 +415,7 @@ public static class ExcelGenerator
             }
             catch (Exception e)
             {
-                PrintError(e.ToString());
+                Utils.PrintError(e.ToString());
                 throw new Exception($"表'{fileName}'中'{field}'这一列类型描述语法错误: {typeString}");
             }
 
@@ -547,7 +493,7 @@ public static class ExcelGenerator
             for (int j = 0; j < columnCount; j++)
             {
                 var cell = row[j];
-                var strValue = GetCellStringValue(cell);
+                var strValue = Utils.GetCellStringValue(cell);
                 if (j == 0)
                 {
                     if (string.IsNullOrEmpty(strValue)) //如果这一行的第一列数据为空, 则跳过这一行
@@ -652,7 +598,7 @@ public static class ExcelGenerator
                                 {
                                     if (cellStringValue.Length == 0)
                                     {
-                                        var customType = GetCustomType(mappingData.TypeStr);
+                                        var customType = Utils.GetCustomType(mappingData.TypeStr);
                                         if (customType != null && customType.IsEnum)
                                         {
                                             var values = customType.GetEnumValues();
@@ -701,7 +647,7 @@ public static class ExcelGenerator
                     }
                     catch (Exception e)
                     {
-                        PrintError(e.ToString());
+                        Utils.PrintError(e.ToString());
                         throw new Exception($"解析表'{tableName}'第'{cellValue.Row}({id})'行第'{cellValue.Column}({fieldName})'列数据时发生异常");
                     }
                 }
@@ -785,32 +731,13 @@ public static class ExcelGenerator
 
         throw new Exception($"解析引用数据没有找到'{tableName}'表！");
     }
-    
-    private static string GetCellStringValue(Cell cell)
-    {
-        if (cell == null)
-        {
-            return "";
-        }
-        switch (cell.Type)
-        {
-            case CellValueType.IsNumeric:
-                return cell.DoubleValue.ToString();
-            case CellValueType.IsString:
-                return cell.StringValue;
-            case CellValueType.IsBool:
-                return cell.BoolValue ? "true" : "false";
-        }
-
-        return "";
-    }
 
     private static MappingData ConvertToType(string str, int depth = 0)
     {
         if (Regex.IsMatch(str, "^\\w+$"))
         {
-            var typeStr = TypeStrMapping(str);
-            var typeName = TypeNameMapping(str);
+            var typeStr = Utils.TypeStrMapping(str);
+            var typeName = Utils.TypeNameMapping(str);
             return new MappingData(typeStr, typeName, CollectionsType.None);
         }
         else if (Regex.IsMatch(str, "^\\$\\w+$")) //引用其他表
@@ -826,7 +753,7 @@ public static class ExcelGenerator
                 throw new Exception("引用表数据失败, 引用表数据仅支持放入第一层的数组和字典!");
             }
 
-            return new MappingData(TypeStrMapping("string"), TypeNameMapping("string"), CollectionsType.None, realName, realName);
+            return new MappingData(Utils.TypeStrMapping("string"), Utils.TypeNameMapping("string"), CollectionsType.None, realName, realName);
         }
         else if (str.StartsWith('{')) //字典
         {
@@ -838,7 +765,7 @@ public static class ExcelGenerator
             }
 
             var keyStr = tempStr.Substring(0, index);
-            var flag = IsBaseType(keyStr);
+            var flag = Utils.IsBaseType(keyStr);
             
             if (!flag)
             {
@@ -884,125 +811,5 @@ public static class ExcelGenerator
             return new MappingData(typeStr, typeName, CollectionsType.Array);
         }
         throw new Exception("类型描述语法错误!");
-    }
-    
-    private static string TypeStrMapping(string typeName)
-    {
-        switch (typeName)
-        {
-            case "object": return  typeof(JsonElement).FullName;
-            case "boolean": return "bool";
-            default:
-            {
-                var type = GetCustomType(typeName);
-                if (type != null)
-                {
-                    return type.FullName;
-                }
-            }
-                break;
-        }
-
-        return typeName;
-    }
-
-    private static string TypeNameMapping(string typeName)
-    {
-        switch (typeName)
-        {
-            case "object":return typeof(JsonElement).AssemblyQualifiedName;
-            case "bool":
-            case "boolean": return typeof(bool).AssemblyQualifiedName;
-            case "byte": return typeof(byte).AssemblyQualifiedName;
-            case "sbyte": return typeof(sbyte).AssemblyQualifiedName;
-            case "short": return typeof(short).AssemblyQualifiedName;
-            case "ushort": return typeof(ushort).AssemblyQualifiedName;
-            case "int": return typeof(int).AssemblyQualifiedName;
-            case "uint": return typeof(uint).AssemblyQualifiedName;
-            case "long": return typeof(long).AssemblyQualifiedName;
-            case "ulong": return typeof(ulong).AssemblyQualifiedName;
-            case "string": return typeof(string).AssemblyQualifiedName;
-            case "float": return typeof(float).AssemblyQualifiedName;
-            case "double": return typeof(double).AssemblyQualifiedName;
-            default:
-            {
-                var type = GetCustomType(typeName);
-                if (type != null)
-                {
-                    return type.AssemblyQualifiedName;
-                }
-            }
-                break;
-        }
-
-        return typeName;
-    }
-
-    private static bool IsBaseType(string typeName)
-    {
-        switch (typeName)
-        {
-            case "bool":
-            case "boolean":
-            case "byte":
-            case "sbyte":
-            case "short":
-            case "ushort":
-            case "int":
-            case "uint":
-            case "long":
-            case "ulong":
-            case "string":
-            case "float":
-            case "double":
-                return true;
-        }
-
-        return false;
-    }
-
-    static ExcelGenerator()
-    {
-        var types = typeof(ExcelGenerator).Assembly.GetTypes();
-        foreach (var type in types)
-        {
-            var attribute = type.GetCustomAttribute<CustomNameAttribute>();
-            if (attribute != null)
-            {
-                _customTypes.Add(attribute.Name, type);
-            }
-            else
-            {
-                _customTypes.Add(type.FullName, type);
-            }
-        }
-    }
-    
-    private static Type GetCustomType(string typeName)
-    {
-        return _customTypes.GetValueOrDefault(typeName);
-    }
-    
-    private static void PrintError(string message)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(message);
-        Console.ResetColor();
-    }
-    
-    /// <summary>
-    /// 字符串首字母小写
-    /// </summary>
-    public static string FirstToLower(this string str)
-    {
-        return str.Substring(0, 1).ToLower() + str.Substring(1);
-    }
-    
-    /// <summary>
-    /// 字符串首字母大写
-    /// </summary>
-    public static string FirstToUpper(this string str)
-    {
-        return str.Substring(0, 1).ToUpper() + str.Substring(1);
     }
 }

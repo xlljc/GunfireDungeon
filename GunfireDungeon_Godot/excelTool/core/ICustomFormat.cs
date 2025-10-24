@@ -1,6 +1,9 @@
 ﻿
 using Aspose.Cells;
 
+/// <summary>
+/// 自定义格式化数据接口
+/// </summary>
 public interface ICustomFormat
 {
     /// <summary>
