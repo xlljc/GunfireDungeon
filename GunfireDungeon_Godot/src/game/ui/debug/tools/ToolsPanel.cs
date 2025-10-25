@@ -145,7 +145,7 @@ public partial class ToolsPanel : Tools
             if (hurt.CanHurt(player.Camp))
             {
                 var damage = new Dictionary<DamageType, int>();
-                damage.Add(DamageType.Real, 10000);
+                damage.Add(DamageType.Physical, 10000);
                 hurt.Hurt(player, damage, null, 0);
             }
         }
@@ -160,7 +160,7 @@ public partial class ToolsPanel : Tools
         }
         
         player.Hp = 0;
-        player.HurtHandler(player, 10000, DamageType.Real, 0);
+        player.HurtHandler(player, 10000, DamageType.Physical, 0);
     }
 
     private void MaxHpBtnClick()

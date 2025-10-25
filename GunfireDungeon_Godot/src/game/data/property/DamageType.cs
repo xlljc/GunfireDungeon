@@ -1,5 +1,4 @@
-﻿
-/// <summary>
+﻿/// <summary>
 /// 伤害类型
 /// </summary>
 public enum DamageType
@@ -9,31 +8,27 @@ public enum DamageType
     /// </summary>
     Physical,
     /// <summary>
-    /// 魔法伤害
-    /// </summary>
-    Magic,
-    /// <summary>
     /// 火焰伤害
     /// </summary>
     Fire,
     /// <summary>
-    /// 冰霜伤害
+    /// 电击伤害
     /// </summary>
-    Ice,
+    Electric,
     /// <summary>
-    /// 雷电伤害
+    /// 化学伤害
     /// </summary>
-    Thunder,
+    Chemical,
     /// <summary>
-    /// 光明伤害
+    /// 光学伤害
     /// </summary>
-    Light,
+    Optical,
     /// <summary>
-    /// 暗影伤害
+    /// 暗物质伤害
     /// </summary>
-    Dark,
+    DarkMatter,
     /// <summary>
-    /// 真实伤害
+    /// 爆破伤害
     /// </summary>
-    Real,
+    Explosive,
 }

@@ -21,7 +21,7 @@ public partial class HitNumber : ActivityObject, IPoolItem
     /// </summary>
     public void SetNumber(uint number, DamageType damageType)
     {
-        var damageConfig = ExcelConfig.DamageConfig_Map[((int)damageType).ToString()];
+        var damageConfig = ExcelConfig.DamageConfig_Map[damageType.ToString()];
         NumberSprite.SetNumber(number);
         NumberSprite.SetColor(damageConfig.Color.AsColor());
     }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using Config;
 using Godot;
 
@@ -104,39 +103,34 @@ public class RoleState
     public float PhysicalResist;
 
     /// <summary>
-    /// 魔法属性伤害抗性
-    /// </summary>
-    public float MagicResist;
-
-    /// <summary>
     /// 火焰属性伤害抗性
     /// </summary>
     public float FireResist;
 
     /// <summary>
-    /// 冰霜属性伤害抗性
+    /// 电击属性伤害抗性
     /// </summary>
-    public float IceResist;
+    public float ElectricResist;
 
     /// <summary>
-    /// 雷电属性伤害抗性
+    /// 化学属性伤害抗性
     /// </summary>
-    public float ThunderResist;
+    public float ChemicalResist;
 
     /// <summary>
-    /// 光明属性伤害抗性
+    /// 光学属性伤害抗性
     /// </summary>
-    public float LightResist;
+    public float OpticalResist;
 
     /// <summary>
-    /// 暗影属性伤害抗性
+    /// 暗物质属性伤害抗性
     /// </summary>
-    public float DarkResist;
+    public float DarkMatterResist;
 
     /// <summary>
-    /// 魔法属性伤害抗性
+    /// 爆破属性伤害抗性
     /// </summary>
-    public float RealResist;
+    public float ExplosiveResist;
 
     /// <summary>
     /// 计算抗性伤害
@@ -147,18 +141,18 @@ public class RoleState
         {
             case DamageType.Physical:
                 return Mathf.CeilToInt(damage * PhysicalResist);
-            case DamageType.Magic:
-                return Mathf.CeilToInt(damage * MagicResist);
             case DamageType.Fire:
                 return Mathf.CeilToInt(damage * FireResist);
-            case DamageType.Ice:
-                return Mathf.CeilToInt(damage * IceResist);
-            case DamageType.Thunder:
-                return Mathf.CeilToInt(damage * ThunderResist);
-            case DamageType.Light:
-                return Mathf.CeilToInt(damage * LightResist);
-            case DamageType.Dark:
-                return Mathf.CeilToInt(damage * DarkResist);
+            case DamageType.Electric:
+                return Mathf.CeilToInt(damage * ElectricResist);
+            case DamageType.Chemical:
+                return Mathf.CeilToInt(damage * ChemicalResist);
+            case DamageType.Optical:
+                return Mathf.CeilToInt(damage * OpticalResist);
+            case DamageType.DarkMatter:
+                return Mathf.CeilToInt(damage * DarkMatterResist);
+            case DamageType.Explosive:
+                return Mathf.CeilToInt(damage * ExplosiveResist);
         }
 
         return damage;

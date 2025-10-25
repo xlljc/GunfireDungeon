@@ -32,7 +32,7 @@ public class AsContinuousDamage : Component<Role>, IAbnormalStateComp
             _timer %= _updateTime;
             var damage = Mathf.CeilToInt(Master.MaxHp * _lostPercentage * _currLevel + _lostValue * _currLevel);
             var angel = Master.MountPoint.RealRotation + Mathf.Pi;
-            Master.HurtHandler(null, damage, DamageType.Real, angel);
+            Master.HurtHandler(null, damage, DamageType.Physical, angel);
         }
     }
     

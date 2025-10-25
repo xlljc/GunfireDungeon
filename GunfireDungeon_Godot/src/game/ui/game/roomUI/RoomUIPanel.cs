@@ -93,7 +93,7 @@ public partial class RoomUIPanel : RoomUI
     private void OnPlayerPickUpProp(object propObj)
     {
         var prop = (PropActivity)propObj;
-        var message = $"{prop.ActivityBase.Name}\n{prop.ActivityBase.Intro}";
+        var message = $"{prop.ActivityBase.Name}\n{prop.ActivityBase.Intro.Code}";
         BottomTipsPanel.ShowTips(prop.GetDefaultTexture(), message);
     }
 }

@@ -146,7 +146,7 @@
     "Type": 1,
     "Prefab": "bullet0006",
     "Harm": {
-      "Magic": [
+      "DarkMatter": [
         3
       ]
     },
@@ -194,7 +194,7 @@
     "Type": 1,
     "Prefab": "bullet0007",
     "Harm": {
-      "Real": [
+      "Chemical": [
         2
       ]
     },
@@ -242,7 +242,7 @@
     "Type": 1,
     "Prefab": "bullet0008",
     "Harm": {
-      "Real": [
+      "Chemical": [
         20
       ]
     },

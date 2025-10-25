@@ -43,15 +43,14 @@ public static partial class ExcelConfig
         /// <summary>
         /// 造成伤害的类型和值区间，多个key-value可以做多类型伤害 <br/>
         /// key为伤害类型，值如下 <br/>
+        /// value为伤害值，格式为[value]或者[min,max] <br/>
         /// Physical(0):物理伤害 <br/>
-        /// Magic(1):魔法伤害 <br/>
-        /// Fire(2):火焰伤害 <br/>
-        /// Ice(3):冰霜伤害 <br/>
-        /// Thunder(4):雷电伤害 <br/>
-        /// Light(5):光明伤害 <br/>
-        /// Dark(6):暗影伤害 <br/>
-        /// Real(7):真实伤害 <br/>
-        /// value为伤害值，格式为[value]或者[min,max]
+        /// Fire(1):火焰伤害 <br/>
+        /// Electric(2):电击伤害 <br/>
+        /// Chemical(3):化学伤害 <br/>
+        /// Optical(4):光学伤害 <br/>
+        /// DarkMatter(5):暗物质伤害 <br/>
+        /// Explosive(6):爆破伤害
         /// </summary>
         [JsonInclude]
         public Dictionary<DamageType, int[]> Harm;

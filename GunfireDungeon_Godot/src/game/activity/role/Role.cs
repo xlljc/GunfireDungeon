@@ -428,13 +428,13 @@ public abstract partial class Role : ActivityObject
         roleState.Friction = roleBase.Friction;
 
         roleState.PhysicalResist = roleBase.PhysicalResist;
-        roleState.MagicResist = roleBase.MagicResist;
+        roleState.PhysicalResist = roleBase.PhysicalResist;
         roleState.FireResist = roleBase.FireResist;
-        roleState.IceResist = roleBase.IceResist;
-        roleState.ThunderResist = roleBase.ThunderResist;
-        roleState.LightResist = roleBase.LightResist;
-        roleState.DarkResist = roleBase.DarkResist;
-        roleState.RealResist = roleBase.RealResist;
+        roleState.ElectricResist = roleBase.ElectricResist;
+        roleState.ChemicalResist = roleBase.ChemicalResist;
+        roleState.OpticalResist = roleBase.OpticalResist;
+        roleState.DarkMatterResist = roleBase.DarkMatterResist;
+        roleState.ExplosiveResist = roleBase.ExplosiveResist;
         
         var extraAttr = roleBase.ExtraAttr;
         if (extraAttr != null)
@@ -1037,7 +1037,7 @@ public abstract partial class Role : ActivityObject
         }
         else //没有护盾
         {
-            if (damageType != DamageType.Real) //不为真实伤时才能计算伤害
+            // if (damageType != DamageType.Real) //不为真实伤时才能计算伤害
             {
                 damage = RoleState.CalcHurtDamage(damage, damageType);
             }

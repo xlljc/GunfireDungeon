@@ -132,55 +132,46 @@ public static partial class ExcelConfig
         public AiRoleAttr AiAttr;
 
         /// <summary>
-        /// 物理属性伤害抗性 <br/>
-        /// 如果为1，也就是受到的伤害为100%。 <br/>
-        /// 如果为0.5，就是受到的伤害为50% <br/>
-        /// 后面几个属性抗性意义相同
+        /// 物理减免
         /// </summary>
         [JsonInclude]
         public float PhysicalResist;
 
         /// <summary>
-        /// 魔法属性伤害抗性
-        /// </summary>
-        [JsonInclude]
-        public float MagicResist;
-
-        /// <summary>
-        /// 火焰属性伤害抗性
+        /// 火焰减免
         /// </summary>
         [JsonInclude]
         public float FireResist;
 
         /// <summary>
-        /// 冰霜属性伤害抗性
+        /// 电击减免
         /// </summary>
         [JsonInclude]
-        public float IceResist;
+        public float ElectricResist;
 
         /// <summary>
-        /// 雷电属性伤害抗性
+        /// 化学减免
         /// </summary>
         [JsonInclude]
-        public float ThunderResist;
+        public float ChemicalResist;
 
         /// <summary>
-        /// 光明属性伤害抗性
+        /// 光学减免
         /// </summary>
         [JsonInclude]
-        public float LightResist;
+        public float OpticalResist;
 
         /// <summary>
-        /// 暗影属性伤害抗性
+        /// 暗物质减免
         /// </summary>
         [JsonInclude]
-        public float DarkResist;
+        public float DarkMatterResist;
 
         /// <summary>
-        /// 真实伤害属性伤害抗性，真实伤害指的是异常状态下受到的各种伤害，比如烧伤、中毒、出血等
+        /// 爆破减免
         /// </summary>
         [JsonInclude]
-        public float RealResist;
+        public float ExplosiveResist;
 
         /// <summary>
         /// 燃烧异常状态抗性
@@ -225,13 +216,12 @@ public static partial class ExcelConfig
             inst.RoleStrength = RoleStrength;
             inst.AiAttr = AiAttr;
             inst.PhysicalResist = PhysicalResist;
-            inst.MagicResist = MagicResist;
             inst.FireResist = FireResist;
-            inst.IceResist = IceResist;
-            inst.ThunderResist = ThunderResist;
-            inst.LightResist = LightResist;
-            inst.DarkResist = DarkResist;
-            inst.RealResist = RealResist;
+            inst.ElectricResist = ElectricResist;
+            inst.ChemicalResist = ChemicalResist;
+            inst.OpticalResist = OpticalResist;
+            inst.DarkMatterResist = DarkMatterResist;
+            inst.ExplosiveResist = ExplosiveResist;
             inst.AsBurningResist = AsBurningResist;
             inst.AsPoisoningResist = AsPoisoningResist;
             inst.AsBleedingResist = AsBleedingResist;

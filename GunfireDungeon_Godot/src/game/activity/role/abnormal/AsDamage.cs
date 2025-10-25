@@ -27,7 +27,7 @@ public class AsDamage : Component<Role>, IAbnormalStateComp
     {
         var damage = Mathf.CeilToInt(Master.MaxHp * _percentage + _fixed);
         var angel = Master.MountPoint.RealRotation + Mathf.Pi;
-        Master.HurtHandler(null, damage, DamageType.Real, angel);
+        Master.HurtHandler(null, damage, DamageType.Physical, angel);
         this.CallDelay(1f, () =>
         {
             _tipState.DoRemoveAbnormalState();
