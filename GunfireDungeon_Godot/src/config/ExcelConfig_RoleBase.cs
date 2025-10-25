@@ -28,14 +28,29 @@ public static partial class ExcelConfig
         public string Remark;
 
         /// <summary>
+        /// 判断角色以生命值、护盾值、装甲值的其中一种作为存活判定。 <br/>
+        /// Hp（生命值）：0 <br/>
+        /// Shield（护甲值）：1 <br/>
+        /// Armor（装甲值）：2 <br/>
+        /// 
+        /// </summary>
+        [JsonInclude]
+        public LifeTypeEnum LiftType;
+
+        /// <summary>
         /// 血量
         /// </summary>
         [JsonInclude]
         public int Hp;
 
         /// <summary>
-        /// 护盾值 <br/>
-        /// 敌人可以不用填写
+        /// 装甲值
+        /// </summary>
+        [JsonInclude]
+        public int Armor;
+
+        /// <summary>
+        /// 护盾值
         /// </summary>
         [JsonInclude]
         public int Shield;
@@ -99,6 +114,17 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public CampEnum Camp;
+
+        /// <summary>
+        /// 角色强度，作为非玩家角色，标识该敌人或NPC是 普通、稀有、精英等，不同类型的敌人生命血条会有特殊表现。其强度也不相同。 <br/>
+        /// Normal（普通）：0 <br/>
+        /// Rare（稀有）：1 <br/>
+        /// Elite（精英）：2 <br/>
+        /// Boss（头目）：3 <br/>
+        /// 
+        /// </summary>
+        [JsonInclude]
+        public RoleStrengthEnum RoleStrength;
 
         /// <summary>
         /// 绑定的Ai属性
@@ -183,7 +209,9 @@ public static partial class ExcelConfig
             inst.Id = Id;
             inst.Activity = Activity;
             inst.Remark = Remark;
+            inst.LiftType = LiftType;
             inst.Hp = Hp;
+            inst.Armor = Armor;
             inst.Shield = Shield;
             inst.MoveSpeed = MoveSpeed;
             inst.Acceleration = Acceleration;
@@ -194,6 +222,7 @@ public static partial class ExcelConfig
             inst.ActivePropsCapacity = ActivePropsCapacity;
             inst.PartPropCapacity = PartPropCapacity;
             inst.Camp = Camp;
+            inst.RoleStrength = RoleStrength;
             inst.AiAttr = AiAttr;
             inst.PhysicalResist = PhysicalResist;
             inst.MagicResist = MagicResist;
