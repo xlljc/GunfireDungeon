@@ -13,7 +13,7 @@
     "HealthReduce": 1,
     "Critable": true,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 0,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -31,7 +31,7 @@
     "HealthReduce": 1.5,
     "Critable": false,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 1,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -49,7 +49,7 @@
     "HealthReduce": 0.5,
     "Critable": false,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 2,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -67,7 +67,7 @@
     "HealthReduce": 1,
     "Critable": false,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 3,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -85,7 +85,7 @@
     "HealthReduce": 0.5,
     "Critable": true,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 4,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -103,7 +103,7 @@
     "HealthReduce": 1,
     "Critable": true,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 5,
     "MinReduce": 0.8,
     "MaxReduce": -1
   },
@@ -121,7 +121,7 @@
     "HealthReduce": 1.5,
     "Critable": true,
     "Effect": null,
-    "ReduceType": null,
+    "ReduceType": 6,
     "MinReduce": 0.8,
     "MaxReduce": -1
   }

@@ -59,10 +59,17 @@ public static partial class ExcelConfig
         public System.Text.Json.JsonElement Effect;
 
         /// <summary>
-        /// 减免类型
+        /// 减免类型 <br/>
+        /// Physical（物理减免）：0 <br/>
+        /// Fire（火焰减免）：1 <br/>
+        /// Electric（电击减免）：2 <br/>
+        /// Chemical（化学减免）：3 <br/>
+        /// Optical（光学减免）：4 <br/>
+        /// DarkMatter（暗物质减免）：5 <br/>
+        /// Explosive（爆破减免）：6
         /// </summary>
         [JsonInclude]
-        public System.Text.Json.JsonElement ReduceType;
+        public ReduceEnum ReduceType;
 
         /// <summary>
         /// 默认减免上限
