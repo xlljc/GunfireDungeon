@@ -151,7 +151,7 @@
       ]
     },
     "AbnormalState": {
-      "Burning": 5
+      "Bleeding": 5
     },
     "RepelRange": [
       45
@@ -199,7 +199,7 @@
       ]
     },
     "AbnormalState": {
-      "Poisoning": 8
+      "Bleeding": 8
     },
     "RepelRange": [
       15

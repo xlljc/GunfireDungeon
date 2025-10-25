@@ -11,7 +11,7 @@ public static partial class ExcelConfig
     public partial class AbnormalStateConfig
     {
         /// <summary>
-        /// 异常状态类型id，和AbnormalStateType枚举索引对应
+        /// 异常状态类型id，和AbnormalStateType枚举名称对应
         /// </summary>
         [JsonInclude]
         public string Id;

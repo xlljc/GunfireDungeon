@@ -216,22 +216,64 @@ public static partial class ExcelConfig
         public float ExplosiveResist;
 
         /// <summary>
-        /// 燃烧异常状态抗性
-        /// </summary>
-        [JsonInclude]
-        public int AsBurningResist;
-
-        /// <summary>
-        /// 中毒异常状态抗性
-        /// </summary>
-        [JsonInclude]
-        public int AsPoisoningResist;
-
-        /// <summary>
-        /// 出血异常状态抗性
+        /// 流血异常状态抗性
         /// </summary>
         [JsonInclude]
         public int AsBleedingResist;
+
+        /// <summary>
+        /// 点燃异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsIgniteResist;
+
+        /// <summary>
+        /// 短路异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsShortCircuitResist;
+
+        /// <summary>
+        /// 干扰异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsInterferenceResist;
+
+        /// <summary>
+        /// 触电异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsElectricShockResist;
+
+        /// <summary>
+        /// 腐蚀异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsCorrosionResist;
+
+        /// <summary>
+        /// 脆弱异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsFragileResist;
+
+        /// <summary>
+        /// 致盲异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsBlindResist;
+
+        /// <summary>
+        /// 混沌异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsChaosResist;
+
+        /// <summary>
+        /// 破甲异常状态抗性
+        /// </summary>
+        [JsonInclude]
+        public int AsArmorBreakResist;
 
         /// <summary>
         /// 返回浅拷贝出的新对象
@@ -271,9 +313,16 @@ public static partial class ExcelConfig
             inst.OpticalResist = OpticalResist;
             inst.DarkMatterResist = DarkMatterResist;
             inst.ExplosiveResist = ExplosiveResist;
-            inst.AsBurningResist = AsBurningResist;
-            inst.AsPoisoningResist = AsPoisoningResist;
             inst.AsBleedingResist = AsBleedingResist;
+            inst.AsIgniteResist = AsIgniteResist;
+            inst.AsShortCircuitResist = AsShortCircuitResist;
+            inst.AsInterferenceResist = AsInterferenceResist;
+            inst.AsElectricShockResist = AsElectricShockResist;
+            inst.AsCorrosionResist = AsCorrosionResist;
+            inst.AsFragileResist = AsFragileResist;
+            inst.AsBlindResist = AsBlindResist;
+            inst.AsChaosResist = AsChaosResist;
+            inst.AsArmorBreakResist = AsArmorBreakResist;
             return inst;
         }
     }

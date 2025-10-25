@@ -57,9 +57,16 @@ public static partial class ExcelConfig
 
         /// <summary>
         /// 累计异常状态数据 <br/>
-        /// Burning(0):燃烧 <br/>
-        /// Poisoning(1):中毒 <br/>
-        /// Bleeding(2):出血
+        /// Bleeding（流血）：0 <br/>
+        /// Ignite（点燃）：1 <br/>
+        /// ShortCircuit（短路）：2 <br/>
+        /// Interference（干扰）：3 <br/>
+        /// ElectricShock（触电）：4 <br/>
+        /// Corrosion（腐蚀）：5 <br/>
+        /// Fragile（脆弱）：6 <br/>
+        /// Blind（致盲）：7 <br/>
+        /// Chaos（混沌）：8 <br/>
+        /// ArmorBreak（破甲）：9
         /// </summary>
         [JsonInclude]
         public Dictionary<AbnormalStateType, int> AbnormalState;

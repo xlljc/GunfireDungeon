@@ -36,9 +36,16 @@
     "OpticalResist": 1,
     "DarkMatterResist": 1,
     "ExplosiveResist": 1,
-    "AsBurningResist": 30,
-    "AsPoisoningResist": 30,
-    "AsBleedingResist": 40
+    "AsBleedingResist": 30,
+    "AsIgniteResist": 30,
+    "AsShortCircuitResist": 40,
+    "AsInterferenceResist": 30,
+    "AsElectricShockResist": 30,
+    "AsCorrosionResist": 30,
+    "AsFragileResist": 30,
+    "AsBlindResist": 30,
+    "AsChaosResist": 30,
+    "AsArmorBreakResist": 30
   },
   {
     "Id": "shopBoss0001",
@@ -73,9 +80,16 @@
     "OpticalResist": 1,
     "DarkMatterResist": 1,
     "ExplosiveResist": 1,
-    "AsBurningResist": 0,
-    "AsPoisoningResist": 0,
-    "AsBleedingResist": 0
+    "AsBleedingResist": 0,
+    "AsIgniteResist": 0,
+    "AsShortCircuitResist": 0,
+    "AsInterferenceResist": 0,
+    "AsElectricShockResist": 0,
+    "AsCorrosionResist": 0,
+    "AsFragileResist": 0,
+    "AsBlindResist": 0,
+    "AsChaosResist": 0,
+    "AsArmorBreakResist": 0
   },
   {
     "Id": "enemy0001",
@@ -110,8 +124,15 @@
     "OpticalResist": 1,
     "DarkMatterResist": 1,
     "ExplosiveResist": 1,
-    "AsBurningResist": 30,
-    "AsPoisoningResist": 30,
-    "AsBleedingResist": 30
+    "AsBleedingResist": 30,
+    "AsIgniteResist": 30,
+    "AsShortCircuitResist": 30,
+    "AsInterferenceResist": 30,
+    "AsElectricShockResist": 30,
+    "AsCorrosionResist": 30,
+    "AsFragileResist": 30,
+    "AsBlindResist": 30,
+    "AsChaosResist": 30,
+    "AsArmorBreakResist": 30
   }
 ]

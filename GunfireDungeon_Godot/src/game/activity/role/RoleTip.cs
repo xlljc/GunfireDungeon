@@ -38,7 +38,7 @@ public partial class RoleTip : Node2D
         
         if (!_abnormalStateDir.TryGetValue(type, out var tipState))
         {
-            var config = ExcelConfig.AbnormalStateConfig_Map[((int)type).ToString()];
+            var config = ExcelConfig.AbnormalStateConfig_Map[type.ToString()];
             var state = CreateTipState(type, config);
             tipState = state;
             _abnormalStateDir.Add(type, tipState);
