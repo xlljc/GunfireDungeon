@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -282,6 +281,49 @@ public abstract partial class Role : ActivityObject
     private int _maxShield = 0;
 
     /// <summary>
+    /// 当前装甲值
+    /// </summary>
+    public int Armor
+    {
+        get => _armor;
+        set
+        {
+            var temp = _armor;
+            _armor = Mathf.Clamp(value, 0, _maxArmor);
+            //装甲值改变
+            if (temp != _armor)
+            {
+                OnChangeArmor(_armor);
+            }
+        }
+    }
+    private int _armor = 0;
+
+    /// <summary>
+    /// 最大装甲值
+    /// </summary>
+    public int MaxArmor
+    {
+        get => _maxArmor;
+        set
+        {
+            int temp = _maxArmor;
+            _maxArmor = value;
+            //最大装甲值改变
+            if (temp != _maxArmor)
+            {
+                OnChangeMaxArmor(_maxArmor);
+            }
+            //调整装甲值
+            if (Armor > _maxArmor)
+            {
+                Armor = _maxArmor;
+            }
+        }
+    }
+    private int _maxArmor = 0;
+
+    /// <summary>
     /// 无敌状态
     /// </summary>
     public bool Invincible
@@ -415,6 +457,9 @@ public abstract partial class Role : ActivityObject
         MaxShield = roleBase.Shield;
         Shield = roleBase.Shield;
         
+        MaxArmor = roleBase.Armor;
+        Armor = roleBase.Armor;
+        
         Camp = roleBase.Camp;
         IsAi = roleBase.AiAttr != null;
         
@@ -490,6 +535,20 @@ public abstract partial class Role : ActivityObject
     /// 最大护盾值改变时调用
     /// </summary>
     protected virtual void OnChangeMaxShield(int maxShield)
+    {
+    }
+
+    /// <summary>
+    /// 装甲值改变时调用
+    /// </summary>
+    protected virtual void OnChangeArmor(int armor)
+    {
+    }
+
+    /// <summary>
+    /// 最大装甲值改变时调用
+    /// </summary>
+    protected virtual void OnChangeMaxArmor(int maxArmor)
     {
     }
 
@@ -1099,8 +1158,24 @@ public abstract partial class Role : ActivityObject
             hitNumber.SetNumber((uint)damage, damageType);
         }
         
+        // 根据生命值类型判断是否死亡
+
+        var isDie = false;
+        switch (RoleState.RoleBase.LiftType)
+        {
+            case LifeTypeEnum.Hp:
+                isDie = Hp <= 0;
+                break;
+            case LifeTypeEnum.Shield:
+                isDie = Shield <= 0;
+                break;
+            case LifeTypeEnum.Armor:
+                isDie = Armor <= 0;
+                break;
+        }
+        
         //死亡判定
-        if (Hp <= 0)
+        if (isDie)
         {
             //死亡
             if (!IsDie)

@@ -6,7 +6,7 @@
     "LiftType": 0,
     "Hp": 80,
     "Shield": 30,
-    "Armor": 0,
+    "Armor": 30,
     "ShieldDelay": 10,
     "ShieldRate": 2,
     "ShieldInv": 1.5,

@@ -29,22 +29,22 @@ public static partial class ExcelConfig
         public SerializeColor Color;
 
         /// <summary>
-        /// 护盾减免
+        /// 护盾伤害倍率
         /// </summary>
         [JsonInclude]
-        public float ShieldReduce;
+        public float ShieldMultiplier;
 
         /// <summary>
-        /// 装甲减免
+        /// 装甲伤害倍率
         /// </summary>
         [JsonInclude]
-        public float ArmorReduce;
+        public float ArmorMultiplier;
 
         /// <summary>
-        /// 生命减免
+        /// 生命伤害倍率
         /// </summary>
         [JsonInclude]
-        public float HealthReduce;
+        public float HealthMultiplier;
 
         /// <summary>
         /// 可否暴击
@@ -72,13 +72,13 @@ public static partial class ExcelConfig
         public ReduceEnum ReduceType;
 
         /// <summary>
-        /// 默认减免上限
+        /// 默认减免上限（倍率）
         /// </summary>
         [JsonInclude]
         public float MinReduce;
 
         /// <summary>
-        /// 默认减免下限
+        /// 默认减免下限（倍率）
         /// </summary>
         [JsonInclude]
         public float MaxReduce;
@@ -92,9 +92,9 @@ public static partial class ExcelConfig
             inst.Id = Id;
             inst.Name = Name;
             inst.Color = Color;
-            inst.ShieldReduce = ShieldReduce;
-            inst.ArmorReduce = ArmorReduce;
-            inst.HealthReduce = HealthReduce;
+            inst.ShieldMultiplier = ShieldMultiplier;
+            inst.ArmorMultiplier = ArmorMultiplier;
+            inst.HealthMultiplier = HealthMultiplier;
             inst.Critable = Critable;
             inst.Effect = Effect;
             inst.ReduceType = ReduceType;
