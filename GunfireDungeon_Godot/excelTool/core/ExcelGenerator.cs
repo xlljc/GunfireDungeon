@@ -295,6 +295,7 @@ public static class ExcelGenerator
         return code;
     }
 
+    // 读取单个Excel表
     private static ExcelData ReadExcel(string excelPath)
     {
         var excelData = new ExcelData();
@@ -342,7 +343,7 @@ public static class ExcelGenerator
 
         var sourceFile = excelPath;
 
-        //列数
+        //有效列数
         var columnCount = -1;
 
         //加载表数据
@@ -357,7 +358,8 @@ public static class ExcelGenerator
         var types = cells.Rows[2];
 
         columnCount = 0;
-        foreach (Cell cell in names)
+        
+        foreach (Cell cell in names) // 遍历列名
         {
             //字段名称
             var field = Utils.GetCellStringValue(cell);
@@ -371,6 +373,9 @@ public static class ExcelGenerator
                 //到达最后一列了
                 break;
             }
+            
+            // 获取类型字段后进行自定义数据类型解析，如果是生成字段的列，就跳过
+            
 
             columnCount++;
             field = field.FirstToUpper();
@@ -524,6 +529,7 @@ public static class ExcelGenerator
         return excelData;
     }
 
+    // 解析所有表数据
     private static void AnalysisExcelData()
     {
         foreach (var keyValuePair in _allExcelData)
@@ -585,7 +591,7 @@ public static class ExcelGenerator
                             case "string":
                                 data.Add(field, AnalysisCellData(tableName, cellValue.Text, ""));
                                 break;
-                            default:
+                            default: // 其他数据类型
                             {
                                 var cellStringValue = AnalysisCellData(tableName, cellValue.Text, "");
                                 var returnType = cellValue.ExcelData.ColumnType[fieldName];
