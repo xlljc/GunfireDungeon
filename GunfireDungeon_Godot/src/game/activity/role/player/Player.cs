@@ -430,7 +430,7 @@ public partial class Player : Role
     protected override void OnShieldDestroy()
     {
         //破盾
-        PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
+        PlayInvincibleFlashing(RoleState.ShieldInv);
     }
 
     protected override int OnHandlerHurt(int damage)
@@ -440,7 +440,7 @@ public partial class Player : Role
             return damage;
         }
 
-        var value = Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp);
+        var value = Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp);
         return damage >= value ? //触发保护机制
             value : damage;
     }
@@ -451,13 +451,13 @@ public partial class Player : Role
         if (realHarm) //真实伤害，不是护盾抵消掉的
         {
             _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damage));
-            if (damage >= Mathf.CeilToInt(RoleState.WoundedMaxDamagePercent * MaxHp)) //触发保护机制的无敌时间
+            if (damage >= Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp)) //触发保护机制的无敌时间
             {
-                PlayInvincibleFlashing(RoleState.WoundedMaxDamageInvincibleTime);
+                PlayInvincibleFlashing(RoleState.WoundMaxInv);
             }
-            else if (GetDamageTakenInTheLastSecond() >= Mathf.CeilToInt(RoleState.WoundedInvinciblePercent * MaxHp)) //触发无敌
+            else if (GetDamageTakenInTheLastSecond() >= Mathf.CeilToInt(RoleState.WoundInvPct * MaxHp)) //触发无敌
             {
-                PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
+                PlayInvincibleFlashing(RoleState.WoundInv);
             }
         }
 

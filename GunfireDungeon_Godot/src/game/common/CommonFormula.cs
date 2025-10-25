@@ -1,7 +1,7 @@
 using System;
-
 using Godot;
 using Config;
+
 // 根据配置表公式, 该类是自动生成的, 请不要手动编辑!
 public partial class CommonFormula
 {

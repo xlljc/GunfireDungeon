@@ -426,6 +426,15 @@ public abstract partial class Role : ActivityObject
         roleState.MoveSpeed = roleBase.MoveSpeed;
         roleState.Acceleration = roleBase.Acceleration;
         roleState.Friction = roleBase.Friction;
+        
+        roleState.ShieldDelay = roleBase.ShieldDelay;
+        roleState.ShieldRate = roleBase.ShieldRate;
+        roleState.ShieldInv = roleBase.ShieldInv;
+        roleState.WoundInvPct = roleBase.WoundInvPct;
+        roleState.WoundInv = roleBase.WoundInv;
+        roleState.WoundMaxPct = roleBase.WoundMaxPct;
+        roleState.WoundMaxInv = roleBase.WoundMaxInv;
+        
 
         roleState.PhysicalResist = roleBase.PhysicalResist;
         roleState.PhysicalResist = roleBase.PhysicalResist;
@@ -708,9 +717,9 @@ public abstract partial class Role : ActivityObject
         {
             if (Shield < MaxShield)
             {
-                if (_shieldRecoveryTimer >= RoleState.ShieldRecoveryTime) //时间到, 恢复
+                if (_shieldRecoveryTimer >= RoleState.ShieldDelay) //时间到, 恢复
                 {
-                    _addShieldVal += RoleState.ShieldRecoverySpeed * delta;
+                    _addShieldVal += RoleState.ShieldRate * delta;
                     if (_addShieldVal >= 1)
                     {
                         Shield += (int)_addShieldVal;

@@ -17,11 +17,11 @@ public class Buff_WoundedInvincibleTime : BuffFragment
 
     public override void OnPickUpItem()
     {
-        Role.RoleState.WoundedInvincibleTime += _time;
+        Role.RoleState.WoundInv += _time;
     }
 
     public override void OnRemoveItem()
     {
-        Role.RoleState.WoundedInvincibleTime -= _time;
+        Role.RoleState.WoundInv -= _time;
     }
 }

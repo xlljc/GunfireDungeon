@@ -43,39 +43,39 @@ public class RoleState
     public float Friction = 900f;
 
     /// <summary>
-    /// 护盾恢复时间, 单位: 秒
+    /// 护盾恢复延迟（秒）
     /// </summary>
-    public float ShieldRecoveryTime = 10;
+    public float ShieldDelay = 10;
 
     /// <summary>
     /// 护盾恢复速度，每秒恢复量
     /// </summary>
-    public float ShieldRecoverySpeed = 2;
+    public float ShieldRate = 2;
 
     /// <summary>
     /// 破盾后的无敌时间, 单位: 秒
     /// </summary>
-    public float ShieldInvincibleTime = 1.5f;
+    public float ShieldInv = 1.5f;
 
     /// <summary>
-    /// 每秒受到多少百分比伤害后触发无敌
+    /// 每秒伤害百分比触发无敌
     /// </summary>
-    public float WoundedInvinciblePercent = 0.15f;
+    public float WoundInvPct = 0.15f;
 
     /// <summary>
     /// 受伤后的无敌时间, 单位: 秒
     /// </summary>
-    public float WoundedInvincibleTime = 1f;
+    public float WoundInv = 1f;
 
     /// <summary>
     /// 单次能受到最大的百分比伤害，也就是保护机制
     /// </summary>
-    public float WoundedMaxDamagePercent = 0.75f;
+    public float WoundMaxPct = 0.75f;
 
     /// <summary>
     /// 触发保护机制后的无敌时间, 单位: 秒
     /// </summary>
-    public float WoundedMaxDamageInvincibleTime = 2.5f;
+    public float WoundMaxInv = 2.5f;
 
     /// <summary>
     /// 近战攻击间隔时间

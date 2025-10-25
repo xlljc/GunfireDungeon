@@ -44,16 +44,58 @@ public static partial class ExcelConfig
         public int Hp;
 
         /// <summary>
+        /// 护盾值
+        /// </summary>
+        [JsonInclude]
+        public int Shield;
+
+        /// <summary>
         /// 装甲值
         /// </summary>
         [JsonInclude]
         public int Armor;
 
         /// <summary>
-        /// 护盾值
+        /// 护盾恢复延迟（秒）
         /// </summary>
         [JsonInclude]
-        public int Shield;
+        public float ShieldDelay;
+
+        /// <summary>
+        /// 护盾恢复速度，每秒恢复量，为0则不恢复
+        /// </summary>
+        [JsonInclude]
+        public float ShieldRate;
+
+        /// <summary>
+        /// 破盾后的无敌时间, 单位: 秒，为0则不触发无敌
+        /// </summary>
+        [JsonInclude]
+        public float ShieldInv;
+
+        /// <summary>
+        /// 每秒受到多少百分比伤害后触发无敌
+        /// </summary>
+        [JsonInclude]
+        public float WoundInvPct;
+
+        /// <summary>
+        /// 受伤后的无敌时间, 单位: 秒，为0则不触发无敌
+        /// </summary>
+        [JsonInclude]
+        public float WoundInv;
+
+        /// <summary>
+        /// 单次能受到最大的百分比伤害，也就是保护机制
+        /// </summary>
+        [JsonInclude]
+        public float WoundMaxPct;
+
+        /// <summary>
+        /// 触发保护机制后的无敌时间, 单位: 秒，为0则不触发无敌
+        /// </summary>
+        [JsonInclude]
+        public float WoundMaxInv;
 
         /// <summary>
         /// 移动速度
@@ -202,8 +244,15 @@ public static partial class ExcelConfig
             inst.Remark = Remark;
             inst.LiftType = LiftType;
             inst.Hp = Hp;
-            inst.Armor = Armor;
             inst.Shield = Shield;
+            inst.Armor = Armor;
+            inst.ShieldDelay = ShieldDelay;
+            inst.ShieldRate = ShieldRate;
+            inst.ShieldInv = ShieldInv;
+            inst.WoundInvPct = WoundInvPct;
+            inst.WoundInv = WoundInv;
+            inst.WoundMaxPct = WoundMaxPct;
+            inst.WoundMaxInv = WoundMaxInv;
             inst.MoveSpeed = MoveSpeed;
             inst.Acceleration = Acceleration;
             inst.Friction = Friction;
