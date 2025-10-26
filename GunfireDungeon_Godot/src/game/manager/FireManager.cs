@@ -179,8 +179,8 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            DamageDic = GetDamageDict(param.Bullet),
-            AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
+            Damages = GetDamageList(param.Bullet),
+            Abnormals = GetAbnormals(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             FlySpeed = Utils.Random.RandomConfigRange(param.Bullet.SpeedRange),
@@ -196,9 +196,9 @@ public static class FireManager
             //data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
             var roleState = weapon.TriggerRole.RoleState;
             
-            foreach (var item in param.Bullet.Damage)
+            foreach (var attackStatse in data.Damages)
             {
-                data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
+                attackStatse.BaseDamage = roleState.CalcDamage(attackStatse.BaseDamage, attackStatse.Type);
             }
             
             data.Repel = roleState.CalcBulletRepel(data.Repel);
@@ -226,8 +226,8 @@ public static class FireManager
             Weapon = null,
             BulletBase = param.Bullet,
             TriggerRole = role,
-            DamageDic = GetDamageDict(param.Bullet),
-            AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
+            Damages = GetDamageList(param.Bullet),
+            Abnormals = GetAbnormals(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             FlySpeed = Utils.Random.RandomConfigRange(param.Bullet.SpeedRange),
@@ -250,10 +250,12 @@ public static class FireManager
         var deviationAngle = Utils.Random.RandomConfigRange(param.Bullet.DeviationAngleRange);
         data.Altitude = role.GetFirePointAltitude();
         var roleState = role.RoleState;
-        foreach (var item in param.Bullet.Damage)
+        
+        foreach (var attackStatse in data.Damages)
         {
-            data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
+            attackStatse.BaseDamage = roleState.CalcDamage(attackStatse.BaseDamage, attackStatse.Type);
         }
+
         data.Repel = roleState.CalcBulletRepel(data.Repel);
         data.FlySpeed = roleState.CalcBulletSpeed(data.FlySpeed);
         data.MaxDistance = roleState.CalcBulletDistance(data.MaxDistance);
@@ -278,8 +280,8 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            DamageDic = GetDamageDict(param.Bullet),
-            AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
+            Damages = GetDamageList(param.Bullet),
+            Abnormals = GetAbnormals(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
             BounceCount = Utils.Random.RandomConfigRange(param.Bullet.BounceCount),
@@ -292,10 +294,12 @@ public static class FireManager
         if (weapon.TriggerRole != null)
         {
             var roleState = weapon.TriggerRole.RoleState;
-            foreach (var item in param.Bullet.Damage)
+            
+            foreach (var attackStatse in data.Damages)
             {
-                data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
+                attackStatse.BaseDamage = roleState.CalcDamage(attackStatse.BaseDamage, attackStatse.Type);
             }
+            
             data.Repel = roleState.CalcBulletRepel(data.Repel);
             data.BounceCount = roleState.CalcBulletBounceCount(data.BounceCount);
             deviationAngle = roleState.CalcBulletDeviationAngle(deviationAngle);
@@ -306,33 +310,34 @@ public static class FireManager
         return data;
     }
 
-    private static Dictionary<DamageType, int> GetDamageDict(ExcelConfig.BulletBase bullet)
+    private static List<AttackStats> GetDamageList(ExcelConfig.BulletBase bullet)
     {
         if (bullet.Damage == null || bullet.Damage.Count == 0)
         {
             return null;
         }
         
-        var damageDic = new Dictionary<DamageType, int>();
+        var damages = new List<AttackStats>();
         foreach (var item in bullet.Damage)
         {
-            damageDic.Add(item.Key, Utils.Random.RandomConfigRange(item.Value));
+            damages.Add(new AttackStats(Utils.Random.RandomConfigRange(item.Value),
+                item.Key, bullet.CritRate, bullet.CritBonus, bullet.CritArmorPenetration));
         }
-        return damageDic;
+        return damages;
     }
     
     
-    private static Dictionary<AbnormalStateType, int> GetAbnormalStateDict(ExcelConfig.BulletBase bullet)
+    private static List<AbnormalData> GetAbnormals(ExcelConfig.BulletBase bullet)
     {
         if (bullet.AbnormalState == null || bullet.AbnormalState.Count == 0)
         {
             return null;
         }
 
-        var result = new Dictionary<AbnormalStateType, int>();
+        var result = new List<AbnormalData>();
         foreach (var item in bullet.AbnormalState)
         {
-            result.Add(item.Key, item.Value);
+            result.Add(new AbnormalData(item.Key, item.Value));
         }
         return result;
     }

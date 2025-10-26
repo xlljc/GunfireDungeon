@@ -1,7 +1,9 @@
 ﻿
 using System.Collections.Generic;
-using Godot;
 
+/// <summary>
+/// 可以受到伤害的接口
+/// </summary>
 public interface IHurt
 {
     /// <summary>
@@ -14,8 +16,8 @@ public interface IHurt
     /// 受到伤害
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
-    /// <param name="damage">伤害数据，key为伤害类型，value为伤害值</param>
-    /// <param name="abnormalState">异常累计表值，key为异常类型，value为异常累计值，有可能为 null</param>
+    /// <param name="damages">伤害数据，可以是多段伤害数据，可以为 null</param>
+    /// <param name="abnormals">累计的异常状态数据，可以为 null</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    void Hurt(ActivityObject target, Dictionary<DamageType, int> damage, Dictionary<AbnormalStateType, int> abnormalState, float angle);
+    void Hurt(ActivityObject target, List<AttackStats> damages, List<AbnormalData> abnormals, float angle);
 }

@@ -12,7 +12,7 @@ public partial class ObstacleObject : ActivityObject, IHurt
         return true;
     }
 
-    public virtual void Hurt(ActivityObject target, Dictionary<DamageType, int> damage, Dictionary<AbnormalStateType, int> abnormalState, float angle)
+    public virtual void Hurt(ActivityObject target, List<AttackStats> damages, List<AbnormalData> abnormals, float angle)
     {
     }
 }

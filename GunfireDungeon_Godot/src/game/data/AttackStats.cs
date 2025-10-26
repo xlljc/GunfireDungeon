@@ -8,13 +8,13 @@ public class AttackStats
     {
     }
     
-    public AttackStats(float baseDamage, DamageType type)
+    public AttackStats(int baseDamage, DamageType type)
     {
         BaseDamage = baseDamage;
         Type = type;
     }
     
-    public AttackStats(float baseDamage, DamageType type, float critRate, float critBonus, float critArmorPenetration)
+    public AttackStats(int baseDamage, DamageType type, float critRate, float critBonus, float critArmorPenetration)
     {
         BaseDamage = baseDamage;
         Type = type;
@@ -26,7 +26,7 @@ public class AttackStats
     /// <summary>
     /// 基础伤害
     /// </summary>
-    public float BaseDamage;
+    public int BaseDamage;
     /// <summary>
     /// 伤害类型
     /// </summary>

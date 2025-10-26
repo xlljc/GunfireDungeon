@@ -1076,6 +1076,14 @@ public abstract partial class Role : ActivityObject
     }
 
     /// <summary>
+    /// 受到伤害处理，这个函数是给延时函数调用的，为了传入 AttackStats 参数
+    /// </summary>
+    public virtual void HurtHandlerByDeferred(ActivityObject target, GodotRefValue<AttackStats> attackStats, float angle)
+    {
+        HurtHandler(target, attackStats.Value, angle);
+    }
+    
+    /// <summary>
     /// 受到伤害, 如果是在碰撞信号处理函数中调用该函数, 请使用 CallDeferred 来延时调用, 否则很有可能导致报错
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
@@ -1853,8 +1861,7 @@ public abstract partial class Role : ActivityObject
                 o.AddRepelForce(v2);
             }
             
-            var damageDict = new Dictionary<DamageType, int>() { [DamageType.Physical] = damage };
-            hurt.Hurt(this, damageDict, null, (pos - GlobalPosition).Angle());
+            hurt.Hurt(this, [new AttackStats(damage, DamageType.Physical)], null, (pos - GlobalPosition).Angle());
         }
     }
 
