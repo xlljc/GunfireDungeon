@@ -38,8 +38,7 @@ public partial class HurtArea : Area2D, IHurt
         {
             foreach (var item in damages)
             {
-                var attackStats = new AttackStats();
-                Master.CallDeferred(nameof(Master.HurtHandlerByDeferred), target, new GodotRefValue<AttackStats>(attackStats), angle);
+                Master.CallDeferred(nameof(Master.HurtHandlerByDeferred), target, new GodotRefValue<AttackStats>(item), angle);
             }
         }
        
