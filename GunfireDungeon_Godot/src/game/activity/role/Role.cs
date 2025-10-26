@@ -28,15 +28,16 @@ public abstract partial class Role : ActivityObject
     /// 参数1为目标角色
     /// 参数2为造成对伤害值
     /// </summary>
-    public event Action<Role, int> OnDamageEvent;
+    public event DamageHandler OnDamageEvent;
+    public delegate void DamageHandler(Role target, DamageCalcResult damage);
 
     /// <summary>
     /// 当角色受到伤害时回调
     /// 参数1为造成伤害的角色
     /// 参数2为造成伤害值
-    /// 参数3为是否受到真实伤害, 如果为false, 则表示该伤害被护盾格挡掉了
     /// </summary>
-    public event Action<ActivityObject, int, bool> OnHitEvent;
+    public event HitHandler OnHitEvent;
+    public delegate void HitHandler(ActivityObject target, DamageCalcResult damage);
     
     /// <summary>
     /// 是否是 Ai
@@ -480,6 +481,7 @@ public abstract partial class Role : ActivityObject
         roleState.WoundMaxPct = roleBase.WoundMaxPct;
         roleState.WoundMaxInv = roleBase.WoundMaxInv;
         
+        roleState.CritResist = roleBase.CritResist;
 
         roleState.PhysicalResist = roleBase.PhysicalReduce;
         roleState.FireResist = roleBase.FireReduce;
@@ -562,10 +564,9 @@ public abstract partial class Role : ActivityObject
     /// 当受伤时调用
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
-    /// <param name="damage">受到的伤害</param>
+    /// <param name="damageCalcResult">受到的伤害数据</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    /// <param name="realHarm">是否受到真实伤害, 如果为false, 则表示该伤害被护盾格挡掉了</param>
-    protected virtual void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected virtual void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
     }
 
@@ -1078,10 +1079,9 @@ public abstract partial class Role : ActivityObject
     /// 受到伤害, 如果是在碰撞信号处理函数中调用该函数, 请使用 CallDeferred 来延时调用, 否则很有可能导致报错
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
-    /// <param name="damage">伤害的量</param>
-    /// <param name="damageType">伤害类型</param>
+    /// <param name="attackStats">伤害的数据</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    public virtual void HurtHandler(ActivityObject target, int damage, DamageType damageType, float angle)
+    public virtual void HurtHandler(ActivityObject target, AttackStats attackStats, float angle)
     {
         //受伤闪烁, 无敌状态, 或者已经死亡
         if (Invincible || IsDie)
@@ -1090,42 +1090,38 @@ public abstract partial class Role : ActivityObject
         }
 
         //计算角色抗性后受到的伤害
-        damage = RoleState.CalcResistDamage(damage, damageType);
+        var damageResult = DamageManager.ApplyDamage(this, attackStats);
         
         //计算真正受到的伤害
-        damage = OnHandlerHurt(damage);
+        if (damageResult.HealthDamage > 0)
+        {
+            damageResult.HealthDamage = OnHandlerHurt(damageResult.HealthDamage);
+        }
+        
         _shieldRecoveryTimer = 0;
 
-        var flag = Shield > 0;
-        if (flag) //有护盾
+        if (damageResult.SubShieldDamage > 0)
         {
-            Shield -= damage;
+            Shield -= damageResult.SubShieldDamage;
             _addShieldVal = 0;
         }
-        else //没有护盾
+
+        if (damageResult.SubArmorDamage > 0)
         {
-            // if (damageType != DamageType.Real) //不为真实伤时才能计算伤害
-            {
-                damage = RoleState.CalcHurtDamage(damage, damageType);
-            }
-            
-            if (damage > 0)
-            {
-                Hp -= damage;
-            }
-            //播放血液效果
-            // var packedScene = ResourceManager.Load<PackedScene>(ResourcePath.prefab_effect_Blood_tscn);
-            // var blood = packedScene.Instance<Blood>();
-            // blood.GlobalPosition = GlobalPosition;
-            // blood.Rotation = angle;
-            // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
+            Armor -= damageResult.SubArmorDamage;
+        }
+        
+        if (damageResult.SubHealthDamage > 0)
+        {
+            var damage = RoleState.CalcHurtDamage(damageResult.SubHealthDamage, attackStats.Type);
+            Hp -= damage;
         }
 
         PrevHitAngle = angle;
-        OnHit(target, damage, angle, !flag);
+        OnHit(target, damageResult, angle);
         if (OnHitEvent != null)
         {
-            OnHitEvent(target, damage, !flag);
+            OnHitEvent(target, damageResult);
         }
         
         if (target is Role targetRole && !targetRole.IsDestroyed)
@@ -1133,7 +1129,7 @@ public abstract partial class Role : ActivityObject
             //造成伤害回调
             if (targetRole.OnDamageEvent != null)
             {
-                targetRole.OnDamageEvent(this, damage);
+                targetRole.OnDamageEvent(this, damageResult);
             }
         }
         
@@ -1143,6 +1139,7 @@ public abstract partial class Role : ActivityObject
         //显示数字
         if (this is not Player)
         {
+            var damage = damageResult.SubShieldDamage + damageResult.SubArmorDamage + damageResult.SubHealthDamage;
             var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
             hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
             var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.7f, damage * 1.3f), 25, 60, 0.005f);
@@ -1154,11 +1151,17 @@ public abstract partial class Role : ActivityObject
                 0
             );
             hitNumber.InheritVelocity(this);
-            hitNumber.SetNumber((uint)damage, damageType);
+            hitNumber.SetNumber((uint)damage, attackStats.Type);
         }
         
+        // //播放血液效果
+        // var packedScene = ResourceManager.Load<PackedScene>(ResourcePath.prefab_effect_Blood_tscn);
+        // var blood = packedScene.Instantiate<Blood>();
+        // blood.GlobalPosition = GlobalPosition;
+        // blood.Rotation = angle;
+        // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
+        
         // 根据生命值类型判断是否死亡
-
         var isDie = false;
         switch (RoleState.RoleBase.LiftType)
         {
@@ -1836,7 +1839,7 @@ public abstract partial class Role : ActivityObject
     {
         if (hurt.CanHurt(Camp))
         {
-            var damage = Utils.Random.RandomConfigRange(activeWeapon.Attribute.MeleeAttackHarmRange);
+            var damage = Utils.Random.RandomConfigRange(activeWeapon.Attribute.MeleeAttackDamageRange);
             damage = RoleState.CalcDamage(damage, DamageType.Physical);
 
             var o = hurt.GetActivityObject();

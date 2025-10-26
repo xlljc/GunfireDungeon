@@ -53,7 +53,7 @@ public static partial class ExcelConfig
         /// Explosive(6):爆破伤害
         /// </summary>
         [JsonInclude]
-        public Dictionary<DamageType, int[]> Harm;
+        public Dictionary<DamageType, int[]> Damage;
 
         /// <summary>
         /// 累计异常状态数据 <br/>
@@ -70,6 +70,24 @@ public static partial class ExcelConfig
         /// </summary>
         [JsonInclude]
         public Dictionary<AbnormalStateType, int> AbnormalState;
+
+        /// <summary>
+        /// 暴击率（0-1）
+        /// </summary>
+        [JsonInclude]
+        public float CritRate;
+
+        /// <summary>
+        /// 暴击伤害修正（例如0.25表示+25%）
+        /// </summary>
+        [JsonInclude]
+        public float CritBonus;
+
+        /// <summary>
+        /// 暴击穿透装甲比例（例如0.25）
+        /// </summary>
+        [JsonInclude]
+        public float CritArmorPenetration;
 
         /// <summary>
         /// 造成伤害后击退值区间 <br/>
@@ -174,8 +192,11 @@ public static partial class ExcelConfig
             inst.Name = Name;
             inst.Type = Type;
             inst.Prefab = Prefab;
-            inst.Harm = Harm;
+            inst.Damage = Damage;
             inst.AbnormalState = AbnormalState;
+            inst.CritRate = CritRate;
+            inst.CritBonus = CritBonus;
+            inst.CritArmorPenetration = CritArmorPenetration;
             inst.RepelRange = RepelRange;
             inst.DeviationAngleRange = DeviationAngleRange;
             inst.SpeedRange = SpeedRange;

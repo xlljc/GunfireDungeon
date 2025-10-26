@@ -56,7 +56,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [
@@ -121,7 +121,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [
@@ -195,7 +195,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [
@@ -260,7 +260,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [
@@ -336,7 +336,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0.2,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [
@@ -401,7 +401,7 @@
     "ThrowShellCount": 1,
     "ThrowShellDelayTime": 0.2,
     "CanMeleeAttack": true,
-    "MeleeAttackHarmRange": [
+    "MeleeAttackDamageRange": [
       10
     ],
     "MeleeAttackRepelRange": [

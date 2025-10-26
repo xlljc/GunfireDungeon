@@ -43,12 +43,12 @@ public class Cha_Hurt : ChargeFragment
         Role.OnDamageEvent -= OnDamageEvent;
     }
 
-    private void OnDamageEvent(Role role, int value)
+    private void OnDamageEvent(Role role, DamageCalcResult damage)
     {
         if (Master.IsUsing)
         {
             return;
         }
-        Master.ChargeProgress += 1f / _value * value;
+        Master.ChargeProgress += 1f / _value * damage.TotalDamage;
     }
 }

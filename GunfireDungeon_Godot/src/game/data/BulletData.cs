@@ -32,7 +32,7 @@ public class BulletData : IClone<BulletData>
     /// <summary>
     /// 造成的伤害数据，键为伤害类型，值为伤害数值，
     /// </summary>
-    public Dictionary<DamageType, int> HarmDic;
+    public Dictionary<DamageType, int> DamageDic;
 
     /// <summary>
     /// 累加异常状态数据，键为异常状态类型，值为异常状态累计值，如果没有异常状态，则返回null
@@ -101,7 +101,7 @@ public class BulletData : IClone<BulletData>
             Weapon = Weapon,
             BulletBase = BulletBase,
             TriggerRole = TriggerRole,
-            HarmDic = HarmDic,
+            DamageDic = DamageDic,
             Repel = Repel,
             MaxDistance = MaxDistance,
             FlySpeed = FlySpeed,

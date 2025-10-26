@@ -31,7 +31,7 @@ public partial class TestScene2 : Node2D
             CritBonus = 0.5f, // 暴击伤害修正
             CritArmorPenetration = 0.5f // 暴击穿透装甲比例
         };
-        var damageResult = DamageCalculator.ApplyDamage_Log(roleBase, attack);
+        var damageResult = DamageManager.ApplyDamage_Log(roleBase, attack);
         roleBase.Shield -= (int)damageResult.ShieldDamage;
         roleBase.Armor -= (int)damageResult.ArmorDamage;
         roleBase.Hp -= (int)damageResult.HealthDamage;

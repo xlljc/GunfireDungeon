@@ -287,7 +287,7 @@ public static partial class ExcelConfig
         /// 格式为格式为[value]或者[min,max]
         /// </summary>
         [JsonInclude]
-        public int[] MeleeAttackHarmRange;
+        public int[] MeleeAttackDamageRange;
 
         /// <summary>
         /// 近战攻击造成伤害后击退值区间 <br/>
@@ -403,7 +403,7 @@ public static partial class ExcelConfig
             inst.ThrowShellCount = ThrowShellCount;
             inst.ThrowShellDelayTime = ThrowShellDelayTime;
             inst.CanMeleeAttack = CanMeleeAttack;
-            inst.MeleeAttackHarmRange = MeleeAttackHarmRange;
+            inst.MeleeAttackDamageRange = MeleeAttackDamageRange;
             inst.MeleeAttackRepelRange = MeleeAttackRepelRange;
             inst.BeginReloadSound = BeginReloadSound;
             inst.BeginReloadSoundDelayTime = BeginReloadSoundDelayTime;

@@ -1,55 +1,79 @@
-
 using Config;
 using Godot;
 
-public class AttackStats
-{
-    /// <summary>
-    /// 基础伤害
-    /// </summary>
-    public float BaseDamage;
-    /// <summary>
-    /// 伤害类型
-    /// </summary>
-    public DamageType Type;
-    /// <summary>
-    /// 暴击率
-    /// </summary>
-    public float CritRate;
-    /// <summary>
-    /// 暴击伤害修正（例如0.25表示+25%）
-    /// </summary>
-    public float CritBonus;
-    /// <summary>
-    /// 暴击穿透装甲比例（例如0.25）
-    /// </summary>
-    public float CritArmorPenetration;
-}
 
-public class DamageResult
-{
-    /// <summary>
-    /// 护盾伤害
-    /// </summary>
-    public float ShieldDamage;
-    
-    /// <summary>
-    /// 装甲伤害
-    /// </summary>
-    public float ArmorDamage;
-    
-    /// <summary>
-    /// 生命伤害
-    /// </summary>
-    public float HealthDamage;
-}
-
-public class DamageCalculator
+public class DamageManager
 {
     /// <summary>
     /// 伤害计算
     /// </summary>
-    public static DamageResult ApplyDamage(ExcelConfig.RoleBase roleBase, AttackStats attackStats)
+    public static DamageCalcResult ApplyDamage(Role role, AttackStats attackStats)
+    {
+        // ------------------------- 减免后逻辑
+        var roleBase = role.RoleState.RoleBase;
+        var damageConfig = ExcelConfig.DamageConfig_Map[attackStats.Type.ToString()];
+        float resist;
+        if (damageConfig.MinReduce > damageConfig.MaxReduce)
+        {
+            resist = Mathf.Clamp(roleBase.GetDamageResist(attackStats.Type), damageConfig.MaxReduce, damageConfig.MinReduce);
+        }
+        else
+        {
+            resist = Mathf.Clamp(roleBase.GetDamageResist(attackStats.Type), damageConfig.MinReduce, damageConfig.MaxReduce);
+        }
+        var damage = attackStats.BaseDamage * (1 - resist);
+        
+        // ------------------------- 护盾逻辑
+        var shieldMultiplier = damageConfig.ShieldMultiplier;
+        var shieldDamage = damage * shieldMultiplier;
+        var shieldOverflow = (shieldDamage - role.RealShield) / shieldMultiplier;
+
+        // ------------------------- 暴击逻辑
+        var criticalHitRate = attackStats.CritRate - roleBase.CritResist;
+        var criticalHit = shieldOverflow * (1 + attackStats.CritBonus);
+
+        var armorMultiplier = damageConfig.ArmorMultiplier;
+        var healthMultiplier = damageConfig.HealthMultiplier;
+
+        float armorDamage;
+        float armorOverflow;
+        float healthDamage;
+        
+        // 未溢出伤害的情况下不能触发暴击，不同的伤害类型也有可能不能触发暴击
+        var isCrit = shieldOverflow > 0 && damageConfig.Critable && Utils.Random.RandomBoolean(criticalHitRate);
+        if (isCrit)
+        {
+            armorDamage = criticalHit * (1 - attackStats.CritArmorPenetration) * armorMultiplier;
+            armorOverflow = Mathf.Max(0, (armorDamage - role.Armor) / armorMultiplier);
+            healthDamage = (criticalHit * attackStats.CritArmorPenetration + armorOverflow) * healthMultiplier;
+            return new DamageCalcResult
+            {
+                ShieldDamage = (int)shieldDamage,
+                ArmorDamage = Mathf.Max((int)armorDamage, 0),
+                HealthDamage = Mathf.Max((int)healthDamage, 0),
+                SubShieldDamage = Mathf.Min((int)shieldDamage, role.Shield),
+                SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), role.Armor),
+                SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), role.Hp)
+            };
+        }
+        armorDamage = shieldOverflow * armorMultiplier;
+        armorOverflow = Mathf.Max(0, (armorDamage - role.Armor) / armorMultiplier);
+        healthDamage = armorOverflow * healthMultiplier;
+        return new DamageCalcResult
+        {
+            ShieldDamage = (int)shieldDamage,
+            ArmorDamage = Mathf.Max((int)armorDamage, 0),
+            HealthDamage = Mathf.Max((int)healthDamage, 0),
+            SubShieldDamage = Mathf.Min((int)shieldDamage, role.Shield),
+            SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), role.Armor),
+            SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), role.Hp)
+        };
+    }
+    
+    /// <summary>
+    /// 伤害计算
+    /// </summary>
+    public static DamageCalcResult ApplyDamage(ExcelConfig.RoleBase roleBase, AttackStats attackStats)
     {
         // ------------------------- 减免后逻辑
         var damageConfig = ExcelConfig.DamageConfig_Map[attackStats.Type.ToString()];
@@ -87,29 +111,35 @@ public class DamageCalculator
             armorDamage = criticalHit * (1 - attackStats.CritArmorPenetration) * armorMultiplier;
             armorOverflow = Mathf.Max(0, (armorDamage - roleBase.Armor) / armorMultiplier);
             healthDamage = (criticalHit * attackStats.CritArmorPenetration + armorOverflow) * healthMultiplier;
-            return new DamageResult
+            return new DamageCalcResult
             {
-                ShieldDamage = shieldDamage,
-                ArmorDamage = Mathf.Max(armorDamage, 0),
-                HealthDamage = Mathf.Max(healthDamage, 0)
+                ShieldDamage = (int)shieldDamage,
+                ArmorDamage = Mathf.Max((int)armorDamage, 0),
+                HealthDamage = Mathf.Max((int)healthDamage, 0),
+                SubShieldDamage = Mathf.Min((int)shieldDamage, roleBase.Shield),
+                SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), roleBase.Armor),
+                SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), roleBase.Hp)
             };
         }
         armorDamage = shieldOverflow * armorMultiplier;
         armorOverflow = Mathf.Max(0, (armorDamage - roleBase.Armor) / armorMultiplier);
         healthDamage = armorOverflow * healthMultiplier;
         
-        return new DamageResult
+        return new DamageCalcResult
         {
-            ShieldDamage = shieldDamage,
-            ArmorDamage = Mathf.Max(armorDamage, 0),
-            HealthDamage = Mathf.Max(healthDamage, 0)
+            ShieldDamage = (int)shieldDamage,
+            ArmorDamage = Mathf.Max((int)armorDamage, 0),
+            HealthDamage = Mathf.Max((int)healthDamage, 0),
+            SubShieldDamage = Mathf.Min((int)shieldDamage, roleBase.Shield),
+            SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), roleBase.Armor),
+            SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), roleBase.Hp)
         };
     }
     
     /// <summary>
     /// 伤害计算，包含log
     /// </summary>
-    public static DamageResult ApplyDamage_Log(ExcelConfig.RoleBase roleBase, AttackStats attackStats)
+    public static DamageCalcResult ApplyDamage_Log(ExcelConfig.RoleBase roleBase, AttackStats attackStats)
     {
         // ------------------------- 减免后逻辑
         GD.Print("----------减免后逻辑");
@@ -175,11 +205,14 @@ public class DamageCalculator
             healthDamage = (criticalHit * attackStats.CritArmorPenetration + armorOverflow) * healthMultiplier;
             GD.Print($"伤害修正：{healthDamage}");
             
-            return new DamageResult
+            return new DamageCalcResult
             {
-                ShieldDamage = shieldDamage,
-                ArmorDamage = Mathf.Max(armorDamage, 0),
-                HealthDamage = Mathf.Max(healthDamage, 0)
+                ShieldDamage = (int)shieldDamage,
+                ArmorDamage = Mathf.Max((int)armorDamage, 0),
+                HealthDamage = Mathf.Max((int)healthDamage, 0),
+                SubShieldDamage = Mathf.Min((int)shieldDamage, roleBase.Shield),
+                SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), roleBase.Armor),
+                SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), roleBase.Hp)
             };
         }
         GD.Print("未触发暴击。");
@@ -196,11 +229,14 @@ public class DamageCalculator
         healthDamage = armorOverflow * healthMultiplier;
         GD.Print($"伤害修正：{healthDamage}");
         
-        return new DamageResult
+        return new DamageCalcResult
         {
-            ShieldDamage = shieldDamage,
-            ArmorDamage = Mathf.Max(armorDamage, 0),
-            HealthDamage = Mathf.Max(healthDamage, 0)
+            ShieldDamage = (int)shieldDamage,
+            ArmorDamage = Mathf.Max((int)armorDamage, 0),
+            HealthDamage = Mathf.Max((int)healthDamage, 0),
+            SubShieldDamage = Mathf.Min((int)shieldDamage, roleBase.Shield),
+            SubArmorDamage = Mathf.Min(Mathf.Max((int)armorDamage, 0), roleBase.Armor),
+            SubHealthDamage = Mathf.Min(Mathf.Max((int)healthDamage, 0), roleBase.Hp)
         };
     }
 }

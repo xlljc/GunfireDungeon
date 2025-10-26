@@ -33,9 +33,9 @@ public partial class Enemy : AiRole
         return roleState;
     }
 
-    protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected override void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
-        base.OnHit(target, damage, angle, realHarm);
+        base.OnHit(target, damageCalcResult, angle);
 
         if (Hp > 0) //受伤
         {

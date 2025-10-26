@@ -179,7 +179,7 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            HarmDic = GetDamageDict(param.Bullet),
+            DamageDic = GetDamageDict(param.Bullet),
             AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
@@ -196,9 +196,9 @@ public static class FireManager
             //data.Altitude = weapon.TriggerRole.GetFirePointAltitude();
             var roleState = weapon.TriggerRole.RoleState;
             
-            foreach (var item in param.Bullet.Harm)
+            foreach (var item in param.Bullet.Damage)
             {
-                data.HarmDic[item.Key] = roleState.CalcDamage(data.HarmDic[item.Key], item.Key);
+                data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
             }
             
             data.Repel = roleState.CalcBulletRepel(data.Repel);
@@ -226,7 +226,7 @@ public static class FireManager
             Weapon = null,
             BulletBase = param.Bullet,
             TriggerRole = role,
-            HarmDic = GetDamageDict(param.Bullet),
+            DamageDic = GetDamageDict(param.Bullet),
             AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
@@ -250,9 +250,9 @@ public static class FireManager
         var deviationAngle = Utils.Random.RandomConfigRange(param.Bullet.DeviationAngleRange);
         data.Altitude = role.GetFirePointAltitude();
         var roleState = role.RoleState;
-        foreach (var item in param.Bullet.Harm)
+        foreach (var item in param.Bullet.Damage)
         {
-            data.HarmDic[item.Key] = roleState.CalcDamage(data.HarmDic[item.Key], item.Key);
+            data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
         }
         data.Repel = roleState.CalcBulletRepel(data.Repel);
         data.FlySpeed = roleState.CalcBulletSpeed(data.FlySpeed);
@@ -278,7 +278,7 @@ public static class FireManager
             Weapon = weapon,
             BulletBase = param.Bullet,
             TriggerRole = hasRole ? weapon.TriggerRole : null,
-            HarmDic = GetDamageDict(param.Bullet),
+            DamageDic = GetDamageDict(param.Bullet),
             AbnormalStateDict = GetAbnormalStateDict(param.Bullet),
             Repel = Utils.Random.RandomConfigRange(param.Bullet.RepelRange),
             MaxDistance = Utils.Random.RandomConfigRange(param.Bullet.DistanceRange),
@@ -292,9 +292,9 @@ public static class FireManager
         if (weapon.TriggerRole != null)
         {
             var roleState = weapon.TriggerRole.RoleState;
-            foreach (var item in param.Bullet.Harm)
+            foreach (var item in param.Bullet.Damage)
             {
-                data.HarmDic[item.Key] = roleState.CalcDamage(data.HarmDic[item.Key], item.Key);
+                data.DamageDic[item.Key] = roleState.CalcDamage(data.DamageDic[item.Key], item.Key);
             }
             data.Repel = roleState.CalcBulletRepel(data.Repel);
             data.BounceCount = roleState.CalcBulletBounceCount(data.BounceCount);
@@ -308,17 +308,17 @@ public static class FireManager
 
     private static Dictionary<DamageType, int> GetDamageDict(ExcelConfig.BulletBase bullet)
     {
-        if (bullet.Harm == null || bullet.Harm.Count == 0)
+        if (bullet.Damage == null || bullet.Damage.Count == 0)
         {
             return null;
         }
         
-        var harmDic = new Dictionary<DamageType, int>();
-        foreach (var item in bullet.Harm)
+        var damageDic = new Dictionary<DamageType, int>();
+        foreach (var item in bullet.Damage)
         {
-            harmDic.Add(item.Key, Utils.Random.RandomConfigRange(item.Value));
+            damageDic.Add(item.Key, Utils.Random.RandomConfigRange(item.Value));
         }
-        return harmDic;
+        return damageDic;
     }
     
     

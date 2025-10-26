@@ -160,7 +160,7 @@ public partial class ToolsPanel : Tools
         }
         
         player.Hp = 0;
-        player.HurtHandler(player, 10000, DamageType.Physical, 0);
+        player.HurtHandler(player, new AttackStats(1000, DamageType.Physical), 0);
     }
 
     private void MaxHpBtnClick()

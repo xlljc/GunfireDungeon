@@ -98,6 +98,11 @@ public class RoleState
     public float RollCoolingTime = 0.2f;
 
     /// <summary>
+    /// 抗暴击率
+    /// </summary>
+    public float CritResist;
+    
+    /// <summary>
     /// 物理属性伤害抗性
     /// </summary>
     public float PhysicalResist;
@@ -131,32 +136,6 @@ public class RoleState
     /// 爆破属性伤害抗性
     /// </summary>
     public float ExplosiveResist;
-
-    /// <summary>
-    /// 计算抗性伤害
-    /// </summary>
-    public int CalcResistDamage(int damage, DamageType damageType)
-    {
-        switch (damageType)
-        {
-            case DamageType.Physical:
-                return Mathf.CeilToInt(damage * PhysicalResist);
-            case DamageType.Fire:
-                return Mathf.CeilToInt(damage * FireResist);
-            case DamageType.Electric:
-                return Mathf.CeilToInt(damage * ElectricResist);
-            case DamageType.Chemical:
-                return Mathf.CeilToInt(damage * ChemicalResist);
-            case DamageType.Optical:
-                return Mathf.CeilToInt(damage * OpticalResist);
-            case DamageType.DarkMatter:
-                return Mathf.CeilToInt(damage * DarkMatterResist);
-            case DamageType.Explosive:
-                return Mathf.CeilToInt(damage * ExplosiveResist);
-        }
-
-        return damage;
-    }
 
     public delegate void CalcDamageEventHandler(int damage, DamageType damageType, RefValue<int> result);
 

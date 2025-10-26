@@ -4,12 +4,15 @@
     "Name": "\u6B65\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0001",
-    "Harm": {
+    "Damage": {
       "Physical": [
         15
       ]
     },
     "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       20
     ],
@@ -50,12 +53,15 @@
     "Name": "\u9730\u5F39\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0002",
-    "Harm": {
+    "Damage": {
       "Physical": [
         15
       ]
     },
     "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -97,7 +103,7 @@
     "Name": "\u624B\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0003",
-    "Harm": {
+    "Damage": {
       "Physical": [
         10
       ]
@@ -105,6 +111,9 @@
     "AbnormalState": {
       "Bleeding": 5
     },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -145,7 +154,7 @@
     "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0006",
-    "Harm": {
+    "Damage": {
       "DarkMatter": [
         3
       ]
@@ -153,6 +162,9 @@
     "AbnormalState": {
       "Bleeding": 5
     },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       45
     ],
@@ -193,7 +205,7 @@
     "Name": "\u6BD2\u6DB2\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0007",
-    "Harm": {
+    "Damage": {
       "Chemical": [
         2
       ]
@@ -201,6 +213,9 @@
     "AbnormalState": {
       "Bleeding": 8
     },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -241,12 +256,15 @@
     "Name": "\u6C34\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0008",
-    "Harm": {
+    "Damage": {
       "Chemical": [
         20
       ]
     },
     "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -287,12 +305,15 @@
     "Name": "\u6FC0\u51491",
     "Type": 2,
     "Prefab": "res://prefab/bullet/laser/Laser0001.tscn",
-    "Harm": {
+    "Damage": {
       "Physical": [
         7
       ]
     },
     "AbnormalState": null,
+    "CritRate": 0,
+    "CritBonus": 0,
+    "CritArmorPenetration": 0,
     "RepelRange": [
       35
     ],
@@ -326,12 +347,15 @@
     "Name": "\u5200\u4F24\u5BB3",
     "Type": 3,
     "Prefab": "",
-    "Harm": {
+    "Damage": {
       "Physical": [
         25
       ]
     },
     "AbnormalState": null,
+    "CritRate": 0,
+    "CritBonus": 0,
+    "CritArmorPenetration": 0,
     "RepelRange": [
       70
     ],

@@ -445,13 +445,13 @@ public partial class Player : Role
             value : damage;
     }
     
-    protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected override void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
         //进入无敌状态
-        if (realHarm) //真实伤害，不是护盾抵消掉的
+        if (damageCalcResult.SubHealthDamage > 0) //真实伤害，不是护盾抵消掉的
         {
-            _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damage));
-            if (damage >= Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp)) //触发保护机制的无敌时间
+            _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damageCalcResult.SubHealthDamage));
+            if (damageCalcResult.SubHealthDamage >= Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp)) //触发保护机制的无敌时间
             {
                 PlayInvincibleFlashing(RoleState.WoundMaxInv);
             }

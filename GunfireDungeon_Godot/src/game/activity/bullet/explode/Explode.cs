@@ -38,7 +38,7 @@ public partial class Explode : Area2D, IPoolItem
 
     private bool _init = false;
     private float _hitRadius;
-    private Dictionary<DamageType, int> _harm;
+    private Dictionary<DamageType, int> _damage;
     private Dictionary<AbnormalStateType, int> _abnormalState;
     private float _repelledRadius;
     private float _maxRepelled;
@@ -65,11 +65,11 @@ public partial class Explode : Area2D, IPoolItem
     /// <param name="bulletData">产生爆炸的子弹数据</param>
     /// <param name="camp">所属阵营</param>
     /// <param name="hitRadius">伤害半径</param>
-    /// <param name="harm">造成的伤害</param>
+    /// <param name="damage">造成的伤害</param>
     /// <param name="abnormalState">异常状态累计值</param>
     /// <param name="repelledRadius">击退半径</param>
     /// <param name="maxRepelled">最大击退速度</param>
-    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, Dictionary<DamageType, int> harm, Dictionary<AbnormalStateType, int> abnormalState, float repelledRadius, float maxRepelled)
+    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, Dictionary<DamageType, int> damage, Dictionary<AbnormalStateType, int> abnormalState, float repelledRadius, float maxRepelled)
     {
         if (!_init)
         {
@@ -85,7 +85,7 @@ public partial class Explode : Area2D, IPoolItem
         Camp = camp;
         BulletData = bulletData;
         _hitRadius = hitRadius;
-        _harm = harm;
+        _damage = damage;
         _abnormalState = abnormalState;
         _repelledRadius = repelledRadius;
         _maxRepelled = maxRepelled;
@@ -175,7 +175,7 @@ public partial class Explode : Area2D, IPoolItem
             var target = (BulletData.TriggerRole == null || BulletData.TriggerRole.IsDestroyed) ? null : BulletData.TriggerRole;
             if (len <= _hitRadius) //在伤害半径内
             {
-                hurt.Hurt(target, _harm, _abnormalState, angle);
+                hurt.Hurt(target, _damage, _abnormalState, angle);
             }
         
             if (len <= _repelledRadius) //击退半径内
