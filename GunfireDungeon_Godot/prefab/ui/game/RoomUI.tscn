@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bvpmtfupny8iu"]
+[gd_scene load_steps=32 format=3 uid="uid://bvpmtfupny8iu"]
 
 [ext_resource type="Script" uid="uid://ibbcnmafy0xd" path="res://src/game/ui/game/roomUI/RoomUIPanel.cs" id="1_tfcrp"]
 [ext_resource type="Script" uid="uid://bkgrfjj3221jl" path="res://src/game/ui/game/roomUI/InteractiveTipBarHandler.cs" id="2_27wi7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ry4qsv2nkdk" path="res://resource/sprite/ui/roomUI/Panel.png" id="10_q3fs8"]
 [ext_resource type="Texture2D" uid="uid://7g1k5v212i6j" path="res://resource/sprite/weapon/weapon0005/Weapon0005.png" id="11_lsai4"]
 [ext_resource type="Texture2D" uid="uid://c1dun33cpspx6" path="res://resource/sprite/ui/roomUI/Cooldown.png" id="11_p0smc"]
+[ext_resource type="Texture2D" uid="uid://dvfvqtog0ypv8" path="res://resource/sprite/ui/roomUI/Armor_full.png" id="12_1l411"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="12_fgyob"]
 [ext_resource type="Texture2D" uid="uid://80tjj1bh3r72" path="res://resource/sprite/ui/roomUI/Life_full.png" id="12_vyncx"]
 [ext_resource type="Script" uid="uid://dmoav0vriaj7g" path="res://src/game/ui/game/roomUI/ActivePropBarHandler.cs" id="12_wm7ji"]
@@ -205,7 +206,6 @@ stretch_mode = 5
 custom_minimum_size = Vector2(160, 24)
 layout_mode = 2
 size_flags_vertical = 4
-mouse_filter = 2
 ValueColor = Color(0.0705882, 0.305882, 0.537255, 1)
 TempColor = Color(0.866667, 0.866667, 0.866667, 1)
 TempTime = 1.0
@@ -213,12 +213,35 @@ metadata/_edit_group_ = true
 
 [node name="TempRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="0"]
 offset_right = 139.0
-mouse_filter = 2
-
-[node name="ValueRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="1"]
-mouse_filter = 2
 
 [node name="Number" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="2"]
+horizontal_alignment = 0
+
+[node name="ArmorContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/ArmorContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_1l411")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ArmorProgressBar" parent="Control/LifeBar/VBoxContainer/ArmorContainer" instance=ExtResource("17_3h7xx")]
+custom_minimum_size = Vector2(160, 24)
+layout_mode = 2
+size_flags_vertical = 4
+ValueColor = Color(0.90588236, 0.9098039, 0, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = 1.0
+metadata/_edit_group_ = true
+
+[node name="TempRect" parent="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar" index="0"]
+offset_right = 139.0
+
+[node name="Number" parent="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar" index="2"]
 horizontal_alignment = 0
 
 [node name="LifeContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
@@ -237,17 +260,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(200, 24)
 layout_mode = 2
 size_flags_vertical = 4
-mouse_filter = 2
 ValueColor = Color(0.0216064, 0.460938, 0.16233, 1)
 TempColor = Color(0.988235, 0.780392, 0.415686, 1)
 TempTime = 1.0
 metadata/_edit_group_ = true
-
-[node name="TempRect" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="0"]
-mouse_filter = 2
-
-[node name="ValueRect" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="1"]
-mouse_filter = 2
 
 [node name="Number" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="2"]
 horizontal_alignment = 0
@@ -405,16 +421,9 @@ offset_left = 4.0
 offset_top = 48.0
 offset_right = 208.0
 offset_bottom = 60.0
-mouse_filter = 2
 ValueColor = Color(0, 0.364706, 0.67451, 1)
 TempColor = Color(0.866667, 0.866667, 0.866667, 1)
 TempTime = -1.0
-
-[node name="TempRect" parent="Control/WeaponBar/BufferManaProgress" index="0"]
-mouse_filter = 2
-
-[node name="ValueRect" parent="Control/WeaponBar/BufferManaProgress" index="1"]
-mouse_filter = 2
 
 [node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="2"]
 visible = false
@@ -453,7 +462,6 @@ offset_left = 24.0
 offset_top = 16.0
 offset_right = 208.0
 offset_bottom = 36.0
-mouse_filter = 2
 ValueColor = Color(0, 0.364706, 0.67451, 1)
 TempColor = Color(0.867188, 0.867188, 0.867188, 1)
 TempTime = 1.0
@@ -505,5 +513,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [editable path="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar"]
+[editable path="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar"]
 [editable path="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar"]
 [editable path="Control/WeaponBar/BufferManaProgress"]

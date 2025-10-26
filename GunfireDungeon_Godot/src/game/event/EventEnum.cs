@@ -49,6 +49,14 @@ public enum EventEnum
     /// </summary>
     OnPlayerMaxHpChange,
     /// <summary>
+    /// 玩家装甲值发生改变, 参数为玩家装甲值
+    /// </summary>
+    OnPlayerArmorChange,
+    /// <summary>
+    /// 玩家最大装甲值发生改变, 参数为玩家最大装甲值
+    /// </summary>
+    OnPlayerMaxArmorChange,
+    /// <summary>
     /// 玩家护盾值发生改变, 参数为玩家护盾值
     /// </summary>
     OnPlayerShieldChange,

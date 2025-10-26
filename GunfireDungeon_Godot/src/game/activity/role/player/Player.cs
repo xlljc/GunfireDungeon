@@ -480,33 +480,39 @@ public partial class Player : Role
         }
     }
 
-    protected override void OnChangeHp(int hp)
-    {
-        //GameApplication.Instance.Ui.SetHp(hp);
-        EventManager.EmitEvent(EventEnum.OnPlayerHpChange, hp);
-    }
-
-    protected override void OnChangeMaxHp(int maxHp)
-    {
-        //GameApplication.Instance.Ui.SetMaxHp(maxHp);
-        EventManager.EmitEvent(EventEnum.OnPlayerMaxHpChange, maxHp);
-    }
-
     protected override void ChangeInteractiveItem(CheckInteractiveResult prev, CheckInteractiveResult result)
     {
         //派发互动对象改变事件
         EventManager.EmitEvent(EventEnum.OnPlayerChangeInteractiveItem, result);
     }
+    
+    protected override void OnChangeHp(int hp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerHpChange, hp);
+    }
 
+    protected override void OnChangeMaxHp(int maxHp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerMaxHpChange, maxHp);
+    }
+
+    protected override void OnChangeArmor(int armor)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerArmorChange, armor);
+    }
+
+    protected override void OnChangeMaxArmor(int maxArmor)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerMaxArmorChange, maxArmor);
+    }
+    
     protected override void OnChangeShield(int shield)
     {
-        //GameApplication.Instance.Ui.SetShield(shield);
         EventManager.EmitEvent(EventEnum.OnPlayerShieldChange, shield);
     }
 
     protected override void OnChangeMaxShield(int maxShield)
     {
-        //GameApplication.Instance.Ui.SetMaxShield(maxShield);
         EventManager.EmitEvent(EventEnum.OnPlayerMaxShieldChange, maxShield);
     }
 

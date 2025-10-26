@@ -344,7 +344,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.TextureRect
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.TextureRect
     /// </summary>
     public class TextureRect_1 : UiNode<RoomUIPanel, Godot.TextureRect, TextureRect_1>
     {
@@ -353,7 +353,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.TempRect
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ArmorProgressBar.TempRect
     /// </summary>
     public class TempRect_1 : UiNode<RoomUIPanel, Godot.ColorRect, TempRect_1>
     {
@@ -362,7 +362,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.ValueRect
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ArmorProgressBar.ValueRect
     /// </summary>
     public class ValueRect_1 : UiNode<RoomUIPanel, Godot.ColorRect, ValueRect_1>
     {
@@ -371,7 +371,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.Number
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ArmorProgressBar.Number
     /// </summary>
     public class Number_1 : UiNode<RoomUIPanel, Godot.Label, Number_1>
     {
@@ -380,12 +380,12 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ArmorProgressBar
     /// </summary>
-    public class LifeProgressBar : UiNode<RoomUIPanel, CommProgressBar, LifeProgressBar>
+    public class ArmorProgressBar : UiNode<RoomUIPanel, CommProgressBar, ArmorProgressBar>
     {
         /// <summary>
-        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.TempRect
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.TempRect
         /// </summary>
         public TempRect_1 L_TempRect
         {
@@ -398,7 +398,7 @@ public abstract partial class RoomUI : UiBase
         private TempRect_1 _L_TempRect;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.ValueRect
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ValueRect
         /// </summary>
         public ValueRect_1 L_ValueRect
         {
@@ -411,7 +411,7 @@ public abstract partial class RoomUI : UiBase
         private ValueRect_1 _L_ValueRect;
 
         /// <summary>
-        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.Number
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.Number
         /// </summary>
         public Number_1 L_Number
         {
@@ -423,14 +423,14 @@ public abstract partial class RoomUI : UiBase
         }
         private Number_1 _L_Number;
 
-        public LifeProgressBar(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
-        public override LifeProgressBar Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+        public ArmorProgressBar(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override ArmorProgressBar Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer
     /// </summary>
-    public class LifeContainer : UiNode<RoomUIPanel, Godot.HBoxContainer, LifeContainer>
+    public class ArmorContainer : UiNode<RoomUIPanel, Godot.HBoxContainer, ArmorContainer>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.TextureRect
@@ -444,6 +444,125 @@ public abstract partial class RoomUI : UiBase
             }
         }
         private TextureRect_1 _L_TextureRect;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorProgressBar
+        /// </summary>
+        public ArmorProgressBar L_ArmorProgressBar
+        {
+            get
+            {
+                if (_L_ArmorProgressBar == null) _L_ArmorProgressBar = new ArmorProgressBar(UiPanel, Instance.GetNode<CommProgressBar>("ArmorProgressBar"));
+                return _L_ArmorProgressBar;
+            }
+        }
+        private ArmorProgressBar _L_ArmorProgressBar;
+
+        public ArmorContainer(RoomUIPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override ArmorContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.TextureRect
+    /// </summary>
+    public class TextureRect_2 : UiNode<RoomUIPanel, Godot.TextureRect, TextureRect_2>
+    {
+        public TextureRect_2(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override TextureRect_2 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.TempRect
+    /// </summary>
+    public class TempRect_2 : UiNode<RoomUIPanel, Godot.ColorRect, TempRect_2>
+    {
+        public TempRect_2(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public override TempRect_2 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.ValueRect
+    /// </summary>
+    public class ValueRect_2 : UiNode<RoomUIPanel, Godot.ColorRect, ValueRect_2>
+    {
+        public ValueRect_2(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public override ValueRect_2 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar.Number
+    /// </summary>
+    public class Number_2 : UiNode<RoomUIPanel, Godot.Label, Number_2>
+    {
+        public Number_2(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar
+    /// </summary>
+    public class LifeProgressBar : UiNode<RoomUIPanel, CommProgressBar, LifeProgressBar>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.TempRect
+        /// </summary>
+        public TempRect_2 L_TempRect
+        {
+            get
+            {
+                if (_L_TempRect == null) _L_TempRect = new TempRect_2(UiPanel, Instance.GetNode<Godot.ColorRect>("TempRect"));
+                return _L_TempRect;
+            }
+        }
+        private TempRect_2 _L_TempRect;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.ValueRect
+        /// </summary>
+        public ValueRect_2 L_ValueRect
+        {
+            get
+            {
+                if (_L_ValueRect == null) _L_ValueRect = new ValueRect_2(UiPanel, Instance.GetNode<Godot.ColorRect>("ValueRect"));
+                return _L_ValueRect;
+            }
+        }
+        private ValueRect_2 _L_ValueRect;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.Number
+        /// </summary>
+        public Number_2 L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number_2(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number_2 _L_Number;
+
+        public LifeProgressBar(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override LifeProgressBar Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer
+    /// </summary>
+    public class LifeContainer : UiNode<RoomUIPanel, Godot.HBoxContainer, LifeContainer>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.TextureRect
+        /// </summary>
+        public TextureRect_2 L_TextureRect
+        {
+            get
+            {
+                if (_L_TextureRect == null) _L_TextureRect = new TextureRect_2(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
+                return _L_TextureRect;
+            }
+        }
+        private TextureRect_2 _L_TextureRect;
 
         /// <summary>
         /// 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeProgressBar
@@ -532,6 +651,19 @@ public abstract partial class RoomUI : UiBase
             }
         }
         private ShieldContainer _L_ShieldContainer;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.LifeBar.ArmorContainer
+        /// </summary>
+        public ArmorContainer L_ArmorContainer
+        {
+            get
+            {
+                if (_L_ArmorContainer == null) _L_ArmorContainer = new ArmorContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("ArmorContainer"));
+                return _L_ArmorContainer;
+            }
+        }
+        private ArmorContainer _L_ArmorContainer;
 
         /// <summary>
         /// 节点路径: RoomUI.Control.LifeBar.LifeContainer
@@ -751,112 +883,6 @@ public abstract partial class RoomUI : UiBase
     /// <summary>
     /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.TempRect
     /// </summary>
-    public class TempRect_2 : UiNode<RoomUIPanel, Godot.ColorRect, TempRect_2>
-    {
-        public TempRect_2(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
-        public override TempRect_2 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.ValueRect
-    /// </summary>
-    public class ValueRect_2 : UiNode<RoomUIPanel, Godot.ColorRect, ValueRect_2>
-    {
-        public ValueRect_2(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
-        public override ValueRect_2 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.Number
-    /// </summary>
-    public class Number_2 : UiNode<RoomUIPanel, Godot.Label, Number_2>
-    {
-        public Number_2(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Number_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress
-    /// </summary>
-    public class BufferManaProgress : UiNode<RoomUIPanel, CommProgressBar, BufferManaProgress>
-    {
-        /// <summary>
-        /// 节点路径: RoomUI.Control.WeaponBar.TempRect
-        /// </summary>
-        public TempRect_2 L_TempRect
-        {
-            get
-            {
-                if (_L_TempRect == null) _L_TempRect = new TempRect_2(UiPanel, Instance.GetNode<Godot.ColorRect>("TempRect"));
-                return _L_TempRect;
-            }
-        }
-        private TempRect_2 _L_TempRect;
-
-        /// <summary>
-        /// 节点路径: RoomUI.Control.WeaponBar.ValueRect
-        /// </summary>
-        public ValueRect_2 L_ValueRect
-        {
-            get
-            {
-                if (_L_ValueRect == null) _L_ValueRect = new ValueRect_2(UiPanel, Instance.GetNode<Godot.ColorRect>("ValueRect"));
-                return _L_ValueRect;
-            }
-        }
-        private ValueRect_2 _L_ValueRect;
-
-        /// <summary>
-        /// 节点路径: RoomUI.Control.WeaponBar.Number
-        /// </summary>
-        public Number_2 L_Number
-        {
-            get
-            {
-                if (_L_Number == null) _L_Number = new Number_2(UiPanel, Instance.GetNode<Godot.Label>("Number"));
-                return _L_Number;
-            }
-        }
-        private Number_2 _L_Number;
-
-        public BufferManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
-        public override BufferManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
-    /// </summary>
-    public class WeaponSprite : UiNode<RoomUIPanel, Godot.TextureRect, WeaponSprite>
-    {
-        public WeaponSprite(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override WeaponSprite Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel
-    /// </summary>
-    public class WeaponPanel : UiNode<RoomUIPanel, Godot.NinePatchRect, WeaponPanel>
-    {
-        /// <summary>
-        /// 节点路径: RoomUI.Control.WeaponBar.WeaponSprite
-        /// </summary>
-        public WeaponSprite L_WeaponSprite
-        {
-            get
-            {
-                if (_L_WeaponSprite == null) _L_WeaponSprite = new WeaponSprite(UiPanel, Instance.GetNode<Godot.TextureRect>("WeaponSprite"));
-                return _L_WeaponSprite;
-            }
-        }
-        private WeaponSprite _L_WeaponSprite;
-
-        public WeaponPanel(RoomUIPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
-        public override WeaponPanel Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.TempRect
-    /// </summary>
     public class TempRect_3 : UiNode<RoomUIPanel, Godot.ColorRect, TempRect_3>
     {
         public TempRect_3(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
@@ -864,7 +890,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.ValueRect
+    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.ValueRect
     /// </summary>
     public class ValueRect_3 : UiNode<RoomUIPanel, Godot.ColorRect, ValueRect_3>
     {
@@ -873,7 +899,7 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.Number
+    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress.Number
     /// </summary>
     public class Number_3 : UiNode<RoomUIPanel, Godot.Label, Number_3>
     {
@@ -882,9 +908,9 @@ public abstract partial class RoomUI : UiBase
     }
 
     /// <summary>
-    /// 路径: RoomUI.Control.WeaponBar.ManaProgress
+    /// 路径: RoomUI.Control.WeaponBar.BufferManaProgress
     /// </summary>
-    public class ManaProgress : UiNode<RoomUIPanel, CommProgressBar, ManaProgress>
+    public class BufferManaProgress : UiNode<RoomUIPanel, CommProgressBar, BufferManaProgress>
     {
         /// <summary>
         /// 节点路径: RoomUI.Control.WeaponBar.TempRect
@@ -924,6 +950,112 @@ public abstract partial class RoomUI : UiBase
             }
         }
         private Number_3 _L_Number;
+
+        public BufferManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
+        public override BufferManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel.WeaponSprite
+    /// </summary>
+    public class WeaponSprite : UiNode<RoomUIPanel, Godot.TextureRect, WeaponSprite>
+    {
+        public WeaponSprite(RoomUIPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override WeaponSprite Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.WeaponPanel
+    /// </summary>
+    public class WeaponPanel : UiNode<RoomUIPanel, Godot.NinePatchRect, WeaponPanel>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.WeaponSprite
+        /// </summary>
+        public WeaponSprite L_WeaponSprite
+        {
+            get
+            {
+                if (_L_WeaponSprite == null) _L_WeaponSprite = new WeaponSprite(UiPanel, Instance.GetNode<Godot.TextureRect>("WeaponSprite"));
+                return _L_WeaponSprite;
+            }
+        }
+        private WeaponSprite _L_WeaponSprite;
+
+        public WeaponPanel(RoomUIPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
+        public override WeaponPanel Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.TempRect
+    /// </summary>
+    public class TempRect_4 : UiNode<RoomUIPanel, Godot.ColorRect, TempRect_4>
+    {
+        public TempRect_4(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public override TempRect_4 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.ValueRect
+    /// </summary>
+    public class ValueRect_4 : UiNode<RoomUIPanel, Godot.ColorRect, ValueRect_4>
+    {
+        public ValueRect_4(RoomUIPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public override ValueRect_4 Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress.Number
+    /// </summary>
+    public class Number_4 : UiNode<RoomUIPanel, Godot.Label, Number_4>
+    {
+        public Number_4(RoomUIPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Number_4 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomUI.Control.WeaponBar.ManaProgress
+    /// </summary>
+    public class ManaProgress : UiNode<RoomUIPanel, CommProgressBar, ManaProgress>
+    {
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.TempRect
+        /// </summary>
+        public TempRect_4 L_TempRect
+        {
+            get
+            {
+                if (_L_TempRect == null) _L_TempRect = new TempRect_4(UiPanel, Instance.GetNode<Godot.ColorRect>("TempRect"));
+                return _L_TempRect;
+            }
+        }
+        private TempRect_4 _L_TempRect;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.ValueRect
+        /// </summary>
+        public ValueRect_4 L_ValueRect
+        {
+            get
+            {
+                if (_L_ValueRect == null) _L_ValueRect = new ValueRect_4(UiPanel, Instance.GetNode<Godot.ColorRect>("ValueRect"));
+                return _L_ValueRect;
+            }
+        }
+        private ValueRect_4 _L_ValueRect;
+
+        /// <summary>
+        /// 节点路径: RoomUI.Control.WeaponBar.Number
+        /// </summary>
+        public Number_4 L_Number
+        {
+            get
+            {
+                if (_L_Number == null) _L_Number = new Number_4(UiPanel, Instance.GetNode<Godot.Label>("Number"));
+                return _L_Number;
+            }
+        }
+        private Number_4 _L_Number;
 
         public ManaProgress(RoomUIPanel uiPanel, CommProgressBar node) : base(uiPanel, node) {  }
         public override ManaProgress Clone() => new (UiPanel, (CommProgressBar)Instance.Duplicate());
@@ -1150,6 +1282,16 @@ public abstract partial class RoomUI : UiBase
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ShieldContainer
     /// </summary>
     public ShieldContainer S_ShieldContainer => L_Control.L_LifeBar.L_VBoxContainer.L_ShieldContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer.ArmorProgressBar
+    /// </summary>
+    public ArmorProgressBar S_ArmorProgressBar => L_Control.L_LifeBar.L_VBoxContainer.L_ArmorContainer.L_ArmorProgressBar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.VBoxContainer.ArmorContainer
+    /// </summary>
+    public ArmorContainer S_ArmorContainer => L_Control.L_LifeBar.L_VBoxContainer.L_ArmorContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomUI.Control.LifeBar.VBoxContainer.LifeContainer.LifeProgressBar

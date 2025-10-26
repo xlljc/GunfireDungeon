@@ -174,6 +174,12 @@ public static partial class ExcelConfig
         public AiRoleAttr AiAttr;
 
         /// <summary>
+        /// 抗暴击率
+        /// </summary>
+        [JsonInclude]
+        public float CritResist;
+
+        /// <summary>
         /// 物理减免
         /// </summary>
         [JsonInclude]
@@ -306,6 +312,7 @@ public static partial class ExcelConfig
             inst.Camp = Camp;
             inst.RoleStrength = RoleStrength;
             inst.AiAttr = AiAttr;
+            inst.CritResist = CritResist;
             inst.PhysicalResist = PhysicalResist;
             inst.FireResist = FireResist;
             inst.ElectricResist = ElectricResist;

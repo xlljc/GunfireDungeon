@@ -12,6 +12,7 @@ public partial class LifeBarHandler : Control, IUiNodeScript
     private EventFactory<EventEnum> _eventFactory;
     private bool _refreshHpFlag = false;
     private bool _refreshGoldFlag = false;
+    private bool _refreshArmorFlag = false;
 
     private Role _player;
 
@@ -24,6 +25,7 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         var container = _bar.L_VBoxContainer;
         container.L_LifeContainer.L_LifeProgressBar.Instance.SetAutoLengthRange(60, 1800);
         container.L_ShieldContainer.L_ShieldProgressBar.Instance.SetAutoLengthRange(60, 1800);
+        container.L_ArmorContainer.L_ArmorProgressBar.Instance.SetAutoLengthRange(60, 1800);
     }
     
     public void OnShow()
@@ -33,9 +35,12 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         _eventFactory.AddEventListener(EventEnum.OnPlayerMaxHpChange, o => RefreshLife());
         _eventFactory.AddEventListener(EventEnum.OnPlayerShieldChange, o => RefreshLife());
         _eventFactory.AddEventListener(EventEnum.OnPlayerMaxShieldChange, o => RefreshLife());
+        _eventFactory.AddEventListener(EventEnum.OnPlayerArmorChange, o => RefreshArmor());
+        _eventFactory.AddEventListener(EventEnum.OnPlayerMaxArmorChange, o => RefreshArmor());
         _eventFactory.AddEventListener(EventEnum.OnPlayerGoldChange, o => RefreshGold());
         RefreshLife();
         RefreshGold();
+        RefreshArmor();
     }
 
     public void OnHide()
@@ -53,6 +58,7 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         {
             _player = World.Current.Player;
             _refreshHpFlag = true;
+            _refreshArmorFlag = true;
         }
         
         if (_refreshHpFlag)
@@ -66,6 +72,12 @@ public partial class LifeBarHandler : Control, IUiNodeScript
             _refreshGoldFlag = false;
             HandlerRefreshGold();
         }
+
+        if (_refreshArmorFlag)
+        {
+            _refreshArmorFlag = false;
+            HandlerRefreshArmor();
+        }
     }
 
     public void RefreshGold()
@@ -76,6 +88,11 @@ public partial class LifeBarHandler : Control, IUiNodeScript
     public void RefreshLife()
     {
         _refreshHpFlag = true;
+    }
+
+    public void RefreshArmor()
+    {
+        _refreshArmorFlag = true;
     }
 
     private void HandlerRefreshLife()
@@ -104,6 +121,21 @@ public partial class LifeBarHandler : Control, IUiNodeScript
         }
 
         _bar.L_VBoxContainer.L_Gold.L_GoldText.Instance.Text = player.RoleState.Gold.ToString();
+    }
+
+    private void HandlerRefreshArmor()
+    {
+        var player = World.Current.Player;
+        if (player == null)
+        {
+            return;
+        }
+
+        var container = _bar.L_VBoxContainer;
+        container.L_ArmorContainer.L_ArmorProgressBar.Instance.MaxValue = player.MaxArmor;
+        container.L_ArmorContainer.L_ArmorProgressBar.Instance.Value = player.Armor;
+        
+        container.L_ArmorContainer.Instance.Visible = player.MaxArmor > 0;
     }
 
     public void OnDestroy()
