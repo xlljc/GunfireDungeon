@@ -481,14 +481,13 @@ public abstract partial class Role : ActivityObject
         roleState.WoundMaxInv = roleBase.WoundMaxInv;
         
 
-        roleState.PhysicalResist = roleBase.PhysicalResist;
-        roleState.PhysicalResist = roleBase.PhysicalResist;
-        roleState.FireResist = roleBase.FireResist;
-        roleState.ElectricResist = roleBase.ElectricResist;
-        roleState.ChemicalResist = roleBase.ChemicalResist;
-        roleState.OpticalResist = roleBase.OpticalResist;
-        roleState.DarkMatterResist = roleBase.DarkMatterResist;
-        roleState.ExplosiveResist = roleBase.ExplosiveResist;
+        roleState.PhysicalResist = roleBase.PhysicalReduce;
+        roleState.FireResist = roleBase.FireReduce;
+        roleState.ElectricResist = roleBase.ElectricReduce;
+        roleState.ChemicalResist = roleBase.ChemicalReduce;
+        roleState.OpticalResist = roleBase.OpticalReduce;
+        roleState.DarkMatterResist = roleBase.DarkMatterReduce;
+        roleState.ExplosiveResist = roleBase.ExplosiveReduce;
         
         var extraAttr = roleBase.ExtraAttr;
         if (extraAttr != null)

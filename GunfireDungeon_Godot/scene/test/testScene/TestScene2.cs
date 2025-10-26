@@ -14,24 +14,24 @@ public partial class TestScene2 : Node2D
             Shield = 60, // 护盾值
             Armor = 40, // 装甲值
             Hp = 100, // 生命值
-            PhysicalResist = -0.25f, // 物理伤害减免率
-            FireResist = 0.15f, // 火焰伤害减免率
-            ElectricResist = 0.3f, // 电击伤害减免率
-            ChemicalResist = 0.5f, // 化学伤害减免率
-            OpticalResist = 0.75f, // 光学伤害减免率
-            DarkMatterResist = 0f, // 暗物质伤害减免率
-            ExplosiveResist = -0.35f, // 爆破伤害减免率
+            PhysicalReduce = -0.25f, // 物理伤害减免率
+            FireReduce = 0.15f, // 火焰伤害减免率
+            ElectricReduce = 0.3f, // 电击伤害减免率
+            ChemicalReduce = 0.5f, // 化学伤害减免率
+            OpticalReduce = 0.75f, // 光学伤害减免率
+            DarkMatterReduce = 0f, // 暗物质伤害减免率
+            ExplosiveReduce = -0.35f, // 爆破伤害减免率
             CritResist = 0 // 抗暴率
         };
         var attack = new AttackStats
         {
             Type = DamageType.Fire, // 伤害类型
-            BaseDamage = 150, // 基础伤害
+            BaseDamage = 300, // 基础伤害
             CritRate = 1f, // 暴击率
             CritBonus = 0.5f, // 暴击伤害修正
             CritArmorPenetration = 0.5f // 暴击穿透装甲比例
         };
-        var damageResult = DamageCalculator.ApplyDamage(roleBase, attack);
+        var damageResult = DamageCalculator.ApplyDamage_Log(roleBase, attack);
         roleBase.Shield -= (int)damageResult.ShieldDamage;
         roleBase.Armor -= (int)damageResult.ArmorDamage;
         roleBase.Hp -= (int)damageResult.HealthDamage;

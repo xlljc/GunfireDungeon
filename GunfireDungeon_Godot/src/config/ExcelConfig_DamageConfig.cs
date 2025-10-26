@@ -11,7 +11,7 @@ public static partial class ExcelConfig
     public partial class DamageConfig
     {
         /// <summary>
-        /// 伤害类型id
+        /// 伤害类型id,和DamageType枚举名称对应
         /// </summary>
         [JsonInclude]
         public string Id;

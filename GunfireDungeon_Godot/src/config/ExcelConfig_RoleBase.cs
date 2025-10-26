@@ -183,43 +183,43 @@ public static partial class ExcelConfig
         /// 物理减免
         /// </summary>
         [JsonInclude]
-        public float PhysicalResist;
+        public float PhysicalReduce;
 
         /// <summary>
         /// 火焰减免
         /// </summary>
         [JsonInclude]
-        public float FireResist;
+        public float FireReduce;
 
         /// <summary>
         /// 电击减免
         /// </summary>
         [JsonInclude]
-        public float ElectricResist;
+        public float ElectricReduce;
 
         /// <summary>
         /// 化学减免
         /// </summary>
         [JsonInclude]
-        public float ChemicalResist;
+        public float ChemicalReduce;
 
         /// <summary>
         /// 光学减免
         /// </summary>
         [JsonInclude]
-        public float OpticalResist;
+        public float OpticalReduce;
 
         /// <summary>
         /// 暗物质减免
         /// </summary>
         [JsonInclude]
-        public float DarkMatterResist;
+        public float DarkMatterReduce;
 
         /// <summary>
         /// 爆破减免
         /// </summary>
         [JsonInclude]
-        public float ExplosiveResist;
+        public float ExplosiveReduce;
 
         /// <summary>
         /// 流血异常状态抗性
@@ -313,13 +313,13 @@ public static partial class ExcelConfig
             inst.RoleStrength = RoleStrength;
             inst.AiAttr = AiAttr;
             inst.CritResist = CritResist;
-            inst.PhysicalResist = PhysicalResist;
-            inst.FireResist = FireResist;
-            inst.ElectricResist = ElectricResist;
-            inst.ChemicalResist = ChemicalResist;
-            inst.OpticalResist = OpticalResist;
-            inst.DarkMatterResist = DarkMatterResist;
-            inst.ExplosiveResist = ExplosiveResist;
+            inst.PhysicalReduce = PhysicalReduce;
+            inst.FireReduce = FireReduce;
+            inst.ElectricReduce = ElectricReduce;
+            inst.ChemicalReduce = ChemicalReduce;
+            inst.OpticalReduce = OpticalReduce;
+            inst.DarkMatterReduce = DarkMatterReduce;
+            inst.ExplosiveReduce = ExplosiveReduce;
             inst.AsBleedingResist = AsBleedingResist;
             inst.AsIgniteResist = AsIgniteResist;
             inst.AsShortCircuitResist = AsShortCircuitResist;

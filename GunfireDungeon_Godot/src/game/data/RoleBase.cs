@@ -14,19 +14,19 @@ public partial class ExcelConfig
             switch (damageType)
             {
                 case DamageType.Physical:
-                    return PhysicalResist;
+                    return PhysicalReduce;
                 case DamageType.Fire:
-                    return FireResist;
+                    return FireReduce;
                 case DamageType.Electric:
-                    return ElectricResist;
+                    return ElectricReduce;
                 case DamageType.Chemical:
-                    return ChemicalResist;
+                    return ChemicalReduce;
                 case DamageType.Optical:
-                    return OpticalResist;
+                    return OpticalReduce;
                 case DamageType.DarkMatter:
-                    return DarkMatterResist;
+                    return DarkMatterReduce;
                 case DamageType.Explosive:
-                    return ExplosiveResist;
+                    return ExplosiveReduce;
             }
             return 0;
         }
