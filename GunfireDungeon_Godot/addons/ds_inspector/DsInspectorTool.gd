@@ -16,6 +16,8 @@ var tips: Label
 var tips_anim: AnimationPlayer
 @export
 var cheat: VBoxContainer
+@export
+var hover_iton: TextureButton
 
 var save_config: SaveConfig = null
 
@@ -38,6 +40,8 @@ func _enter_tree():
 	if save_config == null:
 		save_config = SaveConfig.new()
 		call_deferred("add_child", save_config)
+		if save_config.get_use_system_window():
+			get_viewport().gui_embed_subwindows = false
 
 func _ready():
 	brush.node_tree = window.tree
@@ -62,7 +66,7 @@ func _process(delta: float) -> void:
 				# 在macOS上使用Command键，其他平台使用Ctrl键
 				var modifier_key_pressed: bool = false
 				var p = OS.get_name()
-				if p == "OSX":
+				if p == "macOS":
 					modifier_key_pressed = Input.is_key_pressed(KEY_META)  # Command键
 				else:
 					modifier_key_pressed = Input.is_key_pressed(KEY_CTRL)  # Ctrl键
@@ -85,7 +89,7 @@ func _process(delta: float) -> void:
 						brush.set_show_text(true)
 						return
 					elif _selected_list.size() > 1: # and _tips_finish_count < 5: # 最多提示 5 次
-						if p == "OSX":
+						if p == "macOS":
 							tips.text = "错过了选中的节点？\n按住Command在点击鼠标左键可以回溯选择的节点！"
 						else:
 							tips.text = "错过了选中的节点？\n按住Ctrl在点击鼠标左键可以回溯选择的节点！"

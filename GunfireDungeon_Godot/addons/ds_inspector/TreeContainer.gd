@@ -27,9 +27,25 @@ var search_tree: Tree = get_node(search_tree_path)
 @onready
 var debug_tool = get_node(debug_tool_path)
 
+var auto_search_enabled: bool = false
+
 func _ready():
 	search_btn.pressed.connect(_do_serach)
 	clear_search_btn.pressed.connect(_do_clear_serach)
+	search_input.text_submitted.connect(_do_text_submitted)
+	search_input.text_changed.connect(_do_text_changed)
+	pass
+
+func set_auto_search_enabled(enabled: bool) -> void:
+	auto_search_enabled = enabled
+	search_btn.visible = !enabled
+
+func _do_text_changed(new_text: String):
+	if auto_search_enabled:
+		_do_serach()
+
+func _do_text_submitted(text: String):
+	_do_serach()
 	pass
 
 func _do_serach():

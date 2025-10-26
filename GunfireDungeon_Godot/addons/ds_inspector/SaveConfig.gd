@@ -13,6 +13,9 @@ class ConfigData:
 	var exclude_list: Array = []
 	var enable_in_editor: bool = false
 	var enable_in_game: bool = true
+	var use_system_window: bool = false
+	var auto_open: bool = false
+	var auto_search: bool = false
 
 # 统一的配置文件路径
 static var save_path: String = "user://ds_inspector_config.json"
@@ -51,26 +54,29 @@ func _serialize_value(value) -> Variant:
 			"hover_icon_position_y": value.hover_icon_position_y,
 			"exclude_list": value.exclude_list,
 			"enable_in_editor": value.enable_in_editor,
-			"enable_in_game": value.enable_in_game
+			"enable_in_game": value.enable_in_game,
+			"use_system_window": value.use_system_window,
+			"auto_open": value.auto_open,
+			"auto_search": value.auto_search
 		}
 	else:
 		return value
 
 func _deserialize_value(value) -> Variant:
-	if value is Dictionary and value.has("window_size_x"):
-		var config = ConfigData.new()
-		config.window_size_x = value.get("window_size_x", 800.0)
-		config.window_size_y = value.get("window_size_y", 600.0)
-		config.window_position_x = value.get("window_position_x", 100.0)
-		config.window_position_y = value.get("window_position_y", 100.0)
-		config.hover_icon_position_x = value.get("hover_icon_position_x", 0.0)
-		config.hover_icon_position_y = value.get("hover_icon_position_y", 0.0)
-		config.exclude_list = value.get("exclude_list", [])
-		config.enable_in_editor = value.get("enable_in_editor", false)
-		config.enable_in_game = value.get("enable_in_game", true)
-		return config
-	else:
-		return value
+	var config = ConfigData.new()
+	config.window_size_x = value.get("window_size_x", 800.0)
+	config.window_size_y = value.get("window_size_y", 600.0)
+	config.window_position_x = value.get("window_position_x", 100.0)
+	config.window_position_y = value.get("window_position_y", 100.0)
+	config.hover_icon_position_x = value.get("hover_icon_position_x", 0.0)
+	config.hover_icon_position_y = value.get("hover_icon_position_y", 0.0)
+	config.exclude_list = value.get("exclude_list", [])
+	config.enable_in_editor = value.get("enable_in_editor", false)
+	config.enable_in_game = value.get("enable_in_game", true)
+	config.use_system_window = value.get("use_system_window", false)
+	config.auto_open = value.get("auto_open", false)
+	config.auto_search = value.get("auto_search", false)
+	return config
 
 # 保存所有配置到文件
 func save_config() -> void:
@@ -79,6 +85,8 @@ func save_config() -> void:
 		var serialized_data = _serialize_value(_config_data)
 		file.store_string(JSON.stringify(serialized_data, "\t"))
 		file.close()
+		# print("----------")
+		# print("save:", serialized_data)
 		# print("配置已保存到 ", save_path)
 	else:
 		print("无法保存配置文件到 ", save_path)
@@ -98,10 +106,16 @@ func _load_config() -> void:
 					_config_data = _deserialize_value(result)
 				else:
 					print("配置文件格式错误，使用默认配置")
+					_config_data = ConfigData.new()
+					save_config()
 			else:
 				print("JSON 解析错误: ", json.get_error_message())
+				_config_data = ConfigData.new()
+				save_config()
 		else:
 			print("无法打开配置文件 ", save_path)
+			_config_data = ConfigData.new()
+			save_config()
 	else:
 		# 如果文件不存在，使用默认配置
 		_config_data = ConfigData.new()
@@ -186,3 +200,32 @@ func set_enable_in_game(enabled: bool) -> void:
 # 获取游戏中运行启用状态
 func get_enable_in_game() -> bool:
 	return _config_data.enable_in_game
+
+# ==================== Checkbox相关 ====================
+
+# 设置使用系统原生弹窗
+func set_use_system_window(enabled: bool) -> void:
+	_config_data.use_system_window = enabled
+	_needs_save = true
+
+# 获取使用系统原生弹窗
+func get_use_system_window() -> bool:
+	return _config_data.use_system_window
+
+# 设置启动游戏自动打弹窗
+func set_auto_open(enabled: bool) -> void:
+	_config_data.auto_open = enabled
+	_needs_save = true
+
+# 获取启动游戏自动打弹窗
+func get_auto_open() -> bool:
+	return _config_data.auto_open
+
+# 设置场景树自动搜索
+func set_auto_search(enabled: bool) -> void:
+	_config_data.auto_search = enabled
+	_needs_save = true
+
+# 获取场景树自动搜索
+func get_auto_search() -> bool:
+	return _config_data.auto_search

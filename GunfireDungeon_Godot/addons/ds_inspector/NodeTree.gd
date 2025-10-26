@@ -445,13 +445,13 @@ func _update_children(parent_item: TreeItem, parent_data: NodeData):
 	if parent_item.collapsed:
 		# 没展开需要判断是否有子节点，并生成占位符
 		if parent_data.slot_item == null:
-			if parent_data.node.get_child_count(true) > 0:
+			if parent_data.node.get_child_count() > 0:
 				parent_data.slot_item = create_item(parent_item)  # 创建一个子节点项以便展开
 			elif parent_item.get_child_count() > 0:
 				# 没有子节点了，移除所有子节点
 				for item in parent_item.get_children():
 					item.free()
-		elif parent_data.node.get_child_count(true) == 0:
+		elif parent_data.node.get_child_count() == 0:
 			# 没有子节点了，移除所有子节点
 			for item in parent_item.get_children():
 				item.free()
@@ -564,7 +564,7 @@ func _open_file(res_path: String):
 	var file_path: String = res_path.replace("res://", project_root).replace("/", "\\")
 	if OS.get_name() == "Windows":
 		OS.execute("cmd.exe", ["/c", "explorer.exe /select,\"" + file_path + "\""], [], false)
-	elif OS.get_name() == "OSX" or OS.get_name() == "macOS":
+	elif OS.get_name() == "macOS":
 		# 打开指定文件夹
 		var mac_path = res_path.replace("res://", project_root)
 		# Finder 选中文件
