@@ -48,6 +48,7 @@ public class DamageManager
             healthDamage = (criticalHit * attackStats.CritArmorPenetration + armorOverflow) * healthMultiplier;
             return new DamageCalcResult
             {
+                IsCritical = true,
                 ShieldDamage = (int)shieldDamage,
                 ArmorDamage = Mathf.Max((int)armorDamage, 0),
                 HealthDamage = Mathf.Max((int)healthDamage, 0),
@@ -61,6 +62,7 @@ public class DamageManager
         healthDamage = armorOverflow * healthMultiplier;
         return new DamageCalcResult
         {
+            IsCritical = false,
             ShieldDamage = (int)shieldDamage,
             ArmorDamage = Mathf.Max((int)armorDamage, 0),
             HealthDamage = Mathf.Max((int)healthDamage, 0),
@@ -113,6 +115,7 @@ public class DamageManager
             healthDamage = (criticalHit * attackStats.CritArmorPenetration + armorOverflow) * healthMultiplier;
             return new DamageCalcResult
             {
+                IsCritical = true,
                 ShieldDamage = (int)shieldDamage,
                 ArmorDamage = Mathf.Max((int)armorDamage, 0),
                 HealthDamage = Mathf.Max((int)healthDamage, 0),
@@ -127,6 +130,7 @@ public class DamageManager
         
         return new DamageCalcResult
         {
+            IsCritical = false,
             ShieldDamage = (int)shieldDamage,
             ArmorDamage = Mathf.Max((int)armorDamage, 0),
             HealthDamage = Mathf.Max((int)healthDamage, 0),
@@ -207,6 +211,7 @@ public class DamageManager
             
             return new DamageCalcResult
             {
+                IsCritical = true,
                 ShieldDamage = (int)shieldDamage,
                 ArmorDamage = Mathf.Max((int)armorDamage, 0),
                 HealthDamage = Mathf.Max((int)healthDamage, 0),
@@ -231,6 +236,7 @@ public class DamageManager
         
         return new DamageCalcResult
         {
+            IsCritical = false,
             ShieldDamage = (int)shieldDamage,
             ArmorDamage = Mathf.Max((int)armorDamage, 0),
             HealthDamage = Mathf.Max((int)healthDamage, 0),

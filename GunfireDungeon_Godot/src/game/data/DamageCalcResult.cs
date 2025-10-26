@@ -1,6 +1,14 @@
 
+/// <summary>
+/// 伤害计算结果
+/// </summary>
 public class DamageCalcResult
 {
+    /// <summary>
+    /// 是否触发了暴击
+    /// </summary>
+    public bool IsCritical;
+    
     /// <summary>
     /// 护盾伤害
     /// </summary>

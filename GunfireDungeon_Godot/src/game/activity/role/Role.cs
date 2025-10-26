@@ -1099,6 +1099,11 @@ public abstract partial class Role : ActivityObject
 
         //计算角色抗性后受到的伤害
         var damageResult = DamageManager.ApplyDamage(this, attackStats);
+
+        if (damageResult.IsCritical)
+        {
+            Debug.Log("触发暴击了!");
+        }
         
         //计算真正受到的伤害
         if (damageResult.HealthDamage > 0)
