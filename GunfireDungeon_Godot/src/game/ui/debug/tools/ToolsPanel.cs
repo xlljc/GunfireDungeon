@@ -83,6 +83,15 @@ public partial class ToolsPanel : Tools
         
         // 关闭房间迷雾
         S_CloseRoomFog.Instance.Pressed += CloseRoomFogClick;
+        
+        // 加载指定地牢
+        S_LoadDungeonInput.Instance.Text = _save.Debug.LoadDungeon;
+        S_LoadDungeonInput.Instance.TextChanged += (str) =>
+        {
+            _save.Debug.LoadDungeon = str;
+            _save.LateSave();
+            GameApplication.Instance.SetLoadDungeon(str);
+        };
     }
 
     public override void OnDestroyUi()

@@ -146,12 +146,6 @@ public partial class GameApplication : Node2D, ICoroutine
         {
             DungeonGroupList.Add(dungeonRoomGroup.Key);
         }
-
-        FirstDungeonConfig = GetDungeonConfig(DungeonGroupList[0], 1);
-        
-        //临时处理
-        //RoomConfig[DungeonGroupList[0]].BgColor = new Color("0a0a19");
-        RoomConfig[DungeonGroupList[0]].SoundId = null; //"level1_bgm";
     }
 
     /// <summary>
@@ -217,6 +211,13 @@ public partial class GameApplication : Node2D, ICoroutine
         
         //加载存档
         LoadGameSave(this);
+        
+        // 设置加载地牢
+        SetLoadDungeon(GameSave.Debug.LoadDungeon);
+
+        //临时处理
+        //RoomConfig[DungeonGroupList[0]].BgColor = new Color("0a0a19");
+        RoomConfig[DungeonGroupList[0]].SoundId = null; //"level1_bgm";
         
         //调试Ui
         UiManager.Open_Debug_Debugger();
@@ -455,5 +456,26 @@ public partial class GameApplication : Node2D, ICoroutine
     public void SetJoystickAimAssistStrength(float value)
     {
         
+    }
+    
+    public void SetLoadDungeon(string dungeonName)
+    {
+        // 初始化输入管理器
+        if (!string.IsNullOrEmpty(dungeonName))
+        {
+            if (DungeonGroupList.Contains(dungeonName))
+            {
+                FirstDungeonConfig = GetDungeonConfig(dungeonName, 1);
+            }
+            else
+            {
+                FirstDungeonConfig = GetDungeonConfig(DungeonGroupList[0], 1);
+                Debug.Log("存档中的地牢组'" + dungeonName + "'不存在，已加载默认地牢组'" + DungeonGroupList[0] + "'!");
+            }
+        }
+        else
+        {
+            FirstDungeonConfig = GetDungeonConfig(DungeonGroupList[0], 1);
+        }
     }
 }

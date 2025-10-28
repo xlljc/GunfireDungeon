@@ -22,7 +22,7 @@ public class DoorAreaInfo : IClone<DoorAreaInfo>
     /// 结束位置, 相对 tilemap 的横/纵轴原点, 单位: 像素
     /// </summary>
     [JsonInclude]
-    public int End = 16;
+    public int End = GameConfig.TileCellSize;
     
     /// <summary>
     /// 起始点坐标, 该坐标为模板场景的世界坐标, 单位: 像素, 不参与序列化与反序列化

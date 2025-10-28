@@ -522,6 +522,59 @@ public abstract partial class Tools : UiBase
     }
 
     /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer9.Label
+    /// </summary>
+    public class Label_2 : UiNode<ToolsPanel, Godot.Label, Label_2>
+    {
+        public Label_2(ToolsPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer9.LoadDungeonInput
+    /// </summary>
+    public class LoadDungeonInput : UiNode<ToolsPanel, Godot.LineEdit, LoadDungeonInput>
+    {
+        public LoadDungeonInput(ToolsPanel uiPanel, Godot.LineEdit node) : base(uiPanel, node) {  }
+        public override LoadDungeonInput Clone() => new (UiPanel, (Godot.LineEdit)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Tools.HFlowContainer.HBoxContainer9
+    /// </summary>
+    public class HBoxContainer9 : UiNode<ToolsPanel, Godot.HBoxContainer, HBoxContainer9>
+    {
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.Label
+        /// </summary>
+        public Label_2 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_2(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_2 _L_Label;
+
+        /// <summary>
+        /// 节点路径: Tools.HFlowContainer.LoadDungeonInput
+        /// </summary>
+        public LoadDungeonInput L_LoadDungeonInput
+        {
+            get
+            {
+                if (_L_LoadDungeonInput == null) _L_LoadDungeonInput = new LoadDungeonInput(UiPanel, Instance.GetNode<Godot.LineEdit>("LoadDungeonInput"));
+                return _L_LoadDungeonInput;
+            }
+        }
+        private LoadDungeonInput _L_LoadDungeonInput;
+
+        public HBoxContainer9(ToolsPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer9 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Tools.HFlowContainer
     /// </summary>
     public class HFlowContainer : UiNode<ToolsPanel, Godot.HFlowContainer, HFlowContainer>
@@ -695,6 +748,19 @@ public abstract partial class Tools : UiBase
         }
         private CreateObjectBtn _L_CreateObjectBtn;
 
+        /// <summary>
+        /// 节点路径: Tools.HBoxContainer9
+        /// </summary>
+        public HBoxContainer9 L_HBoxContainer9
+        {
+            get
+            {
+                if (_L_HBoxContainer9 == null) _L_HBoxContainer9 = new HBoxContainer9(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer9"));
+                return _L_HBoxContainer9;
+            }
+        }
+        private HBoxContainer9 _L_HBoxContainer9;
+
         public HFlowContainer(ToolsPanel uiPanel, Godot.HFlowContainer node) : base(uiPanel, node) {  }
         public override HFlowContainer Clone() => new (UiPanel, (Godot.HFlowContainer)Instance.Duplicate());
     }
@@ -839,6 +905,16 @@ public abstract partial class Tools : UiBase
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.CreateObjectBtn
     /// </summary>
     public CreateObjectBtn S_CreateObjectBtn => L_HFlowContainer.L_CreateObjectBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer9.LoadDungeonInput
+    /// </summary>
+    public LoadDungeonInput S_LoadDungeonInput => L_HFlowContainer.L_HBoxContainer9.L_LoadDungeonInput;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer.HBoxContainer9
+    /// </summary>
+    public HBoxContainer9 S_HBoxContainer9 => L_HFlowContainer.L_HBoxContainer9;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Tools.HFlowContainer

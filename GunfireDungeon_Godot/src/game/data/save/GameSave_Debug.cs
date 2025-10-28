@@ -22,10 +22,16 @@ public partial class GameSave
 
         [JsonInclude]
         public bool DebugDraw;
+        
+        [JsonInclude]
+        public string LoadDungeon;
 
         public void Init()
         {
-            
+            if (LoadDungeon == null)
+            {
+                LoadDungeon = "";
+            }
         }
     }
 }

@@ -54,7 +54,7 @@ public partial class PartPackUIPanel : PartPackUI
 
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
-        WeaponListGrid.SetCellOffset(new Vector2I(0, 16));
+        WeaponListGrid.SetCellOffset(new Vector2I(0, GameConfig.TileCellSize));
     }
 
 

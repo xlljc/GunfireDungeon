@@ -164,3 +164,17 @@ text = "关闭迷雾"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "创建物体"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="HFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HFlowContainer/HBoxContainer9"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "加载指定地牢"
+
+[node name="LoadDungeonInput" type="LineEdit" parent="HFlowContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "请输入层级名称"

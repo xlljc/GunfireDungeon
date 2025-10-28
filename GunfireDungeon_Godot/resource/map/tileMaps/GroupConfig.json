@@ -79,5 +79,34 @@
     ],
     "EventList": [],
     "Remark": ""
+  },
+  "Test2": {
+    "GroupName": "Test2",
+    "TileSet": "TileSet2",
+    "BgColor": null,
+    "SoundId": null,
+    "BattleList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test2/battle/Battle1"
+      }
+    ],
+    "InletList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test2/inlet/Start1"
+      }
+    ],
+    "OutletList": [
+      {
+        "ErrorType": 0,
+        "Path": "resource/map/tileMaps/Test2/outlet/End1"
+      }
+    ],
+    "BossList": [],
+    "RewardList": [],
+    "ShopList": [],
+    "EventList": [],
+    "Remark": "\u6D4B\u8BD5\u5C42\u7EA72"
   }
 }

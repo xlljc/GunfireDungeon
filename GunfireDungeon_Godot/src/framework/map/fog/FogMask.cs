@@ -217,7 +217,7 @@ public partial class FogMask : FogMaskBase
     private void FillTransitionImage(int x, int y, Image image, Image transitionImage)
     {
         image.BlitRect(transitionImage,
-            new Rect2I(Vector2I.Zero, 16, 16),
+            new Rect2I(Vector2I.Zero, GameConfig.TileCellSize, GameConfig.TileCellSize),
             new Vector2I(x * GameConfig.TileCellSize, y * GameConfig.TileCellSize)
         );
     }

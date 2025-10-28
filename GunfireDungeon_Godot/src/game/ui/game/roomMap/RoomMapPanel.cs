@@ -126,7 +126,7 @@ public partial class RoomMapPanel : RoomMap
                             sprite = _aiSpriteList[i];
                         }
                         //更新标记位置
-                        sprite.Position = aiRole.GetCenterPosition() / 16;
+                        sprite.Position = aiRole.GetCenterPosition() / GameConfig.TileCellSize;
                     }
                 }
                 
@@ -502,7 +502,7 @@ public partial class RoomMapPanel : RoomMap
 
     private Vector2 CalcRootPosition(Vector2 pos)
     {
-        return S_DrawContainer.Instance.Size / 2 - pos / 16 * S_Root.Instance.Scale;
+        return S_DrawContainer.Instance.Size / 2 - pos / GameConfig.TileCellSize * S_Root.Instance.Scale;
     }
     
     // 传送

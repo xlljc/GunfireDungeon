@@ -485,8 +485,11 @@ public partial class DungeonManager : Node2D
         //CurrWorld.FogMaskRoot.Visible = false;
 
         //房间背景颜色
-        RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor.AsColor());
-        
+        if (_dungeonGenerator.RoomGroup.BgColor != null)
+        {
+            RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor.AsColor());
+        }
+
         //播放bgm
         if (!string.IsNullOrEmpty(_dungeonGenerator.RoomGroup.SoundId) && ExcelConfig.Sound_Map.ContainsKey(_dungeonGenerator.RoomGroup.SoundId))
         {
@@ -1006,7 +1009,7 @@ public partial class DungeonManager : Node2D
         {
             StartRoomInfo?.EachRoom(info =>
             {
-                DrawRect(new Rect2(info.Waypoints * GameConfig.TileCellSize, new Vector2(16, 16)), Colors.Red);
+                DrawRect(new Rect2(info.Waypoints * GameConfig.TileCellSize, new Vector2(GameConfig.TileCellSize, GameConfig.TileCellSize)), Colors.Red);
             });
             //绘制房间区域
             if (_dungeonGenerator != null)

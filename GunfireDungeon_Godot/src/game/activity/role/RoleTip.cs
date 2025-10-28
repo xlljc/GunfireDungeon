@@ -71,7 +71,7 @@ public partial class RoleTip : Node2D
     
     private void RefreshTipSpritePosition()
     {
-        var originPosition = new Vector2(0, -Role.RoleState.RoleBase.Height - 16);
+        var originPosition = new Vector2(0, -Role.RoleState.RoleBase.Height - GameConfig.TileCellSize);
 
         //刷新位置，居中排列，每个 TipState 宽度 12， 间距 2
         var width = 12 * UseStateList.Count + 2 * (UseStateList.Count - 1);
