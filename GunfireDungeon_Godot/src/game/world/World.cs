@@ -294,8 +294,10 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
             var tileMapLayer = new TileMapLayer();
             tileMapLayer.Name = $"TileMapLayer_{toPosition}";
             tileMapLayer.TileSet = _tileSet;
-            CallDeferred(Node.MethodName.AddChild, tileMapLayer);
-            CallDeferred(Node.MethodName.MoveChild, tileMapLayer, _tileMapLayers.Count);
+            AddChild(tileMapLayer);
+            MoveChild(tileMapLayer, _tileMapLayers.Count);
+            // CallDeferred(Node.MethodName.AddChild, tileMapLayer);
+            // CallDeferred(Node.MethodName.MoveChild, tileMapLayer, _tileMapLayers.Count);
             _tileMapLayers.Add(toPosition, tileMapLayer);
         }
         

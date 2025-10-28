@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
 [ext_resource type="Environment" uid="uid://01vyssfconqr" path="res://resource/DungeonEnv.tres" id="2_whacp"]
 
-[node name="Dungeon" type="CanvasModulate" node_paths=PackedStringArray("NormalLayer", "YSortLayer", "StaticSpriteRoot", "AffiliationAreaRoot", "FogMaskRoot", "NavigationRoot")]
+[node name="Dungeon" type="CanvasModulate" node_paths=PackedStringArray("NormalLayer", "YSortLayer", "StaticSpriteRoot", "AffiliationAreaRoot", "FogMaskRoot", "NavigationRoot") groups=["navigation"]]
 y_sort_enabled = true
 script = ExtResource("1_txiyv")
 NormalLayer = NodePath("NormalLayer")
