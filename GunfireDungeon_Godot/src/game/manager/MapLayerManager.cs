@@ -1,62 +1,58 @@
-﻿
-using Godot;
+﻿using Godot;
 
 public static class MapLayerManager
 {
-    public static void InitMapLayer(TileMap tileMap)
+    public static void InitMapLayer(World world)
     {
         //删除之前的层级
-        var layersCount = tileMap.GetLayersCount();
-        for (var i = layersCount - 1; i > 0; i--)
-        {
-            tileMap.RemoveLayer(layersCount);
-        }
-        tileMap.AddLayer(MapLayer.AutoFloorLayer);
-        tileMap.SetLayerZIndex(MapLayer.AutoFloorLayer, -10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.AutoFloorLayer, false);
-        tileMap.SetLayerName(MapLayer.AutoFloorLayer, nameof(MapLayer.AutoFloorLayer));
+        world.RemoveAllTileMapLayer();
         
-        tileMap.AddLayer(MapLayer.CustomFloorLayer1);
-        tileMap.SetLayerZIndex(MapLayer.CustomFloorLayer1, -10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomFloorLayer1, false);
-        tileMap.SetLayerName(MapLayer.CustomFloorLayer1, nameof(MapLayer.CustomFloorLayer1));
+        var autoFloorLayer = world.AddTileMapLayer(MapLayer.AutoFloorLayer);
+        autoFloorLayer.ZIndex = -10;
+        autoFloorLayer.NavigationEnabled = false;
+        autoFloorLayer.Name = nameof(MapLayer.AutoFloorLayer);
         
-        tileMap.AddLayer(MapLayer.CustomFloorLayer2);
-        tileMap.SetLayerZIndex(MapLayer.CustomFloorLayer2, -10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomFloorLayer2, false);
-        tileMap.SetLayerName(MapLayer.CustomFloorLayer2, nameof(MapLayer.CustomFloorLayer2));
+        var customFloorLayer1 = world.AddTileMapLayer(MapLayer.CustomFloorLayer1);
+        customFloorLayer1.ZIndex = -10;
+        customFloorLayer1.NavigationEnabled = false;
+        customFloorLayer1.Name = nameof(MapLayer.CustomFloorLayer1);
         
-        tileMap.AddLayer(MapLayer.CustomFloorLayer3);
-        tileMap.SetLayerZIndex(MapLayer.CustomFloorLayer3, -10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomFloorLayer3, false);
-        tileMap.SetLayerName(MapLayer.CustomFloorLayer3, nameof(MapLayer.CustomFloorLayer3));
+        var customFloorLayer2 = world.AddTileMapLayer(MapLayer.CustomFloorLayer2);
+        customFloorLayer2.ZIndex = -10;
+        customFloorLayer2.NavigationEnabled = false;
+        customFloorLayer2.Name = nameof(MapLayer.CustomFloorLayer2);
         
-        tileMap.AddLayer(MapLayer.AutoMiddleLayer);
-        tileMap.SetLayerZIndex(MapLayer.AutoMiddleLayer, 2);
-        tileMap.SetLayerNavigationEnabled(MapLayer.AutoMiddleLayer, false);
-        tileMap.SetLayerYSortEnabled(MapLayer.AutoMiddleLayer, true);
-        tileMap.SetLayerName(MapLayer.AutoMiddleLayer, nameof(MapLayer.AutoMiddleLayer));
+        var customFloorLayer3 = world.AddTileMapLayer(MapLayer.CustomFloorLayer3);
+        customFloorLayer3.ZIndex = -10;
+        customFloorLayer3.NavigationEnabled = false;
+        customFloorLayer3.Name = nameof(MapLayer.CustomFloorLayer3);
         
-        tileMap.AddLayer(MapLayer.CustomMiddleLayer1);
-        tileMap.SetLayerZIndex(MapLayer.CustomMiddleLayer1, 2);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomMiddleLayer1, false);
-        tileMap.SetLayerYSortEnabled(MapLayer.CustomMiddleLayer1, true);
-        tileMap.SetLayerName(MapLayer.CustomMiddleLayer1, nameof(MapLayer.CustomMiddleLayer1));
+        var autoMiddleLayer = world.AddTileMapLayer(MapLayer.AutoMiddleLayer);
+        autoMiddleLayer.ZIndex = 2;
+        autoMiddleLayer.NavigationEnabled = false;
+        autoMiddleLayer.YSortEnabled = true;
+        autoMiddleLayer.Name = nameof(MapLayer.AutoMiddleLayer);
         
-        tileMap.AddLayer(MapLayer.CustomMiddleLayer2);
-        tileMap.SetLayerZIndex(MapLayer.CustomMiddleLayer2, 2);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomMiddleLayer2, false);
-        tileMap.SetLayerYSortEnabled(MapLayer.CustomMiddleLayer2, true);
-        tileMap.SetLayerName(MapLayer.CustomMiddleLayer2, nameof(MapLayer.CustomMiddleLayer2));
+        var customMiddleLayer1 = world.AddTileMapLayer(MapLayer.CustomMiddleLayer1);
+        customMiddleLayer1.ZIndex = 2;
+        customMiddleLayer1.NavigationEnabled = false;
+        customMiddleLayer1.YSortEnabled = true;
+        customMiddleLayer1.Name = nameof(MapLayer.CustomMiddleLayer1);
         
-        tileMap.AddLayer(MapLayer.AutoTopLayer);
-        tileMap.SetLayerZIndex(MapLayer.AutoTopLayer, 10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.AutoTopLayer, false);
-        tileMap.SetLayerName(MapLayer.AutoTopLayer, nameof(MapLayer.AutoTopLayer));
+        var customMiddleLayer2 = world.AddTileMapLayer(MapLayer.CustomMiddleLayer2);
+        customMiddleLayer2.ZIndex = 2;
+        customMiddleLayer2.NavigationEnabled = false;
+        customMiddleLayer2.YSortEnabled = true;
+        customMiddleLayer2.Name = nameof(MapLayer.CustomMiddleLayer2);
         
-        tileMap.AddLayer(MapLayer.CustomTopLayer);
-        tileMap.SetLayerZIndex(MapLayer.CustomTopLayer, 10);
-        tileMap.SetLayerNavigationEnabled(MapLayer.CustomTopLayer, false);
-        tileMap.SetLayerName(MapLayer.CustomTopLayer, nameof(MapLayer.CustomTopLayer));
+        var autoTopLayer = world.AddTileMapLayer(MapLayer.AutoTopLayer);
+        autoTopLayer.ZIndex = 10;
+        autoTopLayer.NavigationEnabled = false;
+        autoTopLayer.Name = nameof(MapLayer.AutoTopLayer);
+        
+        var customTopLayer = world.AddTileMapLayer(MapLayer.CustomTopLayer);
+        customTopLayer.ZIndex = 10;
+        customTopLayer.NavigationEnabled = false;
+        customTopLayer.Name = nameof(MapLayer.CustomTopLayer);
     }
 }

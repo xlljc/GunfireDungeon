@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2hynqudkykxl"]
+[gd_scene load_steps=8 format=3 uid="uid://c2hynqudkykxl"]
 
 [ext_resource type="PackedScene" uid="uid://bqf2vks5ggnsp" path="res://scene/Dungeon.tscn" id="1_31od0"]
 [ext_resource type="Script" uid="uid://ch6p6efa51wmw" path="res://src/game/hall/Hall.cs" id="2_43fdu"]
 [ext_resource type="Script" uid="uid://llhqgi6j5kae" path="res://src/game/hall/DungeonEntrance.cs" id="3_t3my6"]
-[ext_resource type="TileSet" uid="uid://db76iwmblenk8" path="res://resource/tileset/HallTileset.tres" id="6_xwnih"]
 [ext_resource type="Shader" uid="uid://cbrfh1sth26v8" path="res://resource/shader/GodRays.gdshader" id="14_8vfgi"]
 [ext_resource type="Texture2D" uid="uid://dmnnfyq78k5ns" path="res://icon.png" id="15_1xqxd"]
 
@@ -30,15 +29,6 @@ size = Vector2(19, 10)
 script = ExtResource("2_43fdu")
 BirthMark = NodePath("BirthMark")
 metadata/_edit_horizontal_guides_ = [1673.0]
-
-[node name="TileRoot" parent="." index="1"]
-y_sort_enabled = false
-tile_set = ExtResource("6_xwnih")
-layer_0/name = "Floor"
-layer_0/z_index = -10
-layer_0/tile_data = PackedInt32Array(196613, 2, 4, 262149, 2, 4, 327685, 2, 4, 393221, 2, 4, 458757, 2, 4, 524293, 2, 4, 589829, 2, 4, 655365, 2, 4, 720901, 2, 4, 196614, 2, 4, 262150, 2, 4, 327686, 2, 4, 393222, 2, 4, 458758, 2, 4, 524294, 2, 4, 589830, 2, 4, 655366, 2, 4, 720902, 2, 4, 196615, 2, 4, 262151, 2, 4, 327687, 2, 4, 393223, 2, 4, 458759, 2, 4, 524295, 2, 4, 589831, 2, 4, 655367, 2, 4, 720903, 2, 4, 196616, 2, 4, 262152, 2, 4, 327688, 2, 4, 393224, 2, 4, 458760, 2, 4, 524296, 2, 4, 589832, 2, 4, 655368, 2, 4, 720904, 2, 4, 196617, 2, 4, 262153, 2, 4, 327689, 2, 4, 393225, 2, 4, 458761, 2, 4, 524297, 2, 4, 589833, 2, 4, 655369, 2, 4, 720905, 2, 4, 196618, 2, 4, 262154, 2, 4, 327690, 2, 4, 393226, 2, 4, 458762, 2, 4, 524298, 2, 4, 589834, 2, 4, 655370, 2, 4, 720906, 2, 4, 196619, 2, 4, 262155, 2, 4, 327691, 2, 4, 393227, 2, 4, 458763, 2, 4, 524299, 2, 4, 589835, 2, 4, 655371, 2, 4, 720907, 2, 4, 196620, 2, 4, 262156, 2, 4, 327692, 2, 4, 393228, 2, 4, 458764, 2, 4, 524300, 2, 4, 589836, 2, 4, 655372, 2, 4, 720908, 2, 4)
-layer_1/name = "Layer0"
-metadata/_edit_group_ = true
 
 [node name="BirthMark" type="Marker2D" parent="." index="2"]
 z_as_relative = false

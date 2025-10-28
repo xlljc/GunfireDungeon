@@ -13,7 +13,7 @@ public static class TileMapUtils
     /// <summary>
     /// 生成自动图块和地形, 并烘焙好导航网格
     /// </summary>
-    public static Rect2I GenerateTerrain(TileMap tileMap, NavigationRegion2D navigationRegion, AutoTileConfig autoTileConfig)
+    public static Rect2I GenerateTerrain(World world, NavigationRegion2D navigationRegion, AutoTileConfig autoTileConfig)
     {
         var list = new List<Vector2I>();
         var xStart = int.MaxValue;
@@ -21,7 +21,8 @@ public static class TileMapUtils
         var xEnd = int.MinValue;
         var yEnd = int.MinValue;
 
-        var temp = tileMap.GetUsedCells(MapLayer.AutoFloorLayer);
+        var mapLayer = world.GetTileMapLayer(MapLayer.AutoFloorLayer);
+        var temp = mapLayer.GetUsedCells();
         var autoCellLayerGrid = temp.ToHashSet();
         foreach (var (x, y) in autoCellLayerGrid)
         {
@@ -44,37 +45,37 @@ public static class TileMapUtils
                 if (left && right)
                 {
                     var tileCellData1 = autoTileConfig.Wall_Vertical_SingleTop;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 2), tileCellData1.SourceId,
                         tileCellData1.AutoTileCoords);
                     var tileCellData2 = autoTileConfig.Wall_Vertical_SingleBottom;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 1), tileCellData2.SourceId,
                         tileCellData2.AutoTileCoords);
                 }
                 else if (left)
                 {
                     var tileCellData1 = autoTileConfig.Wall_Vertical_LeftTop;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 2), tileCellData1.SourceId,
                         tileCellData1.AutoTileCoords);
                     var tileCellData2 = autoTileConfig.Wall_Vertical_LeftBottom;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 1), tileCellData2.SourceId,
                         tileCellData2.AutoTileCoords);
                 }
                 else if (right)
                 {
                     var tileCellData1 = autoTileConfig.Wall_Vertical_RightTop;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 2), tileCellData1.SourceId,
                         tileCellData1.AutoTileCoords);
                     var tileCellData2 = autoTileConfig.Wall_Vertical_RightBottom;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 1), tileCellData2.SourceId,
                         tileCellData2.AutoTileCoords);
                 }
                 else
                 {
                     var tileCellData1 = autoTileConfig.Wall_Vertical_CenterTop;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 2), tileCellData1.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 2), tileCellData1.SourceId,
                         tileCellData1.AutoTileCoords);
                     var tileCellData2 = autoTileConfig.Wall_Vertical_CenterBottom;
-                    tileMap.SetCell(MapLayer.AutoFloorLayer, new Vector2I(x, y - 1), tileCellData2.SourceId,
+                    mapLayer.SetCell(new Vector2I(x, y - 1), tileCellData2.SourceId,
                         tileCellData2.AutoTileCoords);
                 }
             }
@@ -89,9 +90,9 @@ public static class TileMapUtils
             temp1.Add(p1);
             temp1.Add(p2);
             //上横
-            tileMap.SetCell(MapLayer.AutoFloorLayer, p1, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
+            mapLayer.SetCell(p1, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
             //下横
-            tileMap.SetCell(MapLayer.AutoFloorLayer, p2, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
+            mapLayer.SetCell(p2, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
         }
         for (var y = yStart - 5; y <= yEnd + 3; y++)
         {
@@ -100,9 +101,9 @@ public static class TileMapUtils
             temp1.Add(p1);
             temp1.Add(p2);
             //左竖
-            tileMap.SetCell(MapLayer.AutoFloorLayer, p1, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
+            mapLayer.SetCell(p1, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
             //右竖
-            tileMap.SetCell(MapLayer.AutoFloorLayer, p2, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
+            mapLayer.SetCell(p2, autoTileConfig.TopMask.SourceId, autoTileConfig.TopMask.AutoTileCoords);
         }
         
         //计算需要绘制的图块
@@ -123,12 +124,12 @@ public static class TileMapUtils
         }
         var arr = new Array<Vector2I>(list);
         //绘制自动图块
-        tileMap.SetCellsTerrainConnect(MapLayer.AutoFloorLayer, arr, MainTerrainSet, MainTerrain, false);
+        mapLayer.SetCellsTerrainConnect(arr, MainTerrainSet, MainTerrain, false);
         
         //擦除临时边界
         for (var i = 0; i < temp1.Count; i++)
         {
-            tileMap.EraseCell(MapLayer.AutoFloorLayer, temp1[i]);
+            mapLayer.EraseCell(temp1[i]);
         }
 
         //计算区域
@@ -145,11 +146,11 @@ public static class TileMapUtils
         //擦除临时边界2
         for (var i = 0; i < temp2.Count; i++)
         {
-            tileMap.EraseCell(MapLayer.AutoFloorLayer, temp2[i]);
+            mapLayer.EraseCell(temp2[i]);
         }
         
         //将墙壁移动到指定层
-        MoveTerrainCell(tileMap, autoTileConfig, autoCellLayerGrid, rect.Position, rect.Size);
+        MoveTerrainCell(world, autoTileConfig, autoCellLayerGrid, rect.Position, rect.Size);
         return rect;
     }
     
@@ -198,32 +199,34 @@ public static class TileMapUtils
     
         
     //将自动生成的图块从 MapLayer.AutoFloorLayer 移动到指定图层中
-    private static void MoveTerrainCell(TileMap tileMap, AutoTileConfig autoTileConfig, HashSet<Vector2I> autoCellLayerGrid, Vector2I currRoomPosition, Vector2I currRoomSize)
+    private static void MoveTerrainCell(World world, AutoTileConfig autoTileConfig, HashSet<Vector2I> autoCellLayerGrid, Vector2I currRoomPosition, Vector2I currRoomSize)
     {
-        tileMap.ClearLayer(MapLayer.AutoTopLayer);
-        tileMap.ClearLayer(MapLayer.AutoMiddleLayer);
+        world.ClearLayer(MapLayer.AutoTopLayer);
+        world.ClearLayer(MapLayer.AutoMiddleLayer);
         
         var x = currRoomPosition.X;
         var y = currRoomPosition.Y - 1;
         var w = currRoomSize.X;
         var h = currRoomSize.Y + 1;
+        
+        var autoFloorLayer = world.GetTileMapLayer(MapLayer.AutoFloorLayer);
 
         for (var i = 0; i < w; i++)
         {
             for (var j = 0; j < h; j++)
             {
                 var pos = new Vector2I(x + i, y + j);
-                if (!autoCellLayerGrid.Contains(pos) && tileMap.GetCellSourceId(MapLayer.AutoFloorLayer, pos) != -1)
+                if (!autoCellLayerGrid.Contains(pos) && autoFloorLayer.GetCellSourceId(pos) != -1)
                 {
-                    var atlasCoords = tileMap.GetCellAtlasCoords(MapLayer.AutoFloorLayer, pos);
+                    var atlasCoords = autoFloorLayer.GetCellAtlasCoords(pos);
                     var layer = autoTileConfig.GetLayer(atlasCoords);
                     if (layer != MapLayer.AutoMiddleLayer && layer != MapLayer.AutoTopLayer)
                     {
                         Debug.LogError($"异常图块: {pos}, 这个图块的图集坐标'{atlasCoords}'不属于'MiddleMapLayer'和'TopMapLayer'!");
                         continue;
                     }
-                    tileMap.EraseCell(MapLayer.AutoFloorLayer, pos);
-                    tileMap.SetCell(layer, pos, MainSource, atlasCoords);
+                    autoFloorLayer.EraseCell(pos);
+                    world.SetCell(layer, pos, MainSource, atlasCoords);
                 }
             }
         }

@@ -286,7 +286,7 @@ public partial class DungeonManager : Node2D
         //创建房间数据
         var roomInfo = new RoomInfo(0, DungeonRoomType.None, null);
         roomInfo.World = CurrWorld;
-        var usedRect = hall.TileRoot.GetUsedRect();
+        var usedRect = hall.GetUsedRect();
         roomInfo.Size = usedRect.Size;
         roomInfo.Position = usedRect.Position;
         hall.RoomInfo = roomInfo;
@@ -467,10 +467,10 @@ public partial class DungeonManager : Node2D
         yield return 0;
         var group = GameApplication.Instance.RoomConfig[CurrConfig.GroupName];
         var tileSetSplit = GameApplication.Instance.TileSetConfig[group.TileSet];
-        CurrWorld.TileRoot.TileSet = tileSetSplit.GetTileSet();
+        CurrWorld.SetTileSet(tileSetSplit.GetTileSet());
         //填充地牢
         AutoTileConfig = new AutoTileConfig(0, tileSetSplit.TileSetInfo.Sources[0].Terrain[0]);
-        _dungeonTileMap = new DungeonTileMap(CurrWorld.TileRoot);
+        _dungeonTileMap = new DungeonTileMap(CurrWorld);
         yield return _dungeonTileMap.AutoFillRoomTile(AutoTileConfig, _dungeonGenerator.StartRoomInfo, CurrWorld);
         yield return _dungeonTileMap.AutoFillAisleTile(AutoTileConfig, _dungeonGenerator.StartRoomInfo, CurrWorld);
         //yield return _dungeonTileMap.AddOutlineTile(AutoTileConfig.WALL_BLOCK);

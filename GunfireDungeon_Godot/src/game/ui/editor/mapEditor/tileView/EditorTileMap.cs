@@ -443,7 +443,9 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         if (CheckTerrain())
         {
             Debug.Log("开始绘制自动贴图...");
-            var rect = TileMapUtils.GenerateTerrain(this, _editorTileMap.L_NavigationRegion.Instance, _autoTileConfig);
+            var rect = new Rect2I();
+            GD.Print("----改这里2----");
+            // var rect = TileMapUtils.GenerateTerrain(this, _editorTileMap.L_NavigationRegion.Instance, _autoTileConfig);
             CurrRoomPosition = rect.Position;
             SetMapSize(rect.Size, true);
             //GenerateTerrain();
@@ -621,7 +623,8 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
 
         _initLayer = true;
         //初始化层级数据
-        MapLayerManager.InitMapLayer(this);
+        GD.Print("----改这里----");
+        // MapLayerManager.InitMapLayer(this);
     }
 
     //缩小
