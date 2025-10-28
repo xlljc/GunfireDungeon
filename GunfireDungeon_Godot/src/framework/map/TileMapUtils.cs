@@ -201,8 +201,8 @@ public static class TileMapUtils
     //将自动生成的图块从 MapLayer.AutoFloorLayer 移动到指定图层中
     private static void MoveTerrainCell(World world, AutoTileConfig autoTileConfig, HashSet<Vector2I> autoCellLayerGrid, Vector2I currRoomPosition, Vector2I currRoomSize)
     {
-        world.ClearLayer(MapLayer.AutoTopLayer);
-        world.ClearLayer(MapLayer.AutoMiddleLayer);
+        world.GetTileMapLayer(MapLayer.AutoTopLayer).Clear();
+        world.GetTileMapLayer(MapLayer.AutoMiddleLayer).Clear();
         
         var x = currRoomPosition.X;
         var y = currRoomPosition.Y - 1;
@@ -226,7 +226,7 @@ public static class TileMapUtils
                         continue;
                     }
                     autoFloorLayer.EraseCell(pos);
-                    world.SetCell(layer, pos, MainSource, atlasCoords);
+                    world.GetTileMapLayer(layer).SetCell(pos, MainSource, atlasCoords);
                 }
             }
         }

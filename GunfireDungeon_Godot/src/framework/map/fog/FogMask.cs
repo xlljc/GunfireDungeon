@@ -224,24 +224,24 @@ public partial class FogMask : FogMaskBase
 
     private bool IsEmptyCell(World world, Vector2I pos)
     {
-        return world.GetCellSourceId(MapLayer.AutoTopLayer, pos) == -1 &&
-               world.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) == -1;
+        return world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) == -1 &&
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) == -1;
     }
     
     //判断是否是墙壁
     private bool IsNotWallCell(World world, Vector2I pos, Vector2I wallCoord)
     {
-        return world.GetCellAtlasCoords(MapLayer.AutoTopLayer, pos) != wallCoord &&
-               world.GetCellAtlasCoords(MapLayer.AutoMiddleLayer, pos) != wallCoord &&
-               (world.GetCellSourceId(MapLayer.AutoTopLayer, pos) != -1 ||
-                world.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) != -1);
+        return world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellAtlasCoords(pos) != wallCoord &&
+               world.GetTileMapLayer(MapLayer.AutoMiddleLayer).GetCellAtlasCoords(pos) != wallCoord &&
+               (world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1 ||
+                world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1);
     }
 
     //判断是否是任意类型的图块
     private bool IsAnyCell(World world, Vector2I pos)
     {
-        return world.GetCellSourceId(MapLayer.AutoFloorLayer, pos) != -1 ||
-               world.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) != -1 ||
-               world.GetCellSourceId(MapLayer.AutoTopLayer, pos) != -1;
+        return world.GetTileMapLayer(MapLayer.AutoFloorLayer).GetCellSourceId(pos) != -1 ||
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1 ||
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1;
     }
 }

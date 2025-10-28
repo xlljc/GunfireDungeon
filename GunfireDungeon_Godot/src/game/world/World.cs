@@ -334,18 +334,10 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     {
         return _tileMapLayers.Count;
     }
-
-    public Vector2I GetCellAtlasCoords(int autoTopLayer, Vector2I pos)
-    {
-        var tileMapLayer = GetTileMapLayer(autoTopLayer);
-        if (tileMapLayer != null)
-        {
-            return tileMapLayer.GetCellAtlasCoords(pos);
-        }
-
-        return new Vector2I(-1, -1);
-    }
     
+    /// <summary>
+    /// 获取使用过地砖的区域
+    /// </summary>
     public Rect2I GetUsedRect()
     {
         Rect2I? usedRect = null;
@@ -363,63 +355,5 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
         }
 
         return usedRect == null ? new Rect2I() : usedRect.Value;
-    }
-
-    public int GetCellSourceId(int autoTopLayer, Vector2I pos)
-    {
-        var tileMapLayer = GetTileMapLayer(autoTopLayer);
-        if (tileMapLayer != null)
-        {
-            return tileMapLayer.GetCellSourceId(pos);
-        }
-
-        return -1;
-    }
-
-    public void SetLayerEnabled(int autoTopLayer, bool flag)
-    {
-        var tileMapLayer = GetTileMapLayer(autoTopLayer);
-        if (tileMapLayer != null)
-        {
-            tileMapLayer.Visible = flag;
-        }
-    }
-
-    public Array<Vector2I> GetUsedCells(int autoFloorLayer)
-    {
-        var tileMapLayer = GetTileMapLayer(autoFloorLayer);
-        if (tileMapLayer != null)
-        {
-            return tileMapLayer.GetUsedCells();
-        }
-
-        return null;
-    }
-
-    public void ClearLayer(int autoMiddleLayer)
-    {
-        var tileMapLayer = GetTileMapLayer(autoMiddleLayer);
-        if (tileMapLayer != null)
-        {
-            tileMapLayer.Clear();
-        }
-    }
-
-    public void SetCell(int layer, Vector2I pos, int mainSource, Vector2I atlasCoords)
-    {
-        var tileMapLayer = GetTileMapLayer(layer);
-        if (tileMapLayer != null)
-        {
-            tileMapLayer.SetCell(pos, mainSource, atlasCoords);
-        }
-    }
-
-    public void SetCell(int layer, Vector2I pos, int mainSource)
-    {
-        var tileMapLayer = GetTileMapLayer(layer);
-        if (tileMapLayer != null)
-        {
-            tileMapLayer.SetCell(pos, mainSource);
-        }
     }
 }

@@ -84,8 +84,8 @@ public partial class Player : Role
             GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom / 2f;
         });
         
-        World.SetLayerEnabled(MapLayer.AutoTopLayer, false);
-        World.SetLayerEnabled(MapLayer.AutoMiddleLayer, false);
+        World.GetTileMapLayer(MapLayer.AutoTopLayer).Enabled = false;
+        World.GetTileMapLayer(MapLayer.AutoMiddleLayer).Enabled = false;
         
         this.CallDelay(0.5f, () =>
         {

@@ -189,7 +189,7 @@ public class DungeonTileMap
             var index = terrainInfo.TerrainBitToIndex(bit, type);
             var terrainCell = terrainInfo.GetTerrainCell(index, type);
             var atlasCoords = terrainInfo.GetPosition(terrainCell);
-            _world.SetCell(layer, pos, sourceId, atlasCoords);
+            _world.GetTileMapLayer(layer).SetCell(pos, sourceId, atlasCoords);
         }
     }
     
@@ -204,7 +204,7 @@ public class DungeonTileMap
             var atlasCoordsX = data[i + 3];
             var atlasCoordsY = data[i + 4];
             var pos = new Vector2I(roomInfo.Position.X + posX - rectPos.X, roomInfo.Position.Y + posY - rectPos.Y);
-            _world.SetCell(layer, pos, sourceId, new Vector2I(atlasCoordsX, atlasCoordsY));
+            _world.GetTileMapLayer(layer).SetCell(pos, sourceId, new Vector2I(atlasCoordsX, atlasCoordsY));
         }
     }
     
@@ -216,7 +216,7 @@ public class DungeonTileMap
             for (int j = 0; j < size.Y; j++)
             {
                 var p = new Vector2I((int)pos.X + i, (int)pos.Y + j);
-                _world.SetCell(layer, p, data.SourceId, data.AutoTileCoords);
+                _world.GetTileMapLayer(layer).SetCell(p, data.SourceId, data.AutoTileCoords);
             }
         }
     }
@@ -229,7 +229,7 @@ public class DungeonTileMap
             for (int j = 0; j < size.Y; j++)
             {
                 var p = new Vector2I((int)pos.X + i, (int)pos.Y + j);
-                _world.SetCell(layer, p, 0);
+                _world.GetTileMapLayer(layer).SetCell(p, 0);
             }
         }
     }
@@ -239,6 +239,6 @@ public class DungeonTileMap
     /// </summary>
     private bool IsWayTile(int layer, int x, int y)
     {
-        return _world.GetCellSourceId(layer, new Vector2I(x, y)) != -1;
+        return _world.GetTileMapLayer(layer).GetCellSourceId(new Vector2I(x, y)) != -1;
     }
 }

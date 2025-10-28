@@ -4,6 +4,7 @@
 [ext_resource type="Environment" uid="uid://01vyssfconqr" path="res://resource/DungeonEnv.tres" id="2_whacp"]
 
 [node name="Dungeon" type="CanvasModulate" node_paths=PackedStringArray("NormalLayer", "YSortLayer", "StaticSpriteRoot", "AffiliationAreaRoot", "FogMaskRoot", "NavigationRoot")]
+y_sort_enabled = true
 script = ExtResource("1_txiyv")
 NormalLayer = NodePath("NormalLayer")
 YSortLayer = NodePath("YSortLayer")
@@ -31,5 +32,3 @@ y_sort_enabled = true
 [node name="AffiliationAreaRoot" type="Node2D" parent="."]
 
 [node name="FogMaskRoot" type="Node2D" parent="."]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
