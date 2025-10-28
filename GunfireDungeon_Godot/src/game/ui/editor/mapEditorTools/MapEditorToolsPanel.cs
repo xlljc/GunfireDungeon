@@ -82,7 +82,7 @@ public partial class MapEditorToolsPanel : MapEditorTools
     public override void OnCreateUi()
     {
         MapEditorPanel = (MapEditorPanel)ParentUi;
-        EditorMap = MapEditorPanel.S_EditorTileMap.Instance;
+        EditorMap = MapEditorPanel.S_TileMap.Instance;
         
         S_N_HoverArea.Instance.Init(this, DoorDirection.N);
         S_S_HoverArea.Instance.Init(this, DoorDirection.S);

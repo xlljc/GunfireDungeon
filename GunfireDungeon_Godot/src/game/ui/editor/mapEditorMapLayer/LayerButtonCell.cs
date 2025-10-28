@@ -37,7 +37,7 @@ public class LayerButtonCell : UiCell<MapEditorMapLayer.LayerButton, TileMapLaye
             }
             else
             {
-                _visible = panel.S_EditorTileMap.Instance.GetTileMapLayer(data.Layer).Enabled;
+                _visible = panel.S_TileMap.Instance.GetTileMapLayer(data.Layer).Enabled;
             }
             SetVisibleIcon(_visible);
         }
@@ -59,7 +59,7 @@ public class LayerButtonCell : UiCell<MapEditorMapLayer.LayerButton, TileMapLaye
             }
             else //隐藏地图层级
             {
-                panel.S_EditorTileMap.Instance.GetTileMapLayer(Data.Layer).Enabled = visible;
+                panel.S_TileMap.Instance.GetTileMapLayer(Data.Layer).Enabled = visible;
             }
             SetVisibleIcon(visible);
         }

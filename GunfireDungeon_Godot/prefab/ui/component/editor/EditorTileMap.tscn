@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://d1qs4ntu6h11d"]
 
-[ext_resource type="PackedScene" uid="uid://bqf2vks5ggnsp" path="res://scene/Dungeon.tscn" id="1_1vd1b"]
-[ext_resource type="NavigationPolygon" uid="uid://brpcle7mygiml" path="res://resource/navigation/NavigationPolygon.tres" id="2_ad50c"]
-[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/develop/editorTileMap/EditorTileMap.cs" id="2_if55v"]
-[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="3_if55v"]
+[ext_resource type="PackedScene" uid="uid://bqf2vks5ggnsp" path="res://scene/Dungeon.tscn" id="1_o34bg"]
+[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/component/editor/editorTileMap/EditorTileMap.cs" id="2_qcv6o"]
+[ext_resource type="NavigationPolygon" uid="uid://brpcle7mygiml" path="res://resource/navigation/NavigationPolygon.tres" id="3_hkkjl"]
+[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="4_e8dl1"]
 
 [sub_resource type="Animation" id="Animation_o3btm"]
 length = 0.001
@@ -67,19 +67,19 @@ _data = {
 &"show": SubResource("Animation_wnqg6")
 }
 
-[node name="EditorTileMap" instance=ExtResource("1_1vd1b")]
-script = ExtResource("2_if55v")
+[node name="EditorTileMap" instance=ExtResource("1_o34bg")]
+script = ExtResource("2_qcv6o")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="." index="7"]
 z_index = 10
-navigation_polygon = ExtResource("2_ad50c")
+navigation_polygon = ExtResource("3_hkkjl")
 
 [node name="ErrorCell" type="Sprite2D" parent="." index="8"]
 visible = false
 modulate = Color(1, 0, 0, 0)
 z_index = 10
 scale = Vector2(16, 16)
-texture = ExtResource("3_if55v")
+texture = ExtResource("4_e8dl1")
 centered = false
 
 [node name="ErrorCellAnimationPlayer" type="AnimationPlayer" parent="ErrorCell" index="0"]

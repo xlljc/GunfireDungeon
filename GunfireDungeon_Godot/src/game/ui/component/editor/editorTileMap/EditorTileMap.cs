@@ -6,8 +6,7 @@ using Godot.Collections;
 using UI.editor.MapEditorTools;
 
 using DsUi;
-
-namespace UI.editor.MapEditor;
+using UI.editor.MapEditor;
 
 public partial class EditorTileMap : World, IUiNodeScript
 {
@@ -182,13 +181,13 @@ public partial class EditorTileMap : World, IUiNodeScript
     public bool IsDrawMark { get; set; } = true;
 
     //-------------------------------
-    private MapEditor.EditorTileMap _editorTileMap;
+    private MapEditor.TileMap _editorTileMap;
     private EventFactory<EventEnum> _eventFactory;
     private Vector2I _cacheToolSizeData;
     
     public void SetUiNode(IUiNode uiNode)
     {
-        _editorTileMap = (MapEditor.EditorTileMap)uiNode;
+        _editorTileMap = (MapEditor.TileMap)uiNode;
         MapEditorPanel = _editorTileMap.UiPanel;
         MapEditorToolsPanel = _editorTileMap.UiPanel.S_MapEditorTools.Instance;
 

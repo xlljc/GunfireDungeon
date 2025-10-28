@@ -116,22 +116,22 @@ public partial class MapEditorPanel : MapEditor
     public override void OnShowUi()
     {
         OnMapViewResized();
-        if (S_EditorTileMap.GetParent() == null)
+        if (S_TileMap.GetParent() == null)
         {
-            S_SubViewport.AddChild(S_EditorTileMap);
+            S_SubViewport.AddChild(S_TileMap);
         }
     }
 
     public override void OnHideUi()
     {
-        S_SubViewport.RemoveChild(S_EditorTileMap);
+        S_SubViewport.RemoveChild(S_TileMap);
     }
 
     public override void OnDestroyUi()
     {
-        if (S_EditorTileMap.GetParent() == null)
+        if (S_TileMap.GetParent() == null)
         {
-            S_EditorTileMap.QueueFree();
+            S_TileMap.QueueFree();
         }
         
         //清除选中的标记
@@ -145,7 +145,7 @@ public partial class MapEditorPanel : MapEditor
     //点击播放按钮
     private void OnPlay()
     {
-        S_EditorTileMap.Instance.TryRunCheckHandler();
+        S_TileMap.Instance.TryRunCheckHandler();
         var check = CheckError();
         //有错误数据
         if (check.HasError)
@@ -154,7 +154,7 @@ public partial class MapEditorPanel : MapEditor
             return;
         }
         //保存数据
-        S_EditorTileMap.Instance.TriggerSave(RoomErrorType.None, () =>
+        S_TileMap.Instance.TriggerSave(RoomErrorType.None, () =>
         {
             var groupName = EditorTileMapManager.SelectDungeonGroup.GroupName;
             var result = DungeonManager.CheckDungeon(groupName);
@@ -179,14 +179,14 @@ public partial class MapEditorPanel : MapEditor
         S_Title.Instance.Text = _title;
         
         //初始化 TileMap 层
-        S_EditorTileMap.Instance.InitLayer();
+        S_TileMap.Instance.InitLayer();
         //加载层级
         S_MapEditorMapLayer.Instance.InitData();
         //加载MapTile面板
         S_MapEditorMapTile.Instance.InitData(tileSetSplit);
         
         //加载Tile
-        var loadMap = S_EditorTileMap.Instance.Load(roomSplit, tileSetSplit);
+        var loadMap = S_TileMap.Instance.Load(roomSplit, tileSetSplit);
         //刷新物体页签
         S_MapEditorObject.Instance.InitData();
         //刷新预设页签
@@ -218,7 +218,7 @@ public partial class MapEditorPanel : MapEditor
     //保存地图数据
     private void OnSave()
     {
-        S_EditorTileMap.Instance.TryRunCheckHandler();
+        S_TileMap.Instance.TryRunCheckHandler();
         var check = CheckError();
         //有错误的数据
         if (check.HasError)
@@ -227,21 +227,21 @@ public partial class MapEditorPanel : MapEditor
             {
                 if (v)
                 {
-                    S_EditorTileMap.Instance.TriggerSave(check.ErrorType, null);
+                    S_TileMap.Instance.TriggerSave(check.ErrorType, null);
                 }
             });
         }
         else
         {
-            S_EditorTileMap.Instance.TriggerSave(check.ErrorType, null);
+            S_TileMap.Instance.TriggerSave(check.ErrorType, null);
         }
     }
 
     //点击返回
     private void OnBackClick()
     {
-        S_EditorTileMap.Instance.TryRunCheckHandler();
-        if (S_EditorTileMap.Instance.IsDirty) //有修改的数据, 不能直接退出, 需要询问用户是否保存
+        S_TileMap.Instance.TryRunCheckHandler();
+        if (S_TileMap.Instance.IsDirty) //有修改的数据, 不能直接退出, 需要询问用户是否保存
         {
             EditorWindowManager.ShowConfirm("提示", "当前房间修改的数据还未保存，是否退出编辑房间？",
                 "保存并退出", "直接退出", "取消"
@@ -256,7 +256,7 @@ public partial class MapEditorPanel : MapEditor
                         {
                             if (v)
                             {
-                                S_EditorTileMap.Instance.TriggerSave(check.ErrorType, () =>
+                                S_TileMap.Instance.TriggerSave(check.ErrorType, () =>
                                 {
                                     //返回上一个Ui
                                     OpenPrevUi();
@@ -271,7 +271,7 @@ public partial class MapEditorPanel : MapEditor
                     }
                     else //没有错误
                     {
-                        S_EditorTileMap.Instance.TriggerSave(check.ErrorType, () =>
+                        S_TileMap.Instance.TriggerSave(check.ErrorType, () =>
                         {
                             //返回上一个Ui
                             OpenPrevUi();
@@ -309,7 +309,7 @@ public partial class MapEditorPanel : MapEditor
 
     private CheckResult CheckError()
     {
-        var editorTileMap = S_EditorTileMap.Instance;
+        var editorTileMap = S_TileMap.Instance;
         if (editorTileMap.CurrRoomSize == Vector2I.Zero)
         {
             return new CheckResult(true, RoomErrorType.Empty);

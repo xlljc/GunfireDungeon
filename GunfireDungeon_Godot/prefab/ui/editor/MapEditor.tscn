@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uova1lj10oxv" path="res://prefab/ui/editor/MapEditorTools.tscn" id="6_7pvgu"]
 [ext_resource type="PackedScene" uid="uid://1kdlshgpe3q2" path="res://prefab/ui/editor/MapEditorConfigObject.tscn" id="7_42mx1"]
 [ext_resource type="PackedScene" uid="uid://bb2ekkpxifd7g" path="res://prefab/ui/editor/MapEditorMapLayer.tscn" id="7_ychtn"]
-[ext_resource type="PackedScene" uid="uid://d1qs4ntu6h11d" path="res://prefab/ui/develop/EditorTileMap.tscn" id="8_6yu1q"]
+[ext_resource type="PackedScene" uid="uid://d1qs4ntu6h11d" path="res://prefab/ui/component/editor/EditorTileMap.tscn" id="8_6yu1q"]
 [ext_resource type="PackedScene" uid="uid://peo0n8bl15y5" path="res://prefab/ui/editor/MapEditorMapMark.tscn" id="8_8tgeu"]
 [ext_resource type="PackedScene" uid="uid://tjbfj67t5akm" path="res://prefab/ui/editor/MapEditorMapTile.tscn" id="10_4fu5v"]
 [ext_resource type="PackedScene" uid="uid://6a4l0o8pmegw" path="res://prefab/ui/editor/MapEditorObject.tscn" id="12_vpk4h"]
@@ -168,7 +168,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(980, 1002)
 render_target_update_mode = 4
 
-[node name="EditorTileMap" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport" instance=ExtResource("8_6yu1q")]
+[node name="TileMap" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport" instance=ExtResource("8_6yu1q")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport"]
 layer = 2

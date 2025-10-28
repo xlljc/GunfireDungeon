@@ -6,7 +6,6 @@ public static partial class UiManager
 
     public static class UiName
     {
-        public const string Develop_EditorTileMap = "develop/EditorTileMap";
         public const string Develop_EditorTools = "develop/EditorTools";
         public const string Game_Main = "game/Main";
         public const string Game_PauseMenu = "game/PauseMenu";

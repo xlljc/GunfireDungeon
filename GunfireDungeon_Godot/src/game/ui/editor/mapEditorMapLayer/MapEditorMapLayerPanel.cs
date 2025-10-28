@@ -22,7 +22,7 @@ public partial class MapEditorMapLayerPanel : MapEditorMapLayer
     public override void OnCreateUi()
     {
         var editorPanel = (MapEditorPanel)ParentUi;
-        EditorTileMap = editorPanel.S_EditorTileMap.Instance;
+        EditorTileMap = editorPanel.S_TileMap.Instance;
 
         LayerGrid = CreateUiGrid<LayerButton, TileMapLayerData, LayerButtonCell>(S_LayerButton);
         LayerGrid.SetCellOffset(new Vector2I(0, 2));

@@ -41,7 +41,7 @@ public partial class MapEditorMapTilePanel : MapEditorMapTile, IEditorTab
     public override void OnCreateUi()
     {
         var editorPanel = (MapEditorPanel)ParentUi;
-        EditorTileMap = editorPanel.S_EditorTileMap.Instance;
+        EditorTileMap = editorPanel.S_TileMap.Instance;
         //切换资源
         S_SourceOption.Instance.ItemSelected += OnChangeSource;
         //切换笔刷类型

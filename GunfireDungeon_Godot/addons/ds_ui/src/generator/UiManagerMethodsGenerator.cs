@@ -99,6 +99,24 @@ namespace DsUi.Generator
                         GD.Print($"----------- 检测到非ui文件: {fullName}，找不到对应Ui代码：{DsUiConfig.UiCodeDir + csCodePath}");
                         continue;
                     }
+                    else
+                    {
+                        // res://path/Name.tscn
+                        var resPath = "res://" + fullName.Substring(index);
+                        var node = ResourceLoader.Load<PackedScene>(resPath).Instantiate();
+                        try
+                        {
+                            if (!UiGeneratorUtils.CheckIsUi(node))
+                            {
+                                continue;
+                            }
+                        }
+                        finally
+                        {
+                            node.QueueFree();
+                        }
+                    }
+                    
                     GD.Print($"检测到ui文件: {fullName}");
                     
                     // Path_Name

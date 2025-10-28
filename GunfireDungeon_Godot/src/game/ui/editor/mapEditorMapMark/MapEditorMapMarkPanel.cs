@@ -61,7 +61,7 @@ public partial class MapEditorMapMarkPanel : MapEditorMapMark, IEditorTab
     public override void OnCreateUi()
     {
         var editorPanel = (MapEditorPanel)ParentUi;
-        EditorTileMap = editorPanel.S_EditorTileMap.Instance;
+        EditorTileMap = editorPanel.S_TileMap.Instance;
 
         //S_DynamicTool.Instance.GetParent().RemoveChild(S_DynamicTool.Instance);
         S_DynamicTool.Instance.Visible = false;
