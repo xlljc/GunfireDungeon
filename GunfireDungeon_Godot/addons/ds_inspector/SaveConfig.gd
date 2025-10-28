@@ -16,6 +16,7 @@ class ConfigData:
 	var use_system_window: bool = false
 	var auto_open: bool = false
 	var auto_search: bool = false
+	var scale_index: int = 2
 
 # 统一的配置文件路径
 static var save_path: String = "user://ds_inspector_config.json"
@@ -57,7 +58,8 @@ func _serialize_value(value) -> Variant:
 			"enable_in_game": value.enable_in_game,
 			"use_system_window": value.use_system_window,
 			"auto_open": value.auto_open,
-			"auto_search": value.auto_search
+			"auto_search": value.auto_search,
+			"scale_index": value.scale_index
 		}
 	else:
 		return value
@@ -76,6 +78,7 @@ func _deserialize_value(value) -> Variant:
 	config.use_system_window = value.get("use_system_window", false)
 	config.auto_open = value.get("auto_open", false)
 	config.auto_search = value.get("auto_search", false)
+	config.scale_index = value.get("scale_index", 2)
 	return config
 
 # 保存所有配置到文件
@@ -229,3 +232,22 @@ func set_auto_search(enabled: bool) -> void:
 # 获取场景树自动搜索
 func get_auto_search() -> bool:
 	return _config_data.auto_search
+
+# ==================== 缩放相关 ====================
+
+const SCALE_FACTORS = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0]
+
+# 设置缩放索引
+func set_scale_index(index: int) -> void:
+	_config_data.scale_index = index
+	_needs_save = true
+
+# 获取缩放索引
+func get_scale_index() -> int:
+	return _config_data.scale_index
+
+# 获取缩放因子
+func get_scale_factor() -> float:
+	if _config_data.scale_index >= 0 and _config_data.scale_index < SCALE_FACTORS.size():
+		return SCALE_FACTORS[_config_data.scale_index]
+	return 1.0
