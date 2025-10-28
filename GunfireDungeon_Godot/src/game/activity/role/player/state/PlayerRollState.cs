@@ -31,7 +31,7 @@ public class PlayerRollState : StateBase<Player, PlayerStateEnum>
         
         //翻滚移动方向
         _moveDir = InputManager.MoveAxis;
-        Master.BasisVelocity = _moveDir * Master.PlayerRoleState.RollSpeed;
+        Master.BasisVelocity = _moveDir * Master.RoleState.RollSpeed;
     }
 
     public override void Exit(PlayerStateEnum next)
@@ -46,7 +46,7 @@ public class PlayerRollState : StateBase<Player, PlayerStateEnum>
 
     public override void Process(float delta)
     {
-        Master.BasisVelocity = _moveDir * Master.PlayerRoleState.RollSpeed;
+        Master.BasisVelocity = _moveDir * Master.RoleState.RollSpeed;
     }
 
     //翻滚逻辑处理

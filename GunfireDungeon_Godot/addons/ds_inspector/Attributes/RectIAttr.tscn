@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv48nfe5kqkn7"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/Attributes/RectIAttr.gd" id="1_tjinf"]
+
+[node name="RectIAttr" type="HBoxContainer" node_paths=PackedStringArray("label", "x_line_edit", "y_line_edit", "w_line_edit", "h_line_edit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_tjinf")
+label = NodePath("Name")
+x_line_edit = NodePath("VBoxContainer/HBoxContainer/XLineEdit")
+y_line_edit = NodePath("VBoxContainer/HBoxContainer/YLineEdit")
+w_line_edit = NodePath("VBoxContainer/HBoxContainer2/WLineEdit")
+h_line_edit = NodePath("VBoxContainer/HBoxContainer2/HLineEdit")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X:"
+
+[node name="XLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Y:"
+
+[node name="YLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "W:"
+
+[node name="WLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "H:"
+
+[node name="HLineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 6.0
+virtual_keyboard_type = 2

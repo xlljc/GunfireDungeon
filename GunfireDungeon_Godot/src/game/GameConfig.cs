@@ -18,12 +18,22 @@ public static class GameConfig
     /// </summary>
     public static float AiAttackDistance = 300;
     
+    /// <summary>
+    /// 摇杆锁定瞄准最大距离
+    /// </summary>
+    public static int MaxJoystickLockingDistance = 300;
+    
     // ----------------------- 常量 -----------------------
 
     /// <summary>
     /// 液体画布渐变梯度
     /// </summary>
     public const float LiquidGradient = 0.1f;
+
+    /// <summary>
+    /// 液体画布可绘制区域边距
+    /// </summary>
+    public const int LiquidMargin = 1;
     
     /// <summary>
     /// 连接房间的过道宽度

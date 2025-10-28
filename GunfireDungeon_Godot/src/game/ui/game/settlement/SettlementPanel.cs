@@ -22,12 +22,12 @@ public partial class SettlementPanel : Settlement
 
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
     }
 
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
     }
 
     //重新开始

@@ -15,9 +15,10 @@ public partial class NoWeaponEnemy : Enemy
         NoWeaponAttack = true;
         FiringStand = true;
         WeaponPack.SetCapacity(0);
+        RoleState.CanPickUpWeapon = false;
         AnimationPlayer.AnimationFinished += OnAnimationFinished;
-        
-        _brushData = LiquidBrushManager.GetBrush("0002");
+
+        _brushData = LiquidBrushManager.GetBrush("0001");
     }
 
     protected override void Process(float delta)
@@ -25,7 +26,7 @@ public partial class NoWeaponEnemy : Enemy
         base.Process(delta);
     
         //测试笔刷
-        DrawLiquid(_brushData);
+        DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[1]);
     }
 
     public override void Attack()

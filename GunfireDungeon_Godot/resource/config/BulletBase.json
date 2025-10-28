@@ -1,12 +1,18 @@
 [
   {
     "Id": "0001",
-    "Name": "\u5B50\u5F391",
+    "Name": "\u6B65\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0001",
-    "HarmRange": [
-      4
-    ],
+    "Damage": {
+      "Physical": [
+        15
+      ]
+    },
+    "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       20
     ],
@@ -21,7 +27,7 @@
       -1
     ],
     "DistanceRange": [
-      200,
+      220,
       250
     ],
     "VerticalSpeed": [
@@ -33,17 +39,29 @@
     "Penetration": [
       0
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
+    ],
+    "UpliftAngle": 10,
     "__ShootSound": "shooting0005",
-    "FireEffect": ""
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0002",
-    "Name": "\u5B50\u5F392",
+    "Name": "\u9730\u5F39\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0002",
-    "HarmRange": [
-      4
-    ],
+    "Damage": {
+      "Physical": [
+        15
+      ]
+    },
+    "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -59,8 +77,8 @@
       -1
     ],
     "DistanceRange": [
-      200,
-      250
+      180,
+      230
     ],
     "VerticalSpeed": [
       0
@@ -71,17 +89,31 @@
     "Penetration": [
       0
     ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "CameraShake": 2,
+    "BacklashRange": [
+      5,
+      6
+    ],
+    "UpliftAngle": 15,
+    "__ShootSound": "shooting0003",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0003",
-    "Name": "\u5B50\u5F393",
+    "Name": "\u624B\u67AA\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0003",
-    "HarmRange": [
-      3
-    ],
+    "Damage": {
+      "Physical": [
+        10
+      ]
+    },
+    "AbnormalState": {
+      "Bleeding": 5
+    },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -96,140 +128,43 @@
       -1
     ],
     "DistanceRange": [
-      300,
-      400
-    ],
-    "VerticalSpeed": [
-      0
-    ],
-    "BounceCount": [
-      0
-    ],
-    "Penetration": [
-      0
-    ],
-    "__ShootSound": "",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0004",
-    "Name": "\u72D9\u51FB\u67AA\u5B50\u5F39",
-    "Type": 1,
-    "Prefab": "bullet0001",
-    "HarmRange": [
-      20
-    ],
-    "RepelRange": [
-      75
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
-      600,
-      600
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      600,
-      600
-    ],
-    "VerticalSpeed": [
-      0
-    ],
-    "BounceCount": [
-      0
-    ],
-    "Penetration": [
-      0
-    ],
-    "__ShootSound": "",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0005",
-    "Name": "\u69B4\u5F39\u70AE",
-    "Type": 1,
-    "Prefab": "bullet0004",
-    "HarmRange": [
-      30
-    ],
-    "RepelRange": [
-      85
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
       180,
-      180
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      270,
-      360
+      200
     ],
     "VerticalSpeed": [
-      70
+      0
     ],
     "BounceCount": [
-      4
+      0
     ],
     "Penetration": [
       0
     ],
-    "__ShootSound": "shooting0011",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0006",
-    "Name": "\u629B\u7269\u7EBF\u7C98\u6DB2\u5B50\u5F39",
-    "Type": 1,
-    "Prefab": "bullet0005",
-    "HarmRange": [
+    "CameraShake": 4,
+    "BacklashRange": [
+      3,
       5
     ],
-    "RepelRange": [
-      30
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
-      100,
-      100
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      270,
-      360
-    ],
-    "VerticalSpeed": [
-      170
-    ],
-    "BounceCount": [
-      0
-    ],
-    "Penetration": [
-      0
-    ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "UpliftAngle": 20,
+    "__ShootSound": "shooting0004",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0007",
-    "Name": "\u62D6\u5C3E\u5B50\u5F391",
+    "Name": "\u62D6\u5C3E\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0006",
-    "HarmRange": [
-      10
-    ],
+    "Damage": {
+      "DarkMatter": [
+        3
+      ]
+    },
+    "AbnormalState": {
+      "Bleeding": 5
+    },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       45
     ],
@@ -244,8 +179,8 @@
       -1
     ],
     "DistanceRange": [
-      600,
-      600
+      500,
+      500
     ],
     "VerticalSpeed": [
       0
@@ -256,17 +191,31 @@
     "Penetration": [
       1
     ],
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      3
+    ],
+    "UpliftAngle": 16,
     "__ShootSound": "shooting0012",
-    "FireEffect": ""
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0004.tscn"
   },
   {
     "Id": "0008",
-    "Name": "\u5B50\u5F394",
+    "Name": "\u6BD2\u6DB2\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0007",
-    "HarmRange": [
-      4
-    ],
+    "Damage": {
+      "Chemical": [
+        2
+      ]
+    },
+    "AbnormalState": {
+      "Bleeding": 8
+    },
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -293,17 +242,29 @@
     "Penetration": [
       0
     ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
+    ],
+    "UpliftAngle": 15,
+    "__ShootSound": "shooting0012",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "0009",
-    "Name": "\u5B50\u5F395",
+    "Name": "\u6C34\u5B50\u5F39",
     "Type": 1,
     "Prefab": "bullet0008",
-    "HarmRange": [
-      4
-    ],
+    "Damage": {
+      "Chemical": [
+        20
+      ]
+    },
+    "AbnormalState": null,
+    "CritRate": 0.3,
+    "CritBonus": 0.5,
+    "CritArmorPenetration": 0.4,
     "RepelRange": [
       15
     ],
@@ -330,54 +291,29 @@
     "Penetration": [
       0
     ],
-    "__ShootSound": "",
-    "FireEffect": ""
-  },
-  {
-    "Id": "0010",
-    "Name": "\u5F13\u7BAD",
-    "Type": 1,
-    "Prefab": "bullet0009",
-    "HarmRange": [
-      15
+    "CameraShake": 2,
+    "BacklashRange": [
+      2,
+      4
     ],
-    "RepelRange": [
-      55
-    ],
-    "DeviationAngleRange": [
-      0
-    ],
-    "SpeedRange": [
-      400,
-      400
-    ],
-    "LifeTimeRange": [
-      -1
-    ],
-    "DistanceRange": [
-      250,
-      300
-    ],
-    "VerticalSpeed": [
-      0
-    ],
-    "BounceCount": [
-      0
-    ],
-    "Penetration": [
-      0
-    ],
-    "__ShootSound": "",
-    "FireEffect": ""
+    "UpliftAngle": 15,
+    "__ShootSound": "shooting0012",
+    "FireEffect": "res://prefab/effect/weapon/ShotFire0001.tscn"
   },
   {
     "Id": "1001",
     "Name": "\u6FC0\u51491",
     "Type": 2,
     "Prefab": "res://prefab/bullet/laser/Laser0001.tscn",
-    "HarmRange": [
-      7
-    ],
+    "Damage": {
+      "Physical": [
+        7
+      ]
+    },
+    "AbnormalState": null,
+    "CritRate": 0,
+    "CritBonus": 0,
+    "CritArmorPenetration": 0,
     "RepelRange": [
       35
     ],
@@ -400,6 +336,9 @@
       0
     ],
     "Penetration": null,
+    "CameraShake": 0,
+    "BacklashRange": null,
+    "UpliftAngle": 0,
     "__ShootSound": "",
     "FireEffect": ""
   },
@@ -408,9 +347,15 @@
     "Name": "\u5200\u4F24\u5BB3",
     "Type": 3,
     "Prefab": "",
-    "HarmRange": [
-      25
-    ],
+    "Damage": {
+      "Physical": [
+        25
+      ]
+    },
+    "AbnormalState": null,
+    "CritRate": 0,
+    "CritBonus": 0,
+    "CritArmorPenetration": 0,
     "RepelRange": [
       70
     ],
@@ -429,6 +374,9 @@
     "VerticalSpeed": null,
     "BounceCount": null,
     "Penetration": null,
+    "CameraShake": 0,
+    "BacklashRange": null,
+    "UpliftAngle": 0,
     "__ShootSound": "",
     "FireEffect": ""
   }

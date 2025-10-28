@@ -1,8 +1,7 @@
 using System;
-using Config;
+using System.Collections.Generic;
 using DsUi;
 using Godot;
-using UI.game.RoomUI;
 
 
 /// <summary>
@@ -19,8 +18,6 @@ public partial class Player : Role
     /// 玩家身上的状态机控制器
     /// </summary>
     public StateController<Player, PlayerStateEnum> StateController { get; private set; }
-
-    public PlayerRoleState PlayerRoleState { get; private set; }
     
     /// <summary>
     /// 是否可以翻滚
@@ -30,23 +27,19 @@ public partial class Player : Role
     //翻滚冷却计时器
     private float _rollCoolingTimer = 0;
     
-    private BrushImageData _brushData2;
+    private BrushImageData _brushData;
+    private List<KeyValuePair<long, int>> _hurtList = new List<KeyValuePair<long, int>>();
+
+    // 记录摇杆瞄准位置
+    private Vector2 _recordJoystickMousePos = new Vector2(100, 0);
+    
+    private Role _aimLockRole;
     
     public override void OnInit()
     {
         base.OnInit();
 
-        IsAi = false;
         StateController = AddComponent<StateController<Player, PlayerStateEnum>>();
-        Camp = CampEnum.Camp1;
-
-        MaxHp = 6;
-        Hp = 6;
-        MaxShield = 0;
-        Shield = 0;
-
-        WeaponPack.SetCapacity(2);
-        ActivePropsPack.SetCapacity(1);
         
         // debug用
         // DebugSet();
@@ -60,11 +53,18 @@ public partial class Player : Role
         
         //InitSubLine();
         
-        _brushData2 = new BrushImageData(ExcelConfig.LiquidMaterial_Map["0001"]);
-        
-        PartPropPack.SetCapacity(10);
-        
+        _brushData = LiquidBrushManager.GetBrush("0001");
         PickUpWeapon(Create<Weapon>(Ids.Id_weapon0003));
+        PickUpWeapon(Create<Weapon>(Ids.Id_weapon0002));
+
+        PickUpPartProp(PartProp.CreatePropActivity("3001"));
+        PickUpPartProp(PartProp.CreatePropActivity("0001"));
+        PickUpPartProp(PartProp.CreatePropActivity("0002"));
+
+        // this.CallDelay(1f, () =>
+        // {
+        //     DrawLiquid(_brushData2);
+        // });
     }
 
     private void DebugSet()
@@ -84,8 +84,8 @@ public partial class Player : Role
             GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom / 2f;
         });
         
-        World.TileRoot.SetLayerEnabled(MapLayer.AutoTopLayer, false);
-        World.TileRoot.SetLayerEnabled(MapLayer.AutoMiddleLayer, false);
+        World.GetTileMapLayer(MapLayer.AutoTopLayer).Enabled = false;
+        World.GetTileMapLayer(MapLayer.AutoMiddleLayer).Enabled = false;
         
         this.CallDelay(0.5f, () =>
         {
@@ -107,13 +107,6 @@ public partial class Player : Role
 
     }
 
-    protected override RoleState OnCreateRoleState()
-    {
-        var roleState = new PlayerRoleState();
-        PlayerRoleState = roleState;
-        return roleState;
-    }
-
     protected override void Process(float delta)
     {
         base.Process(delta);
@@ -121,6 +114,28 @@ public partial class Player : Role
         {
             return;
         }
+        
+        //更新每秒受到的伤害计数
+        if (_hurtList.Count > 0)
+        {
+            var time = DateTime.Now.Ticks - 1000000;
+            for (var i = 0; i < _hurtList.Count; i++)
+            {
+                var temp = _hurtList[i];
+                if (temp.Key <= time) // 超过1秒
+                {
+                    // 移除
+                    // Debug.Log("移除伤害：" + _hurtList[i]);
+                    _hurtList.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
 
         if (_rollCoolingTimer > 0)
         {
@@ -129,96 +144,59 @@ public partial class Player : Role
         
         if (MountLookTarget) //看向目标
         {
-            //脸的朝向
-            var gPos = Position;
-            Vector2 mousePos = InputManager.CursorPosition;
-            if (mousePos.X > gPos.X && Face == FaceDirection.Left)
-            {
-                Face = FaceDirection.Right;
-            }
-            else if (mousePos.X < gPos.X && Face == FaceDirection.Right)
-            {
-                Face = FaceDirection.Left;
-            }
-            
-            //枪口跟随鼠标
-            MountPoint.SetLookAt(mousePos);
+            HandlerAiming();
         }
 
-        var uiPanels = UiManager.GetUiInstance<RoomUIPanel>(UiManager.UiName.Game_RoomUI);
-        if (uiPanels.Length > 0 && uiPanels[0].OcclusionCount <= 0) // 没有其他遮挡Ui打开
+        if (InputManager.ExchangeWeapon) //切换武器
         {
-            if (InputManager.ExchangeWeapon) //切换武器
-            {
-                ExchangeNextWeapon();
-            }
-            else if (InputManager.ThrowWeapon) //扔掉武器
-            {
-                ThrowWeapon();
-            }
-            else if (InputManager.Interactive) //互动物体
-            {
-                TriggerInteractive();
-            }
-            else if (InputManager.Reload) //换弹
-            {
-                Reload();
-            }
+            ExchangeNextWeapon();
+        }
+        else if (InputManager.ThrowWeapon) //扔掉武器
+        {
+            ThrowWeapon();
+        }
+        else if (InputManager.Interactive) //互动物体
+        {
+            TriggerInteractive();
+        }
+        else if (InputManager.Reload) //换弹
+        {
+            Reload();
+        }
 
-            var meleeAttackFlag = false;
-            if (InputManager.MeleeAttack) //近战攻击
+        var meleeAttackFlag = false;
+        if (InputManager.MeleeAttack) //近战攻击
+        {
+            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
             {
-                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
+                if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
                 {
-                    if (WeaponPack.ActiveItem != null && WeaponPack.ActiveItem.Attribute.CanMeleeAttack)
-                    {
-                        meleeAttackFlag = true;
-                        MeleeAttack();
-                    }
-                }
-            }
-
-            if (!meleeAttackFlag && InputManager.Fire) //正常开火
-            {
-                if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
-                {
-                    Attack();
-                }
-            }
-
-            if (InputManager.UseActiveProp) //使用道具
-            {
-                UseActiveProp();
-            }
-            else if (InputManager.ExchangeProp) //切换道具
-            {
-                ExchangeNextActiveProp();
-            }
-            else if (InputManager.RemoveProp) //扔掉道具
-            {
-                ThrowActiveProp();
-            }
-            
-            if (Input.IsKeyPressed(Key.P)) //测试用, 自杀
-            {
-                //Hurt(1000, 0);
-                Hp = 0;
-                HurtHandler(this, 1000, 0);
-            }
-            else if (Input.IsKeyPressed(Key.O)) //测试用, 消灭房间内所有敌人
-            {
-                var enemyList = AffiliationArea.FindIncludeItems(o => o is Role role && role.IsEnemyWithPlayer());
-                foreach (var enemy in enemyList)
-                {
-                    var hurt = ((Enemy)enemy).HurtArea;
-                    if (hurt.CanHurt(Camp))
-                    {
-                        hurt.Hurt(this, 1000, 0);
-                    }
+                    meleeAttackFlag = true;
+                    MeleeAttack();
                 }
             }
         }
 
+        if (!meleeAttackFlag && InputManager.Fire) //正常开火
+        {
+            if (StateController.CurrState != PlayerStateEnum.Roll) //不能是翻滚状态
+            {
+                Attack();
+            }
+        }
+
+        if (InputManager.UseActiveProp) //使用道具
+        {
+            UseActiveProp();
+        }
+        else if (InputManager.ExchangeProp) //切换道具
+        {
+            ExchangeNextActiveProp();
+        }
+        else if (InputManager.RemoveProp) //扔掉道具
+        {
+            ThrowActiveProp();
+        }
 
         // //测试用
         // if (InputManager.Roll) //鼠标处触发互动物体
@@ -234,19 +212,205 @@ public partial class Player : Role
         //     }
         // }
         
-        if (Face == FaceDirection.Right)
+        // DrawLiquid(_brushData, ExcelConfig.LiquidLayer_List[0]);
+    }
+    
+    private void HandlerAiming()
+    {
+        //脸的朝向
+        var gPos = Position;
+        Vector2 mousePos = CalcMousePosition(gPos);
+            
+        if (mousePos.X > gPos.X && Face == FaceDirection.Left)
         {
-            TipRoot.Scale = Vector2.One;
+            Face = FaceDirection.Right;
+        }
+        else if (mousePos.X < gPos.X && Face == FaceDirection.Right)
+        {
+            Face = FaceDirection.Left;
+        }
+            
+        //枪口跟随鼠标
+        MountPoint.SetLookAt(mousePos);
+    }
+    
+    private Vector2 CalcMousePosition(Vector2 gPos)
+    {
+        var app = GameApplication.Instance;
+        Vector2 mousePos;
+        if (_aimLockRole != null && (!app.GameSave.JoystickAimAssist || _aimLockRole.IsDie || _aimLockRole.IsDestroyed))
+        {
+            _aimLockRole = null;
+        }
+        if (InputManager.IsJoystickInput) // 摇杆瞄准
+        {
+            if (!InputManager.IsJoystickRInput) // 摇杆没有输入
+            {
+                if (app.GameSave.JoystickAimAssist && World != null) // 锁定瞄准
+                {
+                    if (_aimLockRole == null ||
+                        Position.DistanceTo(_aimLockRole.Position) > GameConfig.MaxJoystickLockingDistance) // 之前帧没有记录 或者 锁定目标超出最大距离
+                    {
+                        _aimLockRole = GetNearestEnemy(GameConfig.MaxJoystickLockingDistance);
+                    }
+                    else // 之前帧有记录
+                    {
+                        // 需要更新，看看有没有更近的敌人 （比之前的敌人近50px）
+                        var closerRole = TryFindCloserEnemy(_aimLockRole, 50f);
+                        if (closerRole != null)
+                        {
+                            _aimLockRole = closerRole;
+                        }
+                    }
+
+                    if (_aimLockRole != null) // 有锁定瞄准目标
+                    {
+                        mousePos = _aimLockRole.GetCenterPosition();
+                    }
+                    else // 没有锁定瞄准目标
+                    {
+                        mousePos = GetRecordJoystickMousePos(gPos);
+                    }
+                }
+                else // 没有锁定瞄准
+                {
+                    mousePos = GetRecordJoystickMousePos(gPos);
+                }
+            }
+            else // 摇杆有输入
+            {
+                if (app.GameSave.JoystickAimAssistStrength > 0.01f) // 有辅助瞄准
+                {
+                    _aimLockRole = GetAimAssistEnemy(gPos, InputManager.AimingPosition, app.GameSave.JoystickAimAssistStrength);
+                    if (_aimLockRole != null)
+                    {
+                        mousePos = _aimLockRole.GetCenterPosition();
+                    }
+                    else
+                    {
+                        mousePos = InputManager.AimingPosition;
+                    }
+                }
+                else // 没有辅助瞄准
+                {
+                    mousePos = InputManager.AimingPosition;
+                }
+            }
+        }
+        else // 鼠标瞄准
+        {
+            mousePos = InputManager.AimingPosition;
+        }
+
+        if (InputManager.IsJoystickInput && _aimLockRole != null)
+        {
+            app.Cursor.CustomHandlerFlag = true;
+            app.Cursor.Position = app.WorldToUiPosition(mousePos);
+            // app.Cursor.Position = app.WorldToUiPosition(_aimLockRole.GetCenterPosition());
         }
         else
         {
-            TipRoot.Scale = new Vector2(-1, 1);
+            app.Cursor.CustomHandlerFlag = false;
         }
-
-        //测试刷地
-        //DrawLiquid(_brushData2);
+        return mousePos;
     }
 
+    // 获取记录摇杆瞄准位置
+    private Vector2 GetRecordJoystickMousePos(Vector2 gPos)
+    {
+        if (InputManager.MoveAxis.LengthSquared() > 0.001f)
+        {
+            _recordJoystickMousePos = InputManager.MoveAxis.Normalized() * 120f;
+        }
+        return gPos + _recordJoystickMousePos;
+    }
+    
+    /// <summary>
+    /// 获取最近的敌人
+    /// </summary>
+    public Role GetNearestEnemy(float maxDistance)
+    {
+        Role nearestRole = null;
+        float nearestDistanceSquared = maxDistance * maxDistance;
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed)
+            {
+                continue;
+            }
+
+            var distanceSquared = Position.DistanceSquaredTo(role.Position);
+            if (distanceSquared < nearestDistanceSquared)
+            {
+                nearestDistanceSquared = distanceSquared;
+                nearestRole = role;
+            }
+        }
+
+        return nearestRole;
+    }
+
+    /// <summary>
+    /// 尝试找到比当前敌人更近的敌人（至少近指定距离）
+    /// </summary>
+    private Role TryFindCloserEnemy(Role currentRole, float minCloserDistance)
+    {
+        var currentDistSq = Position.DistanceSquaredTo(currentRole.Position);
+        var threshold = currentDistSq - minCloserDistance * minCloserDistance;
+        Role closerRole = null;
+        float minDistSq = float.MaxValue;
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed || role == currentRole)
+            {
+                continue;
+            }
+            var distSq = Position.DistanceSquaredTo(role.Position);
+            if (distSq < threshold && distSq < minDistSq)
+            {
+                minDistSq = distSq;
+                closerRole = role;
+            }
+        }
+        return closerRole;
+    }
+    
+    
+    /// <summary>
+    /// 获取辅助瞄准的敌人
+    /// </summary>
+    private Role GetAimAssistEnemy(Vector2 gPos, Vector2 aimPos, float assistStrength)
+    {
+        var fireDir = (aimPos - gPos).Normalized();
+        var assistAngle = Mathf.DegToRad(60f * assistStrength);
+        var minDist = float.MaxValue;
+        Role nearestEnemy = null;
+        // var nearestEnemyPos = Vector2.Zero;
+
+        foreach (var role in World.Role_InstanceList)
+        {
+            if (!role.IsEnemy(this) || role.IsDie || role.IsDestroyed)
+                continue;
+            var toEnemy = role.GetCenterPosition() - gPos;
+            var angle = fireDir.AngleTo(toEnemy.Normalized());
+            if (Mathf.Abs(angle) <= assistAngle)
+            {
+                float dist = toEnemy.Length();
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    nearestEnemy = role;
+                    // nearestEnemyPos = role.GetCenterPosition();
+                }
+            }
+        }
+        // if (nearestEnemy != null)
+        // {
+        //     return gPos.Lerp(nearestEnemyPos, assistStrength);
+        // }
+        return nearestEnemy;
+    }
+    
     protected override void OnAffiliationChange(AffiliationArea prevArea)
     {
         BrushPrevPosition = null;
@@ -263,22 +427,38 @@ public partial class Player : Role
         EventManager.EmitEvent(EventEnum.OnPlayerRemoveWeapon, weapon);
     }
 
-    protected override int OnHandlerHurt(int damage)
+    protected override void OnShieldDestroy()
     {
-        //修改受到的伤害, 每次只受到1点伤害
-        return 1;
+        //破盾
+        PlayInvincibleFlashing(RoleState.ShieldInv);
     }
 
-    protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected override int OnHandlerHurt(int damage)
+    {
+        if (Shield > 0)
+        {
+            return damage;
+        }
+
+        var value = Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp);
+        return damage >= value ? //触发保护机制
+            value : damage;
+    }
+    
+    protected override void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
         //进入无敌状态
-        if (realHarm) //真实伤害
+        if (damageCalcResult.SubHealthDamage > 0) //真实伤害，不是护盾抵消掉的
         {
-            PlayInvincibleFlashing(RoleState.WoundedInvincibleTime);
-        }
-        else //护盾抵消掉的
-        {
-            PlayInvincibleFlashing(RoleState.ShieldInvincibleTime);
+            _hurtList.Add(new KeyValuePair<long, int>(DateTime.Now.Ticks, damageCalcResult.SubHealthDamage));
+            if (damageCalcResult.SubHealthDamage >= Mathf.CeilToInt(RoleState.WoundMaxPct * MaxHp)) //触发保护机制的无敌时间
+            {
+                PlayInvincibleFlashing(RoleState.WoundMaxInv);
+            }
+            else if (GetDamageTakenInTheLastSecond() >= Mathf.CeilToInt(RoleState.WoundInvPct * MaxHp)) //触发无敌
+            {
+                PlayInvincibleFlashing(RoleState.WoundInv);
+            }
         }
 
         //血量为0, 扔掉所有武器
@@ -300,33 +480,39 @@ public partial class Player : Role
         }
     }
 
-    protected override void OnChangeHp(int hp)
-    {
-        //GameApplication.Instance.Ui.SetHp(hp);
-        EventManager.EmitEvent(EventEnum.OnPlayerHpChange, hp);
-    }
-
-    protected override void OnChangeMaxHp(int maxHp)
-    {
-        //GameApplication.Instance.Ui.SetMaxHp(maxHp);
-        EventManager.EmitEvent(EventEnum.OnPlayerMaxHpChange, maxHp);
-    }
-
     protected override void ChangeInteractiveItem(CheckInteractiveResult prev, CheckInteractiveResult result)
     {
         //派发互动对象改变事件
         EventManager.EmitEvent(EventEnum.OnPlayerChangeInteractiveItem, result);
     }
+    
+    protected override void OnChangeHp(int hp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerHpChange, hp);
+    }
 
+    protected override void OnChangeMaxHp(int maxHp)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerMaxHpChange, maxHp);
+    }
+
+    protected override void OnChangeArmor(int armor)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerArmorChange, armor);
+    }
+
+    protected override void OnChangeMaxArmor(int maxArmor)
+    {
+        EventManager.EmitEvent(EventEnum.OnPlayerMaxArmorChange, maxArmor);
+    }
+    
     protected override void OnChangeShield(int shield)
     {
-        //GameApplication.Instance.Ui.SetShield(shield);
         EventManager.EmitEvent(EventEnum.OnPlayerShieldChange, shield);
     }
 
     protected override void OnChangeMaxShield(int maxShield)
     {
-        //GameApplication.Instance.Ui.SetMaxShield(maxShield);
         EventManager.EmitEvent(EventEnum.OnPlayerMaxShieldChange, maxShield);
     }
 
@@ -409,7 +595,7 @@ public partial class Player : Role
     /// </summary>
     public void OverRoll()
     {
-        _rollCoolingTimer = PlayerRoleState.RollCoolingTime;
+        _rollCoolingTimer = RoleState.RollCoolingTime;
     }
 
     // protected override void DebugDraw()
@@ -428,6 +614,20 @@ public partial class Player : Role
     {
         base.UseGold(goldCount);
         EventManager.EmitEvent(EventEnum.OnPlayerGoldChange, RoleState.Gold);
+    }
+
+    /// <summary>
+    /// 获取最近 1 秒内受到的伤害，只算真实伤害，护盾抵消的不算
+    /// </summary>
+    public int GetDamageTakenInTheLastSecond()
+    {
+        var v = 0;
+        for (var i = 0; i < _hurtList.Count; i++)
+        {
+            v += _hurtList[i].Value;
+        }
+
+        return v;
     }
 
     /// <summary>

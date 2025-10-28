@@ -17,11 +17,11 @@ public class Buff_ShieldRecoveryTime : BuffFragment
     
     public override void OnPickUpItem()
     {
-        Role.RoleState.ShieldRecoveryTime -= _time;
+        Role.RoleState.ShieldDelay -= _time;
     }
 
     public override void OnRemoveItem()
     {
-        Role.RoleState.ShieldRecoveryTime += _time;
+        Role.RoleState.ShieldDelay += _time;
     }
 }

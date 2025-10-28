@@ -17,6 +17,9 @@ public partial class Knife : Weapon
     /// </summary>
     [Export]
     public int BeginChargeAngle { get; set; } = 120;
+
+    private float UpliftAngle = -95;
+    private float CameraShake = 7;
     
     private Area2D _hitArea;
     private int _attackIndex = 0;
@@ -30,7 +33,7 @@ public partial class Knife : Weapon
         NoMasterCanTrigger = false;
         _hitArea = GetNode<Area2D>("HitArea");
         _collisionPolygon = new CollisionPolygon2D();
-        var a = Mathf.Abs(-BeginChargeAngle + Attribute.UpliftAngle);
+        var a = Mathf.Abs(-BeginChargeAngle + UpliftAngle);
         var ca = Utils.ConvertAngle(-a / 2f);
         _collisionPolygon.Polygon = Utils.CreateSectorPolygon(ca, AttackRange, a, 6);
         _hitArea.AddChild(_collisionPolygon);
@@ -87,7 +90,7 @@ public partial class Knife : Weapon
                 Master,
                 ResourcePath.resource_spriteFrames_weapon_Weapon0004_hit_tres, "default",
                 Master.MountPoint.Position,
-                Master.MountPoint.Rotation + Mathf.DegToRad(Attribute.UpliftAngle + 60),
+                Master.MountPoint.Rotation + Mathf.DegToRad(UpliftAngle + 60),
                 AnimatedSprite.Scale,
                 new Vector2(17, 4), 1
             );
@@ -101,12 +104,12 @@ public partial class Knife : Weapon
             if (Master.Face == FaceDirection.Right)
             {
                 //GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(r - 90)) * 5);
-                GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(r - 180)) * Attribute.CameraShake);
+                GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(r - 180)) * CameraShake);
             }
             else
             {
                 //GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(270 - r)) * 5);
-                GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(-r)) * Attribute.CameraShake);
+                GameCamera.Main.DirectionalShake(Vector2.FromAngle(Mathf.DegToRad(-r)) * CameraShake);
             }
         }
     }

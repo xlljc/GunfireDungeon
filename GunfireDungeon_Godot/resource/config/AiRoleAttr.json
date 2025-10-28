@@ -1,0 +1,30 @@
+[
+  {
+    "Id": "enemy0001",
+    "Remark": "\u654C\u4EBA1",
+    "AttackInterval": 0,
+    "ViewRange": 250,
+    "TailAfterViewRange": 300,
+    "ViewAngleRange": 150,
+    "Gold": [
+      -2,
+      3
+    ],
+    "BloodColor": "ff0000",
+    "__BodyFragment": "enemy_dead0001"
+  },
+  {
+    "Id": "enemy0002",
+    "Remark": "\u654C\u4EBA2",
+    "AttackInterval": 2.2,
+    "ViewRange": 200,
+    "TailAfterViewRange": 300,
+    "ViewAngleRange": 150,
+    "Gold": [
+      -2,
+      4
+    ],
+    "BloodColor": "",
+    "__BodyFragment": ""
+  }
+]

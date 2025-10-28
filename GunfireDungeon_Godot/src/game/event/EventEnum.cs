@@ -7,6 +7,11 @@ using System.Collections.Generic;
 public enum EventEnum
 {
     /// <summary>
+    /// 切换输入手柄输入模式，参数为<bool/>, true表示手柄输入，false表示键鼠输入
+    /// </summary>
+    OnChangeJoypadInputMode,
+    
+    /// <summary>
     /// 切换玩家角色, 参数为<see cref="Role"/>
     /// </summary>
     OnChangePlayerRole,
@@ -43,6 +48,14 @@ public enum EventEnum
     /// 玩家最大血量发生改变, 参数为玩家最大血量
     /// </summary>
     OnPlayerMaxHpChange,
+    /// <summary>
+    /// 玩家装甲值发生改变, 参数为玩家装甲值
+    /// </summary>
+    OnPlayerArmorChange,
+    /// <summary>
+    /// 玩家最大装甲值发生改变, 参数为玩家最大装甲值
+    /// </summary>
+    OnPlayerMaxArmorChange,
     /// <summary>
     /// 玩家护盾值发生改变, 参数为玩家护盾值
     /// </summary>

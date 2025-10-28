@@ -1,7 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.Json;
 using Config;
 using DsUi;
 using Godot;
@@ -28,15 +28,16 @@ public abstract partial class Role : ActivityObject
     /// 参数1为目标角色
     /// 参数2为造成对伤害值
     /// </summary>
-    public event Action<Role, int> OnDamageEvent;
+    public event DamageHandler OnDamageEvent;
+    public delegate void DamageHandler(Role target, DamageCalcResult damage);
 
     /// <summary>
     /// 当角色受到伤害时回调
     /// 参数1为造成伤害的角色
     /// 参数2为造成伤害值
-    /// 参数3为是否受到真实伤害, 如果为false, 则表示该伤害被护盾格挡掉了
     /// </summary>
-    public event Action<ActivityObject, int, bool> OnHitEvent;
+    public event HitHandler OnHitEvent;
+    public delegate void HitHandler(ActivityObject target, DamageCalcResult damage);
     
     /// <summary>
     /// 是否是 Ai
@@ -96,13 +97,7 @@ public abstract partial class Role : ActivityObject
     /// 用于提示状态的根节点
     /// </summary>
     [Export, ExportFillNode]
-    public Node2D TipRoot { get; set; }
-    
-    /// <summary>
-    /// 用于提示当前敌人状态
-    /// </summary>
-    [Export, ExportFillNode]
-    public AnimatedSprite2D TipSprite { get; set; }
+    public RoleTip TipRoot { get; set; }
     
     /// <summary>
     /// 动画播放器
@@ -217,8 +212,8 @@ public abstract partial class Role : ActivityObject
         get => _maxHp;
         set
         {
-            int temp = _maxHp;
-            _maxHp = value;
+            var temp = _maxHp;
+            _maxHp = Mathf.Max(0, value);
             //最大血量值改变
             if (temp != _maxHp)
             {
@@ -241,8 +236,8 @@ public abstract partial class Role : ActivityObject
         get => _shield;
         set
         {
-            int temp = _shield;
-            _shield = value;
+            var temp = _shield;
+            _shield = Mathf.Clamp(value, 0, _maxShield);
             //护盾被破坏
             if (temp > 0 && _shield <= 0 && _maxShield > 0)
             {
@@ -256,6 +251,11 @@ public abstract partial class Role : ActivityObject
         }
     }
     private int _shield = 0;
+
+    /// <summary>
+    /// 当前真实护盾值，包含小数
+    /// </summary>
+    public float RealShield => _shield + _addShieldVal;
 
     /// <summary>
     /// 最大护盾值
@@ -280,6 +280,49 @@ public abstract partial class Role : ActivityObject
         }
     }
     private int _maxShield = 0;
+
+    /// <summary>
+    /// 当前装甲值
+    /// </summary>
+    public int Armor
+    {
+        get => _armor;
+        set
+        {
+            var temp = _armor;
+            _armor = Mathf.Clamp(value, 0, _maxArmor);
+            //装甲值改变
+            if (temp != _armor)
+            {
+                OnChangeArmor(_armor);
+            }
+        }
+    }
+    private int _armor = 0;
+
+    /// <summary>
+    /// 最大装甲值
+    /// </summary>
+    public int MaxArmor
+    {
+        get => _maxArmor;
+        set
+        {
+            int temp = _maxArmor;
+            _maxArmor = value;
+            //最大装甲值改变
+            if (temp != _maxArmor)
+            {
+                OnChangeMaxArmor(_maxArmor);
+            }
+            //调整装甲值
+            if (Armor > _maxArmor)
+            {
+                Armor = _maxArmor;
+            }
+        }
+    }
+    private int _maxArmor = 0;
 
     /// <summary>
     /// 无敌状态
@@ -350,13 +393,122 @@ public abstract partial class Role : ActivityObject
     private long _invincibleFlashingId = -1;
     //护盾恢复计时器
     private float _shieldRecoveryTimer = 0;
+    //护盾恢复值小数部分，大于1自动往 Shiel 上加
+    private float _addShieldVal = 0;
 
+    /// <summary>
+    /// 角色属性
+    /// </summary>
+    private ExcelConfig.RoleBase _roleAttribute;
+
+    private static bool _init = false;
+    private static Dictionary<string, ExcelConfig.RoleBase> _roleAttributeMap = new Dictionary<string, ExcelConfig.RoleBase>();
+    
+    /// <summary>
+    /// 初始化角色属性数据
+    /// </summary>
+    public static void InitRoleAttribute()
+    {
+        if (_init)
+        {
+            return;
+        }
+
+        _init = true;
+        foreach (var roleAttr in ExcelConfig.RoleBase_List)
+        {
+            if (roleAttr.Activity != null)
+            {
+                if (!_roleAttributeMap.TryAdd(roleAttr.Activity.Id, roleAttr))
+                {
+                    Debug.LogError("发现重复注册的角色属性: " + roleAttr.Id);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 根据 ActivityBase.Id 获取对应角色的属性数据
+    /// </summary>
+    public static ExcelConfig.RoleBase GetRoleAttribute(string itemId)
+    {
+        if (itemId == null)
+        {
+            return null;
+        }
+        if (_roleAttributeMap.TryGetValue(itemId, out var attr))
+        {
+            return attr;
+        }
+
+        throw new Exception($"角色'{itemId}'没有在 RoleBase 表中配置属性数据!");
+    }
+    
     /// <summary>
     /// 创建角色的 RoleState 对象
     /// </summary>
     protected virtual RoleState OnCreateRoleState()
     {
-        return new RoleState();
+        var roleBase = GetRoleAttribute(ActivityBase.Id).Clone();
+        var roleState = new RoleState(roleBase);
+        
+        MaxHp = roleBase.Hp;
+        Hp = roleBase.Hp;
+        
+        MaxShield = roleBase.Shield;
+        Shield = roleBase.Shield;
+        
+        MaxArmor = roleBase.Armor;
+        Armor = roleBase.Armor;
+        
+        Camp = roleBase.Camp;
+        IsAi = roleBase.AiAttr != null;
+        
+        WeaponPack.SetCapacity(roleBase.WeaponCapacity);
+        ActivePropsPack.SetCapacity(roleBase.ActivePropsCapacity);
+        PartPropPack.SetCapacity(roleBase.PartPropCapacity);
+        
+        roleState.CanPickUpWeapon = roleBase.WeaponCapacity > 0;
+        roleState.MoveSpeed = roleBase.MoveSpeed;
+        roleState.Acceleration = roleBase.Acceleration;
+        roleState.Friction = roleBase.Friction;
+        
+        roleState.ShieldDelay = roleBase.ShieldDelay;
+        roleState.ShieldRate = roleBase.ShieldRate;
+        roleState.ShieldInv = roleBase.ShieldInv;
+        roleState.WoundInvPct = roleBase.WoundInvPct;
+        roleState.WoundInv = roleBase.WoundInv;
+        roleState.WoundMaxPct = roleBase.WoundMaxPct;
+        roleState.WoundMaxInv = roleBase.WoundMaxInv;
+        
+        roleState.CritResist = roleBase.CritResist;
+
+        roleState.PhysicalResist = roleBase.PhysicalReduce;
+        roleState.FireResist = roleBase.FireReduce;
+        roleState.ElectricResist = roleBase.ElectricReduce;
+        roleState.ChemicalResist = roleBase.ChemicalReduce;
+        roleState.OpticalResist = roleBase.OpticalReduce;
+        roleState.DarkMatterResist = roleBase.DarkMatterReduce;
+        roleState.ExplosiveResist = roleBase.ExplosiveReduce;
+        
+        var extraAttr = roleBase.ExtraAttr;
+        if (extraAttr != null)
+        {
+            if (extraAttr.TryGetValue("RollSpeed", out var rollSpeed))
+            {
+                roleState.RollSpeed = rollSpeed.GetSingle();
+            }
+            if (extraAttr.TryGetValue("RollTime", out var rollTime))
+            {
+                roleState.RollTime = rollTime.GetSingle();
+            }
+            if (extraAttr.TryGetValue("RollCoolingTime", out var rollCoolingTime))
+            {
+                roleState.RollCoolingTime = rollCoolingTime.GetSingle();
+            }
+        }
+        
+        return roleState;
     }
     
     /// <summary>
@@ -388,6 +540,20 @@ public abstract partial class Role : ActivityObject
     }
 
     /// <summary>
+    /// 装甲值改变时调用
+    /// </summary>
+    protected virtual void OnChangeArmor(int armor)
+    {
+    }
+
+    /// <summary>
+    /// 最大装甲值改变时调用
+    /// </summary>
+    protected virtual void OnChangeMaxArmor(int maxArmor)
+    {
+    }
+
+    /// <summary>
     /// 当护盾被破坏时调用
     /// </summary>
     protected virtual void OnShieldDestroy()
@@ -398,10 +564,9 @@ public abstract partial class Role : ActivityObject
     /// 当受伤时调用
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
-    /// <param name="damage">受到的伤害</param>
+    /// <param name="damageCalcResult">受到的伤害数据</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    /// <param name="realHarm">是否受到真实伤害, 如果为false, 则表示该伤害被护盾格挡掉了</param>
-    protected virtual void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected virtual void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
     }
 
@@ -496,16 +661,15 @@ public abstract partial class Role : ActivityObject
     
     public override void OnInit()
     {
-        RoleState = OnCreateRoleState();
-        ActivePropsPack = AddComponent<Package<ActiveProp, Role>>();
-        ActivePropsPack.SetCapacity(RoleState.CanPickUpWeapon ? 1 : 0);
         PartPropPack = AddComponent<PartPackage>();
-        PartPropPack.SetCapacity(25);
+        WeaponPack = AddComponent<Package<Weapon, Role>>();
+        ActivePropsPack = AddComponent<Package<ActiveProp, Role>>();
         
+        RoleState = OnCreateRoleState();
+        
+        TipRoot.Role = this;
         _startScale = Scale;
-        
         HurtArea.InitRole(this);
-        
         Face = FaceDirection.Right;
         
         //连接互动物体信号
@@ -515,10 +679,6 @@ public abstract partial class Role : ActivityObject
         InteractiveArea.AreaExited += _OnAreaExit;
         
         //------------------------
-        
-        WeaponPack = AddComponent<Package<Weapon, Role>>();
-        WeaponPack.SetCapacity(2);
-        
         MountPoint.Master = this;
         
         MeleeAttackCollision.Disabled = true;
@@ -557,11 +717,7 @@ public abstract partial class Role : ActivityObject
             }
             else
             {
-                var flag = true;
-                if (item is ActivityObject ao && ao.IsThrowing)
-                {
-                    flag = false;
-                }
+                bool flag = !(item is ActivityObject ao && ao.IsThrowing);
                 //找到可互动的物体了
                 if (flag && !findFlag)
                 {
@@ -615,23 +771,33 @@ public abstract partial class Role : ActivityObject
                     SetBlendModulate(new Color(1, 1, 1, 0));
                 }
             }
-
-            _shieldRecoveryTimer = 0;
         }
         else //恢复护盾
         {
             if (Shield < MaxShield)
             {
-                _shieldRecoveryTimer += delta;
-                if (_shieldRecoveryTimer >= RoleState.ShieldRecoveryTime) //时间到, 恢复
+                if (_shieldRecoveryTimer >= RoleState.ShieldDelay) //时间到, 恢复
                 {
-                    Shield++;
-                    _shieldRecoveryTimer = 0;
+                    _addShieldVal += RoleState.ShieldRate * delta;
+                    if (_addShieldVal >= 1)
+                    {
+                        Shield += (int)_addShieldVal;
+                        _addShieldVal -= (int)_addShieldVal;
+                    }
+                    else
+                    {
+                        OnChangeShield(_shield);
+                    }
+                }
+                else
+                {
+                    _shieldRecoveryTimer += delta;
                 }
             }
             else
             {
                 _shieldRecoveryTimer = 0;
+                _addShieldVal = 0;
             }
         }
 
@@ -665,15 +831,6 @@ public abstract partial class Role : ActivityObject
                     prop.UpdateCoroutine(delta);
                 }
             }
-        }
-        
-        if (Face == FaceDirection.Right)
-        {
-            TipRoot.Scale = Vector2.One;
-        }
-        else
-        {
-            TipRoot.Scale = new Vector2(-1, 1);
         }
     }
 
@@ -917,48 +1074,67 @@ public abstract partial class Role : ActivityObject
             activeItem.Use();
         }
     }
+
+    /// <summary>
+    /// 受到伤害处理，这个函数是给延时函数调用的，为了传入 AttackStats 参数
+    /// </summary>
+    public virtual void HurtHandlerByDeferred(ActivityObject target, GodotRefValue<AttackStats> attackStats, float angle)
+    {
+        HurtHandler(target, attackStats.Value, angle);
+    }
     
     /// <summary>
     /// 受到伤害, 如果是在碰撞信号处理函数中调用该函数, 请使用 CallDeferred 来延时调用, 否则很有可能导致报错
     /// </summary>
     /// <param name="target">触发伤害的对象, 为 null 表示不存在对象或者对象已经被销毁</param>
-    /// <param name="damage">伤害的量</param>
+    /// <param name="attackStats">伤害的数据</param>
     /// <param name="angle">伤害角度（弧度制）</param>
-    public virtual void HurtHandler(ActivityObject target, int damage, float angle)
+    public virtual void HurtHandler(ActivityObject target, AttackStats attackStats, float angle)
     {
         //受伤闪烁, 无敌状态, 或者已经死亡
         if (Invincible || IsDie)
         {
             return;
         }
+
+        //计算角色抗性后受到的伤害
+        var damageResult = DamageManager.ApplyDamage(this, attackStats);
+
+        if (damageResult.IsCritical)
+        {
+            Debug.Log("触发暴击了!");
+        }
         
         //计算真正受到的伤害
-        damage = OnHandlerHurt(damage);
-        var flag = Shield > 0;
-        if (flag)
+        if (damageResult.HealthDamage > 0)
         {
-            Shield -= damage;
+            damageResult.HealthDamage = OnHandlerHurt(damageResult.HealthDamage);
         }
-        else
+        
+        _shieldRecoveryTimer = 0;
+
+        if (damageResult.SubShieldDamage > 0)
         {
-            damage = RoleState.CalcHurtDamage(damage);
-            if (damage > 0)
-            {
-                Hp -= damage;
-            }
-            //播放血液效果
-            // var packedScene = ResourceManager.Load<PackedScene>(ResourcePath.prefab_effect_Blood_tscn);
-            // var blood = packedScene.Instance<Blood>();
-            // blood.GlobalPosition = GlobalPosition;
-            // blood.Rotation = angle;
-            // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
+            Shield -= damageResult.SubShieldDamage;
+            _addShieldVal = 0;
+        }
+
+        if (damageResult.SubArmorDamage > 0)
+        {
+            Armor -= damageResult.SubArmorDamage;
+        }
+        
+        if (damageResult.SubHealthDamage > 0)
+        {
+            var damage = RoleState.CalcHurtDamage(damageResult.SubHealthDamage, attackStats.Type);
+            Hp -= damage;
         }
 
         PrevHitAngle = angle;
-        OnHit(target, damage, angle, !flag);
+        OnHit(target, damageResult, angle);
         if (OnHitEvent != null)
         {
-            OnHitEvent(target, damage, !flag);
+            OnHitEvent(target, damageResult);
         }
         
         if (target is Role targetRole && !targetRole.IsDestroyed)
@@ -966,15 +1142,55 @@ public abstract partial class Role : ActivityObject
             //造成伤害回调
             if (targetRole.OnDamageEvent != null)
             {
-                targetRole.OnDamageEvent(this, damage);
+                targetRole.OnDamageEvent(this, damageResult);
             }
         }
         
         //受伤特效
         PlayHitAnimation();
         
+        //显示数字
+        if (this is not Player)
+        {
+            var damage = damageResult.SubShieldDamage + damageResult.SubArmorDamage + damageResult.SubHealthDamage;
+            var hitNumber = ObjectManager.GetActivityObject<HitNumber>(Ids.Id_hit_number);
+            hitNumber.DefaultLayer = RoomLayerEnum.YSortLayer;
+            var speedX = Utils.LinearApproximation(Utils.Random.RandomRangeFloat(damage * 0.7f, damage * 1.3f), 25, 60, 0.005f);
+            var speedV = Utils.LinearApproximation(damage, 50, 120, 0.01f);
+            hitNumber.Throw(Position,
+                8,
+                Utils.Random.RandomRangeFloat(speedV * 0.9f, speedV * 1.3f),
+                new Vector2(speedX, 0).Rotated(angle + Mathf.DegToRad(Utils.Random.RandomRangeInt(-20, 20))),
+                0
+            );
+            hitNumber.InheritVelocity(this);
+            hitNumber.SetNumber((uint)damage, attackStats.Type);
+        }
+        
+        // //播放血液效果
+        // var packedScene = ResourceManager.Load<PackedScene>(ResourcePath.prefab_effect_Blood_tscn);
+        // var blood = packedScene.Instantiate<Blood>();
+        // blood.GlobalPosition = GlobalPosition;
+        // blood.Rotation = angle;
+        // GameApplication.Instance.Node3D.GetRoot().AddChild(blood);
+        
+        // 根据生命值类型判断是否死亡
+        var isDie = false;
+        switch (RoleState.RoleBase.LiftType)
+        {
+            case LifeTypeEnum.Hp:
+                isDie = Hp <= 0;
+                break;
+            case LifeTypeEnum.Shield:
+                isDie = Shield <= 0;
+                break;
+            case LifeTypeEnum.Armor:
+                isDie = Armor <= 0;
+                break;
+        }
+        
         //死亡判定
-        if (Hp <= 0)
+        if (isDie)
         {
             //死亡
             if (!IsDie)
@@ -1003,6 +1219,16 @@ public abstract partial class Role : ActivityObject
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 状态效果处理
+    /// </summary>
+    /// <param name="abnormalStateType">状态类型</param>
+    /// <param name="value">状态值</param>
+    public virtual void AbnormalStateHandler(AbnormalStateType abnormalStateType, float value)
+    {
+        AddAbnormalStateValue(abnormalStateType, value);
     }
 
     private IEnumerator DoDieWithAnimationPlayer()
@@ -1077,11 +1303,15 @@ public abstract partial class Role : ActivityObject
             {
                 RotationDegrees = 0;
                 Scale = _startScale;
+                
+                TipRoot.Scale = Vector2.One;
             }
             else
             {
                 RotationDegrees = 180;
                 Scale = new Vector2(_startScale.X, -_startScale.Y);
+                
+                TipRoot.Scale = new Vector2(-1, 1);
             }
         }
     }
@@ -1622,8 +1852,8 @@ public abstract partial class Role : ActivityObject
     {
         if (hurt.CanHurt(Camp))
         {
-            var damage = Utils.Random.RandomConfigRange(activeWeapon.Attribute.MeleeAttackHarmRange);
-            damage = RoleState.CalcDamage(damage);
+            var damage = Utils.Random.RandomConfigRange(activeWeapon.Attribute.MeleeAttackDamageRange);
+            damage = RoleState.CalcDamage(damage, DamageType.Physical);
 
             var o = hurt.GetActivityObject();
             var pos = hurt.GetPosition();
@@ -1636,7 +1866,7 @@ public abstract partial class Role : ActivityObject
                 o.AddRepelForce(v2);
             }
             
-            hurt.Hurt(this, damage, (pos - GlobalPosition).Angle());
+            hurt.Hurt(this, [new AttackStats(damage, DamageType.Physical)], null, (pos - GlobalPosition).Angle());
         }
     }
 
@@ -1666,5 +1896,18 @@ public abstract partial class Role : ActivityObject
             OnShootBulletEvent(this, weapon, fireRotation, bullet);
         }
         //throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// 异常状态累计量值变化，如果值为负数，则表示减去状态值
+    /// </summary>
+    public void AddAbnormalStateValue(AbnormalStateType type, float value)
+    {
+        TipRoot.AddAbnormalStateValue(type, value);
+    }
+
+    public override Vector2 GetCenterPosition()
+    {
+        return AnimatedSprite.Position + Position + new Vector2(0, MountPoint.Position.Y);
     }
 }

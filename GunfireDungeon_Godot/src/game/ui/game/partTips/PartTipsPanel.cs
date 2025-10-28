@@ -7,9 +7,23 @@ public partial class PartTipsPanel : PartTips
 {
     public override void Process(float delta)
     {
-        S_PanelRoot.Instance.GlobalPosition = GetGlobalMousePosition();
+        if (Input.IsActionJustPressed(InputAction.UiCancel))
+        {
+            HideUi();
+        }
     }
 
+    /// <summary>
+    /// 设置位置
+    /// </summary>
+    public void SetPosition(Vector2 position)
+    {
+        S_PanelRoot.Instance.GlobalPosition = position;
+    }
+
+    /// <summary>
+    /// 设置显示的零件属性
+    /// </summary>
     public void SetPartProp(PartProp partProp)
     {
         var sb = new StringBuilder();

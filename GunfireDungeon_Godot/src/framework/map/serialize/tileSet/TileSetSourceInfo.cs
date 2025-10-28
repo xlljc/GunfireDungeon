@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json.Serialization;
 using DsUi;
 using Godot;
@@ -47,7 +48,7 @@ public class TileSetSourceInfo : IClone<TileSetSourceInfo>, IDestroy
         Terrain = new List<TileSetTerrainInfo>();
         Combination = new List<TileCombinationInfo>();
     }
-    
+
     /// <summary>
     /// 获取资源图像数据
     /// </summary>
@@ -57,9 +58,16 @@ public class TileSetSourceInfo : IClone<TileSetSourceInfo>, IDestroy
         {
             return null;
         }
-        return _sourceImage ??= Image.LoadFromFile(SourcePath);
+
+        if (File.Exists(SourcePath))
+        {
+            return _sourceImage ??= Image.LoadFromFile(SourcePath);
+        }
+
+        var texture2D = ResourceLoader.Load<Texture2D>("res://" + SourcePath);
+        return _sourceImage ??= texture2D?.GetImage();
     }
-    
+
     /// <summary>
     /// 设置图像资源
     /// </summary>

@@ -115,12 +115,65 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.Name
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.Name
     /// </summary>
     public class Name_1 : UiNode<SettingPanel, Godot.Label, Name_1>
     {
         public Name_1(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
         public override Name_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.VerticalSync
+    /// </summary>
+    public class VerticalSync : UiNode<SettingPanel, Godot.CheckBox, VerticalSync>
+    {
+        public VerticalSync(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
+        public override VerticalSync Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer6
+    /// </summary>
+    public class BoxContainer6 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer6>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
+        /// </summary>
+        public Name_1 L_Name
+        {
+            get
+            {
+                if (_L_Name == null) _L_Name = new Name_1(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                return _L_Name;
+            }
+        }
+        private Name_1 _L_Name;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.VerticalSync
+        /// </summary>
+        public VerticalSync L_VerticalSync
+        {
+            get
+            {
+                if (_L_VerticalSync == null) _L_VerticalSync = new VerticalSync(UiPanel, Instance.GetNode<Godot.CheckBox>("VerticalSync"));
+                return _L_VerticalSync;
+            }
+        }
+        private VerticalSync _L_VerticalSync;
+
+        public BoxContainer6(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer6 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.Name
+    /// </summary>
+    public class Name_2 : UiNode<SettingPanel, Godot.Label, Name_2>
+    {
+        public Name_2(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Name_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
     }
 
     /// <summary>
@@ -140,15 +193,15 @@ public abstract partial class Setting : UiBase
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
         /// </summary>
-        public Name_1 L_Name
+        public Name_2 L_Name
         {
             get
             {
-                if (_L_Name == null) _L_Name = new Name_1(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                if (_L_Name == null) _L_Name = new Name_2(UiPanel, Instance.GetNode<Godot.Label>("Name"));
                 return _L_Name;
             }
         }
-        private Name_1 _L_Name;
+        private Name_2 _L_Name;
 
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.SettingMenu.PerfectPixel
@@ -327,6 +380,112 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer7.Name
+    /// </summary>
+    public class Name_3 : UiNode<SettingPanel, Godot.Label, Name_3>
+    {
+        public Name_3(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Name_3 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer7.LockAiming
+    /// </summary>
+    public class LockAiming : UiNode<SettingPanel, Godot.CheckBox, LockAiming>
+    {
+        public LockAiming(SettingPanel uiPanel, Godot.CheckBox node) : base(uiPanel, node) {  }
+        public override LockAiming Clone() => new (UiPanel, (Godot.CheckBox)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer7
+    /// </summary>
+    public class BoxContainer7 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer7>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Name
+        /// </summary>
+        public Name_3 L_Name
+        {
+            get
+            {
+                if (_L_Name == null) _L_Name = new Name_3(UiPanel, Instance.GetNode<Godot.Label>("Name"));
+                return _L_Name;
+            }
+        }
+        private Name_3 _L_Name;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.LockAiming
+        /// </summary>
+        public LockAiming L_LockAiming
+        {
+            get
+            {
+                if (_L_LockAiming == null) _L_LockAiming = new LockAiming(UiPanel, Instance.GetNode<Godot.CheckBox>("LockAiming"));
+                return _L_LockAiming;
+            }
+        }
+        private LockAiming _L_LockAiming;
+
+        public BoxContainer7(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer7 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer8.Label
+    /// </summary>
+    public class Label_3 : UiNode<SettingPanel, Godot.Label, Label_3>
+    {
+        public Label_3(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_3 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer8.AimStrength
+    /// </summary>
+    public class AimStrength : UiNode<SettingPanel, Godot.HSlider, AimStrength>
+    {
+        public AimStrength(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
+        public override AimStrength Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: Setting.ScrollContainer.SettingMenu.BoxContainer8
+    /// </summary>
+    public class BoxContainer8 : UiNode<SettingPanel, Godot.HBoxContainer, BoxContainer8>
+    {
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.Label
+        /// </summary>
+        public Label_3 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_3(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_3 _L_Label;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.SettingMenu.AimStrength
+        /// </summary>
+        public AimStrength L_AimStrength
+        {
+            get
+            {
+                if (_L_AimStrength == null) _L_AimStrength = new AimStrength(UiPanel, Instance.GetNode<Godot.HSlider>("AimStrength"));
+                return _L_AimStrength;
+            }
+        }
+        private AimStrength _L_AimStrength;
+
+        public BoxContainer8(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BoxContainer8 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: Setting.ScrollContainer.SettingMenu.Back
     /// </summary>
     public class Back : UiNode<SettingPanel, Godot.Button, Back>
@@ -365,6 +524,19 @@ public abstract partial class Setting : UiBase
             }
         }
         private BoxContainer _L_BoxContainer;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.BoxContainer6
+        /// </summary>
+        public BoxContainer6 L_BoxContainer6
+        {
+            get
+            {
+                if (_L_BoxContainer6 == null) _L_BoxContainer6 = new BoxContainer6(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer6"));
+                return _L_BoxContainer6;
+            }
+        }
+        private BoxContainer6 _L_BoxContainer6;
 
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.BoxContainer2
@@ -417,6 +589,32 @@ public abstract partial class Setting : UiBase
             }
         }
         private BoxContainer5 _L_BoxContainer5;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.BoxContainer7
+        /// </summary>
+        public BoxContainer7 L_BoxContainer7
+        {
+            get
+            {
+                if (_L_BoxContainer7 == null) _L_BoxContainer7 = new BoxContainer7(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer7"));
+                return _L_BoxContainer7;
+            }
+        }
+        private BoxContainer7 _L_BoxContainer7;
+
+        /// <summary>
+        /// 节点路径: Setting.ScrollContainer.BoxContainer8
+        /// </summary>
+        public BoxContainer8 L_BoxContainer8
+        {
+            get
+            {
+                if (_L_BoxContainer8 == null) _L_BoxContainer8 = new BoxContainer8(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BoxContainer8"));
+                return _L_BoxContainer8;
+            }
+        }
+        private BoxContainer8 _L_BoxContainer8;
 
         /// <summary>
         /// 节点路径: Setting.ScrollContainer.Back
@@ -479,6 +677,16 @@ public abstract partial class Setting : UiBase
     public BoxContainer S_BoxContainer => L_ScrollContainer.L_SettingMenu.L_BoxContainer;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer6.VerticalSync
+    /// </summary>
+    public VerticalSync S_VerticalSync => L_ScrollContainer.L_SettingMenu.L_BoxContainer6.L_VerticalSync;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer6
+    /// </summary>
+    public BoxContainer6 S_BoxContainer6 => L_ScrollContainer.L_SettingMenu.L_BoxContainer6;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer2.PerfectPixel
     /// </summary>
     public PerfectPixel S_PerfectPixel => L_ScrollContainer.L_SettingMenu.L_BoxContainer2.L_PerfectPixel;
@@ -517,6 +725,26 @@ public abstract partial class Setting : UiBase
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer5
     /// </summary>
     public BoxContainer5 S_BoxContainer5 => L_ScrollContainer.L_SettingMenu.L_BoxContainer5;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer7.LockAiming
+    /// </summary>
+    public LockAiming S_LockAiming => L_ScrollContainer.L_SettingMenu.L_BoxContainer7.L_LockAiming;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer7
+    /// </summary>
+    public BoxContainer7 S_BoxContainer7 => L_ScrollContainer.L_SettingMenu.L_BoxContainer7;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer8.AimStrength
+    /// </summary>
+    public AimStrength S_AimStrength => L_ScrollContainer.L_SettingMenu.L_BoxContainer8.L_AimStrength;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.BoxContainer8
+    /// </summary>
+    public BoxContainer8 S_BoxContainer8 => L_ScrollContainer.L_SettingMenu.L_BoxContainer8;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: Setting.ScrollContainer.SettingMenu.Back

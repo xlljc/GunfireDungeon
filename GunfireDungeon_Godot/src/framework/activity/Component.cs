@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using DsUi;
 using Godot;
 
@@ -221,7 +222,6 @@ public abstract class Component : IProcess, IDestroy, ICoroutine
 
         IsDestroyed = true;
         Master.RemoveComponent(this);
-        OnDestroy();
     }
 
     public T AddComponent<T>() where T : Component, new()
@@ -347,5 +347,15 @@ public abstract class Component : IProcess, IDestroy, ICoroutine
     public void StopAllCoroutine()
     {
         Master.StopAllCoroutine();
+    }
+
+    /// <summary>
+    /// 反射调用当前组件的函数
+    /// </summary>
+    public void Invoke(string method, params object[] args)
+    {
+        var types = args.Select(a => a.GetType()).ToArray();
+        var methodInfo = GetType().GetMethod(method, types);
+        methodInfo?.Invoke(this, args);
     }
 }

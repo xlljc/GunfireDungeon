@@ -3,17 +3,10 @@
     "GroupName": "Test1",
     "TileSet": "TileSet1",
     "BgColor": {
-      "R8": 0,
-      "G8": 0,
-      "B8": 0,
-      "A8": 0,
-      "H": 0,
-      "S": 0,
-      "V": 0,
-      "OkHslH": 0,
-      "OkHslS": 0,
-      "OkHslL": 0,
-      "Luminance": 0
+      "R": 0,
+      "G": 0,
+      "B": 0,
+      "A": 0
     },
     "SoundId": null,
     "BattleList": [

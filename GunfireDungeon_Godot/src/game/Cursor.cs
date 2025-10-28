@@ -7,9 +7,9 @@ using Godot;
 public partial class Cursor : Node2D
 {
     /// <summary>
-    /// 是否是GUI模式，长度大于0表示Ui模式
+    /// 自己处理鼠标指针显示与位置
     /// </summary>
-    private HashSet<ulong> _isGuiLayerIds = new HashSet<ulong>();
+    public bool CustomHandlerFlag { get; set; } = false;
 
     /// <summary>
     /// 非GUI模式下鼠标指针所挂载的角色
@@ -39,7 +39,7 @@ public partial class Cursor : Node2D
 
     public override void _Process(double delta)
     {
-        if (_isGuiLayerIds.Count <= 0)
+        if (!InputManager.HasUiBlockage)
         {
             var targetGun = _mountRole?.WeaponPack.ActiveItem;
             if (targetGun != null)
@@ -50,23 +50,7 @@ public partial class Cursor : Node2D
             {
                 SetScope(0, null);
             }
-            SetCursorPos();
-        }
-    }
-
-    public void AddUiLayer(ulong id)
-    {
-        if (_isGuiLayerIds.Add(id))
-        {
-            RefreshCursor();
-        }
-    }
-    
-    public void RemoveUiLayer(ulong id)
-    {
-        if (_isGuiLayerIds.Remove(id))
-        {
-            RefreshCursor();
+            DoUpdateCursor();
         }
     }
 
@@ -75,14 +59,37 @@ public partial class Cursor : Node2D
     /// </summary>
     public void RefreshCursor()
     {
-        var uiFlag = _isGuiLayerIds.Count > 0 || !GameApplication.Instance.DungeonManager.IsInDungeon;
-        if (uiFlag) //手指
+        bool uiFlag = false;
+        if (InputManager.HasUiBlockage || !GameApplication.Instance.DungeonManager.IsInDungeon)
+        {
+            uiFlag = true;
+        }
+        else if (InputManager.IsJoystickInput) // 摇杆
+        {
+            
+        }
+        else // 键鼠
+        {
+            if (InputManager.HasMouseUiBlockage)
+            {
+                uiFlag = true;
+            }
+        }
+        
+        if (uiFlag) //默认指针
         {
             lt.Visible = false;
             lb.Visible = false;
             rt.Visible = false;
             rb.Visible = false;
-            Input.MouseMode = Input.MouseModeEnum.Visible;
+            if (InputManager.IsJoystickInput)
+            {
+                Input.MouseMode = Input.MouseModeEnum.Hidden;
+            }
+            else
+            {
+                Input.MouseMode = Input.MouseModeEnum.Visible;
+            }
         }
         else //准心
         {
@@ -126,7 +133,6 @@ public partial class Cursor : Node2D
             scope = len / GameConfig.ScatteringDistance * scope;
         }
         scope = Mathf.Clamp(scope, 0, 192);
-        center.Visible = scope > 64;
 
         lt.Position = new Vector2(-scope, -scope);
         lb.Position = new Vector2(-scope, scope);
@@ -134,8 +140,14 @@ public partial class Cursor : Node2D
         rb.Position = new Vector2(scope, scope);
     }
 
-    private void SetCursorPos()
+    private void DoUpdateCursor()
     {
-        GlobalPosition = GetGlobalMousePosition();
+        // GlobalPosition = GetGlobalMousePosition();
+        var flag = !InputManager.IsJoystickInput || InputManager.IsJoystickRInput;
+        Visible = flag || CustomHandlerFlag;
+        if (flag && !CustomHandlerFlag)
+        {
+            Position = GameApplication.Instance.WorldToUiPosition(InputManager.AimingPosition);
+        }
     }
 }

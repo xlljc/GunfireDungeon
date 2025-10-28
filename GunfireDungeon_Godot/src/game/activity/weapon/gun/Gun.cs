@@ -8,20 +8,12 @@ public partial class Gun : Weapon
 {
     protected override void OnFire()
     {
-        if (Master == World.Player)
+        base.OnFire();
+        
+        if (InputManager.IsJoystickInput && TriggerRole != null && TriggerRole.IsPlayer())
         {
-            //创建抖动
-            GameCamera.Main.DirectionalShake(Vector2.Right.Rotated(GlobalRotation) * Attribute.CameraShake);
+            Input.StartJoyVibration(0, 0, 0.9f, 0.2f);
+            // Input.StartJoyVibration(0, 1f, 1f, 0.3f);
         }
-        //
-        // //创建开火特效
-        // if (!string.IsNullOrEmpty(Attribute.FireEffect))
-        // {
-        //     var effect = ObjectManager.GetPoolItem<IEffect>(Attribute.FireEffect);
-        //     var sprite = (Node2D)effect;
-        //     sprite.Position = GetLocalFirePosition();
-        //     AddChild(sprite);
-        //     effect.PlayEffect();
-        // }
     }
 }

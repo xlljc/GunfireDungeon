@@ -286,9 +286,9 @@ public partial class DungeonManager : Node2D
         //创建房间数据
         var roomInfo = new RoomInfo(0, DungeonRoomType.None, null);
         roomInfo.World = CurrWorld;
-        var rect = hall.TileRoot.GetUsedRect();
-        roomInfo.Size = rect.Size + new Vector2I(10, 10);
-        roomInfo.Position = (roomInfo.Position - new Vector2I(5, 5)) * GameConfig.TileCellSize;
+        var usedRect = hall.GetUsedRect();
+        roomInfo.Size = usedRect.Size;
+        roomInfo.Position = usedRect.Position;
         hall.RoomInfo = roomInfo;
         yield return 0;
         
@@ -302,25 +302,23 @@ public partial class DungeonManager : Node2D
         
         //静态渲染精灵根节点, 用于放置sprite
         var spriteRoot = new RoomStaticSprite(roomInfo);
-        spriteRoot.Name = "SpriteRoot";
         roomInfo.StaticSprite = spriteRoot;
         hall.StaticSpriteRoot.AddChild(spriteRoot);
         yield return 0;
         
         //静态精灵画布
         var canvasSprite = new ImageCanvas(roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
-        canvasSprite.Position = roomInfo.Position;
+        canvasSprite.Position = roomInfo.Position - (roomInfo.Size - new Vector2(canvasSprite.Width, canvasSprite.Height)) / 2;
         roomInfo.StaticImageCanvas = canvasSprite;
         roomInfo.StaticSprite.AddChild(canvasSprite);
         yield return 0;
         
         //液体画布
-        var liquidCanvas = new LiquidCanvas(roomInfo, roomInfo.Size.X * GameConfig.TileCellSize, roomInfo.Size.Y * GameConfig.TileCellSize);
-        liquidCanvas.Position = roomInfo.Position;
+        var liquidCanvas = new LiquidCanvas(roomInfo);
         roomInfo.LiquidCanvas = liquidCanvas;
         roomInfo.StaticSprite.AddChild(liquidCanvas);
         yield return 0;
-                
+        
         //打开游戏中的ui
         UiManager.Open_Game_RoomUI();
         yield return 0;
@@ -338,8 +336,10 @@ public partial class DungeonManager : Node2D
         CurrWorld.SetCurrentPlayer(player);
         affiliation.InsertItem(player);
         //player.WeaponPack.PickupItem(ActivityObject.Create<Weapon>(ActivityObject.Ids.Id_weapon0001));
+        
         yield return 0;
         player.Collision.Disabled = false;
+        GameCamera.Main.Zoom = GameApplication.Instance.DefaultCameraZoom;
         
         yield return 0;
         GameApplication.Instance.Cursor.RefreshCursor();
@@ -381,8 +381,6 @@ public partial class DungeonManager : Node2D
         DestroyWorld();
         yield return 0;
         FogMaskHandler.ClearRecordRoom();
-        LiquidBrushManager.ClearData();
-        BrushImageData.ClearBrushData();
         QueueRedraw();
         
         yield return 0;
@@ -469,10 +467,10 @@ public partial class DungeonManager : Node2D
         yield return 0;
         var group = GameApplication.Instance.RoomConfig[CurrConfig.GroupName];
         var tileSetSplit = GameApplication.Instance.TileSetConfig[group.TileSet];
-        CurrWorld.TileRoot.TileSet = tileSetSplit.GetTileSet();
+        CurrWorld.SetTileSet(tileSetSplit.GetTileSet());
         //填充地牢
         AutoTileConfig = new AutoTileConfig(0, tileSetSplit.TileSetInfo.Sources[0].Terrain[0]);
-        _dungeonTileMap = new DungeonTileMap(CurrWorld.TileRoot);
+        _dungeonTileMap = new DungeonTileMap(CurrWorld);
         yield return _dungeonTileMap.AutoFillRoomTile(AutoTileConfig, _dungeonGenerator.StartRoomInfo, CurrWorld);
         yield return _dungeonTileMap.AutoFillAisleTile(AutoTileConfig, _dungeonGenerator.StartRoomInfo, CurrWorld);
         //yield return _dungeonTileMap.AddOutlineTile(AutoTileConfig.WALL_BLOCK);
@@ -487,7 +485,7 @@ public partial class DungeonManager : Node2D
         //CurrWorld.FogMaskRoot.Visible = false;
 
         //房间背景颜色
-        RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor);
+        RenderingServer.SetDefaultClearColor(_dungeonGenerator.RoomGroup.BgColor.AsColor());
         
         //播放bgm
         if (!string.IsNullOrEmpty(_dungeonGenerator.RoomGroup.SoundId) && ExcelConfig.Sound_Map.ContainsKey(_dungeonGenerator.RoomGroup.SoundId))
@@ -589,8 +587,6 @@ public partial class DungeonManager : Node2D
         RenderingServer.SetDefaultClearColor(Colors.Black);
         
         FogMaskHandler.ClearRecordRoom();
-        LiquidBrushManager.ClearData();
-        BrushImageData.ClearBrushData();
         QueueRedraw();
         //派发退出地牢事件
         EventManager.EmitEvent(EventEnum.OnExitDungeon);
@@ -715,23 +711,11 @@ public partial class DungeonManager : Node2D
     private void CreateRoomStaticSprite(RoomInfo roomInfo)
     {
         var spriteRoot = new RoomStaticSprite(roomInfo);
-        spriteRoot.Name = "SpriteRoot";
         World.Current.StaticSpriteRoot.AddChild(spriteRoot);
         roomInfo.StaticSprite = spriteRoot;
     }
     
     
-    //创建液体画布
-    private void CreateRoomLiquidCanvas(RoomInfo roomInfo)
-    {
-        var rect = roomInfo.CanvasRect;
-
-        var liquidCanvas = new LiquidCanvas(roomInfo, rect.Size.X, rect.Size.Y);
-        liquidCanvas.Position = rect.Position;
-        roomInfo.LiquidCanvas = liquidCanvas;
-        roomInfo.StaticSprite.AddChild(liquidCanvas);
-    }
-
     //创建静态图像画布
     private void CreateRoomStaticImageCanvas(RoomInfo roomInfo)
     {
@@ -741,6 +725,19 @@ public partial class DungeonManager : Node2D
         canvasSprite.Position = rect.Position;
         roomInfo.StaticImageCanvas = canvasSprite;
         roomInfo.StaticSprite.AddChild(canvasSprite);
+    }
+    
+        
+    //创建液体画布
+    private void CreateRoomLiquidCanvas(RoomInfo roomInfo)
+    {
+        // var rect = roomInfo.CanvasRect;
+        // var liquidCanvas = new LiquidCanvas(roomInfo, rect.Size.X, rect.Size.Y);
+        // liquidCanvas.Position = rect.Position;
+        
+        var liquidCanvas = new LiquidCanvas(roomInfo);
+        roomInfo.LiquidCanvas = liquidCanvas;
+        roomInfo.StaticSprite.AddChild(liquidCanvas);
     }
 
     //创建迷雾遮罩

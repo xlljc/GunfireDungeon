@@ -7,18 +7,20 @@ namespace UI.game.RoomUI;
 /// <summary>
 /// 换弹进度组件
 /// </summary>
-public class ReloadBarHandler
+public partial class ReloadBarHandler : Control, IUiNodeScript
 {
     private RoomUI.ReloadBar _reloadBar;
     private int width;
     private float startX = 1;
-
-    public ReloadBarHandler(RoomUI.ReloadBar reloadBar)
+    
+    public void SetUiNode(IUiNode uiNode)
     {
-        reloadBar.Instance.Visible = false;
-        _reloadBar = reloadBar;
+        _reloadBar = (RoomUI.ReloadBar)uiNode;
+        _reloadBar.Instance.Visible = false;
         width = _reloadBar.L_Slot.Instance.Texture.GetWidth();
-        //startX = -(width - 3) / 2f;
+
+        _reloadBar.UiPanel.OnShowUiEvent += OnShow;
+        _reloadBar.UiPanel.OnHideUiEvent += OnHide;
     }
     
     public void OnShow()
@@ -67,5 +69,10 @@ public class ReloadBarHandler
         {
             HideBar();
         }
+    }
+
+    public void OnDestroy()
+    {
+        
     }
 }

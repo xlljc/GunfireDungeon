@@ -93,6 +93,20 @@ public class SeedRandom
         return RandomRangeFloat(Utils.GetConfigRangeStart(range), Utils.GetConfigRangeEnd(range));
     }
 
+    
+    /// <summary>
+    /// 根据配置表中配置的范围数据, 随机返回范围内的一个值
+    /// </summary>
+    public int[] RandomConfigRange(int[][] range)
+    {
+        var result = new int[range.Length];
+        for (var i = 0; i < range.Length; i++)
+        {
+            result[i] = RandomRangeInt(Utils.GetConfigRangeStart(range[i]), Utils.GetConfigRangeEnd(range[i]));
+        }
+        return result;
+    }
+    
     /// <summary>
     /// 随机返回其中一个参数
     /// </summary>

@@ -84,7 +84,10 @@ public class PartPackage : Component<Role>, IEnumerable
             prev.Master = null;
         }
 
-        Remove(partProp);
+        if (partProp.Master != null)
+        {
+            partProp.Master.PartPropPack.Remove(partProp);
+        }
 
         _partPropPack[index] = partProp;
         partProp.Master = Master;
@@ -150,6 +153,16 @@ public class PartPackage : Component<Role>, IEnumerable
             }
         }
         _partPropPack = new PartProp[0];
+    }
+    
+    public PartPropSlot[] GetAllSlots()
+    {
+        var slots = new PartPropSlot[_partPropPack.Length];
+        for (var i = 0; i < _partPropPack.Length; i++)
+        {
+            slots[i] = new PartPropSlot(i, this);
+        }
+        return slots;
     }
 
     public IEnumerator GetEnumerator()

@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://kc1jwvwdg660"]
 
-[ext_resource type="Texture2D" uid="uid://tq8vhc2kycax" path="res://resource/sprite/shell/Shell0003.png" id="1_qhaf7"]
+[ext_resource type="Texture2D" uid="uid://j2wy8rjxtuer" path="res://resource/sprite/shell/Shell0003.png" id="1_qhaf7"]
 
 [resource]
 animations = [{

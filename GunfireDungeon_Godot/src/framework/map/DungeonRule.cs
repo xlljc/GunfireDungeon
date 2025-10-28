@@ -26,7 +26,7 @@ public abstract class DungeonRule
     public abstract bool CanOverGenerator();
 
     /// <summary>
-    /// 获取指定房间类型与之相连的上一个房间对象, prevRoom 可能为 null
+    /// 根据类型生成下一个房间, prevRoom 可能为 null
     /// </summary>
     public abstract RoomInfo GetConnectPrevRoom(RoomInfo prevRoom, DungeonRoomType nextRoomType);
     

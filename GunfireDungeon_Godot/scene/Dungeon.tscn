@@ -1,42 +1,34 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqf2vks5ggnsp"]
 
 [ext_resource type="Script" uid="uid://c44y7mwbyirrb" path="res://src/game/room/Dungeon.cs" id="1_txiyv"]
+[ext_resource type="Environment" uid="uid://01vyssfconqr" path="res://resource/DungeonEnv.tres" id="2_whacp"]
 
-[sub_resource type="Environment" id="Environment_g06jj"]
-background_mode = 3
-glow_enabled = true
-glow_levels/1 = 1.0
-glow_levels/2 = 1.0
-glow_levels/4 = 1.0
-glow_levels/5 = 0.0
-glow_normalized = true
-glow_strength = 1.06
-glow_blend_mode = 1
-
-[node name="Dungeon" type="CanvasModulate"]
+[node name="Dungeon" type="CanvasModulate" node_paths=PackedStringArray("NormalLayer", "YSortLayer", "StaticSpriteRoot", "AffiliationAreaRoot", "FogMaskRoot", "NavigationRoot") groups=["navigation"]]
+y_sort_enabled = true
 script = ExtResource("1_txiyv")
-metadata/_edit_vertical_guides_ = []
+NormalLayer = NodePath("NormalLayer")
+YSortLayer = NodePath("YSortLayer")
+StaticSpriteRoot = NodePath("StaticSpriteRoot")
+AffiliationAreaRoot = NodePath("AffiliationAreaRoot")
+FogMaskRoot = NodePath("FogMaskRoot")
+NavigationRoot = NodePath("NavigationRoot")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g06jj")
+environment = ExtResource("2_whacp")
 
-[node name="TileRoot" type="TileMap" parent="." groups=["navigation"]]
-y_sort_enabled = true
-format = 2
-
-[node name="NavigationRoot" type="Node2D" parent="TileRoot"]
+[node name="NavigationRoot" type="Node2D" parent="."]
 z_index = -2
 
-[node name="StaticSpriteRoot" type="Node2D" parent="TileRoot"]
+[node name="StaticSpriteRoot" type="Node2D" parent="."]
 z_index = -2
 
-[node name="NormalLayer" type="Node2D" parent="TileRoot"]
+[node name="NormalLayer" type="Node2D" parent="."]
 z_index = -1
 
-[node name="YSortLayer" type="Node2D" parent="TileRoot"]
+[node name="YSortLayer" type="Node2D" parent="."]
 z_index = 2
 y_sort_enabled = true
 
-[node name="AffiliationAreaRoot" type="Node2D" parent="TileRoot"]
+[node name="AffiliationAreaRoot" type="Node2D" parent="."]
 
-[node name="FogMaskRoot" type="Node2D" parent="TileRoot"]
+[node name="FogMaskRoot" type="Node2D" parent="."]

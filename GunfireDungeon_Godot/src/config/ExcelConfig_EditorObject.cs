@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 地图编辑器物体
+    /// </summary>
     public partial class EditorObject
     {
         /// <summary>

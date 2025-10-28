@@ -30,10 +30,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,6 +61,21 @@ size_flags_horizontal = 3
 text = "全屏"
 
 [node name="FullScreen" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BoxContainer6" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "垂直同步"
+
+[node name="VerticalSync" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer6"]
 layout_mode = 2
 size_flags_horizontal = 10
 
@@ -134,6 +149,42 @@ text = "鼠标跟随进度"
 vertical_alignment = 1
 
 [node name="FollowsMouseAmount" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="BoxContainer7" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "手柄锁定瞄准"
+
+[node name="LockAiming" type="CheckBox" parent="ScrollContainer/SettingMenu/BoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BoxContainer8" type="HBoxContainer" parent="ScrollContainer/SettingMenu"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/SettingMenu/BoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "手柄辅助瞄准强度"
+vertical_alignment = 1
+
+[node name="AimStrength" type="HSlider" parent="ScrollContainer/SettingMenu/BoxContainer8"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3

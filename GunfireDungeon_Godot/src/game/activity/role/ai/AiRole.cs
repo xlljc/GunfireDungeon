@@ -112,7 +112,6 @@ public abstract partial class AiRole : Role
     public override void OnInit()
     {
         base.OnInit();
-        IsAi = true;
         
         StateController = AddComponent<StateController<AiRole, AIStateEnum>>();
         
@@ -460,7 +459,7 @@ public abstract partial class AiRole : Role
         }
     }
     
-    protected override void OnHit(ActivityObject target, int damage, float angle, bool realHarm)
+    protected override void OnHit(ActivityObject target, DamageCalcResult damageCalcResult, float angle)
     {
         //受到伤害
         var state = StateController.CurrState;

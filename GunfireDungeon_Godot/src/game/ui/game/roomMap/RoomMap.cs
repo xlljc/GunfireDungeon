@@ -141,10 +141,54 @@ public abstract partial class RoomMap : UiBase
     }
 
     /// <summary>
+    /// 路径: RoomMap.MagnifyMapBar.JoystickMark.MarkSprite
+    /// </summary>
+    public class MarkSprite : UiNode<RoomMapPanel, Godot.Sprite2D, MarkSprite>
+    {
+        public MarkSprite(RoomMapPanel uiPanel, Godot.Sprite2D node) : base(uiPanel, node) {  }
+        public override MarkSprite Clone() => new (UiPanel, (Godot.Sprite2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: RoomMap.MagnifyMapBar.JoystickMark
+    /// </summary>
+    public class JoystickMark : UiNode<RoomMapPanel, Godot.Control, JoystickMark>
+    {
+        /// <summary>
+        /// 节点路径: RoomMap.MagnifyMapBar.MarkSprite
+        /// </summary>
+        public MarkSprite L_MarkSprite
+        {
+            get
+            {
+                if (_L_MarkSprite == null) _L_MarkSprite = new MarkSprite(UiPanel, Instance.GetNode<Godot.Sprite2D>("MarkSprite"));
+                return _L_MarkSprite;
+            }
+        }
+        private MarkSprite _L_MarkSprite;
+
+        public JoystickMark(RoomMapPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
+        public override JoystickMark Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 路径: RoomMap.MagnifyMapBar
     /// </summary>
     public class MagnifyMapBar : UiNode<RoomMapPanel, Godot.NinePatchRect, MagnifyMapBar>
     {
+        /// <summary>
+        /// 节点路径: RoomMap.JoystickMark
+        /// </summary>
+        public JoystickMark L_JoystickMark
+        {
+            get
+            {
+                if (_L_JoystickMark == null) _L_JoystickMark = new JoystickMark(UiPanel, Instance.GetNode<Godot.Control>("JoystickMark"));
+                return _L_JoystickMark;
+            }
+        }
+        private JoystickMark _L_JoystickMark;
+
         public MagnifyMapBar(RoomMapPanel uiPanel, Godot.NinePatchRect node) : base(uiPanel, node) {  }
         public override MagnifyMapBar Clone() => new (UiPanel, (Godot.NinePatchRect)Instance.Duplicate());
     }
@@ -174,6 +218,16 @@ public abstract partial class RoomMap : UiBase
     /// 场景中唯一名称的节点, 节点路径: RoomMap.MapBar
     /// </summary>
     public MapBar S_MapBar => L_MapBar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MagnifyMapBar.JoystickMark.MarkSprite
+    /// </summary>
+    public MarkSprite S_MarkSprite => L_MagnifyMapBar.L_JoystickMark.L_MarkSprite;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: RoomMap.MagnifyMapBar.JoystickMark
+    /// </summary>
+    public JoystickMark S_JoystickMark => L_MagnifyMapBar.L_JoystickMark;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: RoomMap.MagnifyMapBar

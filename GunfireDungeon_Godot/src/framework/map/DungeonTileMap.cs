@@ -12,11 +12,11 @@ public class DungeonTileMap
     
     //----------------------------------------------------
     
-    private TileMap _tileRoot;
+    private World _world;
 
-    public DungeonTileMap(TileMap tileRoot)
+    public DungeonTileMap(World world)
     {
-        _tileRoot = tileRoot;
+        _world = world;
     }
 
     /// <summary>
@@ -151,10 +151,11 @@ public class DungeonTileMap
                 //创建image, 这里留两个像素宽高用于描边
                 var aisleImage = Image.Create(doorInfo.AisleFloorRect.Size.X, doorInfo.AisleFloorRect.Size.Y, false, Image.Format.Rgba8);
                 //image.Fill(new Color(0, 1, 0, 0.2f));
+                var roomLayer = _world.GetTileMapLayer(MapLayer.AutoFloorLayer);
                 //填充像素点
                 foreach (var p in doorInfo.AisleFloorCell)
                 {
-                    _tileRoot.SetCell(MapLayer.AutoFloorLayer, p, config.Floor.SourceId, config.Floor.AutoTileCoords);
+                    roomLayer.SetCell(p, config.Floor.SourceId, config.Floor.AutoTileCoords);
                     //_tileRoot.SetCell(MapLayer.CustomTopLayer, p, config.Auto_000_010_000.SourceId, config.Auto_000_010_000.AutoTileCoords);
                     aisleImage.SetPixel(p.X - doorInfo.AisleFloorRect.Position.X, p.Y - doorInfo.AisleFloorRect.Position.Y, new Color(1, 1, 1, 0.5882353F));
                 }
@@ -172,7 +173,7 @@ public class DungeonTileMap
         var navigation = new NavigationRegion2D();
         navigation.Name = "Navigation";
         world.NavigationRoot.AddChild(navigation);
-        TileMapUtils.GenerateTerrain(_tileRoot, navigation, config);
+        TileMapUtils.GenerateTerrain(_world, navigation, config);
     }
     
     //设置自动地形层的数据
@@ -188,7 +189,7 @@ public class DungeonTileMap
             var index = terrainInfo.TerrainBitToIndex(bit, type);
             var terrainCell = terrainInfo.GetTerrainCell(index, type);
             var atlasCoords = terrainInfo.GetPosition(terrainCell);
-            _tileRoot.SetCell(layer, pos, sourceId, atlasCoords);
+            _world.GetTileMapLayer(layer).SetCell(pos, sourceId, atlasCoords);
         }
     }
     
@@ -203,7 +204,7 @@ public class DungeonTileMap
             var atlasCoordsX = data[i + 3];
             var atlasCoordsY = data[i + 4];
             var pos = new Vector2I(roomInfo.Position.X + posX - rectPos.X, roomInfo.Position.Y + posY - rectPos.Y);
-            _tileRoot.SetCell(layer, pos, sourceId, new Vector2I(atlasCoordsX, atlasCoordsY));
+            _world.GetTileMapLayer(layer).SetCell(pos, sourceId, new Vector2I(atlasCoordsX, atlasCoordsY));
         }
     }
     
@@ -215,7 +216,7 @@ public class DungeonTileMap
             for (int j = 0; j < size.Y; j++)
             {
                 var p = new Vector2I((int)pos.X + i, (int)pos.Y + j);
-                _tileRoot.SetCell(layer, p, data.SourceId, data.AutoTileCoords);
+                _world.GetTileMapLayer(layer).SetCell(p, data.SourceId, data.AutoTileCoords);
             }
         }
     }
@@ -228,7 +229,7 @@ public class DungeonTileMap
             for (int j = 0; j < size.Y; j++)
             {
                 var p = new Vector2I((int)pos.X + i, (int)pos.Y + j);
-                _tileRoot.SetCell(layer, p, 0);
+                _world.GetTileMapLayer(layer).SetCell(p, 0);
             }
         }
     }
@@ -238,6 +239,6 @@ public class DungeonTileMap
     /// </summary>
     private bool IsWayTile(int layer, int x, int y)
     {
-        return _tileRoot.GetCellSourceId(layer, new Vector2I(x, y)) != -1;
+        return _world.GetTileMapLayer(layer).GetCellSourceId(new Vector2I(x, y)) != -1;
     }
 }

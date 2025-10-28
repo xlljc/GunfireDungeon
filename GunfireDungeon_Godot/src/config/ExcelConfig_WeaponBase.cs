@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 武器属性
+    /// </summary>
     public partial class WeaponBase
     {
         /// <summary>
@@ -233,29 +236,10 @@ public static partial class ExcelConfig
         public float ScatteringRangeBackDelayTime;
 
         /// <summary>
-        /// 开火后相机抖动强度,只有玩家拾起武器开火才会抖动相机
-        /// </summary>
-        [JsonInclude]
-        public float CameraShake;
-
-        /// <summary>
-        /// 后坐力区间 (仅用于开火后武器身抖动) <br/>
-        /// 格式为[value]或者[min,max]
-        /// </summary>
-        [JsonInclude]
-        public float[] BacklashRange;
-
-        /// <summary>
         /// 后坐力偏移回归回归速度
         /// </summary>
         [JsonInclude]
         public float BacklashRegressionSpeed;
-
-        /// <summary>
-        /// 开火后武器口上抬角度
-        /// </summary>
-        [JsonInclude]
-        public float UpliftAngle;
 
         /// <summary>
         /// 武器默认上抬角度
@@ -303,7 +287,7 @@ public static partial class ExcelConfig
         /// 格式为格式为[value]或者[min,max]
         /// </summary>
         [JsonInclude]
-        public int[] MeleeAttackHarmRange;
+        public int[] MeleeAttackDamageRange;
 
         /// <summary>
         /// 近战攻击造成伤害后击退值区间 <br/>
@@ -411,10 +395,7 @@ public static partial class ExcelConfig
             inst.ScatteringRangeAddValue = ScatteringRangeAddValue;
             inst.ScatteringRangeBackSpeed = ScatteringRangeBackSpeed;
             inst.ScatteringRangeBackDelayTime = ScatteringRangeBackDelayTime;
-            inst.CameraShake = CameraShake;
-            inst.BacklashRange = BacklashRange;
             inst.BacklashRegressionSpeed = BacklashRegressionSpeed;
-            inst.UpliftAngle = UpliftAngle;
             inst.DefaultAngle = DefaultAngle;
             inst.UpliftAngleRestore = UpliftAngleRestore;
             inst.Shell = Shell;
@@ -422,7 +403,7 @@ public static partial class ExcelConfig
             inst.ThrowShellCount = ThrowShellCount;
             inst.ThrowShellDelayTime = ThrowShellDelayTime;
             inst.CanMeleeAttack = CanMeleeAttack;
-            inst.MeleeAttackHarmRange = MeleeAttackHarmRange;
+            inst.MeleeAttackDamageRange = MeleeAttackDamageRange;
             inst.MeleeAttackRepelRange = MeleeAttackRepelRange;
             inst.BeginReloadSound = BeginReloadSound;
             inst.BeginReloadSoundDelayTime = BeginReloadSoundDelayTime;

@@ -1,0 +1,23 @@
+[
+  {
+    "FuncName": "Test",
+    "ParamDef": "a,b",
+    "ReturnDef": "",
+    "ExprDef": "a\u002Bb",
+    "Describe": "\u6D4B\u8BD5\u516C\u5F0F"
+  },
+  {
+    "FuncName": "Test2",
+    "ParamDef": "a,b:int",
+    "ReturnDef": "",
+    "ExprDef": "a\u002Bb",
+    "Describe": "\u6D4B\u8BD5\u516C\u5F0F"
+  },
+  {
+    "FuncName": "Test3",
+    "ParamDef": "a,b:int",
+    "ReturnDef": "double",
+    "ExprDef": "var c = a * a;\nvar d = b * b;\nreturn c * d;",
+    "Describe": "\u6D4B\u8BD5\u516C\u5F0F"
+  }
+]

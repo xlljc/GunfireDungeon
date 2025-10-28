@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 被动道具
+    /// </summary>
     public partial class BuffPropBase
     {
         /// <summary>

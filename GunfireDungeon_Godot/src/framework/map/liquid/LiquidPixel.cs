@@ -21,9 +21,13 @@ public class LiquidPixel
     /// </summary>
     public Color Color;
     /// <summary>
-    /// 材质液体材质
+    /// 液体笔刷
     /// </summary>
-    public ExcelConfig.LiquidMaterial Material;
+    public ExcelConfig.LiquidBrush Brush;
+    /// <summary>
+    /// 所属层级
+    /// </summary>
+    public ExcelConfig.LiquidLayer Layer;
     /// <summary>
     /// 开始销退像素点的计时器
     /// </summary>
@@ -44,4 +48,8 @@ public class LiquidPixel
     /// 用于补间操作记录该像素点是否已经被绘制过, 以便于优化性能
     /// </summary>
     public bool TempFlag;
+    /// <summary>
+    /// 如果为true，则在下一次刷新中强制清除当前像素点
+    /// </summary>
+    public bool ForceClear;
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DsUi;
 using Godot;
+using Godot.Collections;
 
 /// <summary>
 /// 游戏世界
@@ -15,6 +16,8 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     /// </summary>
     public static World Current => GameApplication.Instance.DungeonManager.CurrWorld;
     
+    public bool IsDestroyed { get; private set; }
+    
     /// <summary>
     /// 当前操作的玩家
     /// </summary>
@@ -23,29 +26,43 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     /// <summary>
     /// //对象根节点
     /// </summary>
+    [Export]
     public Node2D NormalLayer;
     
     /// <summary>
     /// 对象根节点, 带y轴排序功能
     /// </summary>
+    [Export]
     public Node2D YSortLayer;
     
     /// <summary>
-    /// 地图根节点
+    /// 静态精灵根节点
     /// </summary>
-    public TileMap TileRoot;
-
+    [Export]
+    public Node2D StaticSpriteRoot;
+    
+    /// <summary>
+    /// 阵营区域根节点
+    /// </summary>
+    [Export]
+    public Node2D AffiliationAreaRoot;
+    
+    /// <summary>
+    /// 迷雾遮罩根节点
+    /// </summary>
+    [Export]
+    public Node2D FogMaskRoot;
+    
+    /// <summary>
+    /// 导航根节点
+    /// </summary>
+    [Export]
+    public Node2D NavigationRoot;
+    
     /// <summary>
     /// 背景音乐播放器
     /// </summary>
     public SoundManager.GameAudioPlayer BgmAudio { get; private set; }
-    
-    public bool IsDestroyed { get; private set; }
-    
-    public Node2D StaticSpriteRoot;
-    public Node2D AffiliationAreaRoot;
-    public Node2D FogMaskRoot;
-    public Node2D NavigationRoot;
     
     /// <summary>
     /// 是否暂停
@@ -97,7 +114,7 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     /// 随机对象池
     /// </summary>
     public RandomPool RandomPool { get; private set; }
-
+    
     /// <summary>
     /// 角色死亡事件
     /// </summary>
@@ -105,19 +122,11 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
     
     private bool _pause = false;
     private List<CoroutineData> _coroutineList;
-
-    public override void _Ready()
-    {
-        //TileRoot.YSortEnabled = false;
-        NormalLayer = GetNode<Node2D>("TileRoot/NormalLayer");
-        YSortLayer = GetNode<Node2D>("TileRoot/YSortLayer");
-        TileRoot = GetNode<TileMap>("TileRoot");
-        StaticSpriteRoot = GetNode<Node2D>("TileRoot/StaticSpriteRoot");
-        FogMaskRoot = GetNode<Node2D>("TileRoot/FogMaskRoot");
-        NavigationRoot = GetNode<Node2D>("TileRoot/NavigationRoot");
-        AffiliationAreaRoot = GetNode<Node2D>("TileRoot/AffiliationAreaRoot");
-    }
-
+    // 地图层级字典
+    private System.Collections.Generic.Dictionary<int, TileMapLayer> _tileMapLayers = new System.Collections.Generic.Dictionary<int, TileMapLayer>();
+    // 地砖集
+    private TileSet _tileSet;
+    
     public override void _Process(double delta)
     {
         //协程更新
@@ -239,5 +248,128 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
         if (IsDestroyed) return;
         IsDestroyed = true;
         QueueFree();
+    }
+    
+    /// <summary>
+    /// 设置地砖集
+    /// </summary>
+    /// <param name="tileSet"></param>
+    public void SetTileSet(TileSet tileSet)
+    {
+        _tileSet = tileSet;
+        foreach (var tileMapLayer in _tileMapLayers)
+        {
+            tileMapLayer.Value.TileSet = tileSet;
+        }
+    }
+    
+    /// <summary>
+    /// 获取地砖集
+    /// </summary>
+    public TileSet GetTileSet()
+    {
+        return _tileSet;
+    }
+    
+    /// <summary>
+    /// 获取指定层级的 TileMapLayer
+    /// </summary>
+    public TileMapLayer GetTileMapLayer(int position)
+    {
+        if (_tileMapLayers.TryGetValue(position, out var tileMapLayer))
+        {
+            return tileMapLayer;
+        }
+
+        return null;
+    }
+    
+    /// <summary>
+    /// 添加指定层级的 TileMapLayer
+    /// </summary>
+    public TileMapLayer AddTileMapLayer(int toPosition)
+    {
+        if (!_tileMapLayers.ContainsKey(toPosition))
+        {
+            var tileMapLayer = new TileMapLayer();
+            tileMapLayer.Name = $"TileMapLayer_{toPosition}";
+            tileMapLayer.TileSet = _tileSet;
+            AddChild(tileMapLayer);
+            MoveChild(tileMapLayer, _tileMapLayers.Count);
+            // CallDeferred(Node.MethodName.AddChild, tileMapLayer);
+            // CallDeferred(Node.MethodName.MoveChild, tileMapLayer, _tileMapLayers.Count);
+            _tileMapLayers.Add(toPosition, tileMapLayer);
+        }
+        
+        return _tileMapLayers[toPosition];
+    }
+    
+    /// <summary>
+    /// 移除指定层级的 TileMapLayer
+    /// </summary>
+    public void RemoveTileMapLayer(int position)
+    {
+        if (_tileMapLayers.TryGetValue(position, out var tileMapLayer))
+        {
+            _tileMapLayers.Remove(position);
+            tileMapLayer.QueueFree();
+        }
+    }
+    
+    /// <summary>
+    /// 清空所有 TileMapLayer
+    /// </summary>
+    public void RemoveAllTileMapLayer()
+    {
+        foreach (var tileMapLayer in _tileMapLayers.Values)
+        {
+            tileMapLayer.QueueFree();
+        }
+        
+        _tileMapLayers.Clear();
+    }
+    
+    /// <summary>
+    /// 获取 TileMapLayer 数量
+    /// </summary>
+    public int GetTileMapLayerCount()
+    {
+        return _tileMapLayers.Count;
+    }
+    
+    /// <summary>
+    /// 获取使用过地砖的区域
+    /// </summary>
+    public Rect2I GetUsedRect()
+    {
+        Rect2I? usedRect = null;
+        foreach (var tileMapLayer in _tileMapLayers.Values)
+        {
+            var layerUsedRect = tileMapLayer.GetUsedRect();
+            if (usedRect == null)
+            {
+                usedRect = layerUsedRect;
+            }
+            else
+            {
+                usedRect = usedRect.Value.Merge(layerUsedRect);
+            }
+        }
+
+        return usedRect == null ? new Rect2I() : usedRect.Value;
+    }
+    
+    /// <summary>
+    /// 将本地坐标转换为地图坐标
+    /// </summary>
+    public Vector2I LocalToMap(Vector2 position)
+    {
+        var firstOrDefault = _tileMapLayers.FirstOrDefault();
+        if (firstOrDefault.Value != null)
+        {
+            return firstOrDefault.Value.LocalToMap(position);
+        }
+        
+        return new Vector2I();
     }
 }

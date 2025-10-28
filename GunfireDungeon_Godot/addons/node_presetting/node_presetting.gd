@@ -32,9 +32,7 @@ func _init():
 	_menu_button = MenuButton.new()
 	_menu_button.about_to_popup.connect(_on_menu_about_to_popup)
 	_menu_button.icon = preload("res://addons/node_presetting/icon/node_icon.png")
-	_menu_button.expand_icon = true
 	_menu_button.flat = false
-	_menu_button.custom_minimum_size = Vector2(24, 32)
 	_menu_button.disabled = true
 
 # 菜单按钮的弹窗出现信号触发方法

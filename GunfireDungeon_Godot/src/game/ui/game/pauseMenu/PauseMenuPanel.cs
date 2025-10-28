@@ -31,19 +31,21 @@ public partial class PauseMenuPanel : PauseMenu
     
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
         GameCamera.Main.LockCamera();
+        
+        Utils.HandlerFocusList(S_VBoxContainer.Instance);
     }
     
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
         GameCamera.Main.UnLockCamera();
     }
 
     public override void Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_cancel")) //返回游戏
+        if (Input.IsActionJustPressed(InputAction.UiCancel)) //返回游戏
         {
             OnContinueClick();
         }

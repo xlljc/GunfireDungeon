@@ -93,7 +93,7 @@ public static class MapProjectManager
         }
         else
         {
-            Debug.Log("刷新地图组时未找到配置文件: " + configFile + ", 执行创建文件");
+            Debug.LogError("刷新地图组时未找到配置文件: " + configFile + ", 执行创建文件");
             GroupMap = new Dictionary<string, DungeonRoomGroup>();
             File.WriteAllText(configFile, "{}");
         }

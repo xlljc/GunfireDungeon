@@ -1,0 +1,672 @@
+[gd_scene load_steps=29 format=3 uid="uid://8irge7oa55sv"]
+
+[ext_resource type="Script" path="res://addons/ds_inspector/DsInspectorTool.gd" id="1_t800c"]
+[ext_resource type="Theme" uid="uid://bi3tgesxwq7lg" path="res://addons/ds_inspector/DsInspectorTheme.tres" id="2_rwegl"]
+[ext_resource type="Script" path="res://addons/ds_inspector/DebugDialog.gd" id="3_d06wy"]
+[ext_resource type="Texture2D" uid="uid://b6assniwtdgwy" path="res://addons/ds_inspector/icon/Pause.svg" id="4_qjgja"]
+[ext_resource type="Texture2D" uid="uid://kw66syn63sma" path="res://addons/ds_inspector/icon/NextFrame.svg" id="5_albym"]
+[ext_resource type="Texture2D" uid="uid://c51tcljdwj1kr" path="res://addons/ds_inspector/icon/Save.svg" id="6_trprb"]
+[ext_resource type="Texture2D" uid="uid://cba6u3in77t7p" path="res://addons/ds_inspector/icon/delete.svg" id="7_feklu"]
+[ext_resource type="Texture2D" uid="uid://drmwgwciyvoxq" path="res://addons/ds_inspector/icon/Select.svg" id="8_vxxi0"]
+[ext_resource type="Texture2D" uid="uid://v37l63676w4b" path="res://addons/ds_inspector/icon/HideBorder.svg" id="9_n43st"]
+[ext_resource type="Texture2D" uid="uid://cp56o3eykphff" path="res://addons/ds_inspector/icon/PutAway.svg" id="10_h81ki"]
+[ext_resource type="Script" path="res://addons/ds_inspector/TreeContainer.gd" id="11_gi7kt"]
+[ext_resource type="Script" path="res://addons/ds_inspector/NodeTree.gd" id="12_n858a"]
+[ext_resource type="Script" path="res://addons/ds_inspector/SerachTree.gd" id="13_n5350"]
+[ext_resource type="Script" path="res://addons/ds_inspector/DebugTab.gd" id="14_x52hf"]
+[ext_resource type="Script" path="res://addons/ds_inspector/InspectorContainer.gd" id="15_teqd0"]
+[ext_resource type="Script" path="res://addons/ds_inspector/ExcludeList.gd" id="16_lfkxp"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Cheat/Cheat.gd" id="17_i1g1n"]
+[ext_resource type="PackedScene" uid="uid://d2qnsha516yor" path="res://addons/ds_inspector/Cheat/CheatItem.tscn" id="18_req58"]
+[ext_resource type="Script" path="res://addons/ds_inspector/Brush.gd" id="19_1ycqc"]
+[ext_resource type="Script" path="res://addons/ds_inspector/SettingList.gd" id="19_s1270"]
+[ext_resource type="Texture2D" uid="uid://k6nfbn6oroyw" path="res://addons/ds_inspector/node_icon/AnimatedSprite2D.svg" id="20_bgw6s"]
+[ext_resource type="Texture2D" uid="uid://cltttr2pcd537" path="res://addons/ds_inspector/icon/Icon.png" id="21_pv2ua"]
+[ext_resource type="Texture2D" uid="uid://cpfmuxcanm03r" path="res://addons/ds_inspector/icon/Icon_Pressed.png" id="22_0afkq"]
+[ext_resource type="Texture2D" uid="uid://df6spnjut8st4" path="res://addons/ds_inspector/icon/Icon_Hover.png" id="23_qya0n"]
+[ext_resource type="Script" path="res://addons/ds_inspector/HoverIcon.gd" id="24_c6x5m"]
+
+[sub_resource type="Animation" id="3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "show"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.7, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.3, 1.3), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.261799, -0.261799, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qg7va"]
+_data = {
+"RESET": SubResource("3"),
+"show": SubResource("2")
+}
+
+[node name="DsInspectorTool" type="CanvasLayer" node_paths=PackedStringArray("window", "brush", "mask", "inspector", "tips", "tips_anim", "cheat", "hover_iton")]
+process_mode = 3
+layer = 128
+script = ExtResource("1_t800c")
+window = NodePath("WindowDialog")
+brush = NodePath("Brush")
+mask = NodePath("Mask")
+inspector = NodePath("WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector/BgColor/Scroll/MarginContainer/InspectorContainer")
+tips = NodePath("Tips")
+tips_anim = NodePath("Tips/AnimationPlayer")
+cheat = NodePath("WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat")
+hover_iton = NodePath("HoverIcon")
+
+[node name="Mask" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowDialog" type="Window" parent="." node_paths=PackedStringArray("tree", "exclude_list", "select_btn", "save_btn", "delete_btn", "hide_border_btn", "play_btn", "next_frame_btn", "file_window", "put_away", "confirmation")]
+title = "DsInspector"
+position = Vector2i(0, 24)
+size = Vector2i(2758, 1818)
+visible = false
+transient = true
+theme = ExtResource("2_rwegl")
+script = ExtResource("3_d06wy")
+tree = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer/NodeTree")
+exclude_list = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/ExcludeContainer/Exclude")
+select_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/SelectNode")
+save_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/SaveNode")
+delete_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/DeleteNode")
+hide_border_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HideBorderNode")
+play_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/PlayNode")
+next_frame_btn = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/NextFrameNode")
+file_window = NodePath("../SaveFileDialog")
+put_away = NodePath("Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/PutAwayNode")
+confirmation = NodePath("../ConfirmationDialog")
+debug_tool_path = NodePath("..")
+
+[node name="Bg" type="ColorRect" parent="WindowDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113725, 0.133333, 0.160784, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WindowDialog/Bg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowDialog/Bg/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "暂停/运行游戏"
+icon = ExtResource("4_qjgja")
+
+[node name="NextFrameNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "运行到下一帧"
+disabled = true
+icon = ExtResource("5_albym")
+
+[node name="Control" type="Control" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="SaveNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "保存选中的节点"
+icon = ExtResource("6_trprb")
+expand_icon = true
+
+[node name="DeleteNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "删除选中的节点"
+icon = ExtResource("7_feklu")
+expand_icon = true
+
+[node name="Control2" type="Control" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27451, 0.27451, 0.27451, 1)
+
+[node name="SelectNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "拣选场景中的节点"
+text = "拣选"
+icon = ExtResource("8_vxxi0")
+
+[node name="HideBorderNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "关闭调试绘制的边框"
+text = "关闭轮廓"
+icon = ExtResource("9_n43st")
+
+[node name="PutAwayNode" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 29)
+layout_mode = 2
+tooltip_text = "收起场景树"
+text = "收起"
+icon = ExtResource("10_h81ki")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TreeContainer" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("11_gi7kt")
+search_btn_path = NodePath("HBoxContainer/Search")
+clear_search_btn_path = NodePath("HBoxContainer/ClearSearch")
+search_input_path = NodePath("HBoxContainer/SearchInput")
+node_tree_path = NodePath("NodeTree")
+search_tree_path = NodePath("SerachTree")
+debug_tool_path = NodePath("../../../../../../..")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer"]
+layout_mode = 2
+
+[node name="SearchInput" type="LineEdit" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "请输入节点名称"
+
+[node name="Search" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer/HBoxContainer"]
+layout_mode = 2
+text = "搜索"
+
+[node name="ClearSearch" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer/HBoxContainer"]
+layout_mode = 2
+text = "清除"
+
+[node name="NodeTree" type="Tree" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+hide_root = true
+script = ExtResource("12_n858a")
+debug_tool_path = NodePath("../../../../../../../..")
+
+[node name="SerachTree" type="Tree" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TreeContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+hide_root = true
+script = ExtResource("13_n5350")
+node_tree_path = NodePath("../NodeTree")
+
+[node name="TabContainer" type="TabContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource("14_x52hf")
+tab_names = ["检查器", "排除路径", "作弊", "设置"]
+
+[node name="Inspector" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "检查器"
+
+[node name="FiltrInput" type="LineEdit" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "筛选属性"
+
+[node name="BgColor" type="ColorRect" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="Scroll" type="ScrollContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector/BgColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector/BgColor/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="InspectorContainer" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Inspector/BgColor/Scroll/MarginContainer" node_paths=PackedStringArray("filtr_input")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_teqd0")
+filtr_input = NodePath("../../../../FiltrInput")
+
+[node name="ExcludeContainer" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = "排除路径"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/ExcludeContainer"]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/ExcludeContainer/HBoxContainer"]
+layout_mode = 2
+text = "添加选中的节点"
+
+[node name="Label" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/ExcludeContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "被排除的节点不会在拣选时被选中。"
+text_overrun_behavior = 3
+
+[node name="Exclude" type="Tree" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/ExcludeContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+hide_root = true
+script = ExtResource("16_lfkxp")
+add_btn_path = NodePath("../HBoxContainer/AddButton")
+debug_tool_path = NodePath("../../../../../../../../..")
+
+[node name="Cheat" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer" node_paths=PackedStringArray("cheat_list")]
+visible = false
+layout_mode = 2
+script = ExtResource("17_i1g1n")
+cheat_package_scene = ExtResource("18_req58")
+cheat_list = NodePath("Container/Scroll/MarginContainer/CheatList")
+metadata/_tab_index = 2
+metadata/_tab_name = "作弊"
+
+[node name="CheatTips" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat"]
+layout_mode = 2
+text = "使用 DsInspector.add_cheat_button() 添加做弊按钮"
+text_overrun_behavior = 3
+
+[node name="Container" type="ColorRect" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="Scroll" type="ScrollContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat/Container/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CheatList" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Cheat/Container/Scroll/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Container" type="ColorRect" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.129412, 0.14902, 0.180392, 1)
+metadata/_tab_name = "设置"
+
+[node name="Scroll" type="ScrollContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SettingList" type="VBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer" node_paths=PackedStringArray("debug_tool", "tree_container", "use_system_window_checkbox", "auto_open_checkbox", "auto_search_checkbox", "scale_options")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("19_s1270")
+debug_tool = NodePath("../../../../../../../../../../..")
+tree_container = NodePath("../../../../../TreeContainer")
+use_system_window_checkbox = NodePath("SettingItem/CheckBox")
+auto_open_checkbox = NodePath("SettingItem3/CheckBox")
+auto_search_checkbox = NodePath("SettingItem2/CheckBox")
+scale_options = NodePath("SettingItem4/OptionButton")
+
+[node name="SettingItem" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem"]
+custom_minimum_size = Vector2(150, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 8.0
+text = "使用系统原生弹窗（会影响游戏中所有弹窗，下一次启动游戏生效）"
+autowrap_mode = 3
+
+[node name="CheckBox" type="CheckBox" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 5
+
+[node name="SettingItem3" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem3"]
+custom_minimum_size = Vector2(150, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 8.0
+text = "启动游戏自动打弹窗"
+autowrap_mode = 3
+
+[node name="CheckBox" type="CheckBox" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 5
+
+[node name="SettingItem2" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem2"]
+custom_minimum_size = Vector2(150, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 8.0
+text = "场景树自动搜索（可能造成卡顿）"
+autowrap_mode = 3
+
+[node name="CheckBox" type="CheckBox" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem2"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 5
+
+[node name="SettingItem4" type="HBoxContainer" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem4"]
+custom_minimum_size = Vector2(150, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 8.0
+text = "Ui整体缩放"
+autowrap_mode = 3
+
+[node name="OptionButton" type="OptionButton" parent="WindowDialog/Bg/ScrollContainer/MarginContainer/VBoxContainer/HSplitContainer/TabContainer/Container/Scroll/MarginContainer/SettingList/SettingItem4"]
+custom_minimum_size = Vector2(75, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 5
+item_count = 9
+selected = 2
+popup/item_0/text = "50%"
+popup/item_0/id = 0
+popup/item_1/text = "75%"
+popup/item_1/id = 1
+popup/item_2/text = "100%"
+popup/item_2/id = 2
+popup/item_3/text = "125%"
+popup/item_3/id = 3
+popup/item_4/text = "150%"
+popup/item_4/id = 4
+popup/item_5/text = "175%"
+popup/item_5/id = 5
+popup/item_6/text = "200%"
+popup/item_6/id = 6
+popup/item_7/text = "250%"
+popup/item_7/id = 7
+popup/item_8/text = "300%"
+popup/item_8/id = 8
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+title = "保存场景"
+position = Vector2i(380, 36)
+size = Vector2i(700, 500)
+min_size = Vector2i(700, 500)
+theme = ExtResource("2_rwegl")
+ok_button_text = "保存"
+cancel_button_text = "取消"
+access = 2
+filters = PackedStringArray("*.tscn")
+use_native_dialog = true
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "你确定吗？"
+initial_position = 1
+size = Vector2i(200, 158)
+theme = ExtResource("2_rwegl")
+ok_button_text = "确定"
+cancel_button_text = "取消"
+
+[node name="Brush" type="Node2D" parent="." node_paths=PackedStringArray("node_path_tips", "icon_tex_rect", "path_label")]
+script = ExtResource("19_1ycqc")
+node_path_tips = NodePath("../NodePathTips")
+icon_tex_rect = NodePath("../NodePathTips/ColorRect/Icon")
+path_label = NodePath("../NodePathTips/Path")
+debug_tool_path = NodePath("..")
+
+[node name="NodePathTips" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 127.0
+offset_bottom = 27.0
+theme = ExtResource("2_rwegl")
+
+[node name="ColorRect" type="ColorRect" parent="NodePathTips"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[node name="Icon" type="TextureRect" parent="NodePathTips/ColorRect"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_bgw6s")
+stretch_mode = 5
+
+[node name="Path" type="Label" parent="NodePathTips"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 0
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 734.0
+offset_bottom = 32.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 2
+text = "Path:a/b/c"
+autowrap_mode = 2
+
+[node name="Tips" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -141.0
+offset_right = 240.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(240, 34)
+size_flags_vertical = 0
+theme = ExtResource("2_rwegl")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tips"]
+libraries = {
+"": SubResource("AnimationLibrary_qg7va")
+}
+
+[node name="HoverIcon" type="TextureButton" parent="."]
+offset_right = 48.0
+offset_bottom = 48.0
+texture_normal = ExtResource("21_pv2ua")
+texture_pressed = ExtResource("22_0afkq")
+texture_hover = ExtResource("23_qya0n")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("24_c6x5m")
+debug_tool_path = NodePath("..")

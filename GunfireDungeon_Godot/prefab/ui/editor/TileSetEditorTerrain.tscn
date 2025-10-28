@@ -160,7 +160,6 @@ scale = Vector2(3, 3)
 mouse_filter = 2
 
 [node name="CellRoot" type="Control" parent="VSplitContainer/PanelTop/HSplitContainer/TopBg/TerrainRoot"]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0

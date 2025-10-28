@@ -500,17 +500,17 @@ public static class EditorWindowManager
     /// <summary>
     /// 打开选中的物体
     /// </summary>
-    /// <param name="findType">查找的类型, 如果为 none, 则查找所有类型数据</param>
+    /// <param name="findTypes">查找的类型</param>
     /// <param name="onSelectObject">选中物体时回调</param>
     /// <param name="parentUi">所属父级Ui</param>
-    public static void ShowSelectObject(ActivityType findType, Action<ExcelConfig.ActivityBase> onSelectObject, UiBase parentUi = null)
+    public static void ShowSelectObject(ActivityType[] findTypes, Action<ExcelConfig.ActivityBase> onSelectObject, UiBase parentUi = null)
     {
         var window = CreateWindowInstance(parentUi);
         window.S_Window.Instance.Size = new Vector2I(1000, 700);
         window.SetWindowTitle("选择物体");
         var body = window.OpenBody<MapEditorSelectObjectPanel>(UiManager.UiName.Editor_MapEditorSelectObject);
         //设置显示的物体类型
-        body.SetShowType(findType);
+        body.SetShowType(findTypes);
         window.SetButtonList(
             new EditorWindowPanel.ButtonData("确定", () =>
             {

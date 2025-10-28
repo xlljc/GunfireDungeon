@@ -1,23 +1,30 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvpmtfupny8iu"]
+[gd_scene load_steps=32 format=3 uid="uid://bvpmtfupny8iu"]
 
 [ext_resource type="Script" uid="uid://ibbcnmafy0xd" path="res://src/game/ui/game/roomUI/RoomUIPanel.cs" id="1_tfcrp"]
+[ext_resource type="Script" uid="uid://bkgrfjj3221jl" path="res://src/game/ui/game/roomUI/InteractiveTipBarHandler.cs" id="2_27wi7"]
 [ext_resource type="Texture2D" uid="uid://c6bvy3gvqmaw0" path="res://resource/sprite/ui/roomUI/icon_bullet.png" id="2_ruc0p"]
 [ext_resource type="Texture2D" uid="uid://ctqjf7oi4rg5a" path="res://resource/sprite/ui/keyboard/e.png" id="3_h7n2a"]
 [ext_resource type="FontFile" uid="uid://dd5aeidrx6qvu" path="res://resource/font/VonwaonBitmap-16px.ttf" id="4_h406q"]
 [ext_resource type="Texture2D" uid="uid://brcgd0hdvwfao" path="res://resource/sprite/ui/roomUI/ReloadBar.png" id="4_hy44s"]
 [ext_resource type="Texture2D" uid="uid://dxb00j736r5ma" path="res://resource/sprite/ui/roomUI/ReloadBarBlock.png" id="5_w3lq2"]
-[ext_resource type="Texture2D" uid="uid://80tjj1bh3r72" path="res://resource/sprite/ui/roomUI/Life_full.png" id="6_ggviq"]
+[ext_resource type="Script" uid="uid://ct0t3hvud0qgi" path="res://src/game/ui/game/roomUI/ReloadBarHandler.cs" id="7_081mo"]
 [ext_resource type="Material" uid="uid://j8t31iuumvhr" path="res://resource/material/Outline.tres" id="7_iw6pa"]
 [ext_resource type="Texture2D" uid="uid://d25wcsx6oh3yd" path="res://resource/sprite/ui/commonIcon/Gold_10.png" id="7_lyxvi"]
+[ext_resource type="Script" uid="uid://352ama5ki2et" path="res://src/game/ui/game/roomUI/LifeBarHandler.cs" id="9_b0m6l"]
 [ext_resource type="Texture2D" uid="uid://quoj2qyqdnyx" path="res://resource/sprite/prop/active/ActiveProp5000.png" id="10_5d4np"]
+[ext_resource type="Texture2D" uid="uid://dukix3bfwgj6o" path="res://resource/sprite/ui/roomUI/Shield_full.png" id="10_83pvn"]
 [ext_resource type="Texture2D" uid="uid://u1q1y4kft61r" path="res://resource/sprite/ui/roomUI/Panel2.png" id="10_eokvx"]
 [ext_resource type="Texture2D" uid="uid://d2ry4qsv2nkdk" path="res://resource/sprite/ui/roomUI/Panel.png" id="10_q3fs8"]
 [ext_resource type="Texture2D" uid="uid://7g1k5v212i6j" path="res://resource/sprite/weapon/weapon0005/Weapon0005.png" id="11_lsai4"]
 [ext_resource type="Texture2D" uid="uid://c1dun33cpspx6" path="res://resource/sprite/ui/roomUI/Cooldown.png" id="11_p0smc"]
+[ext_resource type="Texture2D" uid="uid://dvfvqtog0ypv8" path="res://resource/sprite/ui/roomUI/Armor_full.png" id="12_1l411"]
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="12_fgyob"]
+[ext_resource type="Texture2D" uid="uid://80tjj1bh3r72" path="res://resource/sprite/ui/roomUI/Life_full.png" id="12_vyncx"]
+[ext_resource type="Script" uid="uid://dmoav0vriaj7g" path="res://src/game/ui/game/roomUI/ActivePropBarHandler.cs" id="12_wm7ji"]
 [ext_resource type="Texture2D" uid="uid://blma3p7lvkhft" path="res://resource/sprite/ui/roomUI/ChargeProgressBar.png" id="13_6w7qi"]
 [ext_resource type="Texture2D" uid="uid://3tb6r2vcoikk" path="res://resource/sprite/ui/roomUI/ChargeProgress.png" id="13_vuglj"]
 [ext_resource type="PackedScene" uid="uid://d03w81wvnbpsa" path="res://prefab/ui/component/game/ProgressBar.tscn" id="17_3h7xx"]
+[ext_resource type="Script" uid="uid://d3ov7ar2rm74r" path="res://src/game/ui/game/roomUI/WeaponBarHandler.cs" id="19_1ptwe"]
 [ext_resource type="Texture2D" uid="uid://cxfd0mwijpnox" path="res://resource/sprite/ui/commonIcon/Mana.png" id="19_lc56i"]
 [ext_resource type="Texture2D" uid="uid://cmcl7js46mcce" path="res://resource/sprite/ui/roomUI/GunBullet1.png" id="20_081mo"]
 
@@ -60,7 +67,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_tfcrp")
 metadata/_edit_vertical_guides_ = [1901.0, 1852.0]
 metadata/_edit_horizontal_guides_ = [956.0, 1064.0]
@@ -72,6 +78,8 @@ offset_top = 552.0
 offset_right = 960.0
 offset_bottom = 552.0
 scale = Vector2(4, 4)
+mouse_filter = 2
+script = ExtResource("2_27wi7")
 
 [node name="Icon" type="TextureRect" parent="InteractiveTipBar"]
 layout_mode = 1
@@ -86,6 +94,7 @@ offset_right = 8.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ruc0p")
 
 [node name="InteractiveIcon" type="TextureRect" parent="InteractiveTipBar"]
@@ -93,6 +102,7 @@ visible = false
 layout_mode = 0
 offset_top = -30.0
 offset_bottom = -30.0
+mouse_filter = 2
 texture = ExtResource("3_h7n2a")
 
 [node name="Line2D" type="Line2D" parent="InteractiveTipBar"]
@@ -130,6 +140,8 @@ offset_top = 552.0
 offset_right = 960.0
 offset_bottom = 552.0
 scale = Vector2(4, 4)
+mouse_filter = 2
+script = ExtResource("7_081mo")
 
 [node name="Slot" type="TextureRect" parent="ReloadBar"]
 layout_mode = 1
@@ -144,6 +156,7 @@ offset_right = 14.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("4_hy44s")
 
 [node name="Block" type="Sprite2D" parent="ReloadBar/Slot"]
@@ -167,43 +180,110 @@ metadata/_edit_lock_ = true
 
 [node name="LifeBar" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -280.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 252.0
+offset_bottom = 120.0
+mouse_filter = 2
+script = ExtResource("9_b0m6l")
 
-[node name="Life" type="Control" parent="Control/LifeBar"]
-custom_minimum_size = Vector2(48, 40)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/LifeBar"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 4
 
-[node name="LifeIcon" type="TextureRect" parent="Control/LifeBar/Life"]
-layout_mode = 1
-offset_right = 12.0
-offset_bottom = 10.0
-scale = Vector2(4, 4)
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("6_ggviq")
-stretch_mode = 2
+[node name="ShieldContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Gold" type="Control" parent="Control/LifeBar"]
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("10_83pvn")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ShieldProgressBar" parent="Control/LifeBar/VBoxContainer/ShieldContainer" instance=ExtResource("17_3h7xx")]
+custom_minimum_size = Vector2(160, 24)
+layout_mode = 2
+size_flags_vertical = 4
+ValueColor = Color(0.0705882, 0.305882, 0.537255, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = 1.0
+metadata/_edit_group_ = true
+
+[node name="TempRect" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="0"]
+offset_right = 139.0
+
+[node name="Number" parent="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar" index="2"]
+horizontal_alignment = 0
+
+[node name="ArmorContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/ArmorContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_1l411")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ArmorProgressBar" parent="Control/LifeBar/VBoxContainer/ArmorContainer" instance=ExtResource("17_3h7xx")]
+custom_minimum_size = Vector2(160, 24)
+layout_mode = 2
+size_flags_vertical = 4
+ValueColor = Color(0.90588236, 0.9098039, 0, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = 1.0
+metadata/_edit_group_ = true
+
+[node name="TempRect" parent="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar" index="0"]
+offset_right = 139.0
+
+[node name="Number" parent="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar" index="2"]
+horizontal_alignment = 0
+
+[node name="LifeContainer" type="HBoxContainer" parent="Control/LifeBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/LifeBar/VBoxContainer/LifeContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("12_vyncx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="LifeProgressBar" parent="Control/LifeBar/VBoxContainer/LifeContainer" instance=ExtResource("17_3h7xx")]
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_vertical = 4
+ValueColor = Color(0.0216064, 0.460938, 0.16233, 1)
+TempColor = Color(0.988235, 0.780392, 0.415686, 1)
+TempTime = 1.0
+metadata/_edit_group_ = true
+
+[node name="Number" parent="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar" index="2"]
+horizontal_alignment = 0
+
+[node name="Gold" type="Control" parent="Control/LifeBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="GoldIcon" type="TextureRect" parent="Control/LifeBar/Gold"]
+[node name="GoldIcon" type="TextureRect" parent="Control/LifeBar/VBoxContainer/Gold"]
 material = ExtResource("7_iw6pa")
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 scale = Vector2(4, 4)
+mouse_filter = 2
 texture = ExtResource("7_lyxvi")
 stretch_mode = 2
 
-[node name="GoldText" type="Label" parent="Control/LifeBar/Gold"]
+[node name="GoldText" type="Label" parent="Control/LifeBar/VBoxContainer/Gold"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -212,6 +292,8 @@ offset_top = -4.0
 offset_right = 285.0
 offset_bottom = 4.0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_h406q")
+theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="ActivePropBar" type="Control" parent="Control"]
@@ -224,6 +306,8 @@ offset_right = 45.0
 offset_bottom = -77.0
 grow_vertical = 0
 scale = Vector2(4, 4)
+mouse_filter = 2
+script = ExtResource("12_wm7ji")
 
 [node name="ActivePropBg" type="NinePatchRect" parent="Control/ActivePropBar"]
 layout_mode = 1
@@ -251,6 +335,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("10_5d4np")
 stretch_mode = 3
 
@@ -327,6 +412,8 @@ offset_right = -48.0
 offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("19_1ptwe")
 
 [node name="BufferManaProgress" parent="Control/WeaponBar" instance=ExtResource("17_3h7xx")]
 layout_mode = 0
@@ -334,8 +421,11 @@ offset_left = 4.0
 offset_top = 48.0
 offset_right = 208.0
 offset_bottom = 60.0
+ValueColor = Color(0, 0.364706, 0.67451, 1)
+TempColor = Color(0.866667, 0.866667, 0.866667, 1)
+TempTime = -1.0
 
-[node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="0"]
+[node name="Number" parent="Control/WeaponBar/BufferManaProgress" index="2"]
 visible = false
 
 [node name="WeaponPanel" type="NinePatchRect" parent="Control/WeaponBar"]
@@ -362,6 +452,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("11_lsai4")
 stretch_mode = 3
 
@@ -371,6 +462,9 @@ offset_left = 24.0
 offset_top = 16.0
 offset_right = 208.0
 offset_bottom = 36.0
+ValueColor = Color(0, 0.364706, 0.67451, 1)
+TempColor = Color(0.867188, 0.867188, 0.867188, 1)
+TempTime = 1.0
 
 [node name="ManaIcon" type="TextureRect" parent="Control/WeaponBar"]
 layout_mode = 0
@@ -378,6 +472,7 @@ offset_left = -12.0
 offset_right = -2.0
 offset_bottom = 10.0
 scale = Vector2(4, 4)
+mouse_filter = 2
 texture = ExtResource("19_lc56i")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/WeaponBar"]
@@ -393,6 +488,7 @@ offset_right = 64.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(32, 1060)
+mouse_filter = 2
 theme_override_constants/separation = 1
 alignment = 2
 
@@ -401,6 +497,7 @@ material = ExtResource("7_iw6pa")
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 texture = ExtResource("20_081mo")
 stretch_mode = 5
 
@@ -415,4 +512,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[editable path="Control/LifeBar/VBoxContainer/ShieldContainer/ShieldProgressBar"]
+[editable path="Control/LifeBar/VBoxContainer/ArmorContainer/ArmorProgressBar"]
+[editable path="Control/LifeBar/VBoxContainer/LifeContainer/LifeProgressBar"]
 [editable path="Control/WeaponBar/BufferManaProgress"]

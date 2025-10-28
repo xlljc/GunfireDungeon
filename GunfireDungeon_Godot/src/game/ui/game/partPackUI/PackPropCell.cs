@@ -8,7 +8,7 @@ namespace UI.game.PartPackUI;
 /// <summary>
 /// 零件Cell
 /// </summary>
-public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
+public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartPropCellData>
 {
     public override void OnInit()
     {
@@ -23,12 +23,12 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
         CellNode.Instance.MouseExited += OnFocusExited;
     }
     
-    public override void OnSetData(PartProp data)
+    public override void OnSetData(PartPropCellData data)
     {
-        if (data != null)
+        if (data != null && data.OriginPartProp != null)
         {
             CellNode.L_PartIcon.Instance.Visible = true;
-            CellNode.L_PartIcon.Instance.Texture = data.Icon;
+            CellNode.L_PartIcon.Instance.Texture = data.OriginPartProp.Icon;
         }
         else
         {
@@ -38,78 +38,82 @@ public class PartPackCell : UiCell<PartPackUI.PartPackItem, PartProp>
 
     public void OnFocusEntered()
     {
-        if (Data == null)
+        if (Data == null || Data.OriginPartProp == null)
         {
-            return;
+            CellNode.UiPanel.SetCurrentSelectPart(null);
         }
-        CommonUiManager.ShowPartTips(Data);
+        else
+        {
+            CellNode.UiPanel.SetCurrentSelectPart(this);
+        }
     }
 
     public void OnFocusExited()
     {
-        if (Data == null)
-        {
-            return;
-        }
-        CommonUiManager.HidePartTips();
+        CellNode.UiPanel.SetCurrentSelectPart(null);
     }
     
     private Variant _GetDragData(Vector2 atPosition)
     {
-        if (Data != null)
+        if (Data != null && Data.OriginPartProp != null)
         {
             var sprite = new TextureRect();
             sprite.Scale = Vector2.One * GameApplication.Instance.PixelScale;
-            sprite.Texture = Data.Icon;
+            sprite.Texture = Data.OriginPartProp.Icon;
             CellNode.Instance.SetDragPreview(sprite);
         }
         else
         {
             return new Variant();
         }
-        return new Dictionary()
-        {
-            ["Index"] = Index,
-            ["UiGrid"] = new GodotRefValue(Grid),
-        };
+        
+        return new GodotRefValue<PartPropCellData>(Data);
     }
     
     
     private bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        if (data.VariantType != Variant.Type.Dictionary)
-        {
-            return false;
-        }
-        var dictionary = data.AsGodotDictionary();
-        if (!dictionary.ContainsKey("Index"))
+        if (Data == null)
         {
             return false;
         }
 
-        var index = dictionary["Index"].AsInt32();
-        var grid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dictionary["UiGrid"].As<GodotRefValue>().Value;
-        return index != Index || grid != Grid;
+        if (data.Obj == null)
+        {
+            return false;
+        }
+        // 判断是否可以放置
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)
+        {
+            var dropData = dropDataValue.Value;
+            return dropData != Data;
+            // return dropData.Slot.Index != Index || dropData != Data;
+        }
+
+        return false;
     }
 
     private void _DropData(Vector2 atPosition, Variant data)
     {
-        var dic = data.AsGodotDictionary();
-        var targetIndex = dic["Index"].AsInt32();
-        var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dic["UiGrid"].As<GodotRefValue>().Value;
-        var targetData = targetGrid.GetData(targetIndex);
-
-        Grid.EventPackage.EmitEvent(PartPackUIPanel.OnRemovePartEventName, Index);
-        targetGrid.EventPackage.EmitEvent(PartPackUIPanel.OnRemovePartEventName, targetIndex);
-
-        if (targetData != null)
+        if (Data == null)
         {
-            Grid.EventPackage.EmitEvent(PartPackUIPanel.OnPutPartEventName, new DropPartData(Index, targetData));
+            return;
         }
-
-        if (Data != null)
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)  
         {
-            targetGrid.EventPackage.EmitEvent(PartPackUIPanel.OnPutPartEventName, new DropPartData(targetIndex, Data));
+            // 被拖拽的对象从原位置移除
+            var fromPropData = dropDataValue.Value;
+            var fromSlot = fromPropData.Slot;
+            fromSlot.Remove();
+
+            if (Data.OriginPartProp != null)
+            {
+                Data.Slot.Remove();
+                // 当前位置的对象放入被拖拽对象的原位置
+                fromSlot.Set(Data.OriginPartProp);
+            }
+            
+            Data.Slot.Set(fromPropData.OriginPartProp);
         }
     }
 

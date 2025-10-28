@@ -38,13 +38,13 @@ public partial class EncyclopediaPanel : Encyclopedia
 
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
         GameCamera.Main.LockCamera();
     }
     
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
         GameCamera.Main.UnLockCamera();
     }
 
@@ -55,7 +55,7 @@ public partial class EncyclopediaPanel : Encyclopedia
     
     public override void Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_cancel"))
+        if (Input.IsActionJustPressed(InputAction.UiCancel))
         {
             OnCloseClick();
         }

@@ -27,6 +27,6 @@ public partial class Dungeon : World
     /// </summary>
     public void InitLayer()
     {
-        MapLayerManager.InitMapLayer(TileRoot);
+        MapLayerManager.InitMapLayer(this);
     }
 }

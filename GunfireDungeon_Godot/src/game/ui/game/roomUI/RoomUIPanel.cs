@@ -1,6 +1,7 @@
 
 
 using DsUi;
+using Godot;
 using UI.game.BottomTips;
 using UI.game.PartPackUI;
 using UI.game.RoomMap;
@@ -27,36 +28,22 @@ public partial class RoomUIPanel : RoomUI
     /// 遮挡Ui数量
     /// </summary>
     public int OcclusionCount { get; set; }
-
-    private ReloadBarHandler _reloadBar;
-    private InteractiveTipBarHandler _interactiveTipBar;
-    private WeaponBarHandler _weaponBar;
-    private ActivePropBarHandler _activePropBar;
-    private LifeBarHandler _lifeBar;
     
     private EventFactory<EventEnum> _factory;
     
     public override void OnCreateUi()
     {
-        _reloadBar = new ReloadBarHandler(L_ReloadBar);
-        _interactiveTipBar = new InteractiveTipBarHandler(L_InteractiveTipBar);
-        _weaponBar = new WeaponBarHandler(L_Control.L_WeaponBar);
-        _activePropBar = new ActivePropBarHandler(L_Control.L_ActivePropBar);
-        _lifeBar = new LifeBarHandler(L_Control.L_LifeBar);
-
+        GameApplication.Instance.RoomUIPanel = this;
         RoomMap = OpenNestedUi<RoomMapPanel>(UiManager.UiName.Game_RoomMap);
         PartPack = OpenNestedUi<PartPackUIPanel>(UiManager.UiName.Game_PartPackUI);
         PartPack.HideUi();
+        
+        MouseEntered += () => InputManager.SetMouseUiBlockage(false);
+        MouseExited += () => InputManager.SetMouseUiBlockage(true);
     }
 
     public override void OnShowUi()
     {
-        _reloadBar.OnShow();
-        _interactiveTipBar.OnShow();
-        _weaponBar.OnShow();
-        _activePropBar.OnShow();
-        _lifeBar.OnShow();
-
         _factory = EventManager.CreateEventFactory();
         _factory.AddEventListener(EventEnum.OnPlayerPickUpProp, OnPlayerPickUpProp);
 
@@ -73,22 +60,17 @@ public partial class RoomUIPanel : RoomUI
 
     public override void OnHideUi()
     {
-        _reloadBar.OnHide();
-        _interactiveTipBar.OnHide();
-        _weaponBar.OnHide();
-        _activePropBar.OnHide();
-        _lifeBar.OnHide();
-        
         _factory.RemoveAllEventListener();
         _factory = null;
     }
 
+    public override void OnDestroyUi()
+    {
+        GameApplication.Instance.RoomUIPanel = null;
+    }
+
     public override void Process(float delta)
     {
-        _weaponBar.Process(delta);
-        _activePropBar.Process(delta);
-        _lifeBar.Process(delta);
-
         if (InputManager.PartPackage)
         {
             if (PartPack.IsOpen)
@@ -102,11 +84,16 @@ public partial class RoomUIPanel : RoomUI
         }
     }
 
+    public override void _GuiInput(InputEvent @event)
+    {
+        InputManager.RoomInputHandler(@event);
+    }
+
     //玩家拾起道具, 弹出提示
     private void OnPlayerPickUpProp(object propObj)
     {
         var prop = (PropActivity)propObj;
-        var message = $"{prop.ActivityBase.Name}\n{prop.ActivityBase.Intro}";
+        var message = $"{prop.ActivityBase.Name}\n{prop.ActivityBase.Intro.Code}";
         BottomTipsPanel.ShowTips(prop.GetDefaultTexture(), message);
     }
 }

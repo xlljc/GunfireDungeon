@@ -38,14 +38,14 @@ public class BrushImageData
     /// <summary>
     /// 笔刷材质
     /// </summary>
-    public ExcelConfig.LiquidMaterial Material;
+    public ExcelConfig.LiquidBrush Brush;
 
     private static readonly Dictionary<string, Image> _imageData = new Dictionary<string, Image>();
 
-    public BrushImageData(ExcelConfig.LiquidMaterial material)
+    public BrushImageData(ExcelConfig.LiquidBrush brush)
     {
-        Material = material;
-        var image = GetImageData(material.BrushTexture);
+        Brush = brush;
+        var image = GetImageData(brush.BrushTexture);
         var list = new List<BrushPixelData>();
         var width = image.GetWidth();
         var height = image.GetHeight();
@@ -63,7 +63,7 @@ public class BrushImageData
                         X = x,
                         Y = y,
                         Color = pixel,
-                        Material = material
+                        Brush = brush
                     });
                     if (x < PixelMinX)
                     {
@@ -97,39 +97,6 @@ public class BrushImageData
 
         PixelWidth = PixelMaxX - PixelMinX;
         PixelHeight = PixelMaxY - PixelMinY;
-    }
-
-    private BrushImageData()
-    {
-    }
-
-    /// <summary>
-    /// 调节笔刷颜色, 并返回新的数据对象
-    /// </summary>
-    public BrushImageData Modulate(Color color)
-    {
-        var brushImageData = new BrushImageData();
-        brushImageData.Material = Material;
-        brushImageData.Width = Width;
-        brushImageData.Height = Height;
-        brushImageData.PixelMinX = PixelMinX;
-        brushImageData.PixelMinY = PixelMinY;
-        brushImageData.PixelMaxX = PixelMaxX;
-        brushImageData.PixelMaxY = PixelMaxY;
-        brushImageData.PixelWidth = PixelWidth;
-        brushImageData.PixelHeight = PixelHeight;
-        brushImageData.Pixels = new BrushPixelData[Pixels.Length];
-        for (var i = 0; i < Pixels.Length; i++)
-        {
-            var brushPixelData = brushImageData.Pixels[i] = new BrushPixelData();
-            var pixelData = Pixels[i];
-            brushPixelData.X = pixelData.X;
-            brushPixelData.Y = pixelData.Y;
-            brushPixelData.Material = pixelData.Material;
-            brushPixelData.Color = pixelData.Color * color;
-        }
-
-        return brushImageData;
     }
 
     private static Image GetImageData(string path)

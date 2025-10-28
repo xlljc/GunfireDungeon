@@ -10,22 +10,12 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public partial class PartPackUIPanel : PartPackUI
 {
-    /// <summary>
-    /// 放置零件事件，参数类型：<see cref="DropPartData"/>
-    /// </summary>
-    public const string OnPutPartEventName = "OnPutPart";
-    
-    /// <summary>
-    /// 移除零件事件，参数类型：<see cref="int"/>
-    /// </summary>
-    public const string OnRemovePartEventName = "OnRemovePart";
-    
     public RoomUIPanel RoomUiPanel;
     
     /// <summary>
     /// 上方零件背包网格
     /// </summary>
-    public UiGrid<PartPackItem, PartProp> PartPackGrid;
+    public UiGrid<PartPackItem, PartPropCellData> PartPackGrid;
     
     /// <summary>
     /// 武器列表
@@ -38,6 +28,15 @@ public partial class PartPackUIPanel : PartPackUI
     public Vector2I CellOffset { get; } = new Vector2I(8, 8);
     
     private List<Weapon> _cahceWeapons = new List<Weapon>();
+    private bool _isMouseHandler = false;
+    private bool _needRefreshPartTips = false;
+    
+    // -------- 手柄操作相关 --------
+
+    private PartPackCell _prevSelectPart;
+    private PartPackCell _currSelectPart;
+    
+    // ----------------------------
 
     public override void OnCreateUi()
     {
@@ -49,11 +48,9 @@ public partial class PartPackUIPanel : PartPackUI
         WeaponCellOriginSize = S_WeaponItem.Instance.CustomMinimumSize;
         PartListCellHeight = S_PartListItem.Instance.CustomMinimumSize.Y;
         
-        PartPackGrid = CreateUiGrid<PartPackItem, PartProp, PartPackCell>(S_PartPackItem);
+        PartPackGrid = CreateUiGrid<PartPackItem, PartPropCellData, PartPackCell>(S_PartPackItem);
         PartPackGrid.SetAutoColumns(true);
         PartPackGrid.SetCellOffset(CellOffset);
-        PartPackGrid.EventPackage.AddEventListener(OnPutPartEventName, OnPutPart);
-        PartPackGrid.EventPackage.AddEventListener(OnRemovePartEventName, OnRemovePart);
 
         WeaponListGrid = CreateUiGrid<WeaponItem, Weapon, WeaponListCell>(S_WeaponItem);
         WeaponListGrid.SetColumns(1);
@@ -63,69 +60,82 @@ public partial class PartPackUIPanel : PartPackUI
 
     public override void OnShowUi()
     {
-        GameApplication.Instance.Cursor.AddUiLayer(GetInstanceId());
+        InputManager.AddBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
             RoomUiPanel.OcclusionCount++;
+        }
+        
+        if (IsValidSelectPart(_currSelectPart))
+        {
+            CommonUiManager.ShowPartTips(_currSelectPart.Data.OriginPartProp);
         }
     }
 
     public override void OnHideUi()
     {
-        GameApplication.Instance.Cursor.RemoveUiLayer(GetInstanceId());
+        InputManager.RemoveBlockageMarking(GetInstanceId());
         if (RoomUiPanel != null)
         {
             RoomUiPanel.OcclusionCount--;
         }
-    }
-    
-    
-    private void OnPutPart(object obj)
-    {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-        if (player == null)
-        {
-            return;
-        }
 
-        var param = (DropPartData)obj;
-        player.PartPropPack.Set(param.Index, param.Data);
-    }
-    
-    private void OnRemovePart(object obj)
-    {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-        player?.PartPropPack.Remove((int)obj);
+        if (_currSelectPart != null)
+        {
+            CommonUiManager.HidePartTips();
+        }
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        return data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("Index");
-    }
+        if (data.Obj == null)
+        {
+            return false;
+        }
+        // 判断是否可以放置
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)
+        {
+            return dropDataValue.Value.OriginPartProp != null;
+            // return dropData.Slot.Index != Index || dropData != Data;
+        }
 
+        return false;
+    }
+    
     public override void _DropData(Vector2 atPosition, Variant data)
     {
-        // 触发丢弃
-        var dic = data.AsGodotDictionary();
-        var targetIndex = dic["Index"].AsInt32();
-        var targetGrid = (UiGrid<PartPackUI.PartPackItem, PartProp>)dic["UiGrid"].As<GodotRefValue>().Value;
-        targetGrid.EventPackage.EmitEvent(OnRemovePartEventName, targetIndex);
-        
-        var targetData = targetGrid.GetData(targetIndex);
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
-        if (player != null)
+        if (data.Obj == null)
         {
-            targetData.ThrowProp(player);
+            return;
         }
-        else
+        if (data.Obj is GodotRefValue<PartPropCellData> dropDataValue)
         {
-            targetData.Throw(8, 0, Vector2.Zero, 0);
+            // 被拖拽的对象从原位置移除
+            var fromPropData = dropDataValue.Value;
+            var fromSlot = fromPropData.Slot;
+            fromSlot.Remove();
+            
+            var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+            if (player != null)
+            {
+                fromPropData.OriginPartProp.ThrowProp(player);
+            }
+            else
+            {
+                fromPropData.OriginPartProp.Throw(8, 0, Vector2.Zero, 0);
+            }
         }
     }
 
     public override void Process(float delta)
     {
-        var player = GameApplication.Instance.DungeonManager.CurrWorld?.Player;
+        var application = GameApplication.Instance;
+        if (application.DungeonManager.CurrWorld.Pause)
+        {
+            return;
+        }
+
+        var player = application.DungeonManager.CurrWorld?.Player;
         if (player != null)
         {
             //检测零件是否变化
@@ -138,7 +148,7 @@ public partial class PartPackUIPanel : PartPackUI
             {
                 for (int i = 0; i < count; i++)
                 {
-                    if (player.PartPropPack.Get(i) != PartPackGrid.GetData(i))
+                    if (player.PartPropPack.Get(i) != PartPackGrid.GetData(i).OriginPartProp)
                     {
                         RefreshPartPack(player.PartPropPack);
                         break;
@@ -172,9 +182,133 @@ public partial class PartPackUIPanel : PartPackUI
                     }
                 }
             }
+            
+            // 处理零件选中逻辑
+            DoSelectItem();
+
+            if (InputManager.MouseIsMoving && !_isMouseHandler)
+            {
+                _isMouseHandler = true;
+                SetCurrentSelectPart(null);
+                _prevSelectPart = null;
+            }
+
+            if (_isMouseHandler)
+            {
+                CommonUiManager.SetPartTipsPosition(InputManager.UiMousePosition);
+            }
+            else if (_currSelectPart != null)
+            {
+                var nodeInstance = _currSelectPart.CellNode.Instance;
+                CommonUiManager.SetPartTipsPosition(nodeInstance.GlobalPosition + nodeInstance.Size);
+            }
         }
     }
 
+    /// <summary>
+    /// 设置当前选中的零件格子
+    /// </summary>
+    public void SetCurrentSelectPart(PartPackCell partCell)
+    {
+        if (_currSelectPart != null)
+        {
+            _currSelectPart.CellNode.Instance.SetSelect(false);
+        }
+
+        _currSelectPart = partCell;
+        if (_currSelectPart != null)
+        {
+            _currSelectPart.CellNode.Instance.SetSelect(true);
+        }
+
+        RefreshPartTips();
+    }
+
+    /// <summary>
+    /// 刷新零件提示Ui
+    /// </summary>
+    public void RefreshPartTips()
+    {
+        if (!IsValidSelectPart(_currSelectPart))
+        {
+            CommonUiManager.HidePartTips();
+        }
+        else
+        {
+            CommonUiManager.ShowPartTips(_currSelectPart.Data.OriginPartProp);
+        }
+    }
+
+    private void DoSelectItem()
+    {
+        // 移动选中逻辑
+        if (Input.IsActionJustPressed(InputAction.UiAccept)) // 点击选择/放置
+        {
+            if (_prevSelectPart == null) // 点击选择
+            {
+                if (IsValidSelectPart(_currSelectPart))
+                {
+                    _prevSelectPart = _currSelectPart;
+                    _prevSelectPart.CellNode.Instance.SetSelect(false);
+                }
+            }
+            else if (_currSelectPart != null && _currSelectPart.Data != null) // 点击放置
+            {
+                //调换位置
+                if (_currSelectPart.Data.OriginPartProp != null) // 当前选中有零件，交换位置
+                {
+                    var fromData = _prevSelectPart.Data.OriginPartProp;
+                    var toData = _currSelectPart.Data.OriginPartProp;
+                    _currSelectPart.Data.Slot.Remove();
+                    _prevSelectPart.Data.Slot.Remove();
+                    _currSelectPart.Data.Slot.Set(fromData);
+                    _prevSelectPart.Data.Slot.Set(toData);
+                }
+                else
+                {
+                    // 当前选中无零件，直接放置
+                    var fromData = _prevSelectPart.Data.OriginPartProp;
+                    _prevSelectPart.Data.Slot.Remove();
+                    _currSelectPart.Data.Slot.Set(fromData);
+                }
+                
+                _prevSelectPart = null;
+                _needRefreshPartTips = true;
+            }
+        }
+        else //点击移动
+        {
+            if (Input.IsActionJustPressed(InputAction.UiLeft))
+            {
+                DoJoypadLeft();
+                _isMouseHandler = false;
+            }
+            else if (Input.IsActionJustPressed(InputAction.UiRight))
+            {
+                DoJoypadRight();
+                _isMouseHandler = false;
+            }
+            else if (Input.IsActionJustPressed(InputAction.UiUp))
+            {
+                DoJoypadUp();
+                _isMouseHandler = false;
+            }
+            else if (Input.IsActionJustPressed(InputAction.UiDown))
+            {
+                DoJoypadDown();
+                _isMouseHandler = false;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// 指定的零件格子是否有效
+    /// </summary>
+    public bool IsValidSelectPart(PartPackCell cell)
+    {
+        return cell != null && cell.Data != null && cell.Data.OriginPartProp != null;
+    }
+    
     private void RefreshWeaponList(List<Weapon> list)
     {
         WeaponListGrid.SetDataList(list);
@@ -182,6 +316,311 @@ public partial class PartPackUIPanel : PartPackUI
 
     public void RefreshPartPack(PartPackage package)
     {
-        PartPackGrid.SetDataList(package.ToList());
+        var temp = new List<PartPropCellData>();
+        var i = 0;
+        foreach (var o in package)
+        {
+            temp.Add(new PartPropCellData(new PartPropSlot(i++, package), (PartProp)o));
+        }
+
+        PartPackGrid.SetDataList(temp);
+
+        if (_needRefreshPartTips)
+        {
+            _needRefreshPartTips = false;
+            RefreshPartTips();
+        }
+        
+        // 重新选中第一个零件
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+    }
+
+    private void DoFindFirstSelectPart()
+    {
+        SetCurrentSelectPart(FindFirstSelectPart());
+    }
+    
+    private PartPackCell FindFirstSelectPart()
+    {
+        var uiCell = PartPackGrid.Find(cell => cell.Data != null);
+        if (uiCell != null)
+        {
+            return (PartPackCell)uiCell;
+        }
+        
+        // 再遍历寻找武器上的插槽
+        var weapons = WeaponListGrid.GetAllCell();
+        foreach (var item1 in weapons) //遍历装备的武器
+        {
+            var weaponListCells = item1 as WeaponListCell;
+            if (weaponListCells != null && weaponListCells.Data != null)
+            {
+                var partListcells = weaponListCells.PartListGrid.GetAllCell();
+                foreach (var item2 in partListcells) // 遍历武器上的零件列表
+                {
+                    var partList = item2 as PartListCell;
+                    if (partList != null && partList.Data != null)
+                    {
+                        var partCells = partList.PartGrid.GetAllCell();
+                        foreach (var partCell in partCells)
+                        {
+                            if (partCell != null && partCell.Data != null)
+                            {
+                                return (PartPackCell)partCell;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+    
+    private void DoJoypadLeft()
+    {
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var uiGrid = _currSelectPart.Grid;
+            int startIndex = _currSelectPart.Index - 1;
+            var nextCell = FindCell(uiGrid, startIndex, false, _prevSelectPart == null);
+            if (nextCell != null)
+            {
+                SetCurrentSelectPart(nextCell);
+            }
+            // 如果没找到，保持当前（什么都不做）
+        }
+    }
+    
+    private void DoJoypadRight()
+    {
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var uiGrid = _currSelectPart.Grid;
+            int startIndex = _currSelectPart.Index + 1;
+            var nextCell = FindCell(uiGrid, startIndex, true, _prevSelectPart == null);
+            if (nextCell != null)
+            {
+                SetCurrentSelectPart(nextCell);
+            }
+            // 如果没找到，保持当前（什么都不做）
+        }
+    }
+    
+    private void DoJoypadUp()
+    {
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var grids = GetAllGrids();
+            var currentGrid = _currSelectPart.Grid;
+            int currentGridIndex = grids.IndexOf(currentGrid);
+            if (currentGridIndex == -1) return;
+
+            for (int i = currentGridIndex - 1; i >= 0; i--)
+            {
+                var nextGrid = grids[i];
+                var nextCell = FindCellInGrid(nextGrid, _currSelectPart.Index, true, _prevSelectPart == null); // 往后查找
+                if (nextCell != null)
+                {
+                    SetCurrentSelectPart(nextCell);
+                    return;
+                }
+            }
+            // 如果没找到，保持当前
+        }
+    }
+    
+    private void DoJoypadDown()
+    {
+        if (_currSelectPart == null)
+        {
+            DoFindFirstSelectPart();
+        }
+        else
+        {
+            var grids = GetAllGrids();
+            var currentGrid = _currSelectPart.Grid;
+            int currentGridIndex = grids.IndexOf(currentGrid);
+            if (currentGridIndex == -1) return;
+
+            for (int i = currentGridIndex + 1; i < grids.Count; i++)
+            {
+                var nextGrid = grids[i];
+                var nextCell = FindCellInGrid(nextGrid, _currSelectPart.Index, false, _prevSelectPart == null); // 往前查找
+                if (nextCell != null)
+                {
+                    SetCurrentSelectPart(nextCell);
+                    return;
+                }
+            }
+            // 如果没找到，保持当前
+        }
+    }
+
+    private PartPackCell FindCell(UiGrid<PartPackItem, PartPropCellData> uiGrid, int startIndex, bool forward, bool valid)
+    {
+        int count = uiGrid.Count;
+        PartPackCell result = null;
+        if (forward)
+        {
+            // 从 startIndex 开始往后查找
+            for (int i = startIndex; i < count; i++)
+            {
+                var cell = uiGrid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
+                }
+            }
+            // 如果没找到，从 0 开始查找
+            if (result == null)
+            {
+                for (int i = 0; i < startIndex; i++)
+                {
+                    var cell = uiGrid.GetCell(i);
+                    if (cell != null && cell.Data != null)
+                    {
+                        if (!valid || cell.Data.OriginPartProp != null)
+                        {
+                            result = (PartPackCell)cell;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            // 从 startIndex 开始往前查找
+            for (int i = startIndex; i >= 0; i--)
+            {
+                var cell = uiGrid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        result = (PartPackCell)cell;
+                        break;
+                    }
+                }
+            }
+            // 如果没找到，从末尾开始查找
+            if (result == null)
+            {
+                for (int i = count - 1; i > startIndex; i--)
+                {
+                    var cell = uiGrid.GetCell(i);
+                    if (cell != null && cell.Data != null)
+                    {
+                        if (!valid || cell.Data.OriginPartProp != null)
+                        {
+                            result = (PartPackCell)cell;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    
+    private List<UiGrid<PartPackItem, PartPropCellData>> GetAllGrids()
+    {
+        var grids = new List<UiGrid<PartPackItem, PartPropCellData>>();
+        grids.Add(PartPackGrid);
+        foreach (var weaponCell in WeaponListGrid.GetAllCell())
+        {
+            var weaponListCell = weaponCell as WeaponListCell;
+            if (weaponListCell != null && weaponListCell.Data != null)
+            {
+                foreach (var partListCell in weaponListCell.PartListGrid.GetAllCell())
+                {
+                    var partList = partListCell as PartListCell;
+                    if (partList != null && partList.Data != null)
+                    {
+                        grids.Add(partList.PartGrid);
+                    }
+                }
+            }
+        }
+        return grids;
+    }
+
+    private PartPackCell FindCellInGrid(UiGrid<PartPackItem, PartPropCellData> grid, int startIndex, bool forward, bool valid)
+    {
+        if (forward)
+        {
+            // 从 startIndex 往后查找
+            for (int i = startIndex; i < grid.Count; i++)
+            {
+                var cell = grid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
+                }
+            }
+            // 从 0 到 startIndex-1
+            for (int i = 0; i < startIndex; i++)
+            {
+                var cell = grid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
+                }
+            }
+        }
+        else
+        {
+            // 从 startIndex 往前查找
+            for (int i = startIndex; i >= 0; i--)
+            {
+                var cell = grid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
+                }
+            }
+            // 从末尾到 startIndex+1
+            for (int i = grid.Count - 1; i > startIndex; i--)
+            {
+                var cell = grid.GetCell(i);
+                if (cell != null && cell.Data != null)
+                {
+                    if (!valid || cell.Data.OriginPartProp != null)
+                    {
+                        return (PartPackCell)cell;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

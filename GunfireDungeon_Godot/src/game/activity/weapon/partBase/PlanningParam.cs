@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 public class PlanningParam
 {
-    public enum ErrorType
-    {
-        /// <summary>
-        /// 执行成功，Data 参数为 ExcelConfig.BulletBase，也就是第一个发射出去的子弹
-        /// </summary>
-        None,
-        /// <summary>
-        /// 法力值不够，因为为法力值不够导致的部分法术执行失败，Data 返回导致失败的法术索引
-        /// </summary>
-        NoMana,
-        /// <summary>
-        /// 没有弹丸零件，Data 没有值
-        /// </summary>
-        NoBullet,
-    }
+    // public enum ErrorType
+    // {
+    //     /// <summary>
+    //     /// 执行成功，Data 参数为 ExcelConfig.BulletBase，也就是第一个发射出去的子弹
+    //     /// </summary>
+    //     None,
+    //     /// <summary>
+    //     /// 法力值不够，因为为法力值不够导致的部分法术执行失败，Data 返回导致失败的法术索引
+    //     /// </summary>
+    //     NoMana,
+    //     /// <summary>
+    //     /// 没有弹丸零件，Data 没有值
+    //     /// </summary>
+    //     NoBullet,
+    // }
 
     public delegate bool UseManaCallback(int mana);
     
@@ -39,14 +39,24 @@ public class PlanningParam
     public const string PrevBullet = "PrevBullet";
 
     /// <summary>
+    /// 法力值是否够
+    /// </summary>
+    public bool SufficientMana = true;
+
+    /// <summary>
+    /// 是否发射子弹
+    /// </summary>
+    public bool HasBullet = false;
+    
+    /// <summary>
     /// 开火角度
     /// </summary>
     public float FireRotation;
 
-    /// <summary>
-    /// 执行结果
-    /// </summary>
-    public ErrorType Error = ErrorType.NoBullet;
+    // /// <summary>
+    // /// 执行结果
+    // /// </summary>
+    // public ErrorType Error = ErrorType.NoBullet;
     
     private Dictionary<string, object> _data;
     private readonly UseManaCallback _useManaFunc;

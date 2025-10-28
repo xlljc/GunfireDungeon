@@ -7,16 +7,18 @@ namespace UI.game.RoomUI;
 /// <summary>
 /// 互动提示文本
 /// </summary>
-public class InteractiveTipBarHandler
+public partial class InteractiveTipBarHandler : Control, IUiNodeScript
 {
     private RoomUI.InteractiveTipBar _interactiveTipBar;
     private EventBinder<EventEnum> _binder;
     private ActivityObject _interactiveTarget;
     
-    public InteractiveTipBarHandler(RoomUI.InteractiveTipBar interactiveTipBar)
+    public void SetUiNode(IUiNode uiNode)
     {
-        interactiveTipBar.Instance.Visible = false;
-        _interactiveTipBar = interactiveTipBar;
+        _interactiveTipBar = (RoomUI.InteractiveTipBar)uiNode;
+        _interactiveTipBar.Instance.Visible = false;
+        _interactiveTipBar.UiPanel.OnShowUiEvent += OnShow;
+        _interactiveTipBar.UiPanel.OnHideUiEvent += OnHide;
     }
 
     public void OnShow()
@@ -92,5 +94,11 @@ public class InteractiveTipBarHandler
         {
             _interactiveTipBar.Instance.GlobalPosition = GameApplication.Instance.WorldToUiPosition(_interactiveTarget.GlobalPosition);
         }
+    }
+
+
+    public void OnDestroy()
+    {
+        
     }
 }

@@ -10,14 +10,14 @@ namespace UI.game.PartPackUI;
 /// </summary>
 public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
 {
-    private UiGrid<PartPackUI.PartListItem, PartListCellData> _partListGrid;
+    public UiGrid<PartPackUI.PartListItem, PartListCellData> PartListGrid;
     
     public override void OnInit()
     {
-        _partListGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartListItem, PartListCellData, PartListCell>(CellNode.L_PartListItem);
-        _partListGrid.SetColumns(1);
-        _partListGrid.SetCellOffset(new Vector2I(0, 0));
-        _partListGrid.GridContainer.Resized += OnPartListGridResized;
+        PartListGrid = CellNode.UiPanel.CreateUiGrid<PartPackUI.PartListItem, PartListCellData, PartListCell>(CellNode.L_PartListItem);
+        PartListGrid.SetColumns(1);
+        PartListGrid.SetCellOffset(new Vector2I(0, 0));
+        PartListGrid.GridContainer.Resized += OnPartListGridResized;
     }
 
     public override void OnSetData(Weapon data)
@@ -31,7 +31,7 @@ public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
             partLists.Add(new PartListCellData(keyValuePair.Key, keyValuePair.Value, this));
         }
         
-        _partListGrid.SetDataList(partLists);
+        PartListGrid.SetDataList(partLists);
         RefreshBaseInfo();
     }
 
@@ -55,7 +55,7 @@ public class WeaponListCell : UiCell<PartPackUI.WeaponItem, Weapon>
     private void OnPartListGridResized()
     {
         var minimumSize = CellNode.Instance.CustomMinimumSize;
-        minimumSize.Y = CellNode.UiPanel.WeaponCellOriginSize.Y + _partListGrid.GridContainer.Size.Y;
+        minimumSize.Y = CellNode.UiPanel.WeaponCellOriginSize.Y + PartListGrid.GridContainer.Size.Y;
         CellNode.Instance.CustomMinimumSize = minimumSize;
     }
 }

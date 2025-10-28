@@ -16,7 +16,7 @@ shader_parameter/outline_rainbow = false
 shader_parameter/outline_use_blend = true
 shader_parameter/grey = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0wfd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ba84o"]
 resource_local_to_scene = true
 shader = ExtResource("2_0n2yg")
 shader_parameter/blend = Color(1, 1, 1, 1)
@@ -51,7 +51,7 @@ material = SubResource("ShaderMaterial_v77gw")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1.6, 1.6, 1.6, 1)
-material = SubResource("ShaderMaterial_p0wfd")
+material = SubResource("ShaderMaterial_ba84o")
 sprite_frames = ExtResource("3_ldd0h")
 
 [node name="CollisionArea" type="Area2D" parent="AnimatedSprite"]

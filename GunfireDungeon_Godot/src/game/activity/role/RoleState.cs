@@ -1,17 +1,27 @@
-﻿
-using System;
+﻿using System;
 using Config;
+using Godot;
 
 /// <summary>
 /// 角色属性类
 /// </summary>
 public class RoleState
 {
+    public RoleState(ExcelConfig.RoleBase roleBase)
+    {
+        RoleBase = roleBase;
+    }
+
+    /// <summary>
+    /// 角色原始配置数据
+    /// </summary>
+    public readonly ExcelConfig.RoleBase RoleBase;
+
     /// <summary>
     /// 金币数量
     /// </summary>
     public int Gold = 0;
-    
+
     /// <summary>
     /// 是否可以拾起武器
     /// </summary>
@@ -21,31 +31,51 @@ public class RoleState
     /// 移动速度
     /// </summary>
     public float MoveSpeed = 120f;
-        
+
     /// <summary>
     /// 移动加速度
     /// </summary>
     public float Acceleration = 1500f;
-    
+
     /// <summary>
     /// 移动摩擦力, 仅用于人物基础移动
     /// </summary>
     public float Friction = 900f;
-    
+
     /// <summary>
-    /// 单格护盾恢复时间, 单位: 秒
+    /// 护盾恢复延迟（秒）
     /// </summary>
-    public float ShieldRecoveryTime = 18;
+    public float ShieldDelay = 10;
+
+    /// <summary>
+    /// 护盾恢复速度，每秒恢复量
+    /// </summary>
+    public float ShieldRate = 2;
+
+    /// <summary>
+    /// 破盾后的无敌时间, 单位: 秒
+    /// </summary>
+    public float ShieldInv = 1.5f;
+
+    /// <summary>
+    /// 每秒伤害百分比触发无敌
+    /// </summary>
+    public float WoundInvPct = 0.15f;
 
     /// <summary>
     /// 受伤后的无敌时间, 单位: 秒
     /// </summary>
-    public float WoundedInvincibleTime = 1f;
+    public float WoundInv = 1f;
 
     /// <summary>
-    /// 护盾被攻击后的无敌时间, 单位: 秒
+    /// 单次能受到最大的百分比伤害，也就是保护机制
     /// </summary>
-    public float ShieldInvincibleTime = 0.4f;
+    public float WoundMaxPct = 0.75f;
+
+    /// <summary>
+    /// 触发保护机制后的无敌时间, 单位: 秒
+    /// </summary>
+    public float WoundMaxInv = 2.5f;
 
     /// <summary>
     /// 近战攻击间隔时间
@@ -53,41 +83,105 @@ public class RoleState
     public float MeleeAttackTime = 0.5f;
 
     /// <summary>
+    /// 翻滚速度
+    /// </summary>
+    public float RollSpeed = 170f;
+
+    /// <summary>
+    /// 翻滚持续时间
+    /// </summary>
+    public float RollTime = 0.15f;
+
+    /// <summary>
+    /// 翻滚冷却时间
+    /// </summary>
+    public float RollCoolingTime = 0.2f;
+
+    /// <summary>
+    /// 抗暴击率
+    /// </summary>
+    public float CritResist;
+    
+    /// <summary>
+    /// 物理属性伤害抗性
+    /// </summary>
+    public float PhysicalResist;
+
+    /// <summary>
+    /// 火焰属性伤害抗性
+    /// </summary>
+    public float FireResist;
+
+    /// <summary>
+    /// 电击属性伤害抗性
+    /// </summary>
+    public float ElectricResist;
+
+    /// <summary>
+    /// 化学属性伤害抗性
+    /// </summary>
+    public float ChemicalResist;
+
+    /// <summary>
+    /// 光学属性伤害抗性
+    /// </summary>
+    public float OpticalResist;
+
+    /// <summary>
+    /// 暗物质属性伤害抗性
+    /// </summary>
+    public float DarkMatterResist;
+
+    /// <summary>
+    /// 爆破属性伤害抗性
+    /// </summary>
+    public float ExplosiveResist;
+
+    public delegate void CalcDamageEventHandler(int damage, DamageType damageType, RefValue<int> result);
+
+    /// <summary>
     /// 攻击/发射后计算伤害
     /// </summary>
-    public event Action<int, RefValue<int>> CalcDamageEvent;
-    public int CalcDamage(int damage)
+    public event CalcDamageEventHandler CalcDamageEvent;
+
+    public int CalcDamage(int damage, DamageType damageType)
     {
         if (CalcDamageEvent != null)
         {
             var result = new RefValue<int>(damage);
-            CalcDamageEvent(damage, result);
+            CalcDamageEvent(damage, damageType, result);
             return result.Value;
         }
 
         return damage;
     }
+
+    public delegate void CalcHurtDamageEventHandler(int damage, DamageType damageType, RefValue<int> result);
 
     /// <summary>
     /// 受伤后计算受到的伤害
     /// </summary>
-    public event Action<int, RefValue<int>> CalcHurtDamageEvent;
-    public int CalcHurtDamage(int damage)
+    public event CalcHurtDamageEventHandler CalcHurtDamageEvent;
+
+    public int CalcHurtDamage(int damage, DamageType damageType)
     {
         if (CalcHurtDamageEvent != null)
         {
             var result = new RefValue<int>(damage);
-            CalcHurtDamageEvent(damage, result);
+            CalcHurtDamageEvent(damage, damageType, result);
             return result.Value;
         }
 
         return damage;
     }
 
+    public delegate void CalcStartScatteringEventHandler(float value, RefValue<float> result);
+
     /// <summary>
     /// 武器初始散射值增量
     /// </summary>
-    public event Action<float, RefValue<float>> CalcStartScatteringEvent;
+    public event CalcStartScatteringEventHandler CalcStartScatteringEvent;
+
     public float CalcStartScattering(float value)
     {
         if (CalcStartScatteringEvent != null)
@@ -100,10 +194,13 @@ public class RoleState
         return value;
     }
 
+    public delegate void CalcFinalScatteringEventHandler(float value, RefValue<float> result);
+
     /// <summary>
     /// 武器最终散射值增量
     /// </summary>
-    public event Action<float, RefValue<float>> CalcFinalScatteringEvent;
+    public event CalcFinalScatteringEventHandler CalcFinalScatteringEvent;
+
     public float CalcFinalScattering(float value)
     {
         if (CalcFinalScatteringEvent != null)
@@ -116,10 +213,13 @@ public class RoleState
         return value;
     }
 
+    public delegate void CalcBulletCountEventHandler(int count, RefValue<int> result);
+
     /// <summary>
     /// 武器开火发射子弹数量
     /// </summary>
-    public event Action<int, RefValue<int>> CalcBulletCountEvent;
+    public event CalcBulletCountEventHandler CalcBulletCountEvent;
+
     public int CalcBulletCount(int count)
     {
         if (CalcBulletCountEvent != null)
@@ -132,10 +232,13 @@ public class RoleState
         return count;
     }
 
+    public delegate void CalcBulletDeviationAngleEventHandler(float angle, RefValue<float> result);
+
     /// <summary>
     /// 子弹偏移角度, 角度制
     /// </summary>
-    public event Action<float, RefValue<float>> CalcBulletDeviationAngleEvent;
+    public event CalcBulletDeviationAngleEventHandler CalcBulletDeviationAngleEvent;
+
     public float CalcBulletDeviationAngle(float angle)
     {
         if (CalcBulletDeviationAngleEvent != null)
@@ -148,10 +251,13 @@ public class RoleState
         return angle;
     }
 
+    public delegate void CalcBulletSpeedEventHandler(float speed, RefValue<float> result);
+
     /// <summary>
     /// 子弹速度
     /// </summary>
-    public event Action<float, RefValue<float>> CalcBulletSpeedEvent;
+    public event CalcBulletSpeedEventHandler CalcBulletSpeedEvent;
+
     public float CalcBulletSpeed(float speed)
     {
         if (CalcBulletSpeedEvent != null)
@@ -163,11 +269,14 @@ public class RoleState
 
         return speed;
     }
-    
+
+    public delegate void CalcBulletDistanceEventHandler(float distance, RefValue<float> result);
+
     /// <summary>
     /// 子弹射程
     /// </summary>
-    public event Action<float, RefValue<float>> CalcBulletDistanceEvent;
+    public event CalcBulletDistanceEventHandler CalcBulletDistanceEvent;
+
     public float CalcBulletDistance(float distance)
     {
         if (CalcBulletDistanceEvent != null)
@@ -180,10 +289,13 @@ public class RoleState
         return distance;
     }
 
+    public delegate void CalcBulletRepelEventHandler(float distance, RefValue<float> result);
+
     /// <summary>
     /// 子弹击退
     /// </summary>
-    public event Action<float, RefValue<float>> CalcBulletRepelEvent;
+    public event CalcBulletRepelEventHandler CalcBulletRepelEvent;
+
     public float CalcBulletRepel(float distance)
     {
         if (CalcBulletRepelEvent != null)
@@ -196,10 +308,13 @@ public class RoleState
         return distance;
     }
 
+    public delegate void CalcBulletBounceCountEventHandler(int distance, RefValue<int> result);
+
     /// <summary>
     /// 子弹反弹次数
     /// </summary>
-    public event Action<int, RefValue<int>> CalcBulletBounceCountEvent;
+    public event CalcBulletBounceCountEventHandler CalcBulletBounceCountEvent;
+
     public int CalcBulletBounceCount(int distance)
     {
         if (CalcBulletBounceCountEvent != null)
@@ -211,11 +326,14 @@ public class RoleState
 
         return distance;
     }
-    
+
+    public delegate void CalcBulletPenetrationEventHandler(int distance, RefValue<int> result);
+
     /// <summary>
     /// 子弹穿透次数
     /// </summary>
-    public event Action<int, RefValue<int>> CalcBulletPenetrationEvent;
+    public event CalcBulletPenetrationEventHandler CalcBulletPenetrationEvent;
+
     public int CalcBulletPenetration(int distance)
     {
         if (CalcBulletPenetrationEvent != null)
@@ -228,10 +346,13 @@ public class RoleState
         return distance;
     }
 
+    public delegate void CalcGetGoldEventHandler(int gold, RefValue<int> result);
+
     /// <summary>
     /// 计算获取的金币
     /// </summary>
-    public event Action<int, RefValue<int>> CalcGetGoldEvent;
+    public event CalcGetGoldEventHandler CalcGetGoldEvent;
+
     public int CalcGetGold(int gold)
     {
         if (CalcGetGoldEvent != null)
@@ -244,10 +365,13 @@ public class RoleState
         return gold;
     }
 
+    public delegate void CalcBulletEventHandler(ExcelConfig.BulletBase attributeBullet, RefValue<ExcelConfig.BulletBase> result);
+
     /// <summary>
     /// 计算射出的子弹
     /// </summary>
-    public event Action<ExcelConfig.BulletBase, RefValue<ExcelConfig.BulletBase>> CalcBulletEvent;
+    public event CalcBulletEventHandler CalcBulletEvent;
+
     public ExcelConfig.BulletBase CalcBullet(ExcelConfig.BulletBase attributeBullet)
     {
         if (CalcBulletEvent != null)

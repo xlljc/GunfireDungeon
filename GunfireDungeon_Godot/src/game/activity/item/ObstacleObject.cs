@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using Godot;
 
 /// <summary>
@@ -11,7 +12,7 @@ public partial class ObstacleObject : ActivityObject, IHurt
         return true;
     }
 
-    public virtual void Hurt(ActivityObject target, int damage, float angle)
+    public virtual void Hurt(ActivityObject target, List<AttackStats> damages, List<AbnormalData> abnormals, float angle)
     {
     }
 }

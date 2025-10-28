@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyrcv2jdgr8cf"]
+[gd_scene load_steps=10 format=3 uid="uid://cyrcv2jdgr8cf"]
 
 [ext_resource type="Shader" uid="uid://b1ioxe06sknla" path="res://resource/shader/Blend.gdshader" id="1_xedx7"]
 [ext_resource type="Script" uid="uid://37sr6eeikn2p" path="res://src/framework/activity/hurt/HurtArea.cs" id="2_2eey0"]
 [ext_resource type="Script" uid="uid://u8ltei87jw4d" path="res://src/game/activity/role/MountRotation.cs" id="3_1jj1i"]
-[ext_resource type="SpriteFrames" uid="uid://c8h5svp76h3kw" path="res://resource/spriteFrames/role/Role_tip.tres" id="4_kn7in"]
+[ext_resource type="Script" uid="uid://c15r4yg5p84lc" path="res://src/game/activity/role/RoleTip.cs" id="4_dkbiu"]
+[ext_resource type="PackedScene" uid="uid://dis2c13rcf2af" path="res://prefab/role/template/StateTemplate.tscn" id="5_ntwdn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yif6x"]
 resource_local_to_scene = true
@@ -77,10 +78,8 @@ monitorable = false
 [node name="MeleeAttackCollision" type="CollisionPolygon2D" parent="MountPoint/MeleeAttackArea"]
 
 [node name="TipRoot" type="Node2D" parent="."]
-
-[node name="TipSprite" type="AnimatedSprite2D" parent="TipRoot"]
-visible = false
-position = Vector2(0, -22)
-sprite_frames = ExtResource("4_kn7in")
+z_index = 20
+script = ExtResource("4_dkbiu")
+TipStateScene = ExtResource("5_ntwdn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

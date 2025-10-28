@@ -101,7 +101,7 @@ public class RoomInfo : IDestroy
     /// 液体画布
     /// </summary>
     public LiquidCanvas LiquidCanvas;
-
+    
     /// <summary>
     /// 房间迷雾
     /// </summary>
@@ -414,7 +414,7 @@ public class RoomInfo : IDestroy
         {
             StaticImageCanvas.Destroy();
         }
-
+        
         //销毁液体画布
         if (LiquidCanvas != null)
         {
@@ -585,5 +585,25 @@ public class RoomInfo : IDestroy
                 room.EachRoom(callback);
             }
         }
+    }
+    
+    /// <summary>
+    /// 查找符合条件的房间, 包括当前房间和后续房间
+    /// </summary>
+    public RoomInfo FindRoom(Func<RoomInfo, bool> callback)
+    {
+        if (callback(this)) return this;
+        if (Next != null)
+        {
+            foreach (var room in Next)
+            {
+                var result = room.FindRoom(callback);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+        }
+        return null;
     }
 }

@@ -108,7 +108,7 @@ public partial class FogMask : FogMaskBase
     
     private void HandlerTransition(Vector2I position, Vector2I size, Image image)
     {
-        var tileMap = World.Current.TileRoot;
+        var world = World.Current;
         var autoConfig = GameApplication.Instance.DungeonManager.AutoTileConfig;
         var wallCoords = autoConfig.TopMask.AutoTileCoords;
         var (x, y) = position;
@@ -117,23 +117,24 @@ public partial class FogMask : FogMaskBase
         y -= 1;
         width += 2;
         height += 2;
+        var tileMapLayer = world.GetTileMapLayer(MapLayer.AutoTopLayer);
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 var pos = new Vector2I(i + x, j + y);
                 //说明是外层墙壁
-                if (tileMap.GetCellAtlasCoords(MapLayer.AutoTopLayer, pos) == wallCoords)
+                if (tileMapLayer.GetCellAtlasCoords(pos) == wallCoords)
                 {
-                    var left = IsEmptyCell(tileMap, new Vector2I(pos.X - 1, pos.Y));
-                    var right = IsEmptyCell(tileMap, new Vector2I(pos.X + 1, pos.Y));
-                    var top = IsEmptyCell(tileMap, new Vector2I(pos.X, pos.Y - 1));
-                    var down = IsEmptyCell(tileMap, new Vector2I(pos.X, pos.Y + 1));
+                    var left = IsEmptyCell(world, new Vector2I(pos.X - 1, pos.Y));
+                    var right = IsEmptyCell(world, new Vector2I(pos.X + 1, pos.Y));
+                    var top = IsEmptyCell(world, new Vector2I(pos.X, pos.Y - 1));
+                    var down = IsEmptyCell(world, new Vector2I(pos.X, pos.Y + 1));
                     
-                    var leftTop = IsEmptyCell(tileMap, new Vector2I(pos.X - 1, pos.Y - 1));
-                    var leftDown = IsEmptyCell(tileMap, new Vector2I(pos.X - 1, pos.Y + 1));
-                    var rightTop = IsEmptyCell(tileMap, new Vector2I(pos.X + 1, pos.Y - 1));
-                    var rightDown = IsEmptyCell(tileMap, new Vector2I(pos.X + 1, pos.Y + 1));
+                    var leftTop = IsEmptyCell(world, new Vector2I(pos.X - 1, pos.Y - 1));
+                    var leftDown = IsEmptyCell(world, new Vector2I(pos.X - 1, pos.Y + 1));
+                    var rightTop = IsEmptyCell(world, new Vector2I(pos.X + 1, pos.Y - 1));
+                    var rightDown = IsEmptyCell(world, new Vector2I(pos.X + 1, pos.Y + 1));
 
                     if (!left && !right && !top && !down && !leftTop && !leftDown && !rightTop && !rightDown)
                     {
@@ -221,26 +222,26 @@ public partial class FogMask : FogMaskBase
         );
     }
 
-    private bool IsEmptyCell(TileMap tileMap, Vector2I pos)
+    private bool IsEmptyCell(World world, Vector2I pos)
     {
-        return tileMap.GetCellSourceId(MapLayer.AutoTopLayer, pos) == -1 &&
-               tileMap.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) == -1;
+        return world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) == -1 &&
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) == -1;
     }
     
     //判断是否是墙壁
-    private bool IsNotWallCell(TileMap tileMap, Vector2I pos, Vector2I wallCoord)
+    private bool IsNotWallCell(World world, Vector2I pos, Vector2I wallCoord)
     {
-        return tileMap.GetCellAtlasCoords(MapLayer.AutoTopLayer, pos) != wallCoord &&
-               tileMap.GetCellAtlasCoords(MapLayer.AutoMiddleLayer, pos) != wallCoord &&
-               (tileMap.GetCellSourceId(MapLayer.AutoTopLayer, pos) != -1 ||
-                tileMap.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) != -1);
+        return world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellAtlasCoords(pos) != wallCoord &&
+               world.GetTileMapLayer(MapLayer.AutoMiddleLayer).GetCellAtlasCoords(pos) != wallCoord &&
+               (world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1 ||
+                world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1);
     }
 
     //判断是否是任意类型的图块
-    private bool IsAnyCell(TileMap tileMap, Vector2I pos)
+    private bool IsAnyCell(World world, Vector2I pos)
     {
-        return tileMap.GetCellSourceId(MapLayer.AutoFloorLayer, pos) != -1 ||
-               tileMap.GetCellSourceId(MapLayer.AutoMiddleLayer, pos) != -1 ||
-               tileMap.GetCellSourceId(MapLayer.AutoTopLayer, pos) != -1;
+        return world.GetTileMapLayer(MapLayer.AutoFloorLayer).GetCellSourceId(pos) != -1 ||
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1 ||
+               world.GetTileMapLayer(MapLayer.AutoTopLayer).GetCellSourceId(pos) != -1;
     }
 }

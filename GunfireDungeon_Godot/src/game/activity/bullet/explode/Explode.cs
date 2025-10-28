@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using Godot;
 
@@ -37,7 +38,8 @@ public partial class Explode : Area2D, IPoolItem
 
     private bool _init = false;
     private float _hitRadius;
-    private int _harm;
+    private List<AttackStats> _damages;
+    private List<AbnormalData> _abnormals;
     private float _repelledRadius;
     private float _maxRepelled;
 
@@ -63,10 +65,11 @@ public partial class Explode : Area2D, IPoolItem
     /// <param name="bulletData">产生爆炸的子弹数据</param>
     /// <param name="camp">所属阵营</param>
     /// <param name="hitRadius">伤害半径</param>
-    /// <param name="harm">造成的伤害</param>
+    /// <param name="damages">造成的伤害</param>
+    /// <param name="abnormals">异常状态累计值</param>
     /// <param name="repelledRadius">击退半径</param>
     /// <param name="maxRepelled">最大击退速度</param>
-    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, int harm, float repelledRadius, float maxRepelled)
+    public void Init(BulletData bulletData, CampEnum camp, float hitRadius, List<AttackStats> damages, List<AbnormalData> abnormals, float repelledRadius, float maxRepelled)
     {
         if (!_init)
         {
@@ -82,7 +85,8 @@ public partial class Explode : Area2D, IPoolItem
         Camp = camp;
         BulletData = bulletData;
         _hitRadius = hitRadius;
-        _harm = harm;
+        _damages = damages;
+        _abnormals = abnormals;
         _repelledRadius = repelledRadius;
         _maxRepelled = maxRepelled;
         CircleShape.Radius = Mathf.Max(hitRadius, maxRepelled);
@@ -171,7 +175,7 @@ public partial class Explode : Area2D, IPoolItem
             var target = (BulletData.TriggerRole == null || BulletData.TriggerRole.IsDestroyed) ? null : BulletData.TriggerRole;
             if (len <= _hitRadius) //在伤害半径内
             {
-                hurt.Hurt(target, _harm, angle);
+                hurt.Hurt(target, _damages, _abnormals, angle);
             }
         
             if (len <= _repelledRadius) //击退半径内

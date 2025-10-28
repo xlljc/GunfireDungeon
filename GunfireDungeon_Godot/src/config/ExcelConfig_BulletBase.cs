@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 子弹属性
+    /// </summary>
     public partial class BulletBase
     {
         /// <summary>
@@ -38,11 +41,53 @@ public static partial class ExcelConfig
         public string Prefab;
 
         /// <summary>
-        /// 造成的伤害区间 <br/>
-        /// 格式为[value]或者[min,max]
+        /// 造成伤害的类型和值区间，多个key-value可以做多类型伤害 <br/>
+        /// key为伤害类型，值如下 <br/>
+        /// value为伤害值，格式为[value]或者[min,max] <br/>
+        /// Physical(0):物理伤害 <br/>
+        /// Fire(1):火焰伤害 <br/>
+        /// Electric(2):电击伤害 <br/>
+        /// Chemical(3):化学伤害 <br/>
+        /// Optical(4):光学伤害 <br/>
+        /// DarkMatter(5):暗物质伤害 <br/>
+        /// Explosive(6):爆破伤害
         /// </summary>
         [JsonInclude]
-        public int[] HarmRange;
+        public Dictionary<DamageType, int[]> Damage;
+
+        /// <summary>
+        /// 累计异常状态数据 <br/>
+        /// Bleeding（流血）：0 <br/>
+        /// Ignite（点燃）：1 <br/>
+        /// ShortCircuit（短路）：2 <br/>
+        /// Interference（干扰）：3 <br/>
+        /// ElectricShock（触电）：4 <br/>
+        /// Corrosion（腐蚀）：5 <br/>
+        /// Fragile（脆弱）：6 <br/>
+        /// Blind（致盲）：7 <br/>
+        /// Chaos（混沌）：8 <br/>
+        /// ArmorBreak（破甲）：9
+        /// </summary>
+        [JsonInclude]
+        public Dictionary<AbnormalStateType, int> AbnormalState;
+
+        /// <summary>
+        /// 暴击率（0-1）
+        /// </summary>
+        [JsonInclude]
+        public float CritRate;
+
+        /// <summary>
+        /// 暴击伤害修正（例如0.25表示+25%）
+        /// </summary>
+        [JsonInclude]
+        public float CritBonus;
+
+        /// <summary>
+        /// 暴击穿透装甲比例（例如0.25）
+        /// </summary>
+        [JsonInclude]
+        public float CritArmorPenetration;
 
         /// <summary>
         /// 造成伤害后击退值区间 <br/>
@@ -108,6 +153,25 @@ public static partial class ExcelConfig
         public int[] Penetration;
 
         /// <summary>
+        /// 开火后相机抖动强度,只有玩家拾起武器开火才会抖动相机
+        /// </summary>
+        [JsonInclude]
+        public float CameraShake;
+
+        /// <summary>
+        /// 后坐力区间 (仅用于开火后武器身抖动) <br/>
+        /// 格式为[value]或者[min,max]
+        /// </summary>
+        [JsonInclude]
+        public float[] BacklashRange;
+
+        /// <summary>
+        /// 开火后武器口上抬角度
+        /// </summary>
+        [JsonInclude]
+        public float UpliftAngle;
+
+        /// <summary>
         /// 射击音效
         /// </summary>
         public Sound ShootSound;
@@ -128,7 +192,11 @@ public static partial class ExcelConfig
             inst.Name = Name;
             inst.Type = Type;
             inst.Prefab = Prefab;
-            inst.HarmRange = HarmRange;
+            inst.Damage = Damage;
+            inst.AbnormalState = AbnormalState;
+            inst.CritRate = CritRate;
+            inst.CritBonus = CritBonus;
+            inst.CritArmorPenetration = CritArmorPenetration;
             inst.RepelRange = RepelRange;
             inst.DeviationAngleRange = DeviationAngleRange;
             inst.SpeedRange = SpeedRange;
@@ -137,6 +205,9 @@ public static partial class ExcelConfig
             inst.VerticalSpeed = VerticalSpeed;
             inst.BounceCount = BounceCount;
             inst.Penetration = Penetration;
+            inst.CameraShake = CameraShake;
+            inst.BacklashRange = BacklashRange;
+            inst.UpliftAngle = UpliftAngle;
             inst.ShootSound = ShootSound;
             inst.FireEffect = FireEffect;
             return inst;

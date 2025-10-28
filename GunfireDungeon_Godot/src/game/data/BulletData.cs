@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Config;
 using DsUi;
 using Godot;
@@ -29,10 +30,15 @@ public class BulletData : IClone<BulletData>
     public Role TriggerRole;
     
     /// <summary>
-    /// 造成的伤害
+    /// 造成的伤害数据
     /// </summary>
-    public int Harm;
+    public List<AttackStats> Damages;
 
+    /// <summary>
+    /// 累加异常状态数据，如果没有异常状态，则返回null
+    /// </summary>
+    public List<AbnormalData> Abnormals;
+    
     /// <summary>
     /// 击退值
     /// </summary>
@@ -95,7 +101,8 @@ public class BulletData : IClone<BulletData>
             Weapon = Weapon,
             BulletBase = BulletBase,
             TriggerRole = TriggerRole,
-            Harm = Harm,
+            Damages = Damages,
+            Abnormals = Abnormals,
             Repel = Repel,
             MaxDistance = MaxDistance,
             FlySpeed = FlySpeed,

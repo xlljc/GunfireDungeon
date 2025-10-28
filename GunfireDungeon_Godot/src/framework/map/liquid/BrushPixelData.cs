@@ -19,7 +19,7 @@ public class BrushPixelData
     /// </summary>
     public Color Color;
     /// <summary>
-    /// 材质液体材质
+    /// 材质液体笔刷
     /// </summary>
-    public ExcelConfig.LiquidMaterial Material;
+    public ExcelConfig.LiquidBrush Brush;
 }

@@ -5,6 +5,9 @@ namespace Config;
 
 public static partial class ExcelConfig
 {
+    /// <summary>
+    /// 主动道具
+    /// </summary>
     public partial class ActivePropBase
     {
         /// <summary>

@@ -27,10 +27,11 @@ public partial class ImageCanvas : Sprite2D, IDestroy
 
     public ImageCanvas(int width, int height)
     {
+        Name = "ImageCanvas";
         Width = width;
         Height = height;
 
-        _canvas = Image.Create(width, height, false, Image.Format.Rgba8);
+        _canvas = Image.CreateEmpty(Mathf.Max(1, width), Mathf.Max(1, height), false, Image.Format.Rgba8);
         _texture = ImageTexture.CreateFromImage(_canvas);
     }
 

@@ -102,7 +102,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="Select" type="NinePatchRect" parent="VBoxContainer/ItemRoot/Item/ItemButton"]
-layout_mode = 2
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -115,7 +115,7 @@ patch_margin_bottom = 4
 
 [node name="DynamicDeleteButton" type="Button" parent="."]
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_right = 44.0
 offset_bottom = 40.0
 icon = ExtResource("7_8ld0o")
