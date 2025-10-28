@@ -356,4 +356,18 @@ public partial class World : CanvasModulate, ICoroutine, IDestroy
 
         return usedRect == null ? new Rect2I() : usedRect.Value;
     }
+    
+    /// <summary>
+    /// 将本地坐标转换为地图坐标
+    /// </summary>
+    public Vector2I LocalToMap(Vector2 position)
+    {
+        var firstOrDefault = _tileMapLayers.FirstOrDefault();
+        if (firstOrDefault.Value != null)
+        {
+            return firstOrDefault.Value.LocalToMap(position);
+        }
+        
+        return new Vector2I();
+    }
 }

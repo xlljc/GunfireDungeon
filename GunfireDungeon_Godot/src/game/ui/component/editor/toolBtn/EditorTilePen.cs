@@ -156,14 +156,14 @@ public class EditorTilePen : EditorToolBase
 
     private void DrawCellOutline(CanvasItem canvasItem)
     {
-        canvasItem.DrawRect(new Rect2(_mousePosition, EditorTileMap.TileSet.TileSize),
+        canvasItem.DrawRect(new Rect2(_mousePosition, EditorTileMap.GetTileSet().TileSize),
             Colors.White, false, 2f / EditorTileMap.Scale.X);
     }
 
     private void DrawCellOutline(CanvasItem canvasItem, Vector2I offset)
     {
         canvasItem.DrawRect(
-            new Rect2(_mousePosition + offset, EditorTileMap.TileSet.TileSize),
+            new Rect2(_mousePosition + offset, EditorTileMap.GetTileSet().TileSize),
             Colors.White, false, 2f / EditorTileMap.Scale.X);
     }
 }

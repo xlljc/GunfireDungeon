@@ -73,7 +73,7 @@ public class EditorTileAreaPen : EditorToolBase
         if (_drawFullRect)
         {
             var canvasItem = brush;
-            var size = EditorTileMap.TileSet.TileSize;
+            var size = EditorTileMap.GetTileSet().TileSize;
             var cellPos = _mouseStartCellPosition;
             var temp = size;
             if (_mouseStartCellPosition.X > _mouseCellPosition.X)

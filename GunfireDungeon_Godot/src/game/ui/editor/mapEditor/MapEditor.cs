@@ -27,7 +27,7 @@ public abstract partial class MapEditor : UiBase
 
     public sealed override void OnInitNestedUi()
     {
-        _ = L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap;
+        _ = L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap;
 
         var inst1 = L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_LayerPanel;
         RecordNestedUi(inst1.L_MapEditorMapLayer.Instance, inst1, UiManager.RecordType.Open);
@@ -248,7 +248,70 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.WorldEnvironment
+    /// </summary>
+    public class WorldEnvironment : UiNode<MapEditorPanel, Godot.WorldEnvironment, WorldEnvironment>
+    {
+        public WorldEnvironment(MapEditorPanel uiPanel, Godot.WorldEnvironment node) : base(uiPanel, node) {  }
+        public override WorldEnvironment Clone() => new (UiPanel, (Godot.WorldEnvironment)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NavigationRoot
+    /// </summary>
+    public class NavigationRoot : UiNode<MapEditorPanel, Godot.Node2D, NavigationRoot>
+    {
+        public NavigationRoot(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override NavigationRoot Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.StaticSpriteRoot
+    /// </summary>
+    public class StaticSpriteRoot : UiNode<MapEditorPanel, Godot.Node2D, StaticSpriteRoot>
+    {
+        public StaticSpriteRoot(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override StaticSpriteRoot Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NormalLayer
+    /// </summary>
+    public class NormalLayer : UiNode<MapEditorPanel, Godot.Node2D, NormalLayer>
+    {
+        public NormalLayer(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override NormalLayer Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.YSortLayer
+    /// </summary>
+    public class YSortLayer : UiNode<MapEditorPanel, Godot.Node2D, YSortLayer>
+    {
+        public YSortLayer(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override YSortLayer Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.AffiliationAreaRoot
+    /// </summary>
+    public class AffiliationAreaRoot : UiNode<MapEditorPanel, Godot.Node2D, AffiliationAreaRoot>
+    {
+        public AffiliationAreaRoot(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override AffiliationAreaRoot Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.FogMaskRoot
+    /// </summary>
+    public class FogMaskRoot : UiNode<MapEditorPanel, Godot.Node2D, FogMaskRoot>
+    {
+        public FogMaskRoot(MapEditorPanel uiPanel, Godot.Node2D node) : base(uiPanel, node) {  }
+        public override FogMaskRoot Clone() => new (UiPanel, (Godot.Node2D)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NavigationRegion
     /// </summary>
     public class NavigationRegion : UiNode<MapEditorPanel, Godot.NavigationRegion2D, NavigationRegion>
     {
@@ -257,7 +320,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.ErrorCell.ErrorCellAnimationPlayer
     /// </summary>
     public class ErrorCellAnimationPlayer : UiNode<MapEditorPanel, Godot.AnimationPlayer, ErrorCellAnimationPlayer>
     {
@@ -266,12 +329,12 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.ErrorCell
     /// </summary>
     public class ErrorCell : UiNode<MapEditorPanel, Godot.Sprite2D, ErrorCell>
     {
         /// <summary>
-        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCellAnimationPlayer
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.ErrorCellAnimationPlayer
         /// </summary>
         public ErrorCellAnimationPlayer L_ErrorCellAnimationPlayer
         {
@@ -288,7 +351,7 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.Brush
     /// </summary>
     public class Brush : UiNode<MapEditorPanel, Godot.Node2D, Brush>
     {
@@ -297,10 +360,101 @@ public abstract partial class MapEditor : UiBase
     }
 
     /// <summary>
-    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
+    /// 路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap
     /// </summary>
-    public class TileMap : UiNode<MapEditorPanel, UI.editor.MapEditor.EditorTileMap, TileMap>
+    public class EditorTileMap : UiNode<MapEditorPanel, UI.editor.MapEditor.EditorTileMap, EditorTileMap>
     {
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.WorldEnvironment
+        /// </summary>
+        public WorldEnvironment L_WorldEnvironment
+        {
+            get
+            {
+                if (_L_WorldEnvironment == null) _L_WorldEnvironment = new WorldEnvironment(UiPanel, Instance.GetNode<Godot.WorldEnvironment>("WorldEnvironment"));
+                return _L_WorldEnvironment;
+            }
+        }
+        private WorldEnvironment _L_WorldEnvironment;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.NavigationRoot
+        /// </summary>
+        public NavigationRoot L_NavigationRoot
+        {
+            get
+            {
+                if (_L_NavigationRoot == null) _L_NavigationRoot = new NavigationRoot(UiPanel, Instance.GetNode<Godot.Node2D>("NavigationRoot"));
+                return _L_NavigationRoot;
+            }
+        }
+        private NavigationRoot _L_NavigationRoot;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.StaticSpriteRoot
+        /// </summary>
+        public StaticSpriteRoot L_StaticSpriteRoot
+        {
+            get
+            {
+                if (_L_StaticSpriteRoot == null) _L_StaticSpriteRoot = new StaticSpriteRoot(UiPanel, Instance.GetNode<Godot.Node2D>("StaticSpriteRoot"));
+                return _L_StaticSpriteRoot;
+            }
+        }
+        private StaticSpriteRoot _L_StaticSpriteRoot;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.NormalLayer
+        /// </summary>
+        public NormalLayer L_NormalLayer
+        {
+            get
+            {
+                if (_L_NormalLayer == null) _L_NormalLayer = new NormalLayer(UiPanel, Instance.GetNode<Godot.Node2D>("NormalLayer"));
+                return _L_NormalLayer;
+            }
+        }
+        private NormalLayer _L_NormalLayer;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.YSortLayer
+        /// </summary>
+        public YSortLayer L_YSortLayer
+        {
+            get
+            {
+                if (_L_YSortLayer == null) _L_YSortLayer = new YSortLayer(UiPanel, Instance.GetNode<Godot.Node2D>("YSortLayer"));
+                return _L_YSortLayer;
+            }
+        }
+        private YSortLayer _L_YSortLayer;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.AffiliationAreaRoot
+        /// </summary>
+        public AffiliationAreaRoot L_AffiliationAreaRoot
+        {
+            get
+            {
+                if (_L_AffiliationAreaRoot == null) _L_AffiliationAreaRoot = new AffiliationAreaRoot(UiPanel, Instance.GetNode<Godot.Node2D>("AffiliationAreaRoot"));
+                return _L_AffiliationAreaRoot;
+            }
+        }
+        private AffiliationAreaRoot _L_AffiliationAreaRoot;
+
+        /// <summary>
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.FogMaskRoot
+        /// </summary>
+        public FogMaskRoot L_FogMaskRoot
+        {
+            get
+            {
+                if (_L_FogMaskRoot == null) _L_FogMaskRoot = new FogMaskRoot(UiPanel, Instance.GetNode<Godot.Node2D>("FogMaskRoot"));
+                return _L_FogMaskRoot;
+            }
+        }
+        private FogMaskRoot _L_FogMaskRoot;
+
         /// <summary>
         /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.NavigationRegion
         /// </summary>
@@ -340,8 +494,8 @@ public abstract partial class MapEditor : UiBase
         }
         private Brush _L_Brush;
 
-        public TileMap(MapEditorPanel uiPanel, UI.editor.MapEditor.EditorTileMap node) : base(uiPanel, node) {  }
-        public override TileMap Clone() => new (UiPanel, (UI.editor.MapEditor.EditorTileMap)Instance.Duplicate());
+        public EditorTileMap(MapEditorPanel uiPanel, UI.editor.MapEditor.EditorTileMap node) : base(uiPanel, node) {  }
+        public override EditorTileMap Clone() => new (UiPanel, (UI.editor.MapEditor.EditorTileMap)Instance.Duplicate());
     }
 
     /// <summary>
@@ -388,17 +542,17 @@ public abstract partial class MapEditor : UiBase
     public class SubViewport : UiNode<MapEditorPanel, Godot.SubViewport, SubViewport>
     {
         /// <summary>
-        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.TileMap
+        /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.EditorTileMap
         /// </summary>
-        public TileMap L_TileMap
+        public EditorTileMap L_EditorTileMap
         {
             get
             {
-                if (_L_TileMap == null) _L_TileMap = new TileMap(UiPanel, Instance.GetNode<UI.editor.MapEditor.EditorTileMap>("TileMap"));
-                return _L_TileMap;
+                if (_L_EditorTileMap == null) _L_EditorTileMap = new EditorTileMap(UiPanel, Instance.GetNode<UI.editor.MapEditor.EditorTileMap>("EditorTileMap"));
+                return _L_EditorTileMap;
             }
         }
-        private TileMap _L_TileMap;
+        private EditorTileMap _L_EditorTileMap;
 
         /// <summary>
         /// 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.CanvasLayer
@@ -907,29 +1061,64 @@ public abstract partial class MapEditor : UiBase
     public LayerPanel S_LayerPanel => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_LayerPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.NavigationRegion
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.WorldEnvironment
     /// </summary>
-    public NavigationRegion S_NavigationRegion => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_NavigationRegion;
+    public WorldEnvironment S_WorldEnvironment => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_WorldEnvironment;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell.ErrorCellAnimationPlayer
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NavigationRoot
     /// </summary>
-    public ErrorCellAnimationPlayer S_ErrorCellAnimationPlayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_ErrorCell.L_ErrorCellAnimationPlayer;
+    public NavigationRoot S_NavigationRoot => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_NavigationRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.ErrorCell
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.StaticSpriteRoot
     /// </summary>
-    public ErrorCell S_ErrorCell => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_ErrorCell;
+    public StaticSpriteRoot S_StaticSpriteRoot => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_StaticSpriteRoot;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap.Brush
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NormalLayer
     /// </summary>
-    public Brush S_Brush => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap.L_Brush;
+    public NormalLayer S_NormalLayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_NormalLayer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.TileMap
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.YSortLayer
     /// </summary>
-    public TileMap S_TileMap => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_TileMap;
+    public YSortLayer S_YSortLayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_YSortLayer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.AffiliationAreaRoot
+    /// </summary>
+    public AffiliationAreaRoot S_AffiliationAreaRoot => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_AffiliationAreaRoot;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.FogMaskRoot
+    /// </summary>
+    public FogMaskRoot S_FogMaskRoot => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_FogMaskRoot;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.NavigationRegion
+    /// </summary>
+    public NavigationRegion S_NavigationRegion => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_NavigationRegion;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.ErrorCell.ErrorCellAnimationPlayer
+    /// </summary>
+    public ErrorCellAnimationPlayer S_ErrorCellAnimationPlayer => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_ErrorCell.L_ErrorCellAnimationPlayer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.ErrorCell
+    /// </summary>
+    public ErrorCell S_ErrorCell => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_ErrorCell;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap.Brush
+    /// </summary>
+    public Brush S_Brush => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap.L_Brush;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.EditorTileMap
+    /// </summary>
+    public EditorTileMap S_EditorTileMap => L_Bg.L_VBoxContainer.L_HSplitContainer.L_HSplitContainer2.L_HBoxContainer.L_Left.L_MarginContainer.L_MapView.L_SubViewport.L_EditorTileMap;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点路径: MapEditor.Bg.VBoxContainer.HSplitContainer.HSplitContainer2.HBoxContainer.Left.MarginContainer.MapView.SubViewport.CanvasLayer.MapEditorTools

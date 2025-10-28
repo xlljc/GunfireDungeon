@@ -39,7 +39,7 @@ public partial class MapEditorObjectPanel : MapEditorObject, IEditorTab
     public override void OnCreateUi()
     {
         var editorPanel = (MapEditorPanel)ParentUi;
-        EditorTileMap = editorPanel.S_TileMap.Instance;
+        EditorTileMap = editorPanel.S_EditorTileMap.Instance;
         
         ObjectGrid = CreateUiGrid<Item, RoomObjectInfo, ItemCell>(S_Item);
         ObjectGrid.SetHorizontalExpand(true);

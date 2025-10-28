@@ -9,7 +9,7 @@ using DsUi;
 
 namespace UI.editor.MapEditor;
 
-public partial class EditorTileMap : TileMap, IUiNodeScript
+public partial class EditorTileMap : World, IUiNodeScript
 {
     
     public enum TileMapDrawMode
@@ -182,13 +182,13 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     public bool IsDrawMark { get; set; } = true;
 
     //-------------------------------
-    private MapEditor.TileMap _editorTileMap;
+    private MapEditor.EditorTileMap _editorTileMap;
     private EventFactory<EventEnum> _eventFactory;
     private Vector2I _cacheToolSizeData;
     
     public void SetUiNode(IUiNode uiNode)
     {
-        _editorTileMap = (MapEditor.TileMap)uiNode;
+        _editorTileMap = (MapEditor.EditorTileMap)uiNode;
         MapEditorPanel = _editorTileMap.UiPanel;
         MapEditorToolsPanel = _editorTileMap.UiPanel.S_MapEditorTools.Instance;
 
@@ -321,15 +321,15 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     {
         CurrLayer = layerData;
         EventManager.EmitEvent(EventEnum.OnSelectTileLayer, layerData.Layer);
-        SetLayerModulate(MapLayer.AutoFloorLayer, GetEditorLayerModulate(MapLayer.AutoFloorLayer));
-        SetLayerModulate(MapLayer.AutoMiddleLayer, GetEditorLayerModulate(MapLayer.AutoMiddleLayer));
-        SetLayerModulate(MapLayer.AutoTopLayer, GetEditorLayerModulate(MapLayer.AutoTopLayer));
-        SetLayerModulate(MapLayer.CustomFloorLayer1, GetEditorLayerModulate(MapLayer.CustomFloorLayer1));
-        SetLayerModulate(MapLayer.CustomFloorLayer2, GetEditorLayerModulate(MapLayer.CustomFloorLayer2));
-        SetLayerModulate(MapLayer.CustomFloorLayer3, GetEditorLayerModulate(MapLayer.CustomFloorLayer3));
-        SetLayerModulate(MapLayer.CustomMiddleLayer1, GetEditorLayerModulate(MapLayer.CustomMiddleLayer1));
-        SetLayerModulate(MapLayer.CustomMiddleLayer2, GetEditorLayerModulate(MapLayer.CustomMiddleLayer2));
-        SetLayerModulate(MapLayer.CustomTopLayer, GetEditorLayerModulate(MapLayer.CustomTopLayer));
+        GetTileMapLayer(MapLayer.AutoFloorLayer).Modulate = GetEditorLayerModulate(MapLayer.AutoFloorLayer);
+        GetTileMapLayer(MapLayer.AutoMiddleLayer).Modulate = GetEditorLayerModulate(MapLayer.AutoMiddleLayer);
+        GetTileMapLayer(MapLayer.AutoTopLayer).Modulate = GetEditorLayerModulate(MapLayer.AutoTopLayer);
+        GetTileMapLayer(MapLayer.CustomFloorLayer1).Modulate = GetEditorLayerModulate(MapLayer.CustomFloorLayer1);
+        GetTileMapLayer(MapLayer.CustomFloorLayer2).Modulate = GetEditorLayerModulate(MapLayer.CustomFloorLayer2);
+        GetTileMapLayer(MapLayer.CustomFloorLayer3).Modulate = GetEditorLayerModulate(MapLayer.CustomFloorLayer3);
+        GetTileMapLayer(MapLayer.CustomMiddleLayer1).Modulate = GetEditorLayerModulate(MapLayer.CustomMiddleLayer1);
+        GetTileMapLayer(MapLayer.CustomMiddleLayer2).Modulate = GetEditorLayerModulate(MapLayer.CustomMiddleLayer2);
+        GetTileMapLayer(MapLayer.CustomTopLayer).Modulate = GetEditorLayerModulate(MapLayer.CustomTopLayer);
     }
 
     /// <summary>
@@ -443,9 +443,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         if (CheckTerrain())
         {
             Debug.Log("开始绘制自动贴图...");
-            var rect = new Rect2I();
-            GD.Print("----改这里2----");
-            // var rect = TileMapUtils.GenerateTerrain(this, _editorTileMap.L_NavigationRegion.Instance, _autoTileConfig);
+            var rect = TileMapUtils.GenerateTerrain(this, _editorTileMap.L_NavigationRegion.Instance, _autoTileConfig);
             CurrRoomPosition = rect.Position;
             SetMapSize(rect.Size, true);
             //GenerateTerrain();
@@ -461,10 +459,11 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     private void PushAutoLayerDataToList(int layer, List<int> list)
     {
         const int sourceId = 0; //这里指定0是因为 Main Source 的 id 为 0
-        var layerArray = GetUsedCellsById(layer, sourceId);
+        var mapLayer = GetTileMapLayer(layer);
+        var layerArray = mapLayer.GetUsedCellsById(sourceId);
         foreach (var pos in layerArray)
         {
-            var atlasCoords = GetCellAtlasCoords(layer, pos);
+            var atlasCoords = mapLayer.GetCellAtlasCoords(pos);
             var tileCellData = _autoTileConfig.GetCellData(atlasCoords);
             if (tileCellData != null)
             {
@@ -479,13 +478,14 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     //将指定层数据存入list中
     private void PushLayerDataToList(int layer, List<int> list)
     {
-        var layerArray = GetUsedCellsById(layer);
+        var mapLayer = GetTileMapLayer(layer);
+        var layerArray = mapLayer.GetUsedCellsById();
         foreach (var pos in layerArray)
         {
-            var atlasCoords = GetCellAtlasCoords(layer, pos);
+            var atlasCoords = mapLayer.GetCellAtlasCoords(pos);
             list.Add(pos.X);
             list.Add(pos.Y);
-            list.Add(GetCellSourceId(layer, pos));
+            list.Add(mapLayer.GetCellSourceId(pos));
             list.Add(atlasCoords.X);
             list.Add(atlasCoords.Y);
         }
@@ -494,6 +494,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     //设置自动地形层的数据
     private void SetAutoLayerDataFromList(int layer, List<int> list)
     {
+        var mapLayer = GetTileMapLayer(layer);
         var terrainInfo = _autoTileConfig.TerrainInfo;
         var sourceId = _autoTileConfig.SourceId;
         for (var i = 0; i < list.Count; i += 4)
@@ -504,7 +505,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             var index = terrainInfo.TerrainBitToIndex(bit, type);
             var terrainCell = terrainInfo.GetTerrainCell(index, type);
             var atlasCoords = terrainInfo.GetPosition(terrainCell);
-            SetCell(layer, pos, sourceId, atlasCoords);
+            mapLayer.SetCell(pos, sourceId, atlasCoords);
             if (layer == MapLayer.AutoFloorLayer)
             {
                 _autoCellLayerGrid.Set(pos, true);
@@ -515,13 +516,14 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     //设置自定义层的数据
     private void SetCustomLayerDataFromList(int layer, List<int> list)
     {
+        var mapLayer = GetTileMapLayer(layer);
         //五个一组
         for (var i = 0; i < list.Count; i += 5)
         {
             var pos = new Vector2I(list[i], list[i + 1]);
             var sourceId = list[i + 2];
             var atlasCoords = new Vector2I(list[i + 3], list[i + 4]);
-            SetCell(layer, pos, sourceId, atlasCoords);
+            mapLayer.SetCell(pos, sourceId, atlasCoords);
         }
     }
 
@@ -604,7 +606,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     private void InitTileSet(TileSetSplit tileSetSplit)
     {
         CurrentTileSet = tileSetSplit;
-        TileSet = tileSetSplit.GetTileSet();
+        SetTileSet(tileSetSplit.GetTileSet());
 
         // 创建AutoTileConfig对象
         // 使用第一个图块集源作为参数
@@ -623,8 +625,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
 
         _initLayer = true;
         //初始化层级数据
-        GD.Print("----改这里----");
-        // MapLayerManager.InitMapLayer(this);
+        MapLayerManager.InitMapLayer(this);
     }
 
     //缩小
@@ -659,7 +660,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层, 那么不管笔刷类型, 通通使用 Main Source 中的 Main Terrain
         {
             var tileCellData = _autoTileConfig.Floor;
-            SetCell(MapLayer.AutoFloorLayer, position, tileCellData.SourceId, tileCellData.AutoTileCoords);
+            GetTileMapLayer(MapLayer.AutoFloorLayer).SetCell(position, tileCellData.SourceId, tileCellData.AutoTileCoords);
             if (!_autoCellLayerGrid.Contains(position.X, position.Y))
             {
                 ResetGenerateTimer();
@@ -671,9 +672,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             var dirty = false;
             if (CurrBrushType == TileMapDrawMode.Free || CurrBrushType == TileMapDrawMode.Combination) //自由绘制 或者 组合
             {
+                var mapLayer = GetTileMapLayer(CurrLayer.Layer);
                 foreach (var item in CurrBrush)
                 {
-                    SetCell(CurrLayer.Layer, position + item.Key + BrushOffset, CurrSourceIndex, item.Value);
+                    mapLayer.SetCell(position + item.Key + BrushOffset, CurrSourceIndex, item.Value);
                     dirty = true;
                 }
             }
@@ -686,7 +688,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 if (CurrTerrain.TerrainInfo.TerrainType == 0) //3x3地形
                 {
                     //绘制自动图块
-                    SetCellsTerrainConnect(CurrLayer.Layer, new Array<Vector2I>() { position }, CurrTerrain.TerrainSetIndex, 0);
+                    GetTileMapLayer(CurrLayer.Layer).SetCellsTerrainConnect(new Array<Vector2I>() { position }, CurrTerrain.TerrainSetIndex, 0);
                     dirty = true;
                 }
                 else if (CurrTerrain.TerrainInfo.TerrainType == 1) //2x2地形
@@ -699,7 +701,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                         position + new Vector2I(1, 0),
                     };
                     //绘制自动图块
-                    SetCellsTerrainConnect(CurrLayer.Layer, arr, CurrTerrain.TerrainSetIndex, 0, false);
+                    GetTileMapLayer(CurrLayer.Layer).SetCellsTerrainConnect(arr, CurrTerrain.TerrainSetIndex, 0, false);
                     dirty = true;
                 }
             }
@@ -733,6 +735,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         var width = end.X - start.X + 1;
         var height = end.Y - start.Y + 1;
         
+        var mapLayer = GetTileMapLayer(MapLayer.AutoFloorLayer);
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层, 那么不管笔刷类型, 通通使用 Main Source 中的 Main Terrain
         {
             ResetGenerateTimer();
@@ -741,7 +744,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 for (var j = 0; j < height; j++)
                 {
                     var tileCellData = _autoTileConfig.Floor;
-                    SetCell(MapLayer.AutoFloorLayer, new Vector2I(start.X + i, start.Y + j), tileCellData.SourceId, tileCellData.AutoTileCoords);
+                    mapLayer.SetCell(new Vector2I(start.X + i, start.Y + j), tileCellData.SourceId, tileCellData.AutoTileCoords);
                 }
             }
 
@@ -766,7 +769,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                         var y = j % BrushHeight + BrushStartY;
                         if (CurrBrush.TryGetValue(new Vector2I(x, y), out var v))
                         {
-                            SetCell(CurrLayer.Layer, new Vector2I(start.X + i, start.Y + j), CurrSourceIndex, v);
+                            mapLayer.SetCell(new Vector2I(start.X + i, start.Y + j), CurrSourceIndex, v);
                         }
                     }
                 }
@@ -789,11 +792,11 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 
                 if (CurrTerrain.TerrainInfo.TerrainType == 0) //3x3地形
                 {
-                    SetCellsTerrainConnect(CurrLayer.Layer, arr, CurrTerrain.TerrainSetIndex, 0);
+                    mapLayer.SetCellsTerrainConnect(arr, CurrTerrain.TerrainSetIndex, 0);
                 }
                 else if (CurrTerrain.TerrainInfo.TerrainType == 1) //2x2地形
                 {
-                    SetCellsTerrainConnect(CurrLayer.Layer, arr, CurrTerrain.TerrainSetIndex, 0, false);
+                    mapLayer.SetCellsTerrainConnect(arr, CurrTerrain.TerrainSetIndex, 0, false);
                 }
                 dirty = true;
             }
@@ -813,7 +816,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     {
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层, 那么不管笔刷类型, 通通使用 Main Source 中的 Main Terrain
         {
-            EraseCell(MapLayer.AutoFloorLayer, position);
+            GetTileMapLayer(MapLayer.AutoFloorLayer).EraseCell(position);
             if (_autoCellLayerGrid.Remove(position.X, position.Y))
             {
                 ResetGenerateTimer();
@@ -821,71 +824,72 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         }
         else //自定义层
         {
+            var mapLayer = GetTileMapLayer(CurrLayer.Layer);
             if (CurrBrushType == TileMapDrawMode.Free || CurrBrushType == TileMapDrawMode.Combination) //自由绘制 或者 组合
             {
-                EraseCell(CurrLayer.Layer, position);
+                mapLayer.EraseCell(position);
             }
             else //绘制地形
             {
                 if (CurrTerrain == null) //未选择地形
                 {
-                    EraseCell(CurrLayer.Layer, position);
+                    mapLayer.EraseCell(position);
                 }
                 else if (CurrTerrain.TerrainInfo.TerrainType == 0 || CurrTerrain.TerrainInfo.TerrainType == 1) //2x2地形 / 3x3地形
                 {
-                    EraseCell(CurrLayer.Layer, position);
+                    mapLayer.EraseCell(position);
                     
                     var arr = new Array<Vector2I>();
                     //这里需要判断周围8格是否是同terrainSet
                     if (EqualsTerrainSet(position + new Vector2I(-1, -1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(-1, -1));
+                        mapLayer.EraseCell(position + new Vector2I(-1, -1));
                         arr.Add(position + new Vector2I(-1, -1));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(0, -1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(0, -1));
+                        mapLayer.EraseCell(position + new Vector2I(0, -1));
                         arr.Add(position + new Vector2I(0, -1));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(1, -1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(1, -1));
+                        mapLayer.EraseCell(position + new Vector2I(1, -1));
                         arr.Add(position + new Vector2I(1, -1));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(-1, 0)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(-1, 0));
+                        mapLayer.EraseCell(position + new Vector2I(-1, 0));
                         arr.Add(position + new Vector2I(-1, 0));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(1, 0)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(1, 0));
+                        mapLayer.EraseCell(position + new Vector2I(1, 0));
                         arr.Add(position + new Vector2I(1, 0));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(-1, 1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(-1, 1));
+                        mapLayer.EraseCell(position + new Vector2I(-1, 1));
                         arr.Add(position + new Vector2I(-1, 1));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(0, 1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(0, 1));
+                        mapLayer.EraseCell(position + new Vector2I(0, 1));
                         arr.Add(position + new Vector2I(0, 1));
                     }
 
                     if (EqualsTerrainSet(position + new Vector2I(1, 1)))
                     {
-                        EraseCell(CurrLayer.Layer, position + new Vector2I(1, 1));
+                        mapLayer.EraseCell(position + new Vector2I(1, 1));
                         arr.Add(position + new Vector2I(1, 1));
                     }
                     
-                    SetCellsTerrainConnect(CurrLayer.Layer, arr, CurrTerrain.TerrainSetIndex, 0, false);
+                    mapLayer.SetCellsTerrainConnect(arr, CurrTerrain.TerrainSetIndex, 0, false);
                 }
             }
             //标记有修改数据
@@ -914,6 +918,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         var width = end.X - start.X + 1;
         var height = end.Y - start.Y + 1;
         
+        var mapLayer = GetTileMapLayer(CurrLayer.Layer);
         if (CurrLayer.Layer == MapLayer.AutoFloorLayer) //选择自动地板层
         {
             ResetGenerateTimer();
@@ -921,7 +926,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             {
                 for (var j = 0; j < height; j++)
                 {
-                    EraseCell(MapLayer.AutoFloorLayer, new Vector2I(start.X + i, start.Y + j));
+                    mapLayer.EraseCell(new Vector2I(start.X + i, start.Y + j));
                 }
             }
             _autoCellLayerGrid.RemoveRect(start, new Vector2I(width, height));
@@ -935,7 +940,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 {
                     for (var j = 0; j < height; j++)
                     {
-                        EraseCell(CurrLayer.Layer, new Vector2I(start.X + i, start.Y + j));
+                        mapLayer.EraseCell(new Vector2I(start.X + i, start.Y + j));
                     }
                 }
             }
@@ -950,17 +955,17 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                         var pos = new Vector2I(start.X + i, start.Y + j);
                         if (i >= 0 && i < width && j >= 0 && j < height)
                         {
-                            EraseCell(CurrLayer.Layer, pos);
+                            mapLayer.EraseCell(pos);
                         }
                         else if (EqualsTerrainSet(pos))
                         {
-                            EraseCell(CurrLayer.Layer, pos);
+                            mapLayer.EraseCell(pos);
                             arr.Add(pos);
                         }
                     }
                 }
                 
-                SetCellsTerrainConnect(CurrLayer.Layer, arr, CurrTerrain.TerrainSetIndex, 0, false);
+                mapLayer.SetCellsTerrainConnect(arr, CurrTerrain.TerrainSetIndex, 0, false);
             }
             
             //标记有修改数据
@@ -973,8 +978,8 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
     {
         _generateTimer = _generateInterval;
         _isGenerateTerrain = false;
-        ClearLayer(MapLayer.AutoTopLayer);
-        ClearLayer(MapLayer.AutoMiddleLayer);
+        GetTileMapLayer(MapLayer.AutoTopLayer).Clear();
+        GetTileMapLayer(MapLayer.AutoMiddleLayer).Clear();
         CloseErrorCell();
         //标记有修改数据
         EventManager.EmitEvent(EventEnum.OnTileMapDirty);
@@ -1039,7 +1044,7 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         {
             var roomPos = new Vector2(CurrRoomPosition.X, CurrRoomPosition.Y - 1);
             var roomSize = new Vector2(CurrRoomSize.X, CurrRoomSize.Y + 1);
-            SetMapPosition(pos - (roomPos + roomSize / 2) * TileSet.TileSize * Scale);
+            SetMapPosition(pos - (roomPos + roomSize / 2) * GetTileSet().TileSize * Scale);
         }
     }
     
@@ -1296,45 +1301,46 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
             var tempPos = new Vector2(CurrRoomPosition.X, CurrRoomPosition.Y - 1);
             var tempSize = new Vector2(CurrRoomSize.X, CurrRoomSize.Y + 1);
             //var tempPos = new Vector2(CurrRoomSize.X + 2, CurrRoomSize.Y + 2);
-            var mapSize = tempSize * TileSet.TileSize;
+            var tileSet = GetTileSet();
+            var mapSize = tempSize * tileSet.TileSize;
             var axis = Mathf.Max(mapSize.X, mapSize.Y);
             var targetScale = GameConfig.PreviewImageSize / axis;
             Scale = new Vector2(targetScale, targetScale);
-            Position = pos - (tempPos + tempSize / 2f) * TileSet.TileSize * targetScale;
+            Position = pos - (tempPos + tempSize / 2f) * tileSet.TileSize * targetScale;
         }
         
         //隐藏工具栏
         MapEditorToolsPanel.Visible = false;
         //显示所有层级
-        _tempAutoFloorLayer = IsLayerEnabled(MapLayer.AutoFloorLayer);
-        _tempCustomFloorLayer1 = IsLayerEnabled(MapLayer.CustomFloorLayer1);
-        _tempCustomFloorLayer2 = IsLayerEnabled(MapLayer.CustomFloorLayer2);
-        _tempCustomFloorLayer3 = IsLayerEnabled(MapLayer.CustomFloorLayer3);
-        _tempAutoMiddleLayer = IsLayerEnabled(MapLayer.AutoMiddleLayer);
-        _tempCustomMiddleLayer1 = IsLayerEnabled(MapLayer.CustomMiddleLayer1);
-        _tempCustomMiddleLayer2 = IsLayerEnabled(MapLayer.CustomMiddleLayer2);
-        _tempAutoTopLayer = IsLayerEnabled(MapLayer.AutoTopLayer);
-        _tempCustomTopLayer = IsLayerEnabled(MapLayer.CustomTopLayer);
+        _tempAutoFloorLayer = GetTileMapLayer(MapLayer.AutoFloorLayer).Enabled;
+        _tempCustomFloorLayer1 = GetTileMapLayer(MapLayer.CustomFloorLayer1).Enabled;
+        _tempCustomFloorLayer2 = GetTileMapLayer(MapLayer.CustomFloorLayer2).Enabled;
+        _tempCustomFloorLayer3 = GetTileMapLayer(MapLayer.CustomFloorLayer3).Enabled;
+        _tempAutoMiddleLayer = GetTileMapLayer(MapLayer.AutoMiddleLayer).Enabled;
+        _tempCustomMiddleLayer1 = GetTileMapLayer(MapLayer.CustomMiddleLayer1).Enabled;
+        _tempCustomMiddleLayer2 = GetTileMapLayer(MapLayer.CustomMiddleLayer2).Enabled;
+        _tempAutoTopLayer = GetTileMapLayer(MapLayer.AutoTopLayer).Enabled;
+        _tempCustomTopLayer = GetTileMapLayer(MapLayer.CustomTopLayer).Enabled;
 
-        SetLayerEnabled(MapLayer.AutoFloorLayer, true);
-        SetLayerEnabled(MapLayer.CustomFloorLayer1, true);
-        SetLayerEnabled(MapLayer.CustomFloorLayer2, true);
-        SetLayerEnabled(MapLayer.CustomFloorLayer3, true);
-        SetLayerEnabled(MapLayer.AutoMiddleLayer, true);
-        SetLayerEnabled(MapLayer.CustomMiddleLayer1, true);
-        SetLayerEnabled(MapLayer.CustomMiddleLayer2, true);
-        SetLayerEnabled(MapLayer.AutoTopLayer, true);
-        SetLayerEnabled(MapLayer.CustomTopLayer, true);
+        GetTileMapLayer(MapLayer.AutoFloorLayer).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomFloorLayer1).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomFloorLayer2).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomFloorLayer3).Enabled = true;
+        GetTileMapLayer(MapLayer.AutoMiddleLayer).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomMiddleLayer1).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomMiddleLayer2).Enabled = true;
+        GetTileMapLayer(MapLayer.AutoTopLayer).Enabled = true;
+        GetTileMapLayer(MapLayer.CustomTopLayer).Enabled = true;
         
-        SetLayerModulate(MapLayer.AutoFloorLayer, Colors.White);
-        SetLayerModulate(MapLayer.CustomFloorLayer1, Colors.White);
-        SetLayerModulate(MapLayer.CustomFloorLayer2, Colors.White);
-        SetLayerModulate(MapLayer.CustomFloorLayer3, Colors.White);
-        SetLayerModulate(MapLayer.AutoMiddleLayer, Colors.White);
-        SetLayerModulate(MapLayer.CustomMiddleLayer1, Colors.White);
-        SetLayerModulate(MapLayer.CustomMiddleLayer2, Colors.White);
-        SetLayerModulate(MapLayer.AutoTopLayer, Colors.White);
-        SetLayerModulate(MapLayer.CustomTopLayer, Colors.White);
+        GetTileMapLayer(MapLayer.AutoFloorLayer).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomFloorLayer1).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomFloorLayer2).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomFloorLayer3).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.AutoMiddleLayer).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomMiddleLayer1).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomMiddleLayer2).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.AutoTopLayer).Modulate = Colors.White;
+        GetTileMapLayer(MapLayer.CustomTopLayer).Modulate = Colors.White;
         
         EventManager.EmitEvent(EventEnum.OnSavePreviewImageBegin);
     }
@@ -1355,15 +1361,15 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
                 //还原工具栏
                 MapEditorToolsPanel.Visible = true;
                 //还原层级显示
-                SetLayerEnabled(MapLayer.AutoFloorLayer, _tempAutoFloorLayer);
-                SetLayerEnabled(MapLayer.AutoMiddleLayer, _tempAutoMiddleLayer);
-                SetLayerEnabled(MapLayer.AutoTopLayer, _tempAutoTopLayer);
-                SetLayerEnabled(MapLayer.CustomFloorLayer1, _tempCustomFloorLayer1);
-                SetLayerEnabled(MapLayer.CustomFloorLayer2, _tempCustomFloorLayer2);
-                SetLayerEnabled(MapLayer.CustomFloorLayer3, _tempCustomFloorLayer3);
-                SetLayerEnabled(MapLayer.CustomMiddleLayer1, _tempCustomMiddleLayer1);
-                SetLayerEnabled(MapLayer.CustomMiddleLayer2, _tempCustomMiddleLayer2);
-                SetLayerEnabled(MapLayer.CustomTopLayer, _tempCustomTopLayer);
+                GetTileMapLayer(MapLayer.AutoFloorLayer).Enabled = _tempAutoFloorLayer;
+                GetTileMapLayer(MapLayer.AutoMiddleLayer).Enabled = _tempAutoMiddleLayer;
+                GetTileMapLayer(MapLayer.AutoTopLayer).Enabled = _tempAutoTopLayer;
+                GetTileMapLayer(MapLayer.CustomFloorLayer1).Enabled = _tempCustomFloorLayer1;
+                GetTileMapLayer(MapLayer.CustomFloorLayer2).Enabled = _tempCustomFloorLayer2;
+                GetTileMapLayer(MapLayer.CustomFloorLayer3).Enabled = _tempCustomFloorLayer3;
+                GetTileMapLayer(MapLayer.CustomMiddleLayer1).Enabled = _tempCustomMiddleLayer1;
+                GetTileMapLayer(MapLayer.CustomMiddleLayer2).Enabled = _tempCustomMiddleLayer2;
+                GetTileMapLayer(MapLayer.CustomTopLayer).Enabled = _tempCustomTopLayer;
                 SetCurrLayer(CurrLayer);
 
                 //保存预览图
@@ -1419,9 +1425,10 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
 
     private bool EqualsTerrainSet(Vector2I position)
     {
-        if (GetCellSourceId(CurrLayer.Layer, position) == CurrSourceIndex)
+        var mapLayer = GetTileMapLayer(CurrLayer.Layer);
+        if (mapLayer.GetCellSourceId(position) == CurrSourceIndex)
         {
-            var cellTileData = GetCellTileData(CurrLayer.Layer, position);
+            var cellTileData = mapLayer.GetCellTileData(position);
             if (cellTileData != null && cellTileData.TerrainSet == CurrTerrain.TerrainSetIndex)
             {
                 return true;
@@ -1431,3 +1438,4 @@ public partial class EditorTileMap : TileMap, IUiNodeScript
         return false;
     }
 }
+

@@ -30,11 +30,11 @@ script = ExtResource("2_43fdu")
 BirthMark = NodePath("BirthMark")
 metadata/_edit_horizontal_guides_ = [1673.0]
 
-[node name="BirthMark" type="Marker2D" parent="." index="2"]
+[node name="BirthMark" type="Marker2D" parent="." index="7"]
 z_as_relative = false
 position = Vector2(141, 139)
 
-[node name="DungeonEntrance" type="Area2D" parent="." index="3"]
+[node name="DungeonEntrance" type="Area2D" parent="." index="8"]
 z_index = 15
 position = Vector2(139, 82)
 collision_layer = 0

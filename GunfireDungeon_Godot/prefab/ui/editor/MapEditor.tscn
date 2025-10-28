@@ -1,81 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://csbxfkdupsckv"]
+[gd_scene load_steps=13 format=3 uid="uid://csbxfkdupsckv"]
 
 [ext_resource type="Script" uid="uid://ubxesu2ygxum" path="res://src/game/ui/editor/mapEditor/MapEditorPanel.cs" id="1_5s7a0"]
 [ext_resource type="Texture2D" uid="uid://beb4h46xebidc" path="res://resource/sprite/ui/commonIcon/Back.png" id="2_gkcw7"]
 [ext_resource type="Texture2D" uid="uid://b5f2urfi40j1j" path="res://resource/sprite/ui/commonIcon/Save.png" id="3_qq8k4"]
 [ext_resource type="Texture2D" uid="uid://dxulsa7y4jdh2" path="res://resource/sprite/ui/commonIcon/Play.png" id="4_2imnr"]
-[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="4_465u2"]
-[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/editor/mapEditor/tileView/EditorTileMap.cs" id="4_mhy1a"]
 [ext_resource type="Texture2D" uid="uid://rsy6yfuf1u2k" path="res://resource/sprite/ui/commonIcon/Setting.png" id="5_ubl8b"]
 [ext_resource type="PackedScene" uid="uid://uova1lj10oxv" path="res://prefab/ui/editor/MapEditorTools.tscn" id="6_7pvgu"]
 [ext_resource type="PackedScene" uid="uid://1kdlshgpe3q2" path="res://prefab/ui/editor/MapEditorConfigObject.tscn" id="7_42mx1"]
 [ext_resource type="PackedScene" uid="uid://bb2ekkpxifd7g" path="res://prefab/ui/editor/MapEditorMapLayer.tscn" id="7_ychtn"]
+[ext_resource type="PackedScene" uid="uid://d1qs4ntu6h11d" path="res://prefab/ui/develop/EditorTileMap.tscn" id="8_6yu1q"]
 [ext_resource type="PackedScene" uid="uid://peo0n8bl15y5" path="res://prefab/ui/editor/MapEditorMapMark.tscn" id="8_8tgeu"]
-[ext_resource type="NavigationPolygon" uid="uid://brpcle7mygiml" path="res://resource/navigation/NavigationPolygon.tres" id="8_t7nq5"]
 [ext_resource type="PackedScene" uid="uid://tjbfj67t5akm" path="res://prefab/ui/editor/MapEditorMapTile.tscn" id="10_4fu5v"]
 [ext_resource type="PackedScene" uid="uid://6a4l0o8pmegw" path="res://prefab/ui/editor/MapEditorObject.tscn" id="12_vpk4h"]
-
-[sub_resource type="Animation" id="Animation_o3btm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wnqg6"]
-resource_name = "show"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.490196), Color(1, 0, 0, 0.490196), Color(1, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_371oi"]
-_data = {
-&"RESET": SubResource("Animation_o3btm"),
-&"show": SubResource("Animation_wnqg6")
-}
 
 [node name="MapEditor" type="Control"]
 layout_mode = 3
@@ -232,32 +168,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(980, 1002)
 render_target_update_mode = 4
 
-[node name="TileMap" type="TileMap" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport" groups=["navigation"]]
-y_sort_enabled = true
-position = Vector2(500, 540)
-scale = Vector2(4, 4)
-format = 2
-script = ExtResource("4_mhy1a")
-
-[node name="NavigationRegion" type="NavigationRegion2D" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap"]
-z_index = 10
-navigation_polygon = ExtResource("8_t7nq5")
-
-[node name="ErrorCell" type="Sprite2D" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap"]
-visible = false
-modulate = Color(1, 0, 0, 0)
-z_index = 10
-scale = Vector2(16, 16)
-texture = ExtResource("4_465u2")
-centered = false
-
-[node name="ErrorCellAnimationPlayer" type="AnimationPlayer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap/ErrorCell"]
-libraries = {
-&"": SubResource("AnimationLibrary_371oi")
-}
-
-[node name="Brush" type="Node2D" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport/TileMap"]
-z_index = 100
+[node name="EditorTileMap" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport" instance=ExtResource("8_6yu1q")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Bg/VBoxContainer/HSplitContainer/HSplitContainer2/HBoxContainer/Left/MarginContainer/MapView/SubViewport"]
 layer = 2

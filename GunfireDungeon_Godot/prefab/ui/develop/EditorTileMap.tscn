@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1qs4ntu6h11d"]
+
+[ext_resource type="PackedScene" uid="uid://bqf2vks5ggnsp" path="res://scene/Dungeon.tscn" id="1_1vd1b"]
+[ext_resource type="NavigationPolygon" uid="uid://brpcle7mygiml" path="res://resource/navigation/NavigationPolygon.tres" id="2_ad50c"]
+[ext_resource type="Script" uid="uid://bnv4cftk8v2gl" path="res://src/game/ui/develop/editorTileMap/EditorTileMap.cs" id="2_if55v"]
+[ext_resource type="Texture2D" uid="uid://c2i0x44hwdmyu" path="res://resource/sprite/ui/commonIcon/Block.png" id="3_if55v"]
+
+[sub_resource type="Animation" id="Animation_o3btm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wnqg6"]
+resource_name = "show"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.490196), Color(1, 0, 0, 0.490196), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_371oi"]
+_data = {
+&"RESET": SubResource("Animation_o3btm"),
+&"show": SubResource("Animation_wnqg6")
+}
+
+[node name="EditorTileMap" instance=ExtResource("1_1vd1b")]
+script = ExtResource("2_if55v")
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="." index="7"]
+z_index = 10
+navigation_polygon = ExtResource("2_ad50c")
+
+[node name="ErrorCell" type="Sprite2D" parent="." index="8"]
+visible = false
+modulate = Color(1, 0, 0, 0)
+z_index = 10
+scale = Vector2(16, 16)
+texture = ExtResource("3_if55v")
+centered = false
+
+[node name="ErrorCellAnimationPlayer" type="AnimationPlayer" parent="ErrorCell" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_371oi")
+}
+
+[node name="Brush" type="Node2D" parent="." index="9"]
+z_index = 100
